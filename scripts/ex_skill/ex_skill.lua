@@ -329,7 +329,7 @@ ExSkill = {
             exSkill.camera.fin.pos:mul(-1, 1, 1):scale(1 / 16 *  0.9375)
         end
         if host:isHost() then
-            KeyManager:register("ex_skill", Config.loadConfig("keybind.ex_skill", "key.keyboard.v"), function ()
+            KeyManager:register("ex_skill", Config.loadConfig("keybind.ex_skill", "key.keyboard.g"), function ()
                 while events.TICK:getRegisteredCount("ex_skill_keypress_tick") > 0 do
                     events.TICK:remove("ex_skill_keypress_tick")
                 end
