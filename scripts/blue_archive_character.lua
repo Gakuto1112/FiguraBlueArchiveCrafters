@@ -601,11 +601,7 @@ BlueArchiveCharacter = {
 
                 ---コスチュームに対応するExスキルのインデックス番号
                 ---@type integer
-                exSkill = 1,
-
-                --コスチュームに対応するサブExスキルのインデックス番号（任意）
-                ---@type integer
-                subExSkill = 1
+                exSkill = 1
             }
         },
 
