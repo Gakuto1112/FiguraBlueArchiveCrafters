@@ -94,9 +94,14 @@ Although the avatars for these characters are not created, there are plans to cr
   ![Birth day](./README_images/birth_day.svg)
 
 ## Ex Skill
-The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "V" key) while in the **third-person perspective**.
+The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
+
+> [!IMPORTANT]
+> From v1.9.4, the Ex skill action play key has been changed from the "V" key to the "G" key.
 
 ![Ex skill](./README_images/ex_skill.jpg)
+
+Some characters have the secondary Ex skill. It can be played by pressing the "H" key.
 
 Ex skill cut-ins are only visual and have no effect. However, some Ex skills leave objects in place after the cut-in (also only visual).
 
@@ -108,7 +113,7 @@ Ex skill cut-ins are only visual and have no effect. However, some Ex skills lea
 Figura provides the action wheel with which players can play some actions (emotes, animations, configs, and etc.). It will be shown when holding the action wheel key (default is B key). This avatar also has some actions.
 
 > [!IMPORTANT]
-> The Ex skill action has been changed to play on key press.
+> From v1.8.4, the Ex skill action has been changed to play on key press.
 
 ![Action wheel](./README_images/action_wheel.jpg)
 
