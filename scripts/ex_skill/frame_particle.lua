@@ -21,7 +21,7 @@ FrameParticle = {
 
         ---パーティクルの現在位置
         ---@type Vector3
-        instance.currentPos = screenPos:augmented(100):scale(-1)
+        instance.currentPos = screenPos:augmented(1000):scale(-1)
 
         ---次ティックのパーティクルの位置
         ---@type Vector3
@@ -56,7 +56,7 @@ FrameParticle = {
 
             --次ティックの位置を計算
             if self.velocity:length() > 0 then
-                self.nextPos = self.currentPos:copy():add(self.velocity:copy():scale(-0.05):augmented(100))
+                self.nextPos = self.currentPos:copy():add(self.velocity:copy():scale(-0.05):augmented(0))
             end
         end
 

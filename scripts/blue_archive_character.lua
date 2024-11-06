@@ -1539,4 +1539,6 @@ BlueArchiveCharacter = {
 
 --生徒固有初期化処理
 
+models.models.ex_skill_frame.Gui:setParentType("World")
+
 return BlueArchiveCharacter
