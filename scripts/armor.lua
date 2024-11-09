@@ -128,9 +128,7 @@ Armor = {
 	---@param chestplate ItemStack チェストプレートスロットに入っているアイテムスタック
 	setChestPlate = function (self, chestplate)
 		local chestplateFound = chestplate.id:find("^minecraft:.+_chestplate$") ~= nil
-		for _, vanillaModel in ipairs({vanilla_model.CHESTPLATE, vanilla_model.LEGGINGS}) do
-			vanillaModel:setVisible(chestplateFound)
-		end
+		vanilla_model.CHESTPLATE:setVisible(chestplateFound)
 		for _, armorPart in ipairs({models.models.main.Avatar.UpperBody.Arms.RightArm.ArmorRA, models.models.main.Avatar.UpperBody.Arms.RightArm.RightArmBottom.ArmorRAB, models.models.main.Avatar.UpperBody.Arms.LeftArm.ArmorLA, models.models.main.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom.ArmorLAB}) do
 			armorPart:setVisible(chestplateFound)
 		end
@@ -153,6 +151,7 @@ Armor = {
 	---@param leggings ItemStack レギンススロットに入っているアイテムスタック
 	setLeggings = function (self, leggings)
 		local leggingsFound = leggings.id:find("^minecraft:.+_leggings$") ~= nil
+		vanilla_model.LEGGINGS:setVisible(leggingsFound)
 		for _, armorPart in ipairs({models.models.main.Avatar.LowerBody.Legs.RightLeg.ArmorRL.RightLeggings, models.models.main.Avatar.LowerBody.Legs.RightLeg.RightLegBottom.ArmorRLB.RightLeggingsBottom, models.models.main.Avatar.LowerBody.Legs.LeftLeg.ArmorLL.LeftLeggings, models.models.main.Avatar.LowerBody.Legs.LeftLeg.LeftLegBottom.ArmorLLB.LeftLeggingsBottom}) do
 			armorPart:setVisible(leggingsFound)
 		end
