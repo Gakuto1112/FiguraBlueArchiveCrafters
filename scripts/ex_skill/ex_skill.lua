@@ -94,7 +94,7 @@ ExSkill = {
                 if host:isHost() then
                     local barPos = models.models.ex_skill_frame.Gui.FrameBar:getPos().x * -1
                     local windowSizeY = client:getScaledWindowSize().y
-                    if self.FrameParticleAmount ~= 3 then
+                    if self.FrameParticleAmount ~= 3 and self.TransitionCount >= 1 and self.TransitionCount <= 9 then
                         for _ = 1, windowSizeY / (self.FrameParticleAmount == 2 and 100 or 20) do
                             local particleOffset = math.random() * windowSizeY
                             FrameParticleManager:spawn(vectors.vec2(barPos - particleOffset - math.random() * 50, particleOffset), vectors.vec2(500, 0))
