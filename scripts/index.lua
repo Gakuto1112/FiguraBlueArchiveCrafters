@@ -5,6 +5,7 @@ events.ENTITY_INIT:register(function ()
 	KeyManager = require("scripts.key_manager")
 	PlayerUtils = require("scripts.utils.player_utils")
 	CompatibilityUtils = require("scripts.utils.compatibility_utils")
+	InstanceUtils = require("scripts.utils.instance_utils")
 
 	--パーツ別クラス
 	VanillaModel = require("scripts.vanilla_model")
@@ -31,6 +32,8 @@ events.ENTITY_INIT:register(function ()
 	Barrier = require("scripts.barrier")
 
 	--HypixelZombies = require("scripts.hypixel_zombies")
+
+	--生徒固有クラス
 end)
 
 --ENTITY_INITを待たず読み込むクラス
