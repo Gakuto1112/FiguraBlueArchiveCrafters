@@ -47,6 +47,7 @@ end)
 ---@field public characterData BlueArchiveCharacter
 ---@field public headRing HeadRing
 ---@field public headBlock HeadBlock
+---@field public locale Locale
 ---@field public config Config
 ---@field public armor Armor
 ---@field public portrait Portrait
@@ -96,6 +97,10 @@ Avatar = {
 			instance.compatibilityUtils:init()
 
 			--アバターモジュールの読み込み
+			require("scripts.avatar_modules.locale")
+			instance.locale = Locale.new(instance)
+			instance.locale:init()
+
 			require("scripts.avatar_modules.config")
 			instance.config = Config.new(instance)
 			instance.config:init()
