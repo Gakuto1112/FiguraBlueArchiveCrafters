@@ -1,7 +1,7 @@
 ---設置物の設置モードの列挙型
----@alias PlacementObjectManager.PlecementMode
----| "COPY" コピーモード。BBアニメーションは使えないが、複数の設置物を設置可能。
----| "MOVE" 移動モード。同時に1つしか設置物を設置できないが、BBアニメーションが使える。
+---@alias PlacementObjectManager.PlacementMode
+---| "COPY" # コピーモード。BBアニメーションは使えないが、複数の設置物を設置可能。
+---| "MOVE" # 移動モード。同時に1つしか設置物を設置できないが、BBアニメーションが使える。
 
 ---設置物が削除された理由の列挙型
 ---@alias PlacementObjectManager.RemoveReason

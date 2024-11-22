@@ -3,7 +3,7 @@
 ---| "DAMAGE" # ダメージを受けた
 ---| "DIED" # 死亡した
 
----@class PlayerUtils プレイヤーに関するユーティリティ関数群
+---@class (exact) PlayerUtils プレイヤーに関するユーティリティ関数群
 ---@field package parent Avatar アバターのメインクラスへの参照
 ---@field public damageStatus PlayerUtils.DamageStatus 現在のティックのダメージステータス
 ---@field package healthPrev integer 前ティックのHP量
@@ -16,12 +16,7 @@ PlayerUtils = {
         ---@type PlayerUtils
         local instance = Avatar.instantiate(PlayerUtils, AvatarModule, parent)
 
-        ---現在のティックのダメージステータス
-        ---@type PlayerUtils.DamageStatus
         instance.damageStatus = "NONE"
-
-        ---前ティックのHP量
-        ---@type integer
         instance.healthPrev = player:getHealth()
 
         events.TICK:register(function ()

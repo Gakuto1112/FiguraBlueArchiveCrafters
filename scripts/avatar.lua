@@ -51,13 +51,15 @@ Avatar = {
 		---@type Avatar
 		local instance = Avatar.instantiate(Avatar)
 
-		require("scripts.avatar_module")
-
 		--ENTITY_INIT前に読み込み
+		require("scripts.avatar_module")
 
 		--ユーティリティクラスの読み込み
 		require("scripts.avatar_modules.utils.model_utils")
 		instance.modelUtils = ModelUtils.new(self)
+
+		require("scripts.avatar_modules.blue_archive_character")
+		instance.characterData = BlueArchiveCharacter.new(self)
 
 		events.ENTITY_INIT:register(function ()
 			--ユーティリティクラスの読み込み
