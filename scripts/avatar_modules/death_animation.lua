@@ -1,4 +1,4 @@
----@class DeathAnimation : AvatarModule プレイヤーが死亡した際のキャラクターがヘリコプターで回収されるアニメーションを管理するクラス
+---@class (exact) DeathAnimation : AvatarModule プレイヤーが死亡した際のキャラクターがヘリコプターで回収されるアニメーションを管理するクラス
 ---@field public dummyAvatarRoot? ModelPart 死亡アニメーションに使用されるダミーのアバターのルート。アバターが未生成の場合はnilが入っている。
 
 DeathAnimation = {

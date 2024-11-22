@@ -1,3 +1,50 @@
+---@class (exact) Costume : AvatarModule キャラクターのコスチュームを管理し、円滑に切り替えられるようにするクラス
+---@field package costumeList string[] 利用可能なコスチューム一覧。BlueArchiveCharacterクラスから動的に生成される。
+---@field public currentCostume integer 現在のコスチューム
+---@field public setCostume fun(self: Costume, costume: integer) コスチュームを設定する
+
+Costume = {
+	---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
+    ---@return Costume
+    new = function (parent)
+        ---@type Costume
+        local instance = Avatar.instantiate(Costume, AvatarModule, parent)
+
+		instance.costumeList = {}
+		instance.currentCostume = instance.parent.config:loadConfig("costume", 1)
+
+        return instance
+    end;
+
+	---初期化関数
+    ---@param self Costume
+    init = function (self)
+		for _, costume in ipairs(self.parent.characterData.costume.costumes) do
+			table.insert(self.costumeList, costume.name)
+		end
+		if self.currentCostume >= 2 then
+			if self.costumeList[self.currentCostume] ~= nil then
+				self:setCostume(self.currentCostume)
+			else
+				self.currentCostume = 1
+				if host:isHost() then
+					self.parent.config:saveConfig("costume", 1)
+				end
+			end
+		end
+		self.parent.headBlock:generateHeadModel()
+		self.parent.portrait:generateHeadModel()
+    end;
+
+	---コスチュームを設定する。
+	---@param self Costume
+	---@param costume integer 設定するコスチューム
+	setCostume = function(self, costume)
+	end;
+}
+
+--[[
 ---@class Costume キャラクターのコスチュームを管理し、円滑に切り替えられるようにするクラス
 Costume = {
 	---利用可能なコスチューム一覧。BlueArchiveCharacterクラスから動的に生成される。
@@ -74,3 +121,4 @@ Costume = {
 Costume:init()
 
 return Costume
+]]

@@ -1,5 +1,4 @@
----@class ExSkill : AvatarModule Exスキルのアニメーションを管理するクラス
----@field package parent Avatar アバターのメインクラスへの参照
+---@class (exact) ExSkill : AvatarModule Exスキルのアニメーションを管理するクラス
 ---@field public animationCount integer Exスキルのアニメーション再生中に増加するカウンター。-1はアニメーション停止中を示す。
 
 ExSkill = {

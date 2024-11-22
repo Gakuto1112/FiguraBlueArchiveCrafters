@@ -1,5 +1,4 @@
 ---@class (exact) ModelUtils : AvatarModule モデルに関するユーティリティ関数群
----@field package parent Avatar アバターのメインクラスへの参照
 ---@field public getModelWorldPos fun(model: ModelPart): Vector3 指定したモデルのワールド位置を返す。
 ---@field public copyModel fun(self: ModelUtils, modelPart: ModelPart, name?: string, forceCopy?: boolean): ModelPart|nil モデルパーツをディープコピーする。
 ---@field public copyModel fun(self: ModelUtils, modelPart: ModelPart, name?: string, forceCopy?: true): ModelPart モデルパーツをディープコピーする。

@@ -1,10 +1,46 @@
 ---防具の部位
 ---@alias Armor.ArmorPart
----| "HELMET" ヘルメット
----| "CHEST_PLATE" チェストプレート
----| "LEGGINGS" レギンス
----| "BOOTS" ブーツ
+---| "HELMET" # ヘルメット
+---| "CHEST_PLATE" # チェストプレート
+---| "LEGGINGS" # レギンス
+---| "BOOTS" # ブーツ
 
+---@class (exact) Armor : AvatarModule 防具の表示を制御するクラス
+---@field public isArmorVisible Armor.VisiblePartsSet 各防具の部位（ヘルメット、チェストプレート、レギンス、ブーツ）が可視状態かどうか
+---@field public setHelmet fun(self: Armor, helmetItem: ItemStack) ヘルメットを更新する
+
+---@class (exact) Armor.VisiblePartsSet 各防具の部位の可視状態のセット
+---@field public helmet boolean ヘルメット
+---@field public chestplate boolean チェストプレート
+---@field public leggings boolean レギンス
+---@field public boots boolean ブーツ
+
+Armor = {
+	---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
+    ---@return Armor
+    new = function (parent)
+        ---@type Armor
+        local instance = Avatar.instantiate(Armor, AvatarModule, parent)
+
+		instance.isArmorVisible = {
+			helmet = false;
+			chestplate = false;
+			leggings = false;
+			boots = false;
+		}
+
+        return instance
+    end;
+
+	---ヘルメットを更新する。
+	---@param self Armor
+	---@param helmetItem ItemStack ヘルメットのスロットに入っているアイテム
+	setHelmet = function (self, helmetItem)
+	end;
+}
+
+--[[
 ---@class Armor 防具の表示を制御するクラス
 Armor = {
 	---防具を表示するかどうか
@@ -27,7 +63,7 @@ Armor = {
 			palette: 使用するパレットのテクスチャ
 			iterationCount: 現在の繰り返しカウント
 		}
-	]]
+
 	---@type table[]
 	TextureQueue = {},
 
@@ -332,3 +368,4 @@ Armor = {
 Armor:init()
 
 return Armor
+]]

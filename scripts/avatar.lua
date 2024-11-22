@@ -46,8 +46,13 @@ end)
 ---@field public compatibilityUtils CompatibilityUtils
 ---@field public characterData BlueArchiveCharacter
 ---@field public headRing HeadRing
----@field public exSkill ExSkill
+---@field public headBlock HeadBlock
+---@field public config Config
+---@field public armor Armor
+---@field public portrait Portrait
 ---@field public physics Physics
+---@field public exSkill ExSkill
+---@field public costume Costume
 ---@field public deathAnimation DeathAnimation
 ---@field public instantiate fun(class: table, super: table, ...: any) クラスをインスタンス化する
 
@@ -64,31 +69,60 @@ Avatar = {
 		--ユーティリティクラスの読み込み
 		require("scripts.avatar_modules.utils.model_utils")
 		instance.modelUtils = ModelUtils.new(instance)
+		instance.modelUtils:init()
 
 		--アバターモジュールの読み込み
 		require("scripts.avatar_modules.blue_archive_character")
 		instance.characterData = BlueArchiveCharacter.new(instance)
+		instance.characterData:init()
 
 		require("scripts.avatar_modules.head_ring")
 		instance.headRing = HeadRing.new(instance)
+		instance.headRing:init()
+
+		require("scripts.avatar_modules.head_model_generator")
+		require("scripts.avatar_modules.head_block")
+		instance.headBlock = HeadBlock.new(instance)
+		instance.headBlock:init()
 
 		events.ENTITY_INIT:register(function ()
 			--ユーティリティクラスの読み込み
 			require("scripts.avatar_modules.utils.player_utils")
 			instance.playerUtils = PlayerUtils.new(instance)
+			instance.playerUtils:init()
 
 			require("scripts.avatar_modules.utils.compatibility_utils")
 			instance.compatibilityUtils = CompatibilityUtils.new(instance)
+			instance.compatibilityUtils:init()
 
 			--アバターモジュールの読み込み
-			require("scripts.avatar_modules.ex_skill.ex_skill")
-			instance.exSkill = ExSkill.new(instance)
+			require("scripts.avatar_modules.config")
+			instance.config = Config.new(instance)
+			instance.config:init()
+
+			require("scripts.avatar_modules.armor")
+			instance.armor = Armor.new(instance)
+			instance.armor:init()
+
+			require("scripts.avatar_modules.portrait")
+			instance.portrait = Portrait.new(instance)
+			instance.portrait:init()
 
 			require("scripts.avatar_modules.physics")
 			instance.physics = Physics.new(instance)
+			instance.physics:init()
+
+			require("scripts.avatar_modules.ex_skill.ex_skill")
+			instance.exSkill = ExSkill.new(instance)
+			instance.exSkill:init()
+
+			require("scripts.avatar_modules.costume")
+			instance.costume = Costume.new(instance)
+			instance.costume:init()
 
 			require("scripts.avatar_modules.death_animation")
 			instance.deathAnimation = DeathAnimation.new(instance)
+			instance.deathAnimation:init()
 		end)
 
 		return instance

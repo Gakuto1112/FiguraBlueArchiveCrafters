@@ -1,3 +1,37 @@
+---@class (exact) Config : AvatarModule アバター設定を管理するクラス
+---@field public loadConfig fun(self: Config, keyName: string, defaultValue: any): any 設定を読み出す
+---@field public saveConfig fun(self: Config, keyName: string, value: any) 設定を保存する
+
+Config = {
+    ---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
+    ---@return Config
+    new = function (parent)
+        ---@type Config
+        local instance = Avatar.instantiate(Config, AvatarModule, parent)
+
+        return instance
+    end;
+
+	---設定を読み出す。
+	---@generic T
+	---@param self Config
+	---@param keyName string 読み出す設定の名前
+	---@param defaultValue `T` 該当の設定が無い場合や、ホスト外での実行の場合はこの値が返される。
+	---@return `T` loadedValue 読み出した値
+	loadConfig = function (self, keyName, defaultValue)
+		return 1
+	end;
+
+	---設定を保存する。
+	---@param self Config
+	---@param keyName string 保存する設定の名前
+	---@param value any 保存する値
+	saveConfig = function (self, keyName, value)
+	end;
+}
+
+--[[
 ---@class Config アバター設定を管理するクラス
 ---@field DefaultValues table<any> 読み込んだ値のデフォルト値を保持するテーブル
 Config = {
@@ -79,3 +113,4 @@ if host:isHost() then
 end
 
 return Config
+]]

@@ -6,7 +6,6 @@
 ---| "SOUND" # サウンド名
 
 ---@class (exact) CompatibilityUtils : AvatarModule Minecraftのゲームバージョンが異なっていてもある程度互換性を確保するためのユーティリティクラス
----@field package parent Avatar アバターのメインクラスへの参照
 ---@field package registries {block: Minecraft.blockID[], item: Minecraft.itemID[], particle: Minecraft.particleID[], sound: Minecraft.soundID[]} ゲームから取得した全アイテム名を保持するテーブル
 ---@field package checkedTable {block: {[Minecraft.blockID]: boolean}, item: {[Minecraft.itemID]: boolean}, particle: {[Minecraft.particleID]: boolean}, sound: {[Minecraft.soundID]: boolean}} レジストリへの確認が済んでいるIDを保持するテーブル
 ---@field package find fun(self: CompatibilityUtils, registryType: CompatibilityUtils.RegistryType, target: string): boolean 指定されたターゲットがレジストリに登録されているかどうかを返す。
@@ -33,22 +32,26 @@ CompatibilityUtils = {
             sound = {};
         }
 
-        instance.registries.block = client.getRegistry("minecraft:block")
-        instance.registries.item = client.getRegistry("minecraft:item")
-        instance.registries.particle = client.getRegistry("minecraft:particle_type")
-        instance.registries.sound = client.getRegistry("minecraft:sound_event")
-        for name, _ in pairs(instance.registries) do
-            table.sort(instance.registries[name])
+        return instance
+    end;
+
+    ---初期化関数
+    ---@param self CompatibilityUtils
+    init = function (self)
+        self.registries.block = client.getRegistry("minecraft:block")
+        self.registries.item = client.getRegistry("minecraft:item")
+        self.registries.particle = client.getRegistry("minecraft:particle_type")
+        self.registries.sound = client.getRegistry("minecraft:sound_event")
+        for name, _ in pairs(self.registries) do
+            table.sort(self.registries[name])
         end
-        instance.checkedTable.block["minecraft:dirt"] = true
-        instance.checkedTable.item["minecraft:barrier"] = true
-        instance.checkedTable.particle["minecraft:poof"] = true
-        instance.checkedTable.sound["minecraft:empty"] = true
+        self.checkedTable.block["minecraft:dirt"] = true
+        self.checkedTable.item["minecraft:barrier"] = true
+        self.checkedTable.particle["minecraft:poof"] = true
+        self.checkedTable.sound["minecraft:empty"] = true
         if host:isHost() and client:getVersion() < "1.20.1" then
             print(Language:getTranslate("avatar__old_version_warning"))
         end
-
-        return instance
     end;
 
     ---指定されたターゲットがレジストリに登録されているかどうかを返す。

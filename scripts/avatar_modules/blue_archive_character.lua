@@ -31,219 +31,218 @@
 --[[ ******************************** ]]
 
 ---@class BlueArchiveCharacter : AvatarModule キャラクター変数を保持するクラス。別のキャラクターに対してもここを変更するだけで対応できるようにする。
----@field package parent Avatar アバターのメインクラスへの参照
----@field public basic BasicStruct 生徒の基本情報
----@field public faceParts FacePartsStruct 目や口による表情
----@field public arms ArmsStruct 腕
----@field public skirt SkirtStruct スカート
----@field public gun GunStruct 銃
----@field public placementObjects PlacementObjectStruct[] 設置物
----@field public exSkill ExSkillStruct[] Exスキル
----@field public costume CostumeStruct コスチューム
----@field public bubble BubbleStruct 吹き出しエモート
----@field public headBlock HeadBlockStruct 頭ブロック
----@field public portrait HeadBlockStruct ポートレート
----@field public deathAnimation DeathAnimationStruct 死亡アニメーション
----@field public actionWheel ActionWheelStruct アクションホイール
----@field public physics PhysicsStruct 物理演算
+---@field public basic BlueArchiveCharacter.BasicStruct 生徒の基本情報
+---@field public faceParts BlueArchiveCharacter.FacePartsStruct 目や口による表情
+---@field public arms BlueArchiveCharacter.ArmsStruct 腕
+---@field public skirt BlueArchiveCharacter.SkirtStruct スカート
+---@field public gun BlueArchiveCharacter.GunStruct 銃
+---@field public placementObjects BlueArchiveCharacter.PlacementObjectStruct[] 設置物
+---@field public exSkill BlueArchiveCharacter.ExSkillStruct[] Exスキル
+---@field public costume BlueArchiveCharacter.CostumeStruct コスチューム
+---@field public bubble BlueArchiveCharacter.BubbleStruct 吹き出しエモート
+---@field public headBlock BlueArchiveCharacter.HeadBlockStruct 頭ブロック
+---@field public portrait BlueArchiveCharacter.HeadBlockStruct ポートレート
+---@field public deathAnimation BlueArchiveCharacter.DeathAnimationStruct 死亡アニメーション
+---@field public actionWheel BlueArchiveCharacter.ActionWheelStruct アクションホイール
+---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 
 --[[ ******************************** ]]
 
----@class BasicStruct 生徒の基本情報のデータ構造体
----@field public firstName LocaleStringSet 生徒の名前
----@field public lastName LocaleStringSet 生徒の苗字
----@field public clubName LocaleStringSet 生徒が所属している部活名
----@field public birth MonthDaySet 生徒の誕生日
+---@class BlueArchiveCharacter.BasicStruct 生徒の基本情報のデータ構造体
+---@field public firstName BlueArchiveCharacter.LocaleStringSet 生徒の名前
+---@field public lastName BlueArchiveCharacter.LocaleStringSet 生徒の苗字
+---@field public clubName BlueArchiveCharacter.LocaleStringSet 生徒が所属している部活名
+---@field public birth BlueArchiveCharacter.MonthDaySet 生徒の誕生日
 
----@class FacePartsStruct 目や口による表情のデータ構造体。UVマッピング情報は、デフォルトパーツから見て左からx番目、上からy番目とする。
+---@class BlueArchiveCharacter.FacePartsStruct 目や口による表情のデータ構造体。UVマッピング情報は、デフォルトパーツから見て左からx番目、上からy番目とする。
 ---@field public rightEye {[BlueArchiveCharacter.RightEyeTextures]: Vector2} 右目のテクスチャのUVマッピング情報
 ---@field public leftEye {[BlueArchiveCharacter.LeftEyeTextures]: Vector2} 左目のテクスチャのUVマッピング情報
 ---@field public mouth {[BlueArchiveCharacter.MouthTextures]: Vector2} 口のテクスチャのUVマッピング情報
----@field public emotionSet? {onDamage: EmotionSet, onSleep: EmotionSet} 特定の状況における表情を上書きする
+---@field public emotionSet? {onDamage: BlueArchiveCharacter.EmotionSet, onSleep: BlueArchiveCharacter.EmotionSet} 特定の状況における表情を上書きする
 
----@class ArmsStruct 腕のデータ構造体
----@field public callbacks? ArmsCallbacksSet 腕の制御のコールバック関数群
+---@class BlueArchiveCharacter.ArmsStruct 腕のデータ構造体
+---@field public callbacks? BlueArchiveCharacter.ArmsCallbacksSet 腕の制御のコールバック関数群
 
----@class SkirtStruct スカートのデータ構造体
+---@class BlueArchiveCharacter.SkirtStruct スカートのデータ構造体
 ---@field public skirtModels? ModelPart[] スカートとして制御するモデル
 
----@class GunStruct 銃のデータ構造体
+---@class BlueArchiveCharacter.GunStruct 銃のデータ構造体
 ---@field public scale number 銃モデルの大きさの倍率
----@field public gunPosition GunPositionSet 銃モデルの位置や向き
----@field public sound GunSoundSet 銃の射撃音
----@field public callbacks? GunCallbacksSet 銃のコールバック関数
+---@field public gunPosition BlueArchiveCharacter.GunPositionSet 銃モデルの位置や向き
+---@field public sound BlueArchiveCharacter.GunSoundSet 銃の射撃音
+---@field public callbacks? BlueArchiveCharacter.GunCallbacksSet 銃のコールバック関数
 
----@class PlacementObjectStruct 設置物のデータ構造体
+---@class BlueArchiveCharacter.PlacementObjectStruct 設置物のデータ構造体
 ---@field public model ModelPart 設置物として扱うモデル
----@field public boundingBox PlacementObjectBoundingBoxSet 設置物の当たり判定
+---@field public boundingBox BlueArchiveCharacter.PlacementObjectBoundingBoxSet 設置物の当たり判定
 ---@field public placementMode PlacementObjectManager.PlacementMode 設置物の設置モード
 ---@field public gravity? number 設置物にかかる重力。1が標準的な自由落下。0で空中静止。負の数で反重力（上に向かって落ちる）。
 ---@field public hasFireResistance? boolean 設置物に火炎耐性を付与するかどうか。trueにすると炎やマグマで焼かれなくなる。
----@field public callbacks? PlacementObjectCallbacksSet 設置物のコールバック関数
+---@field public callbacks? BlueArchiveCharacter.PlacementObjectCallbacksSet 設置物のコールバック関数
 
----@class ExSkillStruct Exスキルのデータ構造体
----@field public name LocaleStringSet Exスキルの名前
+---@class BlueArchiveCharacter.ExSkillStruct Exスキルのデータ構造体
+---@field public name BlueArchiveCharacter.LocaleStringSet Exスキルの名前
 ---@field public formationType BlueArchiveCharacter.FormationType この生徒の戦闘配置タイプ
 ---@field public models ModelPart[] Exスキルアニメーション開始時に表示し、Exスキルアニメーション終了時に非表示にするモデルパーツ
 ---@field public animations string[] Exスキルアニメーションが含まれるモデルファイル名。アニメーション名は"ex_skill_<Exスキルのインデックス番号>"にすること。
----@field public camera ExSkillCameraSet Exスキルアニメーション中のカメラワーク
----@field public callbacks? ExSkillCallbacks Exスキルのコールバック関数
+---@field public camera BlueArchiveCharacter.ExSkillCameraSet Exスキルアニメーション中のカメラワーク
+---@field public callbacks? BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数
 
----@class CostumeStruct コスチュームのデータ構造体
----@field public costumes CostumeDataSet[] コスチュームデータ
----@field public callbacks? CostumeCallbacks コスチュームのコールバック関数
+---@class BlueArchiveCharacter.CostumeStruct コスチュームのデータ構造体
+---@field public costumes BlueArchiveCharacter.CostumeDataSet[] コスチュームデータ
+---@field public callbacks? BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数
 
----@class BubbleStruct 吹き出しエモートのデータ構造体
----@field public callbacks? BubbleCallbacks
+---@class BlueArchiveCharacter.BubbleStruct 吹き出しエモートのデータ構造体
+---@field public callbacks? BlueArchiveCharacter.BubbleCallbacks
 
----@class HeadBlockStruct 頭ブロック、ポートレートのデータ構造体
+---@class BlueArchiveCharacter.HeadBlockStruct 頭ブロック、ポートレートのデータ構造体
 ---@field public includeModels ModelPart[] 頭モデルに追加でアタッチするモデル
----@field public callbacks? HeadBlockCallbacks 頭ブロック、ポートレートのコールバック関数
+---@field public callbacks? BlueArchiveCharacter.HeadBlockCallbacks 頭ブロック、ポートレートのコールバック関数
 
----@class DeathAnimationStruct 死亡アニメーションのデータ構造体
----@field public callbacks? DeathAnimationCallbacks 死亡アニメーションのコールバック関数
+---@class BlueArchiveCharacter.DeathAnimationStruct 死亡アニメーションのデータ構造体
+---@field public callbacks? BlueArchiveCharacter.DeathAnimationCallbacks 死亡アニメーションのコールバック関数
 
----@class ActionWheelStruct アクションホイールのデータ構造体
+---@class BlueArchiveCharacter.ActionWheelStruct アクションホイールのデータ構造体
 ---@field public isVehicleOptionEnabled boolean 乗り物のモデル置き換えオプションを有効にするかどうか
 
----@class PhysicsStruct 物理演算のデータ構造体
----@field physicData PhysicDataSet[] 物理演算データ
----@field callbacks? PhysicCallbacks 物理演算のコールバック関数
+---@class BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
+---@field physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
+---@field callbacks? BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数
 
 --[[ ******************************** ]]
 
----@class (exact) OverrideEmotionSet 特定の状況における表情を上書きするセット
----@field public onDamage? EmotionSet ダメージを受けたとき
----@field public onSleep? EmotionSet ベッドで寝ているとき
+---@class (exact) BlueArchiveCharacter.OverrideEmotionSet 特定の状況における表情を上書きするセット
+---@field public onDamage? BlueArchiveCharacter.EmotionSet ダメージを受けたとき
+---@field public onSleep? BlueArchiveCharacter.EmotionSet ベッドで寝ているとき
 
----@class (exact) EmotionSet 表情のデータセット
+---@class (exact) BlueArchiveCharacter.EmotionSet 表情のデータセット
 ---@field public rightEye BlueArchiveCharacter.RightEyeTextures 右目の表情名
 ---@field public leftEye BlueArchiveCharacter.LeftEyeTextures 左目の表情名
 ---@field public mouth BlueArchiveCharacter.MouthTextures 口の表情名
 
----@class (exact) ArmsCallbacksSet 腕処理のコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.ArmsCallbacksSet 腕処理のコールバック関数のセット
 ---@field public onArmStateChanged? fun(right: integer, left: integer): {right?: integer, left?: integer}|nil 腕の状態が変更された際のコールバック関数
 ---@field public onAdditionalRightArmProcess? fun(state: integer) 右腕の追加処理
 ---@field public onAdditionalLeftArmProcess? fun(state: integer) 左腕の追加処理
 
----@class (exact) GunPositionSet 銃のモデルの位置や向きのデータセット
----@field public hold GunHoldPositionSet 銃を構えているとき
----@field public put GunPutPositionSet 銃をしまっているとき
+---@class (exact) BlueArchiveCharacter.GunPositionSet 銃のモデルの位置や向きのデータセット
+---@field public hold BlueArchiveCharacter.GunHoldPositionSet 銃を構えているとき
+---@field public put BlueArchiveCharacter.GunPutPositionSet 銃をしまっているとき
 
----@class (exact) GunHoldPositionSet 構えているときの銃のモデルの位置や向きのデータセット
+---@class (exact) BlueArchiveCharacter.GunHoldPositionSet 構えているときの銃のモデルの位置や向きのデータセット
 ---@field public type BlueArchiveCharacter.GunHoldType 銃の構え方の種類
----@field public firstPersonPos? Vector3RightLeftSet 一人称視点での銃の位置
----@field public firstPersonRot? Vector3RightLeftSet 一人称視点での銃の方向
----@field public thirdPersonPos? Vector3RightLeftSet 三人称視点での銃の位置
----@field public thirdPersonRot? Vector3RightLeftSet 三人称視点での銃の方向
+---@field public firstPersonPos? BlueArchiveCharacter.Vector3RightLeftSet 一人称視点での銃の位置
+---@field public firstPersonRot? BlueArchiveCharacter.Vector3RightLeftSet 一人称視点での銃の方向
+---@field public thirdPersonPos? BlueArchiveCharacter.Vector3RightLeftSet 三人称視点での銃の位置
+---@field public thirdPersonRot? BlueArchiveCharacter.Vector3RightLeftSet 三人称視点での銃の方向
 
----@class (exact) GunPutPositionSet しまっているときの銃のモデルの位置や向きのデータセット
+---@class (exact) BlueArchiveCharacter.GunPutPositionSet しまっているときの銃のモデルの位置や向きのデータセット
 ---@field public type BlueArchiveCharacter.GunPutType 銃のしまい方の種類
----@field public pos? Vector3RightLeftSet 一人称視点での銃の位置
----@field public rot? Vector3RightLeftSet 一人称視点での銃の方向
+---@field public pos? BlueArchiveCharacter.Vector3RightLeftSet 一人称視点での銃の位置
+---@field public rot? BlueArchiveCharacter.Vector3RightLeftSet 一人称視点での銃の方向
 
----@class (exact) GunSoundSet 銃の音のデータセット
+---@class (exact) BlueArchiveCharacter.GunSoundSet 銃の音のデータセット
 ---@field public name Minecraft.soundID 銃の音として使用するゲームの音源名
 ---@field public pitch number 音源の再生ピッチ（0.5～2）
 
----@class (exact) GunCallbacksSet 銃のコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.GunCallbacksSet 銃のコールバック関数のセット
 ---@field public onMainHandChange? fun(direction: Gun.HandDirection) 利き手が変更されたときに呼び出される関数
 
----@class (exact) PlacementObjectBoundingBoxSet 設置物の当たり判定のデータセット
+---@class (exact) BlueArchiveCharacter.PlacementObjectBoundingBoxSet 設置物の当たり判定のデータセット
 ---@field public offsetPos? Vector3 設置物の底の中心点のオフセット位置（任意）。基準点は(0, 0, 0)。
 ---@field public size? Vector3 当たり判定の大きさ。BlockBenchでのサイズの値をそのまま入力する。基準点はモデルの底面の中心。
 
 --TODO: tableを設置物オブジェクトに置き換える！
----@class (exact) PlacementObjectCallbacksSet 設置物のコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.PlacementObjectCallbacksSet 設置物のコールバック関数のセット
 ---@field public onInit? fun(placementObject: table) 設置物インスタンスが生成された直後に呼ばれる関数
 ---@field public onDeinit? fun(placementObject: table) 設置物インスタンスが破棄される直前に呼ばれる関数
 ---@field public onTick? fun(placementObject: table) 各ティック毎に呼ばれる関数
 ---@field public onRender? fun(placementObject: table) 各レンダーティック毎に呼ばれる関数
 ---@field public onGround? fun(placementObject: table) 設置物が接地した瞬間に呼ばれる関数
 
----@class (exact) ExSkillCameraSet Exスキルアニメーション中のカメラワークのセット
----@field public start ExSkillCameraPositionSet Exスキルアニメーション開始地点
----@field public fin ExSkillCameraPositionSet Exスキルアニメーション終了地点
+---@class (exact) BlueArchiveCharacter.ExSkillCameraSet Exスキルアニメーション中のカメラワークのセット
+---@field public start BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション開始地点
+---@field public fin BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション終了地点
 
----@class (exact) ExSkillCameraPositionSet Exスキルアニメーション中のカメラワークの開始/終了地点の位置のデータセット
+---@class (exact) BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション中のカメラワークの開始/終了地点の位置のデータセット
 ---@field public pos Vector3 カメラの位置
 ---@field public rot Vector3 カメラの方向
 
----@class (exact) ExSkillCallbacks Exスキルのコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数のセット
 ---@field public onPreTransition? fun() Exスキルアニメーション開始前のトランジション開始前に実行されるコールバック関数
 ---@field public onPreAnimation? fun() Exスキルアニメーション開始前のトランジション終了後に実行されるコールバック関数
 ---@field public onAnimationTick? fun(tick: integer) Exスキルアニメーション再生中のみ実行されるティック関数
 ---@field public onPostAnimation? fun(forcedStop: boolean) Exスキルアニメーション終了後のトランジション開始前に実行されるコールバック関数
 ---@field public onPostTransition? fun(forcedStop: boolean) Exスキルアニメーション終了後のトランジション終了後に実行されるコールバック関数
 
----@class CostumeDataSet コスチュームのデータセット
+---@class BlueArchiveCharacter.CostumeDataSet コスチュームのデータセット
 ---@field public name string コスチュームの内部名
----@field public displayName LocaleStringSet コスチュームの表示名
+---@field public displayName BlueArchiveCharacter.LocaleStringSet コスチュームの表示名
 ---@field public exSkill integer コスチュームに対応するExスキルのインデックス番号
 ---@field public subExSkill? integer コスチュームに対応するサブExスキルのインデックス番号
 
----@class (exact) CostumeCallbacks コスチュームのコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数のセット
 ---@field public onChange? fun(costumeId: integer) 衣装が変更されたときに実行されるコールバック関数。デフォルトの衣装はここに含めない。
 ---@field public onReset? fun() 衣装がリセットされたときに実行されるコールバック関数。あらゆる衣装からデフォルトの衣装へ推移できるようにする。
 ---@field public onArmorChange? fun(parts: Armor.ArmorPart, isVisible: boolean) 防具が変更された（防具が見える/見えない）ときに実行されるコールバック関数
 
----@class (exact) BubbleCallbacks 吹き出しエモートのコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.BubbleCallbacks 吹き出しエモートのコールバック関数のセット
 ---@field public onPlay? fun(type: Bubble.BubbleType, duration: integer, showInGui: boolean) 吹き出しエモートが再生された時に実行されるコールバック関数
 ---@field public  onStop? fun(type: Bubble.BubbleType, forcedStop: boolean) 吹き出しアニメーション終了時に実行されるコールバック関数
 
----@class (exact) HeadBlockCallbacks 頭ブロックのコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.HeadBlockCallbacks 頭ブロックのコールバック関数のセット
 ---@field public onBeforeModelCopy? fun() モデルのコピー直前に実行される関数
 ---@field public onAfterModelCopy? fun() モデルのコピー直後に実行される関数
 
----@class (exact) DeathAnimationCallbacks 死亡アニメーションのコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.DeathAnimationCallbacks 死亡アニメーションのコールバック関数のセット
 ---@field public onPhase1? fun(dummyAvatar: ModelPart, costume: integer) 死亡アニメーションが再生された直後に実行される関数
 ---@field public onPhase2? fun(dummyAvatar: ModelPart, costume: integer) ダミーアバターが縄ばしごにつかまった直後に実行される関数
 ---@field public onBeforeModelCopy? fun() モデルのコピー直前に実行される関数
 ---@field public onAfterModelCopy? fun() モデルのコピー直後に実行される関数
 
----@class (exact) PhysicDataSet 物理演算のデータセット
+---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
----@field public x? PhysicAxisData x軸のデータ
----@field public y? PhysicAxisData y軸のデータ
----@field public z? PhysicAxisData z軸のデータ
+---@field public x? BlueArchiveCharacter.PhysicAxisData x軸のデータ
+---@field public y? BlueArchiveCharacter.PhysicAxisData y軸のデータ
+---@field public z? BlueArchiveCharacter.PhysicAxisData z軸のデータ
 
----@class (exact) PhysicAxisData 物理演算の1軸のデータセット
----@field public vertical? PhysicCoreData 体が垂直方向である時（通常時）の物理演算データ
----@field public horizontal? PhysicCoreData 体が水平方向である時（水泳時、エリトラ飛行時）の物理演算データ
+---@class (exact) BlueArchiveCharacter.PhysicAxisData 物理演算の1軸のデータセット
+---@field public vertical? BlueArchiveCharacter.PhysicCoreData 体が垂直方向である時（通常時）の物理演算データ
+---@field public horizontal? BlueArchiveCharacter.PhysicCoreData 体が水平方向である時（水泳時、エリトラ飛行時）の物理演算データ
 
----@class (exact) PhysicCoreData 物理演算のコアデータ
+---@class (exact) BlueArchiveCharacter.PhysicCoreData 物理演算のコアデータ
 ---@field public min number このモデルパーツ、回転軸の絶対的な回転の最小値（度）
 ---@field public neutral number このモデルパーツ、回転軸の中立の回転位置（度）
 ---@field public max number このモデルパーツ、回転軸の絶対的な回転の最大値（度）
 ---@field public sneakOffset? number スニーク時にこのモデルパーツの回転に加えられるオフセット値
 ---@field public headRotMultiplayer? number 頭の縦方向の回転と共にこのモデルパーツの回転に加えられる値の倍率
----@field public headX? PhysicFactorData 頭を基準とした、前後方向移動によるモデルパーツの回転データ
----@field public headZ PhysicFactorData 頭を基準とした、左右方向移動によるモデルパーツの回転データ
----@field public headRot PhysicFactorData 頭の回転によるによるモデルパーツの回転データ
----@field public bodyX PhysicFactorData 体を基準とした、前後方向移動によるモデルパーツの回転データ
----@field public bodyY PhysicFactorData 体を基準とした、上下方向移動によるモデルパーツの回転データ
----@field public bodyZ PhysicFactorData 体を基準とした、左右方向移動によるモデルパーツの回転データ
----@field public bodyRot PhysicFactorData 体の回転によるによるモデルパーツの回転データ
+---@field public headX? BlueArchiveCharacter.PhysicFactorData 頭を基準とした、前後方向移動によるモデルパーツの回転データ
+---@field public headZ BlueArchiveCharacter.PhysicFactorData 頭を基準とした、左右方向移動によるモデルパーツの回転データ
+---@field public headRot BlueArchiveCharacter.PhysicFactorData 頭の回転によるによるモデルパーツの回転データ
+---@field public bodyX BlueArchiveCharacter.PhysicFactorData 体を基準とした、前後方向移動によるモデルパーツの回転データ
+---@field public bodyY BlueArchiveCharacter.PhysicFactorData 体を基準とした、上下方向移動によるモデルパーツの回転データ
+---@field public bodyZ BlueArchiveCharacter.PhysicFactorData 体を基準とした、左右方向移動によるモデルパーツの回転データ
+---@field public bodyRot BlueArchiveCharacter.PhysicFactorData 体の回転によるによるモデルパーツの回転データ
 
----@class (exact) PhysicFactorData 物理演算を働かせる要因を定義するデータセット
+---@class (exact) BlueArchiveCharacter.PhysicFactorData 物理演算を働かせる要因を定義するデータセット
 ---@field public multiplayer number この回転事象がモデルパーツに与える回転の倍率
 ---@field public min number この回転事象がモデルパーツに与える回転の最小値
 ---@field public max number この回転事象がモデルパーツに与える回転の最大値
 
----@class (exact) PhysicCallbacks 物理演算のコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数のセット
 ---@field public onPhysicPerformed? fun(model: ModelPart) 物理演算処理後に実行されるコールバック関数（省略可）。ここでモデルパーツの向きを上書きできる。
 
 --[[ ******************************** ]]
 
----@class (exact) LocaleStringSet ロケール文字列のセット
+---@class (exact) BlueArchiveCharacter.LocaleStringSet ロケール文字列のセット
 ---@field public en_us string 英語（米国）
 ---@field public ja_jp string 日本語
 
----@class (exact) MonthDaySet 日月のデータセット
+---@class (exact) BlueArchiveCharacter.MonthDaySet 日月のデータセット
 ---@field public month integer 月
 ---@field public day integer 日
 
----@class (exact) Vector3RightLeftSet 左右で別々にVector3が定義できるデータセット
+---@class (exact) BlueArchiveCharacter.Vector3RightLeftSet 左右で別々にVector3が定義できるデータセット
 ---@field public right? Vector3 右
 ---@field public left? Vector3 左
 
@@ -508,9 +507,13 @@ BlueArchiveCharacter = {
             };
         }
 
+        return instance
+    end;
+
+    ---初期化関数
+    ---@param self BlueArchiveCharacter
+    init = function (self)
         --生徒固有初期化処理
         --Player APIにアクセスする場合は、ENTITY_INIT後に実行されるようにする必要がある。
-
-        return instance
     end;
 }

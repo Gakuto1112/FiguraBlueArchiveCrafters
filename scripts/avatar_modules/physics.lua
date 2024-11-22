@@ -1,9 +1,10 @@
----@class Physics : AvatarModule 物理演算を制御するクラス
----@field package parent Avatar アバターのメインクラスへの参照
+---@class (exact) Physics : AvatarModule 物理演算を制御するクラス
 ---@field public velocityData number[][] 速度データ：1. 頭前後, 2. 上下, 3. 頭左右, 4. 頭角速度, 5. 体前後, 6. 体左右, 7. 体角速度
 ---@field public velocityAverage number[][] 速度の平均値：1. 頭前後, 2. 上下, 3. 頭左右, 4. 頭角速度, 5. 体前後, 6. 体左右, 7. 体角速度
 ---@field package directionPrev number[] 前ティックのdirectionテーブル
 ---@field public getValueBetweenTicks fun(tickData: number[], delta: number): number 2つのティックデータの間からレンダーのデルタ値を加味した値を返す
+---@field public enable fun(self: Physics) 物理演算を初期化し、有効にする
+---@field public disable fun(self: Physics) 物理演算を無効にする。物理演算で管理していたモデルの回転をリセットする
 
 Physics = {
     ---コンストラクタ
@@ -26,6 +27,17 @@ Physics = {
     ---@return number deltaValue 2つのティックデータの間からデルタ値で補完した値
     getValueBetweenTicks = function (tickData, delta)
         return tickData[1] + (tickData[2] - tickData[1]) * delta
+    end;
+
+    ---物理演算を初期化し、有効にする。
+    ---@param self Physics
+    enable = function (self)
+
+    end;
+
+    ---物理演算を無効にする。物理演算で管理していたモデルの回転をリセットする。
+    ---@param self Physics
+    disable = function (self)
     end;
 }
 
