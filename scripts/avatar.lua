@@ -143,4 +143,4 @@ Avatar = {
     end;
 }
 
-Avatar.new()
+AvatarInstance = Avatar.new()

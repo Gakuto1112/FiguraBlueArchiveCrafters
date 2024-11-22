@@ -6,6 +6,7 @@
 ---| "BOOTS" # ブーツ
 
 ---@class (exact) Armor : AvatarModule 防具の表示を制御するクラス
+---@field public shouldShowArmor boolean 防具を表示するかどうか
 ---@field public isArmorVisible Armor.VisiblePartsSet 各防具の部位（ヘルメット、チェストプレート、レギンス、ブーツ）が可視状態かどうか
 ---@field public setHelmet fun(self: Armor, helmetItem: ItemStack) ヘルメットを更新する
 
@@ -22,7 +23,7 @@ Armor = {
     new = function (parent)
         ---@type Armor
         local instance = Avatar.instantiate(Armor, AvatarModule, parent)
-
+		instance.shouldShowArmor = instance.parent.config:loadConfig("showArmor", false)
 		instance.isArmorVisible = {
 			helmet = false;
 			chestplate = false;

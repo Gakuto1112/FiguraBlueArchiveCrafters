@@ -1,6 +1,9 @@
 ---@class (exact) Config : AvatarModule アバター設定を管理するクラス
+---@field package defaultValues {[string]: number|boolean|string} 読み込んだ値のデフォルト値を保持するテーブル
+---@field package nextSyncCount integer 次の同期pingまでのカウンター
+---@field package isSynced boolean 設定値がホストと同期されているかどうか
 ---@field public loadConfig fun(self: Config, keyName: string, defaultValue: any): any 設定を読み出す
----@field public saveConfig fun(self: Config, keyName: string, value: any) 設定を保存する
+---@field public saveConfig fun(self: Config, keyName: string, valueToSave: any) 設定を保存する
 
 Config = {
     ---コンストラクタ
@@ -10,7 +13,29 @@ Config = {
         ---@type Config
         local instance = Avatar.instantiate(Config, AvatarModule, parent)
 
+		instance.defaultValues = {}
+		instance.nextSyncCount = 0
+		instance.isSynced = host:isHost()
+
         return instance
+    end;
+
+    ---初期化関数
+    ---@param self Config
+    init = function (self)
+		if host:isHost() then
+			events.TICK:register(function ()
+				if self.nextSyncCount == 0 then
+					pings.syncAvatarConfig(1, false, self.parent.costume.currentCostume, self.parent.armor.shouldShowArmor, false, false)
+					--pings.syncAvatarConfig(Nameplate.CurrentName, Nameplate.ClubShown, Costume.CurrentCostume, Armor.ShowArmor, ActionWheel.ShouldReplaceVehicleModels, Bubble.IsChatOpened)
+					self.nextSyncCount = 300
+				else
+					self.nextSyncCount = self.nextSyncCount - 1
+				end
+			end)
+
+			config:setName("BlueArchive_"..self.parent.characterData.basic.firstName.en_us..self.parent.characterData.basic.lastName.en_us)
+		end
     end;
 
 	---設定を読み出す。
@@ -20,97 +45,50 @@ Config = {
 	---@param defaultValue `T` 該当の設定が無い場合や、ホスト外での実行の場合はこの値が返される。
 	---@return `T` loadedValue 読み出した値
 	loadConfig = function (self, keyName, defaultValue)
-		return 1
-	end;
-
-	---設定を保存する。
-	---@param self Config
-	---@param keyName string 保存する設定の名前
-	---@param value any 保存する値
-	saveConfig = function (self, keyName, value)
-	end;
-}
-
---[[
----@class Config アバター設定を管理するクラス
----@field DefaultValues table<any> 読み込んだ値のデフォルト値を保持するテーブル
-Config = {
-	--変数
-	DefaultValues = {},
-
-	--関数
-	---設定を読み出す
-	---@param keyName string 読み出す設定の名前
-	---@param defaultValue any 該当の設定が無い場合や、ホスト外での実行の場合はこの値が返される。
-	---@return any data 読み出した値
-	loadConfig = function (keyName, defaultValue)
 		if host:isHost() then
-			local data = config:load(keyName)
-			Config.DefaultValues[keyName] = defaultValue
-			if data ~= nil then
-				return data
+			local loadedData = config:load(keyName)
+			self.defaultValues[keyName] = defaultValue
+			if loadedData ~= nil then
+				return loadedData
 			else
 				return defaultValue
 			end
 		else
 			return defaultValue
 		end
-	end,
+	end;
 
-	---設定を保存する
+	---設定を保存する。
+	---@param self Config
 	---@param keyName string 保存する設定の名前
-	---@param value any 保存する値
-	saveConfig = function (keyName, value)
+	---@param valueToSave any 保存する値
+	saveConfig = function (self, keyName, valueToSave)
 		if host:isHost() then
-			if Config.DefaultValues[keyName] == value then
+			if self.defaultValues[keyName] == valueToSave then
 				config:save(keyName, nil)
 			else
-				config:save(keyName, value)
+				config:save(keyName, valueToSave)
 			end
 		end
-	end
+	end;
 }
 
----アバターの設定がホストと同期されたかどうか
----@type boolean
-local isSynced = host:isHost()
-
----次の同期pingまでのカウンター
----@type integer
-local nextSyncCount = 0
-
---ping関数
 ---アバター設定を他Figuraクライアントと同期する。
 ---@param nameTypeId integer 表示名の種類ID
----@param showClubName boolean 部活名を表示するかどうか
+---@param shouldShowClubName boolean 部活名を表示するかどうか
 ---@param costumeId integer 現在の衣装ID
----@param isArmorShown boolean 防具が見えているかどうか
+---@param shouldShowArmor boolean 防具が見えているかどうか
 ---@param shouldReplaceVehicleModels boolean 乗り物モデルを置き換えるかどうか
 ---@param isChatOpened boolean チャット欄を開いているかどうか
-function pings.syncAvatarConfig(nameTypeId, showClubName, costumeId, isArmorShown, shouldReplaceVehicleModels, isChatOpened)
-	if not isSynced then
-		Nameplate:setName(nameTypeId, showClubName)
-		Armor.ShowArmor = isArmorShown
-		ActionWheel.ShouldReplaceVehicleModels = shouldReplaceVehicleModels
-		Bubble.IsChatOpened = isChatOpened
+function pings.syncAvatarConfig(nameTypeId, shouldShowClubName, costumeId, shouldShowArmor, shouldReplaceVehicleModels, isChatOpened)
+	if not AvatarInstance.config.isSynced then
+		--Nameplate:setName(nameTypeId, showClubName)
+		AvatarInstance.armor.shouldShowArmor = shouldShowArmor
+		--ActionWheel.ShouldReplaceVehicleModels = shouldReplaceVehicleModels
+		--Bubble.IsChatOpened = isChatOpened
 		if costumeId >= 2 then
-			Costume:setCostume(costumeId)
+			AvatarInstance.costume:setCostume(costumeId)
 		end
-		isSynced = true
+		AvatarInstance.config.isSynced = true
 	end
 end
-
-if host:isHost() then
-	config:setName("BlueArchive_"..BlueArchiveCharacter.BASIC.firstName.en_us..BlueArchiveCharacter.BASIC.lastName.en_us)
-	events.TICK:register(function ()
-		if nextSyncCount == 0 then
-			pings.syncAvatarConfig(Nameplate.CurrentName, Nameplate.ClubShown, Costume.CurrentCostume, Armor.ShowArmor, ActionWheel.ShouldReplaceVehicleModels, Bubble.IsChatOpened)
-			nextSyncCount = 300
-		else
-			nextSyncCount = nextSyncCount - 1
-		end
-	end)
-end
-
-return Config
-]]
