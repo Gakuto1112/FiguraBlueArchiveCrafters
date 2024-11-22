@@ -30,7 +30,8 @@
 
 --[[ ******************************** ]]
 
----@class BlueArchiveCharacter キャラクター変数を保持するクラス。別のキャラクターに対してもここを変更するだけで対応できるようにする。
+---@class BlueArchiveCharacter : AvatarModule キャラクター変数を保持するクラス。別のキャラクターに対してもここを変更するだけで対応できるようにする。
+---@field package parent Avatar アバターのメインクラスへの参照
 ---@field public basic BasicStruct 生徒の基本情報
 ---@field public faceParts FacePartsStruct 目や口による表情
 ---@field public arms ArmsStruct 腕

@@ -3,7 +3,7 @@
 ---| "DAMAGE" # ダメージを受けた
 ---| "DIED" # 死亡した
 
----@class (exact) PlayerUtils プレイヤーに関するユーティリティ関数群
+---@class (exact) PlayerUtils : AvatarModule プレイヤーに関するユーティリティ関数群
 ---@field package parent Avatar アバターのメインクラスへの参照
 ---@field public damageStatus PlayerUtils.DamageStatus 現在のティックのダメージステータス
 ---@field package healthPrev integer 前ティックのHP量

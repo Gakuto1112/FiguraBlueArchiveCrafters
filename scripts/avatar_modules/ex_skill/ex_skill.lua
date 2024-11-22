@@ -1,3 +1,21 @@
+---@class ExSkill : AvatarModule Exスキルのアニメーションを管理するクラス
+---@field package parent Avatar アバターのメインクラスへの参照
+---@field public animationCount integer Exスキルのアニメーション再生中に増加するカウンター。-1はアニメーション停止中を示す。
+
+ExSkill = {
+    ---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
+    ---@return ExSkill
+    new = function (parent)
+        ---@type ExSkill
+        local instance = Avatar.instantiate(ExSkill, AvatarModule, parent)
+
+        instance.animationCount = -1
+
+        return instance
+    end;
+}
+
 ---@alias ExSkill.TransitionPhase
 ---| "PRE"
 ---| "POST"
@@ -8,6 +26,7 @@
 ---| "MAIN" メインExスキル
 ---| "SUB" サブExスキル
 
+--[[
 ---@class ExSkill Exスキルのアニメーションを管理するクラス
 ExSkill = {
     ---アバター読み込み時に自動的にExスキルが再生される。デバッグ用。
@@ -413,7 +432,4 @@ end
 function pings.ex_skill_removeAll()
     PlacementObjectManager:removeAll()
 end
-
-ExSkill:init()
-
-return ExSkill
+]]

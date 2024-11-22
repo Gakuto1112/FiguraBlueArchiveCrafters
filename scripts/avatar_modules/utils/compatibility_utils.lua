@@ -5,7 +5,7 @@
 ---| "PARTICLE" # パーティクル名
 ---| "SOUND" # サウンド名
 
----@class (exact) CompatibilityUtils Minecraftのゲームバージョンが異なっていてもある程度互換性を確保するためのユーティリティクラス
+---@class (exact) CompatibilityUtils : AvatarModule Minecraftのゲームバージョンが異なっていてもある程度互換性を確保するためのユーティリティクラス
 ---@field package parent Avatar アバターのメインクラスへの参照
 ---@field package registries {block: Minecraft.blockID[], item: Minecraft.itemID[], particle: Minecraft.particleID[], sound: Minecraft.soundID[]} ゲームから取得した全アイテム名を保持するテーブル
 ---@field package checkedTable {block: {[Minecraft.blockID]: boolean}, item: {[Minecraft.itemID]: boolean}, particle: {[Minecraft.particleID]: boolean}, sound: {[Minecraft.soundID]: boolean}} レジストリへの確認が済んでいるIDを保持するテーブル
@@ -25,12 +25,7 @@ CompatibilityUtils = {
         ---@type CompatibilityUtils
         local instance = Avatar.instantiate(CompatibilityUtils, AvatarModule, parent)
 
-        ---ゲームから取得した全アイテム名を保持するテーブル
-        ---@type {block: Minecraft.blockID[], item: Minecraft.itemID[], particle: Minecraft.particleID[], sound: Minecraft.soundID[]}
         instance.registries = {}
-
-        ---レジストリへの確認が済んでいるIDを保持するテーブル
-        ---@type {block: {[Minecraft.blockID]: boolean}, item: {[Minecraft.itemID]: boolean}, particle: {[Minecraft.particleID]: boolean}, sound: {[Minecraft.soundID]: boolean}}
         instance.checkedTable = {
             block = {};
             item = {};

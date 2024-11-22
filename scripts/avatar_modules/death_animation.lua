@@ -1,3 +1,22 @@
+---@class DeathAnimation : AvatarModule プレイヤーが死亡した際のキャラクターがヘリコプターで回収されるアニメーションを管理するクラス
+---@field public dummyAvatarRoot? ModelPart 死亡アニメーションに使用されるダミーのアバターのルート。アバターが未生成の場合はnilが入っている。
+
+DeathAnimation = {
+    ---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
+    ---@return DeathAnimation
+    new = function (parent)
+        ---@type DeathAnimation
+        local instance = Avatar.instantiate(DeathAnimation, AvatarModule, parent)
+
+        instance.dummyAvatarRoot = models.models.death_animation.Avatar
+
+        return instance
+    end;
+
+}
+
+--[[
 ---@class DeathAnimation プレイヤーが死亡した際の、キャラクターがヘリコプターで回収されるアニメーションを管理するクラス
 DeathAnimation = {
     ---デバッグモードを有効にするかどうか。デバッグモードモードではxキーでフェーズ1のモデルを、cキーでフェーズ2のモデルを表示できる。
@@ -286,3 +305,4 @@ DeathAnimation = {
 DeathAnimation:init()
 
 return DeathAnimation
+]]

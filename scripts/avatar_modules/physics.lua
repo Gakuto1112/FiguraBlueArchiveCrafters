@@ -1,3 +1,36 @@
+---@class Physics : AvatarModule 物理演算を制御するクラス
+---@field package parent Avatar アバターのメインクラスへの参照
+---@field public velocityData number[][] 速度データ：1. 頭前後, 2. 上下, 3. 頭左右, 4. 頭角速度, 5. 体前後, 6. 体左右, 7. 体角速度
+---@field public velocityAverage number[][] 速度の平均値：1. 頭前後, 2. 上下, 3. 頭左右, 4. 頭角速度, 5. 体前後, 6. 体左右, 7. 体角速度
+---@field package directionPrev number[] 前ティックのdirectionテーブル
+---@field public getValueBetweenTicks fun(tickData: number[], delta: number): number 2つのティックデータの間からレンダーのデルタ値を加味した値を返す
+
+Physics = {
+    ---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
+    ---@return Physics
+    new = function (parent)
+        ---@type Physics
+        local instance = Avatar.instantiate(Physics, AvatarModule, parent)
+
+        instance.velocityData = {{}, {}, {}, {}, {}, {}, {}}
+        instance.velocityAverage = {{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}}
+        instance.directionPrev = {}
+
+        return instance
+    end;
+
+    ---2つのティックデータの間からレンダーのデルタ値を加味した値を返す。
+    ---@param tickData number[] ティックデータ：1. 前ティック, 2. 現ティック
+    ---@param delta number デルタ値
+    ---@return number deltaValue 2つのティックデータの間からデルタ値で補完した値
+    getValueBetweenTicks = function (tickData, delta)
+        return tickData[1] + (tickData[2] - tickData[1]) * delta
+    end;
+}
+
+
+--[[
 ---@class Physics 物理演算（もどき）を制御するクラス
 ---@field VelocityData table<table<number>> 速度データ：1. 頭前後, 2. 上下, 3. 頭左右, 4. 頭角速度, 5. 体前後, 6. 体左右, 7. 体角速度
 ---@field VelocityAverage table<number> 速度の平均値：1. 頭前後, 2. 上下, 3. 頭左右, 4. 頭角速度, 5. 体前後, 6. 体左右, 7. 体角速度
@@ -332,3 +365,4 @@ Physics = {
 Physics:enable()
 
 return Physics
+]]

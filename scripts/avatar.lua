@@ -41,13 +41,20 @@ end)
 --ENTITY_INITを待たず読み込むクラス
 
 ---@class Avatar アバターのメインクラス
----@field public instantiate fun(class: table, super: table, ...: any) クラスをインスタンス化する。
+---@field public modelUtils ModelUtils
+---@field public playerUtils PlayerUtils
+---@field public compatibilityUtils CompatibilityUtils
+---@field public characterData BlueArchiveCharacter
+---@field public headRing HeadRing
+---@field public exSkill ExSkill
+---@field public physics Physics
+---@field public deathAnimation DeathAnimation
+---@field public instantiate fun(class: table, super: table, ...: any) クラスをインスタンス化する
 
 Avatar = {
 	---コンストラクタ
-	---@param self Avatar
 	---@return Avatar
-	new = function (self)
+	new = function ()
 		---@type Avatar
 		local instance = Avatar.instantiate(Avatar)
 
@@ -56,18 +63,32 @@ Avatar = {
 
 		--ユーティリティクラスの読み込み
 		require("scripts.avatar_modules.utils.model_utils")
-		instance.modelUtils = ModelUtils.new(self)
+		instance.modelUtils = ModelUtils.new(instance)
 
+		--アバターモジュールの読み込み
 		require("scripts.avatar_modules.blue_archive_character")
-		instance.characterData = BlueArchiveCharacter.new(self)
+		instance.characterData = BlueArchiveCharacter.new(instance)
+
+		require("scripts.avatar_modules.head_ring")
+		instance.headRing = HeadRing.new(instance)
 
 		events.ENTITY_INIT:register(function ()
 			--ユーティリティクラスの読み込み
 			require("scripts.avatar_modules.utils.player_utils")
-			instance.playerUtils = PlayerUtils.new(self)
+			instance.playerUtils = PlayerUtils.new(instance)
 
 			require("scripts.avatar_modules.utils.compatibility_utils")
-			instance.compatibilityUtils = CompatibilityUtils.new(self)
+			instance.compatibilityUtils = CompatibilityUtils.new(instance)
+
+			--アバターモジュールの読み込み
+			require("scripts.avatar_modules.ex_skill.ex_skill")
+			instance.exSkill = ExSkill.new(instance)
+
+			require("scripts.avatar_modules.physics")
+			instance.physics = Physics.new(instance)
+
+			require("scripts.avatar_modules.death_animation")
+			instance.deathAnimation = DeathAnimation.new(instance)
 		end)
 
 		return instance
@@ -84,8 +105,8 @@ Avatar = {
         local instance = super and super.new(...) or {}
         setmetatable(instance, {__index = class})
         setmetatable(class, {__index = super})
-		return class
+		return instance
     end;
 }
 
-Avatar:new()
+Avatar.new()
