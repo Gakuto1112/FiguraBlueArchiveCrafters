@@ -1,20 +1,37 @@
 ---@class ModelUtils モデルに関するユーティリティ関数群
+---@field package parent Avatar アバターのメインクラスへの参照
+---@field public getModelWorldPos fun(model: ModelPart): Vector3 指定したモデルのワールド位置を返す。
+---@field public copyModel fun(self: ModelUtils, modelPart: ModelPart, name?: string, forceCopy?: boolean): ModelPart|nil モデルパーツをディープコピーする。
+---@field public copyModel fun(self: ModelUtils, modelPart: ModelPart, name?: string, forceCopy?: true): ModelPart モデルパーツをディープコピーする。
+---@field public moveTo fun(target: ModelPart, destination: ModelPart, originalParent: ModelPart) モデルパーツを別の親に移動させる。組み込みmoveTo()で何故かモデルパーツが残ってしまう問題に対処済み。
+
 ModelUtils = {
+    ---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
+    ---@return ModelUtils
+    new = function (parent)
+        ---@type ModelUtils
+        local instance = Avatar.instantiate(ModelUtils, AvatarModule, parent)
+
+        return instance
+    end;
+
     ---指定したモデルのワールド位置を返す。
     ---@param model ModelPart ワールド位置を取得するモデルパーツ
     ---@return Vector3 worldPos モデルのワールド位置
     getModelWorldPos = function(model)
         local modelMatrix = model:partToWorldMatrix()
         return vectors.vec3(modelMatrix[4][1], modelMatrix[4][2], modelMatrix[4][3])
-    end,
+    end;
 
     ---モデルパーツをディープコピーする。
     ---非表示のモデルパーツはコピーしない。
     ---@param modelPart ModelPart コピーするモデルパーツ
     ---@param name? string コピーしたモデルパーツの名前。省略した際はコピー元と同じ名前になる。
-    ---@return ModelPart? copiedModelPart コピーされたモデルパーツ。入力されたモデルパーツが非表示の場合はnilが返る。
-    copyModel = function (self, modelPart, name)
-        if modelPart:getVisible() then
+    ---@param forceCopy? boolean 非表示のモデルも強制的にコピーするかどうか
+    ---@return ModelPart|nil copiedModelPart コピーされたモデルパーツ。入力されたモデルパーツが非表示の場合はnilが返る。
+    copyModel = function (self, modelPart, name, forceCopy)
+        if modelPart:getVisible() or forceCopy then
             local copy = modelPart:copy(name ~= nil and name or modelPart:getName())
             copy:setParentType("None")
             for _, child in ipairs(copy:getChildren()) do
@@ -26,7 +43,7 @@ ModelUtils = {
             end
             return copy
         end
-    end,
+    end;
 
     ---モデルパーツを別の親に移動させる。
     ---組み込みmoveTo()で何故かモデルパーツが残ってしまう問題に対処済み。
@@ -39,7 +56,5 @@ ModelUtils = {
         if originalParent[modelName] ~= nil then
             originalParent:removeChild(target)
         end
-    end
+    end;
 }
-
-return ModelUtils

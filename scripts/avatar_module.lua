@@ -3,6 +3,7 @@
 
 AvatarModule = {
     ---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
     ---@return AvatarModule
     new = function (parent)
         ---@type AvatarModule

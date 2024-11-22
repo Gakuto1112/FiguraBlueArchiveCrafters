@@ -41,15 +41,32 @@ end)
 --ENTITY_INITを待たず読み込むクラス
 
 ---@class Avatar アバターのメインクラス
+---@field public instantiate fun(class: table, super: table, ...: any) クラスをインスタンス化する。
 
 Avatar = {
 	---コンストラクタ
+	---@param self Avatar
 	---@return Avatar
-	new = function ()
+	new = function (self)
 		---@type Avatar
 		local instance = Avatar.instantiate(Avatar)
 
 		require("scripts.avatar_module")
+
+		--ENTITY_INIT前に読み込み
+
+		--ユーティリティクラスの読み込み
+		require("scripts.avatar_modules.utils.model_utils")
+		instance.modelUtils = ModelUtils.new(self)
+
+		events.ENTITY_INIT:register(function ()
+			--ユーティリティクラスの読み込み
+			require("scripts.avatar_modules.utils.player_utils")
+			instance.playerUtils = PlayerUtils.new(self)
+
+			require("scripts.avatar_modules.utils.compatibility_utils")
+			instance.compatibilityUtils = CompatibilityUtils.new(self)
+		end)
 
 		return instance
 	end;
@@ -64,9 +81,9 @@ Avatar = {
     instantiate = function (class, super, ...)
         local instance = super and super.new(...) or {}
         setmetatable(instance, {__index = class})
-        setmetatable(class, super)
+        setmetatable(class, {__index = super})
 		return class
     end;
 }
 
-Avatar.new()
+Avatar:new()
