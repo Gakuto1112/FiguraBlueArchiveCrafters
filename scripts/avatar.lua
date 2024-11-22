@@ -1,3 +1,4 @@
+--[[
 events.ENTITY_INIT:register(function ()
 	--クラスのインスタンス化
 	Language = require("scripts.language")
@@ -35,9 +36,37 @@ events.ENTITY_INIT:register(function ()
 
 	--生徒固有クラス
 end)
+--]]
 
 --ENTITY_INITを待たず読み込むクラス
-ModelUtils = require("scripts.utils.model_utils")
-BlueArchiveCharacter = require("scripts.blue_archive_character")
-HeadRing = require("scripts.head_ring")
-HeadBlock = require("scripts.head_block")
+
+---@class Avatar アバターのメインクラス
+
+Avatar = {
+	---コンストラクタ
+	---@return Avatar
+	new = function ()
+		---@type Avatar
+		local instance = Avatar.instantiate(Avatar)
+
+		require("scripts.avatar_module")
+
+		return instance
+	end;
+
+    ---クラスをインスタンス化する。
+	---@generic S
+	---@generic C
+	---@param class `C` インスタンス化するクラス
+	---@param super? `S` インスタンス化するクラスのスーパークラス
+	---@param ... any クラスのインスタンス時に渡される引数
+	---@return C instance インスタンス化されたクラスのオブジェクト
+    instantiate = function (class, super, ...)
+        local instance = super and super.new(...) or {}
+        setmetatable(instance, {__index = class})
+        setmetatable(class, super)
+		return class
+    end;
+}
+
+Avatar.new()
