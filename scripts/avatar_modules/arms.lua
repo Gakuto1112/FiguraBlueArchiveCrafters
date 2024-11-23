@@ -55,7 +55,7 @@ Arms = {
     ---@param self Arms
     ---@param right? integer 右腕の状態
     ---@param left? integer 左腕の状態
-    setArmsState = function (self, right, left)
+    setArmState = function (self, right, left)
         if right ~= nil then
             self.armState.right = right
         end

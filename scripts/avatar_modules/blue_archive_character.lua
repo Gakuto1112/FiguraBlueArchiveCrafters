@@ -383,19 +383,15 @@ BlueArchiveCharacter = {
                 put = {
                     type = "BODY";
 
-                    --[[
                     pos = {
-                        right = vectors.vec3();
-                        left = vectors.vec3();
+                        right = vectors.vec3(4.5, -3, 4);
+                        left = vectors.vec3(-4.5, -3, 4);
                     };
-                    ]]
 
-                    --[[
-                    put = {
-                        right = vectors.vec3();
-                        left = vectors.vec3();
+                    rot = {
+                        right = vectors.vec3(-90, 0, 0);
+                        left = vectors.vec3(-90, 0, 0);
                     };
-                    ]]
                 };
             };
 

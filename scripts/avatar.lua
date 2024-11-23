@@ -57,6 +57,7 @@ end)
 ---@field public faceParts FaceParts
 ---@field public portrait Portrait
 ---@field public physics Physics
+---@field public gun Gun
 ---@field public exSkill ExSkill
 ---@field public costume Costume
 ---@field public deathAnimation DeathAnimation
@@ -141,6 +142,10 @@ Avatar = {
 			require("scripts.avatar_modules.physics")
 			instance.physics = Physics.new(instance)
 			instance.physics:init()
+
+			require("scripts.avatar_modules.gun")
+			instance.gun = Gun.new(instance)
+			instance.gun:init()
 
 			require("scripts.avatar_modules.ex_skill.ex_skill")
 			instance.exSkill = ExSkill.new(instance)
