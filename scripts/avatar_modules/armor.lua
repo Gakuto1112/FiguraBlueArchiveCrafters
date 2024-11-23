@@ -216,7 +216,6 @@ Armor = {
 	---@param trim2? Armor.TrimData 比較する防具装飾のテーブル2
 	---@return boolean isTrimSame 2つの防具装飾が同じものかどうか
 	compareTrims = function (trim1, trim2)
-		printTable(trim1)
 		if type(trim1) == type(trim2) then
 			if trim1 then
 				if trim1.pattern ~= trim2.pattern then
