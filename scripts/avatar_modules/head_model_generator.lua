@@ -63,7 +63,7 @@ HeadModelGenerator = {
 
         --非表示にしたモデルを元に戻す。
         if isHelmetVisible then
-            Armor:setHelmet(Armor.ArmorSlotItemsPrev[1])
+            self.parent.armor:setHelmet(self.parent.armor.armorSlotItemsPrev[1])
         end
         if player:isLoaded() then
             self.parent.physics:enable()
