@@ -204,7 +204,7 @@ ActionWheel = {
     ---衣装変更アクションのタイトルを更新する。
     ---@param self ActionWheel
     refreshCostumeChangeActionTitle = function (self)
-        if self.parent.costume.currentCostume >= 2 then
+        if #self.parent.costume.costumeList >= 2 then
             self.mainPage:getAction(1):setTitle(self.parent.locale:getLocale("action_wheel.main.action_1.title").."§b"..self.parent.costume:getCostumeLocalName(self.selectingCostume))
         else
             self.mainPage:getAction(1):setTitle("§7"..self.parent.locale:getLocale("action_wheel.main.action_1.title")..self.parent.costume:getCostumeLocalName(self.selectingCostume))
@@ -214,7 +214,7 @@ ActionWheel = {
     ---名前変更アクションのタイトルを更新する。
     ---@param self ActionWheel
     refreshNameChangeActionTitle = function (self)
-        if self.selectingCostume >= 2 then
+        if self.selectingName >= 2 then
             if self.selectingShouldShowClubName then
                 self.mainPage:getAction(2):setTitle(self.parent.locale:getLocale("action_wheel.main.action_2.title").."§b"..self.parent.nameplate:getName(self.selectingName).."\n§r"..self.parent.locale:getLocale("action_wheel.main.action_2.title_2").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on"))
             else
