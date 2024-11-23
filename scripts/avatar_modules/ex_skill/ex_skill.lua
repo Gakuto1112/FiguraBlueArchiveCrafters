@@ -13,7 +13,7 @@
 ---@field package exSkillIndex integer 現在再生中のExスキルのインデックス番号
 ---@field public animationCount integer Exスキルのアニメーション再生中に増加するカウンター。-1はアニメーション停止中を示す。
 ---@field package animationLength number Exスキルのアニメーションの長さ。スクリプトで自動で代入する。
----@field package transitionCount number Exスキルのアニメーション前後のカメラのトランジションの進捗を示すカウンター
+---@field public transitionCount number Exスキルのアニメーション前後のカメラのトランジションの進捗を示すカウンター
 ---@field package keyPressCount integer Exスキルキーを押下し続ける時間を計るカウンター
 ---@field package bodyYaw number[] プレイヤーの体の回転
 ---@field package isDebugInit boolean デバッグモードが初期化されたかどうか
