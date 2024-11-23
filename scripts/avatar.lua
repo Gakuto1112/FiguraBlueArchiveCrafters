@@ -51,6 +51,7 @@ end)
 ---@field public config Config
 ---@field public keyManager KeyManager
 ---@field public vanillaModel VanillaModel
+---@field public arms Arms
 ---@field public armor Armor
 ---@field public portrait Portrait
 ---@field public physics Physics
@@ -114,6 +115,10 @@ Avatar = {
 			require("scripts.avatar_modules.vanilla_model")
 			instance.vanillaModel = VanillaModel.new(instance)
 			instance.vanillaModel:init()
+
+			require("scripts.avatar_modules.arms")
+			instance.arms = Arms.new(instance)
+			instance.arms:init()
 
 			require("scripts.avatar_modules.armor")
 			instance.armor = Armor.new(instance)

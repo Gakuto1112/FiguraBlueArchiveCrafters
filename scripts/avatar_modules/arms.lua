@@ -1,75 +1,94 @@
----@class Arms アバターの腕を制御するクラス
+---@class (exact) Arms : AvatarModule アバターの腕を制御するクラス
+---@field public armState Arms.ArmStateSet 腕の状態：0. バニラ状態, 1. 銃を構えている際の、銃を構えている方の腕, 2. 銃を構えている際の、銃を構えていない方の腕, 3. クロスボウ装填中
+---@field package armStatePrev Arms.ArmStateSet 前ティックの腕の状態
+---@field package swingCount integer 腕をプラプラさせるカウンター
+---@field package isSwingCountProcessed boolean 腕プラプラカウンターを処理したかどうか
+---@field package processArmWingCount fun(self: Arms) 腕プラプラカウンターを処理する
+---@field public setArmState fun(self: Arms, right?: integer, left?: integer) 腕の状態を設定する
+
+---@class (exact) Arms.ArmStateSet 腕の状態を示すデータセット
+---@field public right integer 右腕の状態
+---@field public left integer 左腕の状態
+
 Arms = {
-    ---腕の状態
-    ---0. バニラ状態, 1. 銃を構えている際の、銃を構えている方の腕, 2. 銃を構えている際の、銃を構えていない方の腕, 3. クロスボウ装填中
-    ---@type {right: integer, left: integer}
-    ArmState = {
-        right = 0,
-        left = 0
-    },
+    ---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
+    ---@return Arms
+    new = function (parent)
+        ---@type Arms
+        local instance = Avatar.instantiate(Arms, AvatarModule, parent)
 
-    ---前ティックの腕の状態
-    ---@type {right: integer, left: integer}
-    ArmStatePrev = {
-        right = 0,
-        left = 0
-    },
+        instance.armState = {
+            right = 0;
+            left = 0;
+        }
+        instance.armStatePrev = {
+            right = 0;
+            left = 0;
+        }
+        instance.swingCount = 0
+        instance.isSwingCountProcessed = false
 
-    ---腕をプラプラさせるカウンター
-    ---@type integer
-    ArmSwingCount = 0,
+        return instance
+    end;
 
-    ---腕プラプラカウンターを処理したかどうか
-    ---@type boolean
-    IsSwingCountProcessed = false,
+    ---初期化関数
+    ---@param self Arms
+    init = function (self)
+        AvatarModule.init(self)
+        events.TICK:register(function ()
+            self.isSwingCountProcessed = false
+        end)
+    end;
 
     ---腕プラプラカウンターを処理する。
     ---@param self Arms
     processArmWingCount = function (self)
-        if not client:isPaused() and not self.IsSwingCountProcessed then
-            self.ArmSwingCount = self.ArmSwingCount == 99 and 0 or self.ArmSwingCount + 1
-            self.IsSwingCountProcessed = true
+        if not client:isPaused() and not self.isSwingCountProcessed then
+            self.swingCount = self.swingCount + 1
+            self.swingCount = self.swingCount == 100 and 0 or self.swingCount
+            self.isSwingCountProcessed = true
         end
-    end,
+    end;
 
     ---腕の状態を設定する。
     ---@param self Arms
     ---@param right? integer 右腕の状態
     ---@param left? integer 左腕の状態
-    setArmState = function (self, right, left)
+    setArmsState = function (self, right, left)
         if right ~= nil then
-            self.ArmState.right = right
+            self.armState.right = right
         end
         if left ~= nil then
-            self.ArmState.left = left
+            self.armState.left = left
         end
-        if (self.ArmState.right == 1 or self.ArmState.left == 1) and player:getActiveItem().id == "minecraft:crossbow" then
+        if (self.armState.right == 1 or self.armState.left == 1) and player:getActiveItem().id == "minecraft:crossbow" then
             self:setArmState(3, 3)
             return
         end
-        if BlueArchiveCharacter.ARMS.callbacks.onArmStateChanged ~= nil then
-            local result = BlueArchiveCharacter.ARMS.callbacks.onArmStateChanged(self.ArmState.right, self.ArmState.left)
+        if self.parent.characterData.arms.callbacks ~= nil and self.parent.characterData.arms.callbacks.onArmStateChanged ~= nil then
+            local result = self.parent.characterData.arms.callbacks.onArmStateChanged(self.armState.right, self.armState.left)
             if result ~= nil then
                 if result.right ~= nil then
-                    self.ArmState.right = result.right
+                    self.armState.right = result.right
                 end
                 if result.left ~= nil then
-                    self.ArmState.left = result.left
+                    self.armState.left = result.left
                 end
             end
         end
 
         --右腕の操作
-        if self.ArmState.right ~= self.ArmStatePrev.right then
+        if self.armState.right ~= self.armStatePrev.right then
             --腕の状態をリセット
             models.models.main.Avatar.UpperBody.Arms.RightArm:setRot()
             models.models.main.Avatar.UpperBody.Arms.RightArm:setParentType("RightArm")
             events.TICK:remove("right_arm_tick")
             events.RENDER:remove("right_arm_render")
-            if self.ArmState.right == 1 then
+            if self.armState.right == 1 then
                 --銃を構えている際の、銃を構えている方の腕
                 events.TICK:register(function ()
-                    if self.ArmState.right == 1 then
+                    if self.armState.right == 1 then
                         self:processArmWingCount()
                         if player:isSwingingArm() and not player:isLeftHanded() then
                             models.models.main.Avatar.UpperBody.Arms.RightArm:setParentType("RightArm")
@@ -83,9 +102,9 @@ Arms = {
                 end, "right_arm_tick")
                 events.RENDER:register(function (delta)
                     local headRot = vanilla_model.HEAD:getOriginRot()
-                    models.models.main.Avatar.UpperBody.Arms.RightArm:setRot(player:isSwingingArm() and not player:isLeftHanded() and vectors.vec3() or vectors.vec3(headRot.x + math.sin((self.ArmSwingCount + delta) / 100 * math.pi * 2) * 2.5 + 90, headRot.y, 0))
+                    models.models.main.Avatar.UpperBody.Arms.RightArm:setRot(player:isSwingingArm() and not player:isLeftHanded() and vectors.vec3() or vectors.vec3(headRot.x + math.sin((self.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 90, headRot.y, 0))
                 end, "right_arm_render")
-            elseif self.ArmState.right == 2 then
+            elseif self.armState.right == 2 then
                 --銃を構えている際の、銃を構えていない方の腕
                 events.TICK:register(function ()
                     self:processArmWingCount()
@@ -94,12 +113,12 @@ Arms = {
                     local headRot = vanilla_model.HEAD:getOriginRot()
                     local isSwingingArm = player:isSwingingArm() and not player:isLeftHanded()
                     models.models.main.Avatar.UpperBody.Arms.RightArm:setParentType((isSwingingArm or context == "FIRST_PERSON") and "RightArm" or "Body")
-                    models.models.main.Avatar.UpperBody.Arms.RightArm:setRot(isSwingingArm and vectors.vec3() or vectors.vec3(headRot.x + math.sin((self.ArmSwingCount + delta) / 100 * math.pi * 2) * 2.5 + 90, math.map((headRot.y + 180) % 360 - 180, -50, 50, -21, 78), 0))
+                    models.models.main.Avatar.UpperBody.Arms.RightArm:setRot(isSwingingArm and vectors.vec3() or vectors.vec3(headRot.x + math.sin((self.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 90, math.map((headRot.y + 180) % 360 - 180, -50, 50, -21, 78), 0))
                 end, "right_arm_render")
-            elseif self.ArmState.right == 3 then
+            elseif self.armState.right == 3 then
                 --クロスボウ装填中
                 events.TICK:register(function ()
-                    if player:getActiveItem().id ~= "minecraft:crossbow" and self.ArmState.right == 3 then
+                    if player:getActiveItem().id ~= "minecraft:crossbow" and self.armState.right == 3 then
                         if Gun.CurrentGunPosition == "RIGHT" then
                             self:setArmState(1, 2)
                         elseif Gun.CurrentGunPosition == "LEFT" then
@@ -108,22 +127,22 @@ Arms = {
                     end
                 end, "right_arm_tick")
             end
-            if BlueArchiveCharacter.ARMS.callbacks.onAddtionalRightArmProcess ~= nil then
-                BlueArchiveCharacter.ARMS.callbacks.onAddtionalRightArmProcess(self.ArmState.right)
+            if self.parent.characterData.arms.callbacks ~= nil and self.parent.characterData.arms.callbacks.onAdditionalRightArmProcess ~= nil then
+                self.parent.characterData.arms.callbacks.onAdditionalRightArmProcess(self.armState.right)
             end
-            self.ArmStatePrev.right = self.ArmState.right
+            self.armStatePrev.right = self.armState.right
         end
         --左腕の操作
-        if self.ArmState.left ~= self.ArmStatePrev.left then
+        if self.armState.left ~= self.armStatePrev.left then
             --腕の状態をリセット
             models.models.main.Avatar.UpperBody.Arms.LeftArm:setRot()
             models.models.main.Avatar.UpperBody.Arms.LeftArm:setParentType("LeftArm")
             events.TICK:remove("left_arm_tick")
             events.RENDER:remove("left_arm_render")
-            if self.ArmState.left == 1 then
+            if self.armState.left == 1 then
                 --銃を構えている際の、銃を構えている方の腕
                 events.TICK:register(function ()
-                    if self.ArmState.left == 1 then
+                    if self.armState.left == 1 then
                         self:processArmWingCount()
                         if player:isSwingingArm() and player:isLeftHanded() then
                             models.models.main.Avatar.UpperBody.Arms.LeftArm:setParentType("LeftArm")
@@ -137,9 +156,9 @@ Arms = {
                 end, "left_arm_tick")
                 events.RENDER:register(function (delta)
                     local headRot = vanilla_model.HEAD:getOriginRot()
-                    models.models.main.Avatar.UpperBody.Arms.LeftArm:setRot(player:isSwingingArm() and player:isLeftHanded() and vectors.vec3() or vectors.vec3(headRot.x + math.sin((self.ArmSwingCount + delta) / 100 * math.pi * 2) * -2.5 + 90, headRot.y, 0))
+                    models.models.main.Avatar.UpperBody.Arms.LeftArm:setRot(player:isSwingingArm() and player:isLeftHanded() and vectors.vec3() or vectors.vec3(headRot.x + math.sin((self.swingCount + delta) / 100 * math.pi * 2) * -2.5 + 90, headRot.y, 0))
                 end, "left_arm_render")
-            elseif self.ArmState.left == 2 then
+            elseif self.armState.left == 2 then
                 --銃を構えている際の、銃を構えていない方の腕
                 models.models.main.Avatar.UpperBody.Arms.LeftArm:setParentType("Body")
                 events.TICK:register(function ()
@@ -149,12 +168,12 @@ Arms = {
                     local headRot = vanilla_model.HEAD:getOriginRot()
                     local isSwingingArm = player:isSwingingArm() and player:isLeftHanded()
                     models.models.main.Avatar.UpperBody.Arms.LeftArm:setParentType((isSwingingArm or context == "FIRST_PERSON") and "LeftArm" or "Body")
-                    models.models.main.Avatar.UpperBody.Arms.LeftArm:setRot(isSwingingArm and vectors.vec3() or vectors.vec3(headRot.x + math.sin((self.ArmSwingCount + delta) / 100 * math.pi * 2) * -2.5 + 90, math.map((headRot.y + 180) % 360 - 180, -50, 50, -78, 21), 0))
+                    models.models.main.Avatar.UpperBody.Arms.LeftArm:setRot(isSwingingArm and vectors.vec3() or vectors.vec3(headRot.x + math.sin((self.swingCount + delta) / 100 * math.pi * 2) * -2.5 + 90, math.map((headRot.y + 180) % 360 - 180, -50, 50, -78, 21), 0))
                 end, "left_arm_render")
-            elseif self.ArmState.left == 3 then
+            elseif self.armState.left == 3 then
                 --クロスボウ装填中
                 events.TICK:register(function ()
-                    if player:getActiveItem().id ~= "minecraft:crossbow" and self.ArmState.left == 3 then
+                    if player:getActiveItem().id ~= "minecraft:crossbow" and self.armState.left == 3 then
                         if Gun.CurrentGunPosition == "RIGHT" then
                             self:setArmState(1, 2)
                         elseif Gun.CurrentGunPosition == "LEFT" then
@@ -163,22 +182,10 @@ Arms = {
                     end
                 end, "left_arm_tick")
             end
-            if BlueArchiveCharacter.ARMS.callbacks.onAddtionalLeftArmProcess ~= nil then
-                BlueArchiveCharacter.ARMS.callbacks.onAddtionalLeftArmProcess(self.ArmState.left)
+            if self.parent.characterData.arms.callbacks ~= nil and self.parent.characterData.arms.callbacks.onAdditionalLeftArmProcess ~= nil then
+                self.parent.characterData.arms.callbacks.onAdditionalLeftArmProcess(self.armState.left)
             end
-            self.ArmStatePrev.left = self.ArmState.left
+            self.armStatePrev.left = self.armState.left
         end
-    end,
-
-    ---初期化関数
-    ---@param self Arms
-    init = function (self)
-        events.TICK:register(function ()
-            self.IsSwingCountProcessed = false
-        end)
-    end
+    end;
 }
-
-Arms:init()
-
-return Arms
