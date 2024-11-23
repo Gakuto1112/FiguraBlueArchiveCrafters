@@ -71,8 +71,8 @@ Locale = {
     ---@param self Locale
     init = function (self)
 		AvatarModule.init(self)
-		self.localeData.en_us["name.club_name"] = self.parent.characterData.basic.clubName.en_us
-		self.localeData.ja_jp["name.club_name"] = self.parent.characterData.basic.clubName.ja_jp
+		self.localeData.en_us["nameplate.club_name"] = self.parent.characterData.basic.clubName.en_us
+		self.localeData.ja_jp["nameplate.club_name"] = self.parent.characterData.basic.clubName.ja_jp
 		if host:isHost() then
 			for index, exSkill in ipairs(self.parent.characterData.exSkill) do
 				self.localeData.en_us["action_wheel_gui.ex_skill_guide.ex_skill_"..index..".name"] = exSkill.name.en_us
