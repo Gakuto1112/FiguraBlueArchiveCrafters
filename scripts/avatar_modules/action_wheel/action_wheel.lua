@@ -55,7 +55,7 @@ ActionWheel = {
                         self.parent.exSkill.frameParticleAmount = self.selectingExSkillParticleAmount
                         self.parent.config:saveConfig("exSkillFrameParticleAmount", self.selectingExSkillParticleAmount)
                         sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.item.pickup"), player:getPos(), 1, 0.5)
-                        print(self.parent.locale:getLocale("action_wheel.main.action_5.done_first")..self.parent.locale:getLocale("action_wheel.main.action_5.option_"..self.selectingExSkillParticleAmount)..self.parent.nameplate:getName(self.selectingName)..self.parent.locale:getLocale("action_wheel.main.action_5.done_last"))
+                        print(self.parent.locale:getLocale("action_wheel.main.action_5.done_first")..self.parent.locale:getLocale("action_wheel.main.action_5.option_"..self.selectingExSkillParticleAmount)..self.parent.locale:getLocale("action_wheel.main.action_5.done_last"))
                     end
                 end
                 self.isActionWheelOpenedPrev = isActionWheelOpened

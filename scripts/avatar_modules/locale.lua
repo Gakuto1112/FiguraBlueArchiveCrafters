@@ -39,7 +39,7 @@ Locale = {
 			{"action_wheel.main.action_5.option_1", "Standard", "標準"};
 			{"action_wheel.main.action_5.option_2", "Minimum", "少なめ"};
 			{"action_wheel.main.action_5.option_3", "None", "なし"};
-			{"action_wheel.main.action_5.option_1", "Hide Ex skill frame", "スキルフレーム非表示"};
+			{"action_wheel.main.action_5.option_4", "Hide Ex skill frame", "スキルフレーム非表示"};
 			{"action_wheel.main.action_5.done_first", "Changed amount of particles in Ex skill frame to§b", "Exスキルフレームのパーティクルの量を§b"};
 			{"action_wheel.main.action_5.done_last", "§r.", "§rに変更しました。"};
 			{"action_wheel.main.action_6.title", "Replace vehicle models: ", "乗り物のモデルを置き換え："};

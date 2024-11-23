@@ -49,6 +49,8 @@ ExSkill = {
     init = function (self)
         AvatarModule.init(self)
 
+        --models.models.ex_skill_frame.Gui:setParentType("None")
+
         if host:isHost() then
             for _, exSkill in ipairs(self.parent.characterData.exSkill) do
                 exSkill.camera.start.pos:mul(-1, 1, 1):scale(1 / 16 * 0.9375)
@@ -167,7 +169,7 @@ ExSkill = {
                     if self.frameParticleAmount ~= 3 and self.transitionCount >= 1 and self.transitionCount <= 9 then
                         for _ = 1, windowSizeY / (self.frameParticleAmount == 2 and 100 or 20) do
                             local particleOffset = math.random() * windowSizeY
-                            --FrameParticleManager:spawn(vectors.vec2(barPos - particleOffset - math.random() * 50, particleOffset), vectors.vec2(500, 0)) --TODO: 後でパーティクルを
+                            self.parent.frameParticleManager:spawn(vectors.vec2(barPos - particleOffset - math.random() * 50, particleOffset):scale(-1), vectors.vec2(500, 0))
                         end
                     end
                 end
@@ -312,7 +314,7 @@ ExSkill = {
                             for _ = 1, (windowSize.x * 2 + windowSize.y * 2) / (self.frameParticleAmount == 1 and 100 or 500) do
                                 local particlePos = vectors.vec2(math.random() * (windowSize.x * 2 + windowSize.y * 2), math.random() * 16)
                                 particlePos = particlePos.x <= windowSize.x and particlePos or (particlePos.x <= windowSize.x + windowSize.y and vectors.vec2(windowSize.x - particlePos.y, particlePos.x - windowSize.x) or (particlePos.x <= windowSize.x * 2 + windowSize.y and vectors.vec2(particlePos.x - (windowSize.x + windowSize.y), windowSize.y - particlePos.y) or vectors.vec2(particlePos.y, particlePos.x - (windowSize.x * 2 + windowSize.y))))
-                                --FrameParticleManager:spawn(particlePos, windowCenter:copy():sub(particlePos):scale(0.25)) --TODO: 後でパーティクルを
+                                self.parent.frameParticleManager:spawn(particlePos:copy():scale(-1), windowCenter:copy():sub(particlePos):scale(0.25))
                             end
                         end
                     end

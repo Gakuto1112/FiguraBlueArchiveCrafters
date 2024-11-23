@@ -4,10 +4,10 @@
 ---@field public callbacks? SpawnObject.CallbackSet スポーンオブジェクトのコールバック関数
 
 ---@class (exact) SpawnObject.CallbackSet スポーンオブジェクトのコールバック関数のセット
----@field public onInit? fun() オブジェクトの初期化直後に呼ばれる関数
----@field public onDeinit? fun() オブジェクトの破棄直前に呼ばれる関数
----@field public onTick? fun() 各ティック毎に呼ばれる関数
----@field public onRender? fun(delta: number, context: Event.Render.context) 各レンダーティック毎に呼ばれる関数
+---@field public onInit? fun(self: SpawnObject) オブジェクトの初期化直後に呼ばれる関数
+---@field public onDeinit? fun(self: SpawnObject) オブジェクトの破棄直前に呼ばれる関数
+---@field public onTick? fun(self: SpawnObject) 各ティック毎に呼ばれる関数
+---@field public onRender? fun(self: SpawnObject, delta: number, context: Event.Render.context) 各レンダーティック毎に呼ばれる関数
 
 SpawnObject = {
     ---コンストラクタ
