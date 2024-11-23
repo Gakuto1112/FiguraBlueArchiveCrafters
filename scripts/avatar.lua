@@ -107,6 +107,9 @@ Avatar = {
 			instance.compatibilityUtils = CompatibilityUtils.new(instance)
 			instance.compatibilityUtils:init()
 
+			require("scripts.avatar_modules.utils.spawn_object_manager")
+			require("scripts.avatar_modules.utils.spawn_object")
+
 			--アバターモジュールの読み込み
 			require("scripts.avatar_modules.locale")
 			instance.locale = Locale.new(instance)
