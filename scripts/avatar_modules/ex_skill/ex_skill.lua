@@ -50,8 +50,6 @@ ExSkill = {
     init = function (self)
         AvatarModule.init(self)
 
-        --models.models.ex_skill_frame.Gui:setParentType("None")
-
         if host:isHost() then
             for _, exSkill in ipairs(self.parent.characterData.exSkill) do
                 exSkill.camera.start.pos:mul(-1, 1, 1):scale(1 / 16 * 0.9375)
