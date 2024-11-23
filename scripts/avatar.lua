@@ -49,6 +49,7 @@ end)
 ---@field public headBlock HeadBlock
 ---@field public locale Locale
 ---@field public config Config
+---@field public keyManager KeyManager
 ---@field public armor Armor
 ---@field public portrait Portrait
 ---@field public physics Physics
@@ -104,6 +105,10 @@ Avatar = {
 			require("scripts.avatar_modules.config")
 			instance.config = Config.new(instance)
 			instance.config:init()
+
+			require("scripts.avatar_modules.key_manager")
+			instance.keyManager = KeyManager.new(instance)
+			instance.keyManager:init()
 
 			require("scripts.avatar_modules.armor")
 			instance.armor = Armor.new(instance)

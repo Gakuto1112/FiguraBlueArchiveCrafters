@@ -93,7 +93,7 @@
 ---@field public callbacks? BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数
 
 ---@class BlueArchiveCharacter.BubbleStruct 吹き出しエモートのデータ構造体
----@field public callbacks? BlueArchiveCharacter.BubbleCallbacks
+---@field public callbacks? BlueArchiveCharacter.BubbleCallbacks 吹き出しエモートのコールバック関数
 
 ---@class BlueArchiveCharacter.HeadBlockStruct 頭ブロック、ポートレートのデータ構造体
 ---@field public includeModels ModelPart[] 頭モデルに追加でアタッチするモデル
