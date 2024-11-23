@@ -28,7 +28,7 @@ Config = {
 			events.TICK:register(function ()
 				if self.nextSyncCount == 0 then
 					pings.syncAvatarConfig(1, false, self.parent.costume.currentCostume, self.parent.armor.shouldShowArmor, false, false)
-					--pings.syncAvatarConfig(Nameplate.CurrentName, Nameplate.ClubShown, Costume.CurrentCostume, Armor.ShowArmor, ActionWheel.ShouldReplaceVehicleModels, Bubble.IsChatOpened)
+					--pings.syncAvatarConfig(Nameplate.CurrentName, Nameplate.ClubShown, Costume.CurrentCostume, Armor.ShowArmor, ActionWheel.ShouldReplaceVehicleModels, Bubble.IsChatOpened) --TODO: この関数の引数を調整
 					self.nextSyncCount = 300
 				else
 					self.nextSyncCount = self.nextSyncCount - 1
