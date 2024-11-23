@@ -16,7 +16,7 @@
 ---@field package shouldShowInHud boolean 一人称用にHUDに吹き出しを表示するかどうか
 ---@field package emojiAnimationCount number 絵文字のアニメーションのタイミングを測るカウンター
 ---@field package isForcedStop boolean 吹き出しエモートが強制停止させられたかどうか
----@field package isChatOpened boolean チャットを開けているかどうか
+---@field public isChatOpened boolean チャットを開けているかどうか
 ---@field package isChatOpenedPrev boolean 前ティックにチャットを開けていたかどうか
 ---@field public play fun(self: Bubble, type: Bubble.BubbleType, duration: integer, offsetPos: Vector2, offsetRot: number, shouldShowInHud: boolean) 吹き出しエモートを再生する
 ---@field public stop fun(self: Bubble) 吹き出しエモートを停止する

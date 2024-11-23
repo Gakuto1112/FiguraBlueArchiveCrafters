@@ -28,8 +28,7 @@ Config = {
 		if host:isHost() then
 			events.TICK:register(function ()
 				if self.nextSyncCount == 0 then
-					pings.syncAvatarConfig(1, false, self.parent.costume.currentCostume, self.parent.armor.shouldShowArmor, false, false)
-					--pings.syncAvatarConfig(Nameplate.CurrentName, Nameplate.ClubShown, Costume.CurrentCostume, Armor.ShowArmor, ActionWheel.ShouldReplaceVehicleModels, Bubble.IsChatOpened) --TODO: この関数の引数を調整
+					pings.syncAvatarConfig(self.parent.nameplate.currentName, self.parent.nameplate.shouldShowClubName, self.parent.costume.currentCostume, self.parent.armor.shouldShowArmor, self.parent.actionWheel.shouldReplaceVehicleModels, self.parent.bubble.isChatOpened)
 					self.nextSyncCount = 300
 				else
 					self.nextSyncCount = self.nextSyncCount - 1
@@ -84,10 +83,10 @@ Config = {
 ---@param isChatOpened boolean チャット欄を開いているかどうか
 function pings.syncAvatarConfig(nameTypeId, shouldShowClubName, costumeId, shouldShowArmor, shouldReplaceVehicleModels, isChatOpened)
 	if not AvatarInstance.config.isSynced then
-		--Nameplate:setName(nameTypeId, showClubName)
+		AvatarInstance.nameplate:setName(nameTypeId, shouldShowClubName)
 		AvatarInstance.armor.shouldShowArmor = shouldShowArmor
-		--ActionWheel.ShouldReplaceVehicleModels = shouldReplaceVehicleModels
-		--Bubble.IsChatOpened = isChatOpened
+		AvatarInstance.actionWheel.shouldReplaceVehicleModels = shouldReplaceVehicleModels
+		AvatarInstance.bubble.isChatOpened = isChatOpened
 		if costumeId >= 2 then
 			AvatarInstance.costume:setCostume(costumeId)
 		end

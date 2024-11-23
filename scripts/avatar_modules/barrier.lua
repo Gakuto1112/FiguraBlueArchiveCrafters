@@ -1,6 +1,6 @@
 ---@class (exact) Barrier : AvatarModule バリアの視覚効果を管理するクラス
 ---@field package animationCounts number[] バリアのアニメーションのカウンター
----@field package isBarrierVisible boolean バリアが可視化状態かどうか
+---@field public isBarrierVisible boolean バリアが可視化状態かどうか
 ---@field package hadAbsorptionPrev boolean 前ティックの衝撃吸収のハートを持っていたかどうか
 ---@field package colorFactor number バリアの色の係数
 ---@field public enable fun(self: Barrier) バリア機能を有効にする

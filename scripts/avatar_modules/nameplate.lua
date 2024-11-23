@@ -56,8 +56,7 @@ Nameplate = {
 
         events.RENDER:register(function (delta, context)
             if context ~= "PAPERDOLL" then
-                --nameplate.ENTITY:setPivot(self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar.UpperBody.Body.NameplateAnchor):sub(player:getPos(delta)):add(0, Barrier.BarrierVisible and 1.095 or 0.895, 0)) --TODO: ここを直す
-                nameplate.ENTITY:setPivot(self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar.UpperBody.Body.NameplateAnchor):sub(player:getPos(delta)):add(0, false and 1.095 or 0.895, 0))
+                nameplate.ENTITY:setPivot(self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar.UpperBody.Body.NameplateAnchor):sub(player:getPos(delta)):add(0, self.parent.barrier.isBarrierVisible and 1.095 or 0.895, 0))
             else
                 nameplate.ENTITY:setPivot()
             end

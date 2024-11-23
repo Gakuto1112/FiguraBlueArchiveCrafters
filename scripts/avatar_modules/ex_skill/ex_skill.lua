@@ -66,7 +66,7 @@ ExSkill = {
                 events.TICK:register(function ()
                     if self.keyPressCount == 30 then
                         events.TICK:remove("ex_skill_keypress_tick")
-                        --pings.ex_skill_removeAll() TODO: 設置物のremoveAll()をする。
+                        self.parent.placementObjectManager:removeAll()
                         sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.zombie.break_wooden_door"), player:getPos(), 0.25, 2)
                         self.keyPressCount = 0
                         return
