@@ -153,13 +153,12 @@
 ---@field public offsetPos? Vector3 設置物の底の中心点のオフセット位置（任意）。基準点は(0, 0, 0)。
 ---@field public size? Vector3 当たり判定の大きさ。BlockBenchでのサイズの値をそのまま入力する。基準点はモデルの底面の中心。
 
---TODO: tableを設置物オブジェクトに置き換える！
 ---@class (exact) BlueArchiveCharacter.PlacementObjectCallbacksSet 設置物のコールバック関数のセット
----@field public onInit? fun(placementObject: table) 設置物インスタンスが生成された直後に呼ばれる関数
----@field public onDeinit? fun(placementObject: table) 設置物インスタンスが破棄される直前に呼ばれる関数
----@field public onTick? fun(placementObject: table) 各ティック毎に呼ばれる関数
----@field public onRender? fun(placementObject: table) 各レンダーティック毎に呼ばれる関数
----@field public onGround? fun(placementObject: table) 設置物が接地した瞬間に呼ばれる関数
+---@field public onInit? fun(placementObject: PlacementObject) 設置物インスタンスが生成された直後に呼ばれる関数
+---@field public onDeinit? fun(placementObject: PlacementObject) 設置物インスタンスが破棄される直前に呼ばれる関数
+---@field public onTick? fun(placementObject: PlacementObject) 各ティック毎に呼ばれる関数
+---@field public onRender? fun(placementObject: PlacementObject) 各レンダーティック毎に呼ばれる関数
+---@field public onGround? fun(placementObject: PlacementObject) 設置物が接地した瞬間に呼ばれる関数
 
 ---@class (exact) BlueArchiveCharacter.ExSkillCameraSet Exスキルアニメーション中のカメラワークのセット
 ---@field public start BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション開始地点

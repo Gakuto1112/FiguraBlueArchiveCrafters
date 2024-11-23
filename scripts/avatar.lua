@@ -62,6 +62,7 @@ end)
 ---@field public nameplate Nameplate
 ---@field public exSkill ExSkill
 ---@field public frameParticleManager ExSkillFrameParticleManager
+---@field public placementObjectManager PlacementObjectManager
 ---@field public costume Costume
 ---@field public actionWheel ActionWheel
 ---@field public actionWheelGui ActionWheelGui
@@ -172,6 +173,11 @@ Avatar = {
 			require("scripts.avatar_modules.ex_skill.ex_skill_frame_particle")
 			instance.frameParticleManager = ExSkillFrameParticleManager.new(instance)
 			instance.frameParticleManager:init()
+
+			require("scripts.avatar_modules.placement_object.placement_object_manager")
+			require("scripts.avatar_modules.placement_object.placement_object")
+			instance.placementObjectManager = PlacementObjectManager.new(instance)
+			instance.placementObjectManager:init()
 
 			require("scripts.avatar_modules.costume")
 			instance.costume = Costume.new(instance)
