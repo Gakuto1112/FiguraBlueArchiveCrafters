@@ -94,6 +94,7 @@ SpawnObjectManager = {
             if self.objects[1].callbacks ~= nil and self.objects[1].callbacks.onDeinit ~= nil then
                 self.objects[1].callbacks.onDeinit(self.objects[1])
             end
+            table.remove(self.objects, 1)
         end
         events.TICK:remove(self.managerName.."_tick")
         events.RENDER:remove(self.managerName.."_render")
