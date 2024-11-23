@@ -58,7 +58,7 @@
 ---@field public rightEye {[BlueArchiveCharacter.RightEyeTextures]: Vector2} 右目のテクスチャのUVマッピング情報
 ---@field public leftEye {[BlueArchiveCharacter.LeftEyeTextures]: Vector2} 左目のテクスチャのUVマッピング情報
 ---@field public mouth {[BlueArchiveCharacter.MouthTextures]: Vector2} 口のテクスチャのUVマッピング情報
----@field public emotionSet? {onDamage: BlueArchiveCharacter.EmotionSet, onSleep: BlueArchiveCharacter.EmotionSet} 特定の状況における表情を上書きする
+---@field public emotionSet? BlueArchiveCharacter.OverrideEmotionSet 特定の状況における表情を上書きする
 
 ---@class BlueArchiveCharacter.ArmsStruct 腕のデータ構造体
 ---@field public callbacks? BlueArchiveCharacter.ArmsCallbacksSet 腕の制御のコールバック関数群
@@ -113,6 +113,7 @@
 
 ---@class (exact) BlueArchiveCharacter.OverrideEmotionSet 特定の状況における表情を上書きするセット
 ---@field public onDamage? BlueArchiveCharacter.EmotionSet ダメージを受けたとき
+---@field public onDied? BlueArchiveCharacter.EmotionSet 死んだとき（死亡アニメーションは除外）
 ---@field public onSleep? BlueArchiveCharacter.EmotionSet ベッドで寝ているとき
 
 ---@class (exact) BlueArchiveCharacter.EmotionSet 表情のデータセット
