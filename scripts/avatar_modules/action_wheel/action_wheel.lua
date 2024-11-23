@@ -258,5 +258,5 @@ end
 ---アクションホイールから乗り物モデルの置き換えを変更するトリガー関数
 ---@param enabled boolean 乗り物モデルの置き換えを有効化するかどうか
 function pings.actionWheelSetShouldReplaceVehicleModels(enabled)
-    ActionWheel.ShouldReplaceVehicleModels = enabled
+    AvatarInstance.actionWheel.shouldReplaceVehicleModels = enabled
 end

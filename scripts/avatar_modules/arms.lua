@@ -175,9 +175,9 @@ Arms = {
                 --クロスボウ装填中
                 events.TICK:register(function ()
                     if player:getActiveItem().id ~= "minecraft:crossbow" and self.armState.left == 3 then
-                        if Gun.CurrentGunPosition == "RIGHT" then
+                        if self.parent.gun.currentGunPosition == "RIGHT" then
                             self:setArmState(1, 2)
-                        elseif Gun.CurrentGunPosition == "LEFT" then
+                        elseif self.parent.gun.currentGunPosition == "LEFT" then
                             self:setArmState(2, 1)
                         end
                     end
