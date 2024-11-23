@@ -88,7 +88,7 @@ Physics = {
         if physicData.headRotMultiplayer ~= nil then
             rot = rot + math.deg(math.asin(player:getLookDir().y)) * physicData.headRotMultiplayer
         end
-        if physicData.sneakOffset ~= nil then
+        if physicData.sneakOffset ~= nil and player:isCrouching() then
             rot = rot + physicData.sneakOffset
         end
         return rot
