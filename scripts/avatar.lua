@@ -67,6 +67,7 @@ end)
 ---@field public actionWheel ActionWheel
 ---@field public actionWheelGui ActionWheelGui
 ---@field public bubble Bubble
+---@field public barrier Barrier
 ---@field public deathAnimation DeathAnimation
 ---@field public instantiate fun(class: table, super: table, ...: any) クラスをインスタンス化する
 
@@ -194,6 +195,10 @@ Avatar = {
 			require("scripts.avatar_modules.bubble")
 			instance.bubble = Bubble.new(instance)
 			instance.bubble:init()
+
+			require("scripts.avatar_modules.barrier")
+			instance.barrier = Barrier.new(instance)
+			instance.barrier:init()
 
 			require("scripts.avatar_modules.death_animation")
 			instance.deathAnimation = DeathAnimation.new(instance)
