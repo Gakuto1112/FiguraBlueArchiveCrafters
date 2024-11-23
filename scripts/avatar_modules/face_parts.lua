@@ -66,7 +66,7 @@ FaceParts = {
 			models.models.main.Avatar.Head.FaceParts.Eyes.EyeLeft:setUVPixels(self.parent.characterData.faceParts.rightEye[rightEye]:copy():scale(6))
 
 			--左目
-			models.models.main.Avatar.Head.FaceParts.Eyes.EyeRight:setUVPixels(self.parent.characterData.faceParts.rightEye[leftEye]:copy():scale(6))
+			models.models.main.Avatar.Head.FaceParts.Eyes.EyeRight:setUVPixels(self.parent.characterData.faceParts.leftEye[leftEye]:copy():scale(6))
 
 			--口
 			if mouth ~= "NORMAL" then
