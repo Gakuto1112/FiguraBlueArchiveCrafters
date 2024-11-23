@@ -25,6 +25,7 @@ PlayerUtils = {
     ---@param self PlayerUtils
     init = function (self)
         AvatarModule.init(self)
+
         events.TICK:register(function ()
             local health = player:getHealth()
             self.damageStatus = self.healthPrev > health and (health == 0 and "DIED" or "DAMAGE") or "NONE"

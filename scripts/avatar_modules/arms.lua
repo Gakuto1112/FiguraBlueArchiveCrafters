@@ -36,6 +36,7 @@ Arms = {
     ---@param self Arms
     init = function (self)
         AvatarModule.init(self)
+
         events.TICK:register(function ()
             self.isSwingCountProcessed = false
         end)

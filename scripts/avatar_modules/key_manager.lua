@@ -1,5 +1,5 @@
 ---@class (exact) KeyManager : AvatarModule アバターのキー割り当てを管理するクラス。ここで管理する割り当ては設定で変更された場合はそれが保存される。
----@field package keyMappings {[string]: Keybind} キーの割り当てのテーブル
+---@field public keyMappings {[string]: Keybind} キーの割り当てのテーブル
 ---@field public register fun(self: KeyManager, assignName: string, keyName: Minecraft.keyCode): Keybind キー割り当てを登録する
 
 KeyManager = {
@@ -19,6 +19,7 @@ KeyManager = {
     ---@param self KeyManager
     init = function (self)
         AvatarModule.init(self)
+
         if host:isHost() then
             events.TICK:register(function ()
                 for key, value in pairs(self.keyMappings) do

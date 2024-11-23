@@ -15,6 +15,7 @@ Skirt = {
     ---@param self AvatarModule
     init = function (self)
         AvatarModule.init(self)
+
         if self.parent.characterData.skirt.skirtModels ~= nil and #self.parent.characterData.skirt.skirtModels > 0 then
             events.TICK:register(function ()
                 local isCrouching = player:isCrouching()

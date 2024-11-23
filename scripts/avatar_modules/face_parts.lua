@@ -22,6 +22,7 @@ FaceParts = {
     ---@param self FaceParts
     init = function (self)
         AvatarModule.init(self)
+
 		events.TICK:register(function ()
 			if not client:isPaused() then
 				if self.parent.playerUtils.damageStatus == "DAMAGE" then

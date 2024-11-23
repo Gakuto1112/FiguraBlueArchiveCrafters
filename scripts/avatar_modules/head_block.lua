@@ -21,6 +21,7 @@ HeadBlock = {
     ---@param self HeadBlock
     init = function (self)
         HeadModelGenerator.init(self)
+
         events.WORLD_TICK:register(function ()
             self.forceGenerateCount = self.forceGenerateCount - 1
             if self.forceGenerateCount == 0 then

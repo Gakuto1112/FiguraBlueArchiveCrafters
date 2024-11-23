@@ -62,6 +62,7 @@ end)
 ---@field public exSkill ExSkill
 ---@field public costume Costume
 ---@field public actionWheel ActionWheel
+---@field public actionWheelGui ActionWheelGui
 ---@field public deathAnimation DeathAnimation
 ---@field public instantiate fun(class: table, super: table, ...: any) クラスをインスタンス化する
 
@@ -164,6 +165,10 @@ Avatar = {
 			require("scripts.avatar_modules.action_wheel.action_wheel")
 			instance.actionWheel = ActionWheel.new(instance)
 			instance.actionWheel:init()
+
+			require("scripts.avatar_modules.action_wheel.action_wheel_gui")
+			instance.actionWheelGui = ActionWheelGui.new(instance)
+			instance.actionWheelGui:init()
 
 			require("scripts.avatar_modules.death_animation")
 			instance.deathAnimation = DeathAnimation.new(instance)

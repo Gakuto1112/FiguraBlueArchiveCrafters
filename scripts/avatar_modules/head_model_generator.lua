@@ -19,6 +19,7 @@ HeadModelGenerator = {
     ---@param self HeadModelGenerator
     init = function (self)
         AvatarModule.init(self)
+
         ---@diagnostic disable-next-line: discard-returns
         models:newPart("script_"..self.parentName, "None")
     end;

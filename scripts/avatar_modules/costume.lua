@@ -23,6 +23,7 @@ Costume = {
     ---@param self Costume
     init = function (self)
 		AvatarModule.init(self)
+
 		for _, costume in ipairs(self.parent.characterData.costume.costumes) do
 			table.insert(self.costumeList, costume.name)
 		end

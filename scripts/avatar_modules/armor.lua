@@ -58,6 +58,7 @@ Armor = {
     ---@param self Armor
     init = function (self)
         AvatarModule.init(self)
+
 		events.TICK:register(function ()
 			local armorSlotItems = self.shouldShowArmor and {player:getItem(6), player:getItem(5), player:getItem(4), player:getItem(3)} or {world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air"))}
 			if armorSlotItems[1].id ~= self.armorSlotItemsPrev[1].id then
@@ -181,6 +182,7 @@ Armor = {
 			end
 			self.armorSlotItemsPrev = armorSlotItems
 		end)
+
 		for _, vanillaModel in ipairs({vanilla_model.HELMET, vanilla_model.CHESTPLATE, vanilla_model.LEGGINGS}) do
 			vanillaModel:setVisible(false)
 		end

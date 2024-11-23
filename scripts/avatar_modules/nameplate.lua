@@ -49,9 +49,11 @@ Nameplate = {
     ---@param self Nameplate
     init = function (self)
         AvatarModule.init(self)
+
         if self.currentName >= 2 then
             self:setName(self.currentName, self.shouldShowClubName)
         end
+
         events.RENDER:register(function (delta, context)
             if context ~= "PAPERDOLL" then
                 --nameplate.ENTITY:setPivot(self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar.UpperBody.Body.NameplateAnchor):sub(player:getPos(delta)):add(0, Barrier.BarrierVisible and 1.095 or 0.895, 0)) --TODO: ここを直す
