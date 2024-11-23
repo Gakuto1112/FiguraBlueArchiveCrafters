@@ -513,6 +513,8 @@ BlueArchiveCharacter = {
     ---初期化関数
     ---@param self BlueArchiveCharacter
     init = function (self)
+        AvatarModule.init(self)
+
         --生徒固有初期化処理
         --Player APIにアクセスする場合は、ENTITY_INIT後に実行されるようにする必要がある。
     end;

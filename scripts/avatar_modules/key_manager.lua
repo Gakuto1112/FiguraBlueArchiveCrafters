@@ -18,6 +18,7 @@ KeyManager = {
     ---初期化関数
     ---@param self KeyManager
     init = function (self)
+        AvatarModule.init(self)
         if host:isHost() then
             events.TICK:register(function ()
                 for key, value in pairs(self.keyMappings) do

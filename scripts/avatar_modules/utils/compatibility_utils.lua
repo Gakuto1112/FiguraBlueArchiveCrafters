@@ -38,6 +38,7 @@ CompatibilityUtils = {
     ---初期化関数
     ---@param self CompatibilityUtils
     init = function (self)
+        AvatarModule.init(self)
         self.registries.block = client.getRegistry("minecraft:block")
         self.registries.item = client.getRegistry("minecraft:item")
         self.registries.particle = client.getRegistry("minecraft:particle_type")

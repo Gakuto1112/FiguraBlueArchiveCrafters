@@ -70,6 +70,7 @@ Locale = {
     ---初期化関数
     ---@param self Locale
     init = function (self)
+		AvatarModule.init(self)
 		self.localeData.en_us["name.club_name"] = self.parent.characterData.basic.clubName.en_us
 		self.localeData.ja_jp["name.club_name"] = self.parent.characterData.basic.clubName.ja_jp
 		if host:isHost() then

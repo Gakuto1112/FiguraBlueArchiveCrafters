@@ -1,5 +1,6 @@
 ---@class AvatarModule アバターの動作を構成するモジュールの抽象クラス
 ---@field public parent Avatar アバターのメインクラスへの参照
+---@field public new fun(parent: Avatar): AvatarModule コンストラクタ
 ---@field public init fun(self: AvatarModule) 初期化関数
 
 AvatarModule = {
@@ -18,5 +19,6 @@ AvatarModule = {
     ---初期化関数
     ---@param self AvatarModule
     init = function (self)
+        --AvatarModule.init(self)
     end;
 }

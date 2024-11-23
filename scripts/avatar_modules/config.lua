@@ -23,6 +23,7 @@ Config = {
     ---初期化関数
     ---@param self Config
     init = function (self)
+		AvatarModule.init(self)
 		if host:isHost() then
 			events.TICK:register(function ()
 				if self.nextSyncCount == 0 then

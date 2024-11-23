@@ -24,6 +24,7 @@ HeadRing = {
     ---初期化関数
     ---@param self HeadRing
     init = function (self)
+        AvatarModule.init(self)
         events.TICK:register(function ()
             if not client:isPaused() then
                 --移動平均値の算出
