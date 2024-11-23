@@ -1,5 +1,19 @@
 ---@class (exact) DeathAnimation : AvatarModule プレイヤーが死亡した際のキャラクターがヘリコプターで回収されるアニメーションを管理するクラス
+---@field package DEBUG_MODE boolean デバッグモードを有効にするかどうか。デバッグモードモードではxキーでフェーズ1のモデルを、cキーでフェーズ2のモデルを表示できる。
 ---@field public dummyAvatarRoot? ModelPart 死亡アニメーションに使用されるダミーのアバターのルート。アバターが未生成の場合はnilが入っている。
+---@field package animationCount integer 死亡アニメーションの再生カウンター
+---@field package animationPos Vector3 アニメーションを再生している場所の座標
+---@field package animationRot number アニメーションを再生している向き（度数法で示す）
+---@field package costumeIndex integer 死亡アニメーションのコスチュームのインデックス
+---@field package isPlayerInvisible boolean プレイヤーモデルが不可視状態かどうか
+---@field package removeUnsafeModel fun(target?: ModelPart) 存在しないかもしれないモデルパーツを安全に削除する
+---@field package spawnHelicopterParticles fun(self: DeathAnimation) ヘリコプターの出現/消滅パーティクルを生成する
+---@field package generateDummyAvatar fun(self: DeathAnimation, parent: ModelPart) 死亡アニメーション用のダミーアバターを生成する
+---@field package resetDummyAvatar fun(avatarRoot: ModelPart) ダミーアバター状態をリセットする
+---@field package setPhase1Pose fun(avatarRoot: ModelPart) ダミーアバターをフェーズ1のポーズにする
+---@field package setPhase2Pose fun(avatarRoot: ModelPart) ダミーアバターをフェーズ2のポーズにする
+---@field package play fun(self: DeathAnimation) 死亡アニメーションを再生する
+---@field package stop fun(self: DeathAnimation) 死亡アニメーションを停止する
 
 DeathAnimation = {
     ---コンストラクタ
@@ -9,94 +23,116 @@ DeathAnimation = {
         ---@type DeathAnimation
         local instance = Avatar.instantiate(DeathAnimation, AvatarModule, parent)
 
+        instance.DEBUG_MODE = false
+
         instance.dummyAvatarRoot = models.models.death_animation.Avatar
+        instance.animationCount = 0
+        instance.animationPos = vectors.vec3()
+        instance.animationRot = 0
+        instance.costumeIndex = 1
+        instance.isPlayerInvisible = false
 
         return instance
     end;
 
-}
+    ---初期化関数
+    ---@param self DeathAnimation
+    init = function (self)
+        AvatarModule.init(self)
 
---[[
----@class DeathAnimation プレイヤーが死亡した際の、キャラクターがヘリコプターで回収されるアニメーションを管理するクラス
-DeathAnimation = {
-    ---デバッグモードを有効にするかどうか。デバッグモードモードではxキーでフェーズ1のモデルを、cキーでフェーズ2のモデルを表示できる。
-    ---@type boolean
-    DEBUG_MODE = false,
+        events.TICK:register(function ()
+            if self.parent.playerUtils.damageStatus == "DIED" then
+                self:play()
+                models.models.main:setVisible(false)
+                for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
+                    vanillaModel:setVisible(false)
+                end
+                self.isPlayerInvisible = true
+            end
+            if self.isPlayerInvisible and player:getHealth() > 0 then
+                models.models.main:setVisible(true)
+                for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
+                    vanillaModel:setVisible(true)
+                end
+                self.isPlayerInvisible = false
+            end
+        end)
+        if self.DEBUG_MODE then
+            models:addChild(models:newPart("script_death_animation_debug", "World"))
+            keybinds:newKeybind("[DEBUG] Spawn death animation phase1 model", "key.keyboard.x"):onPress(function ()
+                self.removeUnsafeModel(models.script_death_animation_debug.Avatar)
+                self:generateDummyAvatar(models.script_death_animation_debug)
+                self.resetDummyAvatar(models.script_death_animation_debug.Avatar)
+                self.setPhase1Pose(models.script_death_animation_debug.Avatar)
+                models.script_death_animation_debug.Avatar:setPos(player:getPos():add(0, -0.75, 0):scale(16))
+                if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
+                    self.parent.characterData.deathAnimation.callbacks.onPhase1(models.script_death_animation_debug.Avatar, self.parent.costume.currentCostume)
+                end
+            end)
+            keybinds:newKeybind("[DEBUG] Spawn death animation phase2 model", "key.keyboard.c"):onPress(function ()
+                self.removeUnsafeModel(models.script_death_animation_debug.Avatar)
+                self:generateDummyAvatar(models.script_death_animation_debug)
+                self.resetDummyAvatar(models.script_death_animation_debug.Avatar)
+                self.setPhase2Pose(models.script_death_animation_debug.Avatar)
+                models.script_death_animation_debug.Avatar:setPos(player:getPos():scale(16))
+                if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
+                    self.parent.characterData.deathAnimation.callbacks.onPhase1(models.script_death_animation_debug.Avatar, self.parent.costume.currentCostume)
+                end
+                if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase2 ~= nil then
+                    self.parent.characterData.deathAnimation.callbacks.onPhase2(models.script_death_animation_debug.Avatar, self.parent.costume.currentCostume)
+                end
+            end)
+        end
+    end;
 
-    ---死亡アニメーションに使用されるダミーのアバターのルート。アバターが未生成の場合はnilが入っている。
-    ---@type ModelPart?
-    DummyAvatarRoot = models.models.death_animation.Avatar,
-
-    ---死亡アニメーションの再生カウンター
-    ---@type number
-    AnimationCount = 0,
-
-    ---アニメーションを再生している場所の座標
-    ---@type Vector3
-    AnimationPos = vectors.vec3(),
-
-    ---アニメーションを再生している向き（度数法で示す）
-    ---@type number
-    AnimationRot = 0,
-
-    ---プレイヤーモデルが不可視かどうか
-    ---@type boolean
-    PlayerInvisible = false,
-
-    ---死亡アニメーションのコスチュームのインデックス
-    ---@type integer
-    CostumeIndex = 1,
+    ---存在しないかもしれないモデルパーツを安全に削除する。
+    ---@param target? ModelPart 削除対象のモデルパーツ
+    removeUnsafeModel = function (target)
+        if target ~= nil then
+            target:getParent():removeChild(target)
+            target:remove()
+        end
+    end;
 
     ---ヘリコプターの出現/消滅パーティクルを生成する。
     ---@param self DeathAnimation
     spawnHelicopterParticles = function (self)
-        local helicopterPos = ModelUtils.getModelWorldPos(models.models.death_animation.Helicopter)
+        local helicopterPos = self.parent.modelUtils.getModelWorldPos(models.models.death_animation.Helicopter)
         for _ = 1, 100 do
-            particles:newParticle(CompatibilityUtils:checkParticle("minecraft:poof"), helicopterPos:copy():add(vectors.rotateAroundAxis(self.AnimationRot, math.random() * 9.375 - 4.6875, math.random() * 11.125 - 5.5625, math.random() * 23.875 - 11.9375, 0, math.abs(helicopterPos.y), 0)))
+            particles:newParticle(self.parent.compatibilityUtils:checkParticle("minecraft:poof"), helicopterPos:copy():add(vectors.rotateAroundAxis(self.animationRot, math.random() * 9.375 - 4.6875, math.random() * 11.125 - 5.5625, math.random() * 23.875 - 11.9375, 0, math.abs(helicopterPos.y), 0)))
         end
-    end,
-
-    ---存在しないかもしれないモデルパーツを安全に削除する。
-    ---@param target ModelPart 削除対象のモデルパーツ（nilでも可）
-    removeUnsafeModel = function (target)
-        if target ~= nil then
-            target:remove()
-        end
-    end,
+    end;
 
     ---死亡アニメーション用のダミーアバターを生成する。
     ---@param self DeathAnimation
     ---@param parent ModelPart ダミーアバターをアタッチする親のモデルパーツ
     generateDummyAvatar = function (self, parent)
-        local armorVisible = {}
-        for index, visible in ipairs(Armor.ArmorVisible) do
-            armorVisible[index] = visible
+        local isArmorVisible = {
+            helmet = self.parent.armor.isArmorVisible.helmet;
+            chestplate = self.parent.armor.isArmorVisible.chestplate;
+            leggings = self.parent.armor.isArmorVisible.leggings;
+            boots = self.parent.armor.isArmorVisible.boots;
+        }
+        if isArmorVisible.helmet then
+            self.parent.armor:setHelmet(world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")))
         end
-        if armorVisible[1] then
-            Armor:setHelmet(world.newItem(CompatibilityUtils:checkItem("minecraft:air")))
+        if isArmorVisible.chestplate then
+            self.parent.armor:setChestplate(world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")))
         end
-        if armorVisible[2] then
-            Armor:setChestPlate(world.newItem(CompatibilityUtils:checkItem("minecraft:air")))
+        if isArmorVisible.leggings then
+            self.parent.armor:setLeggings(world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")))
         end
-        if armorVisible[3] then
-            Armor:setLeggings(world.newItem(CompatibilityUtils:checkItem("minecraft:air")))
+        if isArmorVisible.boots then
+            self.parent.armor:setBoots(world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")))
         end
-        if armorVisible[4] then
-            Armor:setBoots(world.newItem(CompatibilityUtils:checkItem("minecraft:air")))
-        end
-        local excludeModelsVisibleList = {}
-        for index, modelPart in ipairs(BlueArchiveCharacter.DEATH_ANIMATION.excludeModels) do
-            excludeModelsVisibleList[index] = modelPart:getVisible()
-            modelPart:setVisible(false)
-        end
-        Physics:disable()
-        if BlueArchiveCharacter.DEATH_ANIMATION.onBeforeModelCopy ~= nil then
-            BlueArchiveCharacter.DEATH_ANIMATION.onBeforeModelCopy()
+        self.parent.physics:disable()
+        if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onBeforeModelCopy ~= nil then
+            self.parent.characterData.deathAnimation.callbacks.onBeforeModelCopy()
         end
 
-        parent:addChild(ModelUtils:copyModel(models.models.main.Avatar))
-        parent.Avatar.Head.FaceParts.Eyes.EyeRight:setUVPixels(BlueArchiveCharacter.FACE_PARTS.LeftEye.TIRED[1] * 6, BlueArchiveCharacter.FACE_PARTS.LeftEye.TIRED[2] * 6)
-        parent.Avatar.Head.FaceParts.Eyes.EyeLeft:setUVPixels(BlueArchiveCharacter.FACE_PARTS.RightEye.TIRED[1] * 6, BlueArchiveCharacter.FACE_PARTS.RightEye.TIRED[2] * 6)
+        parent:addChild(self.parent.modelUtils:copyModel(models.models.main.Avatar))
+        parent.Avatar.Head.FaceParts.Eyes.EyeRight:setUVPixels(self.parent.characterData.faceParts.leftEye.TIRED:copy():scale(6))
+        parent.Avatar.Head.FaceParts.Eyes.EyeLeft:setUVPixels(self.parent.characterData.faceParts.rightEye.TIRED:copy():scale(6))
         parent.Avatar.Head.HeadRing:setRot()
         for _, modelPart in ipairs({parent.Avatar.UpperBody.Arms.RightArm.RightArmBottom.RightItemPivot, parent.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom.LeftItemPivot}) do
             modelPart:remove()
@@ -106,37 +142,32 @@ DeathAnimation = {
             self.removeUnsafeModel(unsafeModels[i])
         end
         if parent.Avatar.UpperBody.Body.Gun ~= nil then
-            if BlueArchiveCharacter.GUN.put.type == "BODY" then
+            if self.parent.characterData.gun.gunPosition.put.type == "BODY" then
                 local leftHanded = player:isLeftHanded()
-                parent.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(0, 12, 0):add(BlueArchiveCharacter.GUN.put.pos[leftHanded and "left" or "right"]))
-                parent.Avatar.UpperBody.Body.Gun:setRot(BlueArchiveCharacter.GUN.put.rot[leftHanded and "left" or "right"])
+                parent.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(0, 12, 0):add(self.parent.characterData.gun.gunPosition.put.pos[leftHanded and "left" or "right"]))
+                parent.Avatar.UpperBody.Body.Gun:setRot(self.parent.characterData.gun.gunPosition.put.rot[leftHanded and "left" or "right"])
             else
                 parent.Avatar.UpperBody.Body.Gun:remove()
             end
         end
 
-        if armorVisible[1] then
-            Armor:setHelmet(Armor.ArmorSlotItemsPrev[1])
+        if isArmorVisible.helmet then
+            self.parent.armor:setHelmet(self.parent.armor.armorSlotItemsPrev[1])
         end
-        if armorVisible[2] then
-            Armor:setChestPlate(Armor.ArmorSlotItemsPrev[2])
+        if isArmorVisible.chestplate then
+            self.parent.armor:setChestplate(self.parent.armor.armorSlotItemsPrev[2])
         end
-        if armorVisible[3] then
-            Armor:setLeggings(Armor.ArmorSlotItemsPrev[3])
+        if isArmorVisible.leggings then
+            self.parent.armor:setLeggings(self.parent.armor.armorSlotItemsPrev[3])
         end
-        if armorVisible[4] then
-            Armor:setBoots(Armor.ArmorSlotItemsPrev[4])
+        if isArmorVisible.boots then
+            self.parent.armor:setBoots(self.parent.armor.armorSlotItemsPrev[4])
         end
-        for index, modelPart in ipairs(BlueArchiveCharacter.DEATH_ANIMATION.excludeModels) do
-            if excludeModelsVisibleList[index] then
-                modelPart:setVisible(true)
-            end
+        self.parent.physics:enable()
+        if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onAfterModelCopy ~= nil then
+            self.parent.characterData.deathAnimation.callbacks.onAfterModelCopy()
         end
-        Physics:enable()
-        if BlueArchiveCharacter.DEATH_ANIMATION.onAfterModelCopy ~= nil then
-            BlueArchiveCharacter.DEATH_ANIMATION.onAfterModelCopy()
-        end
-    end,
+    end;
 
     ---ダミーアバター状態をリセットする。
     ---@param avatarRoot ModelPart ダミーアバターのルート
@@ -146,7 +177,7 @@ DeathAnimation = {
             modelPart:setRot()
             modelPart:setScale()
         end
-    end,
+    end;
 
     ---ダミーアバターをフェーズ1のポーズにする。
     ---@param avatarRoot ModelPart ダミーアバターのルート
@@ -157,7 +188,7 @@ DeathAnimation = {
         avatarRoot.UpperBody.Arms.LeftArm:setRot(35, 0, 20)
         avatarRoot.LowerBody.Legs.RightLeg:setRot(90, -10, 0)
         avatarRoot.LowerBody.Legs.LeftLeg:setRot(90, 10, 0)
-    end,
+    end;
 
     ---ダミーアバターをフェーズ2のポーズにする。
     ---@param avatarRoot ModelPart ダミーアバターのルート
@@ -171,13 +202,13 @@ DeathAnimation = {
         avatarRoot.LowerBody.Legs.RightLeg.RightLegBottom:setRot(-75, 0, 0)
         avatarRoot.LowerBody.Legs.LeftLeg:setRot(10, 0, 0)
         avatarRoot:setLight()
-    end,
+    end;
 
     ---死亡アニメーションを再生する。
     ---@param self DeathAnimation
     play = function (self)
         self:stop()
-        self.CostumeIndex = Costume.CurrentCostume
+        self.costumeIndex = self.parent.costume.currentCostume
 
         --ダミーアバターを生成する。
         local unsafeModels = {models.models.death_animation.Avatar, models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar}
@@ -189,47 +220,48 @@ DeathAnimation = {
         --死亡アニメーションを生成する。
         self.resetDummyAvatar(models.models.death_animation.Avatar)
         self.setPhase1Pose(models.models.death_animation.Avatar)
-        self.AnimationPos = player:getPos()
-        models.models.death_animation:setPos(self.AnimationPos:copy():scale(16))
-        self.AnimationRot = (-player:getBodyYaw() + 180) % 360
-        models.models.death_animation:setRot(0, self.AnimationRot)
+        self.animationPos = player:getPos()
+        models.models.death_animation:setPos(self.animationPos:copy():scale(16))
+        self.animationRot = (player:getBodyYaw() * -1 + 180) % 360
+        models.models.death_animation:setRot(0, self.animationRot)
         models.models.death_animation:setVisible(true)
         animations["models.death_animation"]["death_animation"]:play()
-        if BlueArchiveCharacter.DEATH_ANIMATION.onPhase1 ~= nil then
-            BlueArchiveCharacter.DEATH_ANIMATION.onPhase1(models.models.death_animation.Avatar, self.CostumeIndex)
+        if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
+            self.parent.characterData.deathAnimation.callbacks.onPhase1(models.models.death_animation.Avatar, self.costumeIndex)
         end
+
         if events.TICK:getRegisteredCount("death_animation_tick") == 0 then
             events.TICK:register(function ()
-                local particleAnchorPos = ModelUtils.getModelWorldPos(models.models.death_animation.DeathAnimationParticleAnchor)
+                local particleAnchorPos = self.parent.modelUtils.getModelWorldPos(models.models.death_animation.DeathAnimationParticleAnchor)
                 for _ = 1, 3 do
                     local particleRot = math.random() * math.pi * 2
                     local particleOffset = math.random() * 3
-                    particles:newParticle(CompatibilityUtils:checkParticle("minecraft:poof"), particleAnchorPos:copy():add(math.cos(particleRot) * particleOffset, 0, math.sin(particleRot) * particleOffset)):setVelocity(math.cos(particleRot), 0, math.sin(particleRot))
+                    particles:newParticle(self.parent.compatibilityUtils:checkParticle("minecraft:poof"), particleAnchorPos:copy():add(math.cos(particleRot) * particleOffset, 0, math.sin(particleRot) * particleOffset)):setVelocity(math.cos(particleRot), 0, math.sin(particleRot))
 
                 end
-                if self.AnimationCount % 2 == 1 then
-                    sounds:playSound(CompatibilityUtils:checkSound("minecraft:block.bamboo_wood_door.close"), ModelUtils.getModelWorldPos(models.models.death_animation.Helicopter.DeathAnimationSoundAnchor1), 1, 0.5):setAttenuation(2)
+                if self.animationCount % 2 == 1 then
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.bamboo_wood_door.close"), self.parent.modelUtils.getModelWorldPos(models.models.death_animation.Helicopter.DeathAnimationSoundAnchor1), 1, 0.5):setAttenuation(2)
                 end
-                if self.AnimationCount < 120 then
-                    models.models.death_animation.Avatar:setLight(world.getLightLevel(self.AnimationPos))
+                if self.animationCount < 120 then
+                    models.models.death_animation.Avatar:setLight(world.getLightLevel(self.animationPos))
                 end
-                if self.AnimationCount == 1 then
+                if self.animationCount == 1 then
                     self:spawnHelicopterParticles()
-                elseif self.AnimationCount == 10 then
-                    sounds:playSound(CompatibilityUtils:checkSound("minecraft:block.iron_door.open"), ModelUtils.getModelWorldPos(models.models.death_animation.Helicopter.DeathAnimationSoundAnchor1), 1, 0.5)
-                elseif self.AnimationCount >= 57 and self.AnimationCount < 76 then
-                    sounds:playSound(CompatibilityUtils:checkSound("minecraft:entity.player.attack.sweep"), ModelUtils.getModelWorldPos(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14), 0.25, -0.056 * (self.AnimationCount - 57) + 2)
-                elseif self.AnimationCount == 120 then
-                    self.DummyAvatarRoot = models.models.death_animation.Avatar:moveTo(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14)
+                elseif self.animationCount == 10 then
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.iron_door.open"), self.parent.modelUtils.getModelWorldPos(models.models.death_animation.Helicopter.DeathAnimationSoundAnchor1), 1, 0.5)
+                elseif self.animationCount >= 57 and self.animationCount < 76 then
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.player.attack.sweep"), self.parent.modelUtils.getModelWorldPos(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14), 0.25, -0.056 * (self.animationCount - 57) + 2)
+                elseif self.animationCount == 120 then
+                    self.dummyAvatarRoot = models.models.death_animation.Avatar:moveTo(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14)
                     self.setPhase2Pose(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar)
-                    if BlueArchiveCharacter.DEATH_ANIMATION.onPhase2 ~= nil then
-                        BlueArchiveCharacter.DEATH_ANIMATION.onPhase2(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar, self.CostumeIndex)
+                    if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase2 ~= nil then
+                        self.parent.characterData.deathAnimation.callbacks.onPhase2(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar, self.costumeIndex)
                     end
-                elseif self.AnimationCount == 180 then
+                elseif self.animationCount == 180 then
                     models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar:setVisible(false)
-                elseif self.AnimationCount == 230 then
-                    sounds:playSound(CompatibilityUtils:checkSound("minecraft:block.iron_door.close"), ModelUtils.getModelWorldPos(models.models.death_animation.Helicopter.DeathAnimationSoundAnchor1), 1, 0.5)
-                elseif self.AnimationCount == 255 then
+                elseif self.animationCount == 230 then
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.iron_door.close"), self.parent.modelUtils.getModelWorldPos(models.models.death_animation.Helicopter.DeathAnimationSoundAnchor1), 1, 0.5)
+                elseif self.animationCount == 255 then
                     self:spawnHelicopterParticles()
                     self:stop()
                 end
@@ -237,10 +269,10 @@ DeathAnimation = {
         end
         if events.WORLD_TICK:getRegisteredCount("death_animation_world_tick") == 0 then
             events.WORLD_TICK:register(function ()
-                self.AnimationCount = self.AnimationCount + 1
+                self.animationCount = self.animationCount + 1
             end, "death_animation_world_tick")
         end
-    end,
+    end;
 
     ---死亡アニメーションを停止する。
     ---@param self DeathAnimation
@@ -249,60 +281,7 @@ DeathAnimation = {
         animations["models.death_animation"]["death_animation"]:stop()
         events.TICK:remove("death_animation_tick")
         events.WORLD_TICK:remove("death_animation_world_tick")
-        self.DummyAvatarRoot = nil
-        self.AnimationCount = 0
-    end,
-
-    ---初期化関数
-    ---@param self DeathAnimation
-    init = function (self)
-        events.TICK:register(function ()
-            if PlayerUtils:getDamageStatus() == "DIED" then
-                self:play()
-                models.models.main:setVisible(false)
-                for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
-                    vanillaModel:setVisible(false)
-                end
-                self.PlayerInvisible = true
-            end
-            if self.PlayerInvisible and player:getHealth() > 0 then
-                models.models.main:setVisible(true)
-                for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
-                    vanillaModel:setVisible(true)
-                end
-                self.PlayerInvisible = false
-            end
-        end)
-        if self.DEBUG_MODE then
-            models:addChild(models:newPart("script_death_animation_debug", "World"))
-            keybinds:newKeybind("[DEBUG] Spawn death animation phase1 model", "key.keyboard.x"):onPress(function ()
-                self.removeUnsafeModel(models.script_death_animation_debug.Avatar)
-                self:generateDummyAvatar(models.script_death_animation_debug)
-                self.resetDummyAvatar(models.script_death_animation_debug.Avatar)
-                self.setPhase1Pose(models.script_death_animation_debug.Avatar)
-                models.script_death_animation_debug.Avatar:setPos(player:getPos():add(0, -0.75, 0):scale(16))
-                if BlueArchiveCharacter.DEATH_ANIMATION.onPhase1 ~= nil then
-                    BlueArchiveCharacter.DEATH_ANIMATION.onPhase1(models.script_death_animation_debug.Avatar, Costume.CurrentCostume)
-                end
-            end)
-            keybinds:newKeybind("[DEBUG] Spawn death animation phase2 model", "key.keyboard.c"):onPress(function ()
-                self.removeUnsafeModel(models.script_death_animation_debug.Avatar)
-                self:generateDummyAvatar(models.script_death_animation_debug)
-                self.resetDummyAvatar(models.script_death_animation_debug.Avatar)
-                self.setPhase2Pose(models.script_death_animation_debug.Avatar)
-                models.script_death_animation_debug.Avatar:setPos(player:getPos():scale(16))
-                if BlueArchiveCharacter.DEATH_ANIMATION.onPhase1 ~= nil then
-                    BlueArchiveCharacter.DEATH_ANIMATION.onPhase1(models.script_death_animation_debug.Avatar, Costume.CurrentCostume)
-                end
-                if BlueArchiveCharacter.DEATH_ANIMATION.onPhase2 ~= nil then
-                    BlueArchiveCharacter.DEATH_ANIMATION.onPhase2(models.script_death_animation_debug.Avatar, Costume.CurrentCostume)
-                end
-            end)
-        end
-    end
+        self.dummyAvatarRoot = nil
+        self.animationCount = 0
+    end;
 }
-
-DeathAnimation:init()
-
-return DeathAnimation
-]]
