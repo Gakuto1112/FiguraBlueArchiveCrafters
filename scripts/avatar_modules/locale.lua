@@ -4,7 +4,7 @@
 
 ---@class (exact) Locale : AvatarModule アバターの表示言語を管理するクラス
 ---@field public localeData {[Locale.Language]: {[string]: string}} 言語データ
----@field public getLocale fun(self: Locale, ket: string) 翻訳キーに対する訳文を返す。設定言語が存在しない場合は英語の文が返される。また、指定したキーの訳が無い場合は英語->キーそのままが返される。
+---@field public getLocale fun(self: Locale, key: string): string 翻訳キーに対する訳文を返す。設定言語が存在しない場合は英語の文が返される。また、指定したキーの訳が無い場合は英語->キーそのままが返される。
 
 Locale = {
     ---コンストラクタ
@@ -37,7 +37,7 @@ Locale = {
 			{"action_wheel.main.action_4.title", "Show weapon models in first person: ", "一人称視点で武器モデルを表示："};
 			{"action_wheel.main.action_5.title", "Amount of particles in Ex skill frame: ", "Exスキルフレームのパーティクルの量："};
 			{"action_wheel.main.action_5.option_1", "Standard", "標準"};
-			{"action_wheel.main.action_5.option_2", "Minimum", "少な目"};
+			{"action_wheel.main.action_5.option_2", "Minimum", "少なめ"};
 			{"action_wheel.main.action_5.option_3", "None", "なし"};
 			{"action_wheel.main.action_5.option_1", "Hide Ex skill frame", "スキルフレーム非表示"};
 			{"action_wheel.main.action_5.done_first", "Changed amount of particles in Ex skill frame to§b", "Exスキルフレームのパーティクルの量を§b"};

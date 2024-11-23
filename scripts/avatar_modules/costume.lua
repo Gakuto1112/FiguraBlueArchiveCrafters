@@ -1,7 +1,9 @@
 ---@class (exact) Costume : AvatarModule キャラクターのコスチュームを管理し、円滑に切り替えられるようにするクラス
----@field package costumeList string[] 利用可能なコスチューム一覧。BlueArchiveCharacterクラスから動的に生成される。
+---@field public costumeList string[] 利用可能なコスチューム一覧。BlueArchiveCharacterクラスから動的に生成される。
 ---@field public currentCostume integer 現在のコスチューム
+---@field public getCostumeLocalName fun(self: Costume, costumeId: integer) 設定言語を考慮した、衣装の名前を返す
 ---@field public setCostume fun(self: Costume, costume: integer) コスチュームを設定する
+---@field public resetCostume fun(self: Costume) コスチュームをリセットしデフォルトのコスチュームにする
 
 Costume = {
 	---コンストラクタ
@@ -38,10 +40,23 @@ Costume = {
 		self.parent.portrait:generateHeadModel()
     end;
 
+	---設定言語を考慮した、衣装の名前を返す。
+	---@param self Costume
+	---@param costumeId integer ローカル名を取得する衣装のID
+	---@return string localCostumeName 衣装のローカル名
+	getCostumeLocalName = function(self, costumeId)
+		return self.parent.locale:getLocale("costume."..self.costumeList[costumeId])
+	end;
+
 	---コスチュームを設定する。
 	---@param self Costume
 	---@param costume integer 設定するコスチューム
 	setCostume = function(self, costume)
+	end;
+
+	---コスチュームをリセットし、デフォルトのコスチュームにする。
+	---@param self Costume
+	resetCostume = function (self)
 	end;
 }
 

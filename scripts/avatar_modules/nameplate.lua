@@ -1,6 +1,6 @@
 ---@class (exact) Nameplate : AvatarModule プレイヤーの表示名を制御するクラス
----@field package currentName integer 現在の表示名：1. プレイヤー名, 2. 名のみ（英語）, 3. 名のみ（日本語）, 4. 名性（英語）, 5. 性名（英語）, 6. 性名（日本語）
----@field package shouldShowClubName boolean 部活名を表示するかどうか
+---@field public currentName integer 現在の表示名：1. プレイヤー名, 2. 名のみ（英語）, 3. 名のみ（日本語）, 4. 名性（英語）, 5. 性名（英語）, 6. 性名（日本語）
+---@field public shouldShowClubName boolean 部活名を表示するかどうか
 ---@field public getName fun(self: Nameplate, typeId: integer): string 指定されたtypeIdでの表示名を返す
 ---@field public setName fun(self: Nameplate, typeId: integer, shouldShowClubName: boolean) 入力された設定で表示名を設定する
 

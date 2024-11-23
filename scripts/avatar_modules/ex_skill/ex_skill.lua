@@ -1,5 +1,6 @@
 ---@class (exact) ExSkill : AvatarModule Exスキルのアニメーションを管理するクラス
 ---@field public animationCount integer Exスキルのアニメーション再生中に増加するカウンター。-1はアニメーション停止中を示す。
+---@field public frameParticleAmount integer Exスキルフレームのパーティクルの量：1. 標準, 2. 少なめ, 3. なし, 4. Exスキルフレーム非表示、パーティクル量は標準
 
 ExSkill = {
     ---コンストラクタ
@@ -10,6 +11,7 @@ ExSkill = {
         local instance = Avatar.instantiate(ExSkill, AvatarModule, parent)
 
         instance.animationCount = -1
+        instance.frameParticleAmount = instance.parent.config:loadConfig("exSkillFrameParticleAmount", 1)
 
         return instance
     end;
