@@ -1,9 +1,9 @@
 ---@class (exact) ActionWheel : AvatarModule アクションホイールを管理するクラス
 ---@field package mainPage Page アクションホイールのメインページのインスタンスへの参照
----@field public selectingCostume integer 現在選択中の衣装
+---@field package selectingCostume integer 現在選択中の衣装
 ---@field package selectingName integer 現在選択中の表示名
 ---@field package selectingShouldShowClubName boolean 現在選択中の「部活名を表示するかどうか」
----@field public selectingExSkillParticleAmount integer 現在選択中のExスキルフレームのパーティクル量
+---@field package selectingExSkillParticleAmount integer 現在選択中のExスキルフレームのパーティクル量
 ---@field package shouldReplaceVehicleModels boolean 乗り物のモデルを置き換えるかどうか
 ---@field package isActionWheelOpenedPrev boolean 前ティックにアクションホイールを開けていたかどうか
 ---@field package refreshCostumeChangeActionTitle fun(self: ActionWheel) 衣装変更アクションのタイトルを更新する
@@ -22,7 +22,7 @@ ActionWheel = {
         instance.selectingCostume = instance.parent.costume.currentCostume
         instance.selectingName = instance.parent.nameplate.currentName
         instance.selectingShouldShowClubName = instance.parent.nameplate.shouldShowClubName
-        instance.selectingExSkillParticleAmount = 1 --ex_skill.lua読み込み時に置き換える必要あり
+        instance.selectingExSkillParticleAmount = instance.parent.exSkill.frameParticleAmount
         instance.shouldReplaceVehicleModels = instance.parent.config:loadConfig("replaceVehicleModels", true)
         instance.isActionWheelOpenedPrev = false
 

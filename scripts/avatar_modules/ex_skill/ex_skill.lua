@@ -1,6 +1,27 @@
+---@alias ExSkill.AutoPlayMode
+---| "NONE" # 自動再生なし
+---| "MAIN" # メインExスキル
+---| "SUB" # サブExスキル
+
+---@alias ExSkill.TransitionPhase
+---| "PRE" # Exスキルアニメーション開始前
+---| "POST" # Exスキルアニメーション終了後
+
 ---@class (exact) ExSkill : AvatarModule Exスキルのアニメーションを管理するクラス
----@field public animationCount integer Exスキルのアニメーション再生中に増加するカウンター。-1はアニメーション停止中を示す。
+---@field package AUTO_PLAY ExSkill.AutoPlayMode アバター読み込み時に自動的にExスキルが再生される。デバッグ用。
 ---@field public frameParticleAmount integer Exスキルフレームのパーティクルの量：1. 標準, 2. 少なめ, 3. なし, 4. Exスキルフレーム非表示、パーティクル量は標準
+---@field package exSkillIndex integer 現在再生中のExスキルのインデックス番号
+---@field public animationCount integer Exスキルのアニメーション再生中に増加するカウンター。-1はアニメーション停止中を示す。
+---@field package animationLength number Exスキルのアニメーションの長さ。スクリプトで自動で代入する。
+---@field package transitionCount number Exスキルのアニメーション前後のカメラのトランジションの進捗を示すカウンター
+---@field package keyPressCount integer Exスキルキーを押下し続ける時間を計るカウンター
+---@field package bodyYaw number[] プレイヤーの体の回転
+---@field package isDebugInit boolean デバッグモードが初期化されたかどうか
+---@field public canPlayAnimation fun(self: ExSkill): boolean アニメーションが再生可能かどうかを返す
+---@field package transition fun(self: ExSkill, direction: ExSkill.TransitionPhase, callback: fun()) Exスキルのアニメーションの前後のカメラのトランジションを行う関数
+---@field public play fun(self: ExSkill, isSubExSkill: boolean) アニメーションを再生する
+---@field public stop fun(self: ExSkill) アニメーションを停止する
+---@field public forceStop fun(self: ExSkill) アニメーションを停止する。終了時のトランジションも無効。
 
 ExSkill = {
     ---コンストラクタ
@@ -10,83 +31,112 @@ ExSkill = {
         ---@type ExSkill
         local instance = Avatar.instantiate(ExSkill, AvatarModule, parent)
 
-        instance.animationCount = -1
+        instance.AUTO_PLAY = "NONE"
         instance.frameParticleAmount = instance.parent.config:loadConfig("exSkillFrameParticleAmount", 1)
+        instance.exSkillIndex = 1
+        instance.animationCount = -1
+        instance.animationLength = 0
+        instance.transitionCount = 0
+        instance.keyPressCount = 0
+        instance.bodyYaw = {}
+        instance.isDebugInit = false
 
         return instance
     end;
-}
 
----@alias ExSkill.TransitionPhase
----| "PRE"
----| "POST"
+    ---初期化関数
+    ---@param self ExSkill
+    init = function (self)
+        AvatarModule.init(self)
 
----Exスキルの自動再生モード
----@alias ExSkill.AutoPlayMode
----| "NONE" 自動再生なし
----| "MAIN" メインExスキル
----| "SUB" サブExスキル
+        if host:isHost() then
+            for _, exSkill in ipairs(self.parent.characterData.exSkill) do
+                exSkill.camera.start.pos:mul(-1, 1, 1):scale(1 / 16 * 0.9375)
+                exSkill.camera.fin.pos:mul(-1, 1, 1):scale(1 / 16 *  0.9375)
+            end
 
---[[
----@class ExSkill Exスキルのアニメーションを管理するクラス
-ExSkill = {
-    ---アバター読み込み時に自動的にExスキルが再生される。デバッグ用。
-    ---@type ExSkill.AutoPlayMode
-    AUTO_PLAY = "NONE",
+            local exSkillKey = self.parent.keyManager:register("ex_skill", self.parent.config:loadConfig("keybind.ex_skill", "key.keyboard.g"))
+            exSkillKey:setOnPress(function ()
+                while events.TICK:getRegisteredCount("ex_skill_keypress_tick") > 0 do
+                    events.TICK:remove("ex_skill_keypress_tick")
+                end
+                events.TICK:register(function ()
+                    if self.keyPressCount == 30 then
+                        events.TICK:remove("ex_skill_keypress_tick")
+                        --pings.ex_skill_removeAll() TODO: 設置物のremoveAll()をする。
+                        sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.zombie.break_wooden_door"), player:getPos(), 0.25, 2)
+                        self.keyPressCount = 0
+                        return
+                    end
+                    self.keyPressCount = self.keyPressCount + 1
+                end, "ex_skill_keypress_tick")
+            end)
+            exSkillKey:setOnRelease(function ()
+                events.TICK:remove("ex_skill_keypress_tick")
+                if self.keyPressCount > 0 then
+                    if self:canPlayAnimation() and self.animationCount == -1 and self.transitionCount == 0 then
+                        pings.exSkill()
+                    else
+                        print(self.parent.locale:getLocale("key_bind.ex_skill.unavailable"..(renderer:isFirstPerson() and "_firstperson" or "")))
+                        sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.note_block.bass"), player:getPos(), 1, 0.5)
+                    end
+                    self.keyPressCount = 0
+                end
+            end)
+            self.parent.keyManager:register("ex_skill_sub", self.parent.config:loadConfig("keybind.ex_skill_sub", "key.keyboard.h")):setOnPress(function ()
+                if self:canPlayAnimation() and self.animationCount == -1 and self.transitionCount == 0 and self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill ~= nil then
+                    pings.subExSkill()
+                else
+                    print(self.parent.locale:getLocale(self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill == nil and "action_wheel.main.action_6.unavailable" or "key_bind.ex_skill.unavailable"..(renderer:isFirstPerson() and "_firstperson" or "")))
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.note_block.bass"), player:getPos(), 1, 0.5)
+                end
+            end)
+        end
 
-    ---現在再生中のExスキルのインデックス番号
-    ---@type integer
-    ExSkillIndex = 1,
+        table.insert(self.bodyYaw, player:getBodyYaw() % 360)
 
-    ---Exスキルのアニメーション再生中に増加するカウンター。-1はアニメーション停止中を示す。
-    ---@type integer
-    AnimationCount = -1,
+        events.TICK:register(function ()
+            if not renderer:isFirstPerson() then
+                table.insert(self.bodyYaw, player:getBodyYaw() % 360)
+                if #self.bodyYaw == 3 then
+                    table.remove(self.bodyYaw, 1)
+                end
+            end
+        end)
 
-    ---Exスキルのアニメーションの長さ。スクリプトで自動で代入する。
-    ---@type number
-    AnimationLength = 0,
-
-    ---Exスキルのアニメーション前後のカメラのトランジションの進捗を示すカウンター
-    ---@type number
-    TransitionCount = 0,
-
-    ---Exスキルキーを押下し続ける時間を計るカウンター
-    ---@type integer
-    KeyPressCount = 0,
-
-    ---プレイヤーの体の回転
-    ---@type number[]
-    BodyYaw = {},
-
-    ---Exスキルフレームのパーティクルの量
-    --- 1. 標準
-    --- 2. 少なめ
-    --- 3. なし
-    --- 4. Exスキルフレーム非表示、パーティクル量は標準
-    ---@type number
-    FrameParticleAmount = Config.loadConfig("ex_skill_frame_particle_amount", 1),
+        if self.AUTO_PLAY ~= "NONE" then
+            events.TICK:register(function ()
+                if not self.isDebugInit then
+                    events.TICK:remove("ex_skill_debug_tick")
+                    self:play(self.AUTO_PLAY == "SUB")
+                    self.isDebugInit = true
+                end
+            end, "ex_skill_debug_tick")
+        end
+    end;
 
     ---アニメーションが再生可能かどうかを返す。
-    ---@return boolean animationPlayable Exスキルアニメーションが再生可能かどうか
+    ---@param self ExSkill
+    ---@return boolean canPlayAnimation Exスキルアニメーションが再生可能かどうか
     canPlayAnimation = function (self)
-        return player:getPose() == "STANDING" and player:getVelocity():length() < 0.01 and self.BodyYaw[1] == self.BodyYaw[2] and player:isOnGround() and not player:isInWater() and not player:isInLava() and not renderer:isFirstPerson() and PlayerUtils:getDamageStatus() == "NONE" and player:getSwingArm() == nil and player:getActiveItem().id == "minecraft:air"
-    end,
+        return player:getPose() == "STANDING" and player:getVelocity():length() < 0.01 and self.bodyYaw[1] == self.bodyYaw[2] and player:isOnGround() and not player:isInWater() and not player:isInLava() and not renderer:isFirstPerson() and self.parent.playerUtils.damageStatus == "NONE" and player:getSwingArm() == nil and player:getActiveItem().id == "minecraft:air"
+    end;
 
     ---Exスキルのアニメーションの前後のカメラのトランジションを行う関数
     ---@param self ExSkill
     ---@param direction ExSkill.TransitionPhase カメラのトランジションの向き
-    ---@param callback function トランジション終了時に呼び出されるコールバック関数
+    ---@param callback fun() トランジション終了時に呼び出されるコールバック関数
     transition = function (self, direction, callback)
         events.TICK:register(function ()
             if not client:isPaused() then
                 if events.TICK:getRegisteredCount("ex_skill_transition_tick") == 1 then
-                    self.TransitionCount = direction == "PRE" and math.min(self.TransitionCount + 1, 10) or math.max(self.TransitionCount - 1, 0)
+                    self.transitionCount = direction == "PRE" and math.min(self.transitionCount + 1, 10) or math.max(self.transitionCount - 1, 0)
                 end
-                if (direction == "PRE" and self.TransitionCount == 10) or (direction == "POST" and self.TransitionCount == 0) then
+                if (direction == "PRE" and self.transitionCount == 10) or (direction == "POST" and self.transitionCount == 0) then
                     if host:isHost() then
                         local windowSize = client:getScaledWindowSize()
                         models.models.ex_skill_frame.Gui.FrameBar:setPos(0, 0, 0)
-                        if direction == "PRE" and self.FrameParticleAmount < 4 then
+                        if direction == "PRE" and self.frameParticleAmount < 4 then
                             for _, modelPart in ipairs({models.models.ex_skill_frame.Gui.Frame.FrameTopLeft, models.models.ex_skill_frame.Gui.Frame.FrameTopRight, models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft, models.models.ex_skill_frame.Gui.Frame.FrameBottomRight}) do
                                 modelPart:setVisible(true)
                             end
@@ -114,15 +164,16 @@ ExSkill = {
                 if host:isHost() then
                     local barPos = models.models.ex_skill_frame.Gui.FrameBar:getPos().x * -1
                     local windowSizeY = client:getScaledWindowSize().y
-                    if self.FrameParticleAmount ~= 3 and self.TransitionCount >= 1 and self.TransitionCount <= 9 then
-                        for _ = 1, windowSizeY / (self.FrameParticleAmount == 2 and 100 or 20) do
+                    if self.frameParticleAmount ~= 3 and self.transitionCount >= 1 and self.transitionCount <= 9 then
+                        for _ = 1, windowSizeY / (self.frameParticleAmount == 2 and 100 or 20) do
                             local particleOffset = math.random() * windowSizeY
-                            FrameParticleManager:spawn(vectors.vec2(barPos - particleOffset - math.random() * 50, particleOffset), vectors.vec2(500, 0))
+                            --FrameParticleManager:spawn(vectors.vec2(barPos - particleOffset - math.random() * 50, particleOffset), vectors.vec2(500, 0)) --TODO: 後でパーティクルを
                         end
                     end
                 end
             end
         end, "ex_skill_transition_tick")
+
         events.RENDER:register(function (delta)
             --カメラのトランジション
             if not client:isPaused() and host:isHost() then
@@ -131,11 +182,11 @@ ExSkill = {
                 local targetCameraPos = vectors.vec3()
                 local targetCameraRot = vectors.vec3()
                 if direction == "PRE" then
-                    targetCameraPos = vectors.rotateAroundAxis(self.BodyYaw[2] * -1 + 180, BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].camera.start.pos, 0, 1):add(0, -1.62)
-                    targetCameraRot = BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].camera.start.rot:copy():add(0, self.BodyYaw[2], 0)
+                    targetCameraPos = vectors.rotateAroundAxis(self.bodyYaw[2] * -1 + 180, self.parent.characterData.exSkill[self.exSkillIndex].camera.start.pos, 0, 1):add(0, -1.62)
+                    targetCameraRot = self.parent.characterData.exSkill[self.exSkillIndex].camera.start.rot:copy():add(0, self.bodyYaw[2], 0)
                 else
-                    targetCameraPos = vectors.rotateAroundAxis(self.BodyYaw[2] * -1 + 180, BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].camera.fin.pos, 0, 1):add(0, -1.62)
-                    targetCameraRot = BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].camera.fin.rot:copy():add(0, self.BodyYaw[2], 0)
+                    targetCameraPos = vectors.rotateAroundAxis(self.bodyYaw[2] * -1 + 180, self.parent.characterData.exSkill[self.exSkillIndex].camera.fin.pos, 0, 1):add(0, -1.62)
+                    targetCameraRot = self.parent.characterData.exSkill[self.exSkillIndex].camera.fin.rot:copy():add(0, self.bodyYaw[2], 0)
                 end
                 if math.abs(cameraRot.y - targetCameraRot.y) >= 180 then
                     if cameraRot.y < targetCameraRot.y then
@@ -145,16 +196,16 @@ ExSkill = {
                     end
                 end
                 local trueDelta = direction == "PRE" and delta or delta * -1
-                CameraManager.setCameraPivot(targetCameraPos:scale((self.TransitionCount + trueDelta) / 10))
-                CameraManager.setCameraRot(targetCameraRot:copy():sub(cameraRot):scale((self.TransitionCount + trueDelta) / 10):add(cameraRot))
-                CameraManager:setThirdPersonCameraDistance(4 - (self.TransitionCount + trueDelta) / 10 * 4)
+                self.parent.cameraManager.setCameraPivot(targetCameraPos:scale((self.transitionCount + trueDelta) / 10))
+                self.parent.cameraManager.setCameraRot(targetCameraRot:copy():sub(cameraRot):scale((self.transitionCount + trueDelta) / 10):add(cameraRot))
+                self.parent.cameraManager:setThirdPersonCameraDistance(4 - (self.transitionCount + trueDelta) / 10 * 4)
 
                 --フレーム演出
                 local windowSize = client:getScaledWindowSize()
-                local barPos = (windowSize.x + windowSize.y + math.sqrt(2) * 16) * (direction == "PRE" and (self.TransitionCount + trueDelta) / 10 or (1 - (self.TransitionCount + trueDelta) / 10))
+                local barPos = (windowSize.x + windowSize.y + math.sqrt(2) * 16) * (direction == "PRE" and (self.transitionCount + trueDelta) / 10 or (1 - (self.transitionCount + trueDelta) / 10))
                 models.models.ex_skill_frame.Gui.FrameBar:setPos(-barPos, 0, 0)
 
-                if self.FrameParticleAmount < 4 then
+                if self.frameParticleAmount < 4 then
                     local frameTopLength = math.clamp(barPos, 32, windowSize.x)
                     local frameLeftLength = math.clamp(barPos, 32, windowSize.y)
                     local frameBottomLength = math.clamp(barPos - windowSize.y + 16, 32, windowSize.x)
@@ -194,145 +245,155 @@ ExSkill = {
                 end
             end
         end, "ex_skill_transition_render")
-    end,
+    end;
 
     ---アニメーションを再生する。
     ---@param self ExSkill
     ---@param isSubExSkill boolean サブExスキルを再生するかどうか
     play = function (self, isSubExSkill)
         if isSubExSkill then
-            if BlueArchiveCharacter.COSTUME.costumes[Costume.CurrentCostume].subExSkill ~= nil then
-                self.ExSkillIndex = BlueArchiveCharacter.COSTUME.costumes[Costume.CurrentCostume].subExSkill
+            if self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill ~= nil then
+                self.exSkillIndex = self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill
             else
                 return
             end
         else
-            self.ExSkillIndex = BlueArchiveCharacter.COSTUME.costumes[Costume.CurrentCostume].exSkill
+            self.exSkillIndex = self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].exSkill
         end
-        Bubble:stop()
+
+        self.parent.bubble:stop()
         renderer:setFOV(70 / client:getFOV())
         renderer:setRenderHUD(false)
-        CameraManager:setCameraCollisionDenial(true)
-        models.models.ex_skill_frame.Gui:setColor(BlueArchiveCharacter.COSTUME.costumes[Costume.CurrentCostume].formationType == "STRIKER" and vectors.vec3(1, 0.75, 0.75) or vectors.vec3(0.75, 1, 1))
-        sounds:playSound(CompatibilityUtils:checkSound("minecraft:entity.player.levelup"), player:getPos(), 5, 2)
-        if BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.preTransition ~= nil then
-            BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.preTransition()
+        self.parent.cameraManager:setCameraCollisionDenial(true)
+        models.models.ex_skill_frame.Gui:setColor(self.parent.characterData.exSkill[self.exSkillIndex].formationType == "STRIKER" and vectors.vec3(1, 0.75, 0.75) or vectors.vec3(0.75, 1, 1))
+        sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.player.levelup"), player:getPos(), 5, 2)
+        if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreTransition ~= nil then
+            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreTransition()
         end
         models.models.ex_skill_frame.Gui.FrameBar:setScale(1, client:getScaledWindowSize().y * math.sqrt(2) / 16 + 1, 1)
+
         events.TICK:register(function ()
             if not self:canPlayAnimation() then
                 self:forceStop()
             end
         end, "ex_skill_tick")
+
         self:transition("PRE", function ()
-            Physics.disable()
+            self.parent.physics:disable()
             for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
                 itemModel:setVisible(false)
             end
-            for _, modelPart in ipairs(BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].models) do
+            for _, modelPart in ipairs(self.parent.characterData.exSkill[self.exSkillIndex].models) do
                 modelPart:setVisible(true)
             end
-            for _, modelPart in ipairs(BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].animations) do
-                animations["models."..modelPart]["ex_skill_"..self.ExSkillIndex]:play()
+            for _, modelPart in ipairs(self.parent.characterData.exSkill[self.exSkillIndex].animations) do
+                animations["models."..modelPart]["ex_skill_"..self.exSkillIndex]:play()
             end
-            if BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.preAnimation ~= nil then
-                BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.preAnimation()
+            if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreAnimation ~= nil then
+                self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreAnimation()
             end
-            CameraManager:setThirdPersonCameraDistance(0)
+            self.parent.cameraManager:setThirdPersonCameraDistance(0)
+
             events.TICK:register(function ()
                 if not client:isPaused() then
-                    if self.AnimationCount == self.AnimationLength - 1 then
+                    if self.animationCount == self.animationLength - 1 then
                         self:stop()
-                    elseif self:canPlayAnimation() and animations["models.main"]["ex_skill_"..self.ExSkillIndex]:isPlaying() then
-                        if BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.animationTick ~= nil then
-                            BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.animationTick(self.AnimationCount)
+                    elseif self:canPlayAnimation() and animations["models.main"]["ex_skill_"..self.exSkillIndex]:isPlaying() then
+                        if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onAnimationTick ~= nil then
+                            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onAnimationTick(self.animationCount)
                         end
-                        self.AnimationCount = self.AnimationCount > -1 and self.AnimationCount + 1 or self.AnimationCount
+                        self.animationCount = self.animationCount > -1 and self.animationCount + 1 or self.animationCount
                     end
+
                     if host:isHost() then
                         local windowSize = client:getScaledWindowSize()
                         local windowCenter = windowSize:copy():scale(0.5)
-                        if self.FrameParticleAmount < 3 then
-                            for _ = 1, (windowSize.x * 2 + windowSize.y * 2) / (self.FrameParticleAmount == 1 and 100 or 500) do
+                        if self.frameParticleAmount < 3 then
+                            for _ = 1, (windowSize.x * 2 + windowSize.y * 2) / (self.frameParticleAmount == 1 and 100 or 500) do
                                 local particlePos = vectors.vec2(math.random() * (windowSize.x * 2 + windowSize.y * 2), math.random() * 16)
                                 particlePos = particlePos.x <= windowSize.x and particlePos or (particlePos.x <= windowSize.x + windowSize.y and vectors.vec2(windowSize.x - particlePos.y, particlePos.x - windowSize.x) or (particlePos.x <= windowSize.x * 2 + windowSize.y and vectors.vec2(particlePos.x - (windowSize.x + windowSize.y), windowSize.y - particlePos.y) or vectors.vec2(particlePos.y, particlePos.x - (windowSize.x * 2 + windowSize.y))))
-                                FrameParticleManager:spawn(particlePos, windowCenter:copy():sub(particlePos):scale(0.25))
+                                --FrameParticleManager:spawn(particlePos, windowCenter:copy():sub(particlePos):scale(0.25)) --TODO: 後でパーティクルを
                             end
                         end
                     end
                 end
             end, "ex_skill_animation_tick")
+
             if host:isHost() then
                 events.RENDER:register(function ()
                     if not client:isPaused() then
-                        CameraManager.setCameraPivot(vectors.rotateAroundAxis(self.BodyYaw[2] * -1 + 180, models.models.main.CameraAnchor:getAnimPos():scale(1 / 16 * 0.9375), 0, 1, 0):add(0, -1.62, 0))
-                        CameraManager.setCameraRot(models.models.main.CameraAnchor:getAnimRot():scale(-1):add(0, self.BodyYaw[2], 0))
+                        self.parent.cameraManager.setCameraPivot(vectors.rotateAroundAxis(self.bodyYaw[2] * -1 + 180, models.models.main.CameraAnchor:getAnimPos():scale(1 / 16 * 0.9375), 0, 1, 0):add(0, -1.62, 0))
+                        self.parent.cameraManager.setCameraRot(models.models.main.CameraAnchor:getAnimRot():scale(-1):add(0, self.bodyYaw[2], 0))
                     end
                 end, "ex_skill_animation_render")
             end
-            self.AnimationCount = 0
-            Gun:processGunTick()
-            self.AnimationLength = math.round(animations["models.main"]["ex_skill_"..self.ExSkillIndex]:getLength() * 20)
+            self.animationCount = 0
+            self.parent.gun:processGunTick()
+            self.animationLength = math.round(animations["models.main"]["ex_skill_"..self.exSkillIndex]:getLength() * 20)
         end)
-    end,
+    end;
 
     ---アニメーションを停止する。
+    ---@param self ExSkill
     stop = function (self)
-        if host:isHost() then
-            sounds:playSound(CompatibilityUtils:checkSound("minecraft:entity.player.levelup"), player:getPos(), 5, 2):setAttenuation(100)
-        end
-        for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
-            itemModel:setVisible(true)
-        end
-        for _, modelPart in ipairs(BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].models) do
-            modelPart:setVisible(false)
-        end
-        for _, modelPart in ipairs(BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].animations) do
-            animations["models."..modelPart]["ex_skill_"..self.ExSkillIndex]:stop()
-        end
-        if BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.postAnimation ~= nil then
-            BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.postAnimation(false)
-        end
         events.TICK:remove("ex_skill_animation_tick")
         if host:isHost() then
             events.RENDER:remove("ex_skill_animation_render")
+            sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.player.levelup"), player:getPos(), 5, 2):setAttenuation(100)
         end
-        self.AnimationCount = -1
-        Physics:enable()
-        renderer:setFOV()
-        self:transition("POST", function ()
-            if BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.postTransition ~= nil then
-                BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.postTransition(false)
-            end
-            CameraManager.setCameraPivot()
-            CameraManager.setCameraRot()
-            CameraManager:setThirdPersonCameraDistance(4)
-            CameraManager:setCameraCollisionDenial(false)
-            renderer:setRenderHUD(true)
-            events.TICK:remove("ex_skill_tick")
-        end)
-    end,
 
-    ---アニメーションを停止させる。終了時のトランジションも無効
-    forceStop = function (self)
         for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
             itemModel:setVisible(true)
         end
-        for _, modelPart in ipairs(BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].models) do
+        for _, modelPart in ipairs(self.parent.characterData.exSkill[self.exSkillIndex].models) do
             modelPart:setVisible(false)
         end
-        for _, modelPart in ipairs(BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].animations) do
-            animations["models."..modelPart]["ex_skill_"..self.ExSkillIndex]:stop()
+        for _, modelPart in ipairs(self.parent.characterData.exSkill[self.exSkillIndex].animations) do
+            animations["models."..modelPart]["ex_skill_"..self.exSkillIndex]:stop()
         end
-        for _, eventName in ipairs({"ex_skill_tick", "ex_skill_animation_tick"}) do
-            events.TICK:remove(eventName)
+        self.parent.physics:enable()
+        renderer:setFOV()
+        self.animationCount = -1
+
+        if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation ~= nil then
+            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation(false)
         end
+        self:transition("POST", function ()
+            events.TICK:remove("ex_skill_tick")
+            self.parent.cameraManager.setCameraPivot()
+            self.parent.cameraManager.setCameraRot()
+            self.parent.cameraManager:setThirdPersonCameraDistance(4)
+            self.parent.cameraManager:setCameraCollisionDenial(false)
+            renderer:setRenderHUD(true)
+
+            if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition ~= nil then
+                self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition(false)
+            end
+        end)
+    end;
+
+    ---アニメーションを停止する。終了時のトランジションも無効。
+    ---@param self ExSkill
+    forceStop = function (self)
         events.RENDER:remove("ex_skill_transition_render")
         if host:isHost() then
             events.TICK:remove("ex_skill_transition_tick")
             events.RENDER:remove("ex_skill_animation_render")
         end
-        Physics:enable()
+
+        for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
+            itemModel:setVisible(true)
+        end
+        for _, modelPart in ipairs(self.parent.characterData.exSkill[self.exSkillIndex].models) do
+            modelPart:setVisible(false)
+        end
+        for _, modelPart in ipairs(self.parent.characterData.exSkill[self.exSkillIndex].animations) do
+            animations["models."..modelPart]["ex_skill_"..self.exSkillIndex]:stop()
+        end
+        for _, eventName in ipairs({"ex_skill_tick", "ex_skill_animation_tick"}) do
+            events.TICK:remove(eventName)
+        end
+        self.parent.physics:enable()
         models.models.ex_skill_frame.Gui.FrameBar:setPos()
         for _, modelPart in ipairs({models.models.ex_skill_frame.Gui.Frame.FrameTopLeft, models.models.ex_skill_frame.Gui.Frame.FrameTopRight, models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft, models.models.ex_skill_frame.Gui.Frame.FrameBottomRight}) do
             modelPart:setVisible(false)
@@ -340,97 +401,31 @@ ExSkill = {
         for _, modelPart in ipairs({models.models.ex_skill_frame.Gui.Frame.FrameTop, models.models.ex_skill_frame.Gui.Frame.FrameLeft, models.models.ex_skill_frame.Gui.Frame.FrameBottom, models.models.ex_skill_frame.Gui.Frame.FrameRight}) do
             modelPart:setScale(0, 0, 0)
         end
-        if self.AnimationCount >= 0 and BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.postAnimation ~= nil then
-            BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.postAnimation(true)
-        end
-        if BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.postTransition ~= nil then
-            BlueArchiveCharacter.EX_SKILL[self.ExSkillIndex].callbacks.postTransition(true)
-        end
-        FaceParts:resetEmotion()
-        CameraManager.setCameraPivot()
-        CameraManager.setCameraRot()
-        CameraManager:setThirdPersonCameraDistance(4)
-        CameraManager:setCameraCollisionDenial(false)
+        self.parent.faceParts:resetEmotion()
+        self.parent.cameraManager.setCameraPivot()
+        self.parent.cameraManager.setCameraRot()
+        self.parent.cameraManager:setThirdPersonCameraDistance(4)
+        self.parent.cameraManager:setCameraCollisionDenial(false)
         renderer:setRenderHUD(true)
         renderer:setFOV()
-        self.AnimationCount = -1
-        self.TransitionCount = 0
-    end,
+        self.animationCount = -1
+        self.transitionCount = 0
 
-    ---Exスキルスクリプトの初期化関数
-    ---@param self ExSkill
-    init = function (self)
-        for _, exSkill in ipairs(BlueArchiveCharacter.EX_SKILL) do
-            exSkill.camera.start.pos:mul(-1, 1, 1):scale(1 / 16 * 0.9375)
-            exSkill.camera.fin.pos:mul(-1, 1, 1):scale(1 / 16 *  0.9375)
+        if self.animationCount >= 0 and self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation ~= nil then
+            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation(true)
         end
-        if host:isHost() then
-            KeyManager:register("ex_skill", Config.loadConfig("keybind.ex_skill", "key.keyboard.g"), function ()
-                while events.TICK:getRegisteredCount("ex_skill_keypress_tick") > 0 do
-                    events.TICK:remove("ex_skill_keypress_tick")
-                end
-                events.TICK:register(function ()
-                    if self.KeyPressCount == 30 then
-                        events.TICK:remove("ex_skill_keypress_tick")
-                        pings.ex_skill_removeAll()
-                        sounds:playSound(CompatibilityUtils:checkSound("minecraft:entity.zombie.break_wooden_door"), player:getPos(), 0.25, 2)
-                        self.KeyPressCount = 0
-                        return
-                    end
-                    self.KeyPressCount = self.KeyPressCount + 1
-                end, "ex_skill_keypress_tick")
-            end)
-            KeyManager.KeyMappings["ex_skill"]:onRelease(function ()
-                events.TICK:remove("ex_skill_keypress_tick")
-                if self.KeyPressCount > 0 then
-                    if ExSkill:canPlayAnimation() and ExSkill.AnimationCount == -1 and ExSkill.TransitionCount == 0 then
-                        pings.ex_skill()
-                    else
-                        print(Language:getTranslate("key_bind__ex_skill__unavailable"..(renderer:isFirstPerson() and "_firstperson" or "")))
-                        sounds:playSound(CompatibilityUtils:checkSound("minecraft:block.note_block.bass"), player:getPos(), 1, 0.5)
-                    end
-                    self.KeyPressCount = 0
-                end
-            end)
-            KeyManager:register("ex_skill_sub", Config.loadConfig("keybind.ex_skill_sub", "key.keyboard.h"), function ()
-                if ExSkill:canPlayAnimation() and ExSkill.AnimationCount == -1 and ExSkill.TransitionCount == 0 and BlueArchiveCharacter.COSTUME.costumes[Costume.CurrentCostume].subExSkill ~= nil then
-                    pings.ex_skill_sub()
-                else
-                    print(Language:getTranslate(BlueArchiveCharacter.COSTUME.costumes[Costume.CurrentCostume].subExSkill == nil and "action_wheel__main__action_6__unavailable" or "key_bind__ex_skill__unavailable"..(renderer:isFirstPerson() and "_firstperson" or "")))
-                    sounds:playSound(CompatibilityUtils:checkSound("minecraft:block.note_block.bass"), player:getPos(), 1, 0.5)
-                end
-            end)
+        if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition ~= nil then
+            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition(true)
         end
-        if self.AUTO_PLAY ~= "NONE" then
-            local init = true
-            events.TICK:register(function ()
-                if init then
-                    self:play(self.AUTO_PLAY == "SUB")
-                    init = false
-                end
-            end)
-        end
-        table.insert(self.BodyYaw, player:getBodyYaw() % 360)
-        events.TICK:register(function ()
-            if not renderer:isFirstPerson() then
-                table.insert(self.BodyYaw, player:getBodyYaw() % 360)
-                if #self.BodyYaw == 3 then
-                    table.remove(self.BodyYaw, 1)
-                end
-            end
-        end)
-    end
+    end;
 }
 
-function pings.ex_skill()
-    ExSkill:play(false)
+---Exスキルを再生する。
+function pings.exSkill()
+    AvatarInstance.exSkill:play(false)
 end
 
-function pings.ex_skill_sub()
-    ExSkill:play(true)
+---サブExスキルを再生する。
+function pings.subExSkill()
+    AvatarInstance.exSkill:play(true)
 end
-
-function pings.ex_skill_removeAll()
-    PlacementObjectManager:removeAll()
-end
-]]

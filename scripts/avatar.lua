@@ -49,6 +49,7 @@ end)
 ---@field public headBlock HeadBlock
 ---@field public locale Locale
 ---@field public config Config
+---@field public cameraManager CameraManager
 ---@field public keyManager KeyManager
 ---@field public vanillaModel VanillaModel
 ---@field public arms Arms
@@ -63,6 +64,7 @@ end)
 ---@field public costume Costume
 ---@field public actionWheel ActionWheel
 ---@field public actionWheelGui ActionWheelGui
+---@field public bubble Bubble
 ---@field public deathAnimation DeathAnimation
 ---@field public instantiate fun(class: table, super: table, ...: any) クラスをインスタンス化する
 
@@ -113,6 +115,10 @@ Avatar = {
 			require("scripts.avatar_modules.config")
 			instance.config = Config.new(instance)
 			instance.config:init()
+
+			require("scripts.avatar_modules.camera_manager")
+			instance.cameraManager = CameraManager.new(instance)
+			instance.cameraManager:init()
 
 			require("scripts.avatar_modules.key_manager")
 			instance.keyManager = KeyManager.new(instance)
@@ -169,6 +175,10 @@ Avatar = {
 			require("scripts.avatar_modules.action_wheel.action_wheel_gui")
 			instance.actionWheelGui = ActionWheelGui.new(instance)
 			instance.actionWheelGui:init()
+
+			require("scripts.avatar_modules.bubble")
+			instance.bubble = Bubble.new(instance)
+			instance.bubble:init()
 
 			require("scripts.avatar_modules.death_animation")
 			instance.deathAnimation = DeathAnimation.new(instance)

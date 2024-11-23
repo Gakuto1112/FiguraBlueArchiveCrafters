@@ -9,6 +9,28 @@
 ---| "DOTS" …
 ---| "V" ✌
 
+---@class (exact) Bubble : AvatarModule 吹き出しエモートを管理するクラス
+---@field public stop fun(self: Bubble) 吹き出しエモートを停止する
+
+Bubble = {
+    ---コンストラクタ
+    ---@param parent Avatar アバターのメインクラスへの参照
+    ---@return Bubble
+    new = function (parent)
+        ---@type Bubble
+        local instance = Avatar.instantiate(Bubble, AvatarModule, parent)
+
+        return instance
+    end;
+
+    ---吹き出しエモートを停止する。
+    ---@param self Bubble
+    stop = function (self)
+    end;
+}
+
+
+--[[
 ---@class Bubble 吹き出しエモートを管理するクラス
 Bubble = {
     ---吹き出しの表示時間を測るカウンター
@@ -239,3 +261,4 @@ events.TICK:register(function ()
 end)
 
 return Bubble
+]]
