@@ -64,7 +64,7 @@ Costume = {
 	setCostume = function(self, costume)
 		self:resetCostume()
 		if self.parent.characterData.costume.callbacks ~= nil and self.parent.characterData.costume.callbacks.onChange ~= nil then
-			self.parent.characterData.costume.callbacks.onChange(costume)
+			self.parent.characterData.costume.callbacks.onChange(self.parent.characterData.costume.costumes[costume].name:upper())
 		end
 		self.parent.headBlock:generateHeadModel()
 		self.parent.portrait:generateHeadModel()

@@ -13,20 +13,20 @@
 ---@alias BlueArchiveCharacter.MouthTextures
 ---| "NORMAL" # 通常
 
----銃の構え方
 ---@alias BlueArchiveCharacter.GunHoldType
 ---| "NORMAL" # バニラの弓やクロスボウの構え方と同じ
 ---| "CUSTOM" # BBアニメーション"[models.main][gun_hold_right]"と"[models.main][gun_hold_left]"で構え方を定義する
 
----銃を持っていない場合の銃のモデルの扱い
 ---@alias BlueArchiveCharacter.GunPutType
 ---| "BODY" # アバターのBodyに銃を移動させる
 ---| "HIDDEN" # 銃を隠す
 
----生徒の配置タイプ
 ---@alias BlueArchiveCharacter.FormationType
 ---| "STRIKER" # ストライカー（前衛）
 ---| "SPECIAL" # スペシャル（後方支援）
+
+---@alias BlueArchiveCharacter.Costumes
+---| "DEFAULT" # デフォルト衣装
 
 --[[ ******************************** ]]
 
@@ -182,7 +182,7 @@
 ---@field public subExSkill? integer コスチュームに対応するサブExスキルのインデックス番号
 
 ---@class (exact) BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数のセット
----@field public onChange? fun(costumeId: integer) 衣装が変更されたときに実行されるコールバック関数。デフォルトの衣装はここに含めない。
+---@field public onChange? fun(costumeId: BlueArchiveCharacter.Costumes) 衣装が変更されたときに実行されるコールバック関数。デフォルトの衣装はここに含めない。
 ---@field public onReset? fun() 衣装がリセットされたときに実行されるコールバック関数。あらゆる衣装からデフォルトの衣装へ推移できるようにする。
 ---@field public onArmorChange? fun(parts: Armor.ArmorPart, isVisible: boolean) 防具が変更された（防具が見える/見えない）ときに実行されるコールバック関数
 
@@ -292,55 +292,16 @@ BlueArchiveCharacter = {
             };
 
             mouth = {
-            };
 
-            --[[
-            emotionSet = {
-                ---ダメージを受けたとき
-                onDamage = {
-                    rightEye = "SURPRISED";
-                    leftEye = "SURPRISED";
-                    mouth = "NORMAL";
-                };
-
-                ---ベッドで寝ているとき
-                onSleep = {
-                    rightEye = "CLOSED";
-                    leftEye = "CLOSED";
-                    mouth = "NORMAL";
-                };
             };
-            ]]
         }
 
         instance.arms = {
-            --[[
-            callbacks = {
-                ---腕の状態が変更された際のコールバック関数
-                ---@param right integer 新しい右腕の状態
-                ---@param left integer 新しい左腕の状態
-                ---@return {right?: integer, left?: integer}|nil overriddenArmState 返した値で腕の状態を上書きできる。
-                onArmStateChanged = function (right, left)
-                end;
 
-                ---右腕の追加処理
-                ---@param state integer 新しい右腕の状態
-                onAdditionalRightArmProcess = function (state)
-
-                end;
-
-                ---左腕の追加処理
-                ---@param state integer 新しい左腕の状態
-                onAdditionalLeftArmProcess = function (state)
-                end;
-            };
-            ]]
         }
 
         instance.skirt = {
-            --[[
-            skirtModels = {};
-            ]]
+
         }
 
         instance.gun = {
@@ -349,34 +310,6 @@ BlueArchiveCharacter = {
             gunPosition = {
                 hold = {
                     type = "NORMAL";
-
-                    --[[
-                    firstPersonPos = {
-                        right = vectors.vec3();
-                        left = vectors.vec3();
-                    };
-                    ]]
-
-                    --[[
-                    firstPersonRot = {
-                        right = vectors.vec3();
-                        left = vectors.vec3();
-                    };
-                    ]]
-
-                    --[[
-                    thirdPersonPos = {
-                        right = vectors.vec3();
-                        left = vectors.vec3();
-                    };
-                    ]]
-
-                    --[[
-                    thirdPersonRot = {
-                        right = vectors.vec3();
-                        left = vectors.vec3();
-                    };
-                    ]]
                 };
 
                 put = {
@@ -398,16 +331,6 @@ BlueArchiveCharacter = {
                 name = "minecraft:entity.iron_golem.hurt";
                 pitch = 2;
             };
-
-            --[[
-            callbacks = {
-                ---利き手が変更された時に呼び出される関数。
-                ---利き手に応じた銃やアクセサリーの変更に利用できる。
-                ---@param direction Gun.HandDirection 新たな利き手
-                onMainHandChange = function (direction)
-                end;
-            };
-            ]]
         }
 
         instance.placementObjects = {
@@ -446,18 +369,6 @@ BlueArchiveCharacter = {
                         pos = vectors.vec3(0, 28, -64);
                     };
                 };
-
-                callbacks = {
-                    --[[
-                    --Exスキルアニメーションを任意のティックで停止させるスニペット。デバッグ用。
-                    --"<>"内を適切な値で置換すること。
-                    if tick == <tick_int> then
-                        for _, animation in ipairs(BlueArchiveCharacter.EX_SKILL[<ex_skill_index>].animations) do
-                            animations["models."..animation]["ex_skill_<ex_skill_index>""]:pause()
-                        end
-                    end
-                    ]]
-                }
             };
         }
 
