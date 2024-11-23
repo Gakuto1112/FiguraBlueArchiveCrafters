@@ -9,8 +9,8 @@
 ---| "V" # ✌
 
 ---@class (exact) Bubble : AvatarModule 吹き出しエモートを管理するクラス
----@field package bubbleCount integer 吹き出しの表示時間を測るカウンター
----@field package emoji Bubble.BubbleType 吹き出しの絵文字
+---@field public bubbleCount integer 吹き出しの表示時間を測るカウンター
+---@field public emoji Bubble.BubbleType 吹き出しの絵文字
 ---@field package duration integer 吹き出しを表示する時間。-1は時間無制限を示す。
 ---@field package isAutoBubble boolean 吹き出しエモートが自動で出たものかどうか
 ---@field package shouldShowInHud boolean 一人称用にHUDに吹き出しを表示するかどうか

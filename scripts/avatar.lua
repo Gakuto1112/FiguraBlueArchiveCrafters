@@ -69,6 +69,7 @@ end)
 ---@field public bubble Bubble
 ---@field public barrier Barrier
 ---@field public deathAnimation DeathAnimation
+---@field public hypixelZombies HypixelZombies
 ---@field public instantiate fun(class: table, super: table, ...: any) クラスをインスタンス化する
 
 Avatar = {
@@ -203,6 +204,10 @@ Avatar = {
 			require("scripts.avatar_modules.death_animation")
 			instance.deathAnimation = DeathAnimation.new(instance)
 			instance.deathAnimation:init()
+
+			require("scripts.avatar_modules.hypixel_zombies")
+			instance.hypixelZombies = HypixelZombies.new(instance)
+			instance.hypixelZombies:init()
 		end)
 
 		return instance
