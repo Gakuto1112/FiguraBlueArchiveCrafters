@@ -195,8 +195,8 @@
 ---@field public onAfterModelCopy? fun() モデルのコピー直後に実行される関数
 
 ---@class (exact) BlueArchiveCharacter.DeathAnimationCallbacks 死亡アニメーションのコールバック関数のセット
----@field public onPhase1? fun(dummyAvatar: ModelPart, costume: integer) 死亡アニメーションが再生された直後に実行される関数
----@field public onPhase2? fun(dummyAvatar: ModelPart, costume: integer) ダミーアバターが縄ばしごにつかまった直後に実行される関数
+---@field public onPhase1? fun(dummyAvatar: ModelPart, costume: BlueArchiveCharacter.Costumes) 死亡アニメーションが再生された直後に実行される関数
+---@field public onPhase2? fun(dummyAvatar: ModelPart, costume: BlueArchiveCharacter.Costumes) ダミーアバターが縄ばしごにつかまった直後に実行される関数
 ---@field public onBeforeModelCopy? fun() モデルのコピー直前に実行される関数
 ---@field public onAfterModelCopy? fun() モデルのコピー直後に実行される関数
 

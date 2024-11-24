@@ -66,7 +66,7 @@ DeathAnimation = {
                 self.setPhase1Pose(models.script_death_animation_debug.Avatar)
                 models.script_death_animation_debug.Avatar:setPos(player:getPos():add(0, -0.75, 0):scale(16))
                 if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
-                    self.parent.characterData.deathAnimation.callbacks.onPhase1(models.script_death_animation_debug.Avatar, self.parent.costume.currentCostume)
+                    self.parent.characterData.deathAnimation.callbacks.onPhase1(models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
                 end
             end)
             keybinds:newKeybind("[DEBUG] Spawn death animation phase2 model", "key.keyboard.c"):onPress(function ()
@@ -76,10 +76,10 @@ DeathAnimation = {
                 self.setPhase2Pose(models.script_death_animation_debug.Avatar)
                 models.script_death_animation_debug.Avatar:setPos(player:getPos():scale(16))
                 if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
-                    self.parent.characterData.deathAnimation.callbacks.onPhase1(models.script_death_animation_debug.Avatar, self.parent.costume.currentCostume)
+                    self.parent.characterData.deathAnimation.callbacks.onPhase1(models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
                 end
                 if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase2 ~= nil then
-                    self.parent.characterData.deathAnimation.callbacks.onPhase2(models.script_death_animation_debug.Avatar, self.parent.costume.currentCostume)
+                    self.parent.characterData.deathAnimation.callbacks.onPhase2(models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
                 end
             end)
         end
