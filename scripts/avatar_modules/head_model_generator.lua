@@ -40,7 +40,7 @@ HeadModelGenerator = {
 
         self.parent.physics:disable()
         if self.processData.callbacks ~= nil and self.processData.callbacks.onBeforeModelCopy ~= nil then
-            self.processData.callbacks.onBeforeModelCopy()
+            self.processData.callbacks.onBeforeModelCopy(self.parent.characterData)
         end
 
         --現在の衣装を基に新たな頭ブロックのモデルを生成する。
@@ -70,7 +70,7 @@ HeadModelGenerator = {
             self.parent.physics:enable()
         end
         if self.processData.callbacks ~= nil and self.processData.callbacks.onAfterModelCopy ~= nil then
-            self.processData.callbacks.onAfterModelCopy()
+            self.processData.callbacks.onAfterModelCopy(self.parent.characterData)
         end
     end;
 }
