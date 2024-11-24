@@ -227,7 +227,7 @@ DeathAnimation = {
         models.models.death_animation:setVisible(true)
         animations["models.death_animation"]["death_animation"]:play()
         if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
-            self.parent.characterData.deathAnimation.callbacks.onPhase1(models.models.death_animation.Avatar, self.costumeIndex)
+            self.parent.characterData.deathAnimation.callbacks.onPhase1(models.models.death_animation.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
         end
 
         if events.TICK:getRegisteredCount("death_animation_tick") == 0 then
@@ -255,7 +255,7 @@ DeathAnimation = {
                     self.dummyAvatarRoot = models.models.death_animation.Avatar:moveTo(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14)
                     self.setPhase2Pose(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar)
                     if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase2 ~= nil then
-                        self.parent.characterData.deathAnimation.callbacks.onPhase2(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar, self.costumeIndex)
+                        self.parent.characterData.deathAnimation.callbacks.onPhase2(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
                     end
                 elseif self.animationCount == 180 then
                     models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar:setVisible(false)
