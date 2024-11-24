@@ -195,25 +195,27 @@ Gun = {
     ---背中の銃の位置・向きを設定する。
     ---@param self Gun
     setBodyGunPos = function (self)
-        local offsetPos = vectors.vec3()
-        local offsetRot = vectors.vec3()
-        if player:isLeftHanded() then
-            if self.parent.characterData.gun.gunPosition.put.pos ~= nil and self.parent.characterData.gun.gunPosition.put.pos.left ~= nil then
-                offsetPos = self.parent.characterData.gun.gunPosition.put.pos.left
+        if models.models.main.Avatar.UpperBody.Body.Gun ~= nil then
+            local offsetPos = vectors.vec3()
+            local offsetRot = vectors.vec3()
+            if player:isLeftHanded() then
+                if self.parent.characterData.gun.gunPosition.put.pos ~= nil and self.parent.characterData.gun.gunPosition.put.pos.left ~= nil then
+                    offsetPos = self.parent.characterData.gun.gunPosition.put.pos.left
+                end
+                if self.parent.characterData.gun.gunPosition.put.rot ~= nil and self.parent.characterData.gun.gunPosition.put.rot.left ~= nil then
+                    offsetRot = self.parent.characterData.gun.gunPosition.put.rot.left
+                end
+            else
+                if self.parent.characterData.gun.gunPosition.put.pos ~= nil and self.parent.characterData.gun.gunPosition.put.pos.right ~= nil then
+                    offsetPos = self.parent.characterData.gun.gunPosition.put.pos.right
+                end
+                if self.parent.characterData.gun.gunPosition.put.rot ~= nil and self.parent.characterData.gun.gunPosition.put.rot.right ~= nil then
+                    offsetRot = self.parent.characterData.gun.gunPosition.put.rot.right
+                end
             end
-            if self.parent.characterData.gun.gunPosition.put.rot ~= nil and self.parent.characterData.gun.gunPosition.put.rot.left ~= nil then
-                offsetRot = self.parent.characterData.gun.gunPosition.put.rot.left
-            end
-        else
-            if self.parent.characterData.gun.gunPosition.put.pos ~= nil and self.parent.characterData.gun.gunPosition.put.pos.right ~= nil then
-                offsetPos = self.parent.characterData.gun.gunPosition.put.pos.right
-            end
-            if self.parent.characterData.gun.gunPosition.put.rot ~= nil and self.parent.characterData.gun.gunPosition.put.rot.right ~= nil then
-                offsetRot = self.parent.characterData.gun.gunPosition.put.rot.right
-            end
+            models.models.main.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(0, 12, 0):add(offsetPos))
+            models.models.main.Avatar.UpperBody.Body.Gun:setRot(offsetRot)
         end
-        models.models.main.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(0, 12, 0):add(offsetPos))
-        models.models.main.Avatar.UpperBody.Body.Gun:setRot(offsetRot)
     end;
 
     ---銃の位置を変更する。
