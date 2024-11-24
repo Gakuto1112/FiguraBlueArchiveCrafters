@@ -25,8 +25,8 @@ Portrait = {
     ---@param self HeadBlock
     generateHeadModel = function (self)
         HeadModelGenerator.generateHeadModel(self)
-        if models.script_head_block.Head ~= nil then
-            models.script_head_block.Head.HeadRing:remove()
+        if models.script_portrait.Head ~= nil then
+            models.script_portrait.Head.HeadRing:remove()
         end
     end;
 }
