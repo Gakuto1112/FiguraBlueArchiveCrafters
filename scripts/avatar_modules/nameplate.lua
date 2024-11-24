@@ -13,7 +13,7 @@ Nameplate = {
         local instance = Avatar.instantiate(Nameplate, AvatarModule, parent)
 
         instance.currentName = instance.parent.config:loadConfig("name", 1)
-        instance.shouldShowClubName = instance.parent.config:loadConfig("showClubName", 1)
+        instance.shouldShowClubName = instance.parent.config:loadConfig("showClubName", false)
 
         return instance
     end;
