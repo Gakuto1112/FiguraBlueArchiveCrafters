@@ -188,7 +188,7 @@ Gun = {
         models.models.main.Avatar.UpperBody.Body.Gun:setScale(vectors.vec3(1, 1, 1):scale(self.parent.characterData.gun.scale))
         self:setGunPosition("NONE")
         if self.parent.characterData.gun.callbacks ~= nil and self.parent.characterData.gun.callbacks.onMainHandChange ~= nil then
-            self.parent.characterData.gun.callbacks.onMainHandChange(self.isLeftHandedPrev and "LEFT" or "RIGHT")
+            self.parent.characterData.gun.callbacks.onMainHandChange(self.parent.characterData, self.isLeftHandedPrev and "LEFT" or "RIGHT")
         end
     end;
 
@@ -362,7 +362,7 @@ Gun = {
                         self:setBodyGunPos()
                     end
                     if self.parent.characterData.gun.callbacks ~= nil and self.parent.characterData.gun.callbacks.onMainHandChange ~= nil then
-                        self.parent.characterData.gun.callbacks.onMainHandChange(isLeftHanded and "LEFT" or "RIGHT")
+                        self.parent.characterData.gun.callbacks.onMainHandChange(self.parent.characterData, isLeftHanded and "LEFT" or "RIGHT")
                     end
                     self.isLeftHandedPrev = isLeftHanded
                 end

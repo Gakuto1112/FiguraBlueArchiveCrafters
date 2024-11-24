@@ -166,7 +166,7 @@ Physics = {
                             end
                             modelPart:setRot(rot)
                             if self.parent.characterData.physics.callbacks ~= nil and self.parent.characterData.physics.callbacks.onPhysicPerformed ~= nil then
-                                self.parent.characterData.physics.callbacks.onPhysicPerformed(modelPart)
+                                self.parent.characterData.physics.callbacks.onPhysicPerformed(self.parent.characterData, modelPart)
                             end
                         end
                     end

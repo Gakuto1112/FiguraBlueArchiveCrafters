@@ -284,7 +284,7 @@ Armor = {
 		vanilla_model.HELMET:setVisible(helmetFound)
 		self.isArmorVisible.helmet = helmetFound
 		if self.parent.characterData.costume.callbacks ~= nil and self.parent.characterData.costume.callbacks.onArmorChange ~= nil then
-			self.parent.characterData.costume.callbacks.onArmorChange("HELMET", self.isArmorVisible.helmet)
+			self.parent.characterData.costume.callbacks.onArmorChange(self.parent.characterData, "HELMET", self.isArmorVisible.helmet)
 		end
 	end;
 
@@ -309,7 +309,7 @@ Armor = {
 			armorPart:setVisible(overlayVisible)
 		end
 		if self.parent.characterData.costume.callbacks ~= nil and self.parent.characterData.costume.callbacks.onArmorChange ~= nil then
-			self.parent.characterData.costume.callbacks.onArmorChange("CHEST_PLATE", self.isArmorVisible.chestplate)
+			self.parent.characterData.costume.callbacks.onArmorChange(self.parent.characterData, "CHEST_PLATE", self.isArmorVisible.chestplate)
 		end
 	end;
 
@@ -334,7 +334,7 @@ Armor = {
 			armorPart:setVisible(overlayVisible)
 		end
 		if self.parent.characterData.costume.callbacks ~= nil and self.parent.characterData.costume.callbacks.onArmorChange ~= nil then
-			self.parent.characterData.costume.callbacks.onArmorChange("LEGGINGS", self.isArmorVisible.leggings)
+			self.parent.characterData.costume.callbacks.onArmorChange(self.parent.characterData, "LEGGINGS", self.isArmorVisible.leggings)
 		end
 	end;
 
@@ -358,7 +358,7 @@ Armor = {
 			armorPart:setVisible(overlayVisible)
 		end
 		if self.parent.characterData.costume.callbacks ~= nil and self.parent.characterData.costume.callbacks.onArmorChange ~= nil then
-			self.parent.characterData.costume.callbacks.onArmorChange("BOOTS", self.isArmorVisible.boots)
+			self.parent.characterData.costume.callbacks.onArmorChange(self.parent.characterData, "BOOTS", self.isArmorVisible.boots)
 		end
 	end;
 }

@@ -122,9 +122,9 @@
 ---@field public mouth BlueArchiveCharacter.MouthTextures 口の表情名
 
 ---@class (exact) BlueArchiveCharacter.ArmsCallbacksSet 腕処理のコールバック関数のセット
----@field public onArmStateChanged? fun(right: integer, left: integer): {right?: integer, left?: integer}|nil 腕の状態が変更された際のコールバック関数
----@field public onAdditionalRightArmProcess? fun(state: integer) 右腕の追加処理
----@field public onAdditionalLeftArmProcess? fun(state: integer) 左腕の追加処理
+---@field public onArmStateChanged? fun(self: BlueArchiveCharacter, right: integer, left: integer): {right?: integer, left?: integer}|nil 腕の状態が変更された際のコールバック関数
+---@field public onAdditionalRightArmProcess? fun(self: BlueArchiveCharacter, state: integer) 右腕の追加処理
+---@field public onAdditionalLeftArmProcess? fun(self: BlueArchiveCharacter, state: integer) 左腕の追加処理
 
 ---@class (exact) BlueArchiveCharacter.GunPositionSet 銃のモデルの位置や向きのデータセット
 ---@field public hold BlueArchiveCharacter.GunHoldPositionSet 銃を構えているとき
@@ -147,18 +147,18 @@
 ---@field public pitch number 音源の再生ピッチ（0.5～2）
 
 ---@class (exact) BlueArchiveCharacter.GunCallbacksSet 銃のコールバック関数のセット
----@field public onMainHandChange? fun(direction: Gun.HandDirection) 利き手が変更されたときに呼び出される関数
+---@field public onMainHandChange? fun(self: BlueArchiveCharacter, direction: Gun.HandDirection) 利き手が変更されたときに呼び出される関数
 
 ---@class (exact) BlueArchiveCharacter.PlacementObjectBoundingBoxSet 設置物の当たり判定のデータセット
 ---@field public offsetPos? Vector3 設置物の底の中心点のオフセット位置（任意）。基準点は(0, 0, 0)。
 ---@field public size? Vector3 当たり判定の大きさ。BlockBenchでのサイズの値をそのまま入力する。基準点はモデルの底面の中心。
 
 ---@class (exact) BlueArchiveCharacter.PlacementObjectCallbacksSet 設置物のコールバック関数のセット
----@field public onInit? fun(placementObject: PlacementObject) 設置物インスタンスが生成された直後に呼ばれる関数
----@field public onDeinit? fun(placementObject: PlacementObject) 設置物インスタンスが破棄される直前に呼ばれる関数
----@field public onTick? fun(placementObject: PlacementObject) 各ティック毎に呼ばれる関数
----@field public onRender? fun(placementObject: PlacementObject) 各レンダーティック毎に呼ばれる関数
----@field public onGround? fun(placementObject: PlacementObject) 設置物が接地した瞬間に呼ばれる関数
+---@field public onInit? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 設置物インスタンスが生成された直後に呼ばれる関数
+---@field public onDeinit? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 設置物インスタンスが破棄される直前に呼ばれる関数
+---@field public onTick? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 各ティック毎に呼ばれる関数
+---@field public onRender? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 各レンダーティック毎に呼ばれる関数
+---@field public onGround? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 設置物が接地した瞬間に呼ばれる関数
 
 ---@class (exact) BlueArchiveCharacter.ExSkillCameraSet Exスキルアニメーション中のカメラワークのセット
 ---@field public start BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション開始地点
@@ -169,11 +169,11 @@
 ---@field public rot Vector3 カメラの方向
 
 ---@class (exact) BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数のセット
----@field public onPreTransition? fun() Exスキルアニメーション開始前のトランジション開始前に実行されるコールバック関数
----@field public onPreAnimation? fun() Exスキルアニメーション開始前のトランジション終了後に実行されるコールバック関数
----@field public onAnimationTick? fun(tick: integer) Exスキルアニメーション再生中のみ実行されるティック関数
----@field public onPostAnimation? fun(forcedStop: boolean) Exスキルアニメーション終了後のトランジション開始前に実行されるコールバック関数
----@field public onPostTransition? fun(forcedStop: boolean) Exスキルアニメーション終了後のトランジション終了後に実行されるコールバック関数
+---@field public onPreTransition? fun(self: BlueArchiveCharacter) Exスキルアニメーション開始前のトランジション開始前に実行されるコールバック関数
+---@field public onPreAnimation? fun(self: BlueArchiveCharacter) Exスキルアニメーション開始前のトランジション終了後に実行されるコールバック関数
+---@field public onAnimationTick? fun(self: BlueArchiveCharacter, tick: integer) Exスキルアニメーション再生中のみ実行されるティック関数
+---@field public onPostAnimation? fun(self: BlueArchiveCharacter, forcedStop: boolean) Exスキルアニメーション終了後のトランジション開始前に実行されるコールバック関数
+---@field public onPostTransition? fun(self: BlueArchiveCharacter, forcedStop: boolean) Exスキルアニメーション終了後のトランジション終了後に実行されるコールバック関数
 
 ---@class BlueArchiveCharacter.CostumeDataSet コスチュームのデータセット
 ---@field public name string コスチュームの内部名
@@ -182,23 +182,23 @@
 ---@field public subExSkill? integer コスチュームに対応するサブExスキルのインデックス番号
 
 ---@class (exact) BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数のセット
----@field public onChange? fun(costumeId: BlueArchiveCharacter.Costumes) 衣装が変更されたときに実行されるコールバック関数。デフォルトの衣装はここに含めない。
----@field public onReset? fun() 衣装がリセットされたときに実行されるコールバック関数。あらゆる衣装からデフォルトの衣装へ推移できるようにする。
----@field public onArmorChange? fun(parts: Armor.ArmorPart, isVisible: boolean) 防具が変更された（防具が見える/見えない）ときに実行されるコールバック関数
+---@field public onChange? fun(self: BlueArchiveCharacter, costumeId: BlueArchiveCharacter.Costumes) 衣装が変更されたときに実行されるコールバック関数。デフォルトの衣装はここに含めない。
+---@field public onReset? fun(self: BlueArchiveCharacter) 衣装がリセットされたときに実行されるコールバック関数。あらゆる衣装からデフォルトの衣装へ推移できるようにする。
+---@field public onArmorChange? fun(self: BlueArchiveCharacter, parts: Armor.ArmorPart, isVisible: boolean) 防具が変更された（防具が見える/見えない）ときに実行されるコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.BubbleCallbacks 吹き出しエモートのコールバック関数のセット
----@field public onPlay? fun(type: Bubble.BubbleType, duration: integer, showInGui: boolean) 吹き出しエモートが再生された時に実行されるコールバック関数
----@field public  onStop? fun(type: Bubble.BubbleType, forcedStop: boolean) 吹き出しアニメーション終了時に実行されるコールバック関数
+---@field public onPlay? fun(self: BlueArchiveCharacter, type: Bubble.BubbleType, duration: integer, showInGui: boolean) 吹き出しエモートが再生された時に実行されるコールバック関数
+---@field public  onStop? fun(self: BlueArchiveCharacter, type: Bubble.BubbleType, forcedStop: boolean) 吹き出しアニメーション終了時に実行されるコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.HeadBlockCallbacks 頭ブロックのコールバック関数のセット
----@field public onBeforeModelCopy? fun() モデルのコピー直前に実行される関数
----@field public onAfterModelCopy? fun() モデルのコピー直後に実行される関数
+---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直前に実行される関数
+---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直後に実行される関数
 
 ---@class (exact) BlueArchiveCharacter.DeathAnimationCallbacks 死亡アニメーションのコールバック関数のセット
----@field public onPhase1? fun(dummyAvatar: ModelPart, costume: BlueArchiveCharacter.Costumes) 死亡アニメーションが再生された直後に実行される関数
----@field public onPhase2? fun(dummyAvatar: ModelPart, costume: BlueArchiveCharacter.Costumes) ダミーアバターが縄ばしごにつかまった直後に実行される関数
----@field public onBeforeModelCopy? fun() モデルのコピー直前に実行される関数
----@field public onAfterModelCopy? fun() モデルのコピー直後に実行される関数
+---@field public onPhase1? fun(self: BlueArchiveCharacter, dummyAvatar: ModelPart, costume: BlueArchiveCharacter.Costumes) 死亡アニメーションが再生された直後に実行される関数
+---@field public onPhase2? fun(self: BlueArchiveCharacter, dummyAvatar: ModelPart, costume: BlueArchiveCharacter.Costumes) ダミーアバターが縄ばしごにつかまった直後に実行される関数
+---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直前に実行される関数
+---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直後に実行される関数
 
 ---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
@@ -230,7 +230,7 @@
 ---@field public max number この回転事象がモデルパーツに与える回転の最大値
 
 ---@class (exact) BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数のセット
----@field public onPhysicPerformed? fun(model: ModelPart) 物理演算処理後に実行されるコールバック関数（省略可）。ここでモデルパーツの向きを上書きできる。
+---@field public onPhysicPerformed? fun(self: BlueArchiveCharacter, model: ModelPart) 物理演算処理後に実行されるコールバック関数（省略可）。ここでモデルパーツの向きを上書きできる。
 
 --[[ ******************************** ]]
 

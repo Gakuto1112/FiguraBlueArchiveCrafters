@@ -269,7 +269,7 @@ ExSkill = {
         models.models.ex_skill_frame.Gui:setColor(self.parent.characterData.exSkill[self.exSkillIndex].formationType == "STRIKER" and vectors.vec3(1, 0.75, 0.75) or vectors.vec3(0.75, 1, 1))
         sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.player.levelup"), player:getPos(), 5, 2)
         if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreTransition ~= nil then
-            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreTransition()
+            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreTransition(self.parent.characterData)
         end
         models.models.ex_skill_frame.Gui.FrameBar:setScale(1, client:getScaledWindowSize().y * math.sqrt(2) / 16 + 1, 1)
 
@@ -291,7 +291,7 @@ ExSkill = {
                 animations["models."..modelPart]["ex_skill_"..self.exSkillIndex]:play()
             end
             if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreAnimation ~= nil then
-                self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreAnimation()
+                self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreAnimation(self.parent.characterData)
             end
             self.parent.cameraManager:setThirdPersonCameraDistance(0)
 
@@ -301,7 +301,7 @@ ExSkill = {
                         self:stop()
                     elseif self:canPlayAnimation() and animations["models.main"]["ex_skill_"..self.exSkillIndex]:isPlaying() then
                         if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onAnimationTick ~= nil then
-                            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onAnimationTick(self.animationCount)
+                            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onAnimationTick(self.parent.characterData, self.animationCount)
                         end
                         self.animationCount = self.animationCount > -1 and self.animationCount + 1 or self.animationCount
                     end
@@ -357,7 +357,7 @@ ExSkill = {
         self.animationCount = -1
 
         if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation ~= nil then
-            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation(false)
+            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation(self.parent.characterData, false)
         end
         self:transition("POST", function ()
             events.TICK:remove("ex_skill_tick")
@@ -368,7 +368,7 @@ ExSkill = {
             renderer:setRenderHUD(true)
 
             if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition ~= nil then
-                self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition(false)
+                self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition(self.parent.characterData, false)
             end
         end)
     end;
@@ -411,10 +411,10 @@ ExSkill = {
         renderer:setFOV()
 
         if self.animationCount >= 0 and self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation ~= nil then
-            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation(true)
+            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation(self.parent.characterData, true)
         end
         if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition ~= nil then
-            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition(true)
+            self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition(self.parent.characterData, true)
         end
 
         self.animationCount = -1

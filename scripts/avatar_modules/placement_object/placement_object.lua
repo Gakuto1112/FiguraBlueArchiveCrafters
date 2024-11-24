@@ -56,7 +56,7 @@ PlacementObject = {
                 self.object:setRot(0, rot, 0)
                 self.object:setVisible(true)
                 if self.parent.characterData.placementObjects[self.index].callbacks ~= nil and self.parent.characterData.placementObjects[self.index].callbacks.onInit ~= nil then
-                    self.parent.characterData.placementObjects[self.index].callbacks.onInit(self)
+                    self.parent.characterData.placementObjects[self.index].callbacks.onInit(self.parent.characterData, self)
                 end
             end;
 
@@ -69,7 +69,7 @@ PlacementObject = {
                     self.object:setVisible(false)
                 end
                 if self.parent.characterData.placementObjects[self.index].callbacks ~= nil and self.parent.characterData.placementObjects[self.index].callbacks.onDeinit ~= nil then
-                    self.parent.characterData.placementObjects[self.index].callbacks.onDeinit(self)
+                    self.parent.characterData.placementObjects[self.index].callbacks.onDeinit(self.parent.characterData, self)
                 end
             end;
 
@@ -187,7 +187,7 @@ PlacementObject = {
                     end
                 end
                 if collisionDetected and not self.isOnGround and self.parent.characterData.placementObjects[self.index].callbacks ~= nil and self.parent.characterData.placementObjects[self.index].callbacks.onGround ~= nil then
-                    self.parent.characterData.placementObjects[self.index].callbacks.onGround(self)
+                    self.parent.characterData.placementObjects[self.index].callbacks.onGround(self.parent.characterData, self)
                 end
                 self.isOnGround = collisionDetected
                 local nextBlock = world.getBlockState(self.nextPos)
@@ -213,7 +213,7 @@ PlacementObject = {
                     self.shouldDeinit = true
                 end
                 if self.parent.characterData.placementObjects[self.index].callbacks ~= nil and self.parent.characterData.placementObjects[self.index].callbacks.onTick ~= nil then
-                    self.parent.characterData.placementObjects[self.index].callbacks.onTick(self)
+                    self.parent.characterData.placementObjects[self.index].callbacks.onTick(self.parent.characterData, self)
                 end
             end;
 
@@ -221,7 +221,7 @@ PlacementObject = {
             onRender = function (self, delta, context)
                 self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos):add(self.modelOffsetPos):scale(16))
                 if self.parent.characterData.placementObjects[self.index].callbacks ~= nil and self.parent.characterData.placementObjects[self.index].callbacks.onRender ~= nil then
-                    self.parent.characterData.placementObjects[self.index].callbacks.onRender(self)
+                    self.parent.characterData.placementObjects[self.index].callbacks.onRender(self.parent.characterData, self)
                 end
             end
         }

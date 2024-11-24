@@ -68,7 +68,7 @@ Arms = {
             return
         end
         if self.parent.characterData.arms.callbacks ~= nil and self.parent.characterData.arms.callbacks.onArmStateChanged ~= nil then
-            local result = self.parent.characterData.arms.callbacks.onArmStateChanged(self.armState.right, self.armState.left)
+            local result = self.parent.characterData.arms.callbacks.onArmStateChanged(self.parent.characterData, self.armState.right, self.armState.left)
             if result ~= nil then
                 if result.right ~= nil then
                     self.armState.right = result.right
@@ -129,7 +129,7 @@ Arms = {
                 end, "right_arm_tick")
             end
             if self.parent.characterData.arms.callbacks ~= nil and self.parent.characterData.arms.callbacks.onAdditionalRightArmProcess ~= nil then
-                self.parent.characterData.arms.callbacks.onAdditionalRightArmProcess(self.armState.right)
+                self.parent.characterData.arms.callbacks.onAdditionalRightArmProcess(self.parent.characterData, self.armState.right)
             end
             self.armStatePrev.right = self.armState.right
         end
@@ -184,7 +184,7 @@ Arms = {
                 end, "left_arm_tick")
             end
             if self.parent.characterData.arms.callbacks ~= nil and self.parent.characterData.arms.callbacks.onAdditionalLeftArmProcess ~= nil then
-                self.parent.characterData.arms.callbacks.onAdditionalLeftArmProcess(self.armState.left)
+                self.parent.characterData.arms.callbacks.onAdditionalLeftArmProcess(self.parent.characterData, self.armState.left)
             end
             self.armStatePrev.left = self.armState.left
         end

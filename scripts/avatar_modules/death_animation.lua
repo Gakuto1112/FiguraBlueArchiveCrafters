@@ -66,7 +66,7 @@ DeathAnimation = {
                 self.setPhase1Pose(models.script_death_animation_debug.Avatar)
                 models.script_death_animation_debug.Avatar:setPos(player:getPos():add(0, -0.75, 0):scale(16))
                 if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
-                    self.parent.characterData.deathAnimation.callbacks.onPhase1(models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
+                    self.parent.characterData.deathAnimation.callbacks.onPhase1(self.parent.characterData, models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
                 end
             end)
             keybinds:newKeybind("[DEBUG] Spawn death animation phase2 model", "key.keyboard.c"):onPress(function ()
@@ -76,10 +76,10 @@ DeathAnimation = {
                 self.setPhase2Pose(models.script_death_animation_debug.Avatar)
                 models.script_death_animation_debug.Avatar:setPos(player:getPos():scale(16))
                 if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
-                    self.parent.characterData.deathAnimation.callbacks.onPhase1(models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
+                    self.parent.characterData.deathAnimation.callbacks.onPhase1(self.parent.characterData, models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
                 end
                 if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase2 ~= nil then
-                    self.parent.characterData.deathAnimation.callbacks.onPhase2(models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
+                    self.parent.characterData.deathAnimation.callbacks.onPhase2(self.parent.characterData, models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
                 end
             end)
         end
@@ -127,7 +127,7 @@ DeathAnimation = {
         end
         self.parent.physics:disable()
         if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onBeforeModelCopy ~= nil then
-            self.parent.characterData.deathAnimation.callbacks.onBeforeModelCopy()
+            self.parent.characterData.deathAnimation.callbacks.onBeforeModelCopy(self.parent.characterData)
         end
 
         parent:addChild(self.parent.modelUtils:copyModel(models.models.main.Avatar))
@@ -165,7 +165,7 @@ DeathAnimation = {
         end
         self.parent.physics:enable()
         if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onAfterModelCopy ~= nil then
-            self.parent.characterData.deathAnimation.callbacks.onAfterModelCopy()
+            self.parent.characterData.deathAnimation.callbacks.onAfterModelCopy(self.parent.characterData)
         end
     end;
 
@@ -227,7 +227,7 @@ DeathAnimation = {
         models.models.death_animation:setVisible(true)
         animations["models.death_animation"]["death_animation"]:play()
         if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
-            self.parent.characterData.deathAnimation.callbacks.onPhase1(models.models.death_animation.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
+            self.parent.characterData.deathAnimation.callbacks.onPhase1(self.parent.characterData, models.models.death_animation.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
         end
 
         if events.TICK:getRegisteredCount("death_animation_tick") == 0 then
@@ -255,7 +255,7 @@ DeathAnimation = {
                     self.dummyAvatarRoot = models.models.death_animation.Avatar:moveTo(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14)
                     self.setPhase2Pose(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar)
                     if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase2 ~= nil then
-                        self.parent.characterData.deathAnimation.callbacks.onPhase2(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
+                        self.parent.characterData.deathAnimation.callbacks.onPhase2(self.parent.characterData, models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
                     end
                 elseif self.animationCount == 180 then
                     models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar:setVisible(false)

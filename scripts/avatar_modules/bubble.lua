@@ -142,7 +142,7 @@ Bubble = {
                         events.TICK:remove("bubble_tick")
                         events.RENDER:remove("bubble_render")
                         if self.parent.characterData.bubble.callbacks ~= nil and self.parent.characterData.bubble.callbacks.onStop ~= nil then
-                            self.parent.characterData.bubble.callbacks.onStop(type, self.isForcedStop)
+                            self.parent.characterData.bubble.callbacks.onStop(self.parent.characterData, type, self.isForcedStop)
                         end
                     elseif self.duration >= 0 and self.bubbleCount == self.duration + 2 then
                         self:stop()
@@ -196,7 +196,7 @@ Bubble = {
             end, "bubble_render")
         end
         if self.parent.characterData.bubble.callbacks ~= nil and self.parent.characterData.bubble.callbacks.onPlay ~= nil then
-            self.parent.characterData.bubble.callbacks.onPlay(type, duration, shouldShowInHud)
+            self.parent.characterData.bubble.callbacks.onPlay(self.parent.characterData, type, duration, shouldShowInHud)
         end
     end;
 
