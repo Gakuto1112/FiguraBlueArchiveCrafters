@@ -68,6 +68,15 @@ Costume = {
 		end
 		self.parent.headBlock:generateHeadModel()
 		self.parent.portrait:generateHeadModel()
+		if self.parent.armor.isArmorVisible.chestplate then
+			self.parent.armor:setChestPlate(self.parent.armor.armorSlotItems[2])
+		end
+		if self.parent.armor.isArmorVisible.leggings then
+			self.parent.armor:setLeggings(self.parent.armor.armorSlotItems[3])
+		end
+		if self.parent.armor.isArmorVisible.boots then
+			self.parent.armor:setBoots(self.parent.armor.armorSlotItems[4])
+		end
 		self.currentCostume = costume
 	end;
 
@@ -83,6 +92,15 @@ Costume = {
 		end
 		self.parent.headBlock:generateHeadModel()
 		self.parent.portrait:generateHeadModel()
+		if self.parent.armor.isArmorVisible.chestplate then
+			self.parent.armor:setChestPlate(self.parent.armor.armorSlotItems[2])
+		end
+		if self.parent.armor.isArmorVisible.leggings then
+			self.parent.armor:setLeggings(self.parent.armor.armorSlotItems[3])
+		end
+		if self.parent.armor.isArmorVisible.boots then
+			self.parent.armor:setBoots(self.parent.armor.armorSlotItems[4])
+		end
 		self.currentCostume = 1
 	end;
 }

@@ -152,16 +152,16 @@ DeathAnimation = {
         end
 
         if isArmorVisible.helmet then
-            self.parent.armor:setHelmet(self.parent.armor.armorSlotItemsPrev[1])
+            self.parent.armor:setHelmet(self.parent.armor.armorSlotItems[1])
         end
         if isArmorVisible.chestplate then
-            self.parent.armor:setChestplate(self.parent.armor.armorSlotItemsPrev[2])
+            self.parent.armor:setChestplate(self.parent.armor.armorSlotItems[2])
         end
         if isArmorVisible.leggings then
-            self.parent.armor:setLeggings(self.parent.armor.armorSlotItemsPrev[3])
+            self.parent.armor:setLeggings(self.parent.armor.armorSlotItems[3])
         end
         if isArmorVisible.boots then
-            self.parent.armor:setBoots(self.parent.armor.armorSlotItemsPrev[4])
+            self.parent.armor:setBoots(self.parent.armor.armorSlotItems[4])
         end
         self.parent.physics:enable()
         if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onAfterModelCopy ~= nil then

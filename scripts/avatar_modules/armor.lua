@@ -7,7 +7,8 @@
 
 ---@class (exact) Armor : AvatarModule 防具の表示を制御するクラス
 ---@field public shouldShowArmor boolean 防具を表示するかどうか
----@field public armorSlotItemsPrev ItemStack[] 前ティックの防具スロットのアイテム
+---@field public armorSlotItems ItemStack[] 現ティックの防具スロットのアイテム
+---@field package armorSlotItemsPrev ItemStack[] 前ティックの防具スロットのアイテム
 ---@field public isArmorVisible Armor.VisiblePartsSet 各防具の部位（ヘルメット、チェストプレート、レギンス、ブーツ）が可視状態かどうか
 ---@field package textureQueue Armor.TextureQueueData[] テクスチャ処理のキュー
 ---@field package getArmorColor fun(armorItem: ItemStack): number 防具の色を取得する
@@ -42,6 +43,7 @@ Armor = {
         ---@type Armor
         local instance = Avatar.instantiate(Armor, AvatarModule, parent)
 		instance.shouldShowArmor = instance.parent.config:loadConfig("showArmor", false)
+		instance.armorSlotItems = {world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air"))}
 		instance.armorSlotItemsPrev = {world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air"))}
 		instance.isArmorVisible = {
 			helmet = false;
@@ -60,21 +62,21 @@ Armor = {
         AvatarModule.init(self)
 
 		events.TICK:register(function ()
-			local armorSlotItems = self.shouldShowArmor and {player:getItem(6), player:getItem(5), player:getItem(4), player:getItem(3)} or {world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air"))}
-			if armorSlotItems[1].id ~= self.armorSlotItemsPrev[1].id then
-				self:setHelmet(armorSlotItems[1])
+			self.armorSlotItems = self.shouldShowArmor and {player:getItem(6), player:getItem(5), player:getItem(4), player:getItem(3)} or {world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air"))}
+			if self.armorSlotItems[1].id ~= self.armorSlotItemsPrev[1].id then
+				self:setHelmet(self.armorSlotItems[1])
 			end
-			if armorSlotItems[2].id ~= self.armorSlotItemsPrev[2].id then
-				self:setChestplate(armorSlotItems[2])
+			if self.armorSlotItems[2].id ~= self.armorSlotItemsPrev[2].id then
+				self:setChestplate(self.armorSlotItems[2])
 			end
-			if armorSlotItems[3].id ~= self.armorSlotItemsPrev[3].id then
-				self:setLeggings(armorSlotItems[3])
+			if self.armorSlotItems[3].id ~= self.armorSlotItemsPrev[3].id then
+				self:setLeggings(self.armorSlotItems[3])
 			end
-			if armorSlotItems[4].id ~= self.armorSlotItemsPrev[4].id then
-				self:setBoots(armorSlotItems[4])
+			if self.armorSlotItems[4].id ~= self.armorSlotItemsPrev[4].id then
+				self:setBoots(self.armorSlotItems[4])
 			end
 
-			for index, armorSlotItem in ipairs(armorSlotItems) do
+			for index, armorSlotItem in ipairs(self.armorSlotItems) do
 				local glint = armorSlotItem:hasGlint()
 				if glint ~= self.armorSlotItemsPrev[index]:hasGlint() then
 					--エンチャント変更
@@ -111,11 +113,11 @@ Armor = {
 						end
 					end
 				end
-				local trim = armorSlotItems[index].tag.Trim
+				local trim = self.armorSlotItems[index].tag.Trim
 				if not self.compareTrims(trim, self.armorSlotItemsPrev[index].tag.Trim) then
 					--トリム変更
 					if index == 2 then
-						local trimTexture = self:getTrimTexture(trim, armorSlotItems[2].id)
+						local trimTexture = self:getTrimTexture(trim, self.armorSlotItems[2].id)
 						if trimTexture then
 							for _, armorPart in ipairs({models.models.main.Avatar.UpperBody.Arms.RightArm.ArmorRA.RightChestplate.RightChestplateTrim, models.models.main.Avatar.UpperBody.Arms.RightArm.RightArmBottom.ArmorRAB.RightChestplateBottom.RightChestplateBottomTrim, models.models.main.Avatar.UpperBody.Arms.LeftArm.ArmorLA.LeftChestplate.LeftChestplateTrim, models.models.main.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom.ArmorLAB.LeftChestplateBottom.LeftChestplateBottomTrim}) do
 								armorPart:setVisible(true)
@@ -127,7 +129,7 @@ Armor = {
 							end
 						end
 					elseif index == 3 then
-						local trimTexture = self:getTrimTexture(trim, armorSlotItems[3].id)
+						local trimTexture = self:getTrimTexture(trim, self.armorSlotItems[3].id)
 						if trimTexture then
 							for _, armorPart in ipairs({models.models.main.Avatar.LowerBody.Legs.RightLeg.ArmorRL.RightLeggings.RightLeggingsTrim, models.models.main.Avatar.LowerBody.Legs.RightLeg.RightLegBottom.ArmorRLB.RightLeggingsBottom.RightLeggingsBottomTrim, models.models.main.Avatar.LowerBody.Legs.LeftLeg.ArmorLL.LeftLeggings.LeftLeggingsTrim, models.models.main.Avatar.LowerBody.Legs.LeftLeg.LeftLegBottom.ArmorLLB.LeftLeggingsBottom.LeftLeggingsBottomTrim}) do
 								armorPart:setVisible(true)
@@ -139,7 +141,7 @@ Armor = {
 							end
 						end
 					else
-						local trimTexture = self:getTrimTexture(trim, armorSlotItems[4].id)
+						local trimTexture = self:getTrimTexture(trim, self.armorSlotItems[4].id)
 						if trimTexture then
 							for _, armorPart in ipairs({models.models.main.Avatar.LowerBody.Legs.RightLeg.ArmorRL.RightBoots.RightBootsTrim, models.models.main.Avatar.LowerBody.Legs.RightLeg.RightLegBottom.ArmorRLB.RightBootsBottom.RightBootsBottomTrim, models.models.main.Avatar.LowerBody.Legs.LeftLeg.ArmorLL.LeftBoots.LeftBootsTrim, models.models.main.Avatar.LowerBody.Legs.LeftLeg.LeftLegBottom.ArmorLLB.LeftBootsBottom.LeftBootsBottomTrim}) do
 								armorPart:setVisible(true)
@@ -180,7 +182,7 @@ Armor = {
 					end
 				end
 			end
-			self.armorSlotItemsPrev = armorSlotItems
+			self.armorSlotItemsPrev = self.armorSlotItems
 		end)
 
 		for _, vanillaModel in ipairs({vanilla_model.HELMET, vanilla_model.CHESTPLATE, vanilla_model.LEGGINGS}) do
