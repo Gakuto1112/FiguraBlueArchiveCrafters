@@ -13,7 +13,7 @@
 
 ---@class (exact) PlacementObjectManager : SpawnObjectManager 設置物を管理するマネージャークラス
 ---@field public objects PlacementObject[] インスタンスで制御するオブジェクト
----@field public getObject fun(self: PlacementObjectManager, index: integer, pos: Vector3, rot: number): PlacementObject スポーンオブジェクトのインスタンスを生成して返す
+---@field public getObject fun(self: PlacementObjectManager, index: integer, pos: Vector3, rot: number): PlacementObject 設置物のインスタンスを生成して返す
 ---@field public spawn fun(self: PlacementObjectManager, index: integer, pos: Vector3, rot: number) 設置物を設置する
 ---@field public applyFunc fun(self: PlacementObjectManager, index: integer, func: fun(object: PlacementObject, i: integer)) 設置済み設置物の指定した設置物データのインデックス番号のみに関数を適用する
 

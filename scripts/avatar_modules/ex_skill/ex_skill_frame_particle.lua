@@ -5,7 +5,7 @@
 ---@field package nextPos Vector2 次ティックのパーティクルの位置
 ---@field package velocity Vector2 パーティクルの速度
 ---@field package particleCount integer パーティクルのアニメーションを制御するためのカウンター
----@field public new fun(parent: Avatar, pos: Vector2, velocity: Vector2, type: ExSkillFrameParticleManager.ParticleType): ExSkillFrameParticle コンストラクタ
+---@field public new fun(parent: Avatar, pos: Vector2, velocity: Vector2, type: ExSkillFrameParticleManager.ParticleType): ExSkillFrameParticle コンストラクター
 
 ExSkillFrameParticle = {
     ---コンストラクタ

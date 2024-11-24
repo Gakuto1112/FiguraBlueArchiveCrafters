@@ -3,8 +3,9 @@
 ---| "FIGURA" # Figuraマークのパーティクル（穴空き三角形）
 
 ---@class (exact) ExSkillFrameParticleManager : SpawnObjectManager Exスキルのフレームで使用するパーティクルを管理するクラス
----@field public getObject fun(self: ExSkillFrameParticleManager, pos: Vector2, velocity: Vector2): ExSkillFrameParticle スポーンオブジェクトのインスタンスを生成して返す
----@field public spawn fun(self: ExSkillFrameParticleManager, pos: Vector2, velocity: Vector2) オブジェクトをスポーンさせる
+---@field public objects ExSkillFrameParticle[] インスタンスで制御するオブジェクト
+---@field public getObject fun(self: ExSkillFrameParticleManager, pos: Vector2, velocity: Vector2): ExSkillFrameParticle Exスキルフレームのパーティクルのインスタンスを生成して返す
+---@field public spawn fun(self: ExSkillFrameParticleManager, pos: Vector2, velocity: Vector2) Exスキルフレームのパーティクルをスポーンさせる
 
 ExSkillFrameParticleManager = {
     ---コンストラクタ
