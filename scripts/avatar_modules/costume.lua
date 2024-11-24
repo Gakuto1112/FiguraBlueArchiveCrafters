@@ -69,7 +69,7 @@ Costume = {
 		self.parent.headBlock:generateHeadModel()
 		self.parent.portrait:generateHeadModel()
 		if self.parent.armor.isArmorVisible.chestplate then
-			self.parent.armor:setChestPlate(self.parent.armor.armorSlotItems[2])
+			self.parent.armor:setChestplate(self.parent.armor.armorSlotItems[2])
 		end
 		if self.parent.armor.isArmorVisible.leggings then
 			self.parent.armor:setLeggings(self.parent.armor.armorSlotItems[3])
@@ -93,7 +93,7 @@ Costume = {
 		self.parent.headBlock:generateHeadModel()
 		self.parent.portrait:generateHeadModel()
 		if self.parent.armor.isArmorVisible.chestplate then
-			self.parent.armor:setChestPlate(self.parent.armor.armorSlotItems[2])
+			self.parent.armor:setChestplate(self.parent.armor.armorSlotItems[2])
 		end
 		if self.parent.armor.isArmorVisible.leggings then
 			self.parent.armor:setLeggings(self.parent.armor.armorSlotItems[3])
