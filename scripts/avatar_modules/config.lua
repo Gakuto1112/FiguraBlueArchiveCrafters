@@ -28,7 +28,7 @@ Config = {
 		if host:isHost() then
 			events.TICK:register(function ()
 				if self.nextSyncCount == 0 then
-					pings.syncAvatarConfig(self.parent.nameplate.currentName, self.parent.nameplate.shouldShowClubName, self.parent.costume.currentCostume, self.parent.armor.shouldShowArmor, self.parent.actionWheel.shouldReplaceVehicleModels, self.parent.bubble.isChatOpened)
+					pings.syncAvatarConfig(self.parent.nameplate.currentName, self.parent.nameplate.shouldShowClubName, self.parent.costume.currentCostume, self.parent.armor.shouldShowArmor, self.parent.actionWheel.shouldReplaceVehicleModels, self.parent.bubble.isChatOpened, self.parent.characterData.dataSync.syncData)
 					self.nextSyncCount = 300
 				else
 					self.nextSyncCount = self.nextSyncCount - 1
