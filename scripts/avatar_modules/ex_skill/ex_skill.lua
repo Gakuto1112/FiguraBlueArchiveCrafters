@@ -52,8 +52,9 @@ ExSkill = {
 
         if host:isHost() then
             for _, exSkill in ipairs(self.parent.characterData.exSkill) do
-                exSkill.camera.start.pos:mul(-1, 1, 1):scale(1 / 16 * 0.9375)
-                exSkill.camera.fin.pos:mul(-1, 1, 1):scale(1 / 16 *  0.9375)
+                local offset = (exSkill.camera.fixMode ~= nil and exSkill.camera.fixMode) and 1 or 0.9375
+                exSkill.camera.start.pos:mul(-1, 1, 1):scale(1 / 16 * offset)
+                exSkill.camera.fin.pos:mul(-1, 1, 1):scale(1 / 16 *  offset)
             end
 
             local exSkillKey = self.parent.keyManager:register("ex_skill", self.parent.config:loadConfig("keybind.ex_skill", "key.keyboard.g"))
@@ -323,7 +324,7 @@ ExSkill = {
             if host:isHost() then
                 events.RENDER:register(function ()
                     if not client:isPaused() then
-                        self.parent.cameraManager.setCameraPivot(vectors.rotateAroundAxis(self.bodyYaw[2] * -1 + 180, models.models.main.CameraAnchor:getAnimPos():scale(1 / 16 * 0.9375), 0, 1, 0):add(0, -1.62, 0))
+                        self.parent.cameraManager.setCameraPivot(vectors.rotateAroundAxis(self.bodyYaw[2] * -1 + 180, models.models.main.CameraAnchor:getAnimPos():scale(1 / 16 * ((self.parent.characterData.exSkill[self.exSkillIndex].camera.fixMode ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].camera.fixMode) and 1 or 0.9375)), 0, 1, 0):add(0, -1.62, 0))
                         self.parent.cameraManager.setCameraRot(models.models.main.CameraAnchor:getAnimRot():scale(-1):add(0, self.bodyYaw[2], 0))
                     end
                 end, "ex_skill_animation_render")
