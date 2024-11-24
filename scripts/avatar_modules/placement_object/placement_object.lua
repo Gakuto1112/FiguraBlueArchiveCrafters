@@ -25,7 +25,7 @@ PlacementObject = {
         local instance = Avatar.instantiate(PlacementObject, SpawnObject, parent)
 
         instance.index = index
-        instance.object = instance.parent.characterData.placementObjects[instance.index].placementMode == "COPY" and instance.parent.characterData.placementObjects[instance.index].model:copy(client.intUUIDToString(client:generateUUID())) or instance.parent.characterData.placementObjects[instance.index].model
+        instance.object = instance.parent.characterData.placementObjects[instance.index].placementMode == "COPY" and instance.parent.characterData.placementObjects[instance.index].model:copy(instance.uuid) or instance.parent.characterData.placementObjects[instance.index].model
         instance.boundingBox = instance.parent.characterData.placementObjects[instance.index].boundingBox.size:copy():scale(0.0625)
         instance.gravity = instance.parent.characterData.placementObjects[instance.index].gravity ~= nil and instance.parent.characterData.placementObjects[instance.index].gravity or 1
         instance.hasFireResistance = instance.parent.characterData.placementObjects[instance.index].hasFireResistance ~= nil and instance.parent.characterData.placementObjects[instance.index].hasFireResistance or false

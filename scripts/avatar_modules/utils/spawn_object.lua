@@ -1,5 +1,6 @@
 ---@class (exact) SpawnObject : AvatarModule オブジェクト（設置物、独自定義パーティクル、bbモデルetc.）クラス
 ---@field public object any インスタンスで制御するオブジェクト。ModelPartやRenderTaskを想定している。
+---@field public uuid string このインスタンスのUUID。オブジェクトの名前付けなどにどうぞ。
 ---@field public shouldDeinit boolean このオブジェクトを破棄するかどうか。trueにするとオブジェクトが破棄され、その際に、onDeinit()コールバック関数が呼ばれる。
 ---@field public callbacks? SpawnObject.CallbackSet スポーンオブジェクトのコールバック関数
 
@@ -17,6 +18,7 @@ SpawnObject = {
         ---@type SpawnObject
         local instance = Avatar.instantiate(SpawnObject, AvatarModule, parent)
 
+        instance.uuid = client.intUUIDToString(client:generateUUID())
         instance.shouldDeinit = false
 
         return instance

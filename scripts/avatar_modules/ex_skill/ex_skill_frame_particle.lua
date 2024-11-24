@@ -1,6 +1,5 @@
 ---@class (exact) ExSkillFrameParticle : SpawnObject Exスキルのフレームで使用するパーティクルの単一を管理するクラス
 ---@field package object ModelPart インスタンスで制御するオブジェクト
----@field package uuid string パーティクルのUUID
 ---@field package currentPos Vector2 パーティクルの現在位置
 ---@field package nextPos Vector2 次ティックのパーティクルの位置
 ---@field package velocity Vector2 パーティクルの速度
@@ -18,7 +17,6 @@ ExSkillFrameParticle = {
         ---@type ExSkillFrameParticle
         local instance = Avatar.instantiate(ExSkillFrameParticle, SpawnObject, parent)
 
-        instance.uuid = client.intUUIDToString(client:generateUUID())
         instance.object = models.models.ex_skill_frame.Particles["Particle"..(type == "NORMAL" and 1 or 2)]:copy(instance.uuid)
         instance.currentPos = pos
         instance.nextPos = instance.currentPos
