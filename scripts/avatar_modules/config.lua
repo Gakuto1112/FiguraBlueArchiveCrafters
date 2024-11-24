@@ -81,7 +81,8 @@ Config = {
 ---@param shouldShowArmor boolean 防具が見えているかどうか
 ---@param shouldReplaceVehicleModels boolean 乗り物モデルを置き換えるかどうか
 ---@param isChatOpened boolean チャット欄を開いているかどうか
-function pings.syncAvatarConfig(nameTypeId, shouldShowClubName, costumeId, shouldShowArmor, shouldReplaceVehicleModels, isChatOpened)
+---@param additionalData {[string]: any} キャラクター固有用に追加で同期するデータ
+function pings.syncAvatarConfig(nameTypeId, shouldShowClubName, costumeId, shouldShowArmor, shouldReplaceVehicleModels, isChatOpened, additionalData)
 	if not AvatarInstance.config.isSynced then
 		AvatarInstance.nameplate:setName(nameTypeId, shouldShowClubName)
 		AvatarInstance.armor.shouldShowArmor = shouldShowArmor
@@ -89,6 +90,10 @@ function pings.syncAvatarConfig(nameTypeId, shouldShowClubName, costumeId, shoul
 		AvatarInstance.bubble.isChatOpened = isChatOpened
 		if costumeId >= 2 then
 			AvatarInstance.costume:setCostume(costumeId)
+		end
+		AvatarInstance.characterData.dataSync.syncData = additionalData
+		if AvatarInstance.characterData.dataSync.callbacks ~= nil and AvatarInstance.characterData.dataSync.callbacks.onDataSynced ~= nil then
+			AvatarInstance.characterData.dataSync.callbacks.onDataSynced(AvatarInstance.characterData)
 		end
 		AvatarInstance.config.isSynced = true
 	end

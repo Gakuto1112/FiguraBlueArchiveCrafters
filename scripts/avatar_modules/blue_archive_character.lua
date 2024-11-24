@@ -45,6 +45,7 @@
 ---@field public deathAnimation BlueArchiveCharacter.DeathAnimationStruct 死亡アニメーション
 ---@field public actionWheel BlueArchiveCharacter.ActionWheelStruct アクションホイール
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
+---@field public dataSync BlueArchiveCharacter.DataSyncStruct データ同期
 
 --[[ ******************************** ]]
 
@@ -108,6 +109,10 @@
 ---@class BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
 ---@field physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
 ---@field callbacks? BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数
+
+---@class BlueArchiveCharacter.DataSyncStruct データ同期のデータ構造体
+---@field public syncData {[string]: any} 追加でping同期させるデータテーブル
+---@field public callbacks BlueArchiveCharacter.DataSyncCallbacks データ同期のコールバック関数
 
 --[[ ******************************** ]]
 
@@ -231,6 +236,9 @@
 
 ---@class (exact) BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数のセット
 ---@field public onPhysicPerformed? fun(self: BlueArchiveCharacter, model: ModelPart) 物理演算処理後に実行されるコールバック関数（省略可）。ここでモデルパーツの向きを上書きできる。
+
+---@class (exact) BlueArchiveCharacter.DataSyncCallbacks データ同期のコールバック関数のセット
+---@field public onDataSynced? fun(self: BlueArchiveCharacter) データが同期されたときに実行させるコールバック関数。ホスト上では実行されない。
 
 --[[ ******************************** ]]
 
@@ -410,6 +418,16 @@ BlueArchiveCharacter = {
 
         instance.physics = {
             physicData = {
+
+            };
+        }
+
+        instance.dataSync = {
+            syncData = {
+
+            };
+
+            callbacks = {
 
             };
         }
