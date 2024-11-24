@@ -409,8 +409,6 @@ ExSkill = {
         self.parent.cameraManager:setCameraCollisionDenial(false)
         renderer:setRenderHUD(true)
         renderer:setFOV()
-        self.animationCount = -1
-        self.transitionCount = 0
 
         if self.animationCount >= 0 and self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation ~= nil then
             self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation(true)
@@ -418,6 +416,9 @@ ExSkill = {
         if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition ~= nil then
             self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition(true)
         end
+
+        self.animationCount = -1
+        self.transitionCount = 0
     end;
 }
 
