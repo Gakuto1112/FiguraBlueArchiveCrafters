@@ -7,7 +7,7 @@
 ---@field public removeReason PlacementObjectManager.RemoveReason この設置物のインスタンスが破棄される理由
 ---@field package modelOffsetPos Vector3 設置物"モデル"の位置オフセット値
 ---@field package offsetPos Vector3 設置物の中心座標のオフセット値
----@field package currentPos Vector3 設置物の現在位置
+---@field public currentPos Vector3 設置物の現在位置
 ---@field package nextPos Vector3 設置物の次ティックの位置
 ---@field package fallingSpeed number 設置物の落下速度
 ---@field package isOnGround boolean 設置物が接地しているかどうか

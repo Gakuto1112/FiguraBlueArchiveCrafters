@@ -112,7 +112,7 @@
 
 ---@class BlueArchiveCharacter.DataSyncStruct データ同期のデータ構造体
 ---@field public syncData {[string]: any} 追加でping同期させるデータテーブル
----@field public callbacks BlueArchiveCharacter.DataSyncCallbacks データ同期のコールバック関数
+---@field public callbacks? BlueArchiveCharacter.DataSyncCallbacks データ同期のコールバック関数
 
 --[[ ******************************** ]]
 
