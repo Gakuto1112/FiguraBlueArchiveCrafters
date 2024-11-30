@@ -18,7 +18,7 @@ SpawnObject = {
         ---@type SpawnObject
         local instance = Avatar.instantiate(SpawnObject, AvatarModule, parent)
 
-        instance.uuid = client.intUUIDToString(client:generateUUID())
+        instance.uuid = client.intUUIDToString(client.generateUUID())
         instance.shouldDeinit = false
 
         return instance
