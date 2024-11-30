@@ -39,7 +39,7 @@ Avatar = {
 		local instance = Avatar.instantiate(Avatar)
 
 		--ENTITY_INIT前に読み込み
-		require("scripts.avatar_module")
+		require("scripts.avatar_modules.avatar_module")
 
 		--ユーティリティクラスの読み込み
 		require("scripts.avatar_modules.events.abstract_event")

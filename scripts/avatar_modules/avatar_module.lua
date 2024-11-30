@@ -19,6 +19,5 @@ AvatarModule = {
     ---初期化関数
     ---@param self AvatarModule
     init = function (self)
-
     end;
 }
