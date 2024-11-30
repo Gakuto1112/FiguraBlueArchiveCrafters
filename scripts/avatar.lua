@@ -53,7 +53,7 @@ Avatar = {
 		instance.modelUtils:init()
 
 		--アバターモジュールの読み込み
-		require("scripts.avatar_modules.blue_archive_character")
+		require("scripts.blue_archive_character")
 		instance.characterData = BlueArchiveCharacter.new(instance)
 		instance.characterData:init()
 
