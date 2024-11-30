@@ -3,6 +3,7 @@
 ---@field public parentName string モデルを生成する名前空間
 ---@field public parentType ModelPart.parentType コピーした頭モデルに適用する親タイプ
 ---@field public generateHeadModel fun(self: HeadModelGenerator) 頭モデルのコピーを生成する
+---@field package isScriptLoaded boolean スクリプトが全てロードされているかどうか
 
 HeadModelGenerator = {
     ---コンストラクタ
@@ -11,6 +12,8 @@ HeadModelGenerator = {
     new = function (parent)
         ---@type HeadModelGenerator
         local instance = Avatar.instantiate(HeadModelGenerator, AvatarModule, parent)
+
+        instance.isScriptLoaded = false
 
         return instance
     end;
@@ -22,6 +25,10 @@ HeadModelGenerator = {
 
         ---@diagnostic disable-next-line: discard-returns
         models:newPart("script_"..self.parentName, "None")
+
+        self.parent.avatarEvents.SCRIPT_INIT:register(function ()
+            self.isScriptLoaded = true
+        end)
     end;
 
     ---頭モデルのコピーを生成する。
@@ -33,14 +40,16 @@ HeadModelGenerator = {
         end
 
         --ヘルメットを着けている場合は外しておく。
-        local isHelmetVisible = self.parent.armor.isArmorVisible.helmet
+        local isHelmetVisible = self.isScriptLoaded and self.parent.armor.isArmorVisible.helmet or false
         if isHelmetVisible then
             self.parent.armor:setHelmet(world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")))
         end
 
-        self.parent.physics:disable()
+        if self.isScriptLoaded then
+            self.parent.physics:disable()
+        end
         if self.processData.callbacks ~= nil and self.processData.callbacks.onBeforeModelCopy ~= nil then
-            self.processData.callbacks.onBeforeModelCopy(self.parent.characterData)
+            self.processData.callbacks.onBeforeModelCopy(self.parent.characterData, self.isScriptLoaded)
         end
 
         --現在の衣装を基に新たな頭ブロックのモデルを生成する。
@@ -66,11 +75,11 @@ HeadModelGenerator = {
         if isHelmetVisible then
             self.parent.armor:setHelmet(self.parent.armor.armorSlotItems[1])
         end
-        if player:isLoaded() then
+        if self.isScriptLoaded then
             self.parent.physics:enable()
         end
         if self.processData.callbacks ~= nil and self.processData.callbacks.onAfterModelCopy ~= nil then
-            self.processData.callbacks.onAfterModelCopy(self.parent.characterData)
+            self.processData.callbacks.onAfterModelCopy(self.parent.characterData, self.isScriptLoaded)
         end
     end;
 }
