@@ -35,7 +35,25 @@ ActionWheelGui = {
                     models.models.action_wheel_gui.Gui.BubbleGuide.QuestionEmoji:getTask("bubble_guide.bubble_4.key_name"):setText("§0"..self.parent.keyManager.keyMappings.bubble_4:getKeyName())
                     models.models.action_wheel_gui.Gui.BubbleGuide.SweatEmoji:getTask("bubble_guide.bubble_5.key_name"):setText("§0"..self.parent.keyManager.keyMappings.bubble_5:getKeyName())
 
-                    models.models.action_wheel_gui.Gui.ExSkillGuide:getTask("action_wheel.gui.ex_skill_guide.body"):setText(self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill == nil and "§0§l\""..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.ex_skill_"..self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].exSkill..".name").."\"§r\n§0"..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.key_pre")..self.parent.keyManager.keyMappings.ex_skill:getKeyName()..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.key_post") or "§0§l\""..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.ex_skill_"..self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].exSkill..".name").."\"§r§0 - \""..self.parent.keyManager.keyMappings.ex_skill:getKeyName().."\"\n§l\""..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.ex_skill_"..self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill..".name").."\"§r§0 - \""..self.parent.keyManager.keyMappings.ex_skill_sub:getKeyName().."\"")
+                    local exSkillTitleTask = models.models.action_wheel_gui.Gui.ExSkillGuide:getTask("action_wheel.gui.ex_skill_guide.title")
+                    local exSkillBody1Task = models.models.action_wheel_gui.Gui.ExSkillGuide:getTask("action_wheel.gui.ex_skill_guide.body_1")
+                    local exSkillBody2Task = models.models.action_wheel_gui.Gui.ExSkillGuide:getTask("action_wheel.gui.ex_skill_guide.body_2")
+                    local exSkillTitleWidth = client.getTextWidth(exSkillTitleTask:getText()) / 2 + 4
+                    local exSkillWidth = exSkillTitleWidth
+                    models.models.action_wheel_gui.Gui.ExSkillGuide.ExSkillGuideBackground.TitleBar:setScale(exSkillWidth, 1, 1)
+                    exSkillBody1Task:setText(self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill == nil and "§0§l\""..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.ex_skill_"..self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].exSkill..".name").."\"" or "§0§l\""..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.ex_skill_"..self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].exSkill..".name").."\"§r§0 - \""..self.parent.keyManager.keyMappings.ex_skill:getKeyName().."\"")
+                    exSkillBody2Task:setText(self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill == nil and "§0"..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.key_pre")..self.parent.keyManager.keyMappings.ex_skill:getKeyName()..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.key_post") or "§l\""..self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.ex_skill_"..self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill..".name").."\"§r§0 - \""..self.parent.keyManager.keyMappings.ex_skill_sub:getKeyName().."\"")
+                    exSkillWidth = math.max(exSkillWidth, client.getTextWidth(exSkillBody1Task:getText()) / 2 + 10)
+                    exSkillWidth = math.max(exSkillWidth, client.getTextWidth(exSkillBody2Task:getText()) / 2 + 10)
+                    exSkillWidth = math.max(exSkillWidth, 39)
+                    models.models.action_wheel_gui.Gui.ExSkillGuide.ExSkillGuideBackground.TitleBar:setPos((exSkillWidth - exSkillTitleWidth) / 2, 0, 0)
+                    models.models.action_wheel_gui.Gui.ExSkillGuide.ExSkillGuideBackground.TitleCenter:setScale(exSkillWidth - 25, 1, 1)
+                    models.models.action_wheel_gui.Gui.ExSkillGuide.ExSkillGuideBackground.TitleLeft:setPos(exSkillWidth - 26, 0, 0)
+                    models.models.action_wheel_gui.Gui.ExSkillGuide.ExSkillGuideBackground.BodyBottomCenter:setScale(exSkillWidth - 39, 1, 1)
+                    models.models.action_wheel_gui.Gui.ExSkillGuide.ExSkillGuideBackground.BodyBottomLeft:setPos(exSkillWidth - 40, 0, 0)
+                    exSkillTitleTask:setPos(exSkillWidth / 2 - 1, 0, 0)
+                    exSkillBody1Task:setPos(exSkillWidth / 2, -8, 0)
+                    exSkillBody2Task:setPos(exSkillWidth / 2, -13, 0)
                 elseif not isActionWheelOpened and self.isActionWheelOpenedPrev then
                     models.models.action_wheel_gui.Gui:setVisible(false)
                 end
@@ -60,10 +78,15 @@ ActionWheelGui = {
             exSkillGuideTitle:setText(self.parent.locale:getLocale("action_wheel.gui.ex_skill_guide.title"))
             exSkillGuideTitle:setAlignment("CENTER")
 
-            local exSkillGuideBody = models.models.action_wheel_gui.Gui.ExSkillGuide:newText("action_wheel.gui.ex_skill_guide.body")
-            exSkillGuideBody:setPos(0, -8, 0)
-            exSkillGuideBody:setScale(0.5, 0.5, 0.5)
-            exSkillGuideBody:setAlignment("CENTER")
+            local exSkillGuideBody1 = models.models.action_wheel_gui.Gui.ExSkillGuide:newText("action_wheel.gui.ex_skill_guide.body_1")
+            exSkillGuideBody1:setPos(0, -8, 0)
+            exSkillGuideBody1:setScale(0.5, 0.5, 0.5)
+            exSkillGuideBody1:setAlignment("CENTER")
+
+            local exSkillGuideBody2 = models.models.action_wheel_gui.Gui.ExSkillGuide:newText("action_wheel.gui.ex_skill_guide.body_2")
+            exSkillGuideBody2:setPos(0, -8, 0)
+            exSkillGuideBody2:setScale(0.5, 0.5, 0.5)
+            exSkillGuideBody2:setAlignment("CENTER")
         end
     end;
 }
