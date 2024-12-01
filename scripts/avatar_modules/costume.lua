@@ -1,6 +1,7 @@
 ---@class (exact) Costume : AvatarModule キャラクターのコスチュームを管理し、円滑に切り替えられるようにするクラス
 ---@field public costumeList string[] 利用可能なコスチューム一覧。BlueArchiveCharacterクラスから動的に生成される。
 ---@field public currentCostume integer 現在のコスチューム
+---@field public isChangingCostume boolean コスチュームを変更中かどうか
 ---@field public getCostumeLocalName fun(self: Costume, costumeId: integer) 設定言語を考慮した、衣装の名前を返す
 ---@field public setCostumeTextureOffset fun(offset: integer) メインモデルのテクスチャのオフセット値を設定する
 ---@field public setCostume fun(self: Costume, costume: integer) コスチュームを設定する
@@ -16,6 +17,7 @@ Costume = {
 
 		instance.costumeList = {}
 		instance.currentCostume = instance.parent.config:loadConfig("costume", 1)
+		instance.isChangingCostume = false
 
         return instance
     end;
@@ -40,6 +42,10 @@ Costume = {
 		end
 		self.parent.headBlock:generateHeadModel()
 		self.parent.portrait:generateHeadModel()
+
+		events.TICK:register(function ()
+			self.isChangingCostume = false
+		end)
     end;
 
 	---設定言語を考慮した、衣装の名前を返す。
@@ -83,6 +89,7 @@ Costume = {
 	---コスチュームをリセットし、デフォルトのコスチュームにする。
 	---@param self Costume
 	resetCostume = function (self)
+		self.isChangingCostume = true
 		if self.parent.exSkill.transitionCount > 0 then
 			self.parent.exSkill:forceStop()
 		end
