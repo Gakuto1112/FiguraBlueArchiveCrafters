@@ -16,7 +16,7 @@ Costume = {
         local instance = Avatar.instantiate(Costume, AvatarModule, parent)
 
 		instance.costumeList = {}
-		instance.currentCostume = instance.parent.config:loadConfig("costume", 1)
+		instance.currentCostume = instance.parent.config:loadConfig("PRIVATE", "costume", 1)
 		instance.isChangingCostume = false
 
         return instance
@@ -36,7 +36,7 @@ Costume = {
 			else
 				self.currentCostume = 1
 				if host:isHost() then
-					self.parent.config:saveConfig("costume", 1)
+					self.parent.config:saveConfig("PRIVATE", "costume", 1)
 				end
 			end
 		end

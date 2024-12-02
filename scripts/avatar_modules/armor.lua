@@ -42,7 +42,7 @@ Armor = {
     new = function (parent)
         ---@type Armor
         local instance = Avatar.instantiate(Armor, AvatarModule, parent)
-		instance.shouldShowArmor = instance.parent.config:loadConfig("showArmor", false)
+		instance.shouldShowArmor = instance.parent.config:loadConfig("PRIVATE", "showArmor", false)
 		instance.armorSlotItems = {world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air"))}
 		instance.armorSlotItemsPrev = {world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air")), world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air"))}
 		instance.isArmorVisible = {

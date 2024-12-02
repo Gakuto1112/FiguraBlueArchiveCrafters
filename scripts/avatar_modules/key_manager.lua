@@ -25,7 +25,7 @@ KeyManager = {
                 for key, value in pairs(self.keyMappings) do
                     if not value:isDefault() then
                         local newKey = value:getKey()
-                        self.parent.config:saveConfig("keybind."..key, newKey)
+                        self.parent.config:saveConfig("PRIVATE", "keybind."..key, newKey)
                         value:setKey(newKey)
                     end
                 end
@@ -39,7 +39,7 @@ KeyManager = {
     ---@param keyName Minecraft.keyCode 割当先のキー
     ---@return Keybind assignedKey キーマネージャーによって登録がされたキーバインド
     register = function (self, assignName, keyName)
-        self.keyMappings[assignName] = keybinds:newKeybind(self.parent.locale:getLocale("key_name."..assignName), self.parent.config:loadConfig("keybind."..assignName, keyName))
+        self.keyMappings[assignName] = keybinds:newKeybind(self.parent.locale:getLocale("key_name."..assignName), self.parent.config:loadConfig("PRIVATE", "keybind."..assignName, keyName))
         return self.keyMappings[assignName]
     end;
 }

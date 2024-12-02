@@ -1,9 +1,14 @@
+---@alias Config.Storage
+---| "PUBLIC" # FBACキャラクター共通ストレージ
+---| "PRIVATE" # キャラクター固有ストレージ
+
 ---@class (exact) Config : AvatarModule アバター設定を管理するクラス
+---@field package privateStorageName string キャラクター固有ストレージの名前
 ---@field package defaultValues {[string]: number|boolean|string} 読み込んだ値のデフォルト値を保持するテーブル
 ---@field package nextSyncCount integer 次の同期pingまでのカウンター
 ---@field package isSynced boolean 設定値がホストと同期されているかどうか
----@field public loadConfig fun(self: Config, keyName: string, defaultValue: any): any 設定を読み出す
----@field public saveConfig fun(self: Config, keyName: string, valueToSave: any) 設定を保存する
+---@field public loadConfig fun(self: Config, storage: Config.Storage, keyName: string, defaultValue: any): any 設定を読み出す
+---@field public saveConfig fun(self: Config, storage: Config.Storage, keyName: string, valueToSave: any) 設定を保存する
 
 Config = {
     ---コンストラクタ
@@ -13,6 +18,7 @@ Config = {
         ---@type Config
         local instance = Avatar.instantiate(Config, AvatarModule, parent)
 
+		instance.privateStorageName = "BlueArchive_"..instance.parent.characterData.basic.firstName.en_us..instance.parent.characterData.basic.lastName.en_us
 		instance.defaultValues = {}
 		instance.nextSyncCount = 0
 		instance.isSynced = host:isHost()
@@ -34,19 +40,23 @@ Config = {
 					self.nextSyncCount = self.nextSyncCount - 1
 				end
 			end)
-
-			config:setName("BlueArchive_"..self.parent.characterData.basic.firstName.en_us..self.parent.characterData.basic.lastName.en_us)
 		end
     end;
 
 	---設定を読み出す。
 	---@generic T
 	---@param self Config
+	---@param storage Config.Storage 読み出し先のストレージ
 	---@param keyName string 読み出す設定の名前
 	---@param defaultValue `T` 該当の設定が無い場合や、ホスト外での実行の場合はこの値が返される。
 	---@return `T` loadedValue 読み出した値
-	loadConfig = function (self, keyName, defaultValue)
+	loadConfig = function (self, storage, keyName, defaultValue)
 		if host:isHost() then
+			if storage == "PUBLIC" then
+				config:setName("BlueArchive_public")
+			else
+				config:setName(self.privateStorageName)
+			end
 			local loadedData = config:load(keyName)
 			self.defaultValues[keyName] = defaultValue
 			if loadedData ~= nil then
@@ -61,10 +71,16 @@ Config = {
 
 	---設定を保存する。
 	---@param self Config
+	---@param storage Config.Storage 書き込み先のストレージ
 	---@param keyName string 保存する設定の名前
 	---@param valueToSave any 保存する値
-	saveConfig = function (self, keyName, valueToSave)
+	saveConfig = function (self, storage, keyName, valueToSave)
 		if host:isHost() then
+			if storage == "PUBLIC" then
+				config:setName("BlueArchive_public")
+			else
+				config:setName(self.privateStorageName)
+			end
 			if self.defaultValues[keyName] == valueToSave then
 				config:save(keyName, nil)
 			else

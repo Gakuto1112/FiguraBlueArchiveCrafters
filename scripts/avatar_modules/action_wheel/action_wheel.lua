@@ -23,7 +23,7 @@ ActionWheel = {
         instance.selectingName = instance.parent.nameplate.currentName
         instance.selectingShouldShowClubName = instance.parent.nameplate.shouldShowClubName
         instance.selectingExSkillParticleAmount = instance.parent.exSkill.frameParticleAmount
-        instance.shouldReplaceVehicleModels = instance.parent.config:loadConfig("replaceVehicleModels", true)
+        instance.shouldReplaceVehicleModels = instance.parent.config:loadConfig("PRIVATE", "replaceVehicleModels", true)
         instance.isActionWheelOpenedPrev = false
 
         return instance
@@ -40,20 +40,20 @@ ActionWheel = {
                 if not isActionWheelOpened and self.isActionWheelOpenedPrev then
                     if self.selectingCostume ~= self.parent.costume.currentCostume then
                         pings.actionWheelChangeCostume(self.selectingCostume)
-                        self.parent.config:saveConfig("costume", self.selectingCostume)
+                        self.parent.config:saveConfig("PRIVATE", "costume", self.selectingCostume)
                         sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:item.armor.equip_leather"), player:getPos())
                         print(self.parent.locale:getLocale("action_wheel.main.action_1.done_first")..self.parent.costume:getCostumeLocalName(self.selectingCostume)..self.parent.locale:getLocale("action_wheel.main.action_1.done_last"))
                     end
                     if self.selectingName ~= self.parent.nameplate.currentName or self.selectingShouldShowClubName ~= self.parent.nameplate.shouldShowClubName then
                         pings.actionWheelChangeName(self.selectingName, self.selectingShouldShowClubName)
-                        self.parent.config:saveConfig("name", self.selectingName)
-                        self.parent.config:saveConfig("showClubName", self.selectingShouldShowClubName)
+                        self.parent.config:saveConfig("PRIVATE", "name", self.selectingName)
+                        self.parent.config:saveConfig("PRIVATE", "showClubName", self.selectingShouldShowClubName)
                         sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:ui.cartography_table.take_result"), player:getPos())
                         print(self.parent.locale:getLocale("action_wheel.main.action_2.done_first")..self.parent.nameplate:getName(self.selectingName)..self.parent.locale:getLocale("action_wheel.main.action_2.done_last"))
                     end
                     if self.selectingExSkillParticleAmount ~= self.parent.exSkill.frameParticleAmount then
                         self.parent.exSkill.frameParticleAmount = self.selectingExSkillParticleAmount
-                        self.parent.config:saveConfig("exSkillFrameParticleAmount", self.selectingExSkillParticleAmount)
+                        self.parent.config:saveConfig("PRIVATE", "exSkillFrameParticleAmount", self.selectingExSkillParticleAmount)
                         sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.item.pickup"), player:getPos(), 1, 0.5)
                         print(self.parent.locale:getLocale("action_wheel.main.action_5.done_first")..self.parent.locale:getLocale("action_wheel.main.action_5.option_"..self.selectingExSkillParticleAmount)..self.parent.locale:getLocale("action_wheel.main.action_5.done_last"))
                     end
@@ -118,13 +118,13 @@ ActionWheel = {
             self.mainPage:newAction(3):setTitle(self.parent.locale:getLocale("action_wheel.main.action_3.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off")):setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_3.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on")):setItem(self.parent.compatibilityUtils:checkItem("minecraft:iron_chestplate")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
                 pings.actionWheelSetArmorVisible(true)
                 action:setHoverColor(0.33, 1, 0.33)
-                self.parent.config:saveConfig("showArmor", true)
+                self.parent.config:saveConfig("PRIVATE", "showArmor", true)
             end):setOnUntoggle(function(_, action)
                 pings.actionWheelSetArmorVisible(false)
                 action:setHoverColor(1, 0.33, 0.33)
-                self.parent.config:saveConfig("showArmor", false)
+                self.parent.config:saveConfig("PRIVATE", "showArmor", false)
             end)
-            if self.parent.config:loadConfig("showArmor", false) then
+            if self.parent.config:loadConfig("PRIVATE", "showArmor", false) then
                 local action = self.mainPage:getAction(3)
                 action:setToggled(true)
                 action:setHoverColor(0.33, 1, 0.33)
@@ -134,13 +134,13 @@ ActionWheel = {
             self.mainPage:newAction(4):setTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off")):setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on")):item(self.parent.compatibilityUtils:checkItem("minecraft:bow")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
                 self.parent.gun.shouldShowWeaponInFirstPerson = true
                 action:setHoverColor(0.33, 1, 0.33)
-                self.parent.config:saveConfig("firstPersonWeapon", true)
+                self.parent.config:saveConfig("PRIVATE", "firstPersonWeapon", true)
             end):setOnUntoggle(function (_, action)
                 self.parent.gun.shouldShowWeaponInFirstPerson = false
                 action:setHoverColor(1, 0.33, 0.33)
-                self.parent.config:saveConfig("firstPersonWeapon", false)
+                self.parent.config:saveConfig("PRIVATE", "firstPersonWeapon", false)
             end)
-            if self.parent.config:loadConfig("firstPersonWeapon", true) then
+            if self.parent.config:loadConfig("PRIVATE", "firstPersonWeapon", true) then
                 local action = self.mainPage:getAction(4)
                 action:setToggled(true)
                 action:setHoverColor(0.33, 1, 0.33)
@@ -167,7 +167,7 @@ ActionWheel = {
                 if self.parent.characterData.actionWheel.isVehicleOptionEnabled then
                     pings.actionWheelSetShouldReplaceVehicleModels(true)
                     action:setHoverColor(0.33, 1, 0.33)
-                    self.parent.config:saveConfig("replaceVehicleModels", true)
+                    self.parent.config:saveConfig("PRIVATE", "replaceVehicleModels", true)
                 else
                     print(self.parent.locale:getLocale("action_wheel.main.action_6.unavailable"))
                     action:setToggled(false)
@@ -175,7 +175,7 @@ ActionWheel = {
             end):setOnUntoggle(function (_, action)
                 pings.actionWheelSetShouldReplaceVehicleModels(false)
                 action:setHoverColor(1, 0.33, 0.33)
-                self.parent.config:saveConfig("replaceVehicleModels", false)
+                self.parent.config:saveConfig("PRIVATE", "replaceVehicleModels", false)
             end)
             if not self.parent.characterData.actionWheel.isVehicleOptionEnabled then
                 local action = self.mainPage:getAction(6)

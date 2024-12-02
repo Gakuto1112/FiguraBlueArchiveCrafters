@@ -31,7 +31,7 @@ Gun = {
         local instance = Avatar.instantiate(Gun, AvatarModule, parent)
 
         instance.gunItems = {"minecraft:bow", "minecraft:crossbow"}
-        instance.shouldShowWeaponInFirstPerson = instance.parent.config:loadConfig("firstPersonWeapon", true)
+        instance.shouldShowWeaponInFirstPerson = instance.parent.config:loadConfig("PRIVATE", "firstPersonWeapon", true)
         instance.currentGunPosition = "NONE"
         instance.heldItemsPrev = {
             mainHand = world.newItem(instance.parent.compatibilityUtils:checkItem("minecraft:air"));

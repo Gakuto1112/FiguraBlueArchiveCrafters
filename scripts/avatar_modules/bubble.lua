@@ -56,27 +56,27 @@ Bubble = {
 
         --エモートガイド
         if host:isHost() then
-            self.parent.keyManager:register("bubble_1", self.parent.config:loadConfig("keybind.bubble_1", "key.keyboard.j")):onPress(function ()
+            self.parent.keyManager:register("bubble_1", self.parent.config:loadConfig("PRIVATE", "keybind.bubble_1", "key.keyboard.j")):onPress(function ()
                 if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
                     pings.showBubbleEmote("GOOD")
                 end
             end)
-            self.parent.keyManager:register("bubble_2", self.parent.config:loadConfig("keybind.bubble_2", "key.keyboard.k")):onPress(function ()
+            self.parent.keyManager:register("bubble_2", self.parent.config:loadConfig("PRIVATE", "keybind.bubble_2", "key.keyboard.k")):onPress(function ()
                 if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
                     pings.showBubbleEmote("HEART")
                 end
             end)
-            self.parent.keyManager:register("bubble_3", self.parent.config:loadConfig("keybind.bubble_3", "key.keyboard.n")):onPress(function ()
+            self.parent.keyManager:register("bubble_3", self.parent.config:loadConfig("PRIVATE", "keybind.bubble_3", "key.keyboard.n")):onPress(function ()
                 if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
                     pings.showBubbleEmote("NOTE")
                 end
             end)
-            self.parent.keyManager:register("bubble_4", self.parent.config:loadConfig("keybind.bubble_4", "key.keyboard.m")):onPress(function ()
+            self.parent.keyManager:register("bubble_4", self.parent.config:loadConfig("PRIVATE", "keybind.bubble_4", "key.keyboard.m")):onPress(function ()
                 if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
                     pings.showBubbleEmote("QUESTION")
                 end
             end)
-            self.parent.keyManager:register("bubble_5", self.parent.config:loadConfig("keybind.bubble_5", "key.keyboard.comma")):onPress(function ()
+            self.parent.keyManager:register("bubble_5", self.parent.config:loadConfig("PRIVATE", "keybind.bubble_5", "key.keyboard.comma")):onPress(function ()
                 if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
                     pings.showBubbleEmote("SWEAT")
                 end

@@ -33,7 +33,7 @@ ExSkill = {
 
         instance.AUTO_PLAY = "NONE"
 
-        instance.frameParticleAmount = instance.parent.config:loadConfig("exSkillFrameParticleAmount", 1)
+        instance.frameParticleAmount = instance.parent.config:loadConfig("PRIVATE", "exSkillFrameParticleAmount", 1)
         instance.exSkillIndex = 1
         instance.animationCount = -1
         instance.animationLength = 0
@@ -57,7 +57,7 @@ ExSkill = {
                 exSkill.camera.fin.pos:mul(-1, 1, 1):scale(1 / 16 *  offset)
             end
 
-            local exSkillKey = self.parent.keyManager:register("ex_skill", self.parent.config:loadConfig("keybind.ex_skill", "key.keyboard.g"))
+            local exSkillKey = self.parent.keyManager:register("ex_skill", self.parent.config:loadConfig("PRIVATE", "keybind.ex_skill", "key.keyboard.g"))
             exSkillKey:setOnPress(function ()
                 while events.TICK:getRegisteredCount("ex_skill_keypress_tick") > 0 do
                     events.TICK:remove("ex_skill_keypress_tick")
@@ -85,7 +85,7 @@ ExSkill = {
                     self.keyPressCount = 0
                 end
             end)
-            self.parent.keyManager:register("ex_skill_sub", self.parent.config:loadConfig("keybind.ex_skill_sub", "key.keyboard.h")):setOnPress(function ()
+            self.parent.keyManager:register("ex_skill_sub", self.parent.config:loadConfig("PRIVATE", "keybind.ex_skill_sub", "key.keyboard.h")):setOnPress(function ()
                 if self:canPlayAnimation() and self.animationCount == -1 and self.transitionCount == 0 and self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill ~= nil then
                     pings.subExSkill()
                 else
