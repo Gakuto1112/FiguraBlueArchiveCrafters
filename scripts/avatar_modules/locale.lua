@@ -48,6 +48,9 @@ Locale = {
 			{"action_wheel.main.action_5.done_last", "§r.", "§rに変更しました。"};
 			{"action_wheel.main.action_6.title", "Replace vehicle models: ", "乗り物のモデルを置き換え："};
 			{"action_wheel.main.action_6.unavailable", "This option is unavailable for this character.", "この生徒さんでは利用できません。"};
+			{"action_wheel.main.action_7.title_1", "Check for new FBAC Updates ", "FBACアップデートの確認"};
+			{"action_wheel.main.action_7.title_2", "(Left-click)", "（左クリック）"};
+			{"action_wheel.main.action_7.title_3", "Copy URL for the latest FBAC §b(Right-click)", "最新FBACバージョンのURLをコピー§b（右クリック）"};
 			{"action_wheel.gui.bubble_guide.title", "§0Bubble emote guide", "§0吹き出しエモートガイド"};
 			{"action_wheel.gui.ex_skill_guide.title", "§0Ex skill guide", "§0Exスキルガイド"};
 			{"action_wheel.gui.ex_skill_guide.key_pre", "Press \"", "\""};

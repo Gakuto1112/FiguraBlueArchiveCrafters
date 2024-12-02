@@ -9,6 +9,7 @@
 ---@field package refreshCostumeChangeActionTitle fun(self: ActionWheel) 衣装変更アクションのタイトルを更新する
 ---@field package refreshNameChangeActionTitle fun(self: ActionWheel) 名前変更アクションのタイトルを更新する
 ---@field package refreshExSkillParticleActionTitle fun(self: ActionWheel) Exスキルアニメーションのパーティクル量調整アクションのタイトルを更新する
+---@field package refreshUpdateActionStatus fun(self: ActionWheel) アップデート確認アクションの状態を更新する
 
 ActionWheel = {
     ---コンストラクタ
@@ -37,7 +38,9 @@ ActionWheel = {
         if host:isHost() then
             events.TICK:register(function()
                 local isActionWheelOpened = action_wheel:isEnabled()
-                if not isActionWheelOpened and self.isActionWheelOpenedPrev then
+                if isActionWheelOpened  then
+                    self:refreshUpdateActionStatus()
+                elseif not isActionWheelOpened and self.isActionWheelOpenedPrev then
                     if self.selectingCostume ~= self.parent.costume.currentCostume then
                         pings.actionWheelChangeCostume(self.selectingCostume)
                         self.parent.config:saveConfig("PRIVATE", "costume", self.selectingCostume)
@@ -131,7 +134,7 @@ ActionWheel = {
             end
 
             --アクション4. 一人称視点での武器モデルの表示
-            self.mainPage:newAction(4):setTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off")):setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on")):item(self.parent.compatibilityUtils:checkItem("minecraft:bow")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
+            self.mainPage:newAction(4):setTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off")):setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on")):setItem(self.parent.compatibilityUtils:checkItem("minecraft:bow")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
                 self.parent.gun.shouldShowWeaponInFirstPerson = true
                 action:setHoverColor(0.33, 1, 0.33)
                 self.parent.config:saveConfig("PRIVATE", "firstPersonWeapon", true)
@@ -163,7 +166,7 @@ ActionWheel = {
             end)
 
             --アクション6. 乗り物モデルの置き換え
-            self.mainPage:newAction(6):setTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off")):setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on")):item(self.parent.compatibilityUtils:checkItem("minecraft:oak_boat")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
+            self.mainPage:newAction(6):setTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off")):setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on")):setItem(self.parent.compatibilityUtils:checkItem("minecraft:oak_boat")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
                 if self.parent.characterData.actionWheel.isVehicleOptionEnabled then
                     pings.actionWheelSetShouldReplaceVehicleModels(true)
                     action:setHoverColor(0.33, 1, 0.33)
@@ -190,8 +193,10 @@ ActionWheel = {
             end
 
             --アクション7. （空欄）
+            self.mainPage:newAction(7):setItem("minecraft:compass")
 
             --アクション8. （空欄）
+            self.mainPage:newAction(8):setColor(0.16, 0.16, 0.16):setHoverColor(0.16, 0.16, 0.16)
 
             self:refreshCostumeChangeActionTitle()
             self:refreshNameChangeActionTitle()
@@ -229,6 +234,21 @@ ActionWheel = {
     ---@param self ActionWheel
     refreshExSkillParticleActionTitle = function (self)
         self.mainPage:getAction(5):title(self.parent.locale:getLocale("action_wheel.main.action_5.title").."§b"..self.parent.locale:getLocale("action_wheel.main.action_5.option_"..self.selectingExSkillParticleAmount))
+    end;
+
+    ---アップデート確認アクションの状態を更新する。
+    ---@param self ActionWheel
+    refreshUpdateActionStatus = function (self)
+        local action = self.mainPage:getAction(7)
+        if self.parent.updateChecker.isCheckingUpdate then
+            action:setTitle("§7"..self.parent.locale:getLocale("action_wheel.main.action_7.title_1")..self.parent.locale:getLocale("action_wheel.main.action_7.title_2").."\n§r"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3"))
+            action:setColor(0.16, 0.16, 0.16)
+            action:setHoverColor(1, 0.33, 0.33)
+        else
+            action:setTitle(self.parent.locale:getLocale("action_wheel.main.action_7.title_1").."§b"..self.parent.locale:getLocale("action_wheel.main.action_7.title_2").."\n§r"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3"))
+            action:setColor(0.78, 0.78, 0.78)
+            action:setHoverColor(1, 1, 1)
+        end
     end;
 }
 

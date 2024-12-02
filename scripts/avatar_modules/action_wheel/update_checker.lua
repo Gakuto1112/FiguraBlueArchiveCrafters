@@ -1,6 +1,7 @@
 ---@class (exact) UpdateChecker : AvatarModule FBACのアップデートの確認を管理するクラス
 ---@field package FBAC_VERSION string 現在のFBACバージョン
 ---@field package latestVersion string リモート上にある最新のFBACバージョン
+---@field public isCheckingUpdate boolean 現在アップデートをチェック中かどうか
 ---@field package responseHandler Future.HttpResponse|nil httpレスポンスのハンドラ
 ---@field package textAnimationCount integer 新しいバージョン表示のテキストのアニメーションのカウンター
 ---@field package isActionWheelOpenedPrev boolean 前ティックにアクションホイールを開けていたかどうか
@@ -17,6 +18,7 @@ UpdateChecker = {
 
         instance.FBAC_VERSION = "v1.10.0_dev"
         instance.latestVersion = instance.FBAC_VERSION
+        instance.isCheckingUpdate = false
         instance.textAnimationCount = 0
 
         return instance
@@ -82,7 +84,8 @@ UpdateChecker = {
     ---FBACアップデートの確認を行う。
     ---@param self UpdateChecker
     checkUpdate = function (self)
-        if host:isHost() then
+        if host:isHost() and not self.isCheckingUpdate then
+            self.isCheckingUpdate = true
             local textTask = models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3")
             textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.checking"))
             if net:isNetworkingAllowed() and net:isLinkAllowed("https://api.github.com") then
@@ -110,40 +113,49 @@ UpdateChecker = {
                                                 self.latestVersion = newerVersion
                                                 print(self.parent.locale:getLocale("action_wheel.gui.update_check.update_available")..self.latestVersion)
                                                 sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.experience_orb.pickup"), player:getPos(), 1, 1)
+                                                self.isCheckingUpdate = false
                                             else
                                                 --現在は最新
                                                 self.latestVersion = newerVersion
                                                 textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.latest"))
+                                                self.isCheckingUpdate = false
                                             end
                                             self.parent.config:saveConfig("PUBLIC", "lastUpdateCheckTime", client:getSystemTime())
                                             self.parent.config:saveConfig("PUBLIC", "latestVersion", self.latestVersion)
                                         else
                                             --予期しないJSONデータ
                                             textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.error_invalid_json"))
+                                            self.isCheckingUpdate = false
                                         end
                                     else
                                         --予期しないJSONデータ
                                         textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.error_invalid_json"))
+                                        self.isCheckingUpdate = false
                                     end
                                 else
                                     --JSON解析エラー
                                     textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.error_invalid_json_format"))
+                                    self.isCheckingUpdate = false
                                 end
                                 stream:close()
                                 buffer:close()
                             else
                                 --ステータスコードが200番台以外
                                 textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.error_invalid_stats".."("..stats..")"))
+                                self.isCheckingUpdate = false
                             end
                         else
                             --ネットワークエラー
                             textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.error_network_error"))
+                            self.isCheckingUpdate = false
                         end
                         events.TICK:remove("update_checker_http_tick")
                     end
                 end, "update_checker_http_tick")
             else
+                ---ネットワーキングAPIが不許可
                 textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.error_not_allowed"))
+                self.isCheckingUpdate = false
             end
         end
     end;
