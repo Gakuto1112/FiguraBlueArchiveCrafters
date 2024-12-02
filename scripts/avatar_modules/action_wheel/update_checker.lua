@@ -5,6 +5,7 @@
 ---@field package textAnimationCount integer 新しいバージョン表示のテキストのアニメーションのカウンター
 ---@field package isActionWheelOpenedPrev boolean 前ティックにアクションホイールを開けていたかどうか
 ---@field package compareVersions fun(version1: string, version2: string): string|nil 2つのバージョン文字列を比較し、新しい方を返す
+---@field package checkUpdate fun(self: UpdateChecker) FBACアップデートの確認を行う
 
 UpdateChecker = {
     ---コンストラクタ
@@ -14,7 +15,7 @@ UpdateChecker = {
         ---@type UpdateChecker
         local instance = Avatar.instantiate(UpdateChecker, AvatarModule, parent)
 
-        instance.FBAC_VERSION = "v1.8.0"
+        instance.FBAC_VERSION = "v1.10.0_dev"
         instance.latestVersion = instance.FBAC_VERSION
         instance.textAnimationCount = 0
 
@@ -45,7 +46,18 @@ UpdateChecker = {
                 self.isActionWheelOpenedPrev = isActionWheelOpened
             end)
 
-            self:checkUpdate()
+            local lastUpdateCheckTime = self.parent.config:loadConfig("PUBLIC", "lastUpdateCheckTime", 0)
+            if client:getSystemTime() >= lastUpdateCheckTime + 86400000 then
+                self:checkUpdate()
+            else
+                self.latestVersion = self.compareVersions(self.parent.config:loadConfig("PUBLIC", "latestVersion", self.latestVersion), self.FBAC_VERSION)
+                if self.latestVersion ~= self.FBAC_VERSION then
+                    print(self.parent.locale:getLocale("action_wheel.gui.update_check.update_available")..self.latestVersion)
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.experience_orb.pickup"), player:getPos(), 1, 1)
+                else
+                    models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(self.parent.locale:getLocale("action_wheel.gui.update_check.latest"))
+                end
+            end
         end
     end;
 
@@ -100,8 +112,11 @@ UpdateChecker = {
                                                 sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.experience_orb.pickup"), player:getPos(), 1, 1)
                                             else
                                                 --現在は最新
+                                                self.latestVersion = newerVersion
                                                 textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.latest"))
                                             end
+                                            self.parent.config:saveConfig("PUBLIC", "lastUpdateCheckTime", client:getSystemTime())
+                                            self.parent.config:saveConfig("PUBLIC", "latestVersion", self.latestVersion)
                                         else
                                             --予期しないJSONデータ
                                             textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.error_invalid_json"))
