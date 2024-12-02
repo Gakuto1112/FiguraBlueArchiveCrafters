@@ -52,6 +52,14 @@ Locale = {
 			{"action_wheel.gui.ex_skill_guide.title", "§0Ex skill guide", "§0Exスキルガイド"};
 			{"action_wheel.gui.ex_skill_guide.key_pre", "Press \"", "\""};
 			{"action_wheel.gui.ex_skill_guide.key_post", "\"key to play", "\"キーで再生"};
+			{"action_wheel.gui.update_check.checking", "Checking for updates...", "アップデートを確認中..."};
+			{"action_wheel.gui.update_check.update_available", "New FBAC update is available: ", "FBACのアップデートが利用可能です："};
+			{"action_wheel.gui.update_check.latest", "No FBAC update available", "最新のFBACを使用中です"};
+			{"action_wheel.gui.update_check.error_not_allowed", "Failed to check for updates - Networking API not allowed", "アップデート確認失敗 - ネットワーキング機能が不許可"};
+			{"action_wheel.gui.update_check.error_network_error", "Failed to check for updates - Network error", "アップデート確認失敗 - ネットワークエラー"};
+			{"action_wheel.gui.update_check.error_invalid_stats", "Failed to check for updates - Request failure ", "アップデート確認失敗 - リクエスト失敗 "};
+			{"action_wheel.gui.update_check.error_invalid_json_format", "Failed to check for updates - Json parsing failure", "アップデート確認失敗 - リクエスト解析失敗"};
+			{"action_wheel.gui.update_check.error_invalid_json", "Failed to check for updates - Unexpected Request", "アップデート確認失敗 - 予期しないリクエスト"};
 			{"key_name.ex_skill", "Ex Skill", "Exスキル"};
 			{"key_name.ex_skill_sub", "Sub Ex Skill", "サブExスキル"};
 			{"key_name.bubble_1", "Bubble: Good", "吹き出し：いいね"};

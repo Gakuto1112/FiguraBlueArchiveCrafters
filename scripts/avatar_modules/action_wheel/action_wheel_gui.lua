@@ -28,6 +28,7 @@ ActionWheelGui = {
                     local windowSize = client:getScaledWindowSize()
                     models.models.action_wheel_gui.Gui.BubbleGuide:setPos(windowSize.x * -0.5 + 44, windowSize.y * -0.5 + 5, 0)
                     models.models.action_wheel_gui.Gui.ExSkillGuide:setPos(windowSize.x * -0.5 + 57, -21, 0)
+                    models.models.action_wheel_gui.Gui.VersionDisplay:setPos(-0.75, -0.5, 0)
 
                     local bubbleGuideTextTasks = {models.models.action_wheel_gui.Gui.BubbleGuide:getTask("action_wheel.gui.bubble_guide.title"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.GoodEmoji:getTask("bubble_guide.bubble_1.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.HeartEmoji:getTask("bubble_guide.bubble_2.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.NoteEmoji:getTask("bubble_guide.bubble_3.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.QuestionEmoji:getTask("bubble_guide.bubble_4.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.SweatEmoji:getTask("bubble_guide.bubble_5.key_name")}
                     bubbleGuideTextTasks[1]:setText(self.parent.locale:getLocale("action_wheel.gui.bubble_guide.title"))
@@ -78,6 +79,16 @@ ActionWheelGui = {
                     for i = 2, #exSkillGuideTextTasks do
                         exSkillGuideTextTasks[i]:setPos(exSkillGuideWidth / 2, (i - 2) * -5 - 8)
                     end
+
+                    local versionDisplayTextTasks = {}
+                    for i = 1, 3 do
+                        table.insert(versionDisplayTextTasks, models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l"..i))
+                    end
+
+                    for i = 2, 3 do
+                        versionDisplayTextTasks[i]:setPos(0, (i - 1) * -2.25, 0)
+                    end
+
                 elseif not isActionWheelOpened and self.isActionWheelOpenedPrev then
                     models.models.action_wheel_gui.Gui:setVisible(false)
                 end
@@ -85,14 +96,17 @@ ActionWheelGui = {
             end)
 
             models.models.action_wheel_gui.Gui:setScale(2, 2, 2)
-            local bubbleGuideTitle = models.models.action_wheel_gui.Gui.BubbleGuide:newText("action_wheel.gui.bubble_guide.title")
-            bubbleGuideTitle:setScale(0.5, 0.5, 0.5)
-            bubbleGuideTitle:setText()
-            bubbleGuideTitle:setAlignment("CENTER")
-
-            for _, keyNameText in ipairs({models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.GoodEmoji:newText("bubble_guide.bubble_1.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.HeartEmoji:newText("bubble_guide.bubble_2.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.NoteEmoji:newText("bubble_guide.bubble_3.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.QuestionEmoji:newText("bubble_guide.bubble_4.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.SweatEmoji:newText("bubble_guide.bubble_5.key_name"), models.models.action_wheel_gui.Gui.ExSkillGuide:newText("action_wheel.gui.ex_skill_guide.title"), models.models.action_wheel_gui.Gui.ExSkillGuide:newText("action_wheel.gui.ex_skill_guide.body_1"), models.models.action_wheel_gui.Gui.ExSkillGuide:newText("action_wheel.gui.ex_skill_guide.body_2")}) do
-                keyNameText:setScale(0.5, 0.5, 0.5)
-                keyNameText:setAlignment("CENTER")
+            for _, textTask in ipairs({models.models.action_wheel_gui.Gui.BubbleGuide:newText("action_wheel.gui.bubble_guide.title"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.GoodEmoji:newText("bubble_guide.bubble_1.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.HeartEmoji:newText("bubble_guide.bubble_2.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.NoteEmoji:newText("bubble_guide.bubble_3.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.QuestionEmoji:newText("bubble_guide.bubble_4.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.SweatEmoji:newText("bubble_guide.bubble_5.key_name"), models.models.action_wheel_gui.Gui.ExSkillGuide:newText("action_wheel.gui.ex_skill_guide.title"), models.models.action_wheel_gui.Gui.ExSkillGuide:newText("action_wheel.gui.ex_skill_guide.body_1"), models.models.action_wheel_gui.Gui.ExSkillGuide:newText("action_wheel.gui.ex_skill_guide.body_2")}) do
+                textTask:setScale(0.5, 0.5, 0.5)
+                textTask:setAlignment("CENTER")
+            end
+            for i = 1, 3 do
+                local textTask = models.models.action_wheel_gui.Gui.VersionDisplay:newText("action_wheel.gui.version_display.l"..i)
+                textTask:setScale(0.25, 0.25, 0.25)
+                textTask:setShadow(true)
+                if i == 1 then
+                    textTask:setText("Figura Blue Archive Characters (FBAC)")
+                end
             end
         end
     end;
