@@ -193,7 +193,26 @@ ActionWheel = {
             end
 
             --アクション7. （空欄）
-            self.mainPage:newAction(7):setItem("minecraft:compass")
+            self.mainPage:newAction(7):setItem("minecraft:compass"):setOnLeftClick(function ()
+                if not self.parent.updateChecker.isCheckingUpdate then
+                    self.parent.updateChecker:checkUpdate()
+                else
+                    print("action_wheel.main.action_7.ongoing")
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.note_block.bass"), player:getPos(), 1, 0.5)
+                end
+                if not net:isNetworkingAllowed() or not net:isLinkAllowed("https://api.github.com") then
+                    print(self.parent.locale:getLocale("action_wheel.main.action_7.networking_api"))
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.note_block.bass"), player:getPos(), 1, 0.5)
+                end
+            end):onRightClick(function ()
+                if self.parent.updateChecker.didCheckLatest then
+                    host:setClipboard("https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/releases/tag/"..self.parent.updateChecker.latestVersion)
+                    print(self.parent.locale:getLocale("action_wheel.main.action_7.copied"))
+                else
+                    print(self.parent.locale:getLocale("action_wheel.main.action_7.cannot_check_latest"))
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.note_block.bass"), player:getPos(), 1, 0.5)
+                end
+            end)
 
             --アクション8. （空欄）
             self.mainPage:newAction(8):setColor(0.16, 0.16, 0.16):setHoverColor(0.16, 0.16, 0.16)
@@ -240,15 +259,22 @@ ActionWheel = {
     ---@param self ActionWheel
     refreshUpdateActionStatus = function (self)
         local action = self.mainPage:getAction(7)
+        local actionTitle = ""
         if self.parent.updateChecker.isCheckingUpdate then
-            action:setTitle("§7"..self.parent.locale:getLocale("action_wheel.main.action_7.title_1")..self.parent.locale:getLocale("action_wheel.main.action_7.title_2").."\n§r"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3"))
+            actionTitle = actionTitle.."§7"..self.parent.locale:getLocale("action_wheel.main.action_7.title_1")..self.parent.locale:getLocale("action_wheel.main.action_7.title_2").."\n"
             action:setColor(0.16, 0.16, 0.16)
             action:setHoverColor(1, 0.33, 0.33)
         else
-            action:setTitle(self.parent.locale:getLocale("action_wheel.main.action_7.title_1").."§b"..self.parent.locale:getLocale("action_wheel.main.action_7.title_2").."\n§r"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3"))
+            actionTitle = actionTitle..self.parent.locale:getLocale("action_wheel.main.action_7.title_1").."§b"..self.parent.locale:getLocale("action_wheel.main.action_7.title_2").."\n"
             action:setColor(0.78, 0.78, 0.78)
             action:setHoverColor(1, 1, 1)
         end
+        if self.parent.updateChecker.didCheckLatest then
+            actionTitle = actionTitle.."§r"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3").."§b"..self.parent.locale:getLocale("action_wheel.main.action_7.title_4")
+        else
+            actionTitle = actionTitle.."§7"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3")..self.parent.locale:getLocale("action_wheel.main.action_7.title_4")
+        end
+        action:setTitle(actionTitle)
     end;
 }
 
