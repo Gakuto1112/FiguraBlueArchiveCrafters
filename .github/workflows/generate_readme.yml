@@ -3,6 +3,7 @@ name: Generate README
 on:
   push:
     branches:
+      - base
       - '[A-Z]*'
     paths:
       - .github/README_templates/**
