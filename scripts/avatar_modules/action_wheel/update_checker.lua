@@ -1,5 +1,6 @@
 ---@class (exact) UpdateChecker : AvatarModule FBACのアップデートの確認を管理するクラス
 ---@field package FBAC_VERSION string 現在のFBACバージョン
+---@field package BRANCH_NAME string このブランチ名（キャラクター名）
 ---@field public latestVersion string リモート上にある最新のFBACバージョン
 ---@field public isCheckingUpdate boolean 現在アップデートをチェック中かどうか
 ---@field public didCheckLatest boolean 最新バージョンをチェックしたかどうか
@@ -18,6 +19,7 @@ UpdateChecker = {
         local instance = Avatar.instantiate(UpdateChecker, AvatarModule, parent)
 
         instance.FBAC_VERSION = "v1.10.0_dev"
+        instance.BRANCH_NAME = "BaseAvatar"
         instance.latestVersion = instance.parent.config:loadConfig("PUBLIC", "latestVersion", instance.FBAC_VERSION)
         instance.isCheckingUpdate = false
         instance.didCheckLatest = false
@@ -32,7 +34,7 @@ UpdateChecker = {
         AvatarModule.init(self)
 
         if host:isHost() then
-            models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l2"):setText(self.FBAC_VERSION.." - "..self.parent.characterData.basic.firstName.en_us)
+            models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l2"):setText(self.FBAC_VERSION.." - "..self.BRANCH_NAME)
 
             events.TICK:register(function ()
                 local isActionWheelOpened = action_wheel:isEnabled()
