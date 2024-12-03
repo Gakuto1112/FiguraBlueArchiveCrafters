@@ -125,7 +125,7 @@ Toggles the vehicle models replacement feature for some characters. This option 
 Left click to check for FBAC updates. You can try to check updates again even if the check fails. In addition to manually checking for updates from here, the script will automatically check for updates once a day.
 
 > [!IMPORTANT]
-> To check for FBAC updates, you must turn on "Allow Networking" and include `api.github.com` in the Network Filter from Figura settings! Please note that as of Figura v0.1.4, the network filter is reset every time the game is restarted ([Refer](https://github.com/FiguraMC/Figura/issues/238)).
+> To check for FBAC updates, you must turn on "Allow Networking" and add `api.github.com` to the Network Filter from Figura settings! Please note that as of Figura v0.1.4, the network filter is reset every time the game is restarted ([Refer](https://github.com/FiguraMC/Figura/issues/238)).
 
 > [!WARNING]
 > If you repeatedly check for updates in a short period of time, GitHub will impose a temporary restriction and avatar scripts will not be able to check for updates for a while.
@@ -142,7 +142,7 @@ Updates are automatically checked once a day, but can also be done manually via 
 A notification will be sent when a new FBAC version is available. You can get the download link for the latest version from the [action wheel](#action-7-check-for-fbac-updates), which you can access from your browser.
 
 > [!IMPORTANT]
-> To check for FBAC updates, you must turn on "Allow Networking" and include `api.github.com` in the Network Filter from Figura settings! Please note that as of Figura v0.1.4, the network filter is reset every time the game is restarted ([Refer](https://github.com/FiguraMC/Figura/issues/238)).
+> To check for FBAC updates, you must turn on "Allow Networking" and add `api.github.com` to the Network Filter from Figura settings! Please note that as of Figura v0.1.4, the network filter is reset every time the game is restarted ([Refer](https://github.com/FiguraMC/Figura/issues/238)).
 
 > [!WARNING]
 > If you repeatedly check for updates in a short period of time, GitHub will impose a temporary restriction and avatar scripts will not be able to check for updates for a while.
