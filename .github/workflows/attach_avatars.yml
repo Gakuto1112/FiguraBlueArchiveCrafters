@@ -14,7 +14,7 @@ jobs:
       include_base: false
   generate_readme:
     name: Generate readme.txt
-    needs: get_target_branches
+    needs: get_avatar_branches
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -60,7 +60,7 @@ jobs:
   pack_avatar:
     name: Pack avatar
     needs:
-      - get_target_branches
+      - get_avatar_branches
       - generate_readme
     runs-on: ubuntu-latest
     strategy:
