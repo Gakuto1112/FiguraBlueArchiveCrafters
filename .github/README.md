@@ -92,6 +92,22 @@ Although the avatars for these characters are not created, there are plans to cr
 
   ![Birth day](./README_images/birth_day.svg)
 
+- In addition to the above, there are other features that available only to certain characters.
+
+  (Character names in the below table with parentheses indicate functions related to a specific costume, while those without parentheses indicate functions not related to a costume.)
+
+  | Character name | Features |
+  | - | - |
+  | Shizuko (Normal) | - Leaves a stall in place after playing the Ex Skill. |
+  | Izuna (Normal) | - Has a special performance when warping with ender pearl, etc. |
+  | Shiroko | - Gets caught by her drone and fries away during creative flights. <br> - Her drone can launch missiles (visual only). <br> - The horse is replaced with her bicycle when riding a horse, mule, or donkey with a saddle. <br> - Drinking portions are replaced with a sports bottle when riding a bicycle (horses). |
+  | Hoshino | - The shield is replaced with her own. |
+  | Hoshino (Swimsuit) | - The boat are replaced with a whale float when she is alone in the boat. |
+  | Hoshino (Battle) | - Holds her shotgun and handgun when you holds bows or crossbows with both hands. |
+  | Umika (Normal) | - Leaves a firework launcher in place after playing the Ex Skill. <br> - Firework launchers can launch fireworks (visual only). |
+  | Serina (Normal) | - Leaves a medical box in place after playing the Ex Skill. <br> - Medical boxes play performances to cure when a player (not only you) touches it. <br> - Hearing potions are replaced with a medical box. |
+  | Serina (Christmas) | - Bells are replaced with her handbell. <br> - Can play Christmas songs with her handbell after playing the Ex Skill. (7 songs). |
+
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
 
@@ -152,6 +168,9 @@ Left click to check for FBAC updates. You can try to check updates again even if
 > [!IMPORTANT]
 > To check for FBAC updates, you must turn on "Allow Networking" and add `api.github.com` to the Network Filter from Figura settings! Please note that as of Figura v0.1.4, the network filter is reset every time the game is restarted ([Refer](https://github.com/FiguraMC/Figura/issues/238)).
 
+> [!CAUTION]
+> It is DANGEROUS to use a network filter other than "Whitelist" when activating Figura's Networking Feature. Although this avatar uses secure links, there is no guarantee that links used by other players' avatars are secure. I'm not responsible for any damages caused by using this feature.
+
 > [!WARNING]
 > If you repeatedly check for updates in a short period of time, GitHub will impose a temporary restriction and avatar scripts will not be able to check for updates for a while.
 
@@ -168,6 +187,9 @@ A notification will be sent when a new FBAC version is available. You can get th
 
 > [!IMPORTANT]
 > To check for FBAC updates, you must turn on "Allow Networking" and add `api.github.com` to the Network Filter from Figura settings! Please note that as of Figura v0.1.4, the network filter is reset every time the game is restarted ([Refer](https://github.com/FiguraMC/Figura/issues/238)).
+
+> [!CAUTION]
+> It is DANGEROUS to use a network filter other than "Whitelist" when activating Figura's Networking Feature. Although this avatar uses secure links, there is no guarantee that links used by other players' avatars are secure. I'm not responsible for any damages caused by using this feature.
 
 > [!WARNING]
 > If you repeatedly check for updates in a short period of time, GitHub will impose a temporary restriction and avatar scripts will not be able to check for updates for a while.
