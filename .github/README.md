@@ -177,7 +177,7 @@ Left click to check for FBAC updates. You can try to check updates again even if
 Right click to copy the latest FBAC download link to your clipboard. Please access the download page from your browser.Please note that if you have not checked for updates once or have not checked for updates for a long period of time, you will not get the correct link.
 
 ## FBAC version display
-From v1.10.0, when the action wheel is open, the version of FBAC currently in use and whether it has been updated are displayed in the upper left corner of the screen.
+From v2.0.0, when the action wheel is open, the version of FBAC currently in use and whether it has been updated are displayed in the upper left corner of the screen.
 
 ![FBAC version display](./README_images/fbac_version.jpg)
 
