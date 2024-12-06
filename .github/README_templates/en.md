@@ -127,6 +127,9 @@ Left click to check for FBAC updates. You can try to check updates again even if
 > [!IMPORTANT]
 > To check for FBAC updates, you must turn on "Allow Networking" and add `api.github.com` to the Network Filter from Figura settings! Please note that as of Figura v0.1.4, the network filter is reset every time the game is restarted ([Refer](https://github.com/FiguraMC/Figura/issues/238)).
 
+> [!CAUTION]
+> It is DANGEROUS to use a network filter other than "Whitelist" when activating Figura's Networking Feature. Although this avatar uses secure links, there is no guarantee that links used by other players' avatars are secure. I'm not responsible for any damages caused by using this feature.
+
 > [!WARNING]
 > If you repeatedly check for updates in a short period of time, GitHub will impose a temporary restriction and avatar scripts will not be able to check for updates for a while.
 
@@ -143,6 +146,9 @@ A notification will be sent when a new FBAC version is available. You can get th
 
 > [!IMPORTANT]
 > To check for FBAC updates, you must turn on "Allow Networking" and add `api.github.com` to the Network Filter from Figura settings! Please note that as of Figura v0.1.4, the network filter is reset every time the game is restarted ([Refer](https://github.com/FiguraMC/Figura/issues/238)).
+
+> [!CAUTION]
+> It is DANGEROUS to use a network filter other than "Whitelist" when activating Figura's Networking Feature. Although this avatar uses secure links, there is no guarantee that links used by other players' avatars are secure. I'm not responsible for any damages caused by using this feature.
 
 > [!WARNING]
 > If you repeatedly check for updates in a short period of time, GitHub will impose a temporary restriction and avatar scripts will not be able to check for updates for a while.
