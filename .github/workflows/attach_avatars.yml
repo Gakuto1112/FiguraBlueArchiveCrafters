@@ -97,11 +97,11 @@ jobs:
           AVATAR_NAME: ${{ matrix.target_branch }}
       - name: Replace script placeholders
         run: |
-          sed "s/instance\.FBAC_VERSION\s=\s\".*\"/instance.FBAC_VERSION = \"${TAG_NAME}\"/g" ./out/${AVATAR_NAME}/scripts/avatar_module/action_wheel/update_checker.lua > ./out/${AVATAR_NAME}/scripts/avatar_module/action_wheel/tmp1.lua
-          sed "s/instance\.BRANCH_NAME\s=\s\".*\"/instance.BRANCH_NAME = \"${AVATAR_NAME}\"/g" ./out/${AVATAR_NAME}/scripts/avatar_module/action_wheel/tmp1.lua > ./out/${AVATAR_NAME}/scripts/avatar_module/action_wheel/tmp2.lua
-          rm ./out/${AVATAR_NAME}/scripts/avatar_module/action_wheel/update_checker.lua
-          rm ./out/${AVATAR_NAME}/scripts/avatar_module/action_wheel/tmp1.lua
-          mv ./out/${AVATAR_NAME}/scripts/avatar_module/action_wheel/tmp2.lua ./out/${AVATAR_NAME}/scripts/avatar_module/action_wheel/update_checker.lua
+          sed "s/instance\.FBAC_VERSION\s=\s\".*\"/instance.FBAC_VERSION = \"${TAG_NAME}\"/g" ./out/${AVATAR_NAME}/scripts/avatar_modules/action_wheel/update_checker.lua > ./out/${AVATAR_NAME}/scripts/avatar_modules/action_wheel/tmp1.lua
+          sed "s/instance\.BRANCH_NAME\s=\s\".*\"/instance.BRANCH_NAME = \"${AVATAR_NAME}\"/g" ./out/${AVATAR_NAME}/scripts/avatar_modules/action_wheel/tmp1.lua > ./out/${AVATAR_NAME}/scripts/avatar_modules/action_wheel/tmp2.lua
+          rm ./out/${AVATAR_NAME}/scripts/avatar_modules/action_wheel/update_checker.lua
+          rm ./out/${AVATAR_NAME}/scripts/avatar_modules/action_wheel/tmp1.lua
+          mv ./out/${AVATAR_NAME}/scripts/avatar_modules/action_wheel/tmp2.lua ./out/${AVATAR_NAME}/scripts/avatar_modules/action_wheel/update_checker.lua
         env:
           TAG_NAME: ${{ github.ref_name }}
           AVATAR_NAME: ${{ matrix.target_branch }}
