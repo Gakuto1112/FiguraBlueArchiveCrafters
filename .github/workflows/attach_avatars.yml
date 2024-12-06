@@ -7,8 +7,8 @@ on:
       - prereleased
 
 jobs:
-  get_target_branches:
-    name: Get target branches
+  get_avatar_branches:
+    name: Get avatar branches
     uses: ./.github/workflows/get_target_branches.yml
     with:
       include_base: false
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target_branch: ${{ needs.get_target_branches.outputs.target_branches }}
+        target_branch: ${{ fromJSON(needs.get_avatar_branches.outputs.target_branches) }}
     steps:
       - name: Checkout avatar repository
         uses: actions/checkout@v4.1.7
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        target_branch: ${{ needs.get_target_branches.outputs.target_branches }}
+        target_branch: ${{ fromJSON(needs.get_avatar_branches.outputs.target_branches) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
