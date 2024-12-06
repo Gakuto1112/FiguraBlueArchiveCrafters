@@ -120,13 +120,35 @@ jobs:
           name: avatar_${{ matrix.target_branch }}
           path: ./out
   attach_avatar:
-    name: Attach avatars to release assets
-    needs:
-      - get_target_branches
-      - pack_avatar
-    permissions:
-      contents: write
-    uses: Gakuto1112/MyFiguraAvatarPacker/.github/workflows/attach_avatars.yml@main
-    with:
-      target_branches: ${{ needs.get_target_branches.outputs.target_branches }}
-      should_show_branch_name: true
+      name: Attach avatars to release assets
+      needs: pack_avatar
+      runs-on: ubuntu-latest
+      permissions:
+        contents: write
+      steps:
+        - name: Download artifacts
+          uses: actions/download-artifact@v4.1.7
+          with:
+            path: ./
+            pattern: avatar_*
+        - name: Prepare output directory
+          run: mkdir ./out
+        - name: Zip artifacts
+          run: |
+            for model_file in $(ls -1 | grep 'avatar_')
+            do
+              cd ./${model_file}
+              zip -r ../out/$(echo ${model_file} | sed 's/avatar_//').zip ./
+              cd ../
+            done
+        - name: Attach artifacts to release assets
+          run: |
+            for zip_file in $(ls -1)
+            do
+              gh release upload ${TAG_NAME} ./${zip_file} --repo ${REPOSITORY}
+            done
+          env:
+            GH_TOKEN: ${{ github.token }}
+            TAG_NAME: ${{ github.event.release.tag_name }}
+            REPOSITORY: ${{ github.repository }}
+          working-directory: ./out
