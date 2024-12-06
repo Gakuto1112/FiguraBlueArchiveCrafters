@@ -67,6 +67,22 @@ Target figura version: [0.1.4](https://modrinth.com/mod/figura/version/0.1.4+1.2
 
   ![Birth day](../README_images/birth_day.svg)
 
+- In addition to the above, there are other features that available only to certain characters.
+
+  (Character names in the below table with parentheses indicate functions related to a specific costume, while those without parentheses indicate functions not related to a costume.)
+
+  | Character name | Features |
+  | - | - |
+  | Shizuko (Normal) | - Leaves a stall in place after playing the Ex Skill. |
+  | Izuna (Normal) | - Has a special performance when warping with ender pearl, etc. |
+  | Shiroko | - Gets caught by her drone and fries away during creative flights. <br> - Her drone can launch missiles (visual only). <br> - The horse is replaced with her bicycle when riding a horse, mule, or donkey with a saddle. <br> - Drinking portions are replaced with a sports bottle when riding a bicycle (horses). |
+  | Hoshino | - The shield is replaced with her own. |
+  | Hoshino (Swimsuit) | - The boat are replaced with a whale float when she is alone in the boat. |
+  | Hoshino (Battle) | - Holds her shotgun and handgun when you holds bows or crossbows with both hands. |
+  | Umika (Normal) | - Leaves a firework launcher in place after playing the Ex Skill. <br> - Firework launchers can launch fireworks (visual only). |
+  | Serina (Normal) | - Leaves a medical box in place after playing the Ex Skill. <br> - Medical boxes play performances to cure when a player (not only you) touches it. <br> - Hearing potions are replaced with a medical box. |
+  | Serina (Christmas) | - Bells are replaced with her handbell. <br> - Can play Christmas songs with her handbell after playing the Ex Skill. (7 songs). |
+
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
 
