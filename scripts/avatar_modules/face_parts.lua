@@ -38,7 +38,7 @@ FaceParts = {
 						self:setEmotion("SURPRISED", "SURPRISED", "NORMAL", 20, true)
 					end
 				elseif self.emotionCount == 0 then
-					self:setEmotion("NORMAL", "NORMAL", "NORMAL", 1)
+					self:setEmotion("NORMAL", "NORMAL", "NORMAL", 0)
 				end
 
 				if self.blinkCount == 0 then
