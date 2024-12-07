@@ -1,5 +1,5 @@
 ---@class (exact) HeadRing : AvatarModule ヘイロー（頭の輪っか）を制御するクラス
----@field package initialHaloRot number ヘイローの初期角度
+---@field public initialHaloRot number ヘイローの初期角度
 ---@field package headRotData number[] 一定期間内の頭の角度を保持するテーブル
 ---@field package headRotAverage number[] 頭の角度の移動平均値
 ---@field package floatCount integer ヘイローが上下するアニメーションのカウンター

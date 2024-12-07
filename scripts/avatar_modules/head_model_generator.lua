@@ -58,7 +58,7 @@ HeadModelGenerator = {
             models["script_"..self.parentName]:addChild(copiedPart)
             models["script_"..self.parentName].Head:setParentType(self.parentType)
             models["script_"..self.parentName].Head:setPos(0, -24, 0)
-            models["script_"..self.parentName].Head.HeadRing:setRot()
+            models["script_"..self.parentName].Head.HeadRing:setRot(self.parent.headRing.initialHaloRot)
             models["script_"..self.parentName].Head.HeadRing:setLight(15)
             for _, modelPart in ipairs({models["script_"..self.parentName].Head.FaceParts.Eyes.EyeRight, models["script_"..self.parentName].Head.FaceParts.Eyes.EyeLeft}) do
                 modelPart:setUVPixels()
