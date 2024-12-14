@@ -39,6 +39,22 @@ ActionWheel = {
             events.TICK:register(function()
                 local isActionWheelOpened = action_wheel:isEnabled()
                 if isActionWheelOpened  then
+                    local mainAction3 = self.mainPage:getAction(3)
+                    mainAction3:setTitle(self.parent.locale:getLocale("action_wheel.main.action_3.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off"))
+                    mainAction3:setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_3.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on"))
+                    local mainAction4 = self.mainPage:getAction(4)
+                    mainAction4:setTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off"))
+                    mainAction4:setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on"))
+                    local mainAction6 = self.mainPage:getAction(6)
+                    if self.parent.characterData.actionWheel.isVehicleOptionEnabled then
+                        mainAction6:setTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off"))
+                    else
+                        mainAction6:setTitle("§7"..self.parent.locale:getLocale("action_wheel.main.action_6.title")..self.parent.locale:getLocale("action_wheel.toggle_off"))
+                    end
+                    mainAction6:setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on"))
+                    self:refreshCostumeChangeActionTitle()
+                    self:refreshNameChangeActionTitle()
+                    self:refreshExSkillParticleActionTitle()
                     self:refreshUpdateActionStatus()
                 elseif not isActionWheelOpened and self.isActionWheelOpenedPrev then
                     if self.selectingCostume ~= self.parent.costume.currentCostume then
@@ -118,7 +134,7 @@ ActionWheel = {
             end)
 
             --アクション3. 防具の表示
-            self.mainPage:newAction(3):setTitle(self.parent.locale:getLocale("action_wheel.main.action_3.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off")):setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_3.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on")):setItem(self.parent.compatibilityUtils:checkItem("minecraft:iron_chestplate")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
+            self.mainPage:newAction(3):setItem(self.parent.compatibilityUtils:checkItem("minecraft:iron_chestplate")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
                 pings.actionWheelSetArmorVisible(true)
                 action:setHoverColor(0.33, 1, 0.33)
                 self.parent.config:saveConfig("PRIVATE", "showArmor", true)
@@ -134,7 +150,7 @@ ActionWheel = {
             end
 
             --アクション4. 一人称視点での武器モデルの表示
-            self.mainPage:newAction(4):setTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off")):setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_4.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on")):setItem(self.parent.compatibilityUtils:checkItem("minecraft:bow")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
+            self.mainPage:newAction(4):setItem(self.parent.compatibilityUtils:checkItem("minecraft:bow")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
                 self.parent.gun.shouldShowWeaponInFirstPerson = true
                 action:setHoverColor(0.33, 1, 0.33)
                 self.parent.config:saveConfig("PRIVATE", "firstPersonWeapon", true)
@@ -166,7 +182,7 @@ ActionWheel = {
             end)
 
             --アクション6. 乗り物モデルの置き換え
-            self.mainPage:newAction(6):setTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off")):setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on")):setItem(self.parent.compatibilityUtils:checkItem("minecraft:oak_boat")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
+            self.mainPage:newAction(6):setItem(self.parent.compatibilityUtils:checkItem("minecraft:oak_boat")):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
                 if self.parent.characterData.actionWheel.isVehicleOptionEnabled then
                     pings.actionWheelSetShouldReplaceVehicleModels(true)
                     action:setHoverColor(0.33, 1, 0.33)
@@ -182,7 +198,6 @@ ActionWheel = {
             end)
             if not self.parent.characterData.actionWheel.isVehicleOptionEnabled then
                 local action = self.mainPage:getAction(6)
-                action:setTitle("§7"..self.parent.locale:getLocale("action_wheel.main.action_6.title")..self.parent.locale:getLocale("action_wheel.toggle_off"))
                 action:setColor(0.16, 0.16, 0.16)
                 action:setHoverColor(1, 0.33, 0.33)
                 self.shouldReplaceVehicleModels = false
@@ -192,9 +207,9 @@ ActionWheel = {
                 action:setHoverColor(0.33, 1, 0.33)
             end
 
-            --アクション7. （空欄）
+            --アクション7. アップデートの確認
             self.mainPage:newAction(7):setItem("minecraft:compass"):setOnLeftClick(function ()
-                if not self.parent.updateChecker.isCheckingUpdate then
+                if not self.parent.updateChecker.checkerStatus ~= "CHECKING" then
                     self.parent.updateChecker:checkUpdate()
                 else
                     print("action_wheel.main.action_7.ongoing")
@@ -205,7 +220,7 @@ ActionWheel = {
                     sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.note_block.bass"), player:getPos(), 1, 0.5)
                 end
             end):onRightClick(function ()
-                if self.parent.updateChecker.didCheckLatest then
+                if self.parent.updateChecker.latestVersion ~= nil then
                     host:setClipboard("https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/releases/tag/"..self.parent.updateChecker.latestVersion)
                     print(self.parent.locale:getLocale("action_wheel.main.action_7.copied"))
                 else
@@ -216,10 +231,6 @@ ActionWheel = {
 
             --アクション8. （空欄）
             self.mainPage:newAction(8):setColor(0.16, 0.16, 0.16):setHoverColor(0.16, 0.16, 0.16)
-
-            self:refreshCostumeChangeActionTitle()
-            self:refreshNameChangeActionTitle()
-            self:refreshExSkillParticleActionTitle()
 
             action_wheel:setPage(self.mainPage)
         end
@@ -260,7 +271,7 @@ ActionWheel = {
     refreshUpdateActionStatus = function (self)
         local action = self.mainPage:getAction(7)
         local actionTitle = ""
-        if self.parent.updateChecker.isCheckingUpdate then
+        if self.parent.updateChecker.checkerStatus == "CHECKING" then
             actionTitle = actionTitle.."§7"..self.parent.locale:getLocale("action_wheel.main.action_7.title_1")..self.parent.locale:getLocale("action_wheel.main.action_7.title_2").."\n"
             action:setColor(0.16, 0.16, 0.16)
             action:setHoverColor(1, 0.33, 0.33)
@@ -269,10 +280,10 @@ ActionWheel = {
             action:setColor(0.78, 0.78, 0.78)
             action:setHoverColor(1, 1, 1)
         end
-        if self.parent.updateChecker.didCheckLatest then
-            actionTitle = actionTitle.."§r"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3").."§b"..self.parent.locale:getLocale("action_wheel.main.action_7.title_4")
-        else
+        if self.parent.updateChecker.latestVersion == nil then
             actionTitle = actionTitle.."§7"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3")..self.parent.locale:getLocale("action_wheel.main.action_7.title_4")
+        else
+            actionTitle = actionTitle.."§r"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3").."§b"..self.parent.locale:getLocale("action_wheel.main.action_7.title_4")
         end
         action:setTitle(actionTitle)
     end;

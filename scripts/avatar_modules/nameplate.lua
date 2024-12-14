@@ -1,6 +1,7 @@
 ---@class (exact) Nameplate : AvatarModule プレイヤーの表示名を制御するクラス
 ---@field public currentName integer 現在の表示名：1. プレイヤー名, 2. 名のみ（英語）, 3. 名のみ（日本語）, 4. 名性（英語）, 5. 性名（英語）, 6. 性名（日本語）
 ---@field public shouldShowClubName boolean 部活名を表示するかどうか
+---@field package localePrev string 前ティックの設定言語
 ---@field public getName fun(self: Nameplate, typeId: integer): string 指定されたtypeIdでの表示名を返す
 ---@field public setName fun(self: Nameplate, typeId: integer, shouldShowClubName: boolean) 入力された設定で表示名を設定する
 
@@ -14,6 +15,7 @@ Nameplate = {
 
         instance.currentName = instance.parent.config:loadConfig("PRIVATE", "name", 1)
         instance.shouldShowClubName = instance.parent.config:loadConfig("PRIVATE", "showClubName", false)
+        instance.localePrev = client:getActiveLang()
 
         return instance
     end;
@@ -50,9 +52,15 @@ Nameplate = {
     init = function (self)
         AvatarModule.init(self)
 
-        if self.currentName >= 2 then
-            self:setName(self.currentName, self.shouldShowClubName)
-        end
+        events.TICK:register(function ()
+            local locale = client:getActiveLang()
+            if locale ~= self.localePrev then
+                if self.shouldShowClubName then
+                    self:setName(self.currentName, true)
+                end
+                self.localePrev = locale
+            end
+        end)
 
         events.RENDER:register(function (delta, context)
             if context ~= "PAPERDOLL" then
@@ -61,5 +69,9 @@ Nameplate = {
                 nameplate.ENTITY:setPivot()
             end
         end)
+
+        if self.currentName >= 2 then
+            self:setName(self.currentName, self.shouldShowClubName)
+        end
     end;
 }
