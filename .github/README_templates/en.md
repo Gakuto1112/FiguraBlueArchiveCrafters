@@ -13,6 +13,10 @@ Target figura version: [0.1.4](https://modrinth.com/mod/figura/version/0.1.4+1.2
 
 (You can watch the introduction video by clicking the above image.)
 
+Watch also:
+- [FBAC videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
+- [FBAC short videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
+
 <!-- $inject(creation_status) -->
 
 ## Features

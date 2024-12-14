@@ -13,6 +13,10 @@
 
 （上記画像をクリックすると紹介映像が見れます。）
 
+こちらもどうぞ：
+- [FBAC動画 再生リスト](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
+- [FBACショート動画 再生リスト](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
+
 <!-- $inject(creation_status) -->
 
 ## 特徴
