@@ -52,16 +52,14 @@ UpdateChecker = {
                 local isActionWheelOpened = action_wheel:isEnabled()
                 if isActionWheelOpened then
                     local textTask = models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3")
-                    local newerVersion = self.compareVersions(self.latestVersion, self.FBAC_VERSION)
-                    if newerVersion ~= nil and newerVersion ~= self.FBAC_VERSION then
+                    if self.checkerStatus == "UPDATE_AVAILABLE" then
                         if math.floor(self.textAnimationCount / 20) % 2 == 0 then
                             textTask:setText("§6§n"..self.parent.locale:getLocale("action_wheel.gui.update_check.update_available")..self.latestVersion)
                         else
                             textTask:setText("§n"..self.parent.locale:getLocale("action_wheel.gui.update_check.update_available")..self.latestVersion)
                         end
                         self.textAnimationCount = self.textAnimationCount + 1
-                    end
-                    if self.checkerStatus == "ERROR_REQUEST_FAILED" then
+                    elseif self.checkerStatus == "ERROR_REQUEST_FAILED" then
                         textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.error_request_failed").."("..self.requestStatus..")")
                     else
                         textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check."..self.checkerStatus:lower()))
