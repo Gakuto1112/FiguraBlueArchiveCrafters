@@ -1,7 +1,7 @@
 ---@class (exact) FaceParts : AvatarModule 目と口のテクスチャを管理するクラス
 ---@field package emotionCount integer エモートの時間を計るカウンター
----@field public blinkCount integer 瞬きのタイミングを計るカウンター
----@field public setEmotion fun(self: FaceParts, rightEye?: BlueArchiveCharacter.RightEyeTextures, leftEye?: BlueArchiveCharacter.LeftEyeTextures, mouth?: BlueArchiveCharacter.MouthTextures, duration: integer, forced?: boolean) 表情を設定する
+---@field package blinkCount integer 瞬きのタイミングを計るカウンター
+---@field public setEmotion fun(self: FaceParts, rightEye: BlueArchiveCharacter.RightEyeTextures, leftEye: BlueArchiveCharacter.LeftEyeTextures, mouth: BlueArchiveCharacter.MouthTextures, duration: integer, forced?: boolean) 表情を設定する
 ---@field public resetEmotion fun(self: FaceParts) 表情をリセットする
 
 FaceParts = {
@@ -42,7 +42,7 @@ FaceParts = {
 				end
 
 				if self.blinkCount == 0 then
-					self:setEmotion("CLOSED", "CLOSED", nil, 2)
+					self:setEmotion("CLOSED", "CLOSED", "NORMAL", 2)
 					self.blinkCount = 200
 				else
 					self.blinkCount = self.blinkCount - 1
@@ -55,31 +55,25 @@ FaceParts = {
 
 	---表情を設定する。
 	---@param self FaceParts
-	---@param rightEye? BlueArchiveCharacter.RightEyeTextures 設定する右目の名前。"nil"にすると、以前の右目を維持する。
-	---@param leftEye? BlueArchiveCharacter.LeftEyeTextures 設定する左目の名前。"nil"にすると、以前の左目を維持する。
-	---@param mouth? BlueArchiveCharacter.MouthTextures 設定する口の名前。"nil"にすると、以前の口を維持する。
+	---@param rightEye BlueArchiveCharacter.RightEyeTextures 設定する右目の名前
+	---@param leftEye BlueArchiveCharacter.LeftEyeTextures 設定する左目の名前
+	---@param mouth BlueArchiveCharacter.MouthTextures 設定する口の名前
 	---@param duration integer この表情を有効にする時間
 	---@param forced? boolean trueにすると以前のエモーションが再生中でも強制的に現在のエモーションを適用させる。
 	setEmotion = function (self, rightEye, leftEye, mouth, duration, forced)
 		if self.emotionCount == 0 or forced then
 			--右目
-			if rightEye ~= nil then
-				models.models.main.Avatar.Head.FaceParts.Eyes.EyeLeft:setUVPixels(self.parent.characterData.faceParts.rightEye[rightEye]:copy():scale(6))
-			end
+			models.models.main.Avatar.Head.FaceParts.Eyes.EyeLeft:setUVPixels(self.parent.characterData.faceParts.rightEye[rightEye]:copy():scale(6))
 
 			--左目
-			if leftEye ~= nil then
-				models.models.main.Avatar.Head.FaceParts.Eyes.EyeRight:setUVPixels(self.parent.characterData.faceParts.leftEye[leftEye]:copy():scale(6))
-			end
+			models.models.main.Avatar.Head.FaceParts.Eyes.EyeRight:setUVPixels(self.parent.characterData.faceParts.leftEye[leftEye]:copy():scale(6))
 
 			--口
-			if mouth ~= nil then
-				if mouth ~= "NORMAL" then
-					models.models.main.Avatar.Head.FaceParts.Mouth:setVisible(true)
-					models.models.main.Avatar.Head.FaceParts.Mouth:setUVPixels(self.parent.characterData.faceParts.mouth[mouth]:copy():mul(16, 8))
-				else
-					models.models.main.Avatar.Head.FaceParts.Mouth:setVisible(false)
-				end
+			if mouth ~= "NORMAL" then
+				models.models.main.Avatar.Head.FaceParts.Mouth:setVisible(true)
+				models.models.main.Avatar.Head.FaceParts.Mouth:setUVPixels(self.parent.characterData.faceParts.mouth[mouth]:copy():mul(16, 8))
+			else
+				models.models.main.Avatar.Head.FaceParts.Mouth:setVisible(false)
 			end
 
 			self.emotionCount = duration
