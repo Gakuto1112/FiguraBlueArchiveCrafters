@@ -1,6 +1,6 @@
 ---@class (exact) FaceParts : AvatarModule 目と口のテクスチャを管理するクラス
 ---@field package emotionCount integer エモートの時間を計るカウンター
----@field package blinkCount integer 瞬きのタイミングを計るカウンター
+---@field public blinkCount integer 瞬きのタイミングを計るカウンター
 ---@field public setEmotion fun(self: FaceParts, rightEye: BlueArchiveCharacter.RightEyeTextures, leftEye: BlueArchiveCharacter.LeftEyeTextures, mouth: BlueArchiveCharacter.MouthTextures, duration: integer, forced?: boolean) 表情を設定する
 ---@field public resetEmotion fun(self: FaceParts) 表情をリセットする
 
