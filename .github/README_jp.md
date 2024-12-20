@@ -30,11 +30,12 @@
 - 小鳥遊ホシノ
 - 里浜ウミカ
 - 鷲見セリナ
+- 棗イロハ
 
 ### 作成中
 これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
 
-- 棗イロハ（[#64](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/64)）
+（現在作成中のアバターはありません。）
 
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
@@ -42,6 +43,12 @@
 - 丹花イブキ（[#65](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/65)）
 - 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
 - 阿慈谷ヒフミ（[#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)）
+
+### リクエスト
+これらのキャラクターのアバターは作成のリクエストを受けました。ただし、リクエストを受けたからといって、必ず作成するとは約束できません。ご了承ください。
+
+- 天童アリス（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)）
+- 伊草ハルカ（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。
