@@ -86,6 +86,7 @@ Watch also:
   | Umika (Normal) | - Leaves a firework launcher in place after playing the Ex Skill. <br> - Firework launchers can launch fireworks (visual only). |
   | Serina (Normal) | - Leaves a medical box in place after playing the Ex Skill. <br> - Medical boxes play performances to cure when a player (not only you) touches it. <br> - Hearing potions are replaced with a medical box. |
   | Serina (Christmas) | - Bells are replaced with her handbell. <br> - Can play Christmas songs with her handbell after playing the Ex Skill. (7 songs). |
+  | Iroha | - The camel are replaced with Toramaru (a tank) when she is alone on the camel. <br> - Toramaru can shoot a shell (visual only). |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
