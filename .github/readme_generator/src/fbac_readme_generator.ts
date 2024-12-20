@@ -12,7 +12,10 @@ interface CreationStatusData {
     in_progress: CharacterData[],
 
     /** 作成予定 */
-    planned: CharacterData[]
+    planned: CharacterData[],
+
+    /** リクエスト */
+    requested: CharacterData[]
 }
 
 /**
@@ -29,7 +32,7 @@ interface CharacterData {
     },
 
     /** 衣装の名前（あれば） */
-    costume_name: LanguageData | null,
+    costume_name?: LanguageData,
 
     /** そのキャラクターを作ること示したissue番号。該当のissueが存在しない場合は0にする。 */
     issue_number: number
@@ -119,12 +122,31 @@ class FBACReadmeGenerator extends ReadmeGenerator {
                                     break;
                             }
                         });
-                        text = text.substring(0, text.length - 1);
                     }
                     else text += `${fileLanguage == "en" ? "(There is no avatar planned to be created.)" : "（作成予定のアバターはありません。）"}`;
+                    text += "\n";
+                    if(fs.existsSync(`../README_templates/creation_status/requested/${fileLanguage}.md`)) text += fs.readFileSync(`../README_templates/creation_status/requested/${fileLanguage}.md`, {encoding: "utf-8"});
+                    else text += `<!-- ERROR: "creation_status/requested/${fileLanguage}.md" doesn't exist -->\n`;
+                    text += "\n";
+                    if(characterData.requested.length > 0) {
+                        characterData.requested.forEach((character: CharacterData) => {
+                            switch(fileLanguage) {
+                                case "en":
+                                    text += `- ${character.character_name.first_name.en} ${character.character_name.last_name.en}${character.costume_name != null ? ` (${character.costume_name.en})` : ""}${character.issue_number >= 1 && character.issue_number % 1 == 0 ? ` ([#${character.issue_number}](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/${character.issue_number}))` : ""}\n`;
+                                    break;
+                                case "jp":
+                                    text += `- ${character.character_name.last_name.jp}${character.character_name.first_name.jp}${character.costume_name != null ? `（${character.costume_name.jp}）` : ""}${character.issue_number >= 1 && character.issue_number % 1 == 0 ? `（[#${character.issue_number}](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/${character.issue_number})）` : ""}\n`;
+                                    break;
+                            }
+                        });
+                        text = text.substring(0, text.length - 1);
+                    }
+                    else text += `${fileLanguage == "en" ? "(There is no requested avatar.)" : "（リクエストされたアバターはありません。）"}`;
+
                     this.caches[`${tagName}_${fileLanguage}`] = text;
                 }
-                catch {
+                catch(err: any) {
+                    console.log(err)
                     text = "<!-- ERROR: Failed to parse \"character_status.json\" -->\n";
                 }
             }
