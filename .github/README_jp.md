@@ -48,7 +48,7 @@
 これらのキャラクターのアバターは作成のリクエストを受けました。ただし、リクエストを受けたからといって、必ず作成するとは約束できません。ご了承ください。
 
 - 天童アリス（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)）
-- 伊草ハルカ（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)）
+- 伊草ハルカ（[#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。

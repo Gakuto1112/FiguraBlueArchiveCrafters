@@ -48,7 +48,7 @@ Although the avatars for these characters are not created, there are plans to cr
 I have received requests to create these characters. However, I can't promise that I'll create them. Please understand this.
 
 - Aris Tendo ([#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97))
-- Haruka Igusa ([#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97))
+- Haruka Igusa ([#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98))
 
 ## Features
 - Imitated ex skill cut-ins.
