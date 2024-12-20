@@ -6,6 +6,7 @@
 ---@field package animationRot number アニメーションを再生している向き（度数法で示す）
 ---@field package costumeIndex integer 死亡アニメーションのコスチュームのインデックス
 ---@field package isPlayerInvisible boolean プレイヤーモデルが不可視状態かどうか
+---@field package isScriptLoaded false スクリプトを全て読み込んだかどうか
 ---@field package removeUnsafeModel fun(target?: ModelPart) 存在しないかもしれないモデルパーツを安全に削除する
 ---@field package spawnHelicopterParticles fun(self: DeathAnimation) ヘリコプターの出現/消滅パーティクルを生成する
 ---@field package generateDummyAvatar fun(self: DeathAnimation, parent: ModelPart) 死亡アニメーション用のダミーアバターを生成する
@@ -31,6 +32,7 @@ DeathAnimation = {
         instance.animationRot = 0
         instance.costumeIndex = 1
         instance.isPlayerInvisible = false
+        instance.isScriptLoaded = false
 
         return instance
     end;
@@ -57,6 +59,11 @@ DeathAnimation = {
                 self.isPlayerInvisible = false
             end
         end)
+
+        self.parent.avatarEvents.SCRIPT_INIT:register(function ()
+            self.isScriptLoaded = true
+        end)
+
         if self.DEBUG_MODE then
             models:addChild(models:newPart("script_death_animation_debug", "World"))
             keybinds:newKeybind("[DEBUG] Spawn death animation phase1 model", "key.keyboard.x"):onPress(function ()
@@ -127,7 +134,7 @@ DeathAnimation = {
         end
         self.parent.physics:disable()
         if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onBeforeModelCopy ~= nil then
-            self.parent.characterData.deathAnimation.callbacks.onBeforeModelCopy(self.parent.characterData)
+            self.parent.characterData.deathAnimation.callbacks.onBeforeModelCopy(self.parent.characterData, self.isScriptLoaded)
         end
 
         parent:addChild(self.parent.modelUtils:copyModel(models.models.main.Avatar))
@@ -165,7 +172,7 @@ DeathAnimation = {
         end
         self.parent.physics:enable()
         if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onAfterModelCopy ~= nil then
-            self.parent.characterData.deathAnimation.callbacks.onAfterModelCopy(self.parent.characterData)
+            self.parent.characterData.deathAnimation.callbacks.onAfterModelCopy(self.parent.characterData, self.isScriptLoaded)
         end
     end;
 
