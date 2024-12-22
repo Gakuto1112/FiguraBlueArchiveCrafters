@@ -3,7 +3,7 @@
 ---@field public register fun(self: KeyManager, assignName: string, keyName: Minecraft.keyCode): Keybind キー割り当てを登録する
 
 ---@class (exact) KeyMappingObject キーの割り当てオブジェクト
----@field package keybind Keybind キーバインドのオブジェクト
+---@field public keybind Keybind キーバインドのオブジェクト
 ---@field package keyNamePrev Minecraft.keyCode 前ティックの割り当てキーの名前
 
 KeyManager = {
