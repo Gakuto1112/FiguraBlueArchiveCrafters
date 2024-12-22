@@ -178,10 +178,6 @@ A notification will be sent when a new FBAC version is available. You can get th
 
 <!-- $inject(notes) -->
 
-## Known issues
-- The halo (head ring) and arms holding weapons may not be rendered when activating a shader pack with [Iris Shaders](https://www.irisshaders.dev/) only once after game startup ([#63](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/63)).
-  - You can resolve this issue by reloading the avatar.
-
 ---
 
 ![ID card](../README_images/id_card.jpg)
