@@ -35,12 +35,11 @@
 ### 作成中
 これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
 
-（現在作成中のアバターはありません。）
+- 丹花イブキ（[#65](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/65)）
 
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
-- 丹花イブキ（[#65](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/65)）
 - 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
 - 阿慈谷ヒフミ（[#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)）
 
@@ -227,10 +226,6 @@ Figuraは[Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)、[
 - 私（[Gakuto1112](https://github.com/Gakuto1112)）のマルチプレイで動作検証を行う環境が不十分である為、マルチプレイにおいて発生する不具合がある可能性があります。
 - 不具合がありましたら、[Issues](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues)までご連絡下さい。
 - アバター関係で私に連絡したい方は[Discussions](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/discussions)または、[Discord](https://discord.com/)でご連絡下さい。私のDiscordのアカウント名は「vinny_san」で表示名は「ばにーさん」です。[FiguraのDiscordサーバー](https://discord.gg/figuramc)での表示名は「BunnySan/ばにーさん」です。
-
-## 既知の不具合
-- [Iris Shaders](https://www.irisshaders.dev/)を用いて影Modを有効化した際に、ゲーム起動後の1回のみに限り、ヘイロー（頭の輪っか）や武器を構える腕が描画されないことがある（[#63](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/63)）。
-  - アバターを再読み込みすると解消されます。
 
 ---
 

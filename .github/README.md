@@ -35,12 +35,11 @@ The avatars for these characters are completed. You can download and use avatars
 ### In progress
 The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-(There is no avatar currently being created.)
+- Ibuki Tanga ([#65](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/65))
 
 ### Planned
 Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
 
-- Ibuki Tanga ([#65](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/65))
 - Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37))
 - Hihumi Ajitani ([#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39))
 
@@ -228,10 +227,6 @@ Figura is available in [Forge](https://files.minecraftforge.net/net/minecraftfor
 - There may be a bug which occurs in multiplayer because my ([Gakuto1112](https://github.com/Gakuto1112)) multiplayer environment to verify the avatar is insufficient.
 - Please [report an issue](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues) if you find it.
 - Please contact me via [Discussions](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/discussions) or [Discord](https://discord.com/) if you want to do for my avatars. My Discord name is "vinny_san" and display name is "ばにーさん". My display name in [Figura Discord server](https://discord.gg/figuramc) is "BunnySan/ばにーさん".
-
-## Known issues
-- The halo (head ring) and arms holding weapons may not be rendered when activating a shader pack with [Iris Shaders](https://www.irisshaders.dev/) only once after game startup ([#63](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/63)).
-  - You can resolve this issue by reloading the avatar.
 
 ---
 
