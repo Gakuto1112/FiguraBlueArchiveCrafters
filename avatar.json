@@ -15,11 +15,17 @@
 	"autoScripts": [
 		"scripts/avatar.lua"
 	],
+	"autoAnims": [
+		"models.main.halo_sleep"
+	],
 	"customizations": {
 		"models.models.main": {
 			"primaryRenderType": "CUTOUT"
 		},
 		"models.models.main.Avatar.Head.HeadRing": {
+			"parentType": "None"
+		},
+		"models.models.main.Avatar.Head.HeadRing.HeadRingCenter": {
 			"parentType": "None"
 		},
 		"models.models.main.Avatar.UpperBody": {

@@ -3,6 +3,7 @@
 ---@field package headRotData number[] 一定期間内の頭の角度を保持するテーブル
 ---@field package headRotAverage number[] 頭の角度の移動平均値
 ---@field package floatCount integer ヘイローが上下するアニメーションのカウンター
+---@field package didSleepPrev boolean 前ティックに寝ていたかどうか
 
 HeadRing = {
     ---コンストラクタ
@@ -17,6 +18,7 @@ HeadRing = {
         instance.headRotData = {}
         instance.headRotAverage = {0, 0}
         instance.floatCount = 0
+        instance.didSleepPrev = false
 
         return instance
     end;
@@ -40,6 +42,17 @@ HeadRing = {
                 end
                 table.insert(self.headRotAverage, headRotAverage)
                 table.remove(self.headRotAverage, 1)
+
+                --寝る時の処理
+                local isSleeping = player:getPose() == "SLEEPING"
+                if isSleeping and not self.didSleepPrev then
+                    animations["models.main"].halo_sleep:setSpeed(1)
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.beacon.deactivate"), player:getPos(), 0.2, 5)
+                elseif not isSleeping and self.didSleepPrev then
+                    animations["models.main"].halo_sleep:setSpeed(-1)
+                    sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.beacon.activate"), player:getPos(), 0.2, 5)
+                end
+                self.didSleepPrev = isSleeping
             end
         end)
 
@@ -75,5 +88,6 @@ HeadRing = {
         end)
 
         models.models.main.Avatar.Head.HeadRing:setLight(15)
+        animations["models.main"].halo_sleep:setSpeed(-1)
     end;
 }

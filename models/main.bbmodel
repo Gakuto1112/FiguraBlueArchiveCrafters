@@ -1288,11 +1288,25 @@
 							"uuid": "e8809cb5-a507-86d8-da91-c79b1d4d233e",
 							"export": true,
 							"mirror_uv": false,
-							"isOpen": false,
+							"isOpen": true,
 							"locked": false,
 							"visibility": true,
 							"autouv": 0,
-							"children": ["48cfe147-8711-a325-c722-fe73d6c4d87a"]
+							"children": [
+								{
+									"name": "HeadRingCenter",
+									"origin": [0, 35, 0],
+									"color": 0,
+									"uuid": "0e72e2b8-177c-5b4f-dbcd-98110638a41d",
+									"export": true,
+									"mirror_uv": false,
+									"isOpen": true,
+									"locked": false,
+									"visibility": true,
+									"autouv": 0,
+									"children": ["48cfe147-8711-a325-c722-fe73d6c4d87a"]
+								}
+							]
 						},
 						{
 							"name": "HelmetPivot",
@@ -1656,7 +1670,7 @@
 	],
 	"textures": [
 		{
-			"path": "C:\\Users\\gakut\\AppData\\Roaming\\com.modrinth.theseus\\profiles\\Fabricバニラ\\figura\\avatars\\ブルーアーカイブ\\ベースアバター\\textures\\main.png",
+			"path": "C:\\Users\\gakut\\AppData\\Roaming\\ModrinthApp\\profiles\\Fabricバニラ\\figura\\avatars\\ブルーアーカイブ\\ベースアバター\\textures\\main.png",
 			"name": "main.png",
 			"folder": "",
 			"namespace": "",
@@ -2275,6 +2289,67 @@
 							"time": 0,
 							"color": -1,
 							"interpolation": "step",
+							"bezier_linked": true,
+							"bezier_left_time": [-0.1, -0.1, -0.1],
+							"bezier_left_value": [0, 0, 0],
+							"bezier_right_time": [0.1, 0.1, 0.1],
+							"bezier_right_value": [0, 0, 0]
+						}
+					]
+				}
+			}
+		},
+		{
+			"uuid": "32fa508f-6231-249d-8d16-a70232d41da2",
+			"name": "halo_sleep",
+			"loop": "hold",
+			"override": false,
+			"length": 0.25,
+			"snapping": 20,
+			"selected": true,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "",
+			"animators": {
+				"0e72e2b8-177c-5b4f-dbcd-98110638a41d": {
+					"name": "HeadRingCenter",
+					"type": "bone",
+					"keyframes": [
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "1",
+									"y": "1",
+									"z": "1"
+								}
+							],
+							"uuid": "32b748eb-7ebc-92d2-79eb-b6ec001c4265",
+							"time": 0,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "bezier",
+							"bezier_linked": true,
+							"bezier_left_time": [-0.15333, -0.15333, -0.15333],
+							"bezier_left_value": [0, 0, 0],
+							"bezier_right_time": [0.15333, 0.15333, 0.15333],
+							"bezier_right_value": [0, 0, 0]
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "92dda563-b5db-3f0a-2291-ff54fe9abeb0",
+							"time": 0.25,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "bezier",
 							"bezier_linked": true,
 							"bezier_left_time": [-0.1, -0.1, -0.1],
 							"bezier_left_value": [0, 0, 0],
