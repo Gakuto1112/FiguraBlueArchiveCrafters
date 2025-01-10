@@ -37,6 +37,12 @@ FaceParts = {
 					else
 						self:setEmotion("SURPRISED", "SURPRISED", "NORMAL", 20, true)
 					end
+				elseif player:getPose() == "SLEEPING" then
+					if self.parent.characterData.faceParts.emotionSet ~= nil and self.parent.characterData.faceParts.emotionSet.onSleep ~= nil then
+						self:setEmotion(self.parent.characterData.faceParts.emotionSet.onSleep.rightEye, self.parent.characterData.faceParts.emotionSet.onSleep.leftEye, self.parent.characterData.faceParts.emotionSet.onSleep.mouth, 1, true)
+					else
+						self:setEmotion("CLOSED", "CLOSED", "NORMAL", 1, true)
+					end
 				elseif self.emotionCount == 0 then
 					self:setEmotion("NORMAL", "NORMAL", "NORMAL", 0)
 				end
