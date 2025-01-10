@@ -114,6 +114,7 @@ DeathAnimation = {
     ---@param self DeathAnimation
     ---@param parent ModelPart ダミーアバターをアタッチする親のモデルパーツ
     generateDummyAvatar = function (self, parent)
+        models.models.main.Avatar.Head.HeadRing:setVisible(true)
         local isArmorVisible = {
             helmet = self.parent.armor.isArmorVisible.helmet;
             chestplate = self.parent.armor.isArmorVisible.chestplate;

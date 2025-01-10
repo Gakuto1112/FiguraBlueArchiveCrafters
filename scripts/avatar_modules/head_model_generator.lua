@@ -39,12 +39,12 @@ HeadModelGenerator = {
             models["script_"..self.parentName].Head:remove()
         end
 
-        --ヘルメットを着けている場合は外しておく。
+        --モデルコピー前の処理
+        models.models.main.Avatar.Head.HeadRing:setVisible(true)
         local isHelmetVisible = self.isScriptLoaded and self.parent.armor.isArmorVisible.helmet or false
         if isHelmetVisible then
             self.parent.armor:setHelmet(world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")))
         end
-
         if self.isScriptLoaded then
             self.parent.physics:disable()
         end

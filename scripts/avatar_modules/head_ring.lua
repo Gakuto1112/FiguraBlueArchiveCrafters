@@ -63,7 +63,7 @@ HeadRing = {
             end
         end)
 
-        events.RENDER:register(function (delta)
+        events.RENDER:register(function (delta, context)
             if not client:isPaused() then
                 --ヘイローの位置・角度を設定
                 local playerPose = player:getPose()
@@ -78,6 +78,17 @@ HeadRing = {
                     self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setPos(0, floatOffset, 0)
                 end
                 models.models.main.Avatar.Head.HeadRing:setRot(headRot - (self.parent.exSkill.animationCount > -1 and models.models.main.Avatar.Head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y))) + self.initialHaloRot, 0, 0)
+            end
+            if context == "OTHER" then
+                models.models.main.Avatar.Head.HeadRing:setVisible(false)
+                if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
+                    self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setVisible(false)
+                end
+            else
+                models.models.main.Avatar.Head.HeadRing:setVisible(true)
+                if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
+                    self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setVisible(true)
+                end
             end
         end)
 
