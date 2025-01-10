@@ -3,6 +3,7 @@
 ---@field package headRotData number[] 一定期間内の頭の角度を保持するテーブル
 ---@field package headRotAverage number[] 頭の角度の移動平均値
 ---@field package floatCount integer ヘイローが上下するアニメーションのカウンター
+---@field package isForceRenderMode boolean ヘイローが強制レンダリングモードになっているかどうか
 ---@field package didSleepPrev boolean 前ティックに寝ていたかどうか
 
 HeadRing = {
@@ -14,10 +15,10 @@ HeadRing = {
         local instance = Avatar.instantiate(HeadRing, AvatarModule, parent)
 
         instance.initialHaloRot = models.models.main.Avatar.Head.HeadRing:getRot().x
-        instance.haloRotPrev = instance.initialHaloRot
         instance.headRotData = {}
         instance.headRotAverage = {0, 0}
         instance.floatCount = 0
+        instance.isForceRenderMode = false
         instance.didSleepPrev = false
 
         return instance
@@ -79,7 +80,7 @@ HeadRing = {
                 end
                 models.models.main.Avatar.Head.HeadRing:setRot(headRot - (self.parent.exSkill.animationCount > -1 and models.models.main.Avatar.Head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y))) + self.initialHaloRot, 0, 0)
             end
-            if context == "OTHER" then
+            if context == "OTHER" and not self.isForceRenderMode then
                 models.models.main.Avatar.Head.HeadRing:setVisible(false)
                 if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
                     self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setVisible(false)
@@ -102,3 +103,9 @@ HeadRing = {
         animations["models.main"].halo_sleep:setSpeed(-1)
     end;
 }
+
+---ヘイローの強制レンダリングモードを切り替える。
+---@param value boolean 強制レンダリングモードを有効にするかどうか。
+function pings.setHaloForceRender(value)
+    AvatarInstance.headRing.isForceRenderMode = value
+end
