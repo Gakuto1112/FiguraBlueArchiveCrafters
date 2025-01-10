@@ -53,7 +53,9 @@ Gun = {
             self.isGunTickProcessed = false
         end)
 
+        local this = self --Figuraにスクリプトを再構築させると参照がおかしくなることに対処しているコード
         events.ON_PLAY_SOUND:register(function (id, pos, _, _, _, _, path)
+            self = this
             if path ~= nil then
                 local velocityDistance = player:getVelocity():length()
                 local distanceFromSound = math.abs(pos:copy():sub(player:getPos()):length() - velocityDistance)
@@ -92,7 +94,6 @@ Gun = {
             end
         end)
 
-        local this = self --Figuraにスクリプトを再構築させると参照がおかしくなることに対処しているコード
         events.ITEM_RENDER:register(function (item, mode, _, _, _, leftHanded)
             self = this
             if mode ~= "HEAD" and self.currentGunPosition == (leftHanded and "LEFT" or "RIGHT") and (self.shouldShowWeaponInFirstPerson or mode =="THIRD_PERSON_LEFT_HAND" or mode == "THIRD_PERSON_RIGHT_HAND") then
