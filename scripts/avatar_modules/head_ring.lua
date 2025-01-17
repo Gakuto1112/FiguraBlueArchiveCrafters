@@ -80,7 +80,7 @@ HeadRing = {
                 end
                 models.models.main.Avatar.Head.HeadRing:setRot(headRot - (self.parent.exSkill.animationCount > -1 and models.models.main.Avatar.Head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y))) + self.initialHaloRot, 0, 0)
             end
-            if context == "OTHER" and not self.isForceRenderMode then
+            if context == "OTHER" and client:hasShaderPack() and not self.isForceRenderMode then
                 models.models.main.Avatar.Head.HeadRing:setVisible(false)
                 if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
                     self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setVisible(false)
