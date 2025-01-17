@@ -31,11 +31,12 @@ The avatars for these characters are completed. You can download and use avatars
 - Umika Satohama
 - Serina Sumi
 - Iroha Natsume
+- Ibuki Tanga
 
 ### In progress
 The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-- Ibuki Tanga ([#65](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/65))
+(There is no avatar currently being created.)
 
 ### Planned
 Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
@@ -118,6 +119,7 @@ I have received requests to create these characters. However, I can't promise th
   | Serina (Normal) | - Leaves a medical box in place after playing the Ex Skill. <br> - Medical boxes play performances to cure when a player (not only you) touches it. <br> - Hearing potions are replaced with a medical box. |
   | Serina (Christmas) | - Bells are replaced with her handbell. <br> - Can play Christmas songs with her handbell after playing the Ex Skill. (7 songs). |
   | Iroha | - The camel are replaced with Toramaru (a tank) when she is alone on the camel with a saddle. <br> - Toramaru can shoot a shell (visual only). |
+  | Ibuki | - I can patrol with Iroha! |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
