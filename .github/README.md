@@ -17,7 +17,41 @@ Watch also:
 - [FBAC videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
 - [FBAC short videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
 
-<!-- ERROR: Unknown inject tag "creation_status" -->
+## Creation status
+### Done
+The avatars for these characters are completed. You can download and use avatars below in the game according to the chapter "[How to use](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/base/.github/README.md#how-to-use)".
+
+- Shizuko Kawawa
+- Izuna Kuda
+- Mari Iochi
+- Momoi Saiba
+- Midori Saiba
+- Shiroko Sunaookami
+- Hoshino Takanashi
+- Umika Satohama
+- Serina Sumi
+- Iroha Natsume
+- Ibuki Tanga
+
+### In progress
+The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
+
+- Seia Yurizono ([#105](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/105))
+
+### Planned
+Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
+
+- Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102))
+- Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37))
+- Hihumi Ajitani ([#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39))
+
+### Requested
+I have received requests to create these characters. However, I can't promise that I'll create them. Please understand this.
+
+- Aris Tendo ([#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97))
+- Haruka Igusa ([#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98))
+- Toki Asuma ([#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104))
+- Aru Rikuhachima ([#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103))
 
 ## Features
 - Imitated ex skill cut-ins.

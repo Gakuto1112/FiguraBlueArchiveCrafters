@@ -17,7 +17,41 @@
 - [FBAC動画 再生リスト](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
 - [FBACショート動画 再生リスト](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
 
-<!-- ERROR: Unknown inject tag "creation_status" -->
+## 作成状況
+### 作成済み
+これらのキャラクターのアバターは完成しました。「[使用方法](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/base/.github/README_jp.md#使用方法)」の章に従ってダウンロード及びゲーム内での使用が可能です。
+
+- 河和シズコ
+- 久田イズナ
+- 伊落マリー
+- 才羽モモイ
+- 才羽ミドリ
+- 砂狼シロコ
+- 小鳥遊ホシノ
+- 里浜ウミカ
+- 鷲見セリナ
+- 棗イロハ
+- 丹花イブキ
+
+### 作成中
+これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
+
+- 百合園セイア（[#105](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/105)）
+
+### 作成予定
+これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
+
+- 早瀬ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102)）
+- 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
+- 阿慈谷ヒフミ（[#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)）
+
+### リクエスト
+これらのキャラクターのアバターは作成のリクエストを受けました。ただし、リクエストを受けたからといって、必ず作成するとは約束できません。ご了承ください。
+
+- 天童アリス（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)）
+- 伊草ハルカ（[#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98)）
+- 飛鳥馬トキ（[#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104)）
+- 陸八魔アル（[#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。
