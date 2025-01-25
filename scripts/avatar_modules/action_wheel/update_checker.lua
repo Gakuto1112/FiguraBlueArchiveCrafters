@@ -14,6 +14,7 @@
 ---@field package BRANCH_NAME string このブランチ名（キャラクター名）
 ---@field public latestVersion? string リモート上にある最新のFBACバージョン
 ---@field public checkerStatus UpdateChecker.CheckerStatus アップデートチェッカーの状態
+---@field public lastCheckTime integer 最後に更新を確認した時間（UNIX時間）
 ---@field package requestStatus integer 送信したリクエストのステータスコード
 ---@field package responseHandler Future.HttpResponse|nil httpレスポンスのハンドラ
 ---@field package textAnimationCount integer 新しいバージョン表示のテキストのアニメーションのカウンター
@@ -34,8 +35,11 @@ UpdateChecker = {
         instance.BRANCH_NAME = "BaseAvatar"
         instance.latestVersion = instance.parent.config:loadConfig("PUBLIC", "latestVersion", nil)
         instance.checkerStatus = "INIT"
+        instance.lastCheckTime = instance.parent.config:loadConfig("PUBLIC", "lastUpdateCheckTime", 0)
         instance.requestStatus = 0
+        instance.responseHandler = nil
         instance.textAnimationCount = 0
+        instance.isActionWheelOpenedPrev = false
 
         return instance
     end;
@@ -70,8 +74,7 @@ UpdateChecker = {
                 self.isActionWheelOpenedPrev = isActionWheelOpened
             end)
 
-            local lastUpdateCheckTime = self.parent.config:loadConfig("PUBLIC", "lastUpdateCheckTime", 0)
-            if client:getSystemTime() >= lastUpdateCheckTime + 86400000 then
+            if client:getSystemTime() >= self.lastCheckTime + 86400000 then
                 self:checkUpdate()
             else
                 local newerVersion = self.compareVersions(self.latestVersion, self.FBAC_VERSION)
@@ -144,7 +147,8 @@ UpdateChecker = {
                                                 self.latestVersion = parseData[1].name
                                                 self.checkerStatus = "LATEST"
                                             end
-                                            self.parent.config:saveConfig("PUBLIC", "lastUpdateCheckTime", client:getSystemTime())
+                                            self.lastCheckTime = client:getSystemTime()
+                                            self.parent.config:saveConfig("PUBLIC", "lastUpdateCheckTime", self.lastCheckTime)
                                             self.parent.config:saveConfig("PUBLIC", "latestVersion", parseData[1].name)
                                         else
                                             --予期しないJSONデータ

@@ -6,6 +6,7 @@
 ---@field package selectingExSkillParticleAmount integer 現在選択中のExスキルフレームのパーティクル量
 ---@field public shouldReplaceVehicleModels boolean 乗り物のモデルを置き換えるかどうか
 ---@field package isActionWheelOpenedPrev boolean 前ティックにアクションホイールを開けていたかどうか
+---@field package currentTime integer アクションホイールを開けた瞬間の時間（UNIX時間）
 ---@field package refreshCostumeChangeActionTitle fun(self: ActionWheel) 衣装変更アクションのタイトルを更新する
 ---@field package refreshNameChangeActionTitle fun(self: ActionWheel) 名前変更アクションのタイトルを更新する
 ---@field package refreshExSkillParticleActionTitle fun(self: ActionWheel) Exスキルアニメーションのパーティクル量調整アクションのタイトルを更新する
@@ -26,6 +27,7 @@ ActionWheel = {
         instance.selectingExSkillParticleAmount = instance.parent.exSkill.frameParticleAmount
         instance.shouldReplaceVehicleModels = instance.parent.config:loadConfig("PRIVATE", "replaceVehicleModels", true)
         instance.isActionWheelOpenedPrev = false
+        instance.currentTime = 0
 
         return instance
     end;
@@ -52,6 +54,7 @@ ActionWheel = {
                         mainAction6:setTitle("§7"..self.parent.locale:getLocale("action_wheel.main.action_6.title")..self.parent.locale:getLocale("action_wheel.toggle_off"))
                     end
                     mainAction6:setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on"))
+                    self.currentTime = client:getSystemTime()
                     self:refreshCostumeChangeActionTitle()
                     self:refreshNameChangeActionTitle()
                     self:refreshExSkillParticleActionTitle()
@@ -220,7 +223,7 @@ ActionWheel = {
                     sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.note_block.bass"), player:getPos(), 1, 0.5)
                 end
             end):onRightClick(function ()
-                if self.parent.updateChecker.latestVersion ~= nil then
+                if self.parent.updateChecker.latestVersion ~= nil and self.currentTime < self.parent.updateChecker.lastCheckTime + 86400000 then
                     host:setClipboard("https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/releases/tag/"..self.parent.updateChecker.latestVersion)
                     print(self.parent.locale:getLocale("action_wheel.main.action_7.copied"))
                 else
@@ -280,10 +283,10 @@ ActionWheel = {
             action:setColor(0.78, 0.78, 0.78)
             action:setHoverColor(1, 1, 1)
         end
-        if self.parent.updateChecker.latestVersion == nil then
-            actionTitle = actionTitle.."§7"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3")..self.parent.locale:getLocale("action_wheel.main.action_7.title_4")
-        else
+        if self.parent.updateChecker.latestVersion ~= nil and self.currentTime < self.parent.updateChecker.lastCheckTime + 86400000 then
             actionTitle = actionTitle.."§r"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3").."§b"..self.parent.locale:getLocale("action_wheel.main.action_7.title_4")
+        else
+            actionTitle = actionTitle.."§7"..self.parent.locale:getLocale("action_wheel.main.action_7.title_3")..self.parent.locale:getLocale("action_wheel.main.action_7.title_4")
         end
         action:setTitle(actionTitle)
     end;
