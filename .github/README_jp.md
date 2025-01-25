@@ -41,6 +41,7 @@
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
+- 百合園セイア（[#105](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/105)）
 - 早瀬ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102)）
 - 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
 - 阿慈谷ヒフミ（[#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)）
@@ -50,6 +51,8 @@
 
 - 天童アリス（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)）
 - 伊草ハルカ（[#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98)）
+- 飛鳥馬トキ（[#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104)）
+- 陸八魔アル（[#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。
