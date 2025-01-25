@@ -31,7 +31,7 @@ UpdateChecker = {
         ---@type UpdateChecker
         local instance = Avatar.instantiate(UpdateChecker, AvatarModule, parent)
 
-        instance.FBAC_VERSION = "v2.2.1_dev"
+        instance.FBAC_VERSION = "v2.3.0_dev"
         instance.BRANCH_NAME = "BaseAvatar"
         instance.latestVersion = instance.parent.config:loadConfig("PUBLIC", "latestVersion", nil)
         instance.checkerStatus = "INIT"
