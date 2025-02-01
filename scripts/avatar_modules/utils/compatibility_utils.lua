@@ -13,7 +13,7 @@
 ---@field public checkItem fun(self: CompatibilityUtils, item: Minecraft.itemID): Minecraft.itemID 指定されたアイテムIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:barrier"を返す。
 ---@field public checkParticle fun(self: CompatibilityUtils, particle: Minecraft.particleID): Minecraft.particleID 指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
 ---@field public checkSound fun(self: CompatibilityUtils, sound: Minecraft.soundID): Minecraft.soundID 指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
----@field public getBlockParticleId fun(block: Minecraft.blockID): string ブロックの破片のパーティクルを示す文字列を返す。Minecraftのバージョン違いを吸収するための関数。
+---@field public getBlockParticleId fun(block: Minecraft.blockID, blockState?: string): string ブロックの破片のパーティクルを示す文字列を返す。Minecraftのバージョン違いを吸収するための関数。
 ---@field public getDustParticleId fun(color: Vector3, size: number): string dustパーティクルを示す文字列を返す。Minecraftのバージョン違いを吸収するための関数。
 
 CompatibilityUtils = {
