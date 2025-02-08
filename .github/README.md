@@ -42,14 +42,15 @@ The avatars for these characters are worked in progress. It usually takes about 
 ### Planned
 Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
 
+- Aris Tendo ([#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97))
+- Yuzu Hanaoka ([#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97))
+- Hihumi Ajitani ([#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39))
 - Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102))
 - Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37))
-- Hihumi Ajitani ([#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39))
 
 ### Requested
 I have received requests to create these characters. However, I can't promise that I'll create them. Please understand this.
 
-- Aris Tendo ([#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97))
 - Haruka Igusa ([#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98))
 - Toki Asuma ([#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104))
 - Aru Rikuhachima ([#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103))
