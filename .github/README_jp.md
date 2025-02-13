@@ -21,31 +21,31 @@
 ### 作成済み
 これらのキャラクターのアバターは完成しました。「[使用方法](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/base/.github/README_jp.md#使用方法)」の章に従ってダウンロード及びゲーム内での使用が可能です。
 
-- 河和シズコ
-- 久田イズナ
-- 伊落マリー
-- 才羽モモイ
-- 才羽ミドリ
-- 砂狼シロコ
-- 小鳥遊ホシノ
-- 里浜ウミカ
-- 鷲見セリナ
-- 棗イロハ
-- 丹花イブキ
-- 百合園セイア
+- 河和シズコ 🍫
+- 久田イズナ 🍫
+- 伊落マリー 🍫
+- 才羽モモイ 🍫
+- 才羽ミドリ 🍫
+- 砂狼シロコ 🍫
+- 小鳥遊ホシノ 🍫
+- 里浜ウミカ 🍫
+- 鷲見セリナ 🍫
+- 棗イロハ 🍫
+- 丹花イブキ 🍫
+- 百合園セイア 🍫
 
 ### 作成中
 これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
 
-- 天童アリス（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)）
+- 天童アリス（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)） 🍫
 
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
 - 花岡ユズ（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)）
-- 阿慈谷ヒフミ（[#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)）
+- 阿慈谷ヒフミ（[#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)） 🍫
 - 早瀬ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102)）
-- 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
+- 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)） 🍫
 
 ### リクエスト
 これらのキャラクターのアバターは作成のリクエストを受けました。ただし、リクエストを受けたからといって、必ず作成するとは約束できません。ご了承ください。
