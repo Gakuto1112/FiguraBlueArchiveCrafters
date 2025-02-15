@@ -189,10 +189,10 @@ Armor = {
 			vanillaModel:setVisible(false)
 		end
 		for _, overlayPart in ipairs({models.models.main.Avatar.UpperBody.Arms.RightArm.ArmorRA.RightChestplate.RightChestplateOverlay, models.models.main.Avatar.UpperBody.Arms.LeftArm.ArmorLA.LeftChestplate.LeftChestplateOverlay, models.models.main.Avatar.UpperBody.Arms.RightArm.ArmorRA.RightChestplate.RightChestplateOverlay, models.models.main.Avatar.UpperBody.Arms.RightArm.RightArmBottom.ArmorRAB.RightChestplateBottom.RightChestplateBottomOverlay, models.models.main.Avatar.UpperBody.Arms.LeftArm.ArmorLA.LeftChestplate.LeftChestplateOverlay, models.models.main.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom.ArmorLAB.LeftChestplateBottom.LeftChestplateBottomOverlay, models.models.main.Avatar.LowerBody.Legs.RightLeg.ArmorRL.RightBoots.RightBootsOverlay, models.models.main.Avatar.LowerBody.Legs.RightLeg.RightLegBottom.ArmorRLB.RightBootsBottom.RightBootsBottomOverlay, models.models.main.Avatar.LowerBody.Legs.LeftLeg.ArmorLL.LeftBoots.LeftBootsOverlay, models.models.main.Avatar.LowerBody.Legs.LeftLeg.LeftLegBottom.ArmorLLB.LeftBootsBottom.LeftBootsBottomOverlay}) do
-			overlayPart:setPrimaryTexture("RESOURCE", "minecraft:textures/models/armor/leather_layer_1_overlay.png")
+			overlayPart:setPrimaryTexture("RESOURCE", client:getVersion() >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid/leather_overlay.png" or "minecraft:textures/models/armor/leather_layer_1_overlay.png")
 		end
 		for _, overlayPart in ipairs({models.models.main.Avatar.LowerBody.Legs.RightLeg.ArmorRL.RightLeggings.RightLeggingsOverlay, models.models.main.Avatar.LowerBody.Legs.RightLeg.RightLegBottom.ArmorRLB.RightLeggingsBottom.RightLeggingsBottomOverlay, models.models.main.Avatar.LowerBody.Legs.LeftLeg.ArmorLL.LeftLeggings.LeftLeggingsOverlay, models.models.main.Avatar.LowerBody.Legs.LeftLeg.LeftLegBottom.ArmorLLB.LeftLeggingsBottom.LeftLeggingsBottomOverlay}) do
-			overlayPart:setPrimaryTexture("RESOURCE", "minecraft:textures/models/armor/leather_layer_2_overlay.png")
+			overlayPart:setPrimaryTexture("RESOURCE", client:getVersion() >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid_leggings/leather_overlay.png" or "minecraft:textures/models/armor/leather_layer_2_overlay.png")
 		end
     end;
 
@@ -269,7 +269,7 @@ Armor = {
 			if textures[textureName] then
 				return textures[textureName]
 			else
-				local texture = textures:fromVanilla(textureName, "minecraft:textures/trims/models/armor/"..normalizedPatternName..(armorId:find("^minecraft:.+_leggings$") ~= nil and "_leggings" or "")..".png")
+				local texture = textures:fromVanilla(textureName, client:getVersion() >= "1.21.2" and "minecraft:textures/trims/entity/humanoid"..(armorId:find("^minecraft:.+_leggings$") ~= nil and "_leggings" or "").."/"..normalizedPatternName..".png" or "minecraft:textures/trims/models/armor/"..normalizedPatternName..(armorId:find("^minecraft:.+_leggings$") ~= nil and "_leggings" or "")..".png")
 				self:addTextureQueue(texture, normalizedMaterialName)
 				return texture
 			end
@@ -301,7 +301,7 @@ Armor = {
 		if self.isArmorVisible.chestplate then
 			local material = chestplateItem.id:match("^minecraft:(%a+)_chestplate$")
 			for _, armorPart in ipairs({models.models.main.Avatar.UpperBody.Arms.RightArm.ArmorRA.RightChestplate.RightChestplate, models.models.main.Avatar.UpperBody.Arms.RightArm.RightArmBottom.ArmorRAB.RightChestplateBottom.RightChestplateBottom, models.models.main.Avatar.UpperBody.Arms.LeftArm.ArmorLA.LeftChestplate.LeftChestplate, models.models.main.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom.ArmorLAB.LeftChestplateBottom.LeftChestplateBottom}) do
-				armorPart:setPrimaryTexture("RESOURCE", "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
+				armorPart:setPrimaryTexture("RESOURCE", client:getVersion() >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid/"..(material == "golden" and "gold" or material)..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
 			end
 		end
 		local overlayVisible = chestplateItem.id == "minecraft:leather_chestplate"
@@ -326,7 +326,7 @@ Armor = {
 		if self.isArmorVisible.leggings then
 			local material = leggingsItem.id:match("^minecraft:(%a+)_leggings$")
 			for _, armorPart in ipairs({models.models.main.Avatar.LowerBody.Legs.RightLeg.ArmorRL.RightLeggings.RightLeggings, models.models.main.Avatar.LowerBody.Legs.RightLeg.RightLegBottom.ArmorRLB.RightLeggingsBottom.RightLeggingsBottom, models.models.main.Avatar.LowerBody.Legs.LeftLeg.ArmorLL.LeftLeggings.LeftLeggings, models.models.main.Avatar.LowerBody.Legs.LeftLeg.LeftLegBottom.ArmorLLB.LeftLeggingsBottom.LeftLeggingsBottom}) do
-				armorPart:setPrimaryTexture("RESOURCE", "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_2.png")
+				armorPart:setPrimaryTexture("RESOURCE", client:getVersion() >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid_leggings/"..(material == "golden" and "gold" or material)..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_2.png")
 			end
 		end
 		local overlayVisible = leggingsItem.id == "minecraft:leather_leggings"
@@ -350,7 +350,7 @@ Armor = {
 		if self.isArmorVisible.boots then
 			local material = bootsItem.id:match("^minecraft:(%a+)_boots$")
 			for _, armorPart in ipairs({models.models.main.Avatar.LowerBody.Legs.RightLeg.ArmorRL.RightBoots.RightBoots, models.models.main.Avatar.LowerBody.Legs.RightLeg.RightLegBottom.ArmorRLB.RightBootsBottom.RightBootsBottom, models.models.main.Avatar.LowerBody.Legs.LeftLeg.ArmorLL.LeftBoots.LeftBoots, models.models.main.Avatar.LowerBody.Legs.LeftLeg.LeftLegBottom.ArmorLLB.LeftBootsBottom.LeftBootsBottom}) do
-				armorPart:setPrimaryTexture("RESOURCE", "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
+				armorPart:setPrimaryTexture("RESOURCE", client:getVersion() >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid/"..(material == "golden" and "gold" or material)..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
 			end
 		end
 		local overlayVisible = bootsItem.id == "minecraft:leather_boots"
