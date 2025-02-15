@@ -1,7 +1,6 @@
 ---@class (exact) ModelUtils : AvatarModule モデルに関するユーティリティ関数群
 ---@field public getModelWorldPos fun(model: ModelPart): Vector3 指定したモデルのワールド位置を返す。
 ---@field public copyModel fun(self: ModelUtils, modelPart: ModelPart, name?: string, forceCopy?: boolean): ModelPart|nil モデルパーツをディープコピーする。
----@field public copyModel fun(self: ModelUtils, modelPart: ModelPart, name?: string, forceCopy?: true): ModelPart モデルパーツをディープコピーする。
 ---@field public moveTo fun(target: ModelPart, destination: ModelPart, originalParent: ModelPart) モデルパーツを別の親に移動させる。組み込みmoveTo()で何故かモデルパーツが残ってしまう問題に対処済み。
 
 ModelUtils = {
