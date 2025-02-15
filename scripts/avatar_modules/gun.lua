@@ -231,13 +231,7 @@ Gun = {
             end
             models.models.main.Avatar.UpperBody.Body.Gun:setParentType("None")
             models.models.main.Avatar.UpperBody.Body.Gun:setSecondaryRenderType("NONE")
-            if self.parent.characterData.gun.gunPosition.hold.type == "NORMAL" then
-                self.parent.arms:setArmState(0, 0)
-            elseif self.parent.characterData.gun.gunPosition.hold.type == "CUSTOM" then
-                for _, animationName in ipairs({"gun_hold_right", "gun_hold_left"}) do
-                    animations["models.main"][animationName]:stop()
-                end
-            end
+            self.parent.arms:setArmState(0, 0)
             if self.parent.characterData.gun.gunPosition.put.type == "BODY" then
                 self:setBodyGunPos()
             elseif self.parent.characterData.gun.gunPosition.put.type == "HIDDEN" then
@@ -261,12 +255,7 @@ Gun = {
                     end
                 end, "right_gun_tick")
             end
-            if self.parent.characterData.gun.gunPosition.hold.type == "NORMAL" then
-                self.parent.arms:setArmState(1, 2)
-            elseif self.parent.characterData.gun.gunPosition.hold.type == "CUSTOM" then
-                animations["models.main"]["gun_hold_left"]:stop()
-                animations["models.main"]["gun_hold_right"]:play()
-            end
+            self.parent.arms:setArmState(1, 2)
             models.models.main.Avatar.UpperBody.Body.Gun:setVisible(true)
             models.models.main.Avatar.UpperBody.Body.Gun:setParentType("Item")
             if not client:isPaused() then
@@ -290,12 +279,7 @@ Gun = {
                     end
                 end, "left_gun_tick")
             end
-            if self.parent.characterData.gun.gunPosition.hold.type == "NORMAL" then
-                self.parent.arms:setArmState(2, 1)
-            elseif self.parent.characterData.gun.gunPosition.hold.type == "CUSTOM" then
-                animations["models.main"]["gun_hold_right"]:stop()
-                animations["models.main"]["gun_hold_left"]:play()
-            end
+            self.parent.arms:setArmState(2, 1)
             models.models.main.Avatar.UpperBody.Body.Gun:setVisible(true)
             models.models.main.Avatar.UpperBody.Body.Gun:setParentType("Item")
             if not client:isPaused() then
