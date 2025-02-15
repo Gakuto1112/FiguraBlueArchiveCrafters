@@ -9,7 +9,7 @@
 ---@field package registries {block: Minecraft.blockID[], item: Minecraft.itemID[], particle: Minecraft.particleID[], sound: Minecraft.soundID[]} ゲームから取得した全アイテム名を保持するテーブル
 ---@field package checkedTable {block: {[Minecraft.blockID]: boolean}, item: {[Minecraft.itemID]: boolean}, particle: {[Minecraft.particleID]: boolean}, sound: {[Minecraft.soundID]: boolean}} レジストリへの確認が済んでいるIDを保持するテーブル
 ---@field package find fun(self: CompatibilityUtils, registryType: CompatibilityUtils.RegistryType, target: string): boolean 指定されたターゲットがレジストリに登録されているかどうかを返す。
----@field public checkBlock fun(self: CompatibilityUtils, block: Minecraft.blockID): Minecraft.blockID 指定されたブロックIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:dirt"を返す。
+---@field public checkBlock fun(self: CompatibilityUtils, block: Minecraft.blockID, blockState?: string): Minecraft.blockID 指定されたブロックIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:dirt"を返す。
 ---@field public checkItem fun(self: CompatibilityUtils, item: Minecraft.itemID): Minecraft.itemID 指定されたアイテムIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:barrier"を返す。
 ---@field public checkParticle fun(self: CompatibilityUtils, particle: Minecraft.particleID): Minecraft.particleID 指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
 ---@field public checkSound fun(self: CompatibilityUtils, sound: Minecraft.soundID): Minecraft.soundID 指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
