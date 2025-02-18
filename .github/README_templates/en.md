@@ -79,7 +79,7 @@ Watch also:
   | - | - |
   | Shizuko (Normal) | - Leaves a stall in place after playing the Ex Skill. |
   | Izuna (Normal) | - Has a special performance when warping with ender pearl, etc. |
-  | Shiroko | - Gets caught by her drone and fries away during creative flights. <br> - Her drone can launch missiles (visual only). <br> - The horse is replaced with her bicycle when riding a horse, mule, or donkey with a saddle. <br> - Drinking portions are replaced with a sports bottle when riding a bicycle (horses). |
+  | Shiroko | - Grabs her drone and fries away during creative flights. <br> - Her drone can launch missiles (visual only). <br> - The horse is replaced with her bicycle when riding a horse, mule, or donkey with a saddle. <br> - Drinking portions are replaced with a sports bottle when riding a bicycle (horses). |
   | Hoshino | - The shield is replaced with her own. |
   | Hoshino (Swimsuit) | - The boat are replaced with a whale float when she is alone in the boat. |
   | Hoshino (Battle) | - Holds her shotgun and handgun when you holds bows or crossbows with both hands. |
