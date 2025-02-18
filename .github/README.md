@@ -21,31 +21,31 @@ Watch also:
 ### Done
 The avatars for these characters are completed. You can download and use avatars below in the game according to the chapter "[How to use](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/base/.github/README.md#how-to-use)".
 
-- Shizuko Kawawa 🍫
-- Izuna Kuda 🍫
-- Mari Iochi 🍫
-- Momoi Saiba 🍫
-- Midori Saiba 🍫
-- Shiroko Sunaookami 🍫
-- Hoshino Takanashi 🍫
-- Umika Satohama 🍫
-- Serina Sumi 🍫
-- Iroha Natsume 🍫
-- Ibuki Tanga 🍫
-- Seia Yurizono 🍫
+- Shizuko Kawawa
+- Izuna Kuda
+- Mari Iochi
+- Momoi Saiba
+- Midori Saiba
+- Shiroko Sunaookami
+- Hoshino Takanashi
+- Umika Satohama
+- Serina Sumi
+- Iroha Natsume
+- Ibuki Tanga
+- Seia Yurizono
 
 ### In progress
 The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-- Aris Tendo ([#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)) 🍫
+- Aris Tendo ([#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97))
 
 ### Planned
 Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
 
 - Yuzu Hanaoka ([#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97))
-- Hihumi Ajitani ([#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)) 🍫
+- Hihumi Ajitani ([#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39))
 - Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102))
-- Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)) 🍫
+- Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37))
 
 ### Requested
 I have received requests to create these characters. However, I can't promise that I'll create them. Please understand this.
@@ -114,15 +114,16 @@ I have received requests to create these characters. However, I can't promise th
   | - | - |
   | Shizuko (Normal) | - Leaves a stall in place after playing the Ex Skill. |
   | Izuna (Normal) | - Has a special performance when warping with ender pearl, etc. |
-  | Shiroko | - Gets caught by her drone and fries away during creative flights. <br> - Her drone can launch missiles (visual only). <br> - The horse is replaced with her bicycle when riding a horse, mule, or donkey with a saddle. <br> - Drinking portions are replaced with a sports bottle when riding a bicycle (horses). |
+  | Shiroko | - Grabs her drone and fries away during creative flights. <br> - Her drone can launch missiles (visual only). <br> - The horse is replaced with her bicycle when riding a horse, mule, or donkey with a saddle. <br> - Drinking portions are replaced with a sports bottle when riding a bicycle (horses). |
   | Hoshino | - The shield is replaced with her own. |
   | Hoshino (Swimsuit) | - The boat are replaced with a whale float when she is alone in the boat. |
   | Hoshino (Battle) | - Holds her shotgun and handgun when you holds bows or crossbows with both hands. |
-  | Umika (Normal) | - Leaves a firework launcher in place after playing the Ex Skill. <br> - Firework launchers can launch fireworks (visual only). |
+  | Umika | - Leaves a firework launcher in place after playing the Ex Skill. <br> - Firework launchers can launch fireworks (visual only). |
   | Serina (Normal) | - Leaves a medical box in place after playing the Ex Skill. <br> - Medical boxes play performances to cure when a player (not only you) touches it. <br> - Hearing potions are replaced with a medical box. |
   | Serina (Christmas) | - Bells are replaced with her handbell. <br> - Can play Christmas songs with her handbell after playing the Ex Skill. (7 songs). |
   | Iroha | - The camel are replaced with Toramaru (a tank) when she is alone on the camel with a saddle. <br> - Toramaru can shoot a shell (visual only). |
   | Ibuki | - I can patrol with Iroha! |
+  | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (this is a substitute for the long-tailed tit.). |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
