@@ -1,7 +1,7 @@
 ---@class (exact) Arms : AvatarModule アバターの腕を制御するクラス
 ---@field public armState Arms.ArmStateSet 腕の状態：0. バニラ状態, 1. 銃を構えている際の、銃を構えている方の腕, 2. 銃を構えている際の、銃を構えていない方の腕, 3. クロスボウ装填中
 ---@field package armStatePrev Arms.ArmStateSet 前ティックの腕の状態
----@field package swingCount integer 腕をプラプラさせるカウンター
+---@field public swingCount integer 腕をプラプラさせるカウンター
 ---@field package isSwingCountProcessed boolean 腕プラプラカウンターを処理したかどうか
 ---@field package processArmWingCount fun(self: Arms) 腕プラプラカウンターを処理する
 ---@field public setArmState fun(self: Arms, right?: integer, left?: integer) 腕の状態を設定する
