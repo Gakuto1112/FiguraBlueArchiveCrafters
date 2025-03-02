@@ -1,6 +1,7 @@
 ---@class (exact) DeathAnimation : AvatarModule プレイヤーが死亡した際のキャラクターがヘリコプターで回収されるアニメーションを管理するクラス
 ---@field package DEBUG_MODE boolean デバッグモードを有効にするかどうか。デバッグモードモードではxキーでフェーズ1のモデルを、cキーでフェーズ2のモデルを表示できる。
 ---@field public dummyAvatarRoot? ModelPart 死亡アニメーションに使用されるダミーのアバターのルート。アバターが未生成の場合はnilが入っている。
+---@field package deathCheckDelay integer 死亡チェックの遅延カウンター
 ---@field package animationCount integer 死亡アニメーションの再生カウンター
 ---@field package animationPos Vector3 アニメーションを再生している場所の座標
 ---@field package animationRot number アニメーションを再生している向き（度数法で示す）
@@ -27,6 +28,7 @@ DeathAnimation = {
         instance.DEBUG_MODE = false
 
         instance.dummyAvatarRoot = models.models.death_animation.Avatar
+        instance.deathCheckDelay = -1
         instance.animationCount = 0
         instance.animationPos = vectors.vec3()
         instance.animationRot = 0
@@ -43,29 +45,26 @@ DeathAnimation = {
         AvatarModule.init(self)
 
         events.TICK:register(function ()
-            if self.isPlayerInvisible and player:getHealth() > 0 then
+            local health = player:getHealth()
+            if self.deathCheckDelay == 0 and health == 0 then
+                self:play()
+                models.models.main:setVisible(false)
+                for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
+                    vanillaModel:setVisible(false)
+                end
+                self.isPlayerInvisible = true
+            elseif self.isPlayerInvisible and health > 0 then
                 models.models.main:setVisible(true)
                 for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
                     vanillaModel:setVisible(true)
                 end
                 self.isPlayerInvisible = false
             end
+            self.deathCheckDelay = math.max(self.deathCheckDelay - 1, -1)
         end)
 
         events.DAMAGE:register(function ()
-            if events.TICK:getRegisteredCount("death_animation_damage") == 0 then
-                events.TICK:register(function ()
-                    if player:getHealth() == 0 then
-                        self:play()
-                        models.models.main:setVisible(false)
-                        for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
-                            vanillaModel:setVisible(false)
-                        end
-                        self.isPlayerInvisible = true
-                    end
-                    events.TICK:remove("death_animation_damage")
-                end, "death_animation_damage")
-            end
+            self.deathCheckDelay = 1
         end)
 
         self.parent.avatarEvents.SCRIPT_INIT:register(function ()
