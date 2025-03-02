@@ -76,11 +76,15 @@ Gun = {
                     local activeItemTime = player:getActiveItemTime()
                     local quickChargeLevel = 0
                     local activeItem = player:getActiveItem()
-                    if activeItem.tag.Enchantments ~= nil then
-                        for _, enchant in ipairs(activeItem.tag.Enchantments) do
-                            if enchant.id == "minecraft:quick_charge" then
-                                quickChargeLevel = enchant.lvl
-                                break
+                    if client:getVersion() >= "1.20.5" then
+                        quickChargeLevel = activeItem.tag["minecraft:enchantments"].levels["minecraft:quick_charge"] ~= nil and activeItem.tag["minecraft:enchantments"].levels["minecraft:quick_charge"] or 0
+                    else
+                        if activeItem.tag.Enchantments ~= nil then
+                            for _, enchant in ipairs(activeItem.tag.Enchantments) do
+                                if enchant.id == "minecraft:quick_charge" then
+                                    quickChargeLevel = enchant.lvl
+                                    break
+                                end
                             end
                         end
                     end
