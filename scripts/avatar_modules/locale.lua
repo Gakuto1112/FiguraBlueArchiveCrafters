@@ -22,7 +22,7 @@ Locale = {
 		---言語データのリスト
 		---1. キー名, 2. 英語（米国）, 3. 日本語
 		local localeStrings = {
-			{"avatar.old_version_warning", "For the best experience, playing with 1.20.1 or higher is recommended!", "生徒さんとより良い時間を過ごすためにバージョン1.20.1以上でのプレイをおすすめします！"};
+			{"avatar.old_version_warning", "For the best experience, playing with 1.21.4 or higher is recommended!", "生徒さんとより良い時間を過ごすためにバージョン1.21.4以上でのプレイをおすすめします！"};
 			{"avatar.zombies_mode.enable", "Enabled Zombies mode.", "Zombiesモードを有効にしました。"};
 			{"avatar.zombies_mode.already_enabled", "Already enabled Zombies mode.", "Zombiesモードは既に有効化されています。"};
 			{"avatar.zombies_mode.disable", "Disabled Zombies mode.", "Zombiesモードを無効にしました。"};
