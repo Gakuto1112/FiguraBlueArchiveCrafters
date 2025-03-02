@@ -114,7 +114,6 @@
 
 ---@class (exact) BlueArchiveCharacter.OverrideEmotionSet 特定の状況における表情を上書きするセット
 ---@field public onDamage? BlueArchiveCharacter.EmotionSet ダメージを受けたとき
----@field public onDied? BlueArchiveCharacter.EmotionSet 死んだとき（死亡アニメーションは除外）
 ---@field public onSleep? BlueArchiveCharacter.EmotionSet ベッドで寝ているとき
 
 ---@class (exact) BlueArchiveCharacter.EmotionSet 表情のデータセット
