@@ -51,7 +51,9 @@ CompatibilityUtils = {
         self.checkedTable.particle["minecraft:poof"] = true
         self.checkedTable.sound["minecraft:empty"] = true
         if host:isHost() and client:getVersion() < "1.20.1" then
-            print(self.parent.locale:getLocale("avatar.old_version_warning"))
+            self.parent.avatarEvents.SCRIPT_INIT:register(function ()
+                print(self.parent.locale:getLocale("avatar.old_version_warning"))
+            end)
         end
     end;
 
