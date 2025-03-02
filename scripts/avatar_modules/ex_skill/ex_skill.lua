@@ -106,6 +106,12 @@ ExSkill = {
             end
         end)
 
+        events.DAMAGE:register(function ()
+            if self.animationCount >= 0 then
+                self:forceStop()
+            end
+        end)
+
         if self.AUTO_PLAY ~= "NONE" then
             events.TICK:register(function ()
                 if not self.isDebugInit then
@@ -121,7 +127,7 @@ ExSkill = {
     ---@param self ExSkill
     ---@return boolean canPlayAnimation Exスキルアニメーションが再生可能かどうか
     canPlayAnimation = function (self)
-        return player:getPose() == "STANDING" and not player:isMoving() and self.bodyYaw[1] == self.bodyYaw[2] and player:isOnGround() and not player:isInWater() and not player:isInLava() and player:getFrozenTicks() == 0 and not renderer:isFirstPerson() and self.parent.playerUtils.damageStatus == "NONE" and player:getSwingArm() == nil and player:getActiveItem().id == "minecraft:air" and not self.parent.costume.isChangingCostume
+        return player:getPose() == "STANDING" and not player:isMoving() and self.bodyYaw[1] == self.bodyYaw[2] and player:isOnGround() and not player:isInWater() and not player:isInLava() and player:getFrozenTicks() == 0 and not renderer:isFirstPerson() and player:getSwingArm() == nil and player:getActiveItem().id == "minecraft:air" and not self.parent.costume.isChangingCostume
     end;
 
     ---Exスキルのアニメーションの前後のカメラのトランジションを行う関数

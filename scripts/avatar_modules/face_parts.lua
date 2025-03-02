@@ -25,19 +25,7 @@ FaceParts = {
 
 		events.TICK:register(function ()
 			if not client:isPaused() then
-				if self.parent.playerUtils.damageStatus == "DAMAGE" then
-					if self.parent.characterData.faceParts.emotionSet ~= nil and self.parent.characterData.faceParts.emotionSet.onDamage ~= nil then
-						self:setEmotion(self.parent.characterData.faceParts.emotionSet.onDamage.rightEye, self.parent.characterData.faceParts.emotionSet.onDamage.leftEye, self.parent.characterData.faceParts.emotionSet.onDamage.mouth, 8, true)
-					else
-						self:setEmotion("SURPRISED", "SURPRISED", "NORMAL", 8, true)
-					end
-				elseif self.parent.playerUtils.damageStatus == "DIED" then
-					if self.parent.characterData.faceParts.emotionSet ~= nil and self.parent.characterData.faceParts.emotionSet.onDied ~= nil then
-						self:setEmotion(self.parent.characterData.faceParts.emotionSet.onDied.rightEye, self.parent.characterData.faceParts.emotionSet.onDied.leftEye, self.parent.characterData.faceParts.emotionSet.onDied.mouth, 20, true)
-					else
-						self:setEmotion("SURPRISED", "SURPRISED", "NORMAL", 20, true)
-					end
-				elseif player:getPose() == "SLEEPING" then
+				if player:getPose() == "SLEEPING" then
 					if self.parent.characterData.faceParts.emotionSet ~= nil and self.parent.characterData.faceParts.emotionSet.onSleep ~= nil then
 						self:setEmotion(self.parent.characterData.faceParts.emotionSet.onSleep.rightEye, self.parent.characterData.faceParts.emotionSet.onSleep.leftEye, self.parent.characterData.faceParts.emotionSet.onSleep.mouth, 1, true)
 					else
@@ -55,6 +43,14 @@ FaceParts = {
 				end
 
 				self.emotionCount = self.emotionCount > 0 and self.emotionCount - 1 or self.emotionCount
+			end
+		end)
+
+		events.DAMAGE:register(function ()
+			if self.parent.characterData.faceParts.emotionSet ~= nil and self.parent.characterData.faceParts.emotionSet.onDamage ~= nil then
+				self:setEmotion(self.parent.characterData.faceParts.emotionSet.onDamage.rightEye, self.parent.characterData.faceParts.emotionSet.onDamage.leftEye, self.parent.characterData.faceParts.emotionSet.onDamage.mouth, 8, true)
+			else
+				self:setEmotion("SURPRISED", "SURPRISED", "NORMAL", 8, true)
 			end
 		end)
     end;

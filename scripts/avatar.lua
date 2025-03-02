@@ -1,7 +1,6 @@
 ---@class Avatar アバターのメインクラス
 ---@field public avatarEvents AvatarEvents
 ---@field public modelUtils ModelUtils
----@field public playerUtils PlayerUtils
 ---@field public compatibilityUtils CompatibilityUtils
 ---@field public characterData BlueArchiveCharacter
 ---@field public headRing HeadRing
@@ -71,10 +70,6 @@ Avatar = {
 
 		events.ENTITY_INIT:register(function ()
 			--ユーティリティクラスの読み込み
-			require("scripts.avatar_modules.utils.player_utils")
-			instance.playerUtils = PlayerUtils.new(instance)
-			instance.playerUtils:init()
-
 			require("scripts.avatar_modules.utils.compatibility_utils")
 			instance.compatibilityUtils = CompatibilityUtils.new(instance)
 			instance.compatibilityUtils:init()

@@ -6,7 +6,7 @@
 ---@field package animationRot number アニメーションを再生している向き（度数法で示す）
 ---@field package costumeIndex integer 死亡アニメーションのコスチュームのインデックス
 ---@field package isPlayerInvisible boolean プレイヤーモデルが不可視状態かどうか
----@field package isScriptLoaded false スクリプトを全て読み込んだかどうか
+---@field package isScriptLoaded boolean スクリプトを全て読み込んだかどうか
 ---@field package removeUnsafeModel fun(target?: ModelPart) 存在しないかもしれないモデルパーツを安全に削除する
 ---@field package spawnHelicopterParticles fun(self: DeathAnimation) ヘリコプターの出現/消滅パーティクルを生成する
 ---@field package generateDummyAvatar fun(self: DeathAnimation, parent: ModelPart) 死亡アニメーション用のダミーアバターを生成する
@@ -43,20 +43,28 @@ DeathAnimation = {
         AvatarModule.init(self)
 
         events.TICK:register(function ()
-            if self.parent.playerUtils.damageStatus == "DIED" then
-                self:play()
-                models.models.main:setVisible(false)
-                for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
-                    vanillaModel:setVisible(false)
-                end
-                self.isPlayerInvisible = true
-            end
             if self.isPlayerInvisible and player:getHealth() > 0 then
                 models.models.main:setVisible(true)
                 for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
                     vanillaModel:setVisible(true)
                 end
                 self.isPlayerInvisible = false
+            end
+        end)
+
+        events.DAMAGE:register(function ()
+            if events.TICK:getRegisteredCount("death_animation_damage") == 0 then
+                events.TICK:register(function ()
+                    if player:getHealth() == 0 then
+                        self:play()
+                        models.models.main:setVisible(false)
+                        for _, vanillaModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM, vanilla_model.ELYTRA}) do
+                            vanillaModel:setVisible(false)
+                        end
+                        self.isPlayerInvisible = true
+                    end
+                    events.TICK:remove("death_animation_damage")
+                end, "death_animation_damage")
             end
         end)
 
