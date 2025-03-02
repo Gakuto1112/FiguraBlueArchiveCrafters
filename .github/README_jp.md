@@ -52,6 +52,7 @@
 - 伊草ハルカ（[#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98)）
 - 飛鳥馬トキ（[#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104)）
 - 陸八魔アル（[#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103)）
+- 杏山カズサ（[#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。
