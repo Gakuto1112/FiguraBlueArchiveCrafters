@@ -80,7 +80,7 @@ Armor = {
 				local glint = armorSlotItem:hasGlint()
 				if glint ~= self.armorSlotItemsPrev[index]:hasGlint() then
 					--エンチャント変更
-					local renderType = glint and "GLINT" or "NONE"
+					local renderType = glint and "GLINT"..(client:getVersion() == "1.21.4" and "2" or "") or "NONE"
 					if index == 2 then
 						for _, armorPart in ipairs({models.models.main.Avatar.UpperBody.Arms.RightArm.ArmorRA.RightChestplate, models.models.main.Avatar.UpperBody.Arms.RightArm.RightArmBottom.ArmorRAB.RightChestplateBottom, models.models.main.Avatar.UpperBody.Arms.LeftArm.ArmorLA.LeftChestplate, models.models.main.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom.ArmorLAB.LeftChestplateBottom}) do
 							armorPart:setSecondaryRenderType(renderType)
