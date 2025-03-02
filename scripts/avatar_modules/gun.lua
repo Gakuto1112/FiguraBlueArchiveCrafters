@@ -59,7 +59,7 @@ Gun = {
             if path ~= nil then
                 local velocityDistance = player:getVelocity():length()
                 local distanceFromSound = math.abs(pos:copy():sub(player:getPos()):length() - velocityDistance)
-                if (id == "minecraft:entity.arrow.shoot" or id == "minecraft:item.crossbow.loading_end" or id == "minecraft:item.crossbow.shoot") and math.abs(velocityDistance - distanceFromSound) < 1 then
+                if (id == "minecraft:entity.arrow.shoot" or id == "minecraft:item.crossbow.loading_end" or id == "minecraft:item.crossbow.shoot") and math.abs(velocityDistance - distanceFromSound) < 1.2 then
                     if id == "minecraft:item.crossbow.loading_end" then
                         sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.dispenser.fail"), pos, 1, 2)
                     elseif player:isUnderwater() then
