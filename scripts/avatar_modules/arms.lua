@@ -3,7 +3,7 @@
 ---@field package armStatePrev Arms.ArmStateSet 前ティックの腕の状態
 ---@field public swingCount integer 腕をプラプラさせるカウンター
 ---@field package isSwingCountProcessed boolean 腕プラプラカウンターを処理したかどうか
----@field package processArmWingCount fun(self: Arms) 腕プラプラカウンターを処理する
+---@field public processArmWingCount fun(self: Arms) 腕プラプラカウンターを処理する
 ---@field public setArmState fun(self: Arms, right?: integer, left?: integer) 腕の状態を設定する
 
 ---@class (exact) Arms.ArmStateSet 腕の状態を示すデータセット
