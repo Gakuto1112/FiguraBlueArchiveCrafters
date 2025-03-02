@@ -11,7 +11,7 @@
 ---@field package find fun(self: CompatibilityUtils, registryType: CompatibilityUtils.RegistryType, target: string): boolean 指定されたターゲットがレジストリに登録されているかどうかを返す。
 ---@field public checkBlock fun(self: CompatibilityUtils, block: Minecraft.blockID, blockState?: string): Minecraft.blockID 指定されたブロックIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:dirt"を返す。
 ---@field public checkItem fun(self: CompatibilityUtils, item: Minecraft.itemID): Minecraft.itemID 指定されたアイテムIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:barrier"を返す。
----@field public checkParticle fun(self: CompatibilityUtils, particle: Minecraft.particleID): Minecraft.particleID 指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
+---@field public checkParticle fun(self: CompatibilityUtils, particle: Minecraft.particleID, args?: string): Minecraft.particleID 指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
 ---@field public checkSound fun(self: CompatibilityUtils, sound: Minecraft.soundID): Minecraft.soundID 指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
 ---@field public setPostEffect fun(effect?: Minecraft.shaderName) renderer:setPostEffect()のラッパー関数。1.20.5でレンダーエフェクトが削除されたことによる対応。
 
@@ -124,12 +124,13 @@ CompatibilityUtils = {
     ---指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
     ---@param self CompatibilityUtils
     ---@param particle Minecraft.particleID 確認対象のパーティクルID
+    ---@param args? string パーティクルの追加引数
     ---@return Minecraft.particleID particleID レジストリに登録してある場合は確認対象のパーティクルIDをそのまま返し、未登録の場合は"minecraft:poof"が返す。
-    checkParticle = function (self, particle)
+    checkParticle = function (self, particle, args)
         if self.checkedTable.particle[particle] == nil then
             self.checkedTable.particle[particle] = self:find("PARTICLE", particle)
         end
-        return self.checkedTable.particle[particle] and particle or "minecraft:poof"
+        return self.checkedTable.particle[particle] and (args ~= nil and particle.." "..args or particle) or "minecraft:poof"
     end;
 
     ---指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
