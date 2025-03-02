@@ -110,13 +110,14 @@ Gun = {
                                     offsetRot = self.parent.characterData.gun.gunPosition.hold.firstPersonRot.left
                                 end
                                 local activeItemId = player:getActiveItem().id
+                                local gameVersion = client:getVersion()
                                 if activeItemId == "minecraft:bow" then
                                     models.models.main.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(0, -2.25, 4.25):add(offsetPos))
                                     models.models.main.Avatar.UpperBody.Body.Gun:setRot(vectors.vec3(20, -7.5, -5):add(offsetRot))
                                 elseif activeItemId == "minecraft:crossbow" then
                                     models.models.main.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(0, 0.25, 4.25):add(offsetPos))
                                     models.models.main.Avatar.UpperBody.Body.Gun:setRot(vectors.vec3(0, 0, 0):add(offsetRot))
-                                elseif item.id == "minecraft:crossbow" and item.tag.Charged == 1 then
+                                elseif item.id == "minecraft:crossbow" and ((gameVersion >= "1.20.5" and #item.tag["minecraft:charged_projectiles"] >= 1) or (gameVersion < "1.20.5" and item.tag.Charged == 1)) then
                                     if player:isLeftHanded() then
                                         models.models.main.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(-10, -1.25, 6):add(offsetPos))
                                         models.models.main.Avatar.UpperBody.Body.Gun:setRot(vectors.vec3(0, 10, 0):add(offsetRot))
@@ -151,13 +152,14 @@ Gun = {
                                     offsetRot = self.parent.characterData.gun.gunPosition.hold.firstPersonRot.right
                                 end
                                 local activeItemId = player:getActiveItem().id
+                                local gameVersion = client:getVersion()
                                 if activeItemId == "minecraft:bow" then
                                     models.models.main.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(0, -2.25, 4.25):add(offsetPos))
                                     models.models.main.Avatar.UpperBody.Body.Gun:setRot(vectors.vec3(20, 7.5, 5):add(offsetRot))
                                 elseif activeItemId == "minecraft:crossbow" then
                                     models.models.main.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(0, 0.25, 4.25):add(offsetPos))
                                     models.models.main.Avatar.UpperBody.Body.Gun:setRot(vectors.vec3(0, 0, 0):add(offsetRot))
-                                elseif item.id == "minecraft:crossbow" and item.tag.Charged == 1 then
+                                elseif item.id == "minecraft:crossbow" and ((gameVersion >= "1.20.5" and #item.tag["minecraft:charged_projectiles"] >= 1) or (gameVersion < "1.20.5" and item.tag.Charged == 1)) then
                                     if player:isLeftHanded() then
                                         models.models.main.Avatar.UpperBody.Body.Gun:setPos(vectors.vec3(0, -1.25, 4.25):add(offsetPos))
                                         models.models.main.Avatar.UpperBody.Body.Gun:setRot(vectors.vec3(0, 0, 0):add(offsetRot))
