@@ -10,7 +10,7 @@
 ---| "ERROR_NOT_ALLOWED" # ネットワーキングAPIが不許可
 
 ---@class (exact) UpdateChecker : AvatarModule FBACのアップデートの確認を管理するクラス
----@field package FBAC_VERSION string 現在のFBACバージョン
+---@field package AVATAR_VERSION string 現在のFBACバージョン
 ---@field package BRANCH_NAME string このブランチ名（キャラクター名）
 ---@field public latestVersion? string リモート上にある最新のFBACバージョン
 ---@field public checkerStatus UpdateChecker.CheckerStatus アップデートチェッカーの状態
@@ -31,7 +31,7 @@ UpdateChecker = {
         ---@type UpdateChecker
         local instance = Avatar.instantiate(UpdateChecker, AvatarModule, parent)
 
-        instance.FBAC_VERSION = "v2.4.0_dev"
+        instance.AVATAR_VERSION = "v2.4.0_dev"
         instance.BRANCH_NAME = "BaseAvatar"
         instance.latestVersion = instance.parent.config:loadConfig("PUBLIC", "latestVersion", nil)
         instance.checkerStatus = "INIT"
@@ -50,7 +50,7 @@ UpdateChecker = {
         AvatarModule.init(self)
 
         if host:isHost() then
-            models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l2"):setText(self.FBAC_VERSION.." - "..self.BRANCH_NAME)
+            models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l2"):setText(self.AVATAR_VERSION.." - "..self.BRANCH_NAME)
 
             events.TICK:register(function ()
                 local isActionWheelOpened = action_wheel:isEnabled()
@@ -77,8 +77,8 @@ UpdateChecker = {
             if client:getSystemTime() >= self.lastCheckTime + 86400000 then
                 self:checkUpdate()
             else
-                local newerVersion = self.compareVersions(self.latestVersion, self.FBAC_VERSION)
-                if newerVersion ~= nil and newerVersion ~= self.FBAC_VERSION then
+                local newerVersion = self.compareVersions(self.latestVersion, self.AVATAR_VERSION)
+                if newerVersion ~= nil and newerVersion ~= self.AVATAR_VERSION then
                     self:showNewUpdateMessage()
                     self.checkerStatus = "UPDATE_AVAILABLE"
                 else
@@ -135,9 +135,9 @@ UpdateChecker = {
                                 if json.isSerializable(jsonData) then
                                     local parseData = parseJson(jsonData)
                                     if parseData[1] ~= nil and parseData[1].name ~= nil then
-                                        local newerVersion = self.compareVersions(parseData[1].name, self.FBAC_VERSION)
+                                        local newerVersion = self.compareVersions(parseData[1].name, self.AVATAR_VERSION)
                                         if newerVersion ~= nil then
-                                            if newerVersion ~= self.FBAC_VERSION then
+                                            if newerVersion ~= self.AVATAR_VERSION then
                                                 --新しいバージョンがある
                                                 self.latestVersion = parseData[1].name
                                                 self.checkerStatus = "UPDATE_AVAILABLE"
