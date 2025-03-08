@@ -19,7 +19,7 @@ jobs:
       contents: write
     uses: Gakuto1112/MyFiguraAvatarPacker/.github/workflows/attach_avatars.yml@main
     with:
-      target_branches: ${{ needs.get_target_branches.outputs.target_branches }}
+      target_branches: ${{ needs.get_avatar_branches.outputs.target_branches }}
       should_show_branch_name: true
       update_checker_script_included: true
       path_to_update_checker: './scripts/avatar_modules/action_wheel/update_checker.lua'
