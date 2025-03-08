@@ -88,6 +88,7 @@ Watch also:
   | Iroha | - The camel are replaced with Toramaru (a tank) when she is alone on the camel with a saddle. <br> - Toramaru can shoot a shell (visual only). |
   | Ibuki | - I can patrol with Iroha! |
   | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (this is a substitute for the long-tailed tit.). |
+  | Aris | - After the Ex Skill is played, her railgun will be overcharged state and can shoot a more powerful shot (visual only). |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
