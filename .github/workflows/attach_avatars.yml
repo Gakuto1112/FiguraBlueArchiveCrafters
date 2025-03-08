@@ -14,7 +14,7 @@ jobs:
       include_base: false
   attach_avatar:
     name: Attach avatars to release assets
-    needs: get_target_branches
+    needs: get_avatar_branches
     permissions:
       contents: write
     uses: Gakuto1112/MyFiguraAvatarPacker/.github/workflows/attach_avatars.yml@main
