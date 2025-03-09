@@ -1,5 +1,4 @@
 ---@class (exact) DeathAnimation : AvatarModule プレイヤーが死亡した際のキャラクターがヘリコプターで回収されるアニメーションを管理するクラス
----@field package DEBUG_MODE boolean デバッグモードを有効にするかどうか。デバッグモードモードではxキーでフェーズ1のモデルを、cキーでフェーズ2のモデルを表示できる。
 ---@field public dummyAvatarRoot? ModelPart 死亡アニメーションに使用されるダミーのアバターのルート。アバターが未生成の場合はnilが入っている。
 ---@field package deathCheckDelay integer 死亡チェックの遅延カウンター
 ---@field package animationCount integer 死亡アニメーションの再生カウンター
@@ -8,12 +7,12 @@
 ---@field package costumeIndex integer 死亡アニメーションのコスチュームのインデックス
 ---@field package isPlayerInvisible boolean プレイヤーモデルが不可視状態かどうか
 ---@field package isScriptLoaded boolean スクリプトを全て読み込んだかどうか
----@field package removeUnsafeModel fun(target?: ModelPart) 存在しないかもしれないモデルパーツを安全に削除する
----@field package spawnHelicopterParticles fun(self: DeathAnimation) ヘリコプターの出現/消滅パーティクルを生成する
----@field package generateDummyAvatar fun(self: DeathAnimation, parent: ModelPart) 死亡アニメーション用のダミーアバターを生成する
----@field package resetDummyAvatar fun(avatarRoot: ModelPart) ダミーアバター状態をリセットする
----@field package setPhase1Pose fun(avatarRoot: ModelPart) ダミーアバターをフェーズ1のポーズにする
----@field package setPhase2Pose fun(avatarRoot: ModelPart) ダミーアバターをフェーズ2のポーズにする
+---@field public removeUnsafeModel fun(target?: ModelPart) 存在しないかもしれないモデルパーツを安全に削除する
+---@field public spawnHelicopterParticles fun(self: DeathAnimation) ヘリコプターの出現/消滅パーティクルを生成する
+---@field public generateDummyAvatar fun(self: DeathAnimation, parent: ModelPart) 死亡アニメーション用のダミーアバターを生成する
+---@field public resetDummyAvatar fun(avatarRoot: ModelPart) ダミーアバター状態をリセットする
+---@field public setPhase1Pose fun(avatarRoot: ModelPart) ダミーアバターをフェーズ1のポーズにする
+---@field public setPhase2Pose fun(avatarRoot: ModelPart) ダミーアバターをフェーズ2のポーズにする
 ---@field package play fun(self: DeathAnimation) 死亡アニメーションを再生する
 ---@field package stop fun(self: DeathAnimation) 死亡アニメーションを停止する
 
@@ -24,8 +23,6 @@ DeathAnimation = {
     new = function (parent)
         ---@type DeathAnimation
         local instance = Avatar.instantiate(DeathAnimation, AvatarModule, parent)
-
-        instance.DEBUG_MODE = false
 
         instance.dummyAvatarRoot = models.models.death_animation.Avatar
         instance.deathCheckDelay = -1
@@ -70,33 +67,6 @@ DeathAnimation = {
         self.parent.avatarEvents.SCRIPT_INIT:register(function ()
             self.isScriptLoaded = true
         end)
-
-        if self.DEBUG_MODE then
-            models:addChild(models:newPart("script_death_animation_debug", "World"))
-            keybinds:newKeybind("[DEBUG] Spawn death animation phase1 model", "key.keyboard.x"):onPress(function ()
-                self.removeUnsafeModel(models.script_death_animation_debug.Avatar)
-                self:generateDummyAvatar(models.script_death_animation_debug)
-                self.resetDummyAvatar(models.script_death_animation_debug.Avatar)
-                self.setPhase1Pose(models.script_death_animation_debug.Avatar)
-                models.script_death_animation_debug.Avatar:setPos(player:getPos():add(0, -0.75, 0):scale(16))
-                if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
-                    self.parent.characterData.deathAnimation.callbacks.onPhase1(self.parent.characterData, models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
-                end
-            end)
-            keybinds:newKeybind("[DEBUG] Spawn death animation phase2 model", "key.keyboard.c"):onPress(function ()
-                self.removeUnsafeModel(models.script_death_animation_debug.Avatar)
-                self:generateDummyAvatar(models.script_death_animation_debug)
-                self.resetDummyAvatar(models.script_death_animation_debug.Avatar)
-                self.setPhase2Pose(models.script_death_animation_debug.Avatar)
-                models.script_death_animation_debug.Avatar:setPos(player:getPos():scale(16))
-                if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase1 ~= nil then
-                    self.parent.characterData.deathAnimation.callbacks.onPhase1(self.parent.characterData, models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
-                end
-                if self.parent.characterData.deathAnimation.callbacks ~= nil and self.parent.characterData.deathAnimation.callbacks.onPhase2 ~= nil then
-                    self.parent.characterData.deathAnimation.callbacks.onPhase2(self.parent.characterData, models.script_death_animation_debug.Avatar, self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].name:upper())
-                end
-            end)
-        end
     end;
 
     ---存在しないかもしれないモデルパーツを安全に削除する。

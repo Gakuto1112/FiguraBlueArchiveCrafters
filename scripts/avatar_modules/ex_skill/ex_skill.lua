@@ -1,14 +1,8 @@
----@alias ExSkill.AutoPlayMode
----| "NONE" # 自動再生なし
----| "MAIN" # メインExスキル
----| "SUB" # サブExスキル
-
 ---@alias ExSkill.TransitionPhase
 ---| "PRE" # Exスキルアニメーション開始前
 ---| "POST" # Exスキルアニメーション終了後
 
 ---@class (exact) ExSkill : AvatarModule Exスキルのアニメーションを管理するクラス
----@field package AUTO_PLAY ExSkill.AutoPlayMode アバター読み込み時に自動的にExスキルが再生される。デバッグ用。
 ---@field public frameParticleAmount integer Exスキルフレームのパーティクルの量：1. 標準, 2. 少なめ, 3. なし, 4. Exスキルフレーム非表示、パーティクル量は標準
 ---@field package exSkillIndex integer 現在再生中のExスキルのインデックス番号
 ---@field public animationCount integer Exスキルのアニメーション再生中に増加するカウンター。-1はアニメーション停止中を示す。
@@ -16,7 +10,6 @@
 ---@field public transitionCount number Exスキルのアニメーション前後のカメラのトランジションの進捗を示すカウンター
 ---@field package keyPressCount integer Exスキルキーを押下し続ける時間を計るカウンター
 ---@field package bodyYaw number[] プレイヤーの体の回転
----@field package isDebugInit boolean デバッグモードが初期化されたかどうか
 ---@field public canPlayAnimation fun(self: ExSkill): boolean アニメーションが再生可能かどうかを返す
 ---@field package transition fun(self: ExSkill, direction: ExSkill.TransitionPhase, callback: fun()) Exスキルのアニメーションの前後のカメラのトランジションを行う関数
 ---@field public play fun(self: ExSkill, isSubExSkill: boolean) アニメーションを再生する
@@ -31,8 +24,6 @@ ExSkill = {
         ---@type ExSkill
         local instance = Avatar.instantiate(ExSkill, AvatarModule, parent)
 
-        instance.AUTO_PLAY = "NONE"
-
         instance.frameParticleAmount = instance.parent.config:loadConfig("PRIVATE", "exSkillFrameParticleAmount", 1)
         instance.exSkillIndex = 1
         instance.animationCount = -1
@@ -40,7 +31,6 @@ ExSkill = {
         instance.transitionCount = 0
         instance.keyPressCount = 0
         instance.bodyYaw = {}
-        instance.isDebugInit = false
 
         return instance
     end;
@@ -111,16 +101,6 @@ ExSkill = {
                 self:forceStop()
             end
         end)
-
-        if self.AUTO_PLAY ~= "NONE" then
-            events.TICK:register(function ()
-                if not self.isDebugInit then
-                    events.TICK:remove("ex_skill_debug_tick")
-                    self:play(self.AUTO_PLAY == "SUB")
-                    self.isDebugInit = true
-                end
-            end, "ex_skill_debug_tick")
-        end
     end;
 
     ---アニメーションが再生可能かどうかを返す。

@@ -2,6 +2,7 @@
 ---@field public avatarEvents AvatarEvents
 ---@field public modelUtils ModelUtils
 ---@field public compatibilityUtils CompatibilityUtils
+---@field public debugUtils DebugUtils
 ---@field public characterData BlueArchiveCharacter
 ---@field public headRing HeadRing
 ---@field public headBlock HeadBlock
@@ -73,6 +74,10 @@ Avatar = {
 			require("scripts.avatar_modules.utils.compatibility_utils")
 			instance.compatibilityUtils = CompatibilityUtils.new(instance)
 			instance.compatibilityUtils:init()
+
+			require("scripts.avatar_modules.utils.debug_utils")
+			instance.debugUtils = DebugUtils.new(instance)
+			instance.debugUtils:init()
 
 			require("scripts.avatar_modules.utils.spawn_object_manager")
 			require("scripts.avatar_modules.utils.spawn_object")
