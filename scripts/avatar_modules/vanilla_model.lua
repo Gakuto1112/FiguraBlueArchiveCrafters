@@ -16,7 +16,7 @@ VanillaModel = {
     init = function (self)
         AvatarModule.init(self)
 
-        for _, vanillaModel in ipairs({vanilla_model.PLAYER, vanilla_model.CHESTPLATE_RIGHT_ARM, vanilla_model.CHESTPLATE_LEFT_ARM, vanilla_model.LEGGINGS_RIGHT_LEG, vanilla_model.LEGGINGS_LEFT_LEG, vanilla_model.BOOTS}) do
+        for _, vanillaModel in ipairs({vanilla_model.PLAYER, vanilla_model.CAPE, vanilla_model.CHESTPLATE_RIGHT_ARM, vanilla_model.CHESTPLATE_LEFT_ARM, vanilla_model.LEGGINGS_RIGHT_LEG, vanilla_model.LEGGINGS_LEFT_LEG, vanilla_model.BOOTS}) do
             vanillaModel:setVisible(false)
         end
     end;
