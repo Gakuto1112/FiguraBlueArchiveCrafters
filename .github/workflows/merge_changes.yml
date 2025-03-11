@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
       - name: Check if the specified branch is not avatar branch
@@ -42,7 +42,7 @@ jobs:
         target_branch: ${{ fromJSON(needs.get_avatar_branches.outputs.target_branches) }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
           ref: ${{ matrix.target_branch }}
@@ -121,7 +121,7 @@ jobs:
           COMPRESS_REQUIRED: ${{ steps.merge_branch.outcome == 'success' && steps.check_texture_changes.outcome == 'success' }}
           BRANCH_NAME: ${{ matrix.target_branch }}
       - name: Upload artifact
-        uses: actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@v4.6.1
         with:
           name: ${{ matrix.target_branch }}
           path: ./${{ matrix.target_branch }}.json
@@ -137,7 +137,7 @@ jobs:
       - name: Prepare artifacts directory
         run: mkdir ./branches
       - name: Download artifacts
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v4.1.9
         with:
           path: ./branches
       - name: Get generate readme branch array
@@ -178,7 +178,7 @@ jobs:
       - name: Prepare artifacts directory
         run: mkdir ./branches
       - name: Download artifacts
-        uses: actions/download-artifact@v4.1.7
+        uses: actions/download-artifact@v4.1.9
         with:
           path: ./branches
       - name: Get compress textures branch array
