@@ -205,6 +205,6 @@ jobs:
     strategy:
       matrix:
         target_branch: ${{ fromJSON(needs.get_compress_array.outputs.branch_array) }}
-    uses: ./.github/workflows/compress_textures.yml
+    uses: Gakuto1112/FiguraAvatarTextureCompressor/.github/workflows/compress_avatar_texture.yml@main
     with:
-      branch-name: ${{ matrix.target_branch }}
+      target_branch: ${{ matrix.target_branch }}
