@@ -194,6 +194,10 @@ jobs:
       - name: Output compress textures branch array
         id: output_compress_array
         run: |
+          echo compress_array
+          cat ./compress_array.json
+          echo compress_count
+          cat ./compress_array.json | jq length
           echo compress_array=$(<./compress_array.json) >> $GITHUB_OUTPUT
           echo compress_count=$(cat ./compress_array.json | jq length) >> $GITHUB_OUTPUT
   compress_textures:
