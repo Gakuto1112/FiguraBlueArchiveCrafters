@@ -239,7 +239,7 @@ ActionWheel = {
             else
                 self.mainPage:getAction(7):setItem(self.parent.compatibilityUtils:checkItem("minecraft:player_head", "{SkullOwner: \""..player:getName().."\"}"))
             end
-            if self.parent.config:loadConfig("PRIVATE", "fpmCompatibilityMode", true) then
+            if self.parent.config:loadConfig("PRIVATE", "fpmCompatibilityMode", false) then
                 local action = self.mainPage:getAction(7)
                 action:setToggled(true)
                 action:setHoverColor(0.33, 1, 0.33)
