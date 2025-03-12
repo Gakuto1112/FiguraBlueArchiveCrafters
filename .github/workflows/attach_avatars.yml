@@ -12,15 +12,144 @@ jobs:
     uses: ./.github/workflows/get_target_branches.yml
     with:
       include_base: false
+  generate_readme:
+    name: Generate readme.txt
+    needs: get_avatar_branches
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target_branch: ${{ fromJSON(needs.get_avatar_branches.outputs.target_branches) }}
+    steps:
+      - name: Checkout avatar repository
+        uses: actions/checkout@v4.2.2
+        with:
+          path: ./avatar
+          ref: ${{ matrix.target_branch }}
+      - name: Checkout generator repository
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: Gakuto1112/FiguraAvatarsReadmeTemplate
+          path: ./generator
+      - name: Checkout packer repository
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: Gakuto1112/MyFiguraAvatarPacker
+          path: ./packer
+      - name: Setup Node.js@20.12.0
+        uses: actions/setup-node@v4.2.0
+        with:
+          node-version: 20.12.0
+          cache: npm
+          cache-dependency-path: ./packer/package-lock.json
+      - name: Install dependencies
+        working-directory: ./packer
+        run: npm install
+      - name: Generate readme.txt
+        working-directory: ./packer/src
+        run: ../node_modules/.bin/ts-node ./readme_txt_generator.ts FiguraBlueArchiveCharacters ${TAG_NAME} ${RELEASE_DATE} true ${BRANCH_NAME}
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+          RELEASE_DATE: ${{ github.event.release.created_at }}
+          BRANCH_NAME: ${{ matrix.target_branch }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4.6.1
+        with:
+          name: readme_${{ matrix.target_branch }}
+          path: ./out
+          retention-days: 1
+  pack_figura_avatar:
+    name: Pack avatar
+    needs:
+      - get_avatar_branches
+      - generate_readme
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target_branch: ${{ fromJSON(needs.get_avatar_branches.outputs.target_branches) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ matrix.target_branch }}
+      - name: Prepare output directory
+        run: |
+          mkdir ./out
+          mkdir ./out/${AVATAR_NAME}
+          mkdir ./out/${AVATAR_NAME}/models
+        env:
+          AVATAR_NAME: ${{ matrix.target_branch }}
+      - name: Remove reference images from model files
+        run: |
+          for model_file in $(ls -1 ./models | grep '.bbmodel')
+          do
+            cat ./models/${model_file} | jq 'del(.reference_images)' | jq '.textures[].path = ""' > ./out/${AVATAR_NAME}/models/${model_file}
+          done
+        env:
+          AVATAR_NAME: ${{ matrix.target_branch }}
+      - name: Remove debug scripts
+        run: |
+          rm ./scripts/avatar_modules/utils/debug_utils.lua
+          cat ./scripts/avatar.lua | awk -f ./.github/workflow_scripts/remove_debug_require.awk > ./scripts/avatar.lua
+      - name: Replace update script placeholders
+        run: |
+          sed -i -e "s/instance\.AVATAR_VERSION\s=\s\".*\"/instance.AVATAR_VERSION = \"${TAG_NAME}\"/g" ./scripts/avatar_modules/action_wheel/update_checker.lua
+          sed -i -e "s/instance\.BRANCH_NAME\s=\s\".*\"/instance.BRANCH_NAME = \"${AVATAR_NAME}\"/g" ./scripts/avatar_modules/action_wheel/update_checker.lua
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+          AVATAR_NAME: ${{ matrix.target_branch }}
+      - name: Move necessary files
+        run: |
+          mv ./scripts ./out/${AVATAR_NAME}/scripts
+          mv ./textures ./out/${AVATAR_NAME}/textures
+          mv ./avatar.json ./out/${AVATAR_NAME}/avatar.json
+          mv ./avatar.png ./out/${AVATAR_NAME}/avatar.png
+          mv ./LICENSE ./out/LICENSE
+        env:
+          AVATAR_NAME: ${{ matrix.target_branch }}
+      - name: Download artifacts
+        uses: actions/download-artifact@v4.1.9
+        with:
+          name: readme_${{ matrix.target_branch }}
+          path: ./readmes
+      - name: Move readme
+        run: |
+          mv ./readmes/README.txt ./out/README.txt
+          mv ./readmes/お読みください.txt ./out/お読みください.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4.6.1
+        with:
+          name: avatar_${{ matrix.target_branch }}
+          path: ./out
   attach_avatar:
     name: Attach avatars to release assets
-    needs: get_avatar_branches
+    needs: pack_figura_avatar
+    runs-on: ubuntu-latest
     permissions:
       contents: write
-    uses: Gakuto1112/MyFiguraAvatarPacker/.github/workflows/attach_avatars.yml@main
-    with:
-      target_branches: ${{ needs.get_avatar_branches.outputs.target_branches }}
-      should_show_branch_name: true
-      update_checker_script_included: true
-      path_to_update_checker: './scripts/avatar_modules/action_wheel/update_checker.lua'
-      should_replace_branch_name: true
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4.1.9
+        with:
+          path: ./
+          pattern: avatar_*
+      - name: Prepare output directory
+        run: mkdir ./out
+      - name: Zip artifacts
+        run: |
+          for model_file in $(ls -1 | grep 'avatar_')
+          do
+            cd ./${model_file}
+            zip -r ../out/$(echo ${model_file} | sed -e 's/avatar_//').zip ./
+            cd ../
+          done
+      - name: Attach artifacts to release assets
+        run: |
+          for zip_file in $(ls -1)
+          do
+            gh release upload ${TAG_NAME} ./${zip_file} --repo ${REPOSITORY}
+          done
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ github.event.release.tag_name }}
+          REPOSITORY: ${{ github.repository }}
+        working-directory: ./out
