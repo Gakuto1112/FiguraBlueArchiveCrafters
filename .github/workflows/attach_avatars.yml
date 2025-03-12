@@ -67,6 +67,8 @@ jobs:
       matrix:
         target_branch: ${{ fromJSON(needs.get_avatar_branches.outputs.target_branches) }}
     steps:
+      - name: Install gawk
+        run: sudo apt install -y gawk
       - name: Checkout
         uses: actions/checkout@v4.2.2
         with:
@@ -89,7 +91,7 @@ jobs:
       - name: Remove debug scripts
         run: |
           rm ./scripts/avatar_modules/utils/debug_utils.lua
-          cat ./scripts/avatar.lua | awk -f ./.github/workflow_scripts/remove_debug_require.awk > ./scripts/avatar.lua
+          awk -i inplace -f ./.github/workflow_scripts/remove_debug_require.awk ./scripts/avatar.lua
       - name: Replace update script placeholders
         run: |
           sed -i -e "s/instance\.AVATAR_VERSION\s=\s\".*\"/instance.AVATAR_VERSION = \"${TAG_NAME}\"/g" ./scripts/avatar_modules/action_wheel/update_checker.lua
