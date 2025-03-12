@@ -11,7 +11,6 @@
 ---@field public cameraManager CameraManager
 ---@field public keyManager KeyManager
 ---@field public vanillaModel VanillaModel
----@field public head Head
 ---@field public arms Arms
 ---@field public skirt Skirt
 ---@field public armor Armor
@@ -103,10 +102,6 @@ Avatar = {
 			require("scripts.avatar_modules.vanilla_model")
 			instance.vanillaModel = VanillaModel.new(instance)
 			instance.vanillaModel:init()
-
-			require("scripts.avatar_modules.head")
-			instance.head = Head.new(instance)
-			instance.head:init()
 
 			require("scripts.avatar_modules.arms")
 			instance.arms = Arms.new(instance)
