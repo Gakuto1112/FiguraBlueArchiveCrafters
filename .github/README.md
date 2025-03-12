@@ -181,7 +181,10 @@ Toggles the vehicle models replacement feature for some characters. This option 
 
 ![Vehicle models](./README_images/vehicle_model_2.jpg)
 
-### Action 7. Check for FBAC updates
+### Action 7. FPM compatibility mode
+This mode is for compatibility with [First-person Model](https://modrinth.com/mod/first-person-model). Avatar's head will be hidden in first-person perspective when enibling this mode. The head may not be rendered correctly in some environments, in which case this mode should be disabled.
+
+### Action 8. Check for FBAC updates
 Left click to check for FBAC updates. You can try to check updates again even if the check fails. In addition to manually checking for updates from here, the script will automatically check for updates once a day.
 
 > [!IMPORTANT]
@@ -200,9 +203,9 @@ From v2.0.0, when the action wheel is open, the version of FBAC currently in use
 
 ![FBAC version display](./README_images/fbac_version.jpg)
 
-Updates are automatically checked once a day, but can also be done manually via the [action wheel](#action-7-check-for-fbac-updates).
+Updates are automatically checked once a day, but can also be done manually via the [action wheel](#action-8-check-for-fbac-updates).
 
-A notification will be sent when a new FBAC version is available. You can get the download link for the latest version from the [action wheel](#action-7-check-for-fbac-updates), which you can access from your browser.
+A notification will be sent when a new FBAC version is available. You can get the download link for the latest version from the [action wheel](#action-8-check-for-fbac-updates), which you can access from your browser.
 
 > [!IMPORTANT]
 > To check for FBAC updates, you must turn on "Allow Networking" and add `api.github.com` to the Network Filter from Figura settings!
