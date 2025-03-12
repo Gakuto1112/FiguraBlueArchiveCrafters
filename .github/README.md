@@ -54,6 +54,7 @@ I have received requests to create these characters. However, I can't promise th
 - Toki Asuma ([#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104))
 - Aru Rikuhachima ([#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103))
 - Kazusa Kyoyama ([#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114))
+- Rio TsukaTsuki ([#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116))
 
 ## Features
 - Imitated ex skill cut-ins.
