@@ -66,19 +66,23 @@ HeadRing = {
 
         events.RENDER:register(function (delta, context)
             if not client:isPaused() then
-                --ヘイローの位置・角度を設定
-                local playerPose = player:getPose()
-                local headRot = self.parent.physics.getValueBetweenTicks(self.headRotAverage, delta)
-                local floatOffset = math.sin((self.floatCount + delta) / 80 * 2 * math.pi) * 0.25
-                if playerPose == "SWIMMING" or playerPose == "FALL_FLYING" then
-                    models.models.main.Avatar.Head.HeadRing:setPos(self.parent.physics.velocityAverage[3][2] * 3, math.cos(math.rad(headRot)) * self.parent.physics.velocityAverage[1][2] * -1 + math.sin(math.rad(headRot)) * self.parent.physics.velocityAverage[2][2] * -1 + floatOffset, math.cos(math.rad(headRot)) * self.parent.physics.velocityAverage[2][2] * -3 + math.sin(math.rad(headRot)) * self.parent.physics.velocityAverage[1][2])
+                if context ~= "MINECRAFT_GUI" then
+                    --ヘイローの位置・角度を設定
+                    local playerPose = player:getPose()
+                    local headRot = self.parent.physics.getValueBetweenTicks(self.headRotAverage, delta)
+                    local floatOffset = math.sin((self.floatCount + delta) / 80 * 2 * math.pi) * 0.25
+                    if playerPose == "SWIMMING" or playerPose == "FALL_FLYING" then
+                        models.models.main.Avatar.Head.HeadRing:setPos(self.parent.physics.velocityAverage[3][2] * 3, math.cos(math.rad(headRot)) * self.parent.physics.velocityAverage[1][2] * -1 + math.sin(math.rad(headRot)) * self.parent.physics.velocityAverage[2][2] * -1 + floatOffset, math.cos(math.rad(headRot)) * self.parent.physics.velocityAverage[2][2] * -3 + math.sin(math.rad(headRot)) * self.parent.physics.velocityAverage[1][2])
+                    else
+                        models.models.main.Avatar.Head.HeadRing:setPos(self.parent.physics.velocityAverage[3][2] * -3, math.cos(math.rad(headRot)) * self.parent.physics.velocityAverage[2][2] * -1 + math.sin(math.rad(headRot)) * self.parent.physics.velocityAverage[1][2] + floatOffset, math.cos(math.rad(headRot)) * self.parent.physics.velocityAverage[1][2] * 3 + math.sin(math.rad(headRot)) * self.parent.physics.velocityAverage[2][2])
+                    end
+                    if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
+                        self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setPos(0, floatOffset, 0)
+                    end
+                    models.models.main.Avatar.Head.HeadRing:setRot(headRot - (self.parent.exSkill.animationCount > -1 and models.models.main.Avatar.Head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y))) + self.initialHaloRot, 0, 0)
                 else
-                    models.models.main.Avatar.Head.HeadRing:setPos(self.parent.physics.velocityAverage[3][2] * -3, math.cos(math.rad(headRot)) * self.parent.physics.velocityAverage[2][2] * -1 + math.sin(math.rad(headRot)) * self.parent.physics.velocityAverage[1][2] + floatOffset, math.cos(math.rad(headRot)) * self.parent.physics.velocityAverage[1][2] * 3 + math.sin(math.rad(headRot)) * self.parent.physics.velocityAverage[2][2])
+                    models.models.main.Avatar.Head.HeadRing:setRot(self.initialHaloRot, 0, 0)
                 end
-                if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
-                    self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setPos(0, floatOffset, 0)
-                end
-                models.models.main.Avatar.Head.HeadRing:setRot(headRot - (self.parent.exSkill.animationCount > -1 and models.models.main.Avatar.Head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y))) + self.initialHaloRot, 0, 0)
             end
             if context == "OTHER" and client:hasShaderPack() and not self.isForceRenderMode then
                 models.models.main.Avatar.Head.HeadRing:setVisible(false)
