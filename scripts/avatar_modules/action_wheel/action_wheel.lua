@@ -329,7 +329,13 @@ ActionWheel = {
     fpmCompatibilityModeRender = function (_, context)
         local hasShaderPack = client:hasShaderPack()
         models.models.main.Avatar.Head:setVisible(context ~= "OTHER" or hasShaderPack)
-        models.models.main.Avatar.Head:setOpacity((context ~= "OTHER" or not hasShaderPack) and 1 or 0)
+        if context == "OTHER" and hasShaderPack then
+            models.models.main.Avatar.Head:setPrimaryRenderType("TRANSLUCENT")
+            models.models.main.Avatar.Head:setOpacity(0)
+        else
+            models.models.main.Avatar.Head:setPrimaryRenderType()
+            models.models.main.Avatar.Head:setOpacity(1)
+        end
     end;
 }
 
