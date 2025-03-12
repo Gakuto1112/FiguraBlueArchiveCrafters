@@ -48,6 +48,8 @@ Locale = {
 			{"action_wheel.main.action_5.done_last", "§r.", "§rに変更しました。"};
 			{"action_wheel.main.action_6.title", "Replace vehicle models: ", "乗り物のモデルを置き換え："};
 			{"action_wheel.main.action_6.unavailable", "This option is unavailable for this character.", "この生徒さんでは利用できません。"};
+			{"action_wheel.main.action_7.title", "FPM compatibility mode: ", "FPM互換モード："};
+			{"action_wheel.main.action_7.message", "When enabling First-peron Model compatibility mode, avatar's head may not be rendered in some environments.", "First-peron Model互換モードを有効にすると一部環境下で頭が描画されない場合があります。"};
 			{"action_wheel.main.action_8.title_1", "Check for new FBAC Updates ", "FBACアップデートの確認"};
 			{"action_wheel.main.action_8.title_2", "(Left-click)", "（左クリック）"};
 			{"action_wheel.main.action_8.title_3", "Copy URL for the latest FBAC ", "最新FBACバージョンのURLをコピー"};

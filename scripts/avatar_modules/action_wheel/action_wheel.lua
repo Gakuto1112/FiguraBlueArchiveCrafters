@@ -5,12 +5,15 @@
 ---@field package selectingShouldShowClubName boolean 現在選択中の「部活名を表示するかどうか」
 ---@field package selectingExSkillParticleAmount integer 現在選択中のExスキルフレームのパーティクル量
 ---@field public shouldReplaceVehicleModels boolean 乗り物のモデルを置き換えるかどうか
+---@field package fpmCompatibilityMode boolean First-person Models互換モードが有効かどうか
+---@field package fpmMassageShowed boolean First-person Models互換モードに関するメッセージを表示したかどうか
 ---@field package isActionWheelOpenedPrev boolean 前ティックにアクションホイールを開けていたかどうか
 ---@field package currentTime integer アクションホイールを開けた瞬間の時間（UNIX時間）
 ---@field package refreshCostumeChangeActionTitle fun(self: ActionWheel) 衣装変更アクションのタイトルを更新する
 ---@field package refreshNameChangeActionTitle fun(self: ActionWheel) 名前変更アクションのタイトルを更新する
 ---@field package refreshExSkillParticleActionTitle fun(self: ActionWheel) Exスキルアニメーションのパーティクル量調整アクションのタイトルを更新する
 ---@field package refreshUpdateActionStatus fun(self: ActionWheel) アップデート確認アクションの状態を更新する
+---@field package fpmCompatibilityModeRender fun(_, context: Event.Render.context) First-person Model互換性モードにおけるレンダー関数
 
 ActionWheel = {
     ---コンストラクタ
@@ -26,6 +29,8 @@ ActionWheel = {
         instance.selectingShouldShowClubName = instance.parent.nameplate.shouldShowClubName
         instance.selectingExSkillParticleAmount = instance.parent.exSkill.frameParticleAmount
         instance.shouldReplaceVehicleModels = instance.parent.config:loadConfig("PRIVATE", "replaceVehicleModels", true)
+        instance.fpmCompatibilityMode = instance.parent.config:loadConfig("PRIVATE", "fpmCompatibilityMode", false)
+        instance.fpmMassageShowed = false
         instance.isActionWheelOpenedPrev = false
         instance.currentTime = 0
 
@@ -54,6 +59,9 @@ ActionWheel = {
                         mainAction6:setTitle("§7"..self.parent.locale:getLocale("action_wheel.main.action_6.title")..self.parent.locale:getLocale("action_wheel.toggle_off"))
                     end
                     mainAction6:setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_6.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on"))
+                    local mainAction7 = self.mainPage:getAction(7)
+                    mainAction7:setTitle(self.parent.locale:getLocale("action_wheel.main.action_7.title").."§c"..self.parent.locale:getLocale("action_wheel.toggle_off"))
+                    mainAction7:setToggleTitle(self.parent.locale:getLocale("action_wheel.main.action_7.title").."§a"..self.parent.locale:getLocale("action_wheel.toggle_on"))
                     self.currentTime = client:getSystemTime()
                     self:refreshCostumeChangeActionTitle()
                     self:refreshNameChangeActionTitle()
@@ -210,10 +218,36 @@ ActionWheel = {
                 action:setHoverColor(0.33, 1, 0.33)
             end
 
-            --アクション7. （空欄）
+            --アクション7. First-person Model互換モード
+            self.mainPage:newAction(7):setColor(0.67, 0, 0):setHoverColor(1, 0.33, 0.33):setToggleColor(0, 0.67, 0):setOnToggle(function (_, action)
+                action:setHoverColor(0.33, 1, 0.33)
+                events.RENDER:register(self.fpmCompatibilityModeRender, "fpm_compatibility_render")
+                if not self.fpmMassageShowed then
+                    print(self.parent.locale:getLocale("action_wheel.main.action_7.message"))
+                    self.fpmMassageShowed = true
+                end
+                self.parent.config:saveConfig("PRIVATE", "fpmCompatibilityMode", true)
+            end):setOnUntoggle(function (_, action)
+                action:setHoverColor(1, 0.33, 0.33)
+                events.RENDER:remove("fpm_compatibility_render")
+                models.models.main.Avatar.Head:setVisible(true)
+                models.models.main.Avatar.Head:setOpacity(1)
+                self.parent.config:saveConfig("PRIVATE", "fpmCompatibilityMode", false)
+            end)
+            if client:getVersion() >= "1.20.5" then
+                self.mainPage:getAction(7):setItem(self.parent.compatibilityUtils:checkItem("minecraft:player_head", "[profile={name:\""..player:getName().."\"}]"))
+            else
+                self.mainPage:getAction(7):setItem(self.parent.compatibilityUtils:checkItem("minecraft:player_head", "{SkullOwner: \""..player:getName().."\"}"))
+            end
+            if self.parent.config:loadConfig("PRIVATE", "fpmCompatibilityMode", true) then
+                local action = self.mainPage:getAction(7)
+                action:setToggled(true)
+                action:setHoverColor(0.33, 1, 0.33)
+                events.RENDER:register(self.fpmCompatibilityModeRender, "fpm_compatibility_render")
+            end
 
             --アクション8. アップデートの確認
-            self.mainPage:newAction(8):setItem("minecraft:compass"):setOnLeftClick(function ()
+            self.mainPage:newAction(8):setItem(self.parent.compatibilityUtils:checkItem("minecraft:compass")):setOnLeftClick(function ()
                 if not self.parent.updateChecker.checkerStatus ~= "CHECKING" then
                     self.parent.updateChecker:checkUpdate()
                 else
@@ -288,6 +322,14 @@ ActionWheel = {
             actionTitle = actionTitle.."§7"..self.parent.locale:getLocale("action_wheel.main.action_8.title_3")..self.parent.locale:getLocale("action_wheel.main.action_8.title_4")
         end
         action:setTitle(actionTitle)
+    end;
+
+    ---First-person Model互換性モードにおけるレンダー関数
+    ---@param context Event.Render.context
+    fpmCompatibilityModeRender = function (_, context)
+        local hasShaderPack = client:hasShaderPack()
+        models.models.main.Avatar.Head:setVisible(context ~= "OTHER" or hasShaderPack)
+        models.models.main.Avatar.Head:setOpacity((context ~= "OTHER" or not hasShaderPack) and 1 or 0)
     end;
 }
 

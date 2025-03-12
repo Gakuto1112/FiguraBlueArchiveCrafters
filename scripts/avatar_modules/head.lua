@@ -18,9 +18,7 @@ Head = {
 
         if host:isHost() then
             events.RENDER:register(function (_, context)
-                local hasShaderPack = client:hasShaderPack()
-                models.models.main.Avatar.Head:setVisible(context ~= "OTHER" or hasShaderPack)
-                models.models.main.Avatar.Head:setOpacity((context ~= "OTHER" or not hasShaderPack) and 1 or 0)
+
             end)
         end
     end;
