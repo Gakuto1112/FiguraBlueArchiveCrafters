@@ -86,6 +86,10 @@ jobs:
           done
         env:
           AVATAR_NAME: ${{ matrix.target_branch }}
+      - name: Remove debug scripts
+        run: |
+          rm ./scripts/avatar_modules/utils/debug_utils.lua
+          cat ./scripts/avatar.lua | awk -f ./.github/workflow_scripts/remove_debug_require.awk > ./scripts/avatar.lua
       - name: Replace update script placeholders
         run: |
           mkdir ./tmp
