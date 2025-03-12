@@ -26,6 +26,8 @@ DebugUtils = {
     ---初期化関数
     ---@param self DebugUtils
     init = function (self)
+        AvatarModule.init(self)
+
         self.parent.avatarEvents.SCRIPT_INIT:register(function ()
             if self.EX_SKILL_AUTO_PLAY_MODE ~= "NONE" then
                 self.parent.exSkill:play(self.parent.debugUtils.EX_SKILL_AUTO_PLAY_MODE == "SUB")
