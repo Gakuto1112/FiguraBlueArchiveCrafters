@@ -92,13 +92,8 @@ jobs:
           cat ./scripts/avatar.lua | awk -f ./.github/workflow_scripts/remove_debug_require.awk > ./scripts/avatar.lua
       - name: Replace update script placeholders
         run: |
-          mkdir ./tmp
-          sed "s/instance\.AVATAR_VERSION\s=\s\".*\"/instance.AVATAR_VERSION = \"${TAG_NAME}\"/g" ./scripts/avatar_modules/action_wheel/update_checker.lua > ./tmp/tmp1.lua
-          sed "s/instance\.BRANCH_NAME\s=\s\".*\"/instance.BRANCH_NAME = \"${AVATAR_NAME}\"/g" ./tmp/tmp1.lua > ./tmp/tmp2.lua
-          rm ./tmp/tmp1.lua
-          mv ./tmp/tmp2.lua ./tmp/tmp1.lua
-          rm ./scripts/avatar_modules/action_wheel/update_checker.lua
-          mv ./tmp/tmp1.lua ./scripts/avatar_modules/action_wheel/update_checker.lua
+          sed -i -e "s/instance\.AVATAR_VERSION\s=\s\".*\"/instance.AVATAR_VERSION = \"${TAG_NAME}\"/g" ./scripts/avatar_modules/action_wheel/update_checker.lua
+          sed -i -e "s/instance\.BRANCH_NAME\s=\s\".*\"/instance.BRANCH_NAME = \"${AVATAR_NAME}\"/g" ./scripts/avatar_modules/action_wheel/update_checker.lua
         env:
           TAG_NAME: ${{ github.ref_name }}
           AVATAR_NAME: ${{ matrix.target_branch }}
@@ -144,7 +139,7 @@ jobs:
           for model_file in $(ls -1 | grep 'avatar_')
           do
             cd ./${model_file}
-            zip -r ../out/$(echo ${model_file} | sed 's/avatar_//').zip ./
+            zip -r ../out/$(echo ${model_file} | sed -e 's/avatar_//').zip ./
             cd ../
           done
       - name: Attach artifacts to release assets
