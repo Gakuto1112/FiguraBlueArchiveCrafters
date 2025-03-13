@@ -40,7 +40,9 @@ HeadModelGenerator = {
         end
 
         --モデルコピー前の処理
-        models.models.main.Avatar.Head.HeadRing:setVisible(true)
+        for _, modelPart in ipairs({models.models.main.Avatar.Head, models.models.main.Avatar.Head.HeadRing}) do
+            modelPart:setVisible(true)
+        end
         local isHelmetVisible = self.isScriptLoaded and self.parent.armor.isArmorVisible.helmet or false
         if isHelmetVisible then
             self.parent.armor:setHelmet(world.newItem(self.parent.compatibilityUtils:checkItem("minecraft:air")))
