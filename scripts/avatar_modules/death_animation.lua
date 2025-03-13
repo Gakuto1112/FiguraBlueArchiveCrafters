@@ -94,6 +94,8 @@ DeathAnimation = {
         for _, modelPart in ipairs({models.models.main.Avatar.Head, models.models.main.Avatar.Head.HeadRing}) do
             modelPart:setVisible(true)
         end
+        models.models.main.Avatar.Head:setPrimaryRenderType()
+        models.models.main.Avatar.Head:setOpacity(1)
         local isArmorVisible = {
             helmet = self.parent.armor.isArmorVisible.helmet;
             chestplate = self.parent.armor.isArmorVisible.chestplate;
