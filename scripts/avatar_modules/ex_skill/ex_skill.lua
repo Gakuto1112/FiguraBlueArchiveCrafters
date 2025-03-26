@@ -66,7 +66,7 @@ ExSkill = {
             exSkillKey:setOnRelease(function ()
                 events.TICK:remove("ex_skill_keypress_tick")
                 if self.keyPressCount > 0 then
-                    if self:canPlayAnimation() and self.animationCount == -1 and self.transitionCount == 0 then
+                    if self:canPlayAnimation() and self.transitionCount == 0 then
                         pings.exSkill()
                     else
                         print(self.parent.locale:getLocale("key_bind.ex_skill.unavailable"..(renderer:isFirstPerson() and "_firstperson" or "")))
@@ -76,7 +76,7 @@ ExSkill = {
                 end
             end)
             self.parent.keyManager:register("ex_skill_sub", "key.keyboard.h"):setOnPress(function ()
-                if self:canPlayAnimation() and self.animationCount == -1 and self.transitionCount == 0 and self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill ~= nil then
+                if self:canPlayAnimation() and self.transitionCount == 0 and self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill ~= nil then
                     pings.subExSkill()
                 else
                     print(self.parent.locale:getLocale(self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].subExSkill == nil and "action_wheel.main.action_6.unavailable" or "key_bind.ex_skill.unavailable"..(renderer:isFirstPerson() and "_firstperson" or "")))
@@ -162,77 +162,79 @@ ExSkill = {
             end
         end, "ex_skill_transition_tick")
 
-        events.RENDER:register(function (delta)
-            --カメラのトランジション
-            if not client:isPaused() and host:isHost() then
-                local lookDir = player:getLookDir()
-                local cameraRot = renderer:isCameraBackwards() and vectors.vec3(math.deg(math.asin(lookDir.y)), math.deg(math.atan2(lookDir.z, lookDir.x) + math.pi / 2)) or vectors.vec3(math.deg(math.asin(-lookDir.y)), math.deg(math.atan2(lookDir.z, lookDir.x) - math.pi / 2))
-                local targetCameraPos = vectors.vec3()
-                local targetCameraRot = vectors.vec3()
-                if direction == "PRE" then
-                    targetCameraPos = vectors.rotateAroundAxis(self.bodyYaw[2] * -1 + 180, self.parent.characterData.exSkill[self.exSkillIndex].camera.start.pos, 0, 1):add(0, -1.62)
-                    targetCameraRot = self.parent.characterData.exSkill[self.exSkillIndex].camera.start.rot:copy():add(0, self.bodyYaw[2], 0)
-                else
-                    targetCameraPos = vectors.rotateAroundAxis(self.bodyYaw[2] * -1 + 180, self.parent.characterData.exSkill[self.exSkillIndex].camera.fin.pos, 0, 1):add(0, -1.62)
-                    targetCameraRot = self.parent.characterData.exSkill[self.exSkillIndex].camera.fin.rot:copy():add(0, self.bodyYaw[2], 0)
-                end
-                if math.abs(cameraRot.y - targetCameraRot.y) >= 180 then
-                    if cameraRot.y < targetCameraRot.y then
-                        cameraRot.y = cameraRot.y + 360
-                    else
-                        targetCameraRot.y = targetCameraRot.y + 360
-                    end
-                end
-                local trueDelta = direction == "PRE" and delta or delta * -1
-                self.parent.cameraManager.setCameraPivot(targetCameraPos:scale((self.transitionCount + trueDelta) / 10))
-                self.parent.cameraManager.setCameraRot(targetCameraRot:copy():sub(cameraRot):scale((self.transitionCount + trueDelta) / 10):add(cameraRot))
-                self.parent.cameraManager:setThirdPersonCameraDistance(4 - (self.transitionCount + trueDelta) / 10 * 4)
-
-                --フレーム演出
-                local windowSize = client:getScaledWindowSize()
-                local barPos = (windowSize.x + windowSize.y + math.sqrt(2) * 16) * (direction == "PRE" and (self.transitionCount + trueDelta) / 10 or (1 - (self.transitionCount + trueDelta) / 10))
-                models.models.ex_skill_frame.Gui.FrameBar:setPos(-barPos, 0, 0)
-
-                if self.frameParticleAmount < 4 then
-                    local frameTopLength = math.clamp(barPos, 32, windowSize.x)
-                    local frameLeftLength = math.clamp(barPos, 32, windowSize.y)
-                    local frameBottomLength = math.clamp(barPos - windowSize.y + 16, 32, windowSize.x)
-                    local frameRightLength = math.clamp(barPos - windowSize.x + 16, 32, windowSize.y)
-
-                    models.models.ex_skill_frame.Gui.Frame.FrameTopLeft:setPos(-16, -16)
-                    models.models.ex_skill_frame.Gui.Frame.FrameTopRight:setPos(-windowSize.x, -16)
-                    models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft:setPos(-16, -windowSize.y)
-                    models.models.ex_skill_frame.Gui.Frame.FrameBottomRight:setPos(-windowSize.x, -windowSize.y)
+        if host:isHost() then
+            events.RENDER:register(function (delta)
+                --カメラのトランジション
+                if not client:isPaused() and host:isHost() then
+                    local lookDir = player:getLookDir()
+                    local cameraRot = renderer:isCameraBackwards() and vectors.vec3(math.deg(math.asin(lookDir.y)), math.deg(math.atan2(lookDir.z, lookDir.x) + math.pi / 2)) or vectors.vec3(math.deg(math.asin(-lookDir.y)), math.deg(math.atan2(lookDir.z, lookDir.x) - math.pi / 2))
+                    local targetCameraPos = vectors.vec3()
+                    local targetCameraRot = vectors.vec3()
                     if direction == "PRE" then
-                        models.models.ex_skill_frame.Gui.Frame.FrameTopLeft:setVisible(barPos >= 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameTopRight:setVisible(barPos >= windowSize.x + 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft:setVisible(barPos >= windowSize.y + 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameBottomRight:setVisible(barPos >= windowSize.x + windowSize.y)
-                        models.models.ex_skill_frame.Gui.Frame.FrameTop:setPos(-frameTopLength + 16, -16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameTop:setScale(frameTopLength / 16 - 2, 1, 1)
-                        models.models.ex_skill_frame.Gui.Frame.FrameLeft:setPos(-16, -frameLeftLength + 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameLeft:setScale(1, frameLeftLength / 16 - 2, 1)
-                        models.models.ex_skill_frame.Gui.Frame.FrameBottom:setPos(-frameBottomLength + 16, -windowSize.y)
-                        models.models.ex_skill_frame.Gui.Frame.FrameBottom:setScale(frameBottomLength / 16 - 2, 1, 1)
-                        models.models.ex_skill_frame.Gui.Frame.FrameRight:setPos(-windowSize.x, -frameRightLength + 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameRight:setScale(1, frameRightLength / 16 - 2, 1)
+                        targetCameraPos = vectors.rotateAroundAxis(self.bodyYaw[2] * -1 + 180, self.parent.characterData.exSkill[self.exSkillIndex].camera.start.pos, 0, 1):add(0, -1.62)
+                        targetCameraRot = self.parent.characterData.exSkill[self.exSkillIndex].camera.start.rot:copy():add(0, self.bodyYaw[2], 0)
                     else
-                        models.models.ex_skill_frame.Gui.Frame.FrameTopLeft:setVisible(barPos < 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameTopRight:setVisible(barPos < windowSize.x + 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft:setVisible(barPos < windowSize.y + 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameBottomRight:setVisible(barPos < windowSize.x + windowSize.y)
-                        models.models.ex_skill_frame.Gui.Frame.FrameTop:setPos(-windowSize.x + 16, -16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameTop:setScale((windowSize.x - frameTopLength) / 16, 1, 1)
-                        models.models.ex_skill_frame.Gui.Frame.FrameLeft:setPos(-16, -windowSize.y + 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameLeft:setScale(1, (windowSize.y - frameLeftLength) / 16, 1)
-                        models.models.ex_skill_frame.Gui.Frame.FrameBottom:setPos(-windowSize.x + 16, -windowSize.y)
-                        models.models.ex_skill_frame.Gui.Frame.FrameBottom:setScale((windowSize.x - frameBottomLength) / 16, 1, 1)
-                        models.models.ex_skill_frame.Gui.Frame.FrameRight:setPos(-windowSize.x, -windowSize.y + 16)
-                        models.models.ex_skill_frame.Gui.Frame.FrameRight:setScale(1, (windowSize.y - frameRightLength) / 16, 1)
+                        targetCameraPos = vectors.rotateAroundAxis(self.bodyYaw[2] * -1 + 180, self.parent.characterData.exSkill[self.exSkillIndex].camera.fin.pos, 0, 1):add(0, -1.62)
+                        targetCameraRot = self.parent.characterData.exSkill[self.exSkillIndex].camera.fin.rot:copy():add(0, self.bodyYaw[2], 0)
+                    end
+                    if math.abs(cameraRot.y - targetCameraRot.y) >= 180 then
+                        if cameraRot.y < targetCameraRot.y then
+                            cameraRot.y = cameraRot.y + 360
+                        else
+                            targetCameraRot.y = targetCameraRot.y + 360
+                        end
+                    end
+                    local trueDelta = direction == "PRE" and delta or delta * -1
+                    self.parent.cameraManager.setCameraPivot(targetCameraPos:scale((self.transitionCount + trueDelta) / 10))
+                    self.parent.cameraManager.setCameraRot(targetCameraRot:copy():sub(cameraRot):scale((self.transitionCount + trueDelta) / 10):add(cameraRot))
+                    self.parent.cameraManager:setThirdPersonCameraDistance(4 - (self.transitionCount + trueDelta) / 10 * 4)
+
+                    --フレーム演出
+                    local windowSize = client:getScaledWindowSize()
+                    local barPos = (windowSize.x + windowSize.y + math.sqrt(2) * 16) * (direction == "PRE" and (self.transitionCount + trueDelta) / 10 or (1 - (self.transitionCount + trueDelta) / 10))
+                    models.models.ex_skill_frame.Gui.FrameBar:setPos(-barPos, 0, 0)
+
+                    if self.frameParticleAmount < 4 then
+                        local frameTopLength = math.clamp(barPos, 32, windowSize.x)
+                        local frameLeftLength = math.clamp(barPos, 32, windowSize.y)
+                        local frameBottomLength = math.clamp(barPos - windowSize.y + 16, 32, windowSize.x)
+                        local frameRightLength = math.clamp(barPos - windowSize.x + 16, 32, windowSize.y)
+
+                        models.models.ex_skill_frame.Gui.Frame.FrameTopLeft:setPos(-16, -16)
+                        models.models.ex_skill_frame.Gui.Frame.FrameTopRight:setPos(-windowSize.x, -16)
+                        models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft:setPos(-16, -windowSize.y)
+                        models.models.ex_skill_frame.Gui.Frame.FrameBottomRight:setPos(-windowSize.x, -windowSize.y)
+                        if direction == "PRE" then
+                            models.models.ex_skill_frame.Gui.Frame.FrameTopLeft:setVisible(barPos >= 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameTopRight:setVisible(barPos >= windowSize.x + 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft:setVisible(barPos >= windowSize.y + 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameBottomRight:setVisible(barPos >= windowSize.x + windowSize.y)
+                            models.models.ex_skill_frame.Gui.Frame.FrameTop:setPos(-frameTopLength + 16, -16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameTop:setScale(frameTopLength / 16 - 2, 1, 1)
+                            models.models.ex_skill_frame.Gui.Frame.FrameLeft:setPos(-16, -frameLeftLength + 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameLeft:setScale(1, frameLeftLength / 16 - 2, 1)
+                            models.models.ex_skill_frame.Gui.Frame.FrameBottom:setPos(-frameBottomLength + 16, -windowSize.y)
+                            models.models.ex_skill_frame.Gui.Frame.FrameBottom:setScale(frameBottomLength / 16 - 2, 1, 1)
+                            models.models.ex_skill_frame.Gui.Frame.FrameRight:setPos(-windowSize.x, -frameRightLength + 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameRight:setScale(1, frameRightLength / 16 - 2, 1)
+                        else
+                            models.models.ex_skill_frame.Gui.Frame.FrameTopLeft:setVisible(barPos < 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameTopRight:setVisible(barPos < windowSize.x + 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft:setVisible(barPos < windowSize.y + 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameBottomRight:setVisible(barPos < windowSize.x + windowSize.y)
+                            models.models.ex_skill_frame.Gui.Frame.FrameTop:setPos(-windowSize.x + 16, -16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameTop:setScale((windowSize.x - frameTopLength) / 16, 1, 1)
+                            models.models.ex_skill_frame.Gui.Frame.FrameLeft:setPos(-16, -windowSize.y + 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameLeft:setScale(1, (windowSize.y - frameLeftLength) / 16, 1)
+                            models.models.ex_skill_frame.Gui.Frame.FrameBottom:setPos(-windowSize.x + 16, -windowSize.y)
+                            models.models.ex_skill_frame.Gui.Frame.FrameBottom:setScale((windowSize.x - frameBottomLength) / 16, 1, 1)
+                            models.models.ex_skill_frame.Gui.Frame.FrameRight:setPos(-windowSize.x, -windowSize.y + 16)
+                            models.models.ex_skill_frame.Gui.Frame.FrameRight:setScale(1, (windowSize.y - frameRightLength) / 16, 1)
+                        end
                     end
                 end
-            end
-        end, "ex_skill_transition_render")
+            end, "ex_skill_transition_render")
+        end
     end;
 
     ---アニメーションを再生する。
@@ -248,17 +250,18 @@ ExSkill = {
         else
             self.exSkillIndex = self.parent.characterData.costume.costumes[self.parent.costume.currentCostume].exSkill
         end
-
+        if host:isHost() then
+            renderer:setFOV(70 / client:getFOV())
+            renderer:setRenderHUD(false)
+            self.parent.cameraManager:setCameraCollisionDenial(true)
+            models.models.ex_skill_frame.Gui:setColor(self.parent.characterData.exSkill[self.exSkillIndex].formationType == "STRIKER" and vectors.vec3(1, 0.75, 0.75) or vectors.vec3(0.75, 1, 1))
+            models.models.ex_skill_frame.Gui.FrameBar:setScale(1, client:getScaledWindowSize().y * math.sqrt(2) / 16 + 1, 1)
+        end
         self.parent.bubble:stop()
-        renderer:setFOV(70 / client:getFOV())
-        renderer:setRenderHUD(false)
-        self.parent.cameraManager:setCameraCollisionDenial(true)
-        models.models.ex_skill_frame.Gui:setColor(self.parent.characterData.exSkill[self.exSkillIndex].formationType == "STRIKER" and vectors.vec3(1, 0.75, 0.75) or vectors.vec3(0.75, 1, 1))
         sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.player.levelup"), player:getPos(), 5, 2)
         if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreTransition ~= nil then
             self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreTransition(self.parent.characterData)
         end
-        models.models.ex_skill_frame.Gui.FrameBar:setScale(1, client:getScaledWindowSize().y * math.sqrt(2) / 16 + 1, 1)
 
         events.TICK:register(function ()
             if not self:canPlayAnimation() then
@@ -277,10 +280,12 @@ ExSkill = {
             for _, modelPart in ipairs(self.parent.characterData.exSkill[self.exSkillIndex].animations) do
                 animations["models."..modelPart]["ex_skill_"..self.exSkillIndex]:play()
             end
+            if host:isHost() then
+                self.parent.cameraManager:setThirdPersonCameraDistance(0)
+            end
             if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreAnimation ~= nil then
                 self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPreAnimation(self.parent.characterData)
             end
-            self.parent.cameraManager:setThirdPersonCameraDistance(0)
 
             events.TICK:register(function ()
                 if not client:isPaused() then
@@ -329,7 +334,6 @@ ExSkill = {
             events.RENDER:remove("ex_skill_animation_render")
             sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.player.levelup"), player:getPos(), 5, 2):setAttenuation(100)
         end
-
         for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
             itemModel:setVisible(true)
         end
@@ -342,18 +346,18 @@ ExSkill = {
         self.parent.physics:enable()
         renderer:setFOV()
         self.animationCount = -1
-
         if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation ~= nil then
             self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation(self.parent.characterData, false)
         end
         self:transition("POST", function ()
             events.TICK:remove("ex_skill_tick")
-            self.parent.cameraManager.setCameraPivot()
-            self.parent.cameraManager.setCameraRot()
-            self.parent.cameraManager:setThirdPersonCameraDistance(4)
-            self.parent.cameraManager:setCameraCollisionDenial(false)
-            renderer:setRenderHUD(true)
-
+            if host:isHost() then
+                self.parent.cameraManager.setCameraPivot()
+                self.parent.cameraManager.setCameraRot()
+                self.parent.cameraManager:setThirdPersonCameraDistance(4)
+                self.parent.cameraManager:setCameraCollisionDenial(false)
+                renderer:setRenderHUD(true)
+            end
             if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition ~= nil then
                 self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition(self.parent.characterData, false)
             end
@@ -363,12 +367,25 @@ ExSkill = {
     ---アニメーションを停止する。終了時のトランジションも無効。
     ---@param self ExSkill
     forceStop = function (self)
+        events.TICK:remove("ex_skill_transition_tick")
         events.RENDER:remove("ex_skill_transition_render")
         if host:isHost() then
-            events.TICK:remove("ex_skill_transition_tick")
             events.RENDER:remove("ex_skill_animation_render")
+            models.models.ex_skill_frame.Gui.FrameBar:setPos()
+            for _, modelPart in ipairs({models.models.ex_skill_frame.Gui.Frame.FrameTopLeft, models.models.ex_skill_frame.Gui.Frame.FrameTopRight, models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft, models.models.ex_skill_frame.Gui.Frame.FrameBottomRight}) do
+                modelPart:setVisible(false)
+            end
+            for _, modelPart in ipairs({models.models.ex_skill_frame.Gui.Frame.FrameTop, models.models.ex_skill_frame.Gui.Frame.FrameLeft, models.models.ex_skill_frame.Gui.Frame.FrameBottom, models.models.ex_skill_frame.Gui.Frame.FrameRight}) do
+                modelPart:setScale(0, 0, 0)
+            end
+            self.parent.faceParts:resetEmotion()
+            self.parent.cameraManager.setCameraPivot()
+            self.parent.cameraManager.setCameraRot()
+            self.parent.cameraManager:setThirdPersonCameraDistance(4)
+            self.parent.cameraManager:setCameraCollisionDenial(false)
+            renderer:setRenderHUD(true)
+            renderer:setFOV()
         end
-
         for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
             itemModel:setVisible(true)
         end
@@ -382,28 +399,12 @@ ExSkill = {
             events.TICK:remove(eventName)
         end
         self.parent.physics:enable()
-        models.models.ex_skill_frame.Gui.FrameBar:setPos()
-        for _, modelPart in ipairs({models.models.ex_skill_frame.Gui.Frame.FrameTopLeft, models.models.ex_skill_frame.Gui.Frame.FrameTopRight, models.models.ex_skill_frame.Gui.Frame.FrameBottomLeft, models.models.ex_skill_frame.Gui.Frame.FrameBottomRight}) do
-            modelPart:setVisible(false)
-        end
-        for _, modelPart in ipairs({models.models.ex_skill_frame.Gui.Frame.FrameTop, models.models.ex_skill_frame.Gui.Frame.FrameLeft, models.models.ex_skill_frame.Gui.Frame.FrameBottom, models.models.ex_skill_frame.Gui.Frame.FrameRight}) do
-            modelPart:setScale(0, 0, 0)
-        end
-        self.parent.faceParts:resetEmotion()
-        self.parent.cameraManager.setCameraPivot()
-        self.parent.cameraManager.setCameraRot()
-        self.parent.cameraManager:setThirdPersonCameraDistance(4)
-        self.parent.cameraManager:setCameraCollisionDenial(false)
-        renderer:setRenderHUD(true)
-        renderer:setFOV()
-
         if self.animationCount >= 0 and self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation ~= nil then
             self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostAnimation(self.parent.characterData, true)
         end
         if self.parent.characterData.exSkill[self.exSkillIndex].callbacks ~= nil and self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition ~= nil then
             self.parent.characterData.exSkill[self.exSkillIndex].callbacks.onPostTransition(self.parent.characterData, true)
         end
-
         self.animationCount = -1
         self.transitionCount = 0
     end;
