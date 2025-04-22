@@ -33,15 +33,17 @@
 - 丹花イブキ
 - 百合園セイア
 - 天童アリス
+- 花岡ユズ
 
 ### 作成中
 これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
 
-- 花岡ユズ（[#97](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/97)）
+（現在作成中のアバターはありません。）
 
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
+- 宇沢レイサ（[#123](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/123)）
 - 阿慈谷ヒフミ（[#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)）
 - 早瀬ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102)）
 - 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
