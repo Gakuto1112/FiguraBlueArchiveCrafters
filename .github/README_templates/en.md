@@ -89,6 +89,7 @@ Watch also:
   | Ibuki | - I can patrol with Iroha! |
   | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (this is a substitute for the long-tailed tit.). |
   | Aris | - After the Ex Skill is played, her railgun will be overcharged state and can shoot a more powerful shot (visual only). |
+  | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. She hides in the chest while sneaking. |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
