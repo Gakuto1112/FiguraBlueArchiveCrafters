@@ -34,12 +34,13 @@ The avatars for these characters are completed. You can download and use avatars
 - Seia Yurizono
 - Aris Tendo
 - Yuzu Hanaoka
+- Hikari Tachibana
+- Nozomi Tachibana
 
 ### In progress
 The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-- Hikari Tachibana ([#126](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/126))
-- Nozomi Tachibana ([#125](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/125))
+(There is no avatar currently being created.)
 
 ### Planned
 Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
@@ -57,6 +58,9 @@ I have received requests to create these characters. However, I can't promise th
 - Aru Rikuhachima ([#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103))
 - Kazusa Kyoyama ([#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114))
 - Rio TsukaTsuki ([#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116))
+- Hasumi Hanekawa ([#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128))
+- Asagi Mutsuki ([#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129))
+- Sorasaki Hina ([#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130))
 
 ## Features
 - Imitated ex skill cut-ins.
@@ -130,6 +134,8 @@ I have received requests to create these characters. However, I can't promise th
   | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (this is a substitute for the long-tailed tit.). |
   | Aris | - After the Ex Skill is played, her railgun will be overcharged state and can shoot a more powerful shot (visual only). |
   | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. She hides in the chest while sneaking. |
+  | Hikari | - Can dance with Nozomi. |
+  | ノゾミ | - Rushs the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.

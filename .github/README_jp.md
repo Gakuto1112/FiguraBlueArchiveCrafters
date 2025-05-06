@@ -34,12 +34,13 @@
 - 百合園セイア
 - 天童アリス
 - 花岡ユズ
+- 橘ヒカリ
+- 橘ノゾミ
 
 ### 作成中
 これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
 
-- 橘ヒカリ（[#126](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/126)）
-- 橘ノゾミ（[#125](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/125)）
+（現在作成中のアバターはありません。）
 
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
@@ -57,6 +58,9 @@
 - 陸八魔アル（[#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103)）
 - 杏山カズサ（[#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114)）
 - 調月リオ（[#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116)）
+- 羽川ハスミ（[#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128)）
+- ムツキ浅黄（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129)）
+- ヒナ空崎（[#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。
@@ -130,6 +134,8 @@
   | セイア | - お供として[アレイ](https://ja.minecraft.wiki/w/アレイ)を連れています（シマエナガの代わりです）。 |
   | アリス | - Exスキルアニメーションを再生した後はレールガンがオーバーチャージ状態となり、より強力な一撃を放てます（視覚的な演出のみ）。 |
   | ユズ（メイド） | - カボチャを頭に被ることでユズチェストを装備できます。スニークすることでチェストに身を隠します。 |
+  | ヒカリ | - ノゾミと一緒にダンスを踊れます。 |
+  | ノゾミ | - Exスキル再生後に汽車を突進させます（視覚的な演出のみ）。 <br> - ヒカリと一緒にダンスが踊れます。 |
 
 ## Exスキル
 本家でお馴染みのExスキルのカットインが再現されています。Exスキルを再生するには、**三人称視点で**Exスキルのキー（デフォルトは「G」キー）を押してください。
