@@ -118,7 +118,7 @@ jobs:
       - name: Output readme status
         run: |
           jq -c -n \
-          --arg is_conflict "${CONFLICT_OCCURRED}"
+          --arg is_conflict "${CONFLICT_OCCURRED}" \
           --arg generate_required "${GENERATE_REQUIRED}" \
           --arg compress_required "${COMPRESS_REQUIRED}" \
           '{"generate_required": $generate_required, "compress_required": $compress_required}' \
