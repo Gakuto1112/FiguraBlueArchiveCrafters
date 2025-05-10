@@ -118,11 +118,13 @@ jobs:
       - name: Output readme status
         run: |
           jq -c -n \
+          --arg is_conflict "${CONFLICT_OCCURRED}"
           --arg generate_required "${GENERATE_REQUIRED}" \
           --arg compress_required "${COMPRESS_REQUIRED}" \
           '{"generate_required": $generate_required, "compress_required": $compress_required}' \
           > ./${BRANCH_NAME}.json
         env:
+          CONFLICT_OCCURRED: ${{ steps.merge_branch.outcome == 'failure' }}
           GENERATE_REQUIRED: ${{ steps.merge_branch.outcome == 'success' && steps.check_readme_changes.outcome == 'success' }}
           COMPRESS_REQUIRED: ${{ steps.merge_branch.outcome == 'success' && steps.check_texture_changes.outcome == 'success' }}
           BRANCH_NAME: ${{ matrix.target_branch }}
@@ -214,3 +216,41 @@ jobs:
     uses: Gakuto1112/FiguraAvatarTextureCompressor/.github/workflows/compress_avatar_texture.yml@main
     with:
       target_branch: ${{ matrix.target_branch }}
+  delete_target_branch:
+    name: Delete target branch
+    needs:
+      - merge_branch
+      - generate_readme
+      - compress_textures
+    if: ${{ !failure() &&  !cancelled() }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Prepare artifacts directory
+        run: mkdir ./branches
+      - name: Download artifacts
+        uses: actions/download-artifact@v4.1.9
+        with:
+          path: ./branches
+      - name: Check if conflicts occurred
+        run: |
+          for file in $(ls ./branches); do
+            result=$(cat ./branches/${file}/${file}.json | jq -r '.is_conflict')
+            if [ ${result} = 'true' ]; then
+              echo "::error::Cannot delete the target branch becase one or more conflicts occurred."
+              exit 1
+            fi
+          done
+      - name: Configure Git user
+        run: |
+          git remote set-url origin https://github-actions:${TOKEN}@github.com/${REPOSITORY}
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+        env:
+          TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+      - name: Delete target branch
+        run: git push origin :${MERGE_BRANCH}
+        env:
+          MERGE_BRANCH: ${{ github.ref_name }}
