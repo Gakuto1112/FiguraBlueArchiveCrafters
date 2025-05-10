@@ -58,8 +58,8 @@
 - 杏山カズサ（[#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114)）
 - 調月リオ（[#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116)）
 - 羽川ハスミ（[#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128)）
-- ムツキ浅黄（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129)）
-- ヒナ空崎（[#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130)）
+- 浅黄ムツキ（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129)）
+- 空崎ヒナ（[#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。

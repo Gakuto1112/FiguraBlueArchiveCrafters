@@ -58,8 +58,8 @@ I have received requests to create these characters. However, I can't promise th
 - Kazusa Kyoyama ([#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114))
 - Rio TsukaTsuki ([#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116))
 - Hasumi Hanekawa ([#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128))
-- Asagi Mutsuki ([#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129))
-- Sorasaki Hina ([#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130))
+- Mutsuki Asagi ([#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129))
+- Hina Sorasaki ([#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130))
 
 ## Features
 - Imitated ex skill cut-ins.
