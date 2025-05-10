@@ -55,7 +55,7 @@ jobs:
         with:
           ref: ${{ matrix.target_branch }}
       - name: Change development version on the script
-        run: sed -i -e "s/instance\.AVATAR_VERSION\s=\s\".*\"/instance.AVATAR_VERSION = \"${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}_dev\"/g" ./scripts/avatar_modules/action_wheel/update_checker.lua
+        run: sed -i -e "s/instance\.AVATAR_VERSION\s=\s\".*\"/instance.AVATAR_VERSION = \"v${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}_dev\"/g" ./scripts/avatar_modules/action_wheel/update_checker.lua
         env:
           VERSION_MAJOR: ${{ inputs.versionMajor }}
           VERSION_MINOR: ${{ inputs.versionMinor }}
