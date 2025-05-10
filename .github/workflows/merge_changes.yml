@@ -1,6 +1,12 @@
 name: Merge changes to all target branches
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      autoBranchDeletion:
+        description: Delete target branch after the workflow
+        type: boolean
+        required: false
 
 jobs:
   get_avatar_branches:
