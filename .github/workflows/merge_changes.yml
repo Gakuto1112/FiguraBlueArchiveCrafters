@@ -106,7 +106,7 @@ jobs:
             git diff --name-only HEAD~ | grep -e 'textures/'
           fi
         env:
-          BASE_RESULT: ${{ steps.check_readme_changes_base.outcome }}
+          BASE_RESULT: ${{ steps.check_texture_changes_base.outcome }}
           BASE_BRANCH: ${{ matrix.target_branch }}
         continue-on-error: true
       - name: Output readme status
