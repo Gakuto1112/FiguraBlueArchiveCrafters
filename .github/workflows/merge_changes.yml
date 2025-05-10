@@ -222,7 +222,7 @@ jobs:
       - merge_branch
       - generate_readme
       - compress_textures
-    if: ${{ !failure() &&  !cancelled() }}
+    if: ${{ !failure() && !cancelled() && inputs.autoBranchDeletion }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
