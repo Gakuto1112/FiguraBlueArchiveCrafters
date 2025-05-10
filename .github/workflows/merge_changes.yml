@@ -242,6 +242,10 @@ jobs:
               exit 1
             fi
           done
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: base
       - name: Configure Git user
         run: |
           git remote set-url origin https://github-actions:${TOKEN}@github.com/${REPOSITORY}
