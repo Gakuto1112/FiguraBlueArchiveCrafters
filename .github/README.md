@@ -134,7 +134,7 @@ I have received requests to create these characters. However, I can't promise th
   | Aris | - After the Ex Skill is played, her railgun will be overcharged state and can shoot a more powerful shot (visual only). |
   | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. She hides in the chest while sneaking. |
   | Hikari | - Can dance with Nozomi. |
-  | ノゾミ | - Rushs the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
+  | Nozomi | - Rushs the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
