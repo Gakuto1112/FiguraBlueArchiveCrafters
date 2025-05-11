@@ -373,17 +373,19 @@ BlueArchiveCharacter = {
                     };
                 };
 
-                --[[
                 callbacks = {
+                    --[[
                     --Exスキルアニメーションを任意の位置で一時停止させるコードスニペット。デバッグ用。
                     --"<>"内を適切な数値に置き換えること。
                     onAnimationTick = function (self, tick)
-                        for _, name in ipairs(self.exSkill[<ex_skill_index>]) do
-                            animations["models."..name]["ex_skill_<ex_skill_index>"]:pause()
+                        if tick == <tick_count> then
+                            for _, name in ipairs(self.exSkill[<ex_skill_index>]) do
+                                animations["models."..name]["ex_skill_<ex_skill_index>"]:pause()
+                            end
                         end
                     end;
+                    ]]
                 };
-                ]]
             };
         }
 
@@ -449,5 +451,6 @@ BlueArchiveCharacter = {
 
         --生徒固有初期化処理
         --Player APIにアクセスする場合は、ENTITY_INIT後に実行されるようにする必要がある。
+
     end;
 }
