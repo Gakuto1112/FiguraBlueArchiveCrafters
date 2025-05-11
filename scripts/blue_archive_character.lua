@@ -33,7 +33,7 @@
 ---@field public skirt BlueArchiveCharacter.SkirtStruct スカート
 ---@field public gun BlueArchiveCharacter.GunStruct 銃
 ---@field public placementObjects BlueArchiveCharacter.PlacementObjectStruct[] 設置物
----@field public exSkill BlueArchiveCharacter.ExSkillStruct[] Exスキル
+---@field public exSkill BlueArchiveCharacter.ExSkillStruct Exスキル
 ---@field public costume BlueArchiveCharacter.CostumeStruct コスチューム
 ---@field public bubble BlueArchiveCharacter.BubbleStruct 吹き出しエモート
 ---@field public headBlock BlueArchiveCharacter.HeadBlockStruct 頭ブロック
@@ -78,11 +78,7 @@
 ---@field public callbacks? BlueArchiveCharacter.PlacementObjectCallbacksSet 設置物のコールバック関数
 
 ---@class BlueArchiveCharacter.ExSkillStruct Exスキルのデータ構造体
----@field public name BlueArchiveCharacter.LocaleStringSet Exスキルの名前
----@field public formationType BlueArchiveCharacter.FormationType この生徒の戦闘配置タイプ
----@field public models ModelPart[] Exスキルアニメーション開始時に表示し、Exスキルアニメーション終了時に非表示にするモデルパーツ
----@field public animations string[] Exスキルアニメーションが含まれるモデルファイル名。アニメーション名は"ex_skill_<Exスキルのインデックス番号>"にすること。
----@field public camera BlueArchiveCharacter.ExSkillCameraSet Exスキルアニメーション中のカメラワーク
+---@field public exSkills BlueArchiveCharacter.ExSkillDataSet[] Exスキルデータ
 ---@field public callbacks? BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数
 
 ---@class BlueArchiveCharacter.CostumeStruct コスチュームのデータ構造体
@@ -159,6 +155,17 @@
 ---@field public onRender? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 各レンダーティック毎に呼ばれる関数
 ---@field public onGround? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 設置物が接地した瞬間に呼ばれる関数
 
+---@class (exact) BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数のセット
+---@field public additionalCheckFunc? fun(self: BlueArchiveCharacter): boolean Exスキルを再生するかどうかの追加チェック関数
+
+---@class (exact) BlueArchiveCharacter.ExSkillDataSet Exスキルのデータセット
+---@field public name BlueArchiveCharacter.LocaleStringSet Exスキルの名前
+---@field public formationType BlueArchiveCharacter.FormationType この生徒の戦闘配置タイプ
+---@field public models ModelPart[] Exスキルアニメーション開始時に表示し、Exスキルアニメーション終了時に非表示にするモデルパーツ
+---@field public animations string[] Exスキルアニメーションが含まれるモデルファイル名。アニメーション名は"ex_skill_<Exスキルのインデックス番号>"にすること。
+---@field public camera BlueArchiveCharacter.ExSkillCameraSet Exスキルアニメーション中のカメラワーク
+---@field public callbacks? BlueArchiveCharacter.ExSkillAnimationCallbacks Exスキルアニメーションのコールバック関数
+
 ---@class (exact) BlueArchiveCharacter.ExSkillCameraSet Exスキルアニメーション中のカメラワークのセット
 ---@field public start BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション開始地点
 ---@field public fin BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション終了地点
@@ -168,7 +175,7 @@
 ---@field public pos Vector3 カメラの位置
 ---@field public rot Vector3 カメラの方向
 
----@class (exact) BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数のセット
+---@class (exact) BlueArchiveCharacter.ExSkillAnimationCallbacks Exスキルアニメーションのコールバック関数のセット
 ---@field public onPreTransition? fun(self: BlueArchiveCharacter) Exスキルアニメーション開始前のトランジション開始前に実行されるコールバック関数
 ---@field public onPreAnimation? fun(self: BlueArchiveCharacter) Exスキルアニメーション開始前のトランジション終了後に実行されるコールバック関数
 ---@field public onAnimationTick? fun(self: BlueArchiveCharacter, tick: integer) Exスキルアニメーション再生中のみ実行されるティック関数
@@ -349,42 +356,44 @@ BlueArchiveCharacter = {
         }
 
         instance.exSkill = {
-            {
-                name = {
-                    en_us = "Ex Skill name";
-                    ja_jp = "Exスキル名";
-                };
-
-                formationType = "STRIKER";
-
-                models = {};
-
-                animations = {"main"};
-
-                camera = {
-                    start = {
-                        rot = vectors.vec3(0, 180, 0);
-                        pos = vectors.vec3(0, 28, -64);
+            exSkills = {
+                {
+                    name = {
+                        en_us = "Ex Skill name";
+                        ja_jp = "Exスキル名";
                     };
 
-                    fin = {
-                        rot = vectors.vec3(0, 180, 0);
-                        pos = vectors.vec3(0, 28, -64);
-                    };
-                };
+                    formationType = "STRIKER";
 
-                callbacks = {
-                    --[[
-                    --Exスキルアニメーションを任意の位置で一時停止させるコードスニペット。デバッグ用。
-                    --"<>"内を適切な数値に置き換えること。
-                    onAnimationTick = function (self, tick)
-                        if tick == <tick_count> then
-                            for _, name in ipairs(self.exSkill[<ex_skill_index>]) do
-                                animations["models."..name]["ex_skill_<ex_skill_index>"]:pause()
+                    models = {};
+
+                    animations = {"main"};
+
+                    camera = {
+                        start = {
+                            rot = vectors.vec3(0, 180, 0);
+                            pos = vectors.vec3(0, 28, -64);
+                        };
+
+                        fin = {
+                            rot = vectors.vec3(0, 180, 0);
+                            pos = vectors.vec3(0, 28, -64);
+                        };
+                    };
+
+                    callbacks = {
+                        --[[
+                        --Exスキルアニメーションを任意の位置で一時停止させるコードスニペット。デバッグ用。
+                        --"<>"内を適切な数値に置き換えること。
+                        onAnimationTick = function (self, tick)
+                            if tick == <tick_count> then
+                                for _, name in ipairs(self.exSkill.exSkills[<ex_skill_index>]) do
+                                    animations["models."..name]["ex_skill_<ex_skill_index>"]:pause()
+                                end
                             end
-                        end
-                    end;
-                    ]]
+                        end;
+                        ]]
+                    };
                 };
             };
         }

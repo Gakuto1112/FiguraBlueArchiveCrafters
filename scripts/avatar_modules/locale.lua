@@ -98,7 +98,7 @@ Locale = {
 		self.localeData.ja_jp["nameplate.club_name"] = self.parent.characterData.basic.clubName.ja_jp
 
 		if host:isHost() then
-			for index, exSkill in ipairs(self.parent.characterData.exSkill) do
+			for index, exSkill in ipairs(self.parent.characterData.exSkill.exSkills) do
 				self.localeData.en_us["action_wheel.gui.ex_skill_guide.ex_skill_"..index..".name"] = exSkill.name.en_us
 				self.localeData.ja_jp["action_wheel.gui.ex_skill_guide.ex_skill_"..index..".name"] = exSkill.name.ja_jp
 			end
