@@ -1,4 +1,5 @@
 ---@alias Bubble.BubbleType
+---| "NONE" # 絵文字なし
 ---| "GOOD" # 👍
 ---| "HEART" # 💗
 ---| "NOTE" # 🎵
@@ -18,6 +19,7 @@
 ---@field package isForcedStop boolean 吹き出しエモートが強制停止させられたかどうか
 ---@field public isChatOpened boolean チャットを開けているかどうか
 ---@field package isChatOpenedPrev boolean 前ティックにチャットを開けていたかどうか
+---@field package canShowBubble fun(self: Bubble): boolean 吹き出しエモートを表示できるかどうかを取得する
 ---@field public play fun(self: Bubble, type: Bubble.BubbleType, duration: integer, offsetPos: Vector2, offsetRot: number, shouldShowInHud: boolean) 吹き出しエモートを再生する
 ---@field public stop fun(self: Bubble) 吹き出しエモートを停止する
 
@@ -30,7 +32,7 @@ Bubble = {
         local instance = Avatar.instantiate(Bubble, AvatarModule, parent)
 
         instance.bubbleCount = 0
-        instance.emoji = "GOOD"
+        instance.emoji = "NONE"
         instance.duration = 0
         instance.isAutoBubble = false
         instance.shouldShowInHud = false
@@ -57,27 +59,27 @@ Bubble = {
         --エモートガイド
         if host:isHost() then
             self.parent.keyManager:register("bubble_1", "key.keyboard.j"):onPress(function ()
-                if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
+                if self:canShowBubble() then
                     pings.showBubbleEmote("GOOD")
                 end
             end)
             self.parent.keyManager:register("bubble_2", "key.keyboard.k"):onPress(function ()
-                if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
+                if self:canShowBubble() then
                     pings.showBubbleEmote("HEART")
                 end
             end)
             self.parent.keyManager:register("bubble_3", "key.keyboard.n"):onPress(function ()
-                if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
+                if self:canShowBubble() then
                     pings.showBubbleEmote("NOTE")
                 end
             end)
             self.parent.keyManager:register("bubble_4", "key.keyboard.m"):onPress(function ()
-                if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
+                if self:canShowBubble() then
                     pings.showBubbleEmote("QUESTION")
                 end
             end)
             self.parent.keyManager:register("bubble_5", "key.keyboard.comma"):onPress(function ()
-                if self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble) then
+                if self:canShowBubble() then
                     pings.showBubbleEmote("SWEAT")
                 end
             end)
@@ -93,12 +95,12 @@ Bubble = {
             end
 
             if player:getActiveItem().id == "minecraft:crossbow" then
-                if self.bubbleCount == 0 or (self.isAutoBubble and self.emoji ~= "RELOAD") then
+                if self:canShowBubble() and self.emoji ~= "RELOAD" then
                     self:play("RELOAD", -1, vectors.vec2(), 0, false)
                     self.isAutoBubble = true
                 end
             elseif self.isChatOpened and self.parent.exSkill.transitionCount == 0 and player:getPose() ~= "SLEEPING" then
-                if self.bubbleCount == 0 or (self.isAutoBubble and self.emoji ~= "DOTS") then
+                if self:canShowBubble() and self.emoji ~= "DOTS" then
                     self:play("DOTS", -1, vectors.vec2(), 0, false)
                     self.isAutoBubble = true
                 end
@@ -107,6 +109,18 @@ Bubble = {
                 self.isAutoBubble = false
             end
         end)
+    end;
+
+    ---吹き出しエモートを表示できるかどうかを取得する。
+    ---@param self Bubble
+    ---@return boolean canShowBubble 吹き出しエモートを表示できるかどうか
+    canShowBubble = function(self)
+        local firstCheck = self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble)
+        if self.parent.characterData.bubble.callbacks ~= nil and self.parent.characterData.bubble.callbacks.addtionalCheckFunc ~= nil then
+            return firstCheck and self.parent.characterData.bubble.callbacks.addtionalCheckFunc(self.parent.characterData)
+        else
+            return firstCheck
+        end
     end;
 
     ---吹き出しエモートを再生する。
@@ -203,6 +217,7 @@ Bubble = {
     ---吹き出しエモートを停止する。
     ---@param self Bubble
     stop = function (self)
+        self.emoji = "NONE"
         if self.bubbleCount > 0 then
             self.isForcedStop = self.duration == -1 or self.bubbleCount < self.duration + 2
             self.bubbleCount = -2
