@@ -107,7 +107,12 @@ ExSkill = {
     ---@param self ExSkill
     ---@return boolean canPlayAnimation Exスキルアニメーションが再生可能かどうか
     canPlayAnimation = function (self)
-        return player:getPose() == "STANDING" and not player:isMoving() and self.bodyYaw[1] == self.bodyYaw[2] and player:isOnGround() and not player:isInWater() and not player:isInLava() and player:getFrozenTicks() == 0 and not renderer:isFirstPerson() and player:getSwingArm() == nil and player:getActiveItem().id == "minecraft:air" and not self.parent.costume.isChangingCostume
+        local firstCheck = player:getPose() == "STANDING" and not player:isMoving() and self.bodyYaw[1] == self.bodyYaw[2] and player:isOnGround() and not player:isInWater() and not player:isInLava() and player:getFrozenTicks() == 0 and not renderer:isFirstPerson() and player:getSwingArm() == nil and player:getActiveItem().id == "minecraft:air" and not self.parent.costume.isChangingCostume
+        if self.parent.characterData.exSkill.callbacks ~= nil and self.parent.characterData.exSkill.callbacks.additionalCheckFunc ~= nil then
+            return firstCheck and self.parent.characterData.exSkill.callbacks.additionalCheckFunc(self.parent.characterData)
+        else
+            return firstCheck
+        end
     end;
 
     ---Exスキルのアニメーションの前後のカメラのトランジションを行う関数
