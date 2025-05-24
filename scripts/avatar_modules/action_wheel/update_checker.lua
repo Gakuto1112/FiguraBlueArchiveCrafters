@@ -66,7 +66,7 @@ UpdateChecker = {
                     elseif self.checkerStatus == "ERROR_REQUEST_FAILED" then
                         textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check.error_request_failed").."("..self.requestStatus..")")
                     else
-                        textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check."..self.parent.compatibilityUtils.lower(self.checkerStatus)))
+                        textTask:setText(self.parent.locale:getLocale("action_wheel.gui.update_check."..self.parent.stringUtils.lower(self.checkerStatus)))
                     end
                 elseif not isActionWheelOpened and self.isActionWheelOpenedPrev then
                     self.textAnimationCount = 0

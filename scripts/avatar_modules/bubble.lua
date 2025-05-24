@@ -136,11 +136,11 @@ Bubble = {
         self.shouldShowInHud = shouldShowInHud
         self.bubbleCount = 1
         self.emojiAnimationCount = 0
-        models.models.bubble.Camera.AvatarBubble.Emoji:setPrimaryTexture("CUSTOM", textures["textures.emojis."..self.parent.compatibilityUtils.lower(self.emoji)])
+        models.models.bubble.Camera.AvatarBubble.Emoji:setPrimaryTexture("CUSTOM", textures["textures.emojis."..self.parent.stringUtils.lower(self.emoji)])
         models.models.bubble.Camera.AvatarBubble.Bullets:setVisible(self.emoji == "RELOAD")
         models.models.bubble.Camera.AvatarBubble.Dots:setVisible(self.emoji == "DOTS")
         if self.shouldShowInHud then
-            models.models.bubble.Gui.FirstPersonBubble.Emoji:setPrimaryTexture("CUSTOM", textures["textures.emojis."..self.parent.compatibilityUtils.lower(self.emoji)])
+            models.models.bubble.Gui.FirstPersonBubble.Emoji:setPrimaryTexture("CUSTOM", textures["textures.emojis."..self.parent.stringUtils.lower(self.emoji)])
             sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.item.pickup"), self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar))
         end
 

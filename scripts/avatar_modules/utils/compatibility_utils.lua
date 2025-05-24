@@ -14,8 +14,6 @@
 ---@field public checkParticle fun(self: CompatibilityUtils, particle: Minecraft.particleID, args?: string): Minecraft.particleID 指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
 ---@field public checkSound fun(self: CompatibilityUtils, sound: Minecraft.soundID): Minecraft.soundID 指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
 ---@field public setPostEffect fun(effect?: Minecraft.shaderName) renderer:setPostEffect()のラッパー関数。1.20.5でレンダーエフェクトが削除されたことによる対応。
----@field public lower fun(str: string): string 入力された文字列を小文字に置き換える。トルコ語の「ı」を一般的な「i」に置き換える。
----@field public upper fun(str: string): string 入力された文字列を大文字に置き換える。トルコ語の「İ」を一般的な「I」に置き換える。
 
 CompatibilityUtils = {
     ---コンストラクタ
@@ -71,9 +69,9 @@ CompatibilityUtils = {
         ---@return integer compareResult 比較結果。0は同じ文字列、1はターゲットの方が大きい、-1はターゲットの方が小さいことを表す。
         local function compareToCenterElement(from, to)
             local centerIndex = math.floor((to - from) / 2) + from
-            if self.registries[self.lower(registryType)][centerIndex] < target then
+            if self.registries[self.parent.stringUtils.lower(registryType)][centerIndex] < target then
                 return 1
-            elseif self.registries[self.lower(registryType)][centerIndex] > target then
+            elseif self.registries[self.parent.stringUtils.lower(registryType)][centerIndex] > target then
                 return -1
             else
                 return 0
@@ -81,7 +79,7 @@ CompatibilityUtils = {
         end
 
         local startIndex = 1
-        local endIndex = #self.registries[self.lower(registryType)]
+        local endIndex = #self.registries[self.parent.stringUtils.lower(registryType)]
         while startIndex < endIndex do
             local compareResult = compareToCenterElement(startIndex, endIndex)
             if compareResult == 1 then
@@ -155,25 +153,5 @@ CompatibilityUtils = {
         if client:getVersion() < "1.20.5" then
             renderer:setPostEffect(effect)
         end
-    end;
-
-    ---入力された文字列を小文字に置き換える。
-    ---トルコ語の「ı」を一般的な「i」に置き換える。
-    ---@param str string 小文字に変換する対象の文字列
-    ---@return string loweredString 小文字に変換された文字列
-    lower = function (str)
-        local result = str:lower()
-        result = result:gsub("ı", "i")
-        return result
-    end;
-
-    ---入力された文字列を大文字に置き換える。
-    ---トルコ語の「İ」を一般的な「I」に置き換える。
-    ---@param str string 大文字に変換する対象の文字列
-    ---@return string loweredString 大文字に変換された文字列
-    upper = function (str)
-        local result = str:upper()
-        result = result:gsub("İ", "I")
-        return result
     end;
 }

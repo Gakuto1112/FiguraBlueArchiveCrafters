@@ -1,5 +1,6 @@
 ---@class Avatar アバターのメインクラス
 ---@field public avatarEvents AvatarEvents
+---@field public stringUtils StringUtils
 ---@field public modelUtils ModelUtils
 ---@field public compatibilityUtils CompatibilityUtils
 ---@field public debugUtils DebugUtils
@@ -48,6 +49,10 @@ Avatar = {
 		require("scripts.avatar_modules.events.avatar_events")
 		instance.avatarEvents = AvatarEvents.new(instance)
 		instance.avatarEvents:init()
+
+		require("scripts.avatar_modules.utils.string_utils")
+		instance.stringUtils = StringUtils.new(instance)
+		instance.stringUtils:init()
 
 		require("scripts.avatar_modules.utils.model_utils")
 		instance.modelUtils = ModelUtils.new(instance)
