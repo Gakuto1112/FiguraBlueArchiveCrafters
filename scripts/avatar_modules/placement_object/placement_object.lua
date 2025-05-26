@@ -1,11 +1,10 @@
 ---@class (exact) PlacementObject : SpawnObject 単一の設置物を管理するクラス
----@field package object ModelPart インスタンスで制御するオブジェクト
+---@field public object ModelPart インスタンスで制御するオブジェクト
 ---@field public index integer 設置物データのインデックス番号。設置物のデータを参照するときに使用する。
 ---@field package boundingBox Vector3 設置物の当たり判定
 ---@field package gravity number この設置物に働く重力の大きさ
 ---@field package hasFireResistance boolean この設置物に炎耐性を付けるかどうか
 ---@field public removeReason PlacementObjectManager.RemoveReason この設置物のインスタンスが破棄される理由
----@field package modelOffsetPos Vector3 設置物"モデル"の位置オフセット値
 ---@field package offsetPos Vector3 設置物の中心座標のオフセット値
 ---@field public currentPos Vector3 設置物の現在位置
 ---@field package nextPos Vector3 設置物の次ティックの位置
@@ -30,7 +29,6 @@ PlacementObject = {
         instance.gravity = instance.parent.characterData.placementObjects[instance.index].gravity ~= nil and instance.parent.characterData.placementObjects[instance.index].gravity or 1
         instance.hasFireResistance = instance.parent.characterData.placementObjects[instance.index].hasFireResistance ~= nil and instance.parent.characterData.placementObjects[instance.index].hasFireResistance or false
         instance.removeReason = "REMOVED_BY_SCRIPTS"
-        instance.modelOffsetPos = vectors.vec3()
         instance.offsetPos = vectors.vec3()
         instance.currentPos = pos
         instance.nextPos = instance.currentPos
@@ -43,16 +41,6 @@ PlacementObject = {
                 if self.parent.characterData.placementObjects[self.index].placementMode == "COPY" then
                     models.script_placement_object:addChild(self.object)
                 end
-                local objectOffset = vectors.vec3()
-                if self.parent.characterData.placementObjects[self.index].boundingBox.offsetPos ~= nil then
-                    objectOffset = self.parent.characterData.placementObjects[self.index].boundingBox.offsetPos:copy():scale(-0.0625)
-                end
-                if self.gravity >= 0 then
-                    self.modelOffsetPos = objectOffset:copy():add(0, 0.075, 0)
-                else
-                    self.modelOffsetPos = objectOffset:copy():add(0, -0.075, 0)
-                end
-                --self.objectModel:setPos(self.currentPos:copy():add(self.modelOffsetPos):scale(16))
                 self.object:setRot(0, rot, 0)
                 self.object:setVisible(true)
                 if self.parent.characterData.placementObjects[self.index].callbacks ~= nil and self.parent.characterData.placementObjects[self.index].callbacks.onInit ~= nil then
@@ -77,7 +65,8 @@ PlacementObject = {
             onTick = function (self)
                 --設置物の位置を強制更新
                 self.currentPos = self.nextPos
-                self.object:setPos(self.currentPos:copy():add(self.modelOffsetPos):scale(16))
+                self.object:setPos(self.currentPos:copy():scale(16))
+                self.object:setLight(world.getBlockLightLevel(self.currentPos), world.getSkyLightLevel(self.currentPos))
 
                 --当たり判定同士が重複しているか確認
                 local boundingBoxStartPos = vectors.vec3(self.currentPos.x - self.boundingBox.x / 2, self.currentPos.y, self.currentPos.z - self.boundingBox.z / 2)
@@ -219,9 +208,9 @@ PlacementObject = {
 
             ---@param self PlacementObject
             onRender = function (self, delta, context)
-                self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos):add(self.modelOffsetPos):scale(16))
+                self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos):scale(16))
                 if self.parent.characterData.placementObjects[self.index].callbacks ~= nil and self.parent.characterData.placementObjects[self.index].callbacks.onRender ~= nil then
-                    self.parent.characterData.placementObjects[self.index].callbacks.onRender(self.parent.characterData, self)
+                    self.parent.characterData.placementObjects[self.index].callbacks.onRender(self.parent.characterData, self, delta)
                 end
             end
         }
