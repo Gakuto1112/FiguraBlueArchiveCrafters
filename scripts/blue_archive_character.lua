@@ -56,6 +56,7 @@
 ---@field public leftEye {[BlueArchiveCharacter.LeftEyeTextures]: Vector2} 左目のテクスチャのUVマッピング情報
 ---@field public mouth {[BlueArchiveCharacter.MouthTextures]: Vector2} 口のテクスチャのUVマッピング情報
 ---@field public emotionSet? BlueArchiveCharacter.OverrideEmotionSet 特定の状況における表情を上書きする
+---@field public callbacks? BlueArchiveCharacter.FacePartsCallbacksSet 表情のコールバック
 
 ---@class BlueArchiveCharacter.ArmsStruct 腕のデータ構造体
 ---@field public callbacks? BlueArchiveCharacter.ArmsCallbacksSet 腕の制御のコールバック関数群
@@ -116,6 +117,9 @@
 ---@field public rightEye BlueArchiveCharacter.RightEyeTextures 右目の表情名
 ---@field public leftEye BlueArchiveCharacter.LeftEyeTextures 左目の表情名
 ---@field public mouth BlueArchiveCharacter.MouthTextures 口の表情名
+
+---@class (exact) BlueArchiveCharacter.FacePartsCallbacksSet 表情のコールバック関数のセット
+---@field public onPlay? fun(self: BlueArchiveCharacter, right: BlueArchiveCharacter.RightEyeTextures, left: BlueArchiveCharacter.LeftEyeTextures, mouth: BlueArchiveCharacter.MouthTextures) 表情が変化したときのコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.ArmsCallbacksSet 腕処理のコールバック関数のセット
 ---@field public onArmStateChanged? fun(self: BlueArchiveCharacter, right: integer, left: integer): {right?: integer, left?: integer}|nil 腕の状態が変更された際のコールバック関数

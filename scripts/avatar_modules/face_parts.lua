@@ -78,6 +78,10 @@ FaceParts = {
 				models.models.main.Avatar.Head.FaceParts.Mouth:setVisible(false)
 			end
 
+			if self.parent.characterData.faceParts.callbacks ~= nil and self.parent.characterData.faceParts.callbacks.onPlay ~= nil then
+				self.parent.characterData.faceParts.callbacks.onPlay(self.parent.characterData, rightEye, leftEye, mouth)
+			end
+
 			self.emotionCount = duration
 		end
 	end;
