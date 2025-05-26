@@ -103,7 +103,7 @@ HeadRing = {
             end
         end)
 
-        models.models.main.Avatar.Head.HeadRing:setLight(15)
+        models.models.main.Avatar.Head.HeadRing:setLight(15, 15)
         animations["models.main"].halo_sleep:setSpeed(-1)
     end;
 }
