@@ -92,6 +92,7 @@ Watch also:
   | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. She hides in the chest while sneaking. |
   | Hikari | - Can dance with Nozomi. |
   | Nozomi | - Rushs the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
+  | Reisa | - Places a challange letter in front of her after playing the Ex Skill. It has some challenging words written on it. |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
