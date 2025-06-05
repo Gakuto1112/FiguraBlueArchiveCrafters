@@ -129,7 +129,7 @@ jobs:
           COMPRESS_REQUIRED: ${{ steps.merge_branch.outcome == 'success' && steps.check_texture_changes.outcome == 'success' }}
           BRANCH_NAME: ${{ matrix.target_branch }}
       - name: Upload artifact
-        uses: actions/upload-artifact@v4.6.1
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: ${{ matrix.target_branch }}
           path: ./${{ matrix.target_branch }}.json
@@ -145,7 +145,7 @@ jobs:
       - name: Prepare artifacts directory
         run: mkdir ./branches
       - name: Download artifacts
-        uses: actions/download-artifact@v4.1.9
+        uses: actions/download-artifact@v4.3.0
         with:
           path: ./branches
       - name: Get generate readme branch array
@@ -186,7 +186,7 @@ jobs:
       - name: Prepare artifacts directory
         run: mkdir ./branches
       - name: Download artifacts
-        uses: actions/download-artifact@v4.1.9
+        uses: actions/download-artifact@v4.3.0
         with:
           path: ./branches
       - name: Get compress textures branch array
@@ -230,7 +230,7 @@ jobs:
       - name: Prepare artifacts directory
         run: mkdir ./branches
       - name: Download artifacts
-        uses: actions/download-artifact@v4.1.9
+        uses: actions/download-artifact@v4.3.0
         with:
           path: ./branches
       - name: Check if conflicts occurred

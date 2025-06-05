@@ -15,17 +15,17 @@ jobs:
       contents: write
     steps:
       - name: Checkout avatar repository
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.2
         with:
           path: ./avatar
           ref: ${{ inputs.branch-name }}
       - name: Checkout template repository
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.2
         with:
           repository: Gakuto1112/FiguraAvatarsReadmeTemplate
           path: ./generator
       - name: Setup Node.js@20.12.0
-        uses: actions/setup-node@v4.0.2
+        uses: actions/setup-node@v4.4.0
         with:
           node-version: 20.12.0
           cache: npm

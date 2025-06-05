@@ -20,7 +20,7 @@ jobs:
       target_branches: ${{ steps.output_target_branches.outputs.target_branches }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4.2.2
         with:
           fetch-depth: 0
       - name: Get target branches
