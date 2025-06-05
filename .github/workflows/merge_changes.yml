@@ -121,7 +121,7 @@ jobs:
           --arg is_conflict "${CONFLICT_OCCURRED}" \
           --arg generate_required "${GENERATE_REQUIRED}" \
           --arg compress_required "${COMPRESS_REQUIRED}" \
-          '{"generate_required": $generate_required, "compress_required": $compress_required}' \
+          '{"conflict_occurred": $is_conflict, "generate_required": $generate_required, "compress_required": $compress_required}' \
           > ./${BRANCH_NAME}.json
         env:
           CONFLICT_OCCURRED: ${{ steps.merge_branch.outcome == 'failure' }}
@@ -216,13 +216,43 @@ jobs:
     uses: Gakuto1112/FiguraAvatarTextureCompressor/.github/workflows/compress_avatar_texture.yml@main
     with:
       target_branch: ${{ matrix.target_branch }}
+  check_conflict:
+    name: Check if conflict occurred
+    needs: merge_branch
+    if: ${{ !failure() && !cancelled() && inputs.autoBranchDeletion}}
+    runs-on: ubuntu-latest
+    outputs:
+      conflict_occurred: ${{ steps.check_conflict.outputs.conflict_occurred }}
+    steps:
+      - name: Prepare artifacts directory
+        run: mkdir ./branches
+      - name: Download artifacts
+        uses: actions/download-artifact@v4.3.0
+        with:
+          path: ./branches
+      - name: Check conflict
+        id: check_conflict
+        run: |
+          conflict_occurred=false
+          for file in $(ls ./branches); do
+            result=$(cat ./branches/${file}/${file}.json | jq -r '.conflict_occurred')
+            if [ ${result} = 'true' ]; then
+              echo conflict_occurred=true >> $GITHUB_OUTPUT
+              conflict_occurred=true
+              break
+            fi
+          done
+          if "${conflict_occurred}"; then
+            echo conflict_occurred=false >> $GITHUB_OUTPUT
+          fi
   delete_target_branch:
     name: Delete target branch
     needs:
       - merge_branch
       - generate_readme
       - compress_textures
-    if: ${{ !failure() && !cancelled() && inputs.autoBranchDeletion }}
+      - check_conflict
+    if: ${{ needs.check_conflict.result == 'success' && !needs.check_conflict.outputs.conflict_occurred }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
