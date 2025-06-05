@@ -61,6 +61,9 @@
 - 羽川ハスミ（[#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128)）
 - 浅黄ムツキ（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129)）
 - 空崎ヒナ（[#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130)）
+- 秋泉モミジ（[#138](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/138)）
+- 柚鳥ナツ（[#139](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/139)）
+- 仲正イチカ（[#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。

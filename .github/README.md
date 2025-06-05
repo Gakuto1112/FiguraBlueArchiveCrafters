@@ -61,6 +61,9 @@ I have received requests to create these characters. However, I can't promise th
 - Hasumi Hanekawa ([#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128))
 - Mutsuki Asagi ([#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129))
 - Hina Sorasaki ([#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130))
+- Momiji Akiizumi ([#138](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/138))
+- Natsu Yutori ([#139](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/139))
+- Ichika Nakamasa ([#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140))
 
 ## Features
 - Imitated ex skill cut-ins.
