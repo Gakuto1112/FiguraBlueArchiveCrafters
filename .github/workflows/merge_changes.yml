@@ -252,7 +252,7 @@ jobs:
       - generate_readme
       - compress_textures
       - check_conflict
-    if: ${{ needs.check_conflict.result == 'success' && needs.check_conflict.outputs.conflict_occurred == 'false' }}
+    if: ${{ always() && needs.check_conflict.result == 'success' && needs.check_conflict.outputs.conflict_occurred == 'false' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
