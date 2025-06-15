@@ -77,9 +77,9 @@ Watch also:
   | Character name | Features |
   | - | - |
   | Shizuko (Normal) | - Leaves a stall in place after playing the Ex Skill. |
-  | Izuna (Normal) | - Has a special performance when warping with ender pearl, etc. |
+  | Izuna | - Has a special performance when warping with ender pearl, etc. |
   | Shiroko | - Grabs her drone and fries away during creative flights. <br> - Her drone can launch missiles (visual only). <br> - The horse is replaced with her bicycle when riding a horse, mule, or donkey with a saddle. <br> - Drinking portions are replaced with a sports bottle when riding a bicycle (horses). |
-  | Hoshino | - The shield is replaced with her own. |
+  | Hoshino | - Shields are replaced with her own. |
   | Hoshino (Swimsuit) | - The boat are replaced with a whale float when she is alone in the boat. |
   | Hoshino (Battle) | - Holds her shotgun and handgun when you holds bows or crossbows with both hands. |
   | Umika | - Leaves a firework launcher in place after playing the Ex Skill. <br> - Firework launchers can launch fireworks (visual only). |
@@ -93,6 +93,7 @@ Watch also:
   | Hikari | - Can dance with Nozomi. |
   | Nozomi | - Rushs the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
   | Reisa | - Places a challange letter in front of her after playing the Ex Skill. It has some challenging words written on it. |
+　| Michiru | - Has a special performance when warping with ender pearl, etc. <br> - Swords and rocket fireworks are replace with uniquie models. |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
