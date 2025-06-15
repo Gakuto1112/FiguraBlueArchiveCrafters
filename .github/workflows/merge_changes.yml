@@ -242,7 +242,7 @@ jobs:
               break
             fi
           done
-          if "${conflict_occurred}"; then
+          if [ ${conflict_occurred} = 'false' ]; then
             echo conflict_occurred=false >> $GITHUB_OUTPUT
           fi
   delete_target_branch:
