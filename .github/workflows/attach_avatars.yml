@@ -46,7 +46,7 @@ jobs:
         run: npm install
       - name: Generate readme.txt
         working-directory: ./packer/src
-        run: ../node_modules/.bin/ts-node ./readme_txt_generator.ts FiguraBlueArchiveCharacters ${TAG_NAME} ${RELEASE_DATE} true ${BRANCH_NAME}
+        run: ../node_modules/.bin/ts-node ./readme_txt_generator.ts Gakuto1112/FiguraBlueArchiveCharacters ${TAG_NAME} ${RELEASE_DATE} true ${BRANCH_NAME}
         env:
           TAG_NAME: ${{ github.ref_name }}
           RELEASE_DATE: ${{ github.event.release.created_at }}
