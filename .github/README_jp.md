@@ -16,7 +16,55 @@
 - [FBAC動画 再生リスト](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
 - [FBACショート動画 再生リスト](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
 
-<!-- ERROR: Unknown inject tag "creation_status" -->
+## 作成状況
+### 作成済み
+これらのキャラクターのアバターは完成しました。「[使用方法](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/base/.github/README_jp.md#使用方法)」の章に従ってダウンロード及びゲーム内での使用が可能です。
+
+- 河和シズコ
+- 久田イズナ
+- 伊落マリー
+- 才羽モモイ
+- 才羽ミドリ
+- 砂狼シロコ
+- 小鳥遊ホシノ
+- 里浜ウミカ
+- 鷲見セリナ
+- 棗イロハ
+- 丹花イブキ
+- 百合園セイア
+- 天童アリス
+- 花岡ユズ
+- 橘ヒカリ
+- 橘ノゾミ
+- 宇沢レイサ
+- 千鳥ミチル
+
+### 作成中
+これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
+
+（現在作成中のアバターはありません。）
+
+### 作成予定
+これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
+
+- 阿慈谷ヒフミ（[#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)）
+- 早瀬ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102)）
+- 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
+
+### リクエスト
+これらのキャラクターのアバターは作成のリクエストを受けました。ただし、リクエストを受けたからといって、必ず作成するとは約束できません。ご了承ください。
+
+- 伊草ハルカ（[#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98)）
+- 飛鳥馬トキ（[#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104)）
+- 陸八魔アル（[#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103)）
+- 杏山カズサ（[#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114)）
+- 調月リオ（[#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116)）
+- 羽川ハスミ（[#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128)）
+- 浅黄ムツキ（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129)）
+- 空崎ヒナ（[#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130)）
+- 秋泉モミジ（[#138](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/138)）
+- 柚鳥ナツ（[#139](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/139)）
+- 仲正イチカ（[#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。
@@ -77,7 +125,7 @@
   | 生徒名 | 機能 |
   | - | - |
   | シズコ（通常） | - Exスキル再生後に屋台をその場に残します。 |
-  | イズナ（通常） | - エンダーパールなどでのワープ時に特別な演出があります。 |
+  | イズナ | - エンダーパールなどでのワープ時に特別な演出があります。 |
   | シロコ | - クリエイティブ飛行ではドローンに捕まって飛びます。 <br> - ドローンはミサイルが撃てます（視覚的な演出のみ）。<br> - サドル付きの馬系に乗ると馬が自転車に置き換えられます。 <br> - 自転車に乗っているときは飲む系のポーションがスポーツ水筒になります。 |
   | ホシノ | - 盾が独自のモデルに置き換えられます。 |
   | ホシノ（水着） | - ボートに1人乗りしている場合のみ、ボートがクジラのフロートに置き換えられます。 |
@@ -93,6 +141,7 @@
   | ヒカリ | - ノゾミと一緒にダンスを踊れます。 |
   | ノゾミ | - Exスキル再生後に汽車を突進させます（視覚的な演出のみ）。 <br> - ヒカリと一緒にダンスが踊れます。 |
   | レイサ | - Exスキル後、目の前に挑戦状を叩きつけます。何やら挑戦的な言葉が書かれています。 |
+  | ミチル | - エンダーパールなどでのワープ時に特別な演出があります。<br> - 剣やロケット花火が独自のモデルに置き換えられます。 |
 
 ## Exスキル
 本家でお馴染みのExスキルのカットインが再現されています。Exスキルを再生するには、**三人称視点で**Exスキルのキー（デフォルトは「G」キー）を押してください。

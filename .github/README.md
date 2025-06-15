@@ -16,7 +16,55 @@ Watch also:
 - [FBAC videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
 - [FBAC short videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
 
-<!-- ERROR: Unknown inject tag "creation_status" -->
+## Creation status
+### Done
+The avatars for these characters are completed. You can download and use avatars below in the game according to the chapter "[How to use](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/base/.github/README.md#how-to-use)".
+
+- Shizuko Kawawa
+- Izuna Kuda
+- Mari Iochi
+- Momoi Saiba
+- Midori Saiba
+- Shiroko Sunaookami
+- Hoshino Takanashi
+- Umika Satohama
+- Serina Sumi
+- Iroha Natsume
+- Ibuki Tanga
+- Seia Yurizono
+- Aris Tendo
+- Yuzu Hanaoka
+- Hikari Tachibana
+- Nozomi Tachibana
+- Reisa Uzawa
+- Michiru Chidori
+
+### In progress
+The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
+
+(There is no avatar currently being created.)
+
+### Planned
+Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
+
+- Hihumi Ajitani ([#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39))
+- Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102))
+- Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37))
+
+### Requested
+I have received requests to create these characters. However, I can't promise that I'll create them. Please understand this.
+
+- Haruka Igusa ([#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98))
+- Toki Asuma ([#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104))
+- Aru Rikuhachima ([#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103))
+- Kazusa Kyoyama ([#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114))
+- Rio TsukaTsuki ([#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116))
+- Hasumi Hanekawa ([#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128))
+- Mutsuki Asagi ([#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129))
+- Hina Sorasaki ([#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130))
+- Momiji Akiizumi ([#138](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/138))
+- Natsu Yutori ([#139](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/139))
+- Ichika Nakamasa ([#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140))
 
 ## Features
 - Imitated ex skill cut-ins.
@@ -77,9 +125,9 @@ Watch also:
   | Character name | Features |
   | - | - |
   | Shizuko (Normal) | - Leaves a stall in place after playing the Ex Skill. |
-  | Izuna (Normal) | - Has a special performance when warping with ender pearl, etc. |
+  | Izuna | - Has a special performance when warping with ender pearl, etc. |
   | Shiroko | - Grabs her drone and fries away during creative flights. <br> - Her drone can launch missiles (visual only). <br> - The horse is replaced with her bicycle when riding a horse, mule, or donkey with a saddle. <br> - Drinking portions are replaced with a sports bottle when riding a bicycle (horses). |
-  | Hoshino | - The shield is replaced with her own. |
+  | Hoshino | - Shields are replaced with her own. |
   | Hoshino (Swimsuit) | - The boat are replaced with a whale float when she is alone in the boat. |
   | Hoshino (Battle) | - Holds her shotgun and handgun when you holds bows or crossbows with both hands. |
   | Umika | - Leaves a firework launcher in place after playing the Ex Skill. <br> - Firework launchers can launch fireworks (visual only). |
@@ -93,6 +141,7 @@ Watch also:
   | Hikari | - Can dance with Nozomi. |
   | Nozomi | - Rushs the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
   | Reisa | - Places a challange letter in front of her after playing the Ex Skill. It has some challenging words written on it. |
+　| Michiru | - Has a special performance when warping with ender pearl, etc. <br> - Swords and rocket fireworks are replace with uniquie models. |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
