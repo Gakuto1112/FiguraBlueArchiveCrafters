@@ -116,8 +116,8 @@ Bubble = {
     ---@return boolean canShowBubble 吹き出しエモートを表示できるかどうか
     canShowBubble = function(self)
         local firstCheck = self.parent.exSkill.animationCount == -1 and (self.bubbleCount == 0 or self.isAutoBubble)
-        if self.parent.characterData.bubble.callbacks ~= nil and self.parent.characterData.bubble.callbacks.addtionalCheckFunc ~= nil then
-            return firstCheck and self.parent.characterData.bubble.callbacks.addtionalCheckFunc(self.parent.characterData)
+        if self.parent.characterData.bubble.callbacks ~= nil and self.parent.characterData.bubble.callbacks.additionalCheckFunc ~= nil then
+            return firstCheck and self.parent.characterData.bubble.callbacks.additionalCheckFunc(self.parent.characterData)
         else
             return firstCheck
         end
