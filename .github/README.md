@@ -65,6 +65,8 @@ I have received requests to create these characters. However, I can't promise th
 - Momiji Akiizumi ([#138](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/138))
 - Natsu Yutori ([#139](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/139))
 - Ichika Nakamasa ([#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140))
+- Tsurugi Kenzaki ([#145](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/145))
+- Akari Wakibuchi ([#146](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/146))
 
 ## Features
 - Imitated ex skill cut-ins.

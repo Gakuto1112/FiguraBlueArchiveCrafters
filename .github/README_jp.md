@@ -65,6 +65,8 @@
 - 秋泉モミジ（[#138](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/138)）
 - 柚鳥ナツ（[#139](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/139)）
 - 仲正イチカ（[#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140)）
+- 剣先ツルギ（[#145](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/145)）
+- 鰐渕アカリ（[#146](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/146)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。
