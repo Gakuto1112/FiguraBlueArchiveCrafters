@@ -18,6 +18,11 @@ Watch also:
 
 <!-- $inject(creation_status) -->
 
+## Announcement
+I am currently pausing the creation of FBAC and focusing on creating videos using FBAC students. Please allow me some time to publish the video as I have a lot of work to do.
+
+![FBAC Video Project](../README_images/fbac_video_project.jpg)
+
 ## Features
 - Imitated ex skill cut-ins.
 
