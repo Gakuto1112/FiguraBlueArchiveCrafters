@@ -68,6 +68,11 @@ I have received requests to create these characters. However, I can't promise th
 - Tsurugi Kenzaki ([#145](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/145))
 - Akari Wakibuchi ([#146](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/146))
 
+## Announcement
+I am currently pausing the creation of FBAC and focusing on creating videos using FBAC students. Please allow me some time to publish the video as I have a lot of work to do.
+
+![FBAC Video Project](./README_images/fbac_video_project.jpg)
+
 ## Features
 - Imitated ex skill cut-ins.
 

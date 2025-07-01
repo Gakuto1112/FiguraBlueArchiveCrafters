@@ -68,6 +68,12 @@
 - 剣先ツルギ（[#145](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/145)）
 - 鰐渕アカリ（[#146](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/146)）
 
+## お知らせ
+現在FBACの作成を一時停止し、FBAC生徒を用いた動画作成に注力しています。作業量が多いので公開までお時間をいただきますがよろしくお願いします。
+
+![FBAC動画プロジェクト](./README_images/fbac_video_project.jpg)
+
+
 ## 特徴
 - Exスキルのカットインを再現しています。
 
