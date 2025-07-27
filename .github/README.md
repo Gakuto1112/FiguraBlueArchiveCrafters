@@ -42,7 +42,7 @@ The avatars for these characters are completed. You can download and use avatars
 ### In progress
 The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-- Seia Yurizono (Swimsuit) ([#147](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/147))
+(There is no avatar currently being created.)
 
 ### Planned
 Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
@@ -142,7 +142,7 @@ I am currently pausing the creation of FBAC and focusing on creating videos usin
   | Serina (Christmas) | - Bells are replaced with her handbell. <br> - Can play Christmas songs with her handbell after playing the Ex Skill. (7 songs). |
   | Iroha | - The camel are replaced with Toramaru (a tank) when she is alone on the camel with a saddle. <br> - Toramaru can shoot a shell (visual only). |
   | Ibuki | - I can patrol with Iroha! |
-  | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (this is a substitute for the long-tailed tit.). |
+  | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (this is a substitute for the long-tailed tit.). <br> - The horse is replaced with her convertible car when riding a horse, mule, or donkey with a saddle. |
   | Aris | - After the Ex Skill is played, her railgun will be overcharged state and can shoot a more powerful shot (visual only). |
   | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. She hides in the chest while sneaking. |
   | Hikari | - Can dance with Nozomi. |
