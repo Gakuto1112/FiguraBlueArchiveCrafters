@@ -19,9 +19,9 @@
 <!-- $inject(creation_status) -->
 
 ## お知らせ
-現在FBACの作成を一時停止し、FBAC生徒を用いた動画作成に注力しています。作業量が多いので公開までお時間をいただきますがよろしくお願いします。
+マインクラフトの世界のシャーレの日常を再現した動画を公開しました！
 
-![FBAC動画プロジェクト](../README_images/fbac_video_project.jpg)
+https://www.youtube.com/watch?v=GfJJ7iNA_Bs
 
 
 ## 特徴
