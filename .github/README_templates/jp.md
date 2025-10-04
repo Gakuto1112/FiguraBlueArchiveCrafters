@@ -23,7 +23,6 @@
 
 https://www.youtube.com/watch?v=GfJJ7iNA_Bs
 
-
 ## 特徴
 - Exスキルのカットインを再現しています。
 

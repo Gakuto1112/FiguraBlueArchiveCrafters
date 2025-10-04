@@ -19,9 +19,9 @@ Watch also:
 <!-- $inject(creation_status) -->
 
 ## Announcement
-I am currently pausing the creation of FBAC and focusing on creating videos using FBAC students. Please allow me some time to publish the video as I have a lot of work to do.
+I have released a video that imitating the daily file of the Schale in the Minecraft world!
 
-![FBAC Video Project](../README_images/fbac_video_project.jpg)
+https://www.youtube.com/watch?v=GfJJ7iNA_Bs
 
 ## Features
 - Imitated ex skill cut-ins.
