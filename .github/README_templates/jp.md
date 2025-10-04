@@ -8,9 +8,9 @@
 
 <!-- DESCRIPTION_END -->
 
-[![サムネイル](../README_images/thumbnail.jpg)](https://youtu.be/JrPhLR34mLA)
+![サムネイル](../README_images/thumbnail.jpg)
 
-（上記画像をクリックすると紹介映像が見れます。）
+https://youtu.be/JrPhLR34mLA
 
 こちらもどうぞ：
 - [FBAC動画 再生リスト](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)

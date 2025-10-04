@@ -8,9 +8,9 @@ Target figura version: [0.1.5](https://modrinth.com/mod/figura/version/0.1.5b+1.
 
 <!-- DESCRIPTION_END -->
 
-[![Thumbnail](../README_images/thumbnail.jpg)](https://youtu.be/JrPhLR34mLA)
+![Thumbnail](../README_images/thumbnail.jpg)
 
-(You can watch the introduction video by clicking the above image.)
+https://youtu.be/JrPhLR34mLA
 
 Watch also:
 - [FBAC videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
