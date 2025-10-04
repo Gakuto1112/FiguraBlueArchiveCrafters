@@ -8,9 +8,9 @@ Target figura version: [0.1.5](https://modrinth.com/mod/figura/version/0.1.5b+1.
 
 <!-- DESCRIPTION_END -->
 
-[![Thumbnail](./README_images/thumbnail.jpg)](https://youtu.be/JrPhLR34mLA)
+![Thumbnail](./README_images/thumbnail.jpg)
 
-(You can watch the introduction video by clicking the above image.)
+https://youtu.be/JrPhLR34mLA
 
 Watch also:
 - [FBAC videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
@@ -69,9 +69,9 @@ I have received requests to create these characters. However, I can't promise th
 - Akari Wakibuchi ([#146](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/146))
 
 ## Announcement
-I am currently pausing the creation of FBAC and focusing on creating videos using FBAC students. Please allow me some time to publish the video as I have a lot of work to do.
+I have released a video that imitating the daily file of the Schale in the Minecraft world!
 
-![FBAC Video Project](./README_images/fbac_video_project.jpg)
+https://www.youtube.com/watch?v=GfJJ7iNA_Bs
 
 ## Features
 - Imitated ex skill cut-ins.
