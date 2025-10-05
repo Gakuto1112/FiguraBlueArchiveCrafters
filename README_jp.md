@@ -38,6 +38,7 @@ https://youtu.be/JrPhLR34mLA
 - 橘ノゾミ
 - 宇沢レイサ
 - 千鳥ミチル
+- 阿慈谷ヒフミ
 
 ### 作成中
 これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
@@ -47,7 +48,6 @@ https://youtu.be/JrPhLR34mLA
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
-- 阿慈谷ヒフミ（[#39](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/39)）
 - 早瀬ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102)）
 - 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
 
