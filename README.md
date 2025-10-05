@@ -8,7 +8,7 @@ Target figura version: [0.1.5](https://modrinth.com/mod/figura/version/0.1.5b+1.
 
 <!-- DESCRIPTION_END -->
 
-![Thumbnail](./README_images/thumbnail.jpg)
+![Thumbnail](./.github/README_images/thumbnail.jpg)
 
 https://youtu.be/JrPhLR34mLA
 
@@ -76,54 +76,54 @@ https://www.youtube.com/watch?v=GfJJ7iNA_Bs
 ## Features
 - Imitated ex skill cut-ins.
 
-  ![Ex skill](./README_images/ex_skill.jpg)
+  ![Ex skill](./.github/README_images/ex_skill.jpg)
 
 - An object remains after the ex skill if the ex skill type is "leaving something in a place".
   - The object doesn't affect the game at all.
   - The object will be remove when the hit boxes of a block and it are overlapped.
   - You can remove all placement objects by holding the Ex skill key (default: V).
 
-  ![Placement object](./README_images/placement_object.jpg)
+  ![Placement object](./.github/README_images/placement_object.jpg)
 
 - Press cursor keys (↑→↓←) to show speech bubbles.
   - The "reload" speech bubble will appear automatically while loading a crossbow.
 
-  ![Speech bubble 1](./README_images/bubble_good.jpg)
+  ![Speech bubble 1](./.github/README_images/bubble_good.jpg)
 
-  ![Speech bubble 2](./README_images/bubble_reload.jpg)
+  ![Speech bubble 2](./.github/README_images/bubble_reload.jpg)
 
 - Holds the character's specific weapon instead of bows and crossbows. Shoots bullets instead of arrows.
   - Note that these changes are only in appearance. You are just shooting arrows in actual.
 
-  ![Gun](./README_images/gun.jpg)
+  ![Gun](./.github/README_images/gun.jpg)
 
 - A barrier will applied when the player has absorption hearts (yellow hearts).
 
-  ![Barrier](./README_images/barrier.jpg)
+  ![Barrier](./.github/README_images/barrier.jpg)
 
 - Will be rescued by the helicopter when the player dies.
   - This animation won't visible if the player isn't visible because of Minecraft and Figura specifications.
 
-  ![Rescued by helicopter](./README_images/death_animation.jpg)
+  ![Rescued by helicopter](./.github/README_images/death_animation.jpg)
 
 - Can change costume if the character has multiple costumes.
 
-  ![Costume](./README_images/costume.jpg)
+  ![Costume](./.github/README_images/costume.jpg)
 
 - Some characters have unique models for in-game vehicles.
 
-  ![Vehicle models](./README_images/vehicle_model.jpg)
+  ![Vehicle models](./.github/README_images/vehicle_model.jpg)
 
 - Can change your display name to the character's name.
   - Can also display the club name which the character is participated in.
   - **Other players also need to install Figura and give enough permissions** to see your display name.
 
-  ![Display name](./README_images/display_name.jpg)
+  ![Display name](./.github/README_images/display_name.jpg)
 
 - A cake emoji will be added during the student's birthday.
   - It won't be displayed if the display name is the player name.
 
-  ![Birth day](./README_images/birth_day.svg)
+  ![Birth day](./.github/README_images/birth_day.svg)
 
 - In addition to the above, there are other features that available only to certain characters.
 
@@ -156,7 +156,7 @@ The familiar Ex skill cut-in from the original game is imitated. To play Ex skil
 > [!IMPORTANT]
 > From v1.9.4, the Ex skill action play key has been changed from the "V" key to the "G" key.
 
-![Ex skill](./README_images/ex_skill.jpg)
+![Ex skill](./.github/README_images/ex_skill.jpg)
 
 Some characters have the secondary Ex skill. It can be played by pressing the "H" key.
 
@@ -172,17 +172,17 @@ Figura provides the action wheel with which players can play some actions (emote
 > [!IMPORTANT]
 > From v1.8.4, the Ex skill action has been changed to play on key press.
 
-![Action wheel](./README_images/action_wheel.jpg)
+![Action wheel](./.github/README_images/action_wheel.jpg)
 
 ### Action 1. Change costume
 Changes costume if the character has multiple costumes. Scroll to select the costume and closing the action wheel to confirm. Left-click to reset to current selection, and right-clock to reset to default during selection.
 
-![Costume](./README_images/costume.jpg)
+![Costume](./.github/README_images/costume.jpg)
 
 ### Action 2. Change display name
 Changes the player's display name. Scroll to select the name and closing the action wheel to confirm. Left-click to reset to current selection, and right-clock to reset to default during selection. However, **Other players also need to install Figura and give enough permissions** to see your display name.
 
-![Display name](./README_images/display_name_2.jpg)
+![Display name](./.github/README_images/display_name_2.jpg)
 
 ### Action 3. Toggle armors visible
 Toggles whether equipped armors are visible or not. Some costumes will be hidden not to interfere with the armors while equips them. This setting will only affects to vanilla armors.
@@ -192,7 +192,7 @@ I recommend to hide armors because they hide the avatar.
 ### Action 4. Toggle first-person weapon models
 Toggles whether weapon models (including students' guns) are visible or not in first person perspective. If toggled off, Minecraft items will be displayed instead. Regardless of this setting, weapon models are always displayed in third person perspective.
 
-![First-person weapon models](./README_images/first_person_weapons.jpg)
+![First-person weapon models](./.github/README_images/first_person_weapons.jpg)
 
 ### Action 5. Change amount of Ex skill frame particles
 Changes the amount of triangular particles that appear from the red or blue borders that appear during Ex skill animations. Reducing or disabling particles may improve performance.
@@ -202,7 +202,7 @@ As an additional option, I have added an option to disable the frame during the 
 ### Action 6. Toggle vehicle models
 Toggles the vehicle models replacement feature for some characters. This option is disabled for characters with no vehicle models.
 
-![Vehicle models](./README_images/vehicle_model_2.jpg)
+![Vehicle models](./.github/README_images/vehicle_model_2.jpg)
 
 ### Action 7. FPM compatibility mode
 This mode is for compatibility with [First-person Model](https://modrinth.com/mod/first-person-model). Avatar's head will be hidden in first-person perspective when enibling this mode. The head may not be rendered correctly in some environments, in which case this mode should be disabled.
@@ -224,7 +224,7 @@ Right click to copy the latest FBAC download link to your clipboard. Please acce
 ## FBAC version display
 From v2.0.0, when the action wheel is open, the version of FBAC currently in use and whether it has been updated are displayed in the upper left corner of the screen.
 
-![FBAC version display](./README_images/fbac_version.jpg)
+![FBAC version display](./.github/README_images/fbac_version.jpg)
 
 Updates are automatically checked once a day, but can also be done manually via the [action wheel](#action-8-check-for-fbac-updates).
 
@@ -264,4 +264,4 @@ Figura is available in [Forge](https://files.minecraftforge.net/net/minecraftfor
 
 ---
 
-![ID card](./README_images/id_card.jpg)
+![ID card](./.github/README_images/id_card.jpg)
