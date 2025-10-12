@@ -36,7 +36,7 @@ CameraManager = {
                     rawOffsetCameraPivot = rawOffsetCameraPivot == nil and vectors.vec3() or rawOffsetCameraPivot
                     local cameraPivot = player:getPos():add(0, 1.62, 0):add(rawOffsetCameraPivot)
                     local cameraDir = client:getCameraDir()
-                    local baseVector = vectors.rotateAroundAxis(math.deg(math.asin(cameraDir.y)), 0, 0.21, 0, vectors.rotateAroundAxis(math.deg(math.atan2(cameraDir.z, cameraDir.x)) * -1 - 90, 1, 0, 0, 0, 1, 0))
+                    local baseVector = vectors.rotateAroundAxis(math.deg(math.asin(cameraDir.y)), 0, 0.1, 0, vectors.rotateAroundAxis(math.deg(math.atan2(cameraDir.z, cameraDir.x)) * -1 - 90, 1, 0, 0, 0, 1, 0))
                     local minDistance = math.max(self.thirdPersonCameraDistance, 4)
                     if not self.COLLISION_DENIAL_DISABLED then
                         for i = 0, 3 do
