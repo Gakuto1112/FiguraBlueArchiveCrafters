@@ -27,11 +27,6 @@ Watch also:
 
 <!-- $inject(creation_status) -->
 
-## Announcement
-I have released a video that imitating the daily file of the Schale in the Minecraft world!
-
-https://www.youtube.com/watch?v=GfJJ7iNA_Bs
-
 ## Features
 - Imitated ex skill cut-ins.
 

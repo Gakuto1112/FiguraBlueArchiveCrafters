@@ -27,11 +27,6 @@ https://youtu.be/GfJJ7iNA_Bs
 
 <!-- $inject(creation_status) -->
 
-## お知らせ
-マインクラフトの世界のシャーレの日常を再現した動画を公開しました！
-
-https://www.youtube.com/watch?v=GfJJ7iNA_Bs
-
 ## 特徴
 - Exスキルのカットインを再現しています。
 
