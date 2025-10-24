@@ -143,7 +143,11 @@ Bubble = {
         animations["models.bubble"].bubble_show:setSpeed(1)
         models.models.main.Avatar.UpperBody.Body.Bubble:setVisible(true)
         if self.shouldShowInHud then
-            sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.item.pickup"), self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar))
+            if self.emoji == "NOTE" then
+                sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.experience_orb.pickup"), self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar), 1, 1.5)
+            else
+                sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.item.pickup"), self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar), 1, self.emoji == "GOOD" and 1.2 or (self.emoji == "HEART" and 1.5 or (self.emoji == "SWEAT" and 0.75 or 1)))
+            end
         end
 
         if events.TICK:getRegisteredCount("bubble_tick") == 0 then
