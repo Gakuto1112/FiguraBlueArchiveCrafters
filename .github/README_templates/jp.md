@@ -12,6 +12,15 @@
 
 https://youtu.be/JrPhLR34mLA
 
+---
+
+**\[NEW!\]** 先生の日常をイメージして作ったFBACアニメーション動画を公開しました！
+是非ご覧ください！
+
+https://youtu.be/GfJJ7iNA_Bs
+
+---
+
 こちらもどうぞ：
 - [FBAC動画 再生リスト](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
 - [FBACショート動画 再生リスト](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)

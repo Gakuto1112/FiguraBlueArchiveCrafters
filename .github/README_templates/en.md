@@ -12,6 +12,15 @@ Target figura version: [0.1.5](https://modrinth.com/mod/figura/version/0.1.5b+1.
 
 https://youtu.be/JrPhLR34mLA
 
+---
+
+**\[NEW!\]** I have released an FBAC animation video inspired by the daily life of a sensei!
+Please take a look!
+
+https://youtu.be/GfJJ7iNA_Bs
+
+---
+
 Watch also:
 - [FBAC videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
 - [FBAC short videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
