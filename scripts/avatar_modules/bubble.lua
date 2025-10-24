@@ -20,7 +20,7 @@
 ---@field public isChatOpened boolean チャットを開けているかどうか
 ---@field package isChatOpenedPrev boolean 前ティックにチャットを開けていたかどうか
 ---@field package canShowBubble fun(self: Bubble): boolean 吹き出しエモートを表示できるかどうかを取得する
----@field public play fun(self: Bubble, type: Bubble.BubbleType, duration: integer, offsetPos: Vector2, offsetRot: number, shouldShowInHud: boolean) 吹き出しエモートを再生する
+---@field public play fun(self: Bubble, type: Bubble.BubbleType, duration: integer, shouldShowInHud: boolean) 吹き出しエモートを再生する
 ---@field public stop fun(self: Bubble) 吹き出しエモートを停止する
 
 Bubble = {
@@ -49,12 +49,15 @@ Bubble = {
     init = function (self)
         AvatarModule.init(self)
 
+        animations["models.bubble"].bubble_show:setSpeed(-1)
+        animations["models.bubble"].bubble_show:play()
+
         models.models.bubble:addChild(models:newPart("Gui", "Gui"))
-        models.models.bubble.Gui:addChild(models.models.bubble.Camera.AvatarBubble:copy("FirstPersonBubble"))
-        models.models.bubble.Gui.FirstPersonBubble:setVisible(false)
-        for _, modelPart in ipairs({models.models.bubble.Camera.AvatarBubble, models.models.bubble.Gui.FirstPersonBubble}) do
-            modelPart:setScale(0, 0, 0)
-        end
+        local guiBubble = models.models.main.Avatar.UpperBody.Body.Bubble:copy("FirstPersonBubble")
+        guiBubble:setScale(4, 4, 4)
+        guiBubble:setPivot(6, 27, 0)
+        guiBubble:setParentType("None")
+        models.models.bubble.Gui:addChild(guiBubble)
 
         --エモートガイド
         if host:isHost() then
@@ -96,12 +99,12 @@ Bubble = {
 
             if player:getActiveItem().id == "minecraft:crossbow" then
                 if self:canShowBubble() and self.emoji ~= "RELOAD" then
-                    self:play("RELOAD", -1, vectors.vec2(), 0, false)
+                    self:play("RELOAD", -1, false)
                     self.isAutoBubble = true
                 end
             elseif self.isChatOpened and self.parent.exSkill.transitionCount == 0 and player:getPose() ~= "SLEEPING" then
                 if self:canShowBubble() and self.emoji ~= "DOTS" then
-                    self:play("DOTS", -1, vectors.vec2(), 0, false)
+                    self:play("DOTS", -1, false)
                     self.isAutoBubble = true
                 end
             elseif self.isAutoBubble then
@@ -127,21 +130,21 @@ Bubble = {
     ---@param self Bubble
     ---@param type Bubble.BubbleType 再生する絵文字の種類
     ---@param duration integer 吹き出しを表示している時間。-1にすると停止するまでずっと表示する。
-    ---@param offsetPos Vector2 吹き出しの位置のオフセット値
-    ---@param offsetRot number アバター周回上の、吹き出しが表示される位置のオフセット値
     ---@param shouldShowInHud boolean 一人称用にHUDに吹き出しを表示するかどうか
-    play = function (self, type, duration, offsetPos, offsetRot, shouldShowInHud)
+    play = function (self, type, duration, shouldShowInHud)
         self.emoji = type
         self.duration = duration
         self.shouldShowInHud = shouldShowInHud
         self.bubbleCount = 1
         self.emojiAnimationCount = 0
-        models.models.bubble.Camera.AvatarBubble.Emoji:setPrimaryTexture("CUSTOM", textures["textures.emojis."..self.parent.stringUtils.lower(self.emoji)])
-        models.models.bubble.Camera.AvatarBubble.Bullets:setVisible(self.emoji == "RELOAD")
-        models.models.bubble.Camera.AvatarBubble.Dots:setVisible(self.emoji == "DOTS")
+        models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Emoji:setPrimaryTexture("CUSTOM", textures["textures.emojis."..self.parent.stringUtils.lower(self.emoji)])
+        models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Bullets:setVisible(self.emoji == "RELOAD")
+        models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Dots:setVisible(self.emoji == "DOTS")
+        animations["models.bubble"].bubble_show:setSpeed(1)
+        models.models.main.Avatar.UpperBody.Body.Bubble:setVisible(true)
         if self.shouldShowInHud then
-            models.models.bubble.Gui.FirstPersonBubble.Emoji:setPrimaryTexture("CUSTOM", textures["textures.emojis."..self.parent.stringUtils.lower(self.emoji)])
             sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:entity.item.pickup"), self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar))
+            models.models.bubble.Gui.FirstPersonBubble:setVisible(true)
         end
 
         if events.TICK:getRegisteredCount("bubble_tick") == 0 then
@@ -150,7 +153,7 @@ Bubble = {
                     models.models.bubble.Gui.FirstPersonBubble:setVisible(self.shouldShowInHud and renderer:isFirstPerson())
                     self.bubbleCount = self.bubbleCount + 1
                     if self.bubbleCount == 0 then
-                        for _, modelPart in ipairs({models.models.bubble.Camera.AvatarBubble, models.models.bubble.Gui.FirstPersonBubble, models.models.bubble.Camera.AvatarBubble.Bullets, models.models.bubble.Gui.FirstPersonBubble.Bullets}) do
+                        for _, modelPart in ipairs({models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner, models.models.bubble.Gui.FirstPersonBubble, models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Bullets, models.models.bubble.Gui.FirstPersonBubble.Bullets}) do
                             modelPart:setVisible(false)
                         end
                         events.TICK:remove("bubble_tick")
@@ -166,7 +169,7 @@ Bubble = {
                         self.emojiAnimationCount = self.emojiAnimationCount == 25 and 0 or self.emojiAnimationCount
                         if self.emoji == "DOTS" then
                             for i = 1, 3 do
-                                models.models.bubble.Camera.AvatarBubble.Dots["Dot"..i]:setVisible(self.emojiAnimationCount >= 6 * i)
+                                models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Dots["Dot"..i]:setVisible(self.emojiAnimationCount >= 6 * i)
                             end
                         end
                     end
@@ -176,35 +179,22 @@ Bubble = {
 
         if events.RENDER:getRegisteredCount("bubble_render") == 0 then
             events.RENDER:register(function (delta, context)
-                models.models.bubble.Camera.AvatarBubble:setVisible(context ~= "OTHER")
+                models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner:setVisible(context ~= "OTHER")
                 if not client:isPaused() then
-                    local bubbleScale = math.min(math.abs(0.5 * (self.bubbleCount + delta)), 1)
-                    models.models.bubble.Camera.AvatarBubble:setScale(vectors.vec3(1, 1, 1):scale(bubbleScale))
-                    local playerPos = self.parent.modelUtils.getModelWorldPos(models.models.main.Avatar)
-                    local avatarBubblePos = context == "PAPERDOLL" and vectors.vec3(0, 32, 0) or vectors.rotateAroundAxis(player:getBodyYaw(delta) + 180, playerPos:copy():sub(player:getPos(delta)):scale(17.067):add(0, 32 + offsetPos.y, 0), 0, 1, 0)
-                    if not renderer:isFirstPerson() then
-                        local cameraPos = client:getCameraPos()
-                        avatarBubblePos:add(vectors.rotateAroundAxis(math.deg(math.atan2(cameraPos.z - playerPos.z, cameraPos.x - playerPos.x) - math.pi / 2) % 360 - (player:getBodyYaw(delta) + offsetRot) % 360, 12 + offsetPos.x, 0, 0, 0, -1, 0))
-                    else
-                        avatarBubblePos:add(12 + offsetPos.x, 0, 0)
-                    end
-                    models.models.bubble.Camera:setOffsetPivot(avatarBubblePos)
-                    models.models.bubble.Camera.AvatarBubble:setPos(avatarBubblePos)
                     if host:isHost() and self.shouldShowInHud then
                         local windowSize = client:getScaledWindowSize()
-                        models.models.bubble.Gui.FirstPersonBubble:setPos(-windowSize.x + 10, -windowSize.y + (action_wheel:isEnabled() and 125 or 10), 0)
-                        models.models.bubble.Gui.FirstPersonBubble:setScale(vectors.vec3(1, 1, 1):scale(bubbleScale * 4))
+                        models.models.bubble.Gui.FirstPersonBubble:setPos(windowSize.x * -1, windowSize.y * -1 + (action_wheel:isEnabled() and 95 or -22), 0)
                     end
                     if self.emoji == "RELOAD" then
                         local bullet1Counter = math.clamp((self.emojiAnimationCount + delta) * 0.2 - 1, 0, 1)
-                        models.models.bubble.Camera.AvatarBubble.Bullets.Bullet1:setPos(0, 1 - bullet1Counter, 0)
-                        models.models.bubble.Camera.AvatarBubble.Bullets.Bullet1:setOpacity(bullet1Counter)
+                        models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Bullets.Bullet1:setPos(0, 1 - bullet1Counter, 0)
+                        models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Bullets.Bullet1:setOpacity(bullet1Counter)
                         local bullet2Counter = math.clamp((self.emojiAnimationCount + delta) * 0.2 - 2, 0, 1)
-                        models.models.bubble.Camera.AvatarBubble.Bullets.Bullet2:setPos(0, 1 - bullet2Counter, 0)
-                        models.models.bubble.Camera.AvatarBubble.Bullets.Bullet2:setOpacity(bullet2Counter)
+                        models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Bullets.Bullet2:setPos(0, 1 - bullet2Counter, 0)
+                        models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Bullets.Bullet2:setOpacity(bullet2Counter)
                         local bullet3Counter = math.clamp((self.emojiAnimationCount + delta) * 0.2 - 3, 0, 1)
-                        models.models.bubble.Camera.AvatarBubble.Bullets.Bullet3:setPos(0, 1 - bullet3Counter, 0)
-                        models.models.bubble.Camera.AvatarBubble.Bullets.Bullet3:setOpacity(bullet3Counter)
+                        models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Bullets.Bullet3:setPos(0, 1 - bullet3Counter, 0)
+                        models.models.main.Avatar.UpperBody.Body.Bubble.BubbleInner.Bullets.Bullet3:setOpacity(bullet3Counter)
                     end
                 end
             end, "bubble_render")
@@ -217,6 +207,7 @@ Bubble = {
     ---吹き出しエモートを停止する。
     ---@param self Bubble
     stop = function (self)
+        animations["models.bubble"].bubble_show:setSpeed(-1)
         self.emoji = "NONE"
         if self.bubbleCount > 0 then
             self.isForcedStop = self.duration == -1 or self.bubbleCount < self.duration + 2
@@ -228,7 +219,7 @@ Bubble = {
 ---吹き出しエモートを表示する。
 ---@param type Bubble.BubbleType 表示する絵文字の種類
 function pings.showBubbleEmote(type)
-    AvatarInstance.bubble:play(type, 50, vectors.vec2(), 0, true)
+    AvatarInstance.bubble:play(type, 50, true)
     AvatarInstance.bubble.isAutoBubble = false
 end
 

@@ -31,7 +31,7 @@ HypixelZombies = {
                 if maxDamage > 0 then
                     if damagePercent - self.damagerPercentPrev[1] > 0 and damagePercent - self.damagerPercentPrev[1] <= 0.2 then
                         if self.parent.bubble.bubbleCount == 0 then
-                            self.parent.bubble:play("RELOAD", -1, vectors.vec2(), 0, false)
+                            self.parent.bubble:play("RELOAD", -1, false)
                         end
                     elseif self.parent.bubble.emoji == "RELOAD" then
                         self.parent.bubble:stop()
