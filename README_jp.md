@@ -57,6 +57,8 @@ https://youtu.be/GfJJ7iNA_Bs
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
+- 宇沢レイサ（マジカル）（[#152](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/152)）
+- 白洲アズサ（[#155](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/155)）
 - 早瀬ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102)）
 - 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
 
@@ -76,6 +78,8 @@ https://youtu.be/GfJJ7iNA_Bs
 - 仲正イチカ（[#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140)）
 - 剣先ツルギ（[#145](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/145)）
 - 鰐渕アカリ（[#146](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/146)）
+- 春原シュン（[#153](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/153)）
+- 角楯カリン（[#154](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/154)）
 
 ## 特徴
 - Exスキルのカットインを再現しています。

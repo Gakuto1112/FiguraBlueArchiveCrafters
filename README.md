@@ -57,6 +57,8 @@ The avatars for these characters are worked in progress. It usually takes about 
 ### Planned
 Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
 
+- Reisa Uzawa (Magical) ([#152](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/152))
+- Azusa Shirasu ([#155](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/155))
 - Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102))
 - Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37))
 
@@ -76,6 +78,8 @@ I have received requests to create these characters. However, I can't promise th
 - Ichika Nakamasa ([#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140))
 - Tsurugi Kenzaki ([#145](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/145))
 - Akari Wakibuchi ([#146](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/146))
+- Shun Sunohara ([#153](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/153))
+- Karin Kakudate ([#154](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/154))
 
 ## Features
 - Imitated ex skill cut-ins.
