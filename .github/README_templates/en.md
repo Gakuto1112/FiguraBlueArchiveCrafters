@@ -93,16 +93,18 @@ Watch also:
   | Hoshino (Battle) | - Holds her shotgun and handgun when you holds bows or crossbows with both hands. |
   | Umika | - Leaves a firework launcher in place after playing the Ex Skill. <br> - Firework launchers can launch fireworks (visual only). |
   | Serina (Normal) | - Leaves a medical box in place after playing the Ex Skill. <br> - Medical boxes play performances to cure when a player (not only you) touches it. <br> - Hearing potions are replaced with a medical box. |
-  | Serina (Christmas) | - Bells are replaced with her handbell. <br> - Can play Christmas songs with her handbell after playing the Ex Skill. (7 songs). |
-  | Iroha | - The camel are replaced with Toramaru (a tank) when she is alone on the camel with a saddle. <br> - Toramaru can shoot a shell (visual only). |
+  | Serina (Christmas) | - Bells are replaced with her hand bell. <br> - Can play Christmas songs with her hand bell after playing the Ex Skill. (7 songs). |
+  | Iroha | - The camel are replaced with Toramaru (a tank) when she is alone on the camel with a saddle. Only Ibuki can get on the Toramaru with Iroha. <br> - Toramaru can shoot a shell (visual only). |
   | Ibuki | - I can patrol with Iroha! |
   | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (this is a substitute for the long-tailed tit.). <br> - The horse is replaced with her convertible car when riding a horse, mule, or donkey with a saddle. |
-  | Aris | - After the Ex Skill is played, her railgun will be overcharged state and can shoot a more powerful shot (visual only). |
+  | Aris | - After the Ex Skill is played, her rail gun will be overcharged state and can shoot a more powerful shot (visual only). |
   | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. She hides in the chest while sneaking. |
   | Hikari | - Can dance with Nozomi. |
-  | Nozomi | - Rushs the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
-  | Reisa | - Places a challange letter in front of her after playing the Ex Skill. It has some challenging words written on it. |
-　| Michiru | - Has a special performance when warping with ender pearl, etc. <br> - Swords and rocket fireworks are replace with uniquie models. |
+  | Nozomi | - Rushes the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
+  | Reisa | - Places a challenge letter in front of her after playing the Ex Skill. It has some challenging words written on it. |
+  | Michiru | - Has a special performance when warping with ender pearl, etc. <br> - Swords and rocket fireworks are replace with unique models. |
+  | Hifumi (Normal) | - Places a Peroro doll n front of her after playing the Ex Skill (visual only). |
+  | Hifumi (Swimsuit) | - The camel are replaced with Crusader-chan (a tank) when she is alone on the camel with a saddle. <br> - Crusader-chan can shoot a shell (visual only). |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
