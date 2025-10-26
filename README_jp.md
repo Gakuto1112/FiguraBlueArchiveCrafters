@@ -52,12 +52,11 @@ https://youtu.be/GfJJ7iNA_Bs
 ### 作成中
 これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
 
-（現在作成中のアバターはありません。）
+- 宇沢レイサ（マジカル）（[#152](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/152)）
 
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
-- 宇沢レイサ（マジカル）（[#152](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/152)）
 - 白洲アズサ（[#155](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/155)）
 - 早瀬ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102)）
 - 黒見セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
