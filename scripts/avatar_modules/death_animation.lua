@@ -126,7 +126,7 @@ DeathAnimation = {
         for _, modelPart in ipairs({parent.Avatar.UpperBody.Arms.RightArm.RightArmBottom.RightItemPivot, parent.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom.LeftItemPivot}) do
             modelPart:remove()
         end
-        local unsafeModels = {parent.Avatar.Head.FaceParts.Mouth, parent.Avatar.Head.ArmorH, parent.Avatar.UpperBody.Body.ArmorB, parent.Avatar.UpperBody.Arms.RightArm.ArmorRA, parent.Avatar.UpperBody.Arms.RightArm.RightArmBottom.ArmorRAB, parent.Avatar.UpperBody.Arms.LeftArm.ArmorLA, parent.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom.ArmorLAB, parent.Avatar.LowerBody.Legs.RightLeg.ArmorRL, parent.Avatar.LowerBody.Legs.RightLeg.RightLegBottom.ArmorRLB, parent.Avatar.LowerBody.Legs.LeftLeg.ArmorLL, parent.Avatar.LowerBody.Legs.LeftLeg.LeftLegBottom.ArmorLLB}
+        local unsafeModels = {parent.Avatar.Head.FaceParts.Mouth, parent.Avatar.Head.ArmorH, parent.Avatar.UpperBody.Body.Bubble, parent.Avatar.UpperBody.Body.ArmorB, parent.Avatar.UpperBody.Arms.RightArm.ArmorRA, parent.Avatar.UpperBody.Arms.RightArm.RightArmBottom.ArmorRAB, parent.Avatar.UpperBody.Arms.LeftArm.ArmorLA, parent.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom.ArmorLAB, parent.Avatar.LowerBody.Legs.RightLeg.ArmorRL, parent.Avatar.LowerBody.Legs.RightLeg.RightLegBottom.ArmorRLB, parent.Avatar.LowerBody.Legs.LeftLeg.ArmorLL, parent.Avatar.LowerBody.Legs.LeftLeg.LeftLegBottom.ArmorLLB}
         for i = 1, 11 do
             self.removeUnsafeModel(unsafeModels[i])
         end
