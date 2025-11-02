@@ -233,7 +233,7 @@ DeathAnimation = {
                         sounds:playSound(self.parent.compatibilityUtils:checkSound("minecraft:block.bamboo_wood_door.close"), self.parent.modelUtils.getModelWorldPos(models.models.death_animation.Helicopter.DeathAnimationSoundAnchor1), 1, 0.5):setAttenuation(2)
                     end
                     if self.animationCount < 120 then
-                        models.models.death_animation.Avatar:setLight(world.getLightLevel(self.animationPos))
+                        models.models.death_animation.Avatar:setLight(world.getBlockLightLevel(self.animationPos), world.getSkyLightLevel(self.animationPos))
                     end
                     if self.animationCount == 1 then
                         self:spawnHelicopterParticles()
