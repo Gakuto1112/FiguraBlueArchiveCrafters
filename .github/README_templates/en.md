@@ -101,7 +101,8 @@ Watch also:
   | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. She hides in the chest while sneaking. |
   | Hikari | - Can dance with Nozomi. |
   | Nozomi | - Rushes the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
-  | Reisa | - Places a challenge letter in front of her after playing the Ex Skill. It has some challenging words written on it. |
+  | Reisa (Normal) | - Places a challenge letter in front of her after playing the Ex Skill. It has some challenging words written on it. |
+  | Reisa (Magical) | - Gains a small amount of magical power after playing the Ex Skill. |
   | Michiru | - Has a special performance when warping with ender pearl, etc. <br> - Swords and rocket fireworks are replace with unique models. |
   | Hifumi (Normal) | - Places a Peroro doll n front of her after playing the Ex Skill (visual only). |
   | Hifumi (Swimsuit) | - The camel are replaced with Crusader-chan (a tank) when she is alone on the camel with a saddle. <br> - Crusader-chan can shoot a shell (visual only). |
