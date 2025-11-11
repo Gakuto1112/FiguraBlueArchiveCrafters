@@ -52,7 +52,7 @@ https://youtu.be/GfJJ7iNA_Bs
 ### 作成中
 これらのキャラクターのアバターは作成中です。 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
 
-（現在作成中のアバターはありません。）
+- 空崎ヒナ（[#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130)）
 
 ### 作成予定
 これらのキャラクターのアバターは作成していないものの、今後作成する予定です。上から順に作成予定です。これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
@@ -71,7 +71,6 @@ https://youtu.be/GfJJ7iNA_Bs
 - 調月リオ（[#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116)）
 - 羽川ハスミ（[#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128)）
 - 浅黄ムツキ（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129)）
-- 空崎ヒナ（[#130](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/130)）
 - 秋泉モミジ（[#138](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/138)）
 - 柚鳥ナツ（[#139](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/139)）
 - 仲正イチカ（[#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140)）
