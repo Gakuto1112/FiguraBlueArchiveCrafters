@@ -49,11 +49,12 @@ The avatars for these characters are completed. You can download and use avatars
 - Michiru Chidori
 - Hifumi Ajitani
 - Hina Sorasaki
+- Hanae Asagao
 
 ### In progress
 The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-- Hanae Asagao ([#157](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/157))
+(There is no avatar currently being created.)
 
 ### Planned
 Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
@@ -160,6 +161,7 @@ I have received requests to create these characters. However, I can't promise th
   | Hifumi (Normal) | - Places a Peroro doll n front of her after playing the Ex Skill (visual only). |
   | Hifumi (Swimsuit) | - The camel are replaced with Crusader-chan (a tank) when she is alone on the camel with a saddle. <br> - Crusader-chan can shoot a shell (visual only). |
   | Hina (Swimsuit) | - Equips her swim ring during equipping a Turtle Shell (helmet). This feature will not be applied while armors are visible. |
+  | Hanae (Normal) | - Regeneration potions are replaced with a medical box. |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
