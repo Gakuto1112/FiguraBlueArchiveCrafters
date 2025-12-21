@@ -107,6 +107,7 @@ Watch also:
   | Hifumi (Normal) | - Places a Peroro doll n front of her after playing the Ex Skill (visual only). |
   | Hifumi (Swimsuit) | - The camel are replaced with Crusader-chan (a tank) when she is alone on the camel with a saddle. <br> - Crusader-chan can shoot a shell (visual only). |
   | Hina (Swimsuit) | - Equips her swim ring during equipping a Turtle Shell (helmet). This feature will not be applied while armors are visible. |
+  | Hanae (Normal) | - Regeneration potions are replaced with a medical box. |
 
 ## Ex Skill
 The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
