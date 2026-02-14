@@ -54,12 +54,11 @@ The avatars for these characters are completed. You can download and use avatars
 ### In progress
 The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-(There is no avatar currently being created.)
+- Aris Tendo (Battle) ([#160](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/160))
 
 ### Planned
 Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
 
-- Aris Tendo (Battle) ([#160](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/160))
 - Yuzu Hanaoka (Battle) ([#161](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/161))
 - Kei  ([#162](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/162))
 - Azusa Shirasu ([#155](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/155))
