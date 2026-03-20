@@ -43,10 +43,33 @@ def prepare_directory(dir_path: Path) -> None:
 				shutil.rmtree(item)
 			else:
 				item.unlink()
-
 	else:
 		print(f"Distribution directory does not exist. Creating new directory...")
-		dir_path.mkdir(parents=True, exist_ok=True)
+		dir_path.mkdir(parents=True)
+
+def create_subdirectories(dir_path: Path) -> None:
+	"""
+	指定されたディレクトリ内に、アバターに必要なサブディレクトリを作成する。
+	 * models
+	 * textures
+	 * scripts
+
+	Args:
+		dir_path (Path): サブディレクトリを作成する親ディレクトリのパス
+
+	Raises:
+		NotADirectoryError: 指定されたパスがディレクトリでない
+		PermissionError: 指定されたパスの書き込み権限がない
+	"""
+	if not dir_path.is_dir():
+		raise NotADirectoryError(f"Target directory is not a directory ({dir_path})")
+	elif not os.access(dir_path, os.W_OK):
+		raise PermissionError(f"Target directory is not writable ({dir_path})")
+
+	subdirectories: tuple[str, ...] = ("models", "textures", "scripts")
+	for subdir in subdirectories:
+		subdir_path = dir_path / subdir
+		subdir_path.mkdir(parents=True, exist_ok=True)
 
 def debug() -> None:
 	"""
@@ -62,6 +85,7 @@ def debug() -> None:
 	global target_directory_path
 	target_directory_path = Path(args.path)
 
+	# デバッグ出力
 	print(textwrap.dedent(f"""
 		Path operator for FBAC avatar build tool
 
