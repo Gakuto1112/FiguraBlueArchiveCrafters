@@ -38,11 +38,11 @@ class AvatarPaths:
 			PermissionError: 指定されたパスの読み取り権限がない場合
 		"""
 		if not path.exists():
-			raise FileNotFoundError(f"Specified source directory does not exist ({path})")
+			raise FileNotFoundError(f"Target source directory does not exist ({path})")
 		elif not path.is_dir():
-			raise NotADirectoryError(f"Specified source directory is not a directory ({path})")
+			raise NotADirectoryError(f"Target source directory is not a directory ({path})")
 		elif not os.access(path, os.R_OK):
-			raise PermissionError(f"Specified source directory is not readable ({path})")
+			raise PermissionError(f"Target source directory is not readable ({path})")
 		self._source_dir = path
 
 	@property
@@ -80,9 +80,9 @@ class AvatarPaths:
 		"""
 		if path.exists():
 			if not path.is_dir():
-				raise NotADirectoryError(f"Specified distribution directory is not a directory ({path})")
+				raise NotADirectoryError(f"Target distribution directory is not a directory ({path})")
 			elif not os.access(path, os.W_OK):
-				raise PermissionError(f"Specified distribution directory is not writable ({path})")
+				raise PermissionError(f"Target distribution directory is not writable ({path})")
 		self._distribution_dir = path
 
 	def check_directories(self) -> tuple[Path, ...]:
