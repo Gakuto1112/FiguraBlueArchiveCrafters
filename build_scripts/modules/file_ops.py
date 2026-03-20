@@ -6,6 +6,7 @@ from pathlib import Path
 
 from paths import paths
 
+
 # 出力先ディレクトリのパス（デバッグ用変数）
 target_directory_path: Path = paths.distribution_dir
 
@@ -47,29 +48,48 @@ def prepare_directory(dir_path: Path) -> None:
 		print(f"Distribution directory does not exist. Creating new directory...")
 		dir_path.mkdir(parents=True)
 
-def create_subdirectories(dir_path: Path) -> None:
+def copy_assets(avatar_name: str) -> None:
 	"""
-	指定されたディレクトリ内に、アバターに必要なサブディレクトリを作成する。
-	 * models
-	 * textures
-	 * scripts
+	コアアセットとキャラクター固有アセットの統合し、出力先ディレクトリにコピーする。
+	コアアセットとキャラクター固有アセットに同じ相対パスのファイルが存在する場合、キャラクター固有アセットのほうで上書きされる。
 
 	Args:
-		dir_path (Path): サブディレクトリを作成する親ディレクトリのパス
+		avatar_name (str): コピーするアバターの名前。paths.get_avatar_names()で取得できる名前のいずれかを指定する。
 
 	Raises:
-		NotADirectoryError: 指定されたパスがディレクトリでない
-		PermissionError: 指定されたパスの書き込み権限がない
+		ValueError: avatar_nameがpaths.get_avatar_names()で取得できる名前のいずれでもない場合
+		NotADirectoryError: 出力先ディレクトリ、コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかがディレクトリでない場合
+		PermissionError: 出力先ディレクトリ、コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかの書き込み権限がない場合
+		FileNotFoundError: コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかが存在しない場合
 	"""
-	if not dir_path.is_dir():
-		raise NotADirectoryError(f"Target directory is not a directory ({dir_path})")
-	elif not os.access(dir_path, os.W_OK):
-		raise PermissionError(f"Target directory is not writable ({dir_path})")
+	# 入力及びディレクトリの確認
+	if not avatar_name in paths.get_avatar_names():
+		raise ValueError(f"Avatar name \"{avatar_name}\" is not valid.")
+	elif not paths.distribution_dir.is_dir():
+		raise NotADirectoryError(f"Distribution directory is not a directory ({paths.distribution_dir})")
+	elif not os.access(paths.distribution_dir, os.W_OK):
+		raise PermissionError(f"Distribution directory is not writable ({paths.distribution_dir})")
 
+	# アセットのコピー
 	subdirectories: tuple[str, ...] = ("models", "textures", "scripts")
-	for subdir in subdirectories:
-		subdir_path = dir_path / subdir
-		subdir_path.mkdir(parents=True, exist_ok=True)
+	for subdirectory in subdirectories:
+		# コピー元のサブディレクトリの確認
+		if not (paths.core_dir / subdirectory).exists():
+			raise FileNotFoundError(f"Required core subdirectory not found ({paths.core_dir / subdirectory})")
+		elif not (paths.core_dir / subdirectory).is_dir():
+			raise NotADirectoryError(f"Required core subdirectory is not a directory ({paths.core_dir / subdirectory})")
+		elif not os.access(paths.core_dir / subdirectory, os.R_OK):
+			raise PermissionError(f"Required core subdirectory is not readable ({paths.core_dir / subdirectory})")
+		elif not (paths.character_dir / avatar_name / subdirectory).exists():
+			raise FileNotFoundError(f"Required character subdirectory not found ({paths.character_dir / avatar_name / subdirectory})")
+		elif not (paths.character_dir / avatar_name / subdirectory).is_dir():
+			raise NotADirectoryError(f"Required character subdirectory is not a directory ({paths.character_dir / avatar_name / subdirectory})")
+		elif not os.access(paths.character_dir / avatar_name / subdirectory, os.R_OK):
+			raise PermissionError(f"Required character subdirectory is not readable ({paths.character_dir / avatar_name / subdirectory})")
+
+		(paths.distribution_dir / avatar_name / subdirectory).mkdir(parents=True)
+		shutil.copytree(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
+		shutil.copytree(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
 
 def _set_debug_args() -> None:
 	"""
@@ -95,12 +115,20 @@ def debug() -> None:
 	print(textwrap.dedent(f"""
 		Path operator for FBAC avatar build tool
 
-		Preparing distribution directory ({target_directory_path}) ...
+		Preparing distribution directory ({target_directory_path})...
 	""").strip())
 
 	prepare_directory(target_directory_path)
 
-	print("Completed preparing distribution directory.")
+	print(textwrap.dedent("""
+		Completed preparing distribution directory.
+
+		Copying avatar assets...
+	""").strip())
+
+	copy_assets("00a_base")
+
+	print("Completed copying avatar assets.")
 
 if __name__ == "__main__":
 	debug()
