@@ -134,24 +134,22 @@ class AvatarPaths:
 
 		return tuple(valid_avatar_names)
 
-	def set_debug_args(self) -> None:
+	def debug(self) -> None:
 		"""
-		デバッグ用コマンドライン引数を設定する。
+		パスマネージャークラスのデバッグ出力をする。
 		"""
+
 		# 引数の設定
 		parser = argparse.ArgumentParser(description="Path manager for FBAC avatar build tool")
 		parser.add_argument("--src-dir", "-s", type=Path, default=self.source_dir, help=f"Overrides default source directory path. Default: {self.source_dir}")
 		parser.add_argument("--dist-dir", "-d", type=Path, default=self.distribution_dir, help=f"Overrides default distribution directory path. Default: {self.distribution_dir}")
-		args = parser.parse_args()
 
 		# パスの設定
+		args = parser.parse_args()
 		self.source_dir = args.src_dir
 		self.distribution_dir = args.dist_dir
 
-	def print_debug(self) -> None:
-		"""
-		パスマネージャークラスのデバッグ出力をする。
-		"""
+		# ファイルパスの出力
 		print(textwrap.dedent(f"""
 			Path manager for FBAC avatar build tool
 
@@ -163,6 +161,8 @@ class AvatarPaths:
 
 			Checking required directories...
 		""").strip())
+
+		# ビルドに必要なディレクトリの存在を確認
 		missing_dirs = self.check_directories()
 		if len(missing_dirs) == 0:
 			print("> No missing directories found.")
@@ -173,5 +173,4 @@ class AvatarPaths:
 paths = AvatarPaths()
 
 if __name__ == "__main__":
-	paths.set_debug_args()
-	paths.print_debug()
+	paths.debug()
