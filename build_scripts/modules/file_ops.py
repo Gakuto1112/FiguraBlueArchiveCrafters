@@ -54,10 +54,10 @@ def copy_assets(avatar_name: str) -> None:
 	コアアセットとキャラクター固有アセットに同じ相対パスのファイルが存在する場合、キャラクター固有アセットのほうで上書きされる。
 
 	Args:
-		avatar_name (str): コピーするアバターの名前。paths.get_avatar_names()で取得できる名前のいずれかを指定する。
+		avatar_name (str): コピーするアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
 
 	Raises:
-		ValueError: avatar_nameがpaths.get_avatar_names()で取得できる名前のいずれでもない場合
+		ValueError: avatar_nameが`paths.get_avatar_names()`で取得できる名前のいずれでもない場合
 		NotADirectoryError: 出力先ディレクトリ、コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかがディレクトリでない場合
 		PermissionError: 出力先ディレクトリ、コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかの書き込み権限がない場合
 		FileNotFoundError: コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかが存在しない場合
