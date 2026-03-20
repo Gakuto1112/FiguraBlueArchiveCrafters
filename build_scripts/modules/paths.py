@@ -134,11 +134,10 @@ class AvatarPaths:
 
 		return tuple(valid_avatar_names)
 
-	def debug(self) -> None:
+	def _set_debug_args(self) -> None:
 		"""
-		パスマネージャークラスのデバッグ出力をする。
+		デバッグ用コマンドライン引数を設定する。
 		"""
-
 		# 引数の設定
 		parser = argparse.ArgumentParser(description="Path manager for FBAC avatar build tool")
 		parser.add_argument("--src-dir", "-s", type=Path, default=self.source_dir, help=f"Overrides default source directory path. Default: {self.source_dir}")
@@ -148,6 +147,12 @@ class AvatarPaths:
 		args = parser.parse_args()
 		self.source_dir = args.src_dir
 		self.distribution_dir = args.dist_dir
+
+	def debug(self) -> None:
+		"""
+		パスマネージャークラスのデバッグ出力をする。
+		"""
+		self._set_debug_args()
 
 		# ファイルパスの出力
 		print(textwrap.dedent(f"""

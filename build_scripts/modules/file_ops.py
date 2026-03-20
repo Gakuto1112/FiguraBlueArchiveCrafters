@@ -71,11 +71,10 @@ def create_subdirectories(dir_path: Path) -> None:
 		subdir_path = dir_path / subdir
 		subdir_path.mkdir(parents=True, exist_ok=True)
 
-def debug() -> None:
+def _set_debug_args() -> None:
 	"""
-	ファイルオペレータークラスのデバッグ動作を実行する。
+	デバッグ用コマンドライン引数を設定する。
 	"""
-
 	# 引数の設定
 	parser = argparse.ArgumentParser(description="File operator for FBAC avatar build tool")
 	parser.add_argument("--path", "-p", type=str, default=paths.distribution_dir, help="Path to the directory to operate on")
@@ -84,6 +83,13 @@ def debug() -> None:
 	args = parser.parse_args()
 	global target_directory_path
 	target_directory_path = Path(args.path)
+
+def debug() -> None:
+	"""
+	ファイルオペレータークラスのデバッグ動作を実行する。
+	"""
+
+	_set_debug_args()
 
 	# デバッグ出力
 	print(textwrap.dedent(f"""
