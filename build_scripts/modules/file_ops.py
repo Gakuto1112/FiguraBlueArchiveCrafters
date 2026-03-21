@@ -1,14 +1,16 @@
 import argparse
-import os
+import errno
 import shutil
 import textwrap
 from pathlib import Path
 
-from paths import paths
+from modules.logger import logger
+from modules.paths import paths
 
-
-# 出力先ディレクトリのパス（デバッグ用変数）
 target_directory_path: Path = paths.distribution_dir
+"""
+出力先ディレクトリのパス（デバッグ用変数）
+"""
 
 def prepare_directory(dir_path: Path) -> None:
 	"""
@@ -18,35 +20,35 @@ def prepare_directory(dir_path: Path) -> None:
 
 	Args:
 		dir_path (Path): 準備するディレクトリのパス
-
-	Raises:
-		NotADirectoryError: 指定されたパスがディレクトリでない
-		PermissionError: 指定されたパスの書き込み権限がない
 	"""
-	if dir_path.exists():
-		# ディレクトリの確認
-		if not dir_path.is_dir():
-			raise NotADirectoryError(f"Distribution directory is not a directory ({dir_path})")
-		elif not os.access(dir_path, os.W_OK):
-			raise PermissionError(f"Distribution directory is not writable ({dir_path})")
 
-		# 出力先ディレクトリ内のファイルを削除
-		if any(dir_path.iterdir()):
-			print("Cleaning up existing files in distribution directory...")
-			if not dir_path.is_relative_to(paths.root):
-				print(f"🚨 You specified distribution directory ({dir_path}) is outside of the root directory! All items in the distribution directory will be deleted!")
-				answer = input("Are you sure you want to proceed? [y/N]: ")
-				if not answer.lower() in ("y", "yes"):
-					print("Directory cleanup cancelled. Build aborted.")
-					exit(0)
-		for item in dir_path.iterdir():
-			if item.is_dir():
-				shutil.rmtree(item)
-			else:
-				item.unlink()
-	else:
-		print(f"Distribution directory does not exist. Creating new directory...")
-		dir_path.mkdir(parents=True)
+	try:
+		if dir_path.exists():
+			# ディレクトリの確認
+
+			# 出力先ディレクトリ内のファイルを削除
+			if any(dir_path.iterdir()):
+				logger.print_info(f"Cleaning up existing files in distribution directory...")
+				if not dir_path.is_relative_to(paths.root):
+					logger.print_warning(f"You specified distribution directory ({dir_path}) is outside of the root directory! All items in the distribution directory will be deleted!")
+					answer = input("Are you sure you want to proceed? [y/N]: ")
+					if not answer.lower() in ("y", "yes"):
+						logger.print_info("Directory cleanup cancelled. Build aborted.")
+						exit(0)
+			for item in dir_path.iterdir():
+				if item.is_dir():
+					shutil.rmtree(item)
+				else:
+					item.unlink()
+		else:
+			logger.print_info(f"Distribution directory does not exist. Creating new directory...")
+			dir_path.mkdir(parents=True)
+	except NotADirectoryError:
+		logger.print_error(f"Specified distribution directory is not a directory ({dir_path})")
+		exit(errno.ENOTDIR)
+	except PermissionError:
+		logger.print_error(f"No permission to operate on specified distribution directory ({dir_path})")
+		exit(errno.EACCES)
 
 def copy_assets(avatar_name: str) -> None:
 	"""
@@ -62,39 +64,38 @@ def copy_assets(avatar_name: str) -> None:
 		PermissionError: 出力先ディレクトリ、コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかの書き込み権限がない場合
 		FileNotFoundError: コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかが存在しない場合
 	"""
-	# 入力及びディレクトリの確認
+
+	# 入力の確認
 	if not avatar_name in paths.get_avatar_names():
-		raise ValueError(f"Avatar name \"{avatar_name}\" is not valid.")
-	elif not paths.distribution_dir.is_dir():
-		raise NotADirectoryError(f"Distribution directory is not a directory ({paths.distribution_dir})")
-	elif not os.access(paths.distribution_dir, os.W_OK):
-		raise PermissionError(f"Distribution directory is not writable ({paths.distribution_dir})")
+		logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
+		exit(errno.EINVAL)
 
 	# アセットのコピー
 	subdirectories: tuple[str, ...] = ("models", "textures", "scripts")
 	for subdirectory in subdirectories:
-		# コピー元のサブディレクトリの確認
-		if not (paths.core_dir / subdirectory).exists():
-			raise FileNotFoundError(f"Required core subdirectory not found ({paths.core_dir / subdirectory})")
-		elif not (paths.core_dir / subdirectory).is_dir():
-			raise NotADirectoryError(f"Required core subdirectory is not a directory ({paths.core_dir / subdirectory})")
-		elif not os.access(paths.core_dir / subdirectory, os.R_OK):
-			raise PermissionError(f"Required core subdirectory is not readable ({paths.core_dir / subdirectory})")
-		elif not (paths.character_dir / avatar_name / subdirectory).exists():
-			raise FileNotFoundError(f"Required character subdirectory not found ({paths.character_dir / avatar_name / subdirectory})")
-		elif not (paths.character_dir / avatar_name / subdirectory).is_dir():
-			raise NotADirectoryError(f"Required character subdirectory is not a directory ({paths.character_dir / avatar_name / subdirectory})")
-		elif not os.access(paths.character_dir / avatar_name / subdirectory, os.R_OK):
-			raise PermissionError(f"Required character subdirectory is not readable ({paths.character_dir / avatar_name / subdirectory})")
-
-		(paths.distribution_dir / avatar_name / subdirectory).mkdir(parents=True)
-		shutil.copytree(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
-		shutil.copytree(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
+		try:
+			(paths.distribution_dir / avatar_name / subdirectory).mkdir(parents=True, exist_ok=True)
+			shutil.copytree(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
+			shutil.copytree(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
+		except FileNotFoundError:
+			logger.print_error(f"Required subdirectory not found ({subdirectory})")
+			exit(errno.ENOENT)
+		except NotADirectoryError:
+			logger.print_error(f"Required subdirectory is not a directory ({subdirectory})")
+			exit(errno.ENOTDIR)
+		except PermissionError:
+			logger.print_error(f"No permission to copy avatar assets ({subdirectory})")
+			exit(errno.EACCES)
+		except Exception as e:
+			print(e)
+			logger.print_error(f"An unexpected error occurred while copying avatar assets ({subdirectory})")
+			exit(errno.EIO)
 
 def _set_debug_args() -> None:
 	"""
 	デバッグ用コマンドライン引数を設定する。
 	"""
+
 	# 引数の設定
 	parser = argparse.ArgumentParser(description="File operator for FBAC avatar build tool")
 	parser.add_argument("--path", "-p", type=str, default=paths.distribution_dir, help="Path to the directory to operate on")

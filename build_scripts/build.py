@@ -1,14 +1,19 @@
 import argparse
+import errno
 from pathlib import Path
 
+from modules.logger import logger
 from modules.paths import paths
 
-
-# サムネイル画像を生成するかどうかのフラグ
 should_generate_thumbnails: bool = True
+"""
+サムネイル画像を生成するかどうかのフラグ
+"""
 
-# スクリプトが監視モードかどうかのフラグ
 is_observe_mode: bool = False
+"""
+スクリプトが監視モードかどうかのフラグ
+"""
 
 def build() -> None:
 	pass
@@ -17,6 +22,7 @@ def main() -> None:
 	"""
 	エントリー関数
 	"""
+
 	# 引数の設定
 	parser = argparse.ArgumentParser(description="Builds avatars for Figura Blue Archive Characters (FBAC).")
 
@@ -37,7 +43,8 @@ def main() -> None:
 	if args.character:
 		target = next((avatar for avatar in paths.get_avatar_names() if args.character in avatar), None)
 		if target is None:
-			raise ValueError(f"Specified character '{args.character}' does not exist in the character directory.")
+			logger.print_error(f"Specified character \"{args.character}\" does not exist in the character directory.")
+			exit(errno.EPERM)
 
 		target_avatars.append(target)
 	else:

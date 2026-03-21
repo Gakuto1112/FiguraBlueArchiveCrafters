@@ -1,27 +1,36 @@
 import argparse
-import os
+import errno
 import re
 import textwrap
 from dataclasses import dataclass
 from pathlib import Path
 
+from modules.logger import logger
+
 
 @dataclass
 class AvatarPaths:
-	# レポジトリのルートディレクトリ
 	root: Path = Path(__file__).parent.parent.parent.resolve()
+	"""
+	レポジトリのルートディレクトリ
+	"""
 
-	# ソースファイルが格納されるディレクトリ
 	_source_dir: Path = root / "src"
+	"""
+	ソースファイルが格納されるディレクトリ
+	"""
 
-	# ビルド済みアバターの出力先ディレクトリ
 	_distribution_dir: Path = root / "dist"
+	"""
+	ビルド済みアバターの出力先ディレクトリ
+	"""
 
 	@property
 	def source_dir(self) -> Path:
 		"""
 		ソースファイルが格納されるディレクトリ
 		"""
+
 		return self._source_dir
 
 	@source_dir.setter
@@ -31,18 +40,8 @@ class AvatarPaths:
 
 		Args:
 			path (Path): source_dirのパス
-
-		Raises:
-			FileNotFoundError: 指定されたパスが存在しない場合
-			NotADirectoryError: 指定されたパスがディレクトリでない場合
-			PermissionError: 指定されたパスの読み取り権限がない場合
 		"""
-		if not path.exists():
-			raise FileNotFoundError(f"Target source directory does not exist ({path})")
-		elif not path.is_dir():
-			raise NotADirectoryError(f"Target source directory is not a directory ({path})")
-		elif not os.access(path, os.R_OK):
-			raise PermissionError(f"Target source directory is not readable ({path})")
+
 		self._source_dir = path
 
 	@property
@@ -50,6 +49,7 @@ class AvatarPaths:
 		"""
 		アバターの共通基盤のリソースが格納されるディレクトリ
 		"""
+
 		return self._source_dir / "core"
 
 	@property
@@ -57,6 +57,7 @@ class AvatarPaths:
 		"""
 		キャラクター固有のリソースが格納されるディレクトリ
 		"""
+
 		return self._source_dir / "avatars"
 
 	@property
@@ -64,6 +65,7 @@ class AvatarPaths:
 		"""
 		ビルド済みアバターの出力先ディレクトリ
 		"""
+
 		return self._distribution_dir
 
 	@distribution_dir.setter
@@ -73,16 +75,8 @@ class AvatarPaths:
 
 		Args:
 			path (Path): distribution_dirのパス
-
-		Raises:
-			NotADirectoryError: 指定されたパスがディレクトリでない場合
-			PermissionError: 指定されたパスの書き込み権限がない場合
 		"""
-		if path.exists():
-			if not path.is_dir():
-				raise NotADirectoryError(f"Target distribution directory is not a directory ({path})")
-			elif not os.access(path, os.W_OK):
-				raise PermissionError(f"Target distribution directory is not writable ({path})")
+
 		self._distribution_dir = path
 
 	def check_directories(self) -> tuple[Path, ...]:
@@ -92,6 +86,7 @@ class AvatarPaths:
 		Returns:
 			tuple[Path, ...]: 存在しないディレクトリのタプル
 		"""
+
 		required_dirs: tuple[Path, ...] = (self.source_dir, self.core_dir, self.character_dir)
 		missing_dirs: list[Path] = []
 		for dir in required_dirs:
@@ -111,14 +106,22 @@ class AvatarPaths:
 			NotADirectoryError: キャラクターディレクトリがディレクトリでない場合
 			PermissionError: キャラクターディレクトリの読み取り権限がない場合
 		"""
-		if not self.character_dir.exists():
-			raise FileNotFoundError(f"Character directory not found ({self.character_dir})")
-		elif not self.character_dir.is_dir():
-			raise NotADirectoryError(f"Character directory is not a directory ({self.character_dir})")
-		elif not os.access(self.character_dir, os.R_OK):
-			raise PermissionError(f"Character directory is not readable ({self.character_dir})")
 
-		return tuple(avatar.name for avatar in self.character_dir.iterdir() if avatar.is_dir() and re.match(r"\d{2}\w_", avatar.name))
+		try:
+			return tuple(avatar.name for avatar in self.character_dir.iterdir() if avatar.is_dir() and re.match(r"\d{2}\w_", avatar.name))
+		except FileNotFoundError:
+			logger.print_error(f"Character directory not found ({self.character_dir})")
+			exit(errno.ENOENT)
+		except NotADirectoryError:
+			logger.print_error(f"Character directory is not a directory ({self.character_dir})")
+			exit(errno.ENOTDIR)
+		except PermissionError:
+			logger.print_error(f"No permission to operate on character directory ({self.character_dir})")
+			exit(errno.EACCES)
+		except:
+			logger.print_error(f"An unexpected error occurred while accessing the character directory ({self.character_dir})")
+			exit(errno.EIO)
+
 
 	def get_valid_avatar_names(self) -> tuple[str, ...]:
 		"""
@@ -127,6 +130,7 @@ class AvatarPaths:
 		Returns:
 			tuple[str, ...]: 有効なアバター名のタプル
 		"""
+
 		valid_avatar_names: list[str] = []
 
 		for avatar in self.get_avatar_names():
@@ -138,6 +142,7 @@ class AvatarPaths:
 		"""
 		デバッグ用コマンドライン引数を設定する。
 		"""
+
 		# 引数の設定
 		parser = argparse.ArgumentParser(description="Path manager for FBAC avatar build tool")
 		parser.add_argument("--src-dir", "-s", type=Path, default=self.source_dir, help=f"Overrides default source directory path. Default: {self.source_dir}")
@@ -152,6 +157,7 @@ class AvatarPaths:
 		"""
 		パスマネージャークラスのデバッグ出力をする。
 		"""
+
 		self._set_debug_args()
 
 		# ファイルパスの出力
