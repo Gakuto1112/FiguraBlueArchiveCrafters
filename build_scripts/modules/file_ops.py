@@ -1,7 +1,6 @@
 import argparse
 import errno
 import shutil
-import textwrap
 from pathlib import Path
 
 from modules.logger import logger
@@ -18,7 +17,8 @@ class FileOperator:
 	出力先ディレクトリのパス（デバッグ用変数）
 	"""
 
-	def prepare_directory(self, dir_path: Path) -> None:
+	@staticmethod
+	def prepare_directory(dir_path: Path) -> None:
 		"""
 		指定されたディレクトリの準備を行う。
 		ディレクトリが存在しなければ新たに作成し、存在する場合はディレクトリ内のファイルやサブディレクトリを削除する。
@@ -57,7 +57,8 @@ class FileOperator:
 			logger.print_error(f"No permission to operate on specified distribution directory ({dir_path})")
 			exit(errno.EACCES)
 
-	def copy_assets(self, avatar_name: str) -> None:
+	@staticmethod
+	def copy_assets(avatar_name: str) -> None:
 		"""
 		コアアセットとキャラクター固有アセットの統合し、出力先ディレクトリにコピーする。
 		コアアセットとキャラクター固有アセットに同じ相対パスのファイルが存在する場合、キャラクター固有アセットのほうで上書きされる。
@@ -109,8 +110,7 @@ class FileOperator:
 
 		# パスの設定
 		args = parser.parse_args()
-		global target_directory_path
-		target_directory_path = Path(args.path)
+		self.target_directory_path = Path(args.path)
 
 	def debug(self) -> None:
 		"""
@@ -120,23 +120,19 @@ class FileOperator:
 		self._set_debug_args()
 
 		# デバッグ出力
-		print(textwrap.dedent(f"""
-			Path operator for FBAC avatar build tool
+		logger.print_info("Path operator for FBAC avatar build tool")
+		logger.print_spacer(1)
+		logger.print_info(f"Preparing distribution directory ({self.target_directory_path})...")
 
-			Preparing distribution directory ({target_directory_path})...
-		""").strip())
+		self.prepare_directory(self.target_directory_path)
 
-		self.prepare_directory(target_directory_path)
-
-		print(textwrap.dedent("""
-			Completed preparing distribution directory.
-
-			Copying avatar assets...
-		""").strip())
+		logger.print_info("Completed preparing distribution directory.")
+		logger.print_spacer(1)
+		logger.print_info(f"Copying avatar assets (00a_base)...")
 
 		self.copy_assets("00a_base")
 
-		print("Completed copying avatar assets.")
+		logger.print_info("Completed copying avatar assets.")
 
 file_ops = FileOperator()
 

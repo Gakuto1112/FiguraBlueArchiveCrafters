@@ -1,6 +1,5 @@
 import argparse
 import errno
-import textwrap
 from pathlib import Path
 
 from modules.file_ops import file_ops
@@ -56,7 +55,7 @@ def main() -> None:
 	args = parser.parse_args()
 
 	logger.print_info("Figura Blue Archive Characters (FBAC) Avatar Build Tool")
-	print()
+	logger.print_spacer(1)
 
 	paths.source_dir = Path(args.src_dir)
 	paths.distribution_dir = Path(args.dist_dir)
@@ -75,11 +74,10 @@ def main() -> None:
 	else:
 		target_avatars = list(paths.get_avatar_names())
 
-	logger.print_debug(textwrap.dedent(f"""
-		Target avatars: {", ".join(target_avatars)}
-		Source directory: {paths.source_dir}
-		Distribution directory: {paths.distribution_dir}
-	"""))
+	logger.print_debug(f"Target avatars: {", ".join(target_avatars)}")
+	logger.print_debug(f"Source directory: {paths.source_dir}")
+	logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
+	logger.print_spacer(1)
 
 	build(target_avatars)
 

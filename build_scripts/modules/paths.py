@@ -1,7 +1,6 @@
 import argparse
 import errno
 import re
-import textwrap
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -161,25 +160,23 @@ class AvatarPaths:
 		self._set_debug_args()
 
 		# ファイルパスの出力
-		print(textwrap.dedent(f"""
-			Path manager for FBAC avatar build tool
-
-			ROOT_DIR:\t{self.root}
-			SOURCE_DIR:\t{self.source_dir}
-			CORE_DIR:\t{self.core_dir}
-			CHARACTER_DIR:\t{self.character_dir}
-			DISTRIBUTION_DIR:\t{self.distribution_dir}
-
-			Checking required directories...
-		""").strip())
+		logger.print_info("Path manager for FBAC avatar build tool")
+		logger.print_spacer(1)
+		logger.print_debug(f"ROOT_DIR:\t{self.root}")
+		logger.print_debug(f"SOURCE_DIR:\t{self.source_dir}")
+		logger.print_debug(f"CORE_DIR:\t{self.core_dir}")
+		logger.print_debug(f"CHARACTER_DIR:\t{self.character_dir}")
+		logger.print_debug(f"DISTRIBUTION_DIR:\t{self.distribution_dir}")
+		logger.print_spacer(1)
+		logger.print_info("Checking required directories...")
 
 		# ビルドに必要なディレクトリの存在を確認
 		missing_dirs = self.check_directories()
 		if len(missing_dirs) == 0:
-			print("> No missing directories found.")
+			logger.print_info("No missing directories found.")
 		else:
 			for missing_dir in missing_dirs:
-				print(f"> Missing directory found: {missing_dir}")
+				logger.print_info(f"Missing directory found: {missing_dir}")
 
 paths = AvatarPaths()
 
