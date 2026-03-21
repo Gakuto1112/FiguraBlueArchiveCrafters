@@ -205,8 +205,7 @@ class ThumbnailGenerator:
 
 		layer6: Image.Image = Image.new("RGBA", (SPRITE_SIZE[0] * CHAR_SCALE * 3 + CHAR_GAP * 2, SPRITE_SIZE[1] * CHAR_SCALE), (0, 0, 0, 0))
 
-		AVATAR_ID: str = "18a"
-		for i, char in enumerate(AVATAR_ID):
+		for i, char in enumerate(avatar_name.split("_", 1)[0]):
 			if char not in SPRITE_MAP:
 				logger.print_error(f"Character \"{char}\" in avatar ID is invalid ({avatar_name})")
 				exit(errno.EINVAL)
