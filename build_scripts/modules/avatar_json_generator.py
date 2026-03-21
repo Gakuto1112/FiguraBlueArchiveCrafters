@@ -70,7 +70,7 @@ class AvatarJsonData(TypedDict):
 	モデルパーツの指定は、スクリプトからモデルパーツを参照する際と同様に指定する。（例: "models.models.main.Avatar.Head"）
 	"""
 
-class AvatarMetaData(TypedDict):
+class AvatarJsonConfig(TypedDict):
 	"""
 	テンプレートjsonデータと統合する特定のキャラクターのメタデータの構造体
 	"""
@@ -155,7 +155,7 @@ class AvatarJsonGenerator:
 			exit(errno.EIO)
 
 	@staticmethod
-	def _get_avatar_json_config(avatar_name: str) -> AvatarMetaData:
+	def _get_avatar_json_config(avatar_name: str) -> AvatarJsonConfig:
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
 			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
