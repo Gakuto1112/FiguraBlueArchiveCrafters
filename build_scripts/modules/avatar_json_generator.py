@@ -166,19 +166,19 @@ class AvatarJsonGenerator:
 			with open(paths.character_dir / avatar_name / "avatar_json_config.json", "r") as f:
 				return json.load(f)
 		except FileNotFoundError:
-			logger.print_error(f"Avatar meta file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			logger.print_error(f"Avatar json config file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.ENOENT)
 		except IsADirectoryError:
-			logger.print_error(f"Avatar meta file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			logger.print_error(f"Avatar json config file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EISDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to read avatar meta file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			logger.print_error(f"No permission to read avatar json config file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EACCES)
 		except json.JSONDecodeError:
-			logger.print_error(f"Avatar meta file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			logger.print_error(f"Avatar json config file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EINVAL)
 		except:
-			logger.print_error(f"An unexpected error occurred while reading avatar meta ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			logger.print_error(f"An unexpected error occurred while reading avatar json config ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EIO)
 
 	@staticmethod
