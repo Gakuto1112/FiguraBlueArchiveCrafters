@@ -90,7 +90,7 @@ class ThumbnailGenerator:
 		# レイヤー4: 色付き枠
 		palette: Image.Image = thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "frame_colors.png").convert("RGBA")
 		index: int = 1
-		layer4: Image.Image = Image.new("RGBA", (256, 256), cast(tuple[int, int, int, int], palette.getpixel((index, 0))))
+		layer4: Image.Image = Image.new("RGBA", (256, 256), cast(tuple[int, int, int, int], palette.getpixel((index, 0)))) # pyright: ignore[reportUnknownMemberType]
 		layer4.putalpha(thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "L4_colored_frame.png").convert("L"))
 		canvas.alpha_composite(layer4)
 
