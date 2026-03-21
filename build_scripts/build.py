@@ -1,7 +1,9 @@
 import argparse
 import errno
+import textwrap
 from pathlib import Path
 
+from modules.file_ops import file_ops
 from modules.logger import logger
 from modules.paths import paths
 
@@ -15,8 +17,27 @@ is_observe_mode: bool = False
 スクリプトが監視モードかどうかのフラグ
 """
 
-def build() -> None:
-	pass
+def build(target_avatars: list[str]) -> None:
+
+	# 出力先ディレクトリの準備
+	logger.print_info("Preparing distribution directory...")
+	if len(target_avatars) > 1:
+		file_ops.prepare_directory(paths.distribution_dir)
+	elif len(target_avatars) == 1:
+		file_ops.prepare_directory(paths.distribution_dir / target_avatars[0])
+	else:
+		logger.print_error("No target avatars specified for build.")
+		exit(errno.EINVAL)
+	logger.print_info("Completed preparing distribution directory.")
+	print()
+
+	# アバターアセットのコピー
+	logger.print_info("Copying avatar assets...")
+	for target_avatar in target_avatars:
+		logger.print_info(f"Copying assets for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+		file_ops.copy_assets(target_avatar)
+	logger.print_info("Completed copying avatar assets.")
+	print()
 
 def main() -> None:
 	"""
@@ -33,6 +54,10 @@ def main() -> None:
 	parser.add_argument("--observe", "-o", action="store_true", help="Observes the source directory for changes and automatically rebuilds the affected avatars.")
 
 	args = parser.parse_args()
+
+	logger.print_info("Figura Blue Archive Characters (FBAC) Avatar Build Tool")
+	print()
+
 	paths.source_dir = Path(args.src_dir)
 	paths.distribution_dir = Path(args.dist_dir)
 	global should_generate_thumbnails, is_observe_mode
@@ -49,6 +74,14 @@ def main() -> None:
 		target_avatars.append(target)
 	else:
 		target_avatars = list(paths.get_avatar_names())
+
+	logger.print_debug(textwrap.dedent(f"""
+		Target avatars: {", ".join(target_avatars)}
+		Source directory: {paths.source_dir}
+		Distribution directory: {paths.distribution_dir}
+	"""))
+
+	build(target_avatars)
 
 if __name__ == "__main__":
 	main()
