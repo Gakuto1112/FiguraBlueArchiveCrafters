@@ -129,7 +129,7 @@ class AvatarJsonGenerator:
 	@staticmethod
 	def _get_template_avatar_json() -> AvatarJsonData:
 		"""
-		コアディレクトリ内にある`avatar_template.json`読み込み、そのオブジェクトを返す。
+		コアディレクトリ内にある`avatar_template.json`を読み込み、そのオブジェクトを返す。
 
 		Returns:
 			AvatarJsonData: avatar.jsonの内容を格納したオブジェクト
