@@ -204,8 +204,8 @@ class ThumbnailGenerator:
 			"e": (4, 2),
 		}
 		CHAR_SCALE: int = 5 # スプライトをサムネイル画像に貼り付ける際の拡大スケール
-		CHAR_GAP : int = 1 # スプライト同士の間隔
-		ID_ANCHOR: tuple[int, int] = (12, 178) # サムネイル上でのアバタIDの貼り付け基点（サムネイル、ID共に左上が基準点）
+		CHAR_GAP : int = 0 # スプライト同士の間隔
+		ID_ANCHOR: tuple[int, int] = (14, 178) # サムネイル上でのアバタIDの貼り付け基点（サムネイル、ID共に左上が基準点）
 
 		layer7: Image.Image = Image.new("RGBA", (SPRITE_SIZE[0] * CHAR_SCALE * 3 + CHAR_GAP * 2, SPRITE_SIZE[1] * CHAR_SCALE), (0, 0, 0, 0))
 
@@ -258,6 +258,8 @@ class ThumbnailGenerator:
 		logger.print_info(f"Generating thumbnail image (00a_base)...")
 		thumbnail_generator.generate_thumbnail("00a_base").show()
 		logger.print_info(f"Completed generating thumbnail image (00a_base)")
+		logger.print_spacer(1)
+
 		logger.print_info(f"Hint: Generated thumbnail image is being displayed using the default image viewer of your operating system.")
 
 
