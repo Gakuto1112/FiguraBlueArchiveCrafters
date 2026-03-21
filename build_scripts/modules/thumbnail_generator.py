@@ -1,11 +1,51 @@
 import errno
+import json
+from enum import IntEnum
 from pathlib import Path
-from typing import cast
+from typing import TypedDict, cast
 
 from modules.logger import logger
 from modules.paths import paths
 from PIL import Image, ImageChops
 
+
+class ThumbnailColorType(IntEnum):
+	"""
+	サムネイルの色付き枠で使用する色の種類を表す列挙型
+	タイプ名は本家ブルーアーカイブの属性名と対応する。
+	"""
+
+	EXPLOSIVE = 0
+	"""
+	爆発（赤）
+	"""
+
+	PENETRATION = 1
+	"""
+	貫通（黄）
+	"""
+
+	CHEMICAL = 2
+	"""
+	分解（緑）
+	"""
+
+	MYSTIC = 3
+	"""
+	神秘（青）
+	"""
+
+	SONIC = 4
+	"""
+	振動（紫）
+	"""
+
+class ThumbnailConfig(TypedDict):
+	"""
+	サムネイル設定ファイルの構造体
+	"""
+
+	colorType: str
 
 class ThumbnailGenerator:
 	"""
@@ -41,6 +81,36 @@ class ThumbnailGenerator:
 			logger.print_error(f"An unexpected error occurred while reading required thumbnail template ({path})")
 			exit(errno.EIO)
 
+	def _get_thumbnail_config(self, avatar_name: str) -> ThumbnailConfig:
+		"""
+		アバターディレクトリ内にある`thumbnail_config.json`を読み込み、そのオブジェクトを返す。
+
+		Args:
+			avatar_name (str): サムネイル設定を読み込むアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+
+		Returns:
+			ThumbnailConfig: サムネイル設定ファイルの内容を格納したオブジェクト
+		"""
+
+		try:
+			with open(paths.character_dir / avatar_name / "thumbnail_config.json", "r") as f:
+				return json.load(f)
+		except FileNotFoundError:
+			logger.print_error(f"Thumbnail config file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			exit(errno.ENOENT)
+		except IsADirectoryError:
+			logger.print_error(f"Thumbnail config file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			exit(errno.EISDIR)
+		except PermissionError:
+			logger.print_error(f"No permission to read thumbnail config file ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			exit(errno.EACCES)
+		except json.JSONDecodeError:
+			logger.print_error(f"Thumbnail config file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			exit(errno.EINVAL)
+		except:
+			logger.print_error(f"An unexpected error occurred while reading thumbnail config ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			exit(errno.EIO)
+
 	@staticmethod
 	def generate_thumbnail(avatar_name: str) -> Image.Image:
 		"""
@@ -57,6 +127,9 @@ class ThumbnailGenerator:
 		if not avatar_name in paths.get_avatar_names():
 			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
+
+		# サムネイル設定ファイルの読み込み
+
 
 		# キャンバスの作成
 		canvas: Image.Image = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
