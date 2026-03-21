@@ -46,6 +46,10 @@ class ThumbnailConfig(TypedDict):
 	"""
 
 	colorType: str
+	"""
+	サムネイルの色付き枠で使用する色の種類
+	`ThumbnailColorType`のいずれかを指定する。
+	"""
 
 class ThumbnailGenerator:
 	"""
@@ -94,7 +98,9 @@ class ThumbnailGenerator:
 
 		try:
 			with open(paths.character_dir / avatar_name / "thumbnail_config.json", "r") as f:
-				return json.load(f)
+				config: ThumbnailConfig = json.load(f)
+				config["colorType"] = config["colorType"].upper()
+				return config
 		except FileNotFoundError:
 			logger.print_error(f"Thumbnail config file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
 			exit(errno.ENOENT)
@@ -129,7 +135,10 @@ class ThumbnailGenerator:
 			exit(errno.EINVAL)
 
 		# サムネイル設定ファイルの読み込み
-
+		thumbnail_config: ThumbnailConfig = thumbnail_generator._get_thumbnail_config(avatar_name)
+		if thumbnail_config["colorType"] not in ThumbnailColorType.__members__:
+			logger.print_error(f"Invalid colorType \"({thumbnail_config['colorType']})\" found in thumbnail config ({avatar_name})")
+			exit(errno.EINVAL)
 
 		# キャンバスの作成
 		canvas: Image.Image = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
@@ -162,8 +171,7 @@ class ThumbnailGenerator:
 
 		# レイヤー4: 色付き枠
 		palette: Image.Image = thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "frame_colors.png").convert("RGBA")
-		index: int = 1
-		layer4: Image.Image = Image.new("RGBA", (256, 256), cast(tuple[int, int, int, int], palette.getpixel((index, 0)))) # pyright: ignore[reportUnknownMemberType]
+		layer4: Image.Image = Image.new("RGBA", (256, 256), cast(tuple[int, int, int, int], palette.getpixel((ThumbnailColorType[thumbnail_config["colorType"]].value, 0)))) # pyright: ignore[reportUnknownMemberType]
 		layer4.putalpha(thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "L4_colored_frame.png").convert("L"))
 		canvas.alpha_composite(layer4)
 
