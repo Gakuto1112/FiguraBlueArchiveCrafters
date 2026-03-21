@@ -42,7 +42,7 @@ class ThumbnailGenerator:
 			exit(errno.EIO)
 
 	@staticmethod
-	def _generate_thumbnail(avatar_name: str) -> Image.Image:
+	def generate_thumbnail(avatar_name: str) -> Image.Image:
 		"""
 		指定されたアバターのサムネイル画像を生成し、そのPIL Imageオブジェクトを返す。
 
@@ -139,6 +139,30 @@ class ThumbnailGenerator:
 		return canvas
 
 	@staticmethod
+	def save_thumbnail(avatar_name: str, thumbnail: Image.Image) -> None:
+		"""
+		生成サムネイル画像(厳密には引数で指定されたPIL Imageオブジェクト)を指定されたアバターのサムネイル画像として保存する。
+
+		Args:
+			avatar_name (str): サムネイルを保存するアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+			thumbnail (Image.Image): 保存するサムネイル画像のPIL Imageオブジェクト。サムネイル画像は`thumbnail_generator.generate_thumbnail()`で生成する。
+		"""
+
+		# 入力の確認
+		if not avatar_name in paths.get_avatar_names():
+			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
+			exit(errno.EINVAL)
+
+		try:
+			thumbnail.save(paths.distribution_dir / avatar_name / "avatar.png")
+		except PermissionError:
+			logger.print_error(f"No permission to save thumbnail image ({paths.distribution_dir / avatar_name / 'avatar.png'})")
+			exit(errno.EACCES)
+		except:
+			logger.print_error(f"An unexpected error occurred while saving thumbnail image ({paths.distribution_dir / avatar_name / 'avatar.png'})")
+			exit(errno.EIO)
+
+	@staticmethod
 	def debug() -> None:
 		"""
 		サムネイルジェネレーターのデバッグ動作を実行する。
@@ -148,7 +172,7 @@ class ThumbnailGenerator:
 		logger.print_spacer(1)
 
 		logger.print_info(f"Generating thumbnail image (00a_base)...")
-		thumbnail_generator._generate_thumbnail("00a_base").show()
+		thumbnail_generator.generate_thumbnail("00a_base").show()
 		logger.print_info(f"Completed generating thumbnail image (00a_base)")
 		logger.print_info(f"Hint: Generated thumbnail image is being displayed using the default image viewer of your operating system.")
 

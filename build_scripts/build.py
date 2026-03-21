@@ -2,9 +2,11 @@ import argparse
 import errno
 from pathlib import Path
 
+from modules.avatar_json_generator import json_generator
 from modules.file_ops import file_ops
 from modules.logger import logger
 from modules.paths import paths
+from modules.thumbnail_generator import thumbnail_generator
 
 should_generate_thumbnails: bool = True
 """
@@ -16,7 +18,13 @@ is_observe_mode: bool = False
 スクリプトが監視モードかどうかのフラグ
 """
 
-def build(target_avatars: list[str]) -> None:
+def build(target_avatars: tuple[str, ...]) -> None:
+	"""
+	アバターをビルドし、Figuraで使用可能な形式にする。
+
+	Args:
+		target_avatars (list[str]): ビルドするアバターの名前のリスト。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+	"""
 
 	# 出力先ディレクトリの準備
 	logger.print_info("Preparing distribution directory...")
@@ -28,7 +36,7 @@ def build(target_avatars: list[str]) -> None:
 		logger.print_error("No target avatars specified for build.")
 		exit(errno.EINVAL)
 	logger.print_info("Completed preparing distribution directory.")
-	print()
+	logger.print_spacer(1)
 
 	# アバターアセットのコピー
 	logger.print_info("Copying avatar assets...")
@@ -36,7 +44,27 @@ def build(target_avatars: list[str]) -> None:
 		logger.print_info(f"Copying assets for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
 		file_ops.copy_assets(target_avatar)
 	logger.print_info("Completed copying avatar assets.")
-	print()
+	logger.print_spacer(1)
+
+	# avatar.jsonの生成
+	logger.print_info("Generating avatar.json files...")
+	for target_avatar in target_avatars:
+		logger.print_info(f"Generating avatar.json for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+		json_generator.write_merged_avatar_json(target_avatar)
+	logger.print_info("Completed generating avatar.json files.")
+	logger.print_spacer(1)
+
+	# サムネイル画像の生成
+	if should_generate_thumbnails:
+		logger.print_info("Generating thumbnail images...")
+		for target_avatar in target_avatars:
+			logger.print_info(f"Generating thumbnail image for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+			thumbnail_generator.save_thumbnail(target_avatar, thumbnail_generator.generate_thumbnail(target_avatar))
+		logger.print_info("Completed generating thumbnail images.")
+		logger.print_spacer(1)
+	else:
+		logger.print_info("Skipping thumbnail generation as per command line argument.")
+		logger.print_spacer(1)
 
 def main() -> None:
 	"""
@@ -79,7 +107,7 @@ def main() -> None:
 	logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
 	logger.print_spacer(1)
 
-	build(target_avatars)
+	build(tuple(target_avatars))
 
 if __name__ == "__main__":
 	main()
