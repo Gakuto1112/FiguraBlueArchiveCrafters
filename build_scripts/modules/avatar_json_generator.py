@@ -155,7 +155,7 @@ class AvatarJsonGenerator:
 			exit(errno.EIO)
 
 	@staticmethod
-	def _get_avatar_meta(avatar_name: str) -> AvatarMetaData:
+	def _get_avatar_json_config(avatar_name: str) -> AvatarMetaData:
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
 			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
@@ -163,22 +163,22 @@ class AvatarJsonGenerator:
 
 		# メタデータの取得
 		try:
-			with open(paths.character_dir / avatar_name / "avatar_meta.json", "r") as f:
+			with open(paths.character_dir / avatar_name / "avatar_json_config.json", "r") as f:
 				return json.load(f)
 		except FileNotFoundError:
-			logger.print_error(f"Avatar meta file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_meta.json'})")
+			logger.print_error(f"Avatar meta file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.ENOENT)
 		except IsADirectoryError:
-			logger.print_error(f"Avatar meta file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_meta.json'})")
+			logger.print_error(f"Avatar meta file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EISDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to read avatar meta file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_meta.json'})")
+			logger.print_error(f"No permission to read avatar meta file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EACCES)
 		except json.JSONDecodeError:
-			logger.print_error(f"Avatar meta file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_meta.json'})")
+			logger.print_error(f"Avatar meta file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EINVAL)
 		except:
-			logger.print_error(f"An unexpected error occurred while reading avatar meta ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_meta.json'})")
+			logger.print_error(f"An unexpected error occurred while reading avatar meta ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EIO)
 
 	@staticmethod
@@ -200,7 +200,7 @@ class AvatarJsonGenerator:
 
 		# avatar.jsonデータの取得
 		template = json_generator._get_template_avatar_json()
-		meta = json_generator._get_avatar_meta(avatar_name)
+		meta = json_generator._get_avatar_json_config(avatar_name)
 
 		# プレイスホルダーの置換
 		if (name := template.get("name")) is not None:
