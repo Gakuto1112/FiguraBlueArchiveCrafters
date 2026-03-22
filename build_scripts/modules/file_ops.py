@@ -193,12 +193,14 @@ class FileOperator:
 					else:
 						target_path.unlink(missing_ok=True)
 
-					core_asset_path: Path = paths.core_dir / Path(*relative_path.parts[1:])
-					if core_asset_path.exists():
-						if core_asset_path.is_dir():
-							shutil.copytree(core_asset_path, target_path, dirs_exist_ok=True)
-						else:
-							shutil.copy2(core_asset_path, target_path)
+					relative_path_parts: tuple[str, ...] = relative_path.parts
+					if len(relative_path_parts) > 2:
+						core_asset_path: Path = paths.core_dir / Path(*relative_path.parts[1:])
+						if core_asset_path.exists():
+							if core_asset_path.is_dir():
+								shutil.copytree(core_asset_path, target_path, dirs_exist_ok=True)
+							else:
+								shutil.copy2(core_asset_path, target_path)
 			else:
 				logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
 		except FileNotFoundError:
