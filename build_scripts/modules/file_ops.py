@@ -130,7 +130,7 @@ class FileOperator:
 		logger.print_spacer(1)
 		logger.print_info(f"Copying avatar assets (00a_base)...")
 
-		self.copy_assets("00a_base")
+		FileOperator.copy_assets("00a_base")
 
 		logger.print_info("Completed copying avatar assets.")
 

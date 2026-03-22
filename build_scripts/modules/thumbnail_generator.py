@@ -85,7 +85,8 @@ class ThumbnailGenerator:
 			logger.print_error(f"An unexpected error occurred while reading required thumbnail template ({path})")
 			exit(errno.EIO)
 
-	def _get_thumbnail_config(self, avatar_name: str) -> ThumbnailConfig:
+	@staticmethod
+	def _get_thumbnail_config(avatar_name: str) -> ThumbnailConfig:
 		"""
 		アバターディレクトリ内にある`thumbnail_config.json`を読み込み、そのオブジェクトを返す。
 
@@ -135,7 +136,7 @@ class ThumbnailGenerator:
 			exit(errno.EINVAL)
 
 		# サムネイル設定ファイルの読み込み
-		thumbnail_config: ThumbnailConfig = thumbnail_generator._get_thumbnail_config(avatar_name)
+		thumbnail_config: ThumbnailConfig = ThumbnailGenerator._get_thumbnail_config(avatar_name)
 		if thumbnail_config["colorType"] not in ThumbnailColorType.__members__:
 			logger.print_error(f"Invalid colorType \"({thumbnail_config['colorType']})\" found in thumbnail config ({avatar_name})")
 			exit(errno.EINVAL)
@@ -144,24 +145,24 @@ class ThumbnailGenerator:
 		canvas: Image.Image = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
 
 		# 背景とキャラクターのマスク画像
-		mask_image: Image.Image = thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "trimming_mask.png").convert("L")
+		mask_image: Image.Image = ThumbnailGenerator._open_image(paths.root / "thumbnail_templates" / "trimming_mask.png").convert("L")
 
 		# レイヤー1: 影
-		layer1: Image.Image = thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "L1_shadow.png").convert("RGBA")
+		layer1: Image.Image = ThumbnailGenerator._open_image(paths.root / "thumbnail_templates" / "L1_shadow.png").convert("RGBA")
 		canvas.alpha_composite(layer1)
 
 		# レイヤー2: 背景
-		layer2: Image.Image = thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "L2_background.png").convert("RGBA")
+		layer2: Image.Image = ThumbnailGenerator._open_image(paths.root / "thumbnail_templates" / "L2_background.png").convert("RGBA")
 		layer2.putalpha(mask_image)
 		canvas.alpha_composite(layer2)
 
 		# レイヤー3: 白枠
-		canvas.alpha_composite(thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "L3_frame.png").convert("RGBA"))
+		canvas.alpha_composite(ThumbnailGenerator._open_image(paths.root / "thumbnail_templates" / "L3_frame.png").convert("RGBA"))
 
 		# レイヤー4: キャラクター
 		if (layer4_path := paths.character_dir / avatar_name / "thumbnail.png").exists():
 			# キャラクター画像のトリミング
-			layer4: Image.Image = thumbnail_generator._open_image(layer4_path).convert("RGBA")
+			layer4: Image.Image = ThumbnailGenerator._open_image(layer4_path).convert("RGBA")
 			width, height = layer4.size
 			square_size = min(width, height)
 			layer4 = layer4.crop(((width - square_size) // 2, (height - square_size) // 2, (width + square_size) // 2, (height + square_size) // 2))
@@ -174,16 +175,16 @@ class ThumbnailGenerator:
 			logger.print_warning(f"Character thumbnail not found ({avatar_name}). Character layer will be skipped.")
 
 		# レイヤー5: 色付き枠
-		palette: Image.Image = thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "frame_colors.png").convert("RGBA")
+		palette: Image.Image = ThumbnailGenerator._open_image(paths.root / "thumbnail_templates" / "frame_colors.png").convert("RGBA")
 		layer5: Image.Image = Image.new("RGBA", (256, 256), cast(tuple[int, int, int, int], palette.getpixel((ThumbnailColorType[thumbnail_config["colorType"]].value, 0)))) # pyright: ignore[reportUnknownMemberType]
-		layer5.putalpha(thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "L5_colored_frame.png").convert("L"))
+		layer5.putalpha(ThumbnailGenerator._open_image(paths.root / "thumbnail_templates" / "L5_colored_frame.png").convert("L"))
 		canvas.alpha_composite(layer5)
 
 		# レイヤー6: ウィジェット
-		canvas.alpha_composite(thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "L6_widgets.png").convert("RGBA"))
+		canvas.alpha_composite(ThumbnailGenerator._open_image(paths.root / "thumbnail_templates" / "L6_widgets.png").convert("RGBA"))
 
 		# レイヤー7: アバターID
-		sprite_sheet: Image.Image = thumbnail_generator._open_image(paths.root / "thumbnail_templates" / "char_sprites.png").convert("RGBA")
+		sprite_sheet: Image.Image = ThumbnailGenerator._open_image(paths.root / "thumbnail_templates" / "char_sprites.png").convert("RGBA")
 
 		SPRITE_SIZE: tuple[int, int] = (7, 9) # スプライトシート内のスプライト1つのサイズ（x, y）
 		SPRITE_MAP: dict[str, tuple[int, int]] = { # スプライトシート内の文字とスプライトの位置の対応表
@@ -256,14 +257,11 @@ class ThumbnailGenerator:
 		logger.print_spacer(1)
 
 		logger.print_info(f"Generating thumbnail image (00a_base)...")
-		thumbnail_generator.generate_thumbnail("00a_base").show()
+		ThumbnailGenerator.generate_thumbnail("00a_base").show()
 		logger.print_info(f"Completed generating thumbnail image (00a_base)")
 		logger.print_spacer(1)
 
 		logger.print_info(f"Hint: Generated thumbnail image is being displayed using the default image viewer of your operating system.")
 
-
-thumbnail_generator = ThumbnailGenerator()
-
 if __name__ == "__main__":
-	thumbnail_generator.debug()
+	ThumbnailGenerator.debug()

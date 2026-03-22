@@ -199,8 +199,8 @@ class AvatarJsonGenerator:
 			exit(errno.EINVAL)
 
 		# avatar.jsonデータの取得
-		template = json_generator._get_template_avatar_json()
-		meta = json_generator._get_avatar_json_config(avatar_name)
+		template = AvatarJsonGenerator._get_template_avatar_json()
+		meta = AvatarJsonGenerator._get_avatar_json_config(avatar_name)
 
 		# プレイスホルダーの置換
 		if (name := template.get("name")) is not None:
@@ -230,7 +230,7 @@ class AvatarJsonGenerator:
 			exit(errno.EINVAL)
 
 		# 結合されたavatar.jsonデータの取得
-		merged_data = json_generator._merge_avatar_json(avatar_name)
+		merged_data = AvatarJsonGenerator._merge_avatar_json(avatar_name)
 
 		# avatar.jsonの書き込み
 		try:
@@ -253,10 +253,8 @@ class AvatarJsonGenerator:
 		logger.print_spacer(1)
 
 		logger.print_info(f"Generating merged avatar.json (00a_base)...")
-		json_generator.write_merged_avatar_json("00a_base")
+		AvatarJsonGenerator.write_merged_avatar_json("00a_base")
 		logger.print_info(f"Completed generating merged avatar.json (00a_base)")
 
-json_generator = AvatarJsonGenerator()
-
 if __name__ == "__main__":
-	json_generator.debug()
+	AvatarJsonGenerator.debug()

@@ -2,11 +2,11 @@ import argparse
 import errno
 from pathlib import Path
 
-from modules.avatar_json_generator import json_generator
-from modules.file_ops import file_ops
+from modules.avatar_json_generator import AvatarJsonGenerator
+from modules.file_ops import FileOperator
 from modules.logger import logger
 from modules.paths import paths
-from modules.thumbnail_generator import thumbnail_generator
+from modules.thumbnail_generator import ThumbnailGenerator
 
 should_generate_thumbnails: bool = True
 """
@@ -29,9 +29,9 @@ def build(target_avatars: tuple[str, ...]) -> None:
 	# 出力先ディレクトリの準備
 	logger.print_info("Preparing distribution directory...")
 	if len(target_avatars) > 1:
-		file_ops.prepare_directory(paths.distribution_dir)
+		FileOperator.prepare_directory(paths.distribution_dir)
 	elif len(target_avatars) == 1:
-		file_ops.prepare_directory(paths.distribution_dir / target_avatars[0])
+		FileOperator.prepare_directory(paths.distribution_dir / target_avatars[0])
 	else:
 		logger.print_error("No target avatars specified for build.")
 		exit(errno.EINVAL)
@@ -42,7 +42,7 @@ def build(target_avatars: tuple[str, ...]) -> None:
 	logger.print_info("Copying avatar assets...")
 	for target_avatar in target_avatars:
 		logger.print_info(f"Copying assets for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-		file_ops.copy_assets(target_avatar)
+		FileOperator.copy_assets(target_avatar)
 	logger.print_info("Completed copying avatar assets.")
 	logger.print_spacer(1)
 
@@ -50,7 +50,7 @@ def build(target_avatars: tuple[str, ...]) -> None:
 	logger.print_info("Generating avatar.json files...")
 	for target_avatar in target_avatars:
 		logger.print_info(f"Generating avatar.json for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-		json_generator.write_merged_avatar_json(target_avatar)
+		AvatarJsonGenerator.write_merged_avatar_json(target_avatar)
 	logger.print_info("Completed generating avatar.json files.")
 	logger.print_spacer(1)
 
@@ -59,7 +59,7 @@ def build(target_avatars: tuple[str, ...]) -> None:
 		logger.print_info("Generating thumbnail images...")
 		for target_avatar in target_avatars:
 			logger.print_info(f"Generating thumbnail image for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-			thumbnail_generator.save_thumbnail(target_avatar, thumbnail_generator.generate_thumbnail(target_avatar))
+			ThumbnailGenerator.save_thumbnail(target_avatar, ThumbnailGenerator.generate_thumbnail(target_avatar))
 		logger.print_info("Completed generating thumbnail images.")
 		logger.print_spacer(1)
 	else:
