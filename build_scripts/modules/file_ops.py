@@ -99,6 +99,41 @@ class FileOperator:
 				logger.print_error(f"An unexpected error occurred while copying avatar assets ({subdirectory})")
 				exit(errno.EIO)
 
+	@staticmethod
+	def copy_single_asset_path(src_path: Path) -> None:
+		"""
+		指定されたアセットパス単体を出力先にコピーする。
+		コアディレクトリ内のコピーの場合は、前アバターに対してコピーを行う。同名のキャラクター固有のアセットがあればそれで上書きする。
+		キャラクターディレクトリ内のコピーの場合は、そのキャラクターのアセットのみコピーする。
+
+		Args:
+			src_path (Path): コピーするアセットのパス。ソースディレクトリ内のパスである必要がある。
+		"""
+
+		# 入力されたパスの確認
+		if not src_path.is_relative_to(paths.source_dir):
+			logger.print_error(f"The specified asset path ({src_path}) is outside of the source directory")
+			exit(errno.EINVAL)
+
+		if src_path.is_relative_to(paths.core_dir):
+			# コアディレクトリ内のファイル更新
+			for avatar_name in paths.get_avatar_names():
+				relative_path = src_path.relative_to(paths.core_dir)
+				if src_path.is_dir():
+					(paths.distribution_dir / avatar_name / relative_path).mkdir(parents=True, exist_ok=True)
+					if (paths.character_dir / avatar_name / relative_path).exists():
+						shutil.copytree(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path, dirs_exist_ok=True)
+				else:
+					shutil.copy2(src_path, paths.distribution_dir / avatar_name / relative_path)
+					if (paths.character_dir / avatar_name / relative_path).exists():
+						shutil.copy2(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path)
+		elif src_path.is_relative_to(paths.character_dir):
+			# キャラクターディレクトリ内のファイル更新
+			if src_path.is_dir():
+				(paths.distribution_dir / src_path.relative_to(paths.character_dir)).mkdir(parents=True, exist_ok=True)
+			else:
+				shutil.copy2(src_path, paths.distribution_dir / src_path.relative_to(paths.character_dir))
+
 	def _set_debug_args(self) -> None:
 		"""
 		デバッグ用コマンドライン引数を設定する。
