@@ -30,8 +30,6 @@ class FileOperator:
 
 		try:
 			if dir_path.exists():
-				# ディレクトリの確認
-
 				# 出力先ディレクトリ内のファイルを削除
 				if any(dir_path.iterdir()):
 					logger.print_info(f"Distribution directory already exists and is not empty. Cleaning up directory...")
