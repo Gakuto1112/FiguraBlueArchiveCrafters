@@ -132,7 +132,7 @@ class ThumbnailGenerator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
+			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# サムネイル設定ファイルの読み込み
@@ -235,7 +235,7 @@ class ThumbnailGenerator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
+			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		try:

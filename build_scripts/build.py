@@ -95,7 +95,7 @@ def main() -> None:
 	if args.character:
 		target = next((avatar for avatar in paths.get_avatar_names() if args.character in avatar), None)
 		if target is None:
-			logger.print_error(f"Specified character \"{args.character}\" does not exist in the character directory.")
+			logger.print_error(f"The specified character \"{args.character}\" does not exist in the character directory.")
 			exit(errno.EPERM)
 
 		target_avatars.append(target)

@@ -158,7 +158,7 @@ class AvatarJsonGenerator:
 	def _get_avatar_json_config(avatar_name: str) -> AvatarJsonConfig:
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
+			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# メタデータの取得
@@ -195,7 +195,7 @@ class AvatarJsonGenerator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
+			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# avatar.jsonデータの取得
@@ -226,7 +226,7 @@ class AvatarJsonGenerator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
+			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# 結合されたavatar.jsonデータの取得

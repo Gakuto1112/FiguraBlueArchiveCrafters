@@ -51,7 +51,7 @@ class FileOperator:
 				logger.print_info(f"Distribution directory does not exist. Creating new directory...")
 				dir_path.mkdir(parents=True)
 		except NotADirectoryError:
-			logger.print_error(f"Specified distribution directory is not a directory ({dir_path})")
+			logger.print_error(f"The specified distribution directory is not a directory ({dir_path})")
 			exit(errno.ENOTDIR)
 		except PermissionError:
 			logger.print_error(f"No permission to operate on specified distribution directory ({dir_path})")
@@ -75,7 +75,7 @@ class FileOperator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"Specified avatar name \"{avatar_name}\" is not valid.")
+			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# アセットのコピー
