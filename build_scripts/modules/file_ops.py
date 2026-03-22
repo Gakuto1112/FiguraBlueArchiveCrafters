@@ -92,8 +92,7 @@ class FileOperator:
 			except PermissionError:
 				logger.print_error(f"No permission to copy avatar assets ({subdirectory})")
 				exit(errno.EACCES)
-			except Exception as e:
-				print(e)
+			except Exception:
 				logger.print_error(f"An unexpected error occurred while copying avatar assets ({subdirectory})")
 				exit(errno.EIO)
 
