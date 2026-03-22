@@ -53,10 +53,23 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 		return super().on_moved(event)
 
 	def on_deleted(self, event: DirDeletedEvent | FileDeletedEvent) -> None:
-		if isinstance(event, FileDeletedEvent):
-			logger.print_info(f"File deletion detected: {event.src_path}")
-		else:
-			logger.print_info(f"Directory deletion detected: {event.src_path}")
+		"""
+		ファイル/ディレクトリの削除イベントのハンドラー関数
+
+		Args:
+			event (DirDeletedEvent | FileDeletedEvent): 削除イベントのオブジェクト
+		"""
+
+		target_path: Path = Path(str(event.src_path))
+		if target_path.is_relative_to(paths.core_dir) or target_path.is_relative_to(paths.character_dir):
+			if isinstance(event, FileDeletedEvent):
+				logger.print_info(f"File deletion detected: {event.src_path}")
+
+				FileOperator.delete_single_asset_path(target_path)
+			else:
+				logger.print_info(f"Directory deletion detected: {event.src_path}")
+
+				FileOperator.delete_single_asset_path(target_path)
 
 class AvatarFileObserver():
 	"""

@@ -100,7 +100,7 @@ class FileOperator:
 	def copy_single_asset_path(src_path: Path) -> None:
 		"""
 		指定されたアセットパス単体を出力先にコピーする。
-		コアディレクトリ内のコピーの場合は、前アバターに対してコピーを行う。同名のキャラクター固有のアセットがあればそれで上書きする。
+		コアディレクトリ内のコピーの場合は、全アバターに対してコピーを行う。同名のキャラクター固有のアセットがあればそれで上書きする。
 		キャラクターディレクトリ内のコピーの場合は、そのキャラクターのアセットのみコピーする。
 
 		Args:
@@ -112,24 +112,110 @@ class FileOperator:
 			logger.print_error(f"The specified asset path ({src_path}) is outside of the source directory")
 			exit(errno.EINVAL)
 
-		if src_path.is_relative_to(paths.core_dir):
-			# コアディレクトリ内のファイル更新
-			for avatar_name in paths.get_avatar_names():
-				relative_path = src_path.relative_to(paths.core_dir)
+		try:
+			if src_path.is_relative_to(paths.core_dir):
+				# コアディレクトリ内のファイル更新
+				for avatar_name in paths.get_avatar_names():
+					relative_path: Path = src_path.relative_to(paths.core_dir)
+					if src_path.is_dir():
+						(paths.distribution_dir / avatar_name / relative_path).mkdir(parents=True, exist_ok=True)
+						if (paths.character_dir / avatar_name / relative_path).exists():
+							shutil.copytree(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path, dirs_exist_ok=True)
+					else:
+						shutil.copy2(src_path, paths.distribution_dir / avatar_name / relative_path)
+						if (paths.character_dir / avatar_name / relative_path).exists():
+							shutil.copy2(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path)
+			elif src_path.is_relative_to(paths.character_dir):
+				# キャラクターディレクトリ内のファイル更新
 				if src_path.is_dir():
-					(paths.distribution_dir / avatar_name / relative_path).mkdir(parents=True, exist_ok=True)
-					if (paths.character_dir / avatar_name / relative_path).exists():
-						shutil.copytree(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path, dirs_exist_ok=True)
+					(paths.distribution_dir / src_path.relative_to(paths.character_dir)).mkdir(parents=True, exist_ok=True)
 				else:
-					shutil.copy2(src_path, paths.distribution_dir / avatar_name / relative_path)
-					if (paths.character_dir / avatar_name / relative_path).exists():
-						shutil.copy2(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path)
-		elif src_path.is_relative_to(paths.character_dir):
-			# キャラクターディレクトリ内のファイル更新
-			if src_path.is_dir():
-				(paths.distribution_dir / src_path.relative_to(paths.character_dir)).mkdir(parents=True, exist_ok=True)
+					shutil.copy2(src_path, paths.distribution_dir / src_path.relative_to(paths.character_dir))
 			else:
-				shutil.copy2(src_path, paths.distribution_dir / src_path.relative_to(paths.character_dir))
+				logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
+		except FileNotFoundError:
+			logger.print_error(f"Specified asset not found ({src_path})")
+			exit(errno.ENOENT)
+		except IsADirectoryError:
+			logger.print_error(f"Specified asset is a directory, but expected a file ({src_path})")
+			exit(errno.EISDIR)
+		except NotADirectoryError:
+			logger.print_error(f"Specified asset is not a directory, but expected a file ({src_path})")
+			exit(errno.ENOTDIR)
+		except PermissionError:
+			logger.print_error(f"No permission to copy specified asset ({src_path})")
+			exit(errno.EACCES)
+		except Exception:
+			logger.print_error(f"An unexpected error occurred while copying specified asset ({src_path})")
+			exit(errno.EIO)
+
+	@staticmethod
+	def delete_single_asset_path(src_path: Path) -> None:
+		"""
+		指定されたアセットパス単体を出力先から削除する。
+		コアディレクトリ内の削除の場合は、全アバターに対して削除を行う。同名のキャラクター固有のアセットがあればそれを再コピーする。
+		キャラクターディレクトリ内の削除の場合は、そのキャラクターのアセットのみ削除する。同名のコアアセットがあればそれを再コピーする。
+
+		Args:
+			src_path (Path): 削除するアセットのパス。ソースディレクトリ内のパスである必要がある。
+		"""
+
+		# 入力されたパスの確認
+		if not src_path.is_relative_to(paths.source_dir):
+			logger.print_error(f"The specified asset path ({src_path}) is outside of the source directory")
+			exit(errno.EINVAL)
+
+		try:
+			if src_path.is_relative_to(paths.core_dir):
+				# コアディレクトリ内のファイル削除
+				for avatar_name in paths.get_avatar_names():
+					relative_path: Path = src_path.relative_to(paths.core_dir)
+					target_path: Path = paths.distribution_dir / avatar_name / relative_path
+					if target_path.exists():
+						if target_path.is_dir():
+							shutil.rmtree(target_path)
+						else:
+							target_path.unlink(missing_ok=True)
+
+						character_asset_path: Path = paths.character_dir / avatar_name / relative_path
+						if character_asset_path.exists():
+							if character_asset_path.is_dir():
+								shutil.copytree(character_asset_path, target_path, dirs_exist_ok=True)
+							else:
+								shutil.copy2(character_asset_path, target_path)
+			elif src_path.is_relative_to(paths.character_dir):
+				# キャラクターディレクトリ内のファイル削除
+				relative_path: Path = src_path.relative_to(paths.character_dir)
+				target_path: Path = paths.distribution_dir / relative_path
+				if target_path.exists():
+					if target_path.is_dir():
+						shutil.rmtree(target_path)
+					else:
+						target_path.unlink(missing_ok=True)
+
+					core_asset_path: Path = paths.core_dir / Path(*relative_path.parts[1:])
+					if core_asset_path.exists():
+						if core_asset_path.is_dir():
+							shutil.copytree(core_asset_path, target_path, dirs_exist_ok=True)
+						else:
+							shutil.copy2(core_asset_path, target_path)
+			else:
+				logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
+		except FileNotFoundError:
+			logger.print_error(f"Specified asset not found ({src_path})")
+			exit(errno.ENOENT)
+		except IsADirectoryError:
+			logger.print_error(f"Specified asset is a directory, but expected a file ({src_path})")
+			exit(errno.EISDIR)
+		except NotADirectoryError:
+			logger.print_error(f"Specified asset is not a directory, but expected a file ({src_path})")
+			exit(errno.ENOTDIR)
+		except PermissionError:
+			logger.print_error(f"No permission to remove specified asset ({src_path})")
+			exit(errno.EACCES)
+		except Exception:
+			logger.print_error(f"An unexpected error occurred while removing specified asset ({src_path})")
+			exit(errno.EIO)
 
 	def _set_debug_args(self) -> None:
 		"""
