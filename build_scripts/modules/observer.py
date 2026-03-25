@@ -50,7 +50,33 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 			FileOperator.copy_single_asset_path(target_path)
 
 	def on_moved(self, event: DirMovedEvent | FileMovedEvent) -> None:
-		return super().on_moved(event)
+		"""
+		ファイル/ディレクトリの移動イベントのハンドラー関数
+
+		Args:
+			event (DirMovedEvent | FileMovedEvent): 移動イベントのオブジェクト
+		"""
+
+		from_path: Path = Path(str(event.src_path))
+		to_path: Path = Path(str(event.dest_path))
+		from_is_relative_to: bool = from_path.is_relative_to(paths.core_dir) or from_path.is_relative_to(paths.character_dir)
+		to_is_relative_to: bool = to_path.is_relative_to(paths.core_dir) or to_path.is_relative_to(paths.character_dir)
+		if from_is_relative_to or to_is_relative_to:
+			if isinstance(event, FileMovedEvent):
+				logger.print_info(f"File move detected: {event.src_path} -> {event.dest_path}")
+
+				# リソースの移動は「移動元から削除 → 移動先に再コピー」と考える。
+				if from_is_relative_to:
+					FileOperator.delete_single_asset_path(from_path)
+				if to_is_relative_to:
+					FileOperator.copy_single_asset_path(to_path)
+			else:
+				logger.print_info(f"Directory move detected: {event.src_path} -> {event.dest_path}")
+
+				if from_is_relative_to:
+					FileOperator.delete_single_asset_path(from_path)
+				if to_is_relative_to:
+					FileOperator.copy_single_asset_path(to_path)
 
 	def on_deleted(self, event: DirDeletedEvent | FileDeletedEvent) -> None:
 		"""
