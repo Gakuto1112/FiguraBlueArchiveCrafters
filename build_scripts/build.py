@@ -1,5 +1,6 @@
 import argparse
 import errno
+import random
 from json import JSONDecodeError
 from pathlib import Path
 
@@ -11,6 +12,33 @@ from modules.observer import AvatarFileObserver
 from modules.paths import paths
 from modules.thumbnail_generator import ThumbnailGenerator
 
+is_plana = False
+"""
+起動時の「シッテムの箱」のロゴを紫色にするかどうかのフラグ
+"""
+
+
+def print_shittim_logo() -> None:
+	"""
+	「シッテムの箱」のロゴアスキーアートを標準出力する。
+
+	Raises:
+		FileNotFoundError: ロゴアスキーアートのテキストファイルが見つからない場合
+		PermissionError: ロゴアスキーアートのテキストファイルを読み取る権限がない場合
+		IOError: ロゴアスキーアートのテキストファイルの読み取り中に予期しないエラーが発生した場合
+	"""
+
+	with open(Path(__file__).parent.resolve() / "shittim.txt", "r", encoding="utf-8") as f:
+		logo = f.read()
+		Logger.print_spacer(1)
+		if Logger.is_colored:
+			global is_plana
+			print("\033[35m" if is_plana else "\033[36m", end="")
+			Logger.print_info(logo)
+			print("\033[0m", end="")
+		else:
+			Logger.print_info(logo)
+		Logger.print_spacer(1)
 
 def build(target_avatars: tuple[str, ...]) -> None:
 	"""
@@ -128,7 +156,7 @@ def main() -> None:
 	"""
 
 	# 引数の設定
-	parser = argparse.ArgumentParser(description="Builds avatars for Figura Blue Archive Characters (FBAC).")
+	parser = argparse.ArgumentParser(description="Builds avatars for Figura Blue Archive Crafters (FBAC).")
 
 	parser.add_argument("--character", "-c", type=str, choices=paths.get_valid_avatar_names(), help="Specifies the character avatar to build. If not specified, all avatars will be built. This option is ignored in observe mode.")
 	parser.add_argument("--skip-base-avatar-build", "-s", action="store_true", help="Skips building the base avatar. This option is only effective when --character / -c option is not specified.")
@@ -148,8 +176,27 @@ def main() -> None:
 	if args.debug:
 		Logger.should_print_debug_log = True
 
-	Logger.print_info("Figura Blue Archive Characters (FBAC) Avatar Build Tool")
-	Logger.print_spacer(1)
+	global is_plana
+	is_plana = random.random() >= 0.95
+	try:
+		print_shittim_logo()
+	except FileNotFoundError:
+		Logger.print_error("Failed to load the Shittim logo because of missing logo files.")
+	except PermissionError:
+		Logger.print_error("No permission to read the Shittim logo file.")
+	except IOError:
+		Logger.print_error("An unexpected error occurred while loading the Shittim logo.")
+
+	if Logger.is_colored:
+		Logger.print_info("\033[1mFigura Blue Archive Crafters (FBAC) Avatar Build Tool\033[0m")
+		Logger.print_spacer(1)
+		Logger.print_info("\t\033[1;35mWelcome Back. Sensei.\033[0m" if is_plana else "\t\033[1;36mWelcome Back! Sensei!\033[0m")
+		Logger.print_spacer(1)
+	else:
+		Logger.print_info("Figura Blue Archive Crafters (FBAC) Avatar Build Tool")
+		Logger.print_spacer(1)
+		Logger.print_info("\tWelcome Back. Sensei." if is_plana else "\tWelcome Back! Sensei!")
+		Logger.print_spacer(1)
 
 	if args.observe:
 		# 監視モード
