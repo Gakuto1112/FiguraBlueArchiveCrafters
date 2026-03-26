@@ -218,6 +218,11 @@ class AvatarFileObserver():
 		except KeyboardInterrupt:
 			observer.stop()
 			Logger.print_info("\nObservation mode stopped.")
+			Logger.print_spacer(1)
+			if Logger.is_plana:
+				Logger.print_plana("See you later, Sensei.")
+			else:
+				Logger.print_arona("See you next time! Sensei!")
 
 	@staticmethod
 	def debug() -> None:

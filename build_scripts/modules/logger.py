@@ -1,3 +1,4 @@
+import random
 import sys
 
 
@@ -14,6 +15,11 @@ class Logger:
 	should_print_debug_log: bool = False
 	"""
 	DEBUGレベルのログを出力するかどうかのフラグ
+	"""
+
+	is_plana: bool = random.random() >= 0.5
+	"""
+	起動時の「シッテムの箱」のロゴを紫色にするかどうかのフラグ
 	"""
 
 	_last_spacer_count: int = 0
@@ -66,6 +72,30 @@ class Logger:
 			print(f"\033[1;31m[ERROR]\033[0m {message}", file=sys.stderr)
 		else:
 			print(f"[ERROR] {message}", file=sys.stderr)
+		Logger._last_spacer_count = 0
+
+	@staticmethod
+	def print_arona(message: str) -> None:
+		"""
+		アロナが話している体でメッセージを標準出力する。
+		"""
+
+		if Logger.is_colored:
+			print(f"\t\033[1;36m{message}\033[0m")
+		else:
+			print(f"\t{message}")
+		Logger._last_spacer_count = 0
+
+	@staticmethod
+	def print_plana(message: str) -> None:
+		"""
+		プラナが話している体でメッセージを標準出力する。
+		"""
+
+		if Logger.is_colored:
+			print(f"\t\033[1;35m{message}\033[0m")
+		else:
+			print(f"\t{message}")
 		Logger._last_spacer_count = 0
 
 	@staticmethod

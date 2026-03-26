@@ -1,6 +1,5 @@
 import argparse
 import errno
-import random
 from json import JSONDecodeError
 from pathlib import Path
 
@@ -11,11 +10,6 @@ from modules.logger import Logger
 from modules.observer import AvatarFileObserver
 from modules.paths import paths
 from modules.thumbnail_generator import ThumbnailGenerator
-
-is_plana = False
-"""
-起動時の「シッテムの箱」のロゴを紫色にするかどうかのフラグ
-"""
 
 
 def print_shittim_logo() -> None:
@@ -32,8 +26,7 @@ def print_shittim_logo() -> None:
 		logo = f.read()
 		Logger.print_spacer(1)
 		if Logger.is_colored:
-			global is_plana
-			print("\033[35m" if is_plana else "\033[36m", end="")
+			print("\033[35m" if Logger.is_plana else "\033[36m", end="")
 			Logger.print_info(logo)
 			print("\033[0m", end="")
 		else:
@@ -176,8 +169,6 @@ def main() -> None:
 	if args.debug:
 		Logger.should_print_debug_log = True
 
-	global is_plana
-	is_plana = random.random() >= 0.5
 	try:
 		print_shittim_logo()
 	except FileNotFoundError:
@@ -190,13 +181,14 @@ def main() -> None:
 	if Logger.is_colored:
 		Logger.print_info("\033[1mFigura Blue Archive Crafters (FBAC) Avatar Build Tool\033[0m")
 		Logger.print_spacer(1)
-		Logger.print_info("\t\033[1;35mWelcome Back. Sensei.\033[0m" if is_plana else "\t\033[1;36mWelcome Back! Sensei!\033[0m")
-		Logger.print_spacer(1)
 	else:
 		Logger.print_info("Figura Blue Archive Crafters (FBAC) Avatar Build Tool")
 		Logger.print_spacer(1)
-		Logger.print_info("\tWelcome Back. Sensei." if is_plana else "\tWelcome Back! Sensei!")
-		Logger.print_spacer(1)
+	if Logger.is_plana:
+		Logger.print_plana("Welcome Back. Sensei.")
+	else:
+		Logger.print_arona("Welcome Back! Sensei!")
+	Logger.print_spacer(1)
 
 	if args.observe:
 		# 監視モード
@@ -220,6 +212,12 @@ def main() -> None:
 			Logger.print_spacer(1)
 
 		Logger.print_info("Observation mode started. Press Ctrl+C to stop observing and exit the tool.")
+		Logger.print_spacer(1)
+
+		if Logger.is_plana:
+			Logger.print_plana("Everything is ready. Good luck. Sensei.")
+		else:
+			Logger.print_arona("Everything is ready! Good luck! Sensei!")
 		Logger.print_spacer(1)
 
 		AvatarFileObserver.observe()
