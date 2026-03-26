@@ -4,7 +4,7 @@ from pathlib import Path
 
 from modules.avatar_json_generator import AvatarJsonGenerator
 from modules.file_ops import FileOperator
-from modules.logger import logger
+from modules.logger import Logger
 from modules.paths import paths
 from modules.thumbnail_generator import ThumbnailGenerator
 
@@ -27,44 +27,44 @@ def build(target_avatars: tuple[str, ...]) -> None:
 	"""
 
 	# 出力先ディレクトリの準備
-	logger.print_info("Preparing distribution directory...")
+	Logger.print_info("Preparing distribution directory...")
 	if len(target_avatars) > 1:
 		FileOperator.prepare_directory(paths.distribution_dir)
 	elif len(target_avatars) == 1:
 		FileOperator.prepare_directory(paths.distribution_dir / target_avatars[0])
 	else:
-		logger.print_error("No target avatars specified for build.")
+		Logger.print_error("No target avatars specified for build.")
 		exit(errno.EINVAL)
-	logger.print_info("Completed preparing distribution directory.")
-	logger.print_spacer(1)
+	Logger.print_info("Completed preparing distribution directory.")
+	Logger.print_spacer(1)
 
 	# アバターアセットのコピー
-	logger.print_info("Copying avatar assets...")
+	Logger.print_info("Copying avatar assets...")
 	for target_avatar in target_avatars:
-		logger.print_info(f"Copying assets for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+		Logger.print_info(f"Copying assets for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
 		FileOperator.copy_assets(target_avatar)
-	logger.print_info("Completed copying avatar assets.")
-	logger.print_spacer(1)
+	Logger.print_info("Completed copying avatar assets.")
+	Logger.print_spacer(1)
 
 	# avatar.jsonの生成
-	logger.print_info("Generating avatar.json files...")
+	Logger.print_info("Generating avatar.json files...")
 	for target_avatar in target_avatars:
-		logger.print_info(f"Generating avatar.json for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+		Logger.print_info(f"Generating avatar.json for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
 		AvatarJsonGenerator.write_merged_avatar_json(target_avatar)
-	logger.print_info("Completed generating avatar.json files.")
-	logger.print_spacer(1)
+	Logger.print_info("Completed generating avatar.json files.")
+	Logger.print_spacer(1)
 
 	# サムネイル画像の生成
 	if should_generate_thumbnails:
-		logger.print_info("Generating thumbnail images...")
+		Logger.print_info("Generating thumbnail images...")
 		for target_avatar in target_avatars:
-			logger.print_info(f"Generating thumbnail image for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+			Logger.print_info(f"Generating thumbnail image for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
 			ThumbnailGenerator.save_thumbnail(target_avatar, ThumbnailGenerator.generate_thumbnail(target_avatar))
-		logger.print_info("Completed generating thumbnail images.")
-		logger.print_spacer(1)
+		Logger.print_info("Completed generating thumbnail images.")
+		Logger.print_spacer(1)
 	else:
-		logger.print_info("Skipping thumbnail generation as per command line argument.")
-		logger.print_spacer(1)
+		Logger.print_info("Skipping thumbnail generation as per command line argument.")
+		Logger.print_spacer(1)
 
 def main() -> None:
 	"""
@@ -82,8 +82,8 @@ def main() -> None:
 
 	args = parser.parse_args()
 
-	logger.print_info("Figura Blue Archive Characters (FBAC) Avatar Build Tool")
-	logger.print_spacer(1)
+	Logger.print_info("Figura Blue Archive Characters (FBAC) Avatar Build Tool")
+	Logger.print_spacer(1)
 
 	paths.source_dir = Path(args.src_dir)
 	paths.distribution_dir = Path(args.dist_dir)
@@ -95,17 +95,17 @@ def main() -> None:
 	if args.character:
 		target = next((avatar for avatar in paths.get_avatar_names() if args.character in avatar), None)
 		if target is None:
-			logger.print_error(f"The specified character \"{args.character}\" does not exist in the character directory.")
+			Logger.print_error(f"The specified character \"{args.character}\" does not exist in the character directory.")
 			exit(errno.EPERM)
 
 		target_avatars.append(target)
 	else:
 		target_avatars = list(paths.get_avatar_names())
 
-	logger.print_debug(f"Target avatars: {", ".join(target_avatars)}")
-	logger.print_debug(f"Source directory: {paths.source_dir}")
-	logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
-	logger.print_spacer(1)
+	Logger.print_debug(f"Target avatars: {", ".join(target_avatars)}")
+	Logger.print_debug(f"Source directory: {paths.source_dir}")
+	Logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
+	Logger.print_spacer(1)
 
 	build(tuple(target_avatars))
 
