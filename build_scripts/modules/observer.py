@@ -217,6 +217,7 @@ class AvatarFileObserver():
 				time.sleep(1)
 		except KeyboardInterrupt:
 			observer.stop()
+			Logger.print_info("\nObservation mode stopped.")
 
 	@staticmethod
 	def debug() -> None:

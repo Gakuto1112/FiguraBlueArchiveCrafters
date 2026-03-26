@@ -151,13 +151,17 @@ def main() -> None:
 
 	if args.observe:
 		# 監視モード
-		Logger.print_info("Observation mode enabled. The tool will observe the source directory for changes and automatically rebuild the affected avatars.")
-		Logger.print_info("Press Ctrl+C to stop observing and exit the tool.")
+		Logger.print_info("Observation mode specified. The tool will observe the source directory for changes and automatically rebuild the affected avatars.")
 		Logger.print_spacer(1)
 
 		Logger.print_debug(f"Source directory: {paths.source_dir}")
 		Logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
 		Logger.print_spacer(1)
+
+		Logger.print_info("Initializing the distribution directory...")
+		Logger.print_spacer(1)
+
+		build(tuple(paths.get_avatar_names()))
 
 		if args.character:
 			Logger.print_warning("The --character / -c option is ignored in observe mode. All characters will be observed for changes.")
@@ -165,6 +169,9 @@ def main() -> None:
 		if args.skip_base_avatar_build:
 			Logger.print_warning("The --skip-base-avatar-build / -s option is ignored in observe mode. All characters will be observed for changes.")
 			Logger.print_spacer(1)
+
+		Logger.print_info("Observation mode started. Press Ctrl+C to stop observing and exit the tool.")
+		Logger.print_spacer(1)
 
 		AvatarFileObserver.observe()
 
