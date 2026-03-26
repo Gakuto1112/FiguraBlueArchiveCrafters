@@ -177,7 +177,7 @@ def main() -> None:
 		Logger.should_print_debug_log = True
 
 	global is_plana
-	is_plana = random.random() >= 0.95
+	is_plana = random.random() >= 0.5
 	try:
 		print_shittim_logo()
 	except FileNotFoundError:
