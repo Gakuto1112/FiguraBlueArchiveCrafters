@@ -12,7 +12,7 @@ class FileOperator:
 	ディレクトリの準備、アセットのコピーなどのファイル操作を行うクラス
 	"""
 
-	target_directory_path: Path = paths.distribution_dir
+	_target_directory_path: Path = paths.distribution_dir
 	"""
 	出力先ディレクトリのパス（デバッグ用変数）
 	"""
@@ -219,7 +219,8 @@ class FileOperator:
 			Logger.print_error(f"An unexpected error occurred while removing specified asset ({src_path})")
 			exit(errno.EIO)
 
-	def _set_debug_args(self) -> None:
+	@staticmethod
+	def _set_debug_args() -> None:
 		"""
 		デバッグ用コマンドライン引数を設定する。
 		"""
@@ -230,21 +231,22 @@ class FileOperator:
 
 		# パスの設定
 		args = parser.parse_args()
-		self.target_directory_path = Path(args.path)
+		FileOperator._target_directory_path = Path(args.path)
 
-	def debug(self) -> None:
+	@staticmethod
+	def debug() -> None:
 		"""
 		ファイルオペレータークラスのデバッグ動作を実行する。
 		"""
 
-		self._set_debug_args()
+		FileOperator._set_debug_args()
 
 		# デバッグ出力
 		Logger.print_info("Path operator for FBAC avatar build tool")
 		Logger.print_spacer(1)
-		Logger.print_info(f"Preparing distribution directory ({self.target_directory_path})...")
+		Logger.print_info(f"Preparing distribution directory ({FileOperator._target_directory_path})...")
 
-		self.prepare_directory(self.target_directory_path)
+		FileOperator.prepare_directory(FileOperator._target_directory_path)
 
 		Logger.print_info("Completed preparing distribution directory.")
 		Logger.print_spacer(1)
@@ -254,7 +256,5 @@ class FileOperator:
 
 		Logger.print_info("Completed copying avatar assets.")
 
-file_ops = FileOperator()
-
 if __name__ == "__main__":
-	file_ops.debug()
+	FileOperator.debug()
