@@ -2,9 +2,11 @@ import re
 import time
 from pathlib import Path
 
+from modules.avatar_json_generator import AvatarJsonGenerator
 from modules.file_ops import FileOperator
 from modules.logger import Logger
 from modules.paths import paths
+from modules.thumbnail_generator import ThumbnailGenerator
 from watchdog.events import (DirCreatedEvent, DirDeletedEvent,
                              DirModifiedEvent, DirMovedEvent, FileCreatedEvent,
                              FileDeletedEvent, FileModifiedEvent,
@@ -48,6 +50,30 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 		AvatarFileEventHandler._compiled_thumbnail_related_paths = tuple(re.compile(pattern) for pattern in AvatarFileEventHandler._THUMBNAIL_RELATED_PATHS)
 
 	@staticmethod
+	def _create_single_asset_path(target_path: Path) -> None:
+		"""
+		指定されたアセットパス単体を出力先にコピーする。
+		入力されたパスに基づいて生成関数を変更する。
+
+		Args:
+			target_path (Path): コピーするアセットのパス
+		"""
+
+		if AvatarFileEventHandler._compiled_avatar_json_related_paths[0].search(str(target_path)):
+			for avatar_name in paths.get_avatar_names():
+				AvatarJsonGenerator.write_merged_avatar_json(avatar_name)
+		elif AvatarFileEventHandler._compiled_avatar_json_related_paths[1].search(str(target_path)):
+			AvatarJsonGenerator.write_merged_avatar_json(target_path.relative_to(paths.character_dir).parts[0])
+		elif AvatarFileEventHandler._compiled_thumbnail_related_paths[0].search(str(target_path)):
+			for avatar_name in paths.get_avatar_names():
+				ThumbnailGenerator.save_thumbnail(avatar_name, ThumbnailGenerator.generate_thumbnail(avatar_name))
+		elif AvatarFileEventHandler._compiled_thumbnail_related_paths[1].search(str(target_path)):
+			avatar_name = target_path.relative_to(paths.character_dir).parts[0]
+			ThumbnailGenerator.save_thumbnail(avatar_name, ThumbnailGenerator.generate_thumbnail(avatar_name))
+		else:
+			FileOperator.copy_single_asset_path(target_path)
+
+	@staticmethod
 	def _delete_single_asset_path(target_path: Path) -> None:
 		"""
 		指定されたアセットパス単体を出力先から削除する。
@@ -66,7 +92,7 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 
 	def on_created(self, event: DirCreatedEvent | FileCreatedEvent) -> None:
 		"""
-		ファイル/ディレクトリの作成イベントのハンドラー関数1
+		ファイル/ディレクトリの作成イベントのハンドラー関数
 
 		Args:
 			event (DirCreatedEvent | FileCreatedEvent): 作成イベントのオブジェクト
@@ -79,11 +105,11 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 			if isinstance(event, FileCreatedEvent):
 				Logger.print_info(f"File creation detected: {event.src_path}")
 
-				FileOperator.copy_single_asset_path(target_path)
+				AvatarFileEventHandler._create_single_asset_path(target_path)
 			else:
 				Logger.print_info(f"Directory creation detected: {event.src_path}")
 
-				FileOperator.copy_single_asset_path(target_path)
+				AvatarFileEventHandler._create_single_asset_path(target_path)
 
 	def on_modified(self, event: DirModifiedEvent | FileModifiedEvent) -> None:
 		"""
@@ -99,7 +125,7 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 		if isinstance(event, FileModifiedEvent) and (target_path.is_relative_to(paths.core_dir) or target_path.is_relative_to(paths.character_dir)):
 			Logger.print_info(f"File modification detected: {event.src_path}")
 
-			FileOperator.copy_single_asset_path(target_path)
+			AvatarFileEventHandler._create_single_asset_path(target_path)
 
 	def on_moved(self, event: DirMovedEvent | FileMovedEvent) -> None:
 		"""
