@@ -7,17 +7,13 @@ from modules.avatar_json_generator import AvatarJsonGenerator
 from modules.errors.operation_cancelled_error import OperationCancelledError
 from modules.file_ops import FileOperator
 from modules.logger import Logger
+from modules.observer import AvatarFileObserver
 from modules.paths import paths
 from modules.thumbnail_generator import ThumbnailGenerator
 
 should_generate_thumbnails: bool = True
 """
 サムネイル画像を生成するかどうかのフラグ
-"""
-
-is_observe_mode: bool = False
-"""
-スクリプトが監視モードかどうかのフラグ
 """
 
 def build(target_avatars: tuple[str, ...]) -> None:
@@ -153,29 +149,47 @@ def main() -> None:
 	Logger.print_info("Figura Blue Archive Characters (FBAC) Avatar Build Tool")
 	Logger.print_spacer(1)
 
-	paths.source_dir = Path(args.src_dir)
-	paths.distribution_dir = Path(args.dist_dir)
-	global should_generate_thumbnails, is_observe_mode
-	should_generate_thumbnails = not args.skip_thumbnails
-	is_observe_mode = args.observe
+	if args.observe:
+		# 監視モード
+		Logger.print_info("Observation mode enabled. The tool will observe the source directory for changes and automatically rebuild the affected avatars.")
+		Logger.print_info("Press Ctrl+C to stop observing and exit the tool.")
+		Logger.print_spacer(1)
 
-	target_avatars: list[str] = []
-	if args.character:
-		target = next((avatar for avatar in paths.get_avatar_names() if args.character in avatar), None)
-		if target is None:
-			Logger.print_error(f"The specified character \"{args.character}\" does not exist in the character directory.")
-			exit(errno.EPERM)
+		Logger.print_debug(f"Source directory: {paths.source_dir}")
+		Logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
+		Logger.print_spacer(1)
 
-		target_avatars.append(target)
+		if args.character:
+			Logger.print_warning("The --character / -c argument is ignored in observe mode. All avatars will be observed for changes.")
+			Logger.print_spacer(1)
+
+		AvatarFileObserver.observe()
+
 	else:
-		target_avatars = list(paths.get_avatar_names())
+		# 通常のビルドモード
+		paths.source_dir = Path(args.src_dir)
+		paths.distribution_dir = Path(args.dist_dir)
+		global should_generate_thumbnails, is_observe_mode
+		should_generate_thumbnails = not args.skip_thumbnails
+		is_observe_mode = args.observe
 
-	Logger.print_debug(f"Target avatars: {", ".join(target_avatars)}")
-	Logger.print_debug(f"Source directory: {paths.source_dir}")
-	Logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
-	Logger.print_spacer(1)
+		target_avatars: list[str] = []
+		if args.character:
+			target = next((avatar for avatar in paths.get_avatar_names() if args.character in avatar), None)
+			if target is None:
+				Logger.print_error(f"The specified character \"{args.character}\" does not exist in the character directory.")
+				exit(errno.EPERM)
 
-	build(tuple(target_avatars))
+			target_avatars.append(target)
+		else:
+			target_avatars = list(paths.get_avatar_names())
+
+		Logger.print_debug(f"Target avatars: {", ".join(target_avatars)}")
+		Logger.print_debug(f"Source directory: {paths.source_dir}")
+		Logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
+		Logger.print_spacer(1)
+
+		build(tuple(target_avatars))
 
 if __name__ == "__main__":
 	main()
