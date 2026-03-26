@@ -1,5 +1,4 @@
 import argparse
-import errno
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -104,22 +103,10 @@ class AvatarPaths:
 			FileNotFoundError: キャラクターディレクトリが存在しない場合
 			NotADirectoryError: キャラクターディレクトリがディレクトリでない場合
 			PermissionError: キャラクターディレクトリの読み取り権限がない場合
+			IOError: その他の入出力エラーが発生した場合
 		"""
 
-		try:
-			return tuple(avatar.name for avatar in self.character_dir.iterdir() if avatar.is_dir() and re.match(r"\d{2}\w_", avatar.name))
-		except FileNotFoundError:
-			Logger.print_error(f"Character directory not found ({self.character_dir})")
-			exit(errno.ENOENT)
-		except NotADirectoryError:
-			Logger.print_error(f"Character directory is not a directory ({self.character_dir})")
-			exit(errno.ENOTDIR)
-		except PermissionError:
-			Logger.print_error(f"No permission to operate on character directory ({self.character_dir})")
-			exit(errno.EACCES)
-		except:
-			Logger.print_error(f"An unexpected error occurred while accessing the character directory ({self.character_dir})")
-			exit(errno.EIO)
+		return tuple(avatar.name for avatar in self.character_dir.iterdir() if avatar.is_dir() and re.match(r"\d{2}\w_", avatar.name))
 
 
 	def get_valid_avatar_names(self) -> tuple[str, ...]:

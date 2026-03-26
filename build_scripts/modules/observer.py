@@ -1,5 +1,6 @@
 import re
 import time
+from json import JSONDecodeError
 from pathlib import Path
 
 from modules.avatar_json_generator import AvatarJsonGenerator
@@ -59,19 +60,30 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 			target_path (Path): コピーするアセットのパス
 		"""
 
-		if AvatarFileEventHandler._compiled_avatar_json_related_paths[0].search(str(target_path)):
-			for avatar_name in paths.get_avatar_names():
-				AvatarJsonGenerator.write_merged_avatar_json(avatar_name)
-		elif AvatarFileEventHandler._compiled_avatar_json_related_paths[1].search(str(target_path)):
-			AvatarJsonGenerator.write_merged_avatar_json(target_path.relative_to(paths.character_dir).parts[0])
-		elif AvatarFileEventHandler._compiled_thumbnail_related_paths[0].search(str(target_path)):
-			for avatar_name in paths.get_avatar_names():
+		try:
+			if AvatarFileEventHandler._compiled_avatar_json_related_paths[0].search(str(target_path)):
+				for avatar_name in paths.get_avatar_names():
+					AvatarJsonGenerator.write_merged_avatar_json(avatar_name)
+			elif AvatarFileEventHandler._compiled_avatar_json_related_paths[1].search(str(target_path)):
+				AvatarJsonGenerator.write_merged_avatar_json(target_path.relative_to(paths.character_dir).parts[0])
+			elif AvatarFileEventHandler._compiled_thumbnail_related_paths[0].search(str(target_path)):
+				for avatar_name in paths.get_avatar_names():
+					ThumbnailGenerator.save_thumbnail(avatar_name, ThumbnailGenerator.generate_thumbnail(avatar_name))
+			elif AvatarFileEventHandler._compiled_thumbnail_related_paths[1].search(str(target_path)):
+				avatar_name = target_path.relative_to(paths.character_dir).parts[0]
 				ThumbnailGenerator.save_thumbnail(avatar_name, ThumbnailGenerator.generate_thumbnail(avatar_name))
-		elif AvatarFileEventHandler._compiled_thumbnail_related_paths[1].search(str(target_path)):
-			avatar_name = target_path.relative_to(paths.character_dir).parts[0]
-			ThumbnailGenerator.save_thumbnail(avatar_name, ThumbnailGenerator.generate_thumbnail(avatar_name))
-		else:
-			FileOperator.copy_single_asset_path(target_path)
+			else:
+				FileOperator.copy_single_asset_path(target_path)
+		except FileNotFoundError:
+			Logger.print_warning(f"Failed to output updated asset file because of missing files ({target_path})")
+		except IsADirectoryError:
+			Logger.print_warning(f"Failed to output updated asset file because the target path is a directory ({target_path})")
+		except PermissionError:
+			Logger.print_warning(f"Failed to output updated asset file because of no permission to access required paths ({target_path})")
+		except JSONDecodeError:
+			Logger.print_warning(f"Failed to output updated asset file because of JSON parsing error in config files ({target_path})")
+		except IOError:
+			Logger.print_warning(f"Failed to output updated asset file because of an unexpected I/O error ({target_path})")
 
 	@staticmethod
 	def _delete_single_asset_path(target_path: Path) -> None:
@@ -83,12 +95,19 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 			target_path (Path): 削除するアセットのパス
 		"""
 
+		try:
+			FileOperator.delete_single_asset_path(target_path)
+		except PermissionError:
+			Logger.print_warning(f"Failed to delete asset file because of no permission to delete assets ({target_path})")
+		except FileNotFoundError:
+			Logger.print_warning(f"Failed to delete asset file because the file is already deleted ({target_path})")
+		except IOError:
+			Logger.print_warning(f"Failed to delete asset file because of an unexpected I/O error ({target_path})")
+
 		if any(pattern.search(str(target_path)) for pattern in AvatarFileEventHandler._compiled_avatar_json_related_paths):
 			Logger.print_warning(f"You deleted required file for avatar.json generation. avatar.json generation will be skipped until the file is restored. ({target_path})")
 		elif any(pattern.search(str(target_path)) for pattern in AvatarFileEventHandler._compiled_thumbnail_related_paths):
 			Logger.print_warning(f"You deleted required file for thumbnail generation. Thumbnail generation will be skipped until the file is restored. ({target_path})")
-
-		FileOperator.delete_single_asset_path(target_path)
 
 	def on_created(self, event: DirCreatedEvent | FileCreatedEvent) -> None:
 		"""

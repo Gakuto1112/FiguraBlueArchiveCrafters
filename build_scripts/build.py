@@ -1,8 +1,10 @@
 import argparse
 import errno
+from json import JSONDecodeError
 from pathlib import Path
 
 from modules.avatar_json_generator import AvatarJsonGenerator
+from modules.errors.operation_cancelled_error import OperationCancelledError
 from modules.file_ops import FileOperator
 from modules.logger import Logger
 from modules.paths import paths
@@ -28,38 +30,104 @@ def build(target_avatars: tuple[str, ...]) -> None:
 
 	# 出力先ディレクトリの準備
 	Logger.print_info("Preparing distribution directory...")
-	if len(target_avatars) > 1:
-		FileOperator.prepare_directory(paths.distribution_dir)
-	elif len(target_avatars) == 1:
-		FileOperator.prepare_directory(paths.distribution_dir / target_avatars[0])
-	else:
-		Logger.print_error("No target avatars specified for build.")
-		exit(errno.EINVAL)
+
+	try:
+		if len(target_avatars) > 1:
+			FileOperator.prepare_directory(paths.distribution_dir)
+		elif len(target_avatars) == 1:
+			FileOperator.prepare_directory(paths.distribution_dir / target_avatars[0])
+		else:
+			Logger.print_error("No target avatars specified for build.")
+			exit(errno.EINVAL)
+	except OperationCancelledError:
+		Logger.print_info("Cancelled preparing the distribution directory.")
+		exit(0)
+	except NotADirectoryError:
+		Logger.print_error("The specified distribution directory path is not a directory.")
+		exit(errno.ENOTDIR)
+	except PermissionError:
+		Logger.print_error("No permission to prepare the distribution directory.")
+		exit(errno.EACCES)
+	except IOError:
+		Logger.print_error("An unexpected error occurred while preparing the distribution directory.")
+		exit(errno.EIO)
+
 	Logger.print_info("Completed preparing distribution directory.")
 	Logger.print_spacer(1)
 
 	# アバターアセットのコピー
 	Logger.print_info("Copying avatar assets...")
-	for target_avatar in target_avatars:
-		Logger.print_info(f"Copying assets for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-		FileOperator.copy_assets(target_avatar)
+
+	try:
+		for target_avatar in target_avatars:
+			Logger.print_info(f"Copying assets for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+			FileOperator.copy_assets(target_avatar)
+	except NotADirectoryError:
+		Logger.print_error("The specified character directory path is not a directory.")
+		exit(errno.ENOTDIR)
+	except PermissionError:
+		Logger.print_error("No permission to copy avatar assets.")
+		exit(errno.EACCES)
+	except FileNotFoundError:
+		Logger.print_error("The specified character directory or core asset subdirectory does not exist.")
+		exit(errno.ENOENT)
+	except IOError:
+		Logger.print_error("An unexpected error occurred while copying avatar assets.")
+		exit(errno.EIO)
+
 	Logger.print_info("Completed copying avatar assets.")
 	Logger.print_spacer(1)
 
 	# avatar.jsonの生成
 	Logger.print_info("Generating avatar.json files...")
-	for target_avatar in target_avatars:
-		Logger.print_info(f"Generating avatar.json for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-		AvatarJsonGenerator.write_merged_avatar_json(target_avatar)
+
+	try:
+		for target_avatar in target_avatars:
+			Logger.print_info(f"Generating avatar.json for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+			AvatarJsonGenerator.write_merged_avatar_json(target_avatar)
+	except FileNotFoundError:
+		Logger.print_error("Avatar JSON template file or avatar JSON config file not found.")
+		exit(errno.ENOENT)
+	except IsADirectoryError:
+		Logger.print_error("Avatar JSON template file or avatar JSON config file is a directory.")
+		exit(errno.EISDIR)
+	except PermissionError:
+		Logger.print_error("No permission to generate avatar.json files.")
+		exit(errno.EACCES)
+	except JSONDecodeError:
+		Logger.print_error("Failed to parse avatar JSON template file or avatar JSON config file.")
+		exit(errno.EINVAL)
+	except IOError:
+		Logger.print_error("An unexpected error occurred while generating avatar.json files.")
+		exit(errno.EIO)
+
 	Logger.print_info("Completed generating avatar.json files.")
 	Logger.print_spacer(1)
 
 	# サムネイル画像の生成
 	if should_generate_thumbnails:
 		Logger.print_info("Generating thumbnail images...")
-		for target_avatar in target_avatars:
-			Logger.print_info(f"Generating thumbnail image for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-			ThumbnailGenerator.save_thumbnail(target_avatar, ThumbnailGenerator.generate_thumbnail(target_avatar))
+
+		try:
+			for target_avatar in target_avatars:
+				Logger.print_info(f"Generating thumbnail image for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+				ThumbnailGenerator.save_thumbnail(target_avatar, ThumbnailGenerator.generate_thumbnail(target_avatar))
+		except FileNotFoundError:
+			Logger.print_error("Thumbnail config file not found.")
+			exit(errno.ENOENT)
+		except IsADirectoryError:
+			Logger.print_error("Thumbnail config file or template image file is a directory.")
+			exit(errno.EISDIR)
+		except PermissionError:
+			Logger.print_error("No permission to save generated thumbnail image.")
+			exit(errno.EACCES)
+		except JSONDecodeError:
+			Logger.print_error("Failed to parse thumbnail config file.")
+			exit(errno.EINVAL)
+		except IOError:
+			Logger.print_error("An unexpected error occurred while generating thumbnail images.")
+			exit(errno.EIO)
+
 		Logger.print_info("Completed generating thumbnail images.")
 		Logger.print_spacer(1)
 	else:

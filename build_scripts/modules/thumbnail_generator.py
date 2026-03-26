@@ -67,23 +67,16 @@ class ThumbnailGenerator:
 
 		Returns:
 			Image.Image: 開いた画像のPIL Imageオブジェクト
+
+		Raises:
+			FileNotFoundError: 指定されたパスに（画像）ファイルが存在しない場合
+			IsADirectoryError: 指定されたパスがディレクトリである場合
+			PermissionError: 指定されたパスのファイルに対する読み取り権限がない場合
+			IOError: その他の入出力エラーが発生した場合
 		"""
 
-		try:
-			with Image.open(path) as img:
-				return img.copy()
-		except FileNotFoundError:
-			Logger.print_error(f"Required thumbnail template not found ({path})")
-			exit(errno.ENOENT)
-		except IsADirectoryError:
-			Logger.print_error(f"Required thumbnail template is a directory ({path})")
-			exit(errno.EISDIR)
-		except PermissionError:
-			Logger.print_error(f"No permission to read required thumbnail template ({path})")
-			exit(errno.EACCES)
-		except:
-			Logger.print_error(f"An unexpected error occurred while reading required thumbnail template ({path})")
-			exit(errno.EIO)
+		with Image.open(path) as img:
+			return img.copy()
 
 	@staticmethod
 	def _get_thumbnail_config(avatar_name: str) -> ThumbnailConfig:
@@ -95,28 +88,19 @@ class ThumbnailGenerator:
 
 		Returns:
 			ThumbnailConfig: サムネイル設定ファイルの内容を格納したオブジェクト
+
+		Raises:
+			FileNotFoundError: サムネイル設定ファイルが存在しない場合
+			IsADirectoryError: サムネイル設定ファイルがディレクトリである場合
+			PermissionError: サムネイル設定ファイルの読み取り権限がない場合
+			json.JSONDecodeError: サムネイル設定ファイルのJSONパースが失敗した場合
+			IOError: その他の入出力エラーが発生した場合
 		"""
 
-		try:
-			with open(paths.character_dir / avatar_name / "thumbnail_config.json", "r") as f:
-				config: ThumbnailConfig = json.load(f)
-				config["colorType"] = config["colorType"].upper()
-				return config
-		except FileNotFoundError:
-			Logger.print_error(f"Thumbnail config file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
-			exit(errno.ENOENT)
-		except IsADirectoryError:
-			Logger.print_error(f"Thumbnail config file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
-			exit(errno.EISDIR)
-		except PermissionError:
-			Logger.print_error(f"No permission to read thumbnail config file ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
-			exit(errno.EACCES)
-		except json.JSONDecodeError:
-			Logger.print_error(f"Thumbnail config file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
-			exit(errno.EINVAL)
-		except:
-			Logger.print_error(f"An unexpected error occurred while reading thumbnail config ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
-			exit(errno.EIO)
+		with open(paths.character_dir / avatar_name / "thumbnail_config.json", "r") as f:
+			config: ThumbnailConfig = json.load(f)
+			config["colorType"] = config["colorType"].upper()
+			return config
 
 	@staticmethod
 	def generate_thumbnail(avatar_name: str) -> Image.Image:
@@ -128,18 +112,24 @@ class ThumbnailGenerator:
 
 		Returns:
 			Image.Image: 生成されたサムネイル画像のPIL Imageオブジェクト
+
+		Raises:
+			ValueError: `avatar_name`が`paths.get_avatar_names()`で取得できる名前のいずれでもない場合、またはサムネイル設定ファイルの`colorType`の値が`ThumbnailColorType`のいずれでもない場合
+			FileNotFoundError: サムネイル設定ファイルが存在しない場合、またはサムネイル画像の生成に必要なテンプレート画像が存在しない場合
+			IsADirectoryError: サムネイル設定ファイルがディレクトリである場合、またはサムネイル画像の生成に必要なテンプレート画像のいずれかがディレクトリである場合
+			PermissionError: サムネイル設定ファイルの読み取り権限がない場合、またはサムネイル画像の生成に必要なテンプレート画像のいずれかに対する読み取り権限がない場合
+			json.JSONDecodeError: サムネイル設定ファイルのJSONパースが失敗した場合
+			IOError: その他の入出力エラーが発生した場合
 		"""
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			Logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
-			exit(errno.EINVAL)
+			raise ValueError(f"The specified avatar name \"{avatar_name}\" is not valid.")
 
 		# サムネイル設定ファイルの読み込み
 		thumbnail_config: ThumbnailConfig = ThumbnailGenerator._get_thumbnail_config(avatar_name)
 		if thumbnail_config["colorType"] not in ThumbnailColorType.__members__:
-			Logger.print_error(f"Invalid colorType \"({thumbnail_config['colorType']})\" found in thumbnail config ({avatar_name})")
-			exit(errno.EINVAL)
+			raise ValueError(f"Invalid colorType \"({thumbnail_config['colorType']})\" found in thumbnail config ({avatar_name})")
 
 		# キャンバスの作成
 		canvas: Image.Image = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
@@ -231,21 +221,18 @@ class ThumbnailGenerator:
 		Args:
 			avatar_name (str): サムネイルを保存するアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
 			thumbnail (Image.Image): 保存するサムネイル画像のPIL Imageオブジェクト。サムネイル画像は`thumbnail_generator.generate_thumbnail()`で生成する。
+
+		Raises:
+			ValueError: `avatar_name`が`paths.get_avatar_names()`で取得できる名前のいずれでもない場合
+			PermissionError: サムネイル画像の保存先ファイルに対する書き込み権限がない場合
+			IOError: その他の入出力エラーが発生した場合
 		"""
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			Logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
-			exit(errno.EINVAL)
+			raise ValueError(f"The specified avatar name \"{avatar_name}\" is not valid.")
 
-		try:
-			thumbnail.save(paths.distribution_dir / avatar_name / "avatar.png")
-		except PermissionError:
-			Logger.print_error(f"No permission to save thumbnail image ({paths.distribution_dir / avatar_name / 'avatar.png'})")
-			exit(errno.EACCES)
-		except:
-			Logger.print_error(f"An unexpected error occurred while saving thumbnail image ({paths.distribution_dir / avatar_name / 'avatar.png'})")
-			exit(errno.EIO)
+		thumbnail.save(paths.distribution_dir / avatar_name / "avatar.png")
 
 	@staticmethod
 	def debug() -> None:
@@ -257,10 +244,27 @@ class ThumbnailGenerator:
 		Logger.print_spacer(1)
 
 		Logger.print_info(f"Generating thumbnail image (00a_base)...")
-		ThumbnailGenerator.generate_thumbnail("00a_base").show()
+
+		try:
+			ThumbnailGenerator.generate_thumbnail("00a_base").show()
+		except FileNotFoundError:
+			Logger.print_error(f"Thumbnail config file not found.")
+			exit(errno.ENOENT)
+		except IsADirectoryError:
+			Logger.print_error(f"Thumbnail config file or template image file is a directory.")
+			exit(errno.EISDIR)
+		except PermissionError:
+			Logger.print_error(f"No permission to read thumbnail config file or template image file.")
+			exit(errno.EACCES)
+		except json.JSONDecodeError:
+			Logger.print_error(f"Failed to parse thumbnail config file.")
+			exit(errno.EINVAL)
+		except IOError:
+			Logger.print_error(f"An unexpected error occurred while generating thumbnail image.")
+			exit(errno.EIO)
+
 		Logger.print_info(f"Completed generating thumbnail image (00a_base)")
 		Logger.print_spacer(1)
-
 		Logger.print_info(f"Hint: Generated thumbnail image is being displayed using the default image viewer of your operating system.")
 
 if __name__ == "__main__":

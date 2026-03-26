@@ -3,6 +3,7 @@ import errno
 import shutil
 from pathlib import Path
 
+from modules.errors.operation_cancelled_error import OperationCancelledError
 from modules.logger import Logger
 from modules.paths import paths
 
@@ -26,34 +27,32 @@ class FileOperator:
 
 		Args:
 			dir_path (Path): 準備するディレクトリのパス
+
+		Raises:
+			OperationCancelledError: ユーザーが選択によって処理が中断された場合
+			NotADirectoryError: 指定されたパスがディレクトリでない場合
+			PermissionError: 指定されたパスに対するアクセス権限がない場合
+			IOError: その他の入出力エラーが発生した場合
 		"""
 
-		try:
-			if dir_path.exists():
-				# 出力先ディレクトリ内のファイルを削除
-				if any(dir_path.iterdir()):
-					Logger.print_info(f"Distribution directory already exists and is not empty. Cleaning up directory...")
-					if not dir_path.is_relative_to(paths.root):
-						Logger.print_warning(f"You specified distribution directory ({dir_path}) is outside of the root directory! All items in the distribution directory will be deleted!")
-						answer = input("Are you sure you want to proceed? [y/N]: ")
-						if not answer.lower() in ("y", "yes"):
-							Logger.print_info("Directory cleanup cancelled. Build aborted.")
-							exit(0)
-				for item in dir_path.iterdir():
-					if item.is_dir():
-						shutil.rmtree(item)
-					else:
-						item.unlink()
-				Logger.print_info("Completed cleaning up distribution directory.")
-			else:
-				Logger.print_info(f"Distribution directory does not exist. Creating new directory...")
-				dir_path.mkdir(parents=True)
-		except NotADirectoryError:
-			Logger.print_error(f"The specified distribution directory is not a directory ({dir_path})")
-			exit(errno.ENOTDIR)
-		except PermissionError:
-			Logger.print_error(f"No permission to operate on specified distribution directory ({dir_path})")
-			exit(errno.EACCES)
+		if dir_path.exists():
+			# 出力先ディレクトリ内のファイルを削除
+			if any(dir_path.iterdir()):
+				Logger.print_info(f"Distribution directory already exists and is not empty. Cleaning up directory...")
+				if not dir_path.is_relative_to(paths.root):
+					Logger.print_warning(f"You specified distribution directory ({dir_path}) is outside of the root directory! All items in the distribution directory will be deleted!")
+					answer = input("Are you sure you want to proceed? [y/N]: ")
+					if not answer.lower() in ("y", "yes"):
+						raise OperationCancelledError("Directory cleanup cancelled.")
+			for item in dir_path.iterdir():
+				if item.is_dir():
+					shutil.rmtree(item)
+				else:
+					item.unlink()
+			Logger.print_info("Completed cleaning up distribution directory.")
+		else:
+			Logger.print_info(f"Distribution directory does not exist. Creating new directory...")
+			dir_path.mkdir(parents=True)
 
 	@staticmethod
 	def copy_assets(avatar_name: str) -> None:
@@ -65,36 +64,23 @@ class FileOperator:
 			avatar_name (str): コピーするアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
 
 		Raises:
-			ValueError: avatar_nameが`paths.get_avatar_names()`で取得できる名前のいずれでもない場合
+			ValueError: `avatar_name`が`paths.get_avatar_names()`で取得できる名前のいずれでもない場合
 			NotADirectoryError: 出力先ディレクトリ、コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかがディレクトリでない場合
 			PermissionError: 出力先ディレクトリ、コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかの書き込み権限がない場合
 			FileNotFoundError: コアアセットのサブディレクトリ、キャラクター固有アセットのサブディレクトリのいずれかが存在しない場合
+			IOError: その他の入出力エラーが発生した場合
 		"""
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			Logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
-			exit(errno.EINVAL)
+			raise ValueError(f"The specified avatar name \"{avatar_name}\" is not valid.")
 
 		# アセットのコピー
 		subdirectories: tuple[str, ...] = ("models", "textures", "scripts")
 		for subdirectory in subdirectories:
-			try:
-				(paths.distribution_dir / avatar_name / subdirectory).mkdir(parents=True, exist_ok=True)
-				shutil.copytree(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
-				shutil.copytree(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
-			except FileNotFoundError:
-				Logger.print_error(f"Required subdirectory not found ({subdirectory})")
-				exit(errno.ENOENT)
-			except NotADirectoryError:
-				Logger.print_error(f"Required subdirectory is not a directory ({subdirectory})")
-				exit(errno.ENOTDIR)
-			except PermissionError:
-				Logger.print_error(f"No permission to copy avatar assets ({subdirectory})")
-				exit(errno.EACCES)
-			except Exception:
-				Logger.print_error(f"An unexpected error occurred while copying avatar assets ({subdirectory})")
-				exit(errno.EIO)
+			(paths.distribution_dir / avatar_name / subdirectory).mkdir(parents=True, exist_ok=True)
+			shutil.copytree(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
+			shutil.copytree(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
 
 	@staticmethod
 	def copy_single_asset_path(src_path: Path) -> None:
@@ -105,49 +91,40 @@ class FileOperator:
 
 		Args:
 			src_path (Path): コピーするアセットのパス。ソースディレクトリ内のパスである必要がある。
+
+		Raises:
+			ValueError: コピー元のパスがソースディレクトリ内のパスでない場合
+			NotADirectoryError: コピー元がディレクトリ指定なのに実際のパスはファイルである場合
+			IsADirectoryError: コピー元がファイル指定なのに実際のパスはディレクトリである場合
+			PermissionError: コピー操作に必要なアクセス権限がない場合
+			FileNotFoundError: コピー元のファイルが存在しない場合
+			IOError: その他の入出力エラーが発生した場合
 		"""
 
 		# 入力されたパスの確認
 		if not src_path.is_relative_to(paths.source_dir):
-			Logger.print_error(f"The specified asset path ({src_path}) is outside of the source directory")
-			exit(errno.EINVAL)
+			raise ValueError(f"The specified asset path ({src_path}) is outside of the source directory.")
 
-		try:
-			if src_path.is_relative_to(paths.core_dir):
-				# コアディレクトリ内のファイル更新
-				for avatar_name in paths.get_avatar_names():
-					relative_path: Path = src_path.relative_to(paths.core_dir)
-					if src_path.is_dir():
-						(paths.distribution_dir / avatar_name / relative_path).mkdir(parents=True, exist_ok=True)
-						if (paths.character_dir / avatar_name / relative_path).exists():
-							shutil.copytree(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path, dirs_exist_ok=True)
-					else:
-						shutil.copy2(src_path, paths.distribution_dir / avatar_name / relative_path)
-						if (paths.character_dir / avatar_name / relative_path).exists():
-							shutil.copy2(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path)
-			elif src_path.is_relative_to(paths.character_dir):
-				# キャラクターディレクトリ内のファイル更新
+		if src_path.is_relative_to(paths.core_dir):
+			# コアディレクトリ内のファイル更新
+			for avatar_name in paths.get_avatar_names():
+				relative_path: Path = src_path.relative_to(paths.core_dir)
 				if src_path.is_dir():
-					(paths.distribution_dir / src_path.relative_to(paths.character_dir)).mkdir(parents=True, exist_ok=True)
+					(paths.distribution_dir / avatar_name / relative_path).mkdir(parents=True, exist_ok=True)
+					if (paths.character_dir / avatar_name / relative_path).exists():
+						shutil.copytree(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path, dirs_exist_ok=True)
 				else:
-					shutil.copy2(src_path, paths.distribution_dir / src_path.relative_to(paths.character_dir))
+					shutil.copy2(src_path, paths.distribution_dir / avatar_name / relative_path)
+					if (paths.character_dir / avatar_name / relative_path).exists():
+						shutil.copy2(paths.character_dir / avatar_name / relative_path, paths.distribution_dir / avatar_name / relative_path)
+		elif src_path.is_relative_to(paths.character_dir):
+			# キャラクターディレクトリ内のファイル更新
+			if src_path.is_dir():
+				(paths.distribution_dir / src_path.relative_to(paths.character_dir)).mkdir(parents=True, exist_ok=True)
 			else:
-				Logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
-		except FileNotFoundError:
-			Logger.print_error(f"Specified asset not found ({src_path})")
-			exit(errno.ENOENT)
-		except IsADirectoryError:
-			Logger.print_error(f"Specified asset is a directory, but expected a file ({src_path})")
-			exit(errno.EISDIR)
-		except NotADirectoryError:
-			Logger.print_error(f"Specified asset is not a directory, but expected a file ({src_path})")
-			exit(errno.ENOTDIR)
-		except PermissionError:
-			Logger.print_error(f"No permission to copy specified asset ({src_path})")
-			exit(errno.EACCES)
-		except Exception:
-			Logger.print_error(f"An unexpected error occurred while copying specified asset ({src_path})")
-			exit(errno.EIO)
+				shutil.copy2(src_path, paths.distribution_dir / src_path.relative_to(paths.character_dir))
+		else:
+			Logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
 
 	@staticmethod
 	def delete_single_asset_path(src_path: Path) -> None:
@@ -158,66 +135,53 @@ class FileOperator:
 
 		Args:
 			src_path (Path): 削除するアセットのパス。ソースディレクトリ内のパスである必要がある。
+
+		Raises:
+			ValueError: 削除元のパスがコア/キャラクターディレクトリ内のパスでない場合
+			NotADirectoryError: 削除元がディレクトリ指定なのに実際のパスはファイルである場合
+			IsADirectoryError: 削除元がファイル指定なのに実際のパスはディレクトリである場合
+			PermissionError: 削除操作に必要なアクセス権限がない場合
+			FileNotFoundError: 削除元のファイルが存在しない場合
+			IOError: その他の入出力エラーが発生した場合
 		"""
 
-		# 入力されたパスの確認
-		if not src_path.is_relative_to(paths.source_dir):
-			Logger.print_error(f"The specified asset path ({src_path}) is outside of the source directory")
-			exit(errno.EINVAL)
-
-		try:
-			if src_path.is_relative_to(paths.core_dir):
-				# コアディレクトリ内のファイル削除
-				for avatar_name in paths.get_avatar_names():
-					relative_path: Path = src_path.relative_to(paths.core_dir)
-					target_path: Path = paths.distribution_dir / avatar_name / relative_path
-					if target_path.exists():
-						if target_path.is_dir():
-							shutil.rmtree(target_path)
-						else:
-							target_path.unlink(missing_ok=True)
-
-						character_asset_path: Path = paths.character_dir / avatar_name / relative_path
-						if character_asset_path.exists():
-							if character_asset_path.is_dir():
-								shutil.copytree(character_asset_path, target_path, dirs_exist_ok=True)
-							else:
-								shutil.copy2(character_asset_path, target_path)
-			elif src_path.is_relative_to(paths.character_dir):
-				# キャラクターディレクトリ内のファイル削除
-				relative_path: Path = src_path.relative_to(paths.character_dir)
-				target_path: Path = paths.distribution_dir / relative_path
+		if src_path.is_relative_to(paths.core_dir):
+			# コアディレクトリ内のファイル削除
+			for avatar_name in paths.get_avatar_names():
+				relative_path: Path = src_path.relative_to(paths.core_dir)
+				target_path: Path = paths.distribution_dir / avatar_name / relative_path
 				if target_path.exists():
 					if target_path.is_dir():
 						shutil.rmtree(target_path)
 					else:
 						target_path.unlink(missing_ok=True)
 
-					relative_path_parts: tuple[str, ...] = relative_path.parts
-					if len(relative_path_parts) > 2:
-						core_asset_path: Path = paths.core_dir / Path(*relative_path.parts[1:])
-						if core_asset_path.exists():
-							if core_asset_path.is_dir():
-								shutil.copytree(core_asset_path, target_path, dirs_exist_ok=True)
-							else:
-								shutil.copy2(core_asset_path, target_path)
-			else:
-				Logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
-		except FileNotFoundError:
-			Logger.print_error(f"Specified asset not found ({src_path})")
-			exit(errno.ENOENT)
-		except IsADirectoryError:
-			Logger.print_error(f"Specified asset is a directory, but expected a file ({src_path})")
-			exit(errno.EISDIR)
-		except NotADirectoryError:
-			Logger.print_error(f"Specified asset is not a directory, but expected a file ({src_path})")
-			exit(errno.ENOTDIR)
-		except PermissionError:
-			Logger.print_error(f"No permission to remove specified asset ({src_path})")
-			exit(errno.EACCES)
-		except Exception:
-			Logger.print_error(f"An unexpected error occurred while removing specified asset ({src_path})")
-			exit(errno.EIO)
+					character_asset_path: Path = paths.character_dir / avatar_name / relative_path
+					if character_asset_path.exists():
+						if character_asset_path.is_dir():
+							shutil.copytree(character_asset_path, target_path, dirs_exist_ok=True)
+						else:
+							shutil.copy2(character_asset_path, target_path)
+		elif src_path.is_relative_to(paths.character_dir):
+			# キャラクターディレクトリ内のファイル削除
+			relative_path: Path = src_path.relative_to(paths.character_dir)
+			target_path: Path = paths.distribution_dir / relative_path
+			if target_path.exists():
+				if target_path.is_dir():
+					shutil.rmtree(target_path)
+				else:
+					target_path.unlink(missing_ok=True)
+
+				relative_path_parts: tuple[str, ...] = relative_path.parts
+				if len(relative_path_parts) > 2:
+					core_asset_path: Path = paths.core_dir / Path(*relative_path.parts[1:])
+					if core_asset_path.exists():
+						if core_asset_path.is_dir():
+							shutil.copytree(core_asset_path, target_path, dirs_exist_ok=True)
+						else:
+							shutil.copy2(core_asset_path, target_path)
+		else:
+			raise ValueError(f"The specified asset path ({src_path}) is not in core directory or character directory.")
 
 	@staticmethod
 	def _set_debug_args() -> None:
@@ -244,15 +208,41 @@ class FileOperator:
 		# デバッグ出力
 		Logger.print_info("Path operator for FBAC avatar build tool")
 		Logger.print_spacer(1)
-		Logger.print_info(f"Preparing distribution directory ({FileOperator._target_directory_path})...")
+		Logger.print_info(f"Preparing the distribution directory ({FileOperator._target_directory_path})...")
 
-		FileOperator.prepare_directory(FileOperator._target_directory_path)
+		try:
+			FileOperator.prepare_directory(FileOperator._target_directory_path)
+		except OperationCancelledError:
+			Logger.print_info("Cancelled preparing the distribution directory.")
+			exit(errno.ECANCELED)
+		except NotADirectoryError:
+			Logger.print_error(f"The specified distribution directory path is not a directory.")
+			exit(errno.ENOTDIR)
+		except PermissionError:
+			Logger.print_error(f"No permission to clean up or create the distribution directory.")
+			exit(errno.EACCES)
+		except IOError:
+			Logger.print_error(f"An unexpected error occurred while preparing the distribution directory.")
+			exit(errno.EIO)
 
 		Logger.print_info("Completed preparing distribution directory.")
 		Logger.print_spacer(1)
 		Logger.print_info(f"Copying avatar assets (00a_base)...")
 
-		FileOperator.copy_assets("00a_base")
+		try:
+			FileOperator.copy_assets("00a_base")
+		except NotADirectoryError:
+			Logger.print_error(f"The output directory, core asset subdirectory, or character-specific asset subdirectory is not a directory.")
+			exit(errno.ENOTDIR)
+		except PermissionError:
+			Logger.print_error(f"No permission to copy avatar assets.")
+			exit(errno.EACCES)
+		except FileNotFoundError:
+			Logger.print_error(f"The core asset subdirectories or character asset subdirectories do not exist.")
+			exit(errno.ENOENT)
+		except IOError:
+			Logger.print_error(f"An unexpected error occurred while copying avatar assets.")
+			exit(errno.EIO)
 
 		Logger.print_info("Completed copying avatar assets.")
 
