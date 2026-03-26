@@ -29,7 +29,10 @@ class Logger:
 		"""
 
 		if Logger.should_print_debug_log:
-			print(f"[DEBUG] {message}")
+			if Logger.is_colored:
+				print(f"\033[1;36m[DEBUG]\033[0m {message}")
+			else:
+				print(f"[DEBUG] {message}")
 			Logger._last_spacer_count = 0
 
 	@staticmethod
@@ -47,7 +50,10 @@ class Logger:
 		WARNレベルのメッセージを標準出力する。
 		"""
 
-		print(f"[WARN] {message}")
+		if Logger.is_colored:
+			print(f"\033[1;33m[WARN]\033[0m {message}")
+		else:
+			print(f"[WARN] {message}")
 		Logger._last_spacer_count = 0
 
 	@staticmethod
@@ -56,7 +62,10 @@ class Logger:
 		ERRORレベルのメッセージを標準エラー出力する。
 		"""
 
-		print(f"[ERROR] {message}", file=sys.stderr)
+		if Logger.is_colored:
+			print(f"\033[1;31m[ERROR]\033[0m {message}", file=sys.stderr)
+		else:
+			print(f"[ERROR] {message}", file=sys.stderr)
 		Logger._last_spacer_count = 0
 
 	@staticmethod
