@@ -3,7 +3,7 @@ import time
 from pathlib import Path
 
 from modules.file_ops import FileOperator
-from modules.logger import logger
+from modules.logger import Logger
 from modules.paths import paths
 from watchdog.events import (DirCreatedEvent, DirDeletedEvent,
                              DirModifiedEvent, DirMovedEvent, FileCreatedEvent,
@@ -58,9 +58,9 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 		"""
 
 		if any(pattern.search(str(target_path)) for pattern in AvatarFileEventHandler._compiled_avatar_json_related_paths):
-			logger.print_warning(f"You deleted required file for avatar.json generation. avatar.json generation will be skipped until the file is restored. ({target_path})")
+			Logger.print_warning(f"You deleted required file for avatar.json generation. avatar.json generation will be skipped until the file is restored. ({target_path})")
 		elif any(pattern.search(str(target_path)) for pattern in AvatarFileEventHandler._compiled_thumbnail_related_paths):
-			logger.print_warning(f"You deleted required file for thumbnail generation. Thumbnail generation will be skipped until the file is restored. ({target_path})")
+			Logger.print_warning(f"You deleted required file for thumbnail generation. Thumbnail generation will be skipped until the file is restored. ({target_path})")
 
 		FileOperator.delete_single_asset_path(target_path)
 
@@ -77,11 +77,11 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 		target_path: Path = Path(str(event.src_path))
 		if target_path.is_relative_to(paths.core_dir) or target_path.is_relative_to(paths.character_dir):
 			if isinstance(event, FileCreatedEvent):
-				logger.print_info(f"File creation detected: {event.src_path}")
+				Logger.print_info(f"File creation detected: {event.src_path}")
 
 				FileOperator.copy_single_asset_path(target_path)
 			else:
-				logger.print_info(f"Directory creation detected: {event.src_path}")
+				Logger.print_info(f"Directory creation detected: {event.src_path}")
 
 				FileOperator.copy_single_asset_path(target_path)
 
@@ -97,7 +97,7 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 
 		target_path: Path = Path(str(event.src_path))
 		if isinstance(event, FileModifiedEvent) and (target_path.is_relative_to(paths.core_dir) or target_path.is_relative_to(paths.character_dir)):
-			logger.print_info(f"File modification detected: {event.src_path}")
+			Logger.print_info(f"File modification detected: {event.src_path}")
 
 			FileOperator.copy_single_asset_path(target_path)
 
@@ -117,7 +117,7 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 		to_is_relative_to: bool = to_path.is_relative_to(paths.core_dir) or to_path.is_relative_to(paths.character_dir)
 		if from_is_relative_to or to_is_relative_to:
 			if isinstance(event, FileMovedEvent):
-				logger.print_info(f"File move detected: {event.src_path} -> {event.dest_path}")
+				Logger.print_info(f"File move detected: {event.src_path} -> {event.dest_path}")
 
 				# リソースの移動は「移動元から削除 → 移動先に再コピー」と考える。
 				if from_is_relative_to:
@@ -125,7 +125,7 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 				if to_is_relative_to:
 					AvatarFileEventHandler._delete_single_asset_path(to_path)
 			else:
-				logger.print_info(f"Directory move detected: {event.src_path} -> {event.dest_path}")
+				Logger.print_info(f"Directory move detected: {event.src_path} -> {event.dest_path}")
 
 				if from_is_relative_to:
 					AvatarFileEventHandler._delete_single_asset_path(from_path)
@@ -145,11 +145,11 @@ class AvatarFileEventHandler(FileSystemEventHandler):
 		target_path: Path = Path(str(event.src_path))
 		if target_path.is_relative_to(paths.core_dir) or target_path.is_relative_to(paths.character_dir):
 			if isinstance(event, FileDeletedEvent):
-				logger.print_info(f"File deletion detected: {event.src_path}")
+				Logger.print_info(f"File deletion detected: {event.src_path}")
 
 				AvatarFileEventHandler._delete_single_asset_path(target_path)
 			else:
-				logger.print_info(f"Directory deletion detected: {event.src_path}")
+				Logger.print_info(f"Directory deletion detected: {event.src_path}")
 
 				AvatarFileEventHandler._delete_single_asset_path(target_path)
 
@@ -179,11 +179,11 @@ class AvatarFileObserver():
 		アバファイルオブザーバークラスのデバッグ動作を実行する。
 		"""
 
-		logger.print_info("Avatar asset observer for FBAC avatar build tool")
-		logger.print_spacer(1)
-		logger.print_info(f"Starting observation of avatar asset files in source directory ({paths.source_dir})")
-		logger.print_info("Press Ctrl+C to stop observation.")
-		logger.print_spacer(1)
+		Logger.print_info("Avatar asset observer for FBAC avatar build tool")
+		Logger.print_spacer(1)
+		Logger.print_info(f"Starting observation of avatar asset files in source directory ({paths.source_dir})")
+		Logger.print_info("Press Ctrl+C to stop observation.")
+		Logger.print_spacer(1)
 		AvatarFileObserver.observe()
 
 observer: AvatarFileObserver = AvatarFileObserver()

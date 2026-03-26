@@ -4,7 +4,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from modules.logger import logger
+from modules.logger import Logger
 
 
 @dataclass
@@ -109,16 +109,16 @@ class AvatarPaths:
 		try:
 			return tuple(avatar.name for avatar in self.character_dir.iterdir() if avatar.is_dir() and re.match(r"\d{2}\w_", avatar.name))
 		except FileNotFoundError:
-			logger.print_error(f"Character directory not found ({self.character_dir})")
+			Logger.print_error(f"Character directory not found ({self.character_dir})")
 			exit(errno.ENOENT)
 		except NotADirectoryError:
-			logger.print_error(f"Character directory is not a directory ({self.character_dir})")
+			Logger.print_error(f"Character directory is not a directory ({self.character_dir})")
 			exit(errno.ENOTDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to operate on character directory ({self.character_dir})")
+			Logger.print_error(f"No permission to operate on character directory ({self.character_dir})")
 			exit(errno.EACCES)
 		except:
-			logger.print_error(f"An unexpected error occurred while accessing the character directory ({self.character_dir})")
+			Logger.print_error(f"An unexpected error occurred while accessing the character directory ({self.character_dir})")
 			exit(errno.EIO)
 
 
@@ -160,23 +160,23 @@ class AvatarPaths:
 		self._set_debug_args()
 
 		# ファイルパスの出力
-		logger.print_info("Path manager for FBAC avatar build tool")
-		logger.print_spacer(1)
-		logger.print_debug(f"ROOT_DIR:\t{self.root}")
-		logger.print_debug(f"SOURCE_DIR:\t{self.source_dir}")
-		logger.print_debug(f"CORE_DIR:\t{self.core_dir}")
-		logger.print_debug(f"CHARACTER_DIR:\t{self.character_dir}")
-		logger.print_debug(f"DISTRIBUTION_DIR:\t{self.distribution_dir}")
-		logger.print_spacer(1)
-		logger.print_info("Checking required directories...")
+		Logger.print_info("Path manager for FBAC avatar build tool")
+		Logger.print_spacer(1)
+		Logger.print_debug(f"ROOT_DIR:\t{self.root}")
+		Logger.print_debug(f"SOURCE_DIR:\t{self.source_dir}")
+		Logger.print_debug(f"CORE_DIR:\t{self.core_dir}")
+		Logger.print_debug(f"CHARACTER_DIR:\t{self.character_dir}")
+		Logger.print_debug(f"DISTRIBUTION_DIR:\t{self.distribution_dir}")
+		Logger.print_spacer(1)
+		Logger.print_info("Checking required directories...")
 
 		# ビルドに必要なディレクトリの存在を確認
 		missing_dirs = self.check_directories()
 		if len(missing_dirs) == 0:
-			logger.print_info("No missing directories found.")
+			Logger.print_info("No missing directories found.")
 		else:
 			for missing_dir in missing_dirs:
-				logger.print_info(f"Missing directory found: {missing_dir}")
+				Logger.print_info(f"Missing directory found: {missing_dir}")
 
 paths = AvatarPaths()
 

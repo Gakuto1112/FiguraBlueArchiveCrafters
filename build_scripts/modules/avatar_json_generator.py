@@ -2,7 +2,7 @@ import errno
 import json
 from typing import NotRequired, TypedDict
 
-from modules.logger import logger
+from modules.logger import Logger
 from modules.paths import paths
 
 
@@ -139,26 +139,26 @@ class AvatarJsonGenerator:
 			with open(paths.core_dir / "avatar_template.json", "r") as f:
 				return json.load(f)
 		except FileNotFoundError:
-			logger.print_error(f"Template avatar_template.json not found ({paths.core_dir / 'avatar_template.json'})")
+			Logger.print_error(f"Template avatar_template.json not found ({paths.core_dir / 'avatar_template.json'})")
 			exit(errno.ENOENT)
 		except IsADirectoryError:
-			logger.print_error(f"Template avatar_template.json is a directory ({paths.core_dir / 'avatar_template.json'})")
+			Logger.print_error(f"Template avatar_template.json is a directory ({paths.core_dir / 'avatar_template.json'})")
 			exit(errno.EISDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to read template avatar_template.json ({paths.core_dir / 'avatar_template.json'})")
+			Logger.print_error(f"No permission to read template avatar_template.json ({paths.core_dir / 'avatar_template.json'})")
 			exit(errno.EACCES)
 		except json.JSONDecodeError:
-			logger.print_error(f"Template avatar_template.json is not a valid JSON file ({paths.core_dir / 'avatar_template.json'})")
+			Logger.print_error(f"Template avatar_template.json is not a valid JSON file ({paths.core_dir / 'avatar_template.json'})")
 			exit(errno.EINVAL)
 		except:
-			logger.print_error(f"An unexpected error occurred while reading template avatar_template.json ({paths.core_dir / 'avatar_template.json'})")
+			Logger.print_error(f"An unexpected error occurred while reading template avatar_template.json ({paths.core_dir / 'avatar_template.json'})")
 			exit(errno.EIO)
 
 	@staticmethod
 	def _get_avatar_json_config(avatar_name: str) -> AvatarJsonConfig:
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
+			Logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# メタデータの取得
@@ -166,19 +166,19 @@ class AvatarJsonGenerator:
 			with open(paths.character_dir / avatar_name / "avatar_json_config.json", "r") as f:
 				return json.load(f)
 		except FileNotFoundError:
-			logger.print_error(f"Avatar json config file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			Logger.print_error(f"Avatar json config file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.ENOENT)
 		except IsADirectoryError:
-			logger.print_error(f"Avatar json config file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			Logger.print_error(f"Avatar json config file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EISDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to read avatar json config file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			Logger.print_error(f"No permission to read avatar json config file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EACCES)
 		except json.JSONDecodeError:
-			logger.print_error(f"Avatar json config file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			Logger.print_error(f"Avatar json config file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EINVAL)
 		except:
-			logger.print_error(f"An unexpected error occurred while reading avatar json config ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
+			Logger.print_error(f"An unexpected error occurred while reading avatar json config ({avatar_name}) ({paths.character_dir / avatar_name / 'avatar_json_config.json'})")
 			exit(errno.EIO)
 
 	@staticmethod
@@ -195,7 +195,7 @@ class AvatarJsonGenerator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
+			Logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# avatar.jsonデータの取得
@@ -226,7 +226,7 @@ class AvatarJsonGenerator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
+			Logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# 結合されたavatar.jsonデータの取得
@@ -237,10 +237,10 @@ class AvatarJsonGenerator:
 			with open(paths.distribution_dir / avatar_name / "avatar.json", "w") as f:
 				json.dump(merged_data, f, indent=4)
 		except PermissionError:
-			logger.print_error(f"No permission to write merged avatar.json file ({paths.distribution_dir / avatar_name / 'avatar.json'})")
+			Logger.print_error(f"No permission to write merged avatar.json file ({paths.distribution_dir / avatar_name / 'avatar.json'})")
 			exit(errno.EACCES)
 		except:
-			logger.print_error(f"An unexpected error occurred while writing merged avatar.json file ({paths.distribution_dir / avatar_name / 'avatar.json'})")
+			Logger.print_error(f"An unexpected error occurred while writing merged avatar.json file ({paths.distribution_dir / avatar_name / 'avatar.json'})")
 			exit(errno.EIO)
 
 	@staticmethod
@@ -249,12 +249,12 @@ class AvatarJsonGenerator:
 		`avatar.json`ジェネレーターのデバッグ動作を実行する。
 		"""
 
-		logger.print_info("avatar.json generator for FBAC avatar build tool")
-		logger.print_spacer(1)
+		Logger.print_info("avatar.json generator for FBAC avatar build tool")
+		Logger.print_spacer(1)
 
-		logger.print_info(f"Generating merged avatar.json (00a_base)...")
+		Logger.print_info(f"Generating merged avatar.json (00a_base)...")
 		AvatarJsonGenerator.write_merged_avatar_json("00a_base")
-		logger.print_info(f"Completed generating merged avatar.json (00a_base)")
+		Logger.print_info(f"Completed generating merged avatar.json (00a_base)")
 
 if __name__ == "__main__":
 	AvatarJsonGenerator.debug()

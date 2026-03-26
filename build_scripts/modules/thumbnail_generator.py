@@ -4,7 +4,7 @@ from enum import IntEnum
 from pathlib import Path
 from typing import TypedDict, cast
 
-from modules.logger import logger
+from modules.logger import Logger
 from modules.paths import paths
 from PIL import Image, ImageChops
 
@@ -73,16 +73,16 @@ class ThumbnailGenerator:
 			with Image.open(path) as img:
 				return img.copy()
 		except FileNotFoundError:
-			logger.print_error(f"Required thumbnail template not found ({path})")
+			Logger.print_error(f"Required thumbnail template not found ({path})")
 			exit(errno.ENOENT)
 		except IsADirectoryError:
-			logger.print_error(f"Required thumbnail template is a directory ({path})")
+			Logger.print_error(f"Required thumbnail template is a directory ({path})")
 			exit(errno.EISDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to read required thumbnail template ({path})")
+			Logger.print_error(f"No permission to read required thumbnail template ({path})")
 			exit(errno.EACCES)
 		except:
-			logger.print_error(f"An unexpected error occurred while reading required thumbnail template ({path})")
+			Logger.print_error(f"An unexpected error occurred while reading required thumbnail template ({path})")
 			exit(errno.EIO)
 
 	@staticmethod
@@ -103,19 +103,19 @@ class ThumbnailGenerator:
 				config["colorType"] = config["colorType"].upper()
 				return config
 		except FileNotFoundError:
-			logger.print_error(f"Thumbnail config file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			Logger.print_error(f"Thumbnail config file not found ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
 			exit(errno.ENOENT)
 		except IsADirectoryError:
-			logger.print_error(f"Thumbnail config file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			Logger.print_error(f"Thumbnail config file is a directory ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
 			exit(errno.EISDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to read thumbnail config file ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			Logger.print_error(f"No permission to read thumbnail config file ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
 			exit(errno.EACCES)
 		except json.JSONDecodeError:
-			logger.print_error(f"Thumbnail config file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			Logger.print_error(f"Thumbnail config file is not a valid JSON file ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
 			exit(errno.EINVAL)
 		except:
-			logger.print_error(f"An unexpected error occurred while reading thumbnail config ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
+			Logger.print_error(f"An unexpected error occurred while reading thumbnail config ({avatar_name}) ({paths.character_dir / avatar_name / 'thumbnail_config.json'})")
 			exit(errno.EIO)
 
 	@staticmethod
@@ -132,13 +132,13 @@ class ThumbnailGenerator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
+			Logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# サムネイル設定ファイルの読み込み
 		thumbnail_config: ThumbnailConfig = ThumbnailGenerator._get_thumbnail_config(avatar_name)
 		if thumbnail_config["colorType"] not in ThumbnailColorType.__members__:
-			logger.print_error(f"Invalid colorType \"({thumbnail_config['colorType']})\" found in thumbnail config ({avatar_name})")
+			Logger.print_error(f"Invalid colorType \"({thumbnail_config['colorType']})\" found in thumbnail config ({avatar_name})")
 			exit(errno.EINVAL)
 
 		# キャンバスの作成
@@ -172,7 +172,7 @@ class ThumbnailGenerator:
 			layer4.putalpha(ImageChops.multiply(mask_image, layer4.getchannel("A")))
 			canvas.alpha_composite(layer4)
 		else:
-			logger.print_warning(f"Character thumbnail not found ({avatar_name}). Character layer will be skipped.")
+			Logger.print_warning(f"Character thumbnail not found ({avatar_name}). Character layer will be skipped.")
 
 		# レイヤー5: 色付き枠
 		palette: Image.Image = ThumbnailGenerator._open_image(paths.root / "thumbnail_templates" / "frame_colors.png").convert("RGBA")
@@ -212,7 +212,7 @@ class ThumbnailGenerator:
 
 		for i, char in enumerate(avatar_name.split("_", 1)[0]):
 			if char not in SPRITE_MAP:
-				logger.print_error(f"Character \"{char}\" in avatar ID is invalid ({avatar_name})")
+				Logger.print_error(f"Character \"{char}\" in avatar ID is invalid ({avatar_name})")
 				exit(errno.EINVAL)
 
 			sprite = sprite_sheet.crop((SPRITE_MAP[char][0] * SPRITE_SIZE[0], SPRITE_MAP[char][1] * SPRITE_SIZE[1], SPRITE_MAP[char][0] * SPRITE_SIZE[0] + SPRITE_SIZE[0], SPRITE_MAP[char][1] * SPRITE_SIZE[1] + SPRITE_SIZE[1]))
@@ -235,16 +235,16 @@ class ThumbnailGenerator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
+			Logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		try:
 			thumbnail.save(paths.distribution_dir / avatar_name / "avatar.png")
 		except PermissionError:
-			logger.print_error(f"No permission to save thumbnail image ({paths.distribution_dir / avatar_name / 'avatar.png'})")
+			Logger.print_error(f"No permission to save thumbnail image ({paths.distribution_dir / avatar_name / 'avatar.png'})")
 			exit(errno.EACCES)
 		except:
-			logger.print_error(f"An unexpected error occurred while saving thumbnail image ({paths.distribution_dir / avatar_name / 'avatar.png'})")
+			Logger.print_error(f"An unexpected error occurred while saving thumbnail image ({paths.distribution_dir / avatar_name / 'avatar.png'})")
 			exit(errno.EIO)
 
 	@staticmethod
@@ -253,15 +253,15 @@ class ThumbnailGenerator:
 		サムネイルジェネレーターのデバッグ動作を実行する。
 		"""
 
-		logger.print_info("Thumbnail generator for FBAC avatar build tool")
-		logger.print_spacer(1)
+		Logger.print_info("Thumbnail generator for FBAC avatar build tool")
+		Logger.print_spacer(1)
 
-		logger.print_info(f"Generating thumbnail image (00a_base)...")
+		Logger.print_info(f"Generating thumbnail image (00a_base)...")
 		ThumbnailGenerator.generate_thumbnail("00a_base").show()
-		logger.print_info(f"Completed generating thumbnail image (00a_base)")
-		logger.print_spacer(1)
+		Logger.print_info(f"Completed generating thumbnail image (00a_base)")
+		Logger.print_spacer(1)
 
-		logger.print_info(f"Hint: Generated thumbnail image is being displayed using the default image viewer of your operating system.")
+		Logger.print_info(f"Hint: Generated thumbnail image is being displayed using the default image viewer of your operating system.")
 
 if __name__ == "__main__":
 	ThumbnailGenerator.debug()

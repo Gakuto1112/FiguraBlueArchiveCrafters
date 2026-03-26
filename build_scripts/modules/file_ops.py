@@ -3,7 +3,7 @@ import errno
 import shutil
 from pathlib import Path
 
-from modules.logger import logger
+from modules.logger import Logger
 from modules.paths import paths
 
 
@@ -32,27 +32,27 @@ class FileOperator:
 			if dir_path.exists():
 				# 出力先ディレクトリ内のファイルを削除
 				if any(dir_path.iterdir()):
-					logger.print_info(f"Distribution directory already exists and is not empty. Cleaning up directory...")
+					Logger.print_info(f"Distribution directory already exists and is not empty. Cleaning up directory...")
 					if not dir_path.is_relative_to(paths.root):
-						logger.print_warning(f"You specified distribution directory ({dir_path}) is outside of the root directory! All items in the distribution directory will be deleted!")
+						Logger.print_warning(f"You specified distribution directory ({dir_path}) is outside of the root directory! All items in the distribution directory will be deleted!")
 						answer = input("Are you sure you want to proceed? [y/N]: ")
 						if not answer.lower() in ("y", "yes"):
-							logger.print_info("Directory cleanup cancelled. Build aborted.")
+							Logger.print_info("Directory cleanup cancelled. Build aborted.")
 							exit(0)
 				for item in dir_path.iterdir():
 					if item.is_dir():
 						shutil.rmtree(item)
 					else:
 						item.unlink()
-				logger.print_info("Completed cleaning up distribution directory.")
+				Logger.print_info("Completed cleaning up distribution directory.")
 			else:
-				logger.print_info(f"Distribution directory does not exist. Creating new directory...")
+				Logger.print_info(f"Distribution directory does not exist. Creating new directory...")
 				dir_path.mkdir(parents=True)
 		except NotADirectoryError:
-			logger.print_error(f"The specified distribution directory is not a directory ({dir_path})")
+			Logger.print_error(f"The specified distribution directory is not a directory ({dir_path})")
 			exit(errno.ENOTDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to operate on specified distribution directory ({dir_path})")
+			Logger.print_error(f"No permission to operate on specified distribution directory ({dir_path})")
 			exit(errno.EACCES)
 
 	@staticmethod
@@ -73,7 +73,7 @@ class FileOperator:
 
 		# 入力の確認
 		if not avatar_name in paths.get_avatar_names():
-			logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
+			Logger.print_error(f"The specified avatar name \"{avatar_name}\" is not valid.")
 			exit(errno.EINVAL)
 
 		# アセットのコピー
@@ -84,16 +84,16 @@ class FileOperator:
 				shutil.copytree(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
 				shutil.copytree(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
 			except FileNotFoundError:
-				logger.print_error(f"Required subdirectory not found ({subdirectory})")
+				Logger.print_error(f"Required subdirectory not found ({subdirectory})")
 				exit(errno.ENOENT)
 			except NotADirectoryError:
-				logger.print_error(f"Required subdirectory is not a directory ({subdirectory})")
+				Logger.print_error(f"Required subdirectory is not a directory ({subdirectory})")
 				exit(errno.ENOTDIR)
 			except PermissionError:
-				logger.print_error(f"No permission to copy avatar assets ({subdirectory})")
+				Logger.print_error(f"No permission to copy avatar assets ({subdirectory})")
 				exit(errno.EACCES)
 			except Exception:
-				logger.print_error(f"An unexpected error occurred while copying avatar assets ({subdirectory})")
+				Logger.print_error(f"An unexpected error occurred while copying avatar assets ({subdirectory})")
 				exit(errno.EIO)
 
 	@staticmethod
@@ -109,7 +109,7 @@ class FileOperator:
 
 		# 入力されたパスの確認
 		if not src_path.is_relative_to(paths.source_dir):
-			logger.print_error(f"The specified asset path ({src_path}) is outside of the source directory")
+			Logger.print_error(f"The specified asset path ({src_path}) is outside of the source directory")
 			exit(errno.EINVAL)
 
 		try:
@@ -132,21 +132,21 @@ class FileOperator:
 				else:
 					shutil.copy2(src_path, paths.distribution_dir / src_path.relative_to(paths.character_dir))
 			else:
-				logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
+				Logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
 		except FileNotFoundError:
-			logger.print_error(f"Specified asset not found ({src_path})")
+			Logger.print_error(f"Specified asset not found ({src_path})")
 			exit(errno.ENOENT)
 		except IsADirectoryError:
-			logger.print_error(f"Specified asset is a directory, but expected a file ({src_path})")
+			Logger.print_error(f"Specified asset is a directory, but expected a file ({src_path})")
 			exit(errno.EISDIR)
 		except NotADirectoryError:
-			logger.print_error(f"Specified asset is not a directory, but expected a file ({src_path})")
+			Logger.print_error(f"Specified asset is not a directory, but expected a file ({src_path})")
 			exit(errno.ENOTDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to copy specified asset ({src_path})")
+			Logger.print_error(f"No permission to copy specified asset ({src_path})")
 			exit(errno.EACCES)
 		except Exception:
-			logger.print_error(f"An unexpected error occurred while copying specified asset ({src_path})")
+			Logger.print_error(f"An unexpected error occurred while copying specified asset ({src_path})")
 			exit(errno.EIO)
 
 	@staticmethod
@@ -162,7 +162,7 @@ class FileOperator:
 
 		# 入力されたパスの確認
 		if not src_path.is_relative_to(paths.source_dir):
-			logger.print_error(f"The specified asset path ({src_path}) is outside of the source directory")
+			Logger.print_error(f"The specified asset path ({src_path}) is outside of the source directory")
 			exit(errno.EINVAL)
 
 		try:
@@ -202,21 +202,21 @@ class FileOperator:
 							else:
 								shutil.copy2(core_asset_path, target_path)
 			else:
-				logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
+				Logger.print_warning(f"The specified asset path ({src_path}) is not in core directory or character directory. No action taken.")
 		except FileNotFoundError:
-			logger.print_error(f"Specified asset not found ({src_path})")
+			Logger.print_error(f"Specified asset not found ({src_path})")
 			exit(errno.ENOENT)
 		except IsADirectoryError:
-			logger.print_error(f"Specified asset is a directory, but expected a file ({src_path})")
+			Logger.print_error(f"Specified asset is a directory, but expected a file ({src_path})")
 			exit(errno.EISDIR)
 		except NotADirectoryError:
-			logger.print_error(f"Specified asset is not a directory, but expected a file ({src_path})")
+			Logger.print_error(f"Specified asset is not a directory, but expected a file ({src_path})")
 			exit(errno.ENOTDIR)
 		except PermissionError:
-			logger.print_error(f"No permission to remove specified asset ({src_path})")
+			Logger.print_error(f"No permission to remove specified asset ({src_path})")
 			exit(errno.EACCES)
 		except Exception:
-			logger.print_error(f"An unexpected error occurred while removing specified asset ({src_path})")
+			Logger.print_error(f"An unexpected error occurred while removing specified asset ({src_path})")
 			exit(errno.EIO)
 
 	def _set_debug_args(self) -> None:
@@ -240,19 +240,19 @@ class FileOperator:
 		self._set_debug_args()
 
 		# デバッグ出力
-		logger.print_info("Path operator for FBAC avatar build tool")
-		logger.print_spacer(1)
-		logger.print_info(f"Preparing distribution directory ({self.target_directory_path})...")
+		Logger.print_info("Path operator for FBAC avatar build tool")
+		Logger.print_spacer(1)
+		Logger.print_info(f"Preparing distribution directory ({self.target_directory_path})...")
 
 		self.prepare_directory(self.target_directory_path)
 
-		logger.print_info("Completed preparing distribution directory.")
-		logger.print_spacer(1)
-		logger.print_info(f"Copying avatar assets (00a_base)...")
+		Logger.print_info("Completed preparing distribution directory.")
+		Logger.print_spacer(1)
+		Logger.print_info(f"Copying avatar assets (00a_base)...")
 
 		FileOperator.copy_assets("00a_base")
 
-		logger.print_info("Completed copying avatar assets.")
+		Logger.print_info("Completed copying avatar assets.")
 
 file_ops = FileOperator()
 
