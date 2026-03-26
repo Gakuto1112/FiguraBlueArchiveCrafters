@@ -140,7 +140,9 @@ def main() -> None:
 
 	args = parser.parse_args()
 
-	# ロガーの設定
+	# 引数の処理
+	paths.source_dir = Path(args.src_dir)
+	paths.distribution_dir = Path(args.dist_dir)
 	if args.colored:
 		Logger.is_colored = True
 	if args.debug:
@@ -177,9 +179,6 @@ def main() -> None:
 
 	else:
 		# 通常のビルドモード
-		paths.source_dir = Path(args.src_dir)
-		paths.distribution_dir = Path(args.dist_dir)
-
 		target_avatars: list[str] = []
 		if args.character:
 			target = next((avatar for avatar in paths.get_avatar_names() if args.character in avatar), None)
