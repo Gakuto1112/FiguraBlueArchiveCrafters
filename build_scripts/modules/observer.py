@@ -223,6 +223,7 @@ class AvatarFileObserver():
 				Logger.print_plana("See you later, Sensei.")
 			else:
 				Logger.print_arona("See you next time! Sensei!")
+			Logger.print_spacer(1)
 
 	@staticmethod
 	def debug() -> None:
