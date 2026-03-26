@@ -11,10 +11,6 @@ from modules.observer import AvatarFileObserver
 from modules.paths import paths
 from modules.thumbnail_generator import ThumbnailGenerator
 
-should_generate_thumbnails: bool = True
-"""
-サムネイル画像を生成するかどうかのフラグ
-"""
 
 def build(target_avatars: tuple[str, ...]) -> None:
 	"""
@@ -101,34 +97,30 @@ def build(target_avatars: tuple[str, ...]) -> None:
 	Logger.print_spacer(1)
 
 	# サムネイル画像の生成
-	if should_generate_thumbnails:
-		Logger.print_info("Generating thumbnail images...")
+	Logger.print_info("Generating thumbnail images...")
 
-		try:
-			for target_avatar in target_avatars:
-				Logger.print_info(f"Generating thumbnail image for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-				ThumbnailGenerator.save_thumbnail(target_avatar, ThumbnailGenerator.generate_thumbnail(target_avatar))
-		except FileNotFoundError:
-			Logger.print_error("Thumbnail config file not found.")
-			exit(errno.ENOENT)
-		except IsADirectoryError:
-			Logger.print_error("Thumbnail config file or template image file is a directory.")
-			exit(errno.EISDIR)
-		except PermissionError:
-			Logger.print_error("No permission to save generated thumbnail image.")
-			exit(errno.EACCES)
-		except JSONDecodeError:
-			Logger.print_error("Failed to parse thumbnail config file.")
-			exit(errno.EINVAL)
-		except IOError:
-			Logger.print_error("An unexpected error occurred while generating thumbnail images.")
-			exit(errno.EIO)
+	try:
+		for target_avatar in target_avatars:
+			Logger.print_info(f"Generating thumbnail image for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+			ThumbnailGenerator.save_thumbnail(target_avatar, ThumbnailGenerator.generate_thumbnail(target_avatar))
+	except FileNotFoundError:
+		Logger.print_error("Thumbnail config file not found.")
+		exit(errno.ENOENT)
+	except IsADirectoryError:
+		Logger.print_error("Thumbnail config file or template image file is a directory.")
+		exit(errno.EISDIR)
+	except PermissionError:
+		Logger.print_error("No permission to save generated thumbnail image.")
+		exit(errno.EACCES)
+	except JSONDecodeError:
+		Logger.print_error("Failed to parse thumbnail config file.")
+		exit(errno.EINVAL)
+	except IOError:
+		Logger.print_error("An unexpected error occurred while generating thumbnail images.")
+		exit(errno.EIO)
 
-		Logger.print_info("Completed generating thumbnail images.")
-		Logger.print_spacer(1)
-	else:
-		Logger.print_info("Skipping thumbnail generation as per command line argument.")
-		Logger.print_spacer(1)
+	Logger.print_info("Completed generating thumbnail images.")
+	Logger.print_spacer(1)
 
 def main() -> None:
 	"""
@@ -138,13 +130,21 @@ def main() -> None:
 	# 引数の設定
 	parser = argparse.ArgumentParser(description="Builds avatars for Figura Blue Archive Characters (FBAC).")
 
-	parser.add_argument("--character", "-c", type=str, choices=paths.get_valid_avatar_names(), help="Specifies the character avatar to build. If not specified, all avatars will be built.")
-	parser.add_argument("--src-dir", "-s", type=str, default=paths.source_dir, help="Overrides default source directory path. Default: ../src/")
-	parser.add_argument("--dist-dir", "-d", type=str, default=paths.distribution_dir, help="Overrides default distribution directory path. Default: ../dist/")
-	parser.add_argument("--skip-thumbnails", "-t", action="store_true", help="Skips thumbnail generation.")
-	parser.add_argument("--observe", "-o", action="store_true", help="Observes the source directory for changes and automatically rebuilds the affected avatars.")
+	parser.add_argument("--character", "-c", type=str, choices=paths.get_valid_avatar_names(), help="Specifies the character avatar to build. If not specified, all avatars will be built. This option is ignored in observe mode.")
+	parser.add_argument("--skip-base-avatar-build", "-s", action="store_true", help="Skips building the base avatar. This option is only effective when --character / -c option is not specified.")
+	parser.add_argument("--src-dir", "-i", type=str, default=paths.source_dir, help="Overrides default source directory path. Default: ../src/")
+	parser.add_argument("--dist-dir", "-o", type=str, default=paths.distribution_dir, help="Overrides default distribution directory path. Default: ../dist/")
+	parser.add_argument("--observe", "-w", action="store_true", help="Executes the tool in observation mode. In this mode, the tool will observe the source directory for changes and automatically rebuild the affected avatars.")
+	parser.add_argument("--colored", "-l", action="store_true", help="Enables colored output in the terminal.")
+	parser.add_argument("--debug", "-d", action="store_true", help="Enables debug outputs.")
 
 	args = parser.parse_args()
+
+	# ロガーの設定
+	if args.colored:
+		Logger.is_colored = True
+	if args.debug:
+		Logger.should_print_debug_log = True
 
 	Logger.print_info("Figura Blue Archive Characters (FBAC) Avatar Build Tool")
 	Logger.print_spacer(1)
@@ -160,7 +160,10 @@ def main() -> None:
 		Logger.print_spacer(1)
 
 		if args.character:
-			Logger.print_warning("The --character / -c argument is ignored in observe mode. All avatars will be observed for changes.")
+			Logger.print_warning("The --character / -c option is ignored in observe mode. All characters will be observed for changes.")
+			Logger.print_spacer(1)
+		if args.skip_base_avatar_build:
+			Logger.print_warning("The --skip-base-avatar-build / -s option is ignored in observe mode. All characters will be observed for changes.")
 			Logger.print_spacer(1)
 
 		AvatarFileObserver.observe()
@@ -169,9 +172,6 @@ def main() -> None:
 		# 通常のビルドモード
 		paths.source_dir = Path(args.src_dir)
 		paths.distribution_dir = Path(args.dist_dir)
-		global should_generate_thumbnails, is_observe_mode
-		should_generate_thumbnails = not args.skip_thumbnails
-		is_observe_mode = args.observe
 
 		target_avatars: list[str] = []
 		if args.character:

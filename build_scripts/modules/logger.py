@@ -6,7 +6,12 @@ class Logger:
 	標準出力を管理するユーティリティクラス
 	"""
 
-	should_print_debug_log: bool = True
+	is_colored: bool = False
+	"""
+	色付き出力を有効にするかどうかのフラグ
+	"""
+
+	should_print_debug_log: bool = False
 	"""
 	DEBUGレベルのログを出力するかどうかのフラグ
 	"""
