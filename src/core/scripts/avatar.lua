@@ -7,6 +7,9 @@
 ---@type StringUtils
 StringUtils = require("scripts.utils.string_utils")
 
+---モデル操作ユーティリティ
+---@type ModelUtils
+ModelUtils = require("scripts.utils.model_utils")
 
 -- ** アバターモジュール **
 
