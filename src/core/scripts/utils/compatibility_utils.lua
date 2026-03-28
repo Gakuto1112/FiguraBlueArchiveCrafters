@@ -148,12 +148,12 @@ local CompatibilityUtils = {
     ---`models:newBlock():setBlock()`メソッドに対し、ブロックIDのチェック機能を注入する。
     injectToBlockTaskSetBlock = function (self)
         local dummyBlock = models:newBlock("dummy_block")
-        local blockMeta = getmetatable(dummyBlock)
-        local originalSetBlock = blockMeta.__index.setBlock
+        local blockMT = getmetatable(dummyBlock)
+        local originalSetBlock = blockMT.__index.setBlock
 
         ---@param self2 BlockTask
         ---@param block BlockState|Minecraft.blockID
-        blockMeta.__index.setBlock = function (self2, block)
+        blockMT.__index.setBlock = function (self2, block)
             if type(block) == "BlockState" then
                 return originalSetBlock(self2, block)
             else
@@ -181,12 +181,12 @@ local CompatibilityUtils = {
     ---`models:newItem():setItem()`メソッドに対し、アイテムIDのチェック機能を注入する。
     injectToItemTaskSetItem = function (self)
         local dummyItem = models:newItem("dummy_item")
-        local itemMeta = getmetatable(dummyItem)
-        local originalSetItem = itemMeta.__index.setItem
+        local itemMT = getmetatable(dummyItem)
+        local originalSetItem = itemMT.__index.setItem
 
         ---@param self2 ItemTask
         ---@param item ItemStack|Minecraft.itemID
-        itemMeta.__index.setItem = function (self2, item)
+        itemMT.__index.setItem = function (self2, item)
             if type(item) == "ItemStack" then
                 return originalSetItem(self2, item)
             else
