@@ -5,7 +5,9 @@
 ---@field package activeLocale string 現在有効になっているロケール
 ---@field package locales table<string, table<string, string>> ローカライズされたテキストを格納するテーブル
 local Locale = {
-	HARDCODED_LOCALES = {};
+	HARDCODED_LOCALES = {
+		["message.locale.err_not_allowed"] = "There is not permission to use Figura File API or access Figura home directory! Cannot get locale data!";
+	};
 
 	activeLocale = "en_us";
 	locales = {};
@@ -14,6 +16,10 @@ local Locale = {
 	---@param self Locale
 	init = function (self)
 		self:initializeLocaleData()
+		if self.checkAvailability() then
+		else
+			print(self.HARDCODED_LOCALES["message.locale.err_not_allowed"])
+		end
 	end;
 
 	---ロケールデータを初期化する。
@@ -24,6 +30,12 @@ local Locale = {
 		for key, value in pairs(self.HARDCODED_LOCALES) do
 			self.locales["en_us"][key] = value
 		end
+	end;
+
+	---ロケールデータのキャッシュアクセスが許可されているかどうかを返す。
+	---@return boolean isAllowed キャッシュアクセスが許可されているかどうか
+	checkAvailability = function ()
+		return file:allowed() and file:isPathAllowed("")
 	end;
 
 	---翻訳キーに対応するローカライズされたテキストを返す。
