@@ -1,11 +1,25 @@
--- コアモジュールのインポート
+-- *** コアモジュールのインポート ***
 
+
+-- ** ユーティリティクラス群 **
+
+---文字列ユーティリティ
+---@type StringUtils
+StringUtils = require("scripts.utils.string_utils")
+
+
+-- ** アバターモジュール **
+
+---バニラのプレイヤーモデルの管理
 ---@type VanillaModel
-local VanillaModel = require("scripts.vanilla_model")
+VanillaModel = require("scripts.vanilla_model")
 
+---モデルパーツのエイリアスの管理
 ---@type ModelAlias
-local ModelAlias = require("scripts.model_alias")
+ModelAlias = require("scripts.model_alias")
 
--- モジュールの初期化
+
+
+-- *** モジュールの初期化 ***
 VanillaModel.init()
 ModelAlias:init()
