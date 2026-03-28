@@ -50,7 +50,7 @@ local Locale = {
 			end
 
 			-- ロケールインデックスの取得
-			self:getFile("index.json", function (status, data)
+			self:fetchFile("index.json", function (status, data)
 				if status == "SUCCESS" then
 					self.localeVersion = data["localeVersion"]
 					for _, locale in ipairs(data["availableLocales"]) do
@@ -60,7 +60,7 @@ local Locale = {
 					--//TODO: インデックスの受信日時を記録する。
 
 					-- en_usのロケールデータを取得
-					self:getFile("core/en_us.json", function (status2, data2)
+					self:fetchFile("core/en_us.json", function (status2, data2)
 						if status2 == "SUCCESS" then
 							---@cast data2 {[string]: string}
 							for key, value in pairs(data2) do
@@ -70,7 +70,7 @@ local Locale = {
 							print(self:getLocalizedText("message.locale.err_fetch"):format("core/en_us.json"))
 						end
 					end)
-					self:getFile("avatars/" .. self.AVATAR_NAME .. "/en_us.json", function (status2, data2)
+					self:fetchFile("avatars/" .. self.AVATAR_NAME .. "/en_us.json", function (status2, data2)
 						if status2 == "SUCCESS" then
 							---@cast data2 {[string]: string}
 							for key, value in pairs(data2) do
@@ -83,7 +83,7 @@ local Locale = {
 
 					-- 現在のロケールのデータを取得
 					local currentLocale = self.activeLocale == "auto" and client:getActiveLang() or self.activeLocale
-					self:getFile("core/" .. currentLocale .. ".json", function (status2, data2)
+					self:fetchFile("core/" .. currentLocale .. ".json", function (status2, data2)
 						if status2 == "SUCCESS" then
 							---@cast data2 {[string]: string}
 							self.locales[currentLocale] = {}
@@ -99,7 +99,7 @@ local Locale = {
 							print(self:getLocalizedText("message.locale.err_fetch"):format("core/" .. currentLocale .. ".json"))
 						end
 					end)
-					self:getFile("avatars/" .. self.AVATAR_NAME .. "/" .. currentLocale .. ".json", function (status2, data2)
+					self:fetchFile("avatars/" .. self.AVATAR_NAME .. "/" .. currentLocale .. ".json", function (status2, data2)
 						if status2 == "SUCCESS" then
 							---@cast data2 {[string]: string}
 							if self.locales[currentLocale] == nil then
@@ -160,7 +160,7 @@ local Locale = {
 	---@param self Locale
 	---@param path string ロケールディレクトリからのファイルパス
 	---@param callback fun(status: Locale.DataReadStatus, data: boolean|string|number|table)? ロケールデータの準備ができた際に呼び出されるコールバック関数
-	getFile = function (self, path, callback)
+	fetchFile = function (self, path, callback)
 		if self.checkAvailability() then
 			if file:exists(self.CACHE_DIR_ROOT .. "/" .. path) then
 				-- キャッシュディレクトリから取ってくる
