@@ -149,13 +149,13 @@ local CompatibilityUtils = {
     injectToBlockTaskSetBlock = function (self)
         local dummyBlock = models:newBlock("dummy_block")
         local blockMT = getmetatable(dummyBlock)
-        local originalSetBlock = blockMT.__index.setBlock
+        local originalSetBlockFunc = blockMT.__index.setBlock
 
         ---@param self2 BlockTask
         ---@param block BlockState|Minecraft.blockID
         blockMT.__index.setBlock = function (self2, block)
             if type(block) == "BlockState" then
-                return originalSetBlock(self2, block)
+                return originalSetBlockFunc(self2, block)
             else
                 local trueBlockID = block
                 if trueBlockID:find(":") == nil then
@@ -171,7 +171,7 @@ local CompatibilityUtils = {
                 if trueBlockID == self.ALTERNATIVE_ENTRIES.block then
                     blockState = ""
                 end
-                return originalSetBlock(self2, self:checkBlock(trueBlockID) .. blockState)
+                return originalSetBlockFunc(self2, self:checkBlock(trueBlockID) .. blockState)
             end
         end
 
@@ -182,19 +182,19 @@ local CompatibilityUtils = {
     injectToItemTaskSetItem = function (self)
         local dummyItem = models:newItem("dummy_item")
         local itemMT = getmetatable(dummyItem)
-        local originalSetItem = itemMT.__index.setItem
+        local originalSetItemFunc = itemMT.__index.setItem
 
         ---@param self2 ItemTask
         ---@param item ItemStack|Minecraft.itemID
         itemMT.__index.setItem = function (self2, item)
             if type(item) == "ItemStack" then
-                return originalSetItem(self2, item)
+                return originalSetItemFunc(self2, item)
             else
                 local trueItemID = item
                 if trueItemID:find(":") == nil then
                     trueItemID = "minecraft:" .. trueItemID
                 end
-                return originalSetItem(self2, self:checkItem(trueItemID))
+                return originalSetItemFunc(self2, self:checkItem(trueItemID))
             end
         end
 
