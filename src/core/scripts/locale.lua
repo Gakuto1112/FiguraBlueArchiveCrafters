@@ -9,7 +9,7 @@
 ---@class (exact) Locale メッセージのローカライズを管理するクラス
 ---@field package CACHE_DIR_ROOT string ロケールキャッシュディレクトリのルートパス
 ---@field package REMOTE_LOCALE_ENDPOINT string ロケールデータの外部取得先URI
----@field package AVATAR_NAME string ロケールデータの取得に使用されるアバターの名前
+---@field public AVATAR_NAME string ロケールデータの取得に使用されるアバターの名前
 ---@field package HARDCODED_LOCALES {[string]: string} 外部からのロケール取得前に使用されるハードコードされた、最低限のローカライズメッセージ
 ---@field package localeVersion string? ロケールデータのバージョン
 ---@field package availableLocales string[] 利用可能なロケールのリスト
@@ -18,7 +18,7 @@
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locale/";
 	REMOTE_LOCALE_ENDPOINT = "http://localhost/";
-	AVATAR_NAME = "00a_base";
+	AVATAR_NAME = "00a_base"; --//TODO: このフィールド値をキャラクターシートに移動する。
 
 	HARDCODED_LOCALES = {
 		["message.net_utils.err_response"] = "An error code (%d) was responded from the remote server.";
