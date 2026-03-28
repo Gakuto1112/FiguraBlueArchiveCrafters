@@ -1,9 +1,9 @@
 ---レジストリの種類を示す列挙型
 ---@alias CompatibilityUtils.RegistryType
----| "BLOCK" ブロック
----| "ITEM" アイテム
----| "PARTICLE" パーティクル
----| "SOUND" サウンド
+---| "BLOCK"    # ブロック
+---| "ITEM"     # アイテム
+---| "PARTICLE" # パーティクル
+---| "SOUND"    # サウンド
 
 ---@class (exact) CompatibilityUtils Minecraftのゲームバージョンが異なっていてもある程度互換性を確保するためのユーティリティクラス
 ---@field package TARGET_MC_VERSION string アバターが想定しているMinecraftの最低バージョン。このバージョンより古い場合は読み込み時に警告メッセージが表示される。
