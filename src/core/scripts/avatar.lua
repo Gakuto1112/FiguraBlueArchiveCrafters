@@ -15,6 +15,10 @@ ModelUtils = require("scripts.utils.model_utils")
 ---@type CompatibilityUtils
 CompatibilityUtils = require("scripts.utils.compatibility_utils")
 
+---ネットワークリクエストユーティリティ
+---@type NetUtils
+NetUtils = require("scripts.utils.net_utils")
+
 -- ** アバターモジュール **
 
 ---バニラのプレイヤーモデルの管理
