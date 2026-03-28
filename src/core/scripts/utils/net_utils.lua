@@ -1,9 +1,9 @@
 ---ネットワークリクエストの結果を表す列挙型
 ---@alias NetUtils.ResponseStatus
----| "SUCCESS"            # 通信成功
----| "ERROR_RESPONSE_ERR" # レスポンスコードが200番台以外の場合（httpリクエストエラー）
----| "ERROR_NETWORK_ERR"  # 通信エラー
----| "ERROR_NOT_ALLOWED"  # ネットワーキング機能が許可されていない
+---| "SUCCESS"         # 通信成功
+---| "ERR_RESPONSE"    # レスポンスコードが200番台以外の場合（httpリクエストエラー）
+---| "ERR_NETWORK"     # 通信エラー
+---| "ERR_NOT_ALLOWED" # ネットワーキング機能が許可されていない
 
 ---@class (exact) NetUtils ネットワーク関連のユーティリティ関数群
 local NetUtils = {
@@ -39,16 +39,16 @@ local NetUtils = {
 							stream:close()
 						else
 							-- エラーコード
-							callback("ERROR_RESPONSE_ERR", statusCode)
+							callback("ERR_RESPONSE", statusCode)
 						end
 					else
-						callback("ERROR_NETWORK_ERR", nil)
+						callback("ERR_NETWORK", nil)
 					end
 					events.TICK:remove(requestUUID)
 				end
 			end, requestUUID)
 		else
-			callback("ERROR_NOT_ALLOWED", nil)
+			callback("ERR_NOT_ALLOWED", nil)
 		end
 	end;
 
