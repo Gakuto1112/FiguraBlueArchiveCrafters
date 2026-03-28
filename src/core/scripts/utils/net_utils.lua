@@ -17,7 +17,7 @@ local NetUtils = {
 	---指定したURIへGETリクエストを送信する。
 	---@param self NetUtils
 	---@param uri string 通信相手のURI
-	---@param callback fun(status: NetUtils.ResponseStatus, data: Buffer?) リクエストの結果が確定した際に呼び出されるコールバック関数。`data`にはレスポンスの内容が格納されている。リクエストに失敗した場合は`nil`になる。
+	---@param callback fun(status: NetUtils.ResponseStatus, data: Buffer|integer?) リクエストの結果が確定した際に呼び出されるコールバック関数
 	get = function (self, uri, callback)
 		if self.checkAvailability(uri) then
 			local request = net.http:request(uri)
@@ -36,9 +36,10 @@ local NetUtils = {
 							buffer:readFromStream(stream)
 							buffer:setPosition(0)
 							callback("SUCCESS", buffer)
+							stream:close()
 						else
 							-- エラーコード
-							callback("ERROR_RESPONSE_ERR", nil)
+							callback("ERROR_RESPONSE_ERR", statusCode)
 						end
 					else
 						callback("ERROR_NETWORK_ERR", nil)
@@ -48,6 +49,16 @@ local NetUtils = {
 			end, requestUUID)
 		else
 			callback("ERROR_NOT_ALLOWED", nil)
+		end
+	end;
+
+	---入力されたバッファデータをJSON形式としてパースして返す。
+	---@param buffer Buffer JSON形式のデータが格納されたバッファ
+	---@return (boolean|string|number|table)? jsonData パースされたデータ。
+	toJson = function (buffer)
+		local jsonData = buffer:readByteArray()
+		if json.isSerializable(jsonData) then
+			return parseJson(jsonData)
 		end
 	end;
 }
