@@ -10,11 +10,11 @@
 ---@field package CACHE_DIR_ROOT string ロケールキャッシュディレクトリのルートパス
 ---@field package REMOTE_LOCALE_ENDPOINT string ロケールデータの外部取得先URI
 ---@field package AVATAR_NAME string ロケールデータの取得に使用されるアバターの名前
----@field package HARDCODED_LOCALES table<string, string> 外部からのロケール取得前に使用されるハードコードされた、最低限のローカライズメッセージ
+---@field package HARDCODED_LOCALES {[string]: string} 外部からのロケール取得前に使用されるハードコードされた、最低限のローカライズメッセージ
 ---@field package localeVersion string? ロケールデータのバージョン
 ---@field package availableLocales string[] 利用可能なロケールのリスト
 ---@field package activeLocale string 現在有効になっているロケール
----@field package locales table<string, table<string, string>> ローカライズされたテキストを格納するテーブル
+---@field package locales {[string]: {[string]: string}} ローカライズされたテキストを格納するテーブル
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locale/";
 	REMOTE_LOCALE_ENDPOINT = "http://localhost/";
@@ -62,7 +62,7 @@ local Locale = {
 					-- en_usのロケールデータを取得
 					self:getFile("core/en_us.json", function (status2, data2)
 						if status2 == "SUCCESS" then
-							---@cast data2 table<string, string>
+							---@cast data2 {[string]: string}
 							for key, value in pairs(data2) do
 								self.locales["en_us"][key] = value
 							end
@@ -72,7 +72,7 @@ local Locale = {
 					end)
 					self:getFile("avatars/" .. self.AVATAR_NAME .. "/en_us.json", function (status2, data2)
 						if status2 == "SUCCESS" then
-							---@cast data2 table<string, string>
+							---@cast data2 {[string]: string}
 							for key, value in pairs(data2) do
 								self.locales["en_us"][key] = value
 							end
@@ -85,7 +85,7 @@ local Locale = {
 					local currentLocale = self.activeLocale == "auto" and client:getActiveLang() or self.activeLocale
 					self:getFile("core/" .. currentLocale .. ".json", function (status2, data2)
 						if status2 == "SUCCESS" then
-							---@cast data2 table<string, string>
+							---@cast data2 {[string]: string}
 							self.locales[currentLocale] = {}
 							if self.locales[currentLocale] == nil then
 								self.locales[currentLocale] = {}
@@ -101,7 +101,7 @@ local Locale = {
 					end)
 					self:getFile("avatars/" .. self.AVATAR_NAME .. "/" .. currentLocale .. ".json", function (status2, data2)
 						if status2 == "SUCCESS" then
-							---@cast data2 table<string, string>
+							---@cast data2 {[string]: string}
 							if self.locales[currentLocale] == nil then
 								self.locales[currentLocale] = {}
 							end
