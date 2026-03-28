@@ -135,6 +135,16 @@ local Locale = {
 		end
 	end;
 
+	---ロケールデータのキャッシュを削除する。
+	---@param self Locale
+	flushCache = function (self)
+		if self.checkAvailability() then
+			self:initializeLocaleDirectory()
+		else
+			print(self:getLocalizedText("message.locale.err_not_allowed"))
+		end
+	end;
+
 	---翻訳キーに対応するローカライズされたテキストを返す。
 	---現在有効なロケールでのテキストが見つからない場合は、英語（en_us）でのテキストを返す。
 	---どちらも見つからない場合は、翻訳キー自体を返す。
