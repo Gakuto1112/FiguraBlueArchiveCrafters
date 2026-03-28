@@ -7,17 +7,19 @@
 
 ---@class (exact) CompatibilityUtils Minecraftのゲームバージョンが異なっていてもある程度互換性を確保するためのユーティリティクラス
 ---@field package TARGET_MC_VERSION string アバターが想定しているMinecraftの最低バージョン。このバージョンより古い場合は読み込み時に警告メッセージが表示される。
+---@field package ALTERNATIVE_ENTRIES {block: Minecraft.blockID, item: Minecraft.itemID, particle: Minecraft.particleID, sound: Minecraft.soundID} レジストリに存在しないIDが指定された場合に代わりに使用するIDを格納するテーブル
 ---@field package registries {block: Minecraft.blockID[], item: Minecraft.itemID[], particle: Minecraft.particleID[], sound: Minecraft.soundID[]} ゲームから取得した全アイテム名を保持するテーブル
 ---@field package checkedTable {block: {[Minecraft.blockID]: boolean}, item: {[Minecraft.itemID]: boolean}, particle: {[Minecraft.particleID]: boolean}, sound: {[Minecraft.soundID]: boolean}} レジストリへの確認が済んでいるIDを保持するテーブル
----@field package find fun(self: CompatibilityUtils, registryType: CompatibilityUtils.RegistryType, target: string): boolean 指定されたターゲットがレジストリに登録されているかどうかを返す。
----@field public checkBlock fun(self: CompatibilityUtils, block: Minecraft.blockID, blockState?: string): Minecraft.blockID 指定されたブロックIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:dirt"を返す。
----@field public checkItem fun(self: CompatibilityUtils, item: Minecraft.itemID, nbt?: string): Minecraft.itemID 指定されたアイテムIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:barrier"を返す。
----@field public checkParticle fun(self: CompatibilityUtils, particle: Minecraft.particleID, args?: string): Minecraft.particleID 指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
----@field public checkSound fun(self: CompatibilityUtils, sound: Minecraft.soundID): Minecraft.soundID 指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
----@field public setPostEffect fun(effect?: Minecraft.shaderName) renderer:setPostEffect()のラッパー関数。1.20.5でレンダーエフェクトが削除されたことによる対応。
 local CompatibilityUtils = {
 
     TARGET_MC_VERSION = "1.21.4";
+
+    ALTERNATIVE_ENTRIES = {
+        block = "minecraft:dirt";
+        item = "minecraft:barrier";
+        particle = "minecraft:poof";
+        sound = "minecraft:empty";
+    };
 
     registries = {};
     checkedTable = {
@@ -51,6 +53,12 @@ local CompatibilityUtils = {
                 print(self.parent.locale:getLocale("avatar.old_version_warning"))
             end)
         end
+
+        self:injectToBlockTaskSetBlock()
+        self:injectToItemTaskSetItem()
+        self:injectToParticlesNewParticle()
+        self:injectToSoundsPlaySound()
+        self:injectToRendererSetPostEffect()
     end;
 
     ---指定されたターゲットがレジストリに登録されているかどうかを返す。
@@ -65,9 +73,9 @@ local CompatibilityUtils = {
         ---@return integer compareResult 比較結果。0は同じ文字列、1はターゲットの方が大きい、-1はターゲットの方が小さいことを表す。
         local function compareToCenterElement(from, to)
             local centerIndex = math.floor((to - from) / 2) + from
-            if self.registries[self.parent.stringUtils.lower(registryType)][centerIndex] < target then
+            if self.registries[StringUtils.lower(registryType)][centerIndex] < target then
                 return 1
-            elseif self.registries[self.parent.stringUtils.lower(registryType)][centerIndex] > target then
+            elseif self.registries[StringUtils.lower(registryType)][centerIndex] > target then
                 return -1
             else
                 return 0
@@ -75,7 +83,7 @@ local CompatibilityUtils = {
         end
 
         local startIndex = 1
-        local endIndex = #self.registries[self.parent.stringUtils.lower(registryType)]
+        local endIndex = #self.registries[StringUtils.lower(registryType)]
         while startIndex < endIndex do
             local compareResult = compareToCenterElement(startIndex, endIndex)
             if compareResult == 1 then
@@ -96,39 +104,34 @@ local CompatibilityUtils = {
     ---指定されたブロックIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:dirt"を返す。
     ---@param self CompatibilityUtils
     ---@param block Minecraft.blockID 確認対象のブロックID
-    ---@param blockState? string ブロックステートを示す文字列。代替アイテムになった場合は付与されない。
     ---@return Minecraft.blockID blockID レジストリに登録してある場合は確認対象のブロックIDをそのまま返し、未登録の場合は"minecraft:dirt"が返す。
-    checkBlock = function (self, block, blockState)
+    checkBlock = function (self, block)
         if self.checkedTable.block[block] == nil then
             self.checkedTable.block[block] = self:find("BLOCK", block)
         end
-        local state = blockState ~= nil and blockState or ""
-        return self.checkedTable.block[block] and block..state or "minecraft:dirt"
+        return self.checkedTable.block[block] and block or self.ALTERNATIVE_ENTRIES.block
     end;
 
     ---指定されたアイテムIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:barrier"を返す。
     ---@param self CompatibilityUtils
     ---@param item Minecraft.itemID 確認対象のアイテムID
-    ---@param nbt? string アイテムに付与するコンポーネント/NBTデータ。代替アイテムになった場合は付与されない。
     ---@return Minecraft.itemID blockID レジストリに登録してある場合は確認対象のアイテムIDをそのまま返し、未登録の場合は"minecraft:barrier"が返す。
-    checkItem = function (self, item, nbt)
+    checkItem = function (self, item)
         if self.checkedTable.item[item] == nil then
             self.checkedTable.item[item] = self:find("ITEM", item)
         end
-        local itemData = nbt ~= nil and nbt or ""
-        return self.checkedTable.item[item] and item..itemData or "minecraft:barrier"
+        return self.checkedTable.item[item] and item or self.ALTERNATIVE_ENTRIES.item
     end;
 
     ---指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
     ---@param self CompatibilityUtils
     ---@param particle Minecraft.particleID 確認対象のパーティクルID
-    ---@param args? string パーティクルの追加引数
     ---@return Minecraft.particleID particleID レジストリに登録してある場合は確認対象のパーティクルIDをそのまま返し、未登録の場合は"minecraft:poof"が返す。
-    checkParticle = function (self, particle, args)
+    checkParticle = function (self, particle)
         if self.checkedTable.particle[particle] == nil then
             self.checkedTable.particle[particle] = self:find("PARTICLE", particle)
         end
-        return self.checkedTable.particle[particle] and (args ~= nil and particle.." "..args or particle) or "minecraft:poof"
+        return self.checkedTable.particle[particle] and particle or self.ALTERNATIVE_ENTRIES.particle
     end;
 
     ---指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
@@ -139,16 +142,143 @@ local CompatibilityUtils = {
         if self.checkedTable.sound[sound] == nil then
             self.checkedTable.sound[sound] = self:find("SOUND", sound)
         end
-        return self.checkedTable.sound[sound] and sound or "minecraft:empty"
+        return self.checkedTable.sound[sound] and sound or self.ALTERNATIVE_ENTRIES.sound
     end;
 
-    ---renderer:setPostEffect()のラッパー関数
-    ---1.20.5でレンダーエフェクトが削除されたことによる対応
-    ---@param effect? Minecraft.shaderName 適用するエフェクト
-    setPostEffect = function (effect)
-        if client:getVersion() < "1.20.5" then
-            renderer:setPostEffect(effect)
+    ---`models:newBlock():setBlock()`メソッドに対し、ブロックIDのチェック機能を注入する。
+    injectToBlockTaskSetBlock = function (self)
+        local dummyBlock = models:newBlock("dummy_block")
+        local blockMeta = getmetatable(dummyBlock)
+        local originalSetBlock = blockMeta.__index.setBlock
+
+        ---@param self2 BlockTask
+        ---@param block BlockState|Minecraft.blockID
+        blockMeta.__index.setBlock = function (self2, block)
+            if type(block) == "BlockState" then
+                return originalSetBlock(self2, block)
+            else
+                local trueBlockID = block
+                if trueBlockID:find(":") == nil then
+                    trueBlockID = "minecraft:" .. block
+                end
+                local stateBracketStart, stateBracketEnd = trueBlockID:find("%b[]")
+                local blockState = ""
+                if stateBracketStart ~= nil and stateBracketEnd ~= nil then
+                    blockState = trueBlockID:sub(stateBracketStart, stateBracketEnd)
+                    trueBlockID = trueBlockID:sub(1, stateBracketStart - 1)
+                end
+                trueBlockID = self:checkBlock(trueBlockID)
+                if trueBlockID == self.ALTERNATIVE_ENTRIES.block then
+                    blockState = ""
+                end
+                return originalSetBlock(self2, self:checkBlock(trueBlockID) .. blockState)
+            end
         end
+
+        models:removeTask("dummy_block")
+    end;
+
+    ---`models:newItem():setItem()`メソッドに対し、アイテムIDのチェック機能を注入する。
+    injectToItemTaskSetItem = function (self)
+        local dummyItem = models:newItem("dummy_item")
+        local itemMeta = getmetatable(dummyItem)
+        local originalSetItem = itemMeta.__index.setItem
+
+        ---@param self2 ItemTask
+        ---@param item ItemStack|Minecraft.itemID
+        itemMeta.__index.setItem = function (self2, item)
+            if type(item) == "ItemStack" then
+                return originalSetItem(self2, item)
+            else
+                local trueItemID = item
+                if trueItemID:find(":") == nil then
+                    trueItemID = "minecraft:" .. trueItemID
+                end
+                return originalSetItem(self2, self:checkItem(trueItemID))
+            end
+        end
+
+        models:removeTask("dummy_item")
+    end;
+
+    ---ParticleAPIを改変し、`particles:newParticle()`メソッドに対し、パーティクルIDのチェック機能を注入する。
+    injectToParticlesNewParticle = function (self)
+        local particlesMT = figuraMetatables.ParticleAPI
+        local originalParticleIndexFunc = particlesMT.__index
+
+        ---@param self2 ParticleAPI
+        ---@param key any
+        particlesMT.__index = function (self2, key)
+            if key == "newParticle" then
+                ---@param self3 ParticleAPI
+                ---@param name Minecraft.particleID
+                return function (self3, name, ...)
+                    local trueParticleID = name
+                    if trueParticleID:find(":") == nil then
+                        trueParticleID = "minecraft:" .. trueParticleID
+                    end
+                    local spaceIndex = name:find(" ")
+                    local arg = ""
+                    if spaceIndex ~= nil then
+                        arg = name:sub(spaceIndex)
+                        trueParticleID = name:sub(1, spaceIndex - 1)
+                    end
+                    trueParticleID = self:checkParticle(trueParticleID)
+                    if trueParticleID == self.ALTERNATIVE_ENTRIES.particle then
+                        arg = ""
+                    end
+                    return originalParticleIndexFunc(self2, "newParticle")(self3, self:checkParticle(trueParticleID) .. arg, ...)
+                end
+            else
+                return originalParticleIndexFunc(self2, key)
+            end
+        end;
+    end;
+
+    ---SoundAPIを改変し、`sounds:playSound()`メソッドに対し、サウンドIDのチェック機能を注入する。
+    injectToSoundsPlaySound = function (self)
+        local soundsMT = figuraMetatables.SoundAPI
+        local originalSoundIndexFunc = soundsMT.__index
+
+        ---@param self2 SoundAPI
+        ---@param key any
+        soundsMT.__index = function (self2, key)
+            if key == "playSound" then
+                return function (self3, soundName, ...)
+                    local trueSoundID = soundName
+                    if trueSoundID:find(":") == nil then
+                        trueSoundID = "minecraft:" .. trueSoundID
+                    end
+                    return originalSoundIndexFunc(self2, "playSound")(self3, self:checkSound(trueSoundID), ...)
+                end
+            else
+                return originalSoundIndexFunc(self2, key)
+            end
+        end;
+    end;
+
+    ---RendererAPIを改変し、`renderer:setPostEffect()`メソッドに対し、ゲームバージョンチェック機能を注入する。
+    injectToRendererSetPostEffect = function ()
+        local rendererMT = figuraMetatables.RendererAPI
+        local originalRendererIndexFunc = rendererMT.__index
+
+        ---@param self2 RendererAPI
+        ---@param key any
+        rendererMT.__index = function (self2, key)
+            if key == "setPostEffect" then
+                return function (self3, effect)
+                    -- ゲームバージョン1.20.5以降、ゲーム内レンダープロファイルが削除され、以降アクセスを試みるとエラーになる。
+                    if client:getVersion() < "1.20.5" then
+                        return originalRendererIndexFunc(self2, "setPostEffect")(self3, effect)
+                    else
+                        print("Warning: Attempted to set a post effect, but this version of Minecraft does not support it. This call will be ignored.")
+                        return originalRendererIndexFunc(self2, "setPostEffect")
+                    end
+                end
+            else
+                return originalRendererIndexFunc(self2, key)
+            end
+        end;
     end;
 }
 
