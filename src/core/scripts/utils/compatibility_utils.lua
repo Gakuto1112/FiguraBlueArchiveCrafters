@@ -1,0 +1,155 @@
+---レジストリの種類を示す列挙型
+---@alias CompatibilityUtils.RegistryType
+---| "BLOCK" ブロック
+---| "ITEM" アイテム
+---| "PARTICLE" パーティクル
+---| "SOUND" サウンド
+
+---@class (exact) CompatibilityUtils Minecraftのゲームバージョンが異なっていてもある程度互換性を確保するためのユーティリティクラス
+---@field package TARGET_MC_VERSION string アバターが想定しているMinecraftの最低バージョン。このバージョンより古い場合は読み込み時に警告メッセージが表示される。
+---@field package registries {block: Minecraft.blockID[], item: Minecraft.itemID[], particle: Minecraft.particleID[], sound: Minecraft.soundID[]} ゲームから取得した全アイテム名を保持するテーブル
+---@field package checkedTable {block: {[Minecraft.blockID]: boolean}, item: {[Minecraft.itemID]: boolean}, particle: {[Minecraft.particleID]: boolean}, sound: {[Minecraft.soundID]: boolean}} レジストリへの確認が済んでいるIDを保持するテーブル
+---@field package find fun(self: CompatibilityUtils, registryType: CompatibilityUtils.RegistryType, target: string): boolean 指定されたターゲットがレジストリに登録されているかどうかを返す。
+---@field public checkBlock fun(self: CompatibilityUtils, block: Minecraft.blockID, blockState?: string): Minecraft.blockID 指定されたブロックIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:dirt"を返す。
+---@field public checkItem fun(self: CompatibilityUtils, item: Minecraft.itemID, nbt?: string): Minecraft.itemID 指定されたアイテムIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:barrier"を返す。
+---@field public checkParticle fun(self: CompatibilityUtils, particle: Minecraft.particleID, args?: string): Minecraft.particleID 指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
+---@field public checkSound fun(self: CompatibilityUtils, sound: Minecraft.soundID): Minecraft.soundID 指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
+---@field public setPostEffect fun(effect?: Minecraft.shaderName) renderer:setPostEffect()のラッパー関数。1.20.5でレンダーエフェクトが削除されたことによる対応。
+local CompatibilityUtils = {
+
+    TARGET_MC_VERSION = "1.21.4";
+
+    registries = {};
+    checkedTable = {
+        block = {};
+        item = {};
+        particle = {};
+        sound = {};
+    };
+
+    ---初期化関数
+    ---@param self CompatibilityUtils
+    init = function (self)
+        -- レジストリの取得
+        self.registries.block = client.getRegistry("minecraft:block")
+        self.registries.item = client.getRegistry("minecraft:item")
+        self.registries.particle = client.getRegistry("minecraft:particle_type")
+        self.registries.sound = client.getRegistry("minecraft:sound_event")
+        for name, _ in pairs(self.registries) do
+            table.sort(self.registries[name])
+        end
+
+        -- 代替地のフラグ立て
+        self.checkedTable.block["minecraft:dirt"] = true
+        self.checkedTable.item["minecraft:barrier"] = true
+        self.checkedTable.particle["minecraft:poof"] = true
+        self.checkedTable.sound["minecraft:empty"] = true
+
+        -- 古いゲームバージョン使用時の警告
+        if host:isHost() and client:getVersion() < self.TARGET_MC_VERSION then
+            self.parent.avatarEvents.SCRIPT_INIT:register(function ()
+                print(self.parent.locale:getLocale("avatar.old_version_warning"))
+            end)
+        end
+    end;
+
+    ---指定されたターゲットがレジストリに登録されているかどうかを返す。
+    ---@param self CompatibilityUtils
+    ---@param registryType CompatibilityUtils.RegistryType 検索をかける対象のレジストリ
+    ---@param target string 検索対象名。"minecraft:"を抜かないこと。
+    ---@return boolean idFound 指定されたターゲットがレジストリで見つかったかどうか
+    find = function (self, registryType, target)
+        ---リスト内の中央の要素（偶数の場合は中央から1つ左の要素）と指定されたターゲットのUnicode順を比較する。
+        ---@param from integer リストの検索開始のインデックス番号
+        ---@param to integer リストの検索終了のインスタンス番号（指定したインデックス番号の要素も検索に含む）
+        ---@return integer compareResult 比較結果。0は同じ文字列、1はターゲットの方が大きい、-1はターゲットの方が小さいことを表す。
+        local function compareToCenterElement(from, to)
+            local centerIndex = math.floor((to - from) / 2) + from
+            if self.registries[self.parent.stringUtils.lower(registryType)][centerIndex] < target then
+                return 1
+            elseif self.registries[self.parent.stringUtils.lower(registryType)][centerIndex] > target then
+                return -1
+            else
+                return 0
+            end
+        end
+
+        local startIndex = 1
+        local endIndex = #self.registries[self.parent.stringUtils.lower(registryType)]
+        while startIndex < endIndex do
+            local compareResult = compareToCenterElement(startIndex, endIndex)
+            if compareResult == 1 then
+                startIndex = math.floor((endIndex - startIndex) / 2) + startIndex + 1
+            elseif compareResult == -1 then
+                endIndex = math.floor((endIndex - startIndex) / 2) + startIndex
+            else
+                break
+            end
+        end
+        if startIndex == endIndex then
+            return compareToCenterElement(startIndex, endIndex) == 0
+        else
+            return true
+        end
+    end;
+
+    ---指定されたブロックIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:dirt"を返す。
+    ---@param self CompatibilityUtils
+    ---@param block Minecraft.blockID 確認対象のブロックID
+    ---@param blockState? string ブロックステートを示す文字列。代替アイテムになった場合は付与されない。
+    ---@return Minecraft.blockID blockID レジストリに登録してある場合は確認対象のブロックIDをそのまま返し、未登録の場合は"minecraft:dirt"が返す。
+    checkBlock = function (self, block, blockState)
+        if self.checkedTable.block[block] == nil then
+            self.checkedTable.block[block] = self:find("BLOCK", block)
+        end
+        local state = blockState ~= nil and blockState or ""
+        return self.checkedTable.block[block] and block..state or "minecraft:dirt"
+    end;
+
+    ---指定されたアイテムIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:barrier"を返す。
+    ---@param self CompatibilityUtils
+    ---@param item Minecraft.itemID 確認対象のアイテムID
+    ---@param nbt? string アイテムに付与するコンポーネント/NBTデータ。代替アイテムになった場合は付与されない。
+    ---@return Minecraft.itemID blockID レジストリに登録してある場合は確認対象のアイテムIDをそのまま返し、未登録の場合は"minecraft:barrier"が返す。
+    checkItem = function (self, item, nbt)
+        if self.checkedTable.item[item] == nil then
+            self.checkedTable.item[item] = self:find("ITEM", item)
+        end
+        local itemData = nbt ~= nil and nbt or ""
+        return self.checkedTable.item[item] and item..itemData or "minecraft:barrier"
+    end;
+
+    ---指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
+    ---@param self CompatibilityUtils
+    ---@param particle Minecraft.particleID 確認対象のパーティクルID
+    ---@param args? string パーティクルの追加引数
+    ---@return Minecraft.particleID particleID レジストリに登録してある場合は確認対象のパーティクルIDをそのまま返し、未登録の場合は"minecraft:poof"が返す。
+    checkParticle = function (self, particle, args)
+        if self.checkedTable.particle[particle] == nil then
+            self.checkedTable.particle[particle] = self:find("PARTICLE", particle)
+        end
+        return self.checkedTable.particle[particle] and (args ~= nil and particle.." "..args or particle) or "minecraft:poof"
+    end;
+
+    ---指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
+    ---@param self CompatibilityUtils
+    ---@param sound Minecraft.soundID 確認対象のサウンドID
+    ---@return Minecraft.soundID particleID レジストリに登録してある場合は確認対象のサウンドIDをそのまま返し、未登録の場合は"minecraft:empty"が返す。
+    checkSound = function (self, sound)
+        if self.checkedTable.sound[sound] == nil then
+            self.checkedTable.sound[sound] = self:find("SOUND", sound)
+        end
+        return self.checkedTable.sound[sound] and sound or "minecraft:empty"
+    end;
+
+    ---renderer:setPostEffect()のラッパー関数
+    ---1.20.5でレンダーエフェクトが削除されたことによる対応
+    ---@param effect? Minecraft.shaderName 適用するエフェクト
+    setPostEffect = function (effect)
+        if client:getVersion() < "1.20.5" then
+            renderer:setPostEffect(effect)
+        end
+    end;
+}
+
+return CompatibilityUtils

@@ -11,6 +11,10 @@ StringUtils = require("scripts.utils.string_utils")
 ---@type ModelUtils
 ModelUtils = require("scripts.utils.model_utils")
 
+---互換性ユーティリティ
+---@type CompatibilityUtils
+CompatibilityUtils = require("scripts.utils.compatibility_utils")
+
 -- ** アバターモジュール **
 
 ---バニラのプレイヤーモデルの管理
@@ -26,3 +30,4 @@ ModelAlias = require("scripts.model_alias")
 -- *** モジュールの初期化 ***
 VanillaModel.init()
 ModelAlias:init()
+CompatibilityUtils:init()
