@@ -57,6 +57,10 @@ VanillaModel = require("scripts.vanilla_model")
 ---@type ModelAlias
 ModelAlias = require("scripts.model_alias")
 
+---カメラ制御管理
+---@type CameraManager
+CameraManager = require("scripts.camera_manager")
+
 ---キャラクターシートクラス
 ---@type BlueArchiveCharacter
 BlueArchiveCharacter = require("scripts/blue_archive_character")
