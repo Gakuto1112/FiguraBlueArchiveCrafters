@@ -1,11 +1,47 @@
+---@alias BlueArchiveCharacter.RightEyeTextures
+---| "NORMAL" # 通常
+---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
+---| "TIRED" # 疲れた目（死亡アニメーションなど）
+---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+
+---@alias BlueArchiveCharacter.LeftEyeTextures
+---| "NORMAL" # 通常
+---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
+---| "TIRED" # 疲れた目（死亡アニメーションなど）
+---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+
+---@alias BlueArchiveCharacter.MouthTextures
+---| "NORMAL" # 通常
+
+--[[ ******************************** ]]
+
 ---@class (exact) BlueArchiveCharacter.BasicStruct 生徒の基本情報のデータ構造体
 ---@field public avatarName string アバターのファイル名（例: "00a_base", "01a_shizuko", "01b_shizuko_swimsuit"）
 
----@class BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
+---@class BlueArchiveCharacter.FacePartsStruct 目や口による表情のデータ構造体。UVマッピング情報は、デフォルトパーツから見て左からx番目、上からy番目とする。
+---@field public rightEye {[BlueArchiveCharacter.RightEyeTextures]: Vector2} 右目のテクスチャのUVマッピング情報
+---@field public leftEye {[BlueArchiveCharacter.LeftEyeTextures]: Vector2} 左目のテクスチャのUVマッピング情報
+---@field public mouth {[BlueArchiveCharacter.MouthTextures]: Vector2} 口のテクスチャのUVマッピング情報
+---@field public emotionSet? BlueArchiveCharacter.OverrideEmotionSet 特定の状況における表情を上書きする
+---@field public callbacks? BlueArchiveCharacter.FacePartsCallbacksSet 表情のコールバック
+
+---@class (exact) BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
 ---@field physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
 ---@field callbacks? BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数
 
 --[[ ******************************** ]]
+
+---@class (exact) BlueArchiveCharacter.OverrideEmotionSet 特定の状況における表情を上書きするセット
+---@field public onDamage? BlueArchiveCharacter.EmotionSet ダメージを受けたとき
+---@field public onSleep? BlueArchiveCharacter.EmotionSet ベッドで寝ているとき
+
+---@class (exact) BlueArchiveCharacter.EmotionSet 表情のデータセット
+---@field public rightEye BlueArchiveCharacter.RightEyeTextures 右目の表情名
+---@field public leftEye BlueArchiveCharacter.LeftEyeTextures 左目の表情名
+---@field public mouth BlueArchiveCharacter.MouthTextures 口の表情名
+
+---@class (exact) BlueArchiveCharacter.FacePartsCallbacksSet 表情のコールバック関数のセット
+---@field public onPlay? fun(self: BlueArchiveCharacter, right: BlueArchiveCharacter.RightEyeTextures, left: BlueArchiveCharacter.LeftEyeTextures, mouth: BlueArchiveCharacter.MouthTextures) 表情が変化したときのコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
@@ -43,10 +79,31 @@
 
 ---@class (exact) BlueArchiveCharacter キャラクターシートクラス。別のキャラクターに対してもここを変更するだけで対応できるようにする。
 ---@field public basic BlueArchiveCharacter.BasicStruct 生徒の基本情報
+---@field public faceParts BlueArchiveCharacter.FacePartsStruct 目や口による表情
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
 		avatarName = "00a_base";
+	};
+
+	faceParts = {
+		rightEye = {
+			NORMAL = vectors.vec2(0, 0); --必須
+			SURPRISED = vectors.vec2(1, 0); --必須
+			TIRED = vectors.vec2(2, 0); --必須
+			CLOSED = vectors.vec2(3, 0); --必須
+		};
+
+		leftEye = {
+			NORMAL = vectors.vec2(0, 0); --必須
+			SURPRISED = vectors.vec2(1, 0); --必須
+			TIRED = vectors.vec2(2, 0); --必須
+			CLOSED = vectors.vec2(3, 0); --必須
+		};
+
+		mouth = {
+
+		};
 	};
 
 	physics = {

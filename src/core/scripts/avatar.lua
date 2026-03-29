@@ -77,6 +77,10 @@ Physics = require("scripts.physics")
 ---@type Halo
 Halo = require("scripts.halo")
 
+---目や口の制御
+---@type FaceParts
+FaceParts = require("scripts.face_parts")
+
 -- *** モジュールの初期化 ***
 LocaleRefreshEvent:init()
 VanillaModel.init()
@@ -88,3 +92,4 @@ KeyManager:init()
 --BlueArchiveCharacter:init()
 Physics:init()
 Halo:init()
+FaceParts:init()
