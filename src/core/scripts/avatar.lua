@@ -29,6 +29,10 @@ Config = require("scripts.config")
 ---@type Locale
 Locale = require("scripts.locale")
 
+---キャラクターシートクラス
+---@type BlueArchiveCharacter
+BlueArchiveCharacter = require("scripts/blue_archive_character")
+
 ---バニラのプレイヤーモデルの管理
 ---@type VanillaModel
 VanillaModel = require("scripts.vanilla_model")
@@ -45,3 +49,4 @@ ModelAlias:init()
 CompatibilityUtils:init()
 Config:init()
 Locale:init()
+--BlueArchiveCharacter:init()

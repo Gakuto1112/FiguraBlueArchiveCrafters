@@ -46,7 +46,7 @@ local Config = {
 			if storage == "PUBLIC" then
 				config:setName("FiguraBlueArchiveCharacters_public")
 			else
-				config:setName("FiguraBlueArchiveCharacters_" .. Locale.AVATAR_NAME)
+				config:setName("FiguraBlueArchiveCharacters_" .. BlueArchiveCharacter.basic.avatarName)
 			end
 
 			local loadedData = config:load(keyName)
@@ -71,7 +71,7 @@ local Config = {
 			if storage == "PUBLIC" then
 				config:setName("FiguraBlueArchiveCharacters_public")
 			else
-				config:setName("FiguraBlueArchiveCharacters_" .. Locale.AVATAR_NAME)
+				config:setName("FiguraBlueArchiveCharacters_" .. BlueArchiveCharacter.basic.avatarName)
 			end
 			if self.defaultValues[keyName] == valueToSave then
 				config:save(keyName, nil)

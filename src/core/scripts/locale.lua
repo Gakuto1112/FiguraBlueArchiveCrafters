@@ -26,7 +26,6 @@
 ---@field package CACHE_DIR_ROOT string ロケールキャッシュディレクトリのルートパス
 ---@field package REMOTE_LOCALE_ENDPOINT string ロケールデータの外部取得先URI
 ---@field package CACHE_LIFETIME integer ローカルキャッシュの有効期限
----@field public AVATAR_NAME string ロケールデータの取得に使用されるアバターの名前
 ---@field package HARDCODED_LOCALES {string: string} 外部からのロケール取得前に使用されるハードコードされた、最低限のローカライズメッセージ
 ---@field package localeVersion string? ロケールデータのバージョン
 ---@field package availableLocales {string: string} 利用可能なロケールのリスト
@@ -36,7 +35,6 @@ local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locales/";
 	REMOTE_LOCALE_ENDPOINT = "http://localhost/";
 	CACHE_LIFETIME = 24 * 60 * 60 * 1000;
-	AVATAR_NAME = "00a_base"; --//TODO: このフィールド値をキャラクターシートに移動する。
 
 	HARDCODED_LOCALES = {
 		["message.label.warn"] = "§e§l[WARN]§r ";
@@ -99,7 +97,7 @@ local Locale = {
 									print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(currentLocale, status2))
 								end
 							end)
-							self:fetchLocale("avatars/" .. self.AVATAR_NAME .. "/" .. currentLocale .. ".json", function (status2, data2)
+							self:fetchLocale("avatars/" .. BlueArchiveCharacter.basic.avatarName .. "/" .. currentLocale .. ".json", function (status2, data2)
 								if status2 == "SUCCESS" then
 									---@cast data2 table
 									for key, value in pairs(data2) do
@@ -128,7 +126,7 @@ local Locale = {
 						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
 					end
 				end)
-				self:fetchLocale("avatars/" .. self.AVATAR_NAME .. "/en_us.json", function (status, data)
+				self:fetchLocale("avatars/" .. BlueArchiveCharacter.basic.avatarName .. "/en_us.json", function (status, data)
 					if status == "SUCCESS" then
 						---@cast data table
 						for key, value in pairs(data) do
@@ -167,7 +165,7 @@ local Locale = {
 			if file:exists(self.CACHE_DIR_ROOT) then
 				self:deleteDirectory(self.CACHE_DIR_ROOT:sub(1, -2))
 			end
-			if not file:mkdirs(self.CACHE_DIR_ROOT) or not file:mkdirs(self.CACHE_DIR_ROOT .. "core") or not file:mkdirs(self.CACHE_DIR_ROOT .. "avatars/" .. self.AVATAR_NAME) then
+			if not file:mkdirs(self.CACHE_DIR_ROOT) or not file:mkdirs(self.CACHE_DIR_ROOT .. "core") or not file:mkdirs(self.CACHE_DIR_ROOT .. "avatars/" .. BlueArchiveCharacter.basic.avatarName) then
 				print(self:getLocalizedText("message.locale.err_io"))
 			end
 		else
