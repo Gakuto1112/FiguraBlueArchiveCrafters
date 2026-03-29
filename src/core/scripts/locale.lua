@@ -8,10 +8,17 @@
 
 ---キャッシュファイルの取得結果を表す列挙型
 ---@alias Locale.CacheFetchResult
----| "SUCCESS" # 取得成功
+---| "SUCCESS"         # 取得成功
 ---| "ERR_NOT_ALLOWED" # File APIの利用が許可されていない
----| "ERR_NOT_FOUND" # キャッシュファイルが見つからない
----| "ERR_NOT_A_FILE" # 指定されたパスはディレクトリ
+---| "ERR_NOT_FOUND"   # キャッシュファイルが見つからない
+---| "ERR_NOT_A_FILE"  # 指定されたパスはディレクトリ
+
+---リモートからのファイルの取得結果を表す列挙型
+---@alias Locale.RemoteFetchResult
+---| "SUCCESS"           # 取得成功
+---| "ERR_NOT_ALLOWED"   # Networking APIの利用が許可されていないか、リモートドメインとの通信が許可されていない。
+---| "ERR_NETWORK"       # 通信エラー
+---| "ERR_RESPONSE_CODE" # レスポンスコードが200番台以外の場合（httpリクエストエラー）
 
 ---@class (exact) Locale メッセージのローカライズを管理するクラス
 ---@field package CACHE_DIR_ROOT string ロケールキャッシュディレクトリのルートパス
@@ -178,20 +185,45 @@ local Locale = {
 						return "SUCCESS", stringData
 					end
 				else
-					return "ERR_NOT_A_FILE"
+					return "ERR_NOT_A_FILE", nil
 				end
 			else
-				return "ERR_NOT_FOUND"
+				return "ERR_NOT_FOUND", nil
 			end
 		else
-			return "ERR_NOT_ALLOWED"
+			return "ERR_NOT_ALLOWED", nil
 		end
+	end;
+
+	---リモートからファイルを取得する。
+	---@param self Locale
+	---@param path string 取得するファイルのパス。キャッシュディレクトリからのパスと同じにする。
+	---@param callback fun(status: Locale.RemoteFetchResult, data: boolean|string|number|table?) ファイルの取得が完了した際に呼び出されるコールバック関数
+	fetchFileFromRemote = function (self, path, callback)
+		NetUtils:fetch(self.REMOTE_LOCALE_ENDPOINT .. "/" .. path, function (status, data)
+			if status == "SUCCESS" then
+				---@cast data Buffer
+				local stringData = data:readByteArray()
+				if json.isSerializable(stringData) then
+					callback("SUCCESS", toJson(stringData))
+				else
+					callback("SUCCESS", stringData)
+				end
+			elseif status == "ERR_NOT_ALLOWED" then
+				callback("ERR_NOT_ALLOWED", nil)
+			elseif status == "ERR_NETWORK" then
+				callback("ERR_NETWORK", nil)
+			elseif status == "ERR_RESPONSE_CODE" then
+				---@cast data integer
+				callback("ERR_RESPONSE_CODE", data)
+			end
+		end)
 	end;
 
 	---ロケールデータに関するファイルの内容を取得する。
 	---最初にキャッシュディレクトリから取得し、それがなければ外部から取得する。
 	---@param self Locale
-	---@param path string ロケールディレクトリからのファイルパス
+	---@param path string 取得するファイルの、ロケールディレクトリからのファイルパス
 	---@param callback fun(status: Locale.DataReadStatus, data: boolean|string|number|table)? ロケールデータの準備ができた際に呼び出されるコールバック関数
 	fetchFile = function (self, path, callback)
 		if self.checkAvailability() then
@@ -213,7 +245,7 @@ local Locale = {
 				return buffer
 			else
 				-- 外部から取ってくる
-				NetUtils:get(self.REMOTE_LOCALE_ENDPOINT .. "/" .. path, function (status, data)
+				NetUtils:fetch(self.REMOTE_LOCALE_ENDPOINT .. "/" .. path, function (status, data)
 					if status == "SUCCESS" then
 						---@cast data Buffer
 						local jsonData = NetUtils.toJson(data)

@@ -1,9 +1,9 @@
 ---ネットワークリクエストの結果を表す列挙型
 ---@alias NetUtils.ResponseStatus
----| "SUCCESS"         # 通信成功
----| "ERR_RESPONSE"    # レスポンスコードが200番台以外の場合（httpリクエストエラー）
----| "ERR_NETWORK"     # 通信エラー
----| "ERR_NOT_ALLOWED" # ネットワーキング機能が許可されていない
+---| "SUCCESS"           # 通信成功
+---| "ERR_NOT_ALLOWED"   # Networking APIの利用が許可されていないか、通信を試みたドメインが許可されていない。
+---| "ERR_NETWORK"       # 通信エラー
+---| "ERR_RESPONSE_CODE" # レスポンスコードが200番台以外の場合（httpリクエストエラー）
 
 ---@class (exact) NetUtils ネットワーク関連のユーティリティ関数群
 local NetUtils = {
@@ -18,7 +18,7 @@ local NetUtils = {
 	---@param self NetUtils
 	---@param uri string 通信相手のURI
 	---@param callback fun(status: NetUtils.ResponseStatus, data: Buffer|integer?) リクエストの結果が確定した際に呼び出されるコールバック関数
-	get = function (self, uri, callback)
+	fetch = function (self, uri, callback)
 		if self.checkAvailability(uri) then
 			local request = net.http:request(uri)
 			local requestUUID = client.intUUIDToString(client.generateUUID())
@@ -39,7 +39,7 @@ local NetUtils = {
 							stream:close()
 						else
 							-- エラーコード
-							callback("ERR_RESPONSE", statusCode)
+							callback("ERR_RESPONSE_CODE", statusCode)
 						end
 					else
 						callback("ERR_NETWORK", nil)
