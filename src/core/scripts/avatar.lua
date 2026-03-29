@@ -61,6 +61,10 @@ ModelAlias = require("scripts.model_alias")
 ---@type CameraManager
 CameraManager = require("scripts.camera_manager")
 
+---キーアサイン管理
+---@type KeyManager
+KeyManager = require("scripts.key_manager")
+
 ---キャラクターシートクラス
 ---@type BlueArchiveCharacter
 BlueArchiveCharacter = require("scripts/blue_archive_character")
@@ -80,6 +84,7 @@ ModelAlias:init()
 CompatibilityUtils:init()
 Config:init()
 Locale:init()
+KeyManager:init()
 --BlueArchiveCharacter:init()
 Physics:init()
 Halo:init()
