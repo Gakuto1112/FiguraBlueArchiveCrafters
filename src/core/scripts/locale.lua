@@ -45,6 +45,7 @@ local Locale = {
 		--["message.locale.err_not_allowed"] = "There is not permission to use Figura File API or access Figura home directory! Cannot get locale data!";
 		["message.locale.err_io"] = "Failed to operate locale cache directory.";
 
+		["message.label.warn"] = "§e§l[WARN]§r ";
 		["message.label.error"] = "§c§l[ERROR]§r ";
 		["message.net_utils.err_not_allowed"] = "There is no permission to use Figura Networking API or access to the remote endpoint! Please allow Figura Networking API and add the remote domain \"%s\" to the Network Filter in Figura settings!";
 		["message.net_utils.err_network"] = "Failed to send a request to the remote server.";
@@ -54,6 +55,9 @@ local Locale = {
 		["message.locale.err_invalid_data"] = "Expected %s but fetched %s (%s)";
 		["message.locale.err_save"] = "Failed to write a file (%s)";
 		["message.locale.err_fetch_index"] = "Failed to fetch locale index data! Cannot proceed to localize! Error code: %s";
+		["message.locale.err_fetch_en_us"] = "Failed to fetch default locale data! Cannot proceed to localize! Error code: %s";
+		["message.locale.err_fetch_locale"] = "Failed to fetch selected locale data! (%s) Redirecting to \"en_us\" locale! Error code: %s";
+		["message.locale.err_not_available"] = "The selected locale (%s) is not available! Redirecting to \"en_us\" locale.";
 	};
 
 	localeVersion = nil;
@@ -86,8 +90,58 @@ local Locale = {
 						for key, value in pairs(data["availableLocales"]) do
 							self.availableLocales[key] = value
 						end
+
+						-- 選択中のロケールの取得
+						local currentLocale = self.activeLocale == "auto" and client:getActiveLang() or self.activeLocale
+						if self.availableLocales[currentLocale] ~= nil then
+							self:fetchLocale("core/" .. currentLocale .. ".json", function (status2, data2)
+								if status2 == "SUCCESS" then
+									self.locales[currentLocale] = {}
+									---@cast data2 table
+									for key, value in pairs(data2) do
+										self.locales[currentLocale][key] = value
+									end
+								else
+									print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(currentLocale, status2))
+								end
+							end)
+							self:fetchLocale("avatars/" .. self.AVATAR_NAME .. "/" .. currentLocale .. ".json", function (status2, data2)
+								if status2 == "SUCCESS" then
+									---@cast data2 table
+									for key, value in pairs(data2) do
+										self.locales[currentLocale][key] = value
+									end
+								else
+									print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(currentLocale, status2))
+								end
+							end)
+						else
+							print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_not_available"):format(currentLocale))
+						end
 					else
 						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_index"):format(status))
+					end
+				end)
+
+				-- en_usロケールの取得
+				self:fetchLocale("core/en_us.json", function (status, data)
+					if status == "SUCCESS" then
+						---@cast data table
+						for key, value in pairs(data) do
+							self.locales["en_us"][key] = value
+						end
+					else
+						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
+					end
+				end)
+				self:fetchLocale("avatars/" .. self.AVATAR_NAME .. "/en_us.json", function (status, data)
+					if status == "SUCCESS" then
+						---@cast data table
+						for key, value in pairs(data) do
+							self.locales["en_us"][key] = value
+						end
+					else
+						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
 					end
 				end)
 			else
@@ -209,6 +263,53 @@ local Locale = {
 			if status2 == "SUCCESS" then
 				if type(data2) == "table" then
 					Config:saveConfig("PUBLIC", "localeLastFetchTime", client:getSystemTime())
+					file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data2), "utf8")
+					callback("SUCCESS", data2)
+				else
+					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data2), self.REMOTE_LOCALE_ENDPOINT .. "index.json"))
+					callback("ERR_INVALID_DATA", nil)
+				end
+			elseif status2 == "ERR_NOT_ALLOWED" then
+				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_not_allowed"):format(self.REMOTE_LOCALE_ENDPOINT:match("://([^:/]+)")))
+				callback("ERR_NOT_ALLOWED", nil)
+			elseif status2 == "ERR_NETWORK" then
+				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_network"))
+				callback("ERR_NETWORK", nil)
+			elseif status2 == "ERR_RESPONSE_CODE" then
+				---@cast data2 integer
+				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_response"):format(data2, self.REMOTE_LOCALE_ENDPOINT .. "index.json"))
+				callback("ERR_RESPONSE_CODE", data2)
+			end
+		end)
+	end;
+
+	---ロケールデータを取得する。
+	---@param self Locale
+	---@param path string 取得するロケールデータのパス
+	---@param callback fun(status: Locale.FetchResult, data: (boolean|string|number|table)?) ロケールデータの取得が完了した際に呼び出されるコールバック関数
+	fetchLocale = function (self, path, callback)
+		-- ローカルキャッシュから取得
+		local result, data = self:fetchFileFromCache(path)
+		if result == "SUCCESS" then
+			if type(data) == "table" then
+				callback("SUCCESS", data)
+				return
+			else
+				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data), self.CACHE_DIR_ROOT .. "index.json"))
+				file:delete(self.CACHE_DIR_ROOT .. path)
+				data = nil
+			end
+		elseif result == "ERR_NOT_ALLOWED" then
+			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
+		elseif result == "ERR_NOT_A_FILE" then
+			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_a_file"):format(self.CACHE_DIR_ROOT .. "index.json"))
+		end
+
+		-- リモートから取得
+		self:fetchFileFromRemote(path, function (status2, data2)
+			if status2 == "SUCCESS" then
+				if type(data2) == "table" then
+					file:writeString(self.CACHE_DIR_ROOT .. path, toJson(data2), "utf8")
 					callback("SUCCESS", data2)
 				else
 					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data2), self.REMOTE_LOCALE_ENDPOINT .. "index.json"))
