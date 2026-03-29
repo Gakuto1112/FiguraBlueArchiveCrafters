@@ -19,6 +19,26 @@ CompatibilityUtils = require("scripts.utils.compatibility_utils")
 ---@type NetUtils
 NetUtils = require("scripts.utils.net_utils")
 
+---その他ユーティリティ
+---@type MiscUtils
+MiscUtils = require("scripts.utils.misc_utils")
+
+
+-- **.イベントモジュール **
+
+---独自定義イベント抽象クラス
+---@type AbstractEvent
+AbstractEvent = require("scripts.events.abstract_event")
+
+---独自定義イベントマネージャー
+---@type EventManager
+EventManager = require("scripts.events.event_manager")
+
+---ロケールデータ更新イベント
+---@type LocaleRefreshEvent
+LocaleRefreshEvent = require("scripts.events.locale_refresh_event")
+
+
 -- ** アバターモジュール **
 
 ---アバターの設定管理
@@ -42,8 +62,8 @@ VanillaModel = require("scripts.vanilla_model")
 ModelAlias = require("scripts.model_alias")
 
 
-
 -- *** モジュールの初期化 ***
+LocaleRefreshEvent:init()
 VanillaModel.init()
 ModelAlias:init()
 CompatibilityUtils:init()

@@ -86,13 +86,14 @@ local Locale = {
 						-- 選択中のロケールの取得
 						local currentLocale = self.activeLocale == "auto" and client:getActiveLang() or self.activeLocale
 						if self.availableLocales[currentLocale] ~= nil then
+							self.locales[currentLocale] = {}
 							self:fetchLocale("core/" .. currentLocale .. ".json", function (status2, data2)
 								if status2 == "SUCCESS" then
-									self.locales[currentLocale] = {}
 									---@cast data2 table
 									for key, value in pairs(data2) do
 										self.locales[currentLocale][key] = value
 									end
+									EventManager.events["ON_LOCALE_REFRESH"]:fire()
 								else
 									print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(currentLocale, status2))
 								end
@@ -103,6 +104,7 @@ local Locale = {
 									for key, value in pairs(data2) do
 										self.locales[currentLocale][key] = value
 									end
+									EventManager.events["ON_LOCALE_REFRESH"]:fire()
 								else
 									print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(currentLocale, status2))
 								end
@@ -122,6 +124,7 @@ local Locale = {
 						for key, value in pairs(data) do
 							self.locales["en_us"][key] = value
 						end
+						EventManager.events["ON_LOCALE_REFRESH"]:fire()
 					else
 						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
 					end
@@ -132,6 +135,7 @@ local Locale = {
 						for key, value in pairs(data) do
 							self.locales["en_us"][key] = value
 						end
+						EventManager.events["ON_LOCALE_REFRESH"]:fire()
 					else
 						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
 					end
