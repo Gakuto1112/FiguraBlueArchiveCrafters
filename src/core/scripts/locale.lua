@@ -26,11 +26,11 @@
 ---@field package CACHE_DIR_ROOT string ロケールキャッシュディレクトリのルートパス
 ---@field package REMOTE_LOCALE_ENDPOINT string ロケールデータの外部取得先URI
 ---@field package CACHE_LIFETIME integer ローカルキャッシュの有効期限
----@field package HARDCODED_LOCALES {string: string} 外部からのロケール取得前に使用されるハードコードされた、最低限のローカライズメッセージ
+---@field package HARDCODED_LOCALES {[string]: string} 外部からのロケール取得前に使用されるハードコードされた、最低限のローカライズメッセージ
 ---@field package localeVersion string? ロケールデータのバージョン
----@field package availableLocales {string: string} 利用可能なロケールのリスト
+---@field package availableLocales {[string]: string} 利用可能なロケールのリスト
 ---@field package activeLocale string 現在有効になっているロケール
----@field package locales {string: {string: string}} ローカライズされたテキストを格納するテーブル
+---@field package locales {[string]: {[string]: string}} ローカライズされたテキストを格納するテーブル
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locales/";
 	REMOTE_LOCALE_ENDPOINT = "http://localhost/";
