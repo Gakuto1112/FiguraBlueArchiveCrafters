@@ -65,6 +65,10 @@ BlueArchiveCharacter = require("scripts/blue_archive_character")
 ---@type Physics
 Physics = require("scripts.physics")
 
+---ヘイローの制御
+---@type Halo
+Halo = require("scripts.halo")
+
 -- *** モジュールの初期化 ***
 LocaleRefreshEvent:init()
 VanillaModel.init()
@@ -73,3 +77,5 @@ CompatibilityUtils:init()
 Config:init()
 Locale:init()
 --BlueArchiveCharacter:init()
+Physics:init()
+Halo:init()

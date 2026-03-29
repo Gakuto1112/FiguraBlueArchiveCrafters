@@ -7,6 +7,12 @@ local Physics = {
 	velocityAverage = {{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
 	directionPrev = {};
 
+	---初期化関数
+	---@param self Physics
+	init = function (self)
+		self:enable()
+	end;
+
     ---2つのティックデータの間からレンダーのデルタ値を加味した値を返す。
     ---@param tickData number[] ティックデータ：1. 前ティック, 2. 現ティック
     ---@param delta number デルタ値
@@ -100,7 +106,7 @@ local Physics = {
                     table.insert(self.velocityData[3], velocityHeadRight)
                     velocityAverage[4] = (#self.velocityData[4] * velocityAverage[4] + velocityHeadRot) / (#self.velocityData[4] + 1)
                     table.insert(self.velocityData[4], velocityHeadRot)
-                    local velocityBodyFront, velocityBodyRight, velocityBodyRot = self:decomposeHorizontalVelocity((player:getBodyYaw() + models.models.main.Avatar.UpperBody:getTrueRot().y - 90) % 360 - 180, 2)
+                    local velocityBodyFront, velocityBodyRight, velocityBodyRot = self:decomposeHorizontalVelocity((player:getBodyYaw() + ModelAlias.alias.avatar.upperBody:getTrueRot().y - 90) % 360 - 180, 2)
                     velocityAverage[5] = (#self.velocityData[5] * velocityAverage[5] + velocityBodyFront) / (#self.velocityData[5] + 1)
                     table.insert(self.velocityData[5], velocityBodyFront)
                     velocityAverage[6] = (#self.velocityData[6] * velocityAverage[6] + velocityBodyRight) / (#self.velocityData[6] + 1)
@@ -123,7 +129,7 @@ local Physics = {
                 local playerPose = player:getPose()
                 local isHorizontal = playerPose == "SWIMMING" or playerPose == "FALL_FLYING"
 
-                for _,  physicData in ipairs(self.parent.characterData.physics.physicData) do
+                for _,  physicData in ipairs(BlueArchiveCharacter.physics.physicData) do
                     for _, modelPart in ipairs(physicData.models) do
                         if modelPart:getVisible() then
                             local rot = vectors.vec3()
@@ -149,8 +155,8 @@ local Physics = {
                                 end
                             end
                             modelPart:setRot(rot)
-                            if self.parent.characterData.physics.callbacks ~= nil and self.parent.characterData.physics.callbacks.onPhysicPerformed ~= nil then
-                                self.parent.characterData.physics.callbacks.onPhysicPerformed(self.parent.characterData, modelPart)
+                            if BlueArchiveCharacter.physics.callbacks ~= nil and BlueArchiveCharacter.physics.callbacks.onPhysicPerformed ~= nil then
+                                BlueArchiveCharacter.physics.callbacks.onPhysicPerformed(BlueArchiveCharacter, modelPart)
                             end
                         end
                     end
@@ -164,7 +170,7 @@ local Physics = {
     disable = function (self)
         events.TICK:remove("physics_tick")
         events.RENDER:remove("physics_render")
-        for _, physicData in ipairs(self.parent.characterData.physics.physicData) do
+        for _, physicData in ipairs(BlueArchiveCharacter.physics.physicData) do
             local initialRot = vectors.vec3()
             if physicData.x ~= nil and physicData.x.vertical ~= nil then
                 initialRot.x = physicData.x.vertical.neutral
