@@ -39,12 +39,6 @@ local Locale = {
 	AVATAR_NAME = "00a_base"; --//TODO: このフィールド値をキャラクターシートに移動する。
 
 	HARDCODED_LOCALES = {
-		["message.net_utils.err_json_parse"] = "Failed to parse JSON data.";
-		["message.locale.err_fetch"] = "Failed to fetch locale data: %s";
-		["message.locale.err_not_found"] = "The specified locale data was not found! Redirecting to en_us locale.";
-		--["message.locale.err_not_allowed"] = "There is not permission to use Figura File API or access Figura home directory! Cannot get locale data!";
-		["message.locale.err_io"] = "Failed to operate locale cache directory.";
-
 		["message.label.warn"] = "§e§l[WARN]§r ";
 		["message.label.error"] = "§c§l[ERROR]§r ";
 		["message.net_utils.err_not_allowed"] = "There is no permission to use Figura Networking API or access to the remote endpoint! Please allow Figura Networking API and add the remote domain \"%s\" to the Network Filter in Figura settings!";
@@ -53,7 +47,7 @@ local Locale = {
 		["message.locale.err_not_allowed"] = "There is no permission to use Figura File API";
 		["message.locale.err_not_a_file"] = "Expected a file but a directory was specified (%s)";
 		["message.locale.err_invalid_data"] = "Expected %s but fetched %s (%s)";
-		["message.locale.err_save"] = "Failed to write a file (%s)";
+		["message.locale.err_io"] = "Failed to operate locale cache file";
 		["message.locale.err_fetch_index"] = "Failed to fetch locale index data! Cannot proceed to localize! Error code: %s";
 		["message.locale.err_fetch_en_us"] = "Failed to fetch default locale data! Cannot proceed to localize! Error code: %s";
 		["message.locale.err_fetch_locale"] = "Failed to fetch selected locale data! (%s) Redirecting to \"en_us\" locale! Error code: %s";
@@ -340,7 +334,10 @@ local Locale = {
 				if file:isDirectory(path .. "/" .. childPath) then
 					self:deleteDirectory(path .. "/" .. childPath)
 				else
-					file:delete(path .. "/" .. childPath)
+					if not file:delete(path .. "/" .. childPath) then
+						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_io"))
+						return
+					end
 				end
 			end
 		end
