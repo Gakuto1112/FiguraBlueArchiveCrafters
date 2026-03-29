@@ -14,13 +14,13 @@
 
 ---ファイルの取得結果を表す列挙型
 ---@alias Locale.FetchResult
----| "SUCCESS" # 取得成功
----| "ERR_NOT_ALLOWED" # ファイルの取得必要な権限がない
----| "ERR_NOT_FOUND" # ファイルが見つからない
----| "ERR_NOT_A_FILE" # 取得しようとしたパスがディレクトリである
+---| "SUCCESS"           # 取得成功
+---| "ERR_NOT_ALLOWED"   # ファイルの取得必要な権限がない
+---| "ERR_NOT_FOUND"     # ファイルが見つからない
+---| "ERR_NOT_A_FILE"    # 取得しようとしたパスがディレクトリである
 ---| "ERR_NETWORK"       # 通信エラー
 ---| "ERR_RESPONSE_CODE" # レスポンスコードが200番台以外の場合（httpリクエストエラー）
----| "ERR_INVALID_DATA" # 予期したデータと異なるデータが取得された
+---| "ERR_INVALID_DATA"  # 予期したデータと異なるデータが取得された
 
 ---@class (exact) Locale メッセージのローカライズを管理するクラス
 ---@field package CACHE_DIR_ROOT string ロケールキャッシュディレクトリのルートパス
