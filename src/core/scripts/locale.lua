@@ -6,6 +6,13 @@
 ---| "ERR_NETWORK"     # ネットワークエラー
 ---| "ERR_JSON_PARSE"  # jsonのパースに失敗
 
+---キャッシュファイルの取得結果を表す列挙型
+---@alias Locale.CacheFetchResult
+---| "SUCCESS" # 取得成功
+---| "ERR_NOT_ALLOWED" # File APIの利用が許可されていない
+---| "ERR_NOT_FOUND" # キャッシュファイルが見つからない
+---| "ERR_NOT_A_FILE" # 指定されたパスはディレクトリ
+
 ---@class (exact) Locale メッセージのローカライズを管理するクラス
 ---@field package CACHE_DIR_ROOT string ロケールキャッシュディレクトリのルートパス
 ---@field package REMOTE_LOCALE_ENDPOINT string ロケールデータの外部取得先URI
@@ -152,6 +159,32 @@ local Locale = {
 			end
 		else
 			print(self:getLocalizedText("message.locale.err_not_allowed"))
+		end
+	end;
+
+	---キャッシュディレクトリからファイルを取得する。
+	---@param self Locale
+	---@param path string ロケールディレクトリからのファイルパス
+	---@return Locale.CacheFetchResult result キャッシュの取得結果
+	---@return boolean|string|number|table? data キャッシュから取得したデータ
+	fetchFileFromCache = function (self, path)
+		if self.checkAvailability() then
+			if file:exists(self.CACHE_DIR_ROOT .. "/" .. path) then
+				if file:isFile(self.CACHE_DIR_ROOT .. "/" .. path) then
+					local stringData = file:readString(self.CACHE_DIR_ROOT .. "/" .. path, "utf8")
+					if json.isSerializable(stringData) then
+						return "SUCCESS", toJson(stringData)
+					else
+						return "SUCCESS", stringData
+					end
+				else
+					return "ERR_NOT_A_FILE"
+				end
+			else
+				return "ERR_NOT_FOUND"
+			end
+		else
+			return "ERR_NOT_ALLOWED"
 		end
 	end;
 
