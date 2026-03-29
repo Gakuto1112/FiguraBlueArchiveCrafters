@@ -21,6 +21,10 @@ NetUtils = require("scripts.utils.net_utils")
 
 -- ** アバターモジュール **
 
+---アバターの設定管理
+---@type Config
+Config = require("scripts.config")
+
 ---アバターのローカライゼーション管理
 ---@type Locale
 Locale = require("scripts.locale")
@@ -39,4 +43,5 @@ ModelAlias = require("scripts.model_alias")
 VanillaModel.init()
 ModelAlias:init()
 CompatibilityUtils:init()
+Config:init()
 Locale:init()

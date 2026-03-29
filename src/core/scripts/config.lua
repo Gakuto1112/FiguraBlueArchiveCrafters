@@ -10,7 +10,7 @@
 ---@field package nextSyncCount integer 次の同期pingまでのカウンター
 ---@field public syncConfigs {[string]: any} 同期する設定値を格納するテーブル
 ---@field package isSynced boolean 設定値がホストと同期されているかどうか
-Config = {
+local Config = {
 	SYNC_INTERVAL = 300;
 
 	defaultValues = {};
@@ -96,3 +96,5 @@ function pings.syncAvatarConfigs(configData)
 		Config.onConfigSynced()
 	end
 end
+
+return Config
