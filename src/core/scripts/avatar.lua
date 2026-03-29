@@ -49,10 +49,6 @@ Config = require("scripts.config")
 ---@type Locale
 Locale = require("scripts.locale")
 
----キャラクターシートクラス
----@type BlueArchiveCharacter
-BlueArchiveCharacter = require("scripts/blue_archive_character")
-
 ---バニラのプレイヤーモデルの管理
 ---@type VanillaModel
 VanillaModel = require("scripts.vanilla_model")
@@ -61,6 +57,13 @@ VanillaModel = require("scripts.vanilla_model")
 ---@type ModelAlias
 ModelAlias = require("scripts.model_alias")
 
+---キャラクターシートクラス
+---@type BlueArchiveCharacter
+BlueArchiveCharacter = require("scripts/blue_archive_character")
+
+---物理演算の制御
+---@type Physics
+Physics = require("scripts.physics")
 
 -- *** モジュールの初期化 ***
 LocaleRefreshEvent:init()
