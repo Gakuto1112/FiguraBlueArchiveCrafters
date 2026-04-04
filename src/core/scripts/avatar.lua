@@ -1,5 +1,14 @@
 -- *** コアモジュールのインポート ***
 
+-- **.抽象クラス群 **
+
+---動的オブジェクトスポーン制御の抽象クラス
+---@type SpawnObject
+SpawnObject = require("scripts.ex_skill.spawn_object")
+
+---動的オブジェクトスポーンのマネージャーの抽象クラス
+---@type SpawnObjectManager
+SpawnObjectManager = require("scripts.ex_skill.spawn_object_manager")
 
 -- ** ユーティリティクラス群 **
 
@@ -93,6 +102,15 @@ Skirt = require("scripts.skirt")
 ---@type Gun
 Gun = require("scripts.gun")
 
+---設置物のインスタンスクラス
+---@type PlacementObject
+PlacementObject = require("scripts.placement_object.placement_object")
+
+---設置物のインスタンスマネージャークラス
+---@type PlacementObjectManager
+PlacementObjectManager = require("scripts.placement_object.placement_object_manager")
+PlacementObjectManager = PlacementObjectManager:new()
+
 -- *** モジュールの初期化 ***
 LocaleRefreshEvent:init()
 VanillaModel.init()
@@ -108,3 +126,4 @@ FaceParts:init()
 Arms:init()
 Skirt.init()
 Gun:init()
+PlacementObjectManager:init()

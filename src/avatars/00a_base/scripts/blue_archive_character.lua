@@ -41,14 +41,22 @@
 ---@class (exact) BlueArchiveCharacter.ArmsStruct 腕のデータ構造体
 ---@field public callbacks? BlueArchiveCharacter.ArmsCallbacksSet 腕の制御のコールバック関数群
 
----@class BlueArchiveCharacter.SkirtStruct スカートのデータ構造体
+---@class (exact) BlueArchiveCharacter.SkirtStruct スカートのデータ構造体
 ---@field public skirtModels? ModelPart[] スカートとして制御するモデル
 
----@class BlueArchiveCharacter.GunStruct 銃のデータ構造体
+---@class (exact) BlueArchiveCharacter.GunStruct 銃のデータ構造体
 ---@field public scale number 銃モデルの大きさの倍率
 ---@field public gunPosition BlueArchiveCharacter.GunPositionSet 銃モデルの位置や向き
 ---@field public sound BlueArchiveCharacter.GunSoundSet 銃の射撃音
 ---@field public callbacks? BlueArchiveCharacter.GunCallbacksSet 銃のコールバック関数
+
+---@class (exact) BlueArchiveCharacter.PlacementObjectStruct 設置物のデータ構造体
+---@field public model ModelPart 設置物として扱うモデル
+---@field public boundingBox BlueArchiveCharacter.PlacementObjectBoundingBoxSet 設置物の当たり判定
+---@field public placementMode PlacementObjectManager.PlacementMode 設置物の設置モード
+---@field public gravity? number 設置物にかかる重力。1が標準的な自由落下。0で空中静止。負の数で反重力（上に向かって落ちる）。
+---@field public hasFireResistance? boolean 設置物に火炎耐性を付与するかどうか。`true`にすると炎やマグマで焼かれなくなる。
+---@field public callbacks? BlueArchiveCharacter.PlacementObjectCallbacksSet 設置物のコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
 ---@field physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
@@ -94,6 +102,17 @@
 
 ---@class (exact) BlueArchiveCharacter.GunCallbacksSet 銃のコールバック関数のセット
 ---@field public onMainHandChange? fun(self: BlueArchiveCharacter, direction: Gun.HandDirection) 利き手が変更されたときに呼び出される関数
+
+---@class (exact) BlueArchiveCharacter.PlacementObjectBoundingBoxSet 設置物の当たり判定のデータセット
+---@field public offsetPos? Vector3 設置物の底の中心点のオフセット位置（任意）。基準点は(0, 0, 0)。
+---@field public size? Vector3 当たり判定の大きさ。BlockBenchでのサイズの値をそのまま入力する。基準点はモデルの底面の中心。
+
+---@class (exact) BlueArchiveCharacter.PlacementObjectCallbacksSet 設置物のコールバック関数のセット
+---@field public onInit? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 設置物インスタンスが生成された直後に呼ばれる関数
+---@field public onDeinit? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 設置物インスタンスが破棄される直前に呼ばれる関数
+---@field public onTick? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 各ティック毎に呼ばれる関数
+---@field public onRender? fun(self: BlueArchiveCharacter, placementObject: PlacementObject, delta: number) 各レンダーティック毎に呼ばれる関数
+---@field public onGround? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 設置物が接地した瞬間に呼ばれる関数
 
 ---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
@@ -200,6 +219,18 @@ local BlueArchiveCharacter = {
 		sound = {
 			name = "minecraft:entity.iron_golem.hurt";
 			pitch = 2;
+		};
+	};
+
+	placementObjects = {
+		{
+			model = models.models.placement_object.PlacementObject;
+
+			boundingBox = {
+				size = vectors.vec3(8, 8, 8)
+			};
+
+			placementMode = "COPY";
 		};
 	};
 
