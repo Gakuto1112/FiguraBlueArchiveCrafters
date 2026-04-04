@@ -43,7 +43,7 @@ local Armor = {
 	---初期化関数
     ---@param self Armor
     init = function (self)
-		self.shouldShowArmor = Config:loadConfig("PRIVATE", "showArmor", true)
+		self.shouldShowArmor = Config:loadConfig("PRIVATE", "armor.should_show_armor", true)
 
 		events.TICK:register(function ()
 			self.armorSlotItems = self.shouldShowArmor and {player:getItem(6), player:getItem(5), player:getItem(4), player:getItem(3)} or {world.newItem("minecraft:air"), world.newItem("minecraft:air"), world.newItem("minecraft:air"), world.newItem("minecraft:air")}

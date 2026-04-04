@@ -70,12 +70,12 @@ local Locale = {
 				self:fetchLocaleIndex(function (status, data)
 					if status == "SUCCESS" then
 						local indexVersion = data["localeVersion"]
-						local cacheVersion = Config:loadConfig("PUBLIC", "localeVersion", "v0.0.0")
+						local cacheVersion = Config:loadConfig("PUBLIC", "locale.version", "v0.0.0")
 						---@cast cacheVersion string
 						if cacheVersion == nil or StringUtils.compareVersions(cacheVersion, indexVersion) ~= cacheVersion then
 							self:flushCache()
 							file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data), "utf8")
-							Config:saveConfig("PUBLIC", "localeVersion", indexVersion)
+							Config:saveConfig("PUBLIC", "locale.version", indexVersion)
 						end
 
 						-- インデックスの展開
@@ -247,7 +247,7 @@ local Locale = {
 
 		-- ローカルキャッシュが有効か判断
 		if result == "SUCCESS" then
-			local lastFetchTime = Config:loadConfig("PUBLIC", "localeLastFetchTime", 0)
+			local lastFetchTime = Config:loadConfig("PUBLIC", "locale.last_fetch_time", 0)
 			if client:getSystemTime() - lastFetchTime <= self.CACHE_LIFETIME then
 				callback("SUCCESS", data)
 				return
@@ -258,7 +258,7 @@ local Locale = {
 		self:fetchFileFromRemote("index.json", function (status2, data2)
 			if status2 == "SUCCESS" then
 				if type(data2) == "table" then
-					Config:saveConfig("PUBLIC", "localeLastFetchTime", client:getSystemTime())
+					Config:saveConfig("PUBLIC", "locale.last_fetch_time", client:getSystemTime())
 					file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data2), "utf8")
 					callback("SUCCESS", data2)
 				else

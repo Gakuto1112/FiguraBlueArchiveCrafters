@@ -16,7 +16,7 @@ local KeyManager = {
                     for keyName, keyObject in pairs(self.keyMappings) do
                         local newKey = keyObject.keybind:getKey()
                         if keyObject.keybind:getKey() ~= keyObject.keyNamePrev then
-                            Config:saveConfig("PRIVATE", "keybind."..keyName, newKey)
+                            Config:saveConfig("PRIVATE", "key_manager.key_assignment." .. keyName, newKey)
                             keyObject.keybind:setKey(newKey)
                             keyObject.keyNamePrev = newKey
                         end
@@ -37,7 +37,7 @@ local KeyManager = {
             self.keyMappings[assignName] = {}
         end
         self.keyMappings[assignName].keybind = keybinds:newKeybind(Locale:getLocalizedText("key_name."..assignName), keyName)
-        local loadedKey = Config:loadConfig("PRIVATE", "keybind."..assignName, keyName)
+        local loadedKey = Config:loadConfig("PRIVATE", "key_manager.key_assignment." .. assignName, keyName)
         if loadedKey ~= keyName then
             self.keyMappings[assignName].keybind:setKey(loadedKey)
         end
