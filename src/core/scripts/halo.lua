@@ -17,6 +17,7 @@ local Halo = {
     ---@param self Halo
     init = function (self)
 		self.initialHaloRot = ModelAlias.alias.avatar.halo:getRot().x
+        self.floatCount = math.random(0, 80)
 
         events.TICK:register(function ()
             if not client:isPaused() then
