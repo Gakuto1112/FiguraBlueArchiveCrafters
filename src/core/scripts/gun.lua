@@ -288,8 +288,7 @@ local Gun = {
     processGunTick = function (self)
         if not self.isGunTickProcessed then
             local heldItems = {}
-            --if player:getPose() ~= "SLEEPING" and self.parent.exSkill.animationCount == -1 then --//TODO: Exスキル再実装後
-			if player:getPose() ~= "SLEEPING" then
+            if player:getPose() ~= "SLEEPING" and ExSkill.animationCount == -1 then
                 heldItems.mainHand = player:getHeldItem(false)
                 heldItems.offHand = player:getHeldItem(true)
             else

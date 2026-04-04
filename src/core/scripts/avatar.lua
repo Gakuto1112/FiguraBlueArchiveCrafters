@@ -1,15 +1,5 @@
 -- *** コアモジュールのインポート ***
 
--- **.抽象クラス群 **
-
----動的オブジェクトスポーン制御の抽象クラス
----@type SpawnObject
-SpawnObject = require("scripts.ex_skill.spawn_object")
-
----動的オブジェクトスポーンのマネージャーの抽象クラス
----@type SpawnObjectManager
-SpawnObjectManager = require("scripts.ex_skill.spawn_object_manager")
-
 -- ** ユーティリティクラス群 **
 
 ---文字列ユーティリティ
@@ -31,6 +21,17 @@ NetUtils = require("scripts.utils.net_utils")
 ---その他ユーティリティ
 ---@type MiscUtils
 MiscUtils = require("scripts.utils.misc_utils")
+
+
+-- **.抽象クラス群 **
+
+---動的オブジェクトスポーン制御の抽象クラス
+---@type SpawnObject
+SpawnObject = require("scripts.ex_skill.spawn_object")
+
+---動的オブジェクトスポーンのマネージャーの抽象クラス
+---@type SpawnObjectManager
+SpawnObjectManager = require("scripts.ex_skill.spawn_object_manager")
 
 
 -- **.イベントモジュール **
@@ -106,6 +107,19 @@ Gun = require("scripts.gun")
 ---@type PlacementObject
 PlacementObject = require("scripts.placement_object.placement_object")
 
+---Exスキルの制御クラス
+---@type ExSkill
+ExSkill = require("scripts.ex_skill.ex_skill")
+
+---Exスキル再生中のフレーム上のパーティクルのインスタンスクラス
+---@type ExSkillFrameParticle
+ExSkillFrameParticle = require("scripts.ex_skill.ex_skill_frame_particle")
+
+---Exスキル再生中のフレーム上のパーティクルのマネージャークラス
+---@type ExSkillFrameParticleManager
+ExSkillFrameParticleManager = require("scripts.ex_skill.ex_skill_frame_particle_manager")
+ExSkillFrameParticleManager = ExSkillFrameParticleManager:new()
+
 ---設置物のインスタンスマネージャークラス
 ---@type PlacementObjectManager
 PlacementObjectManager = require("scripts.placement_object.placement_object_manager")
@@ -126,4 +140,6 @@ FaceParts:init()
 Arms:init()
 Skirt.init()
 Gun:init()
+ExSkill:init()
+ExSkillFrameParticleManager.init()
 PlacementObjectManager:init()

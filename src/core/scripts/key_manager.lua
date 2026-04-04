@@ -36,7 +36,7 @@ local KeyManager = {
             ---@diagnostic disable-next-line: missing-fields
             self.keyMappings[assignName] = {}
         end
-        self.keyMappings[assignName].keybind = keybinds:newKeybind(Locale:getLocale("key_name."..assignName), keyName)
+        self.keyMappings[assignName].keybind = keybinds:newKeybind(Locale:getLocalizedText("key_name."..assignName), keyName)
         local loadedKey = Config:loadConfig("PRIVATE", "keybind."..assignName, keyName)
         if loadedKey ~= keyName then
             self.keyMappings[assignName].keybind:setKey(loadedKey)

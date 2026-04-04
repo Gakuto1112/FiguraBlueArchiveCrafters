@@ -21,8 +21,7 @@ local Halo = {
         events.TICK:register(function ()
             if not client:isPaused() then
                 --移動平均値の算出
-                --local headRot = self.parent.exSkill.animationCount > -1 and ModelAlias.alias.avatar.head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y)) //TODO: Exスキル再実装後
-                local headRot = math.deg(math.asin(player:getLookDir().y))
+                local headRot = ExSkill.animationCount > -1 and ModelAlias.alias.avatar.head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y))
 				local headRotAverage = self.headRotAverage[2]
                 headRotAverage = (#self.headRotData * headRotAverage + headRot) / (#self.headRotData + 1)
                 table.insert(self.headRotData, headRot)
@@ -70,8 +69,7 @@ local Halo = {
                     --if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
                     --    self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setPos(0, floatOffset, 0)
                     --end
-                    --ModelAlias.alias.avatar.headRing:setRot(headRot - (self.parent.exSkill.animationCount > -1 and ModelAlias.alias.avatar.head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y))) + self.initialHaloRot, 0, 0) //TODO: Exスキル再実装後
-					ModelAlias.alias.avatar.halo:setRot(headRot - math.deg(math.asin(player:getLookDir().y)) + self.initialHaloRot, 0, 0)
+                    ModelAlias.alias.avatar.halo:setRot(headRot - (ExSkill.animationCount > -1 and ModelAlias.alias.avatar.head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y))) + self.initialHaloRot, 0, 0)
                 else
                     ModelAlias.alias.avatar.halo:setRot(self.initialHaloRot, 0, 0)
                 end

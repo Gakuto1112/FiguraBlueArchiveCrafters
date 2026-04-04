@@ -2,6 +2,10 @@
 ---| "BODY" # アバターのBodyに銃を移動させる
 ---| "HIDDEN" # 銃を隠す
 
+---@alias BlueArchiveCharacter.FormationType
+---| "STRIKER" # ストライカー（前衛）
+---| "SPECIAL" # スペシャル（後方支援）
+
 --[[ ******************************** ]]
 
 ---右目のテクスチャの列挙型
@@ -57,6 +61,11 @@
 ---@field public gravity? number 設置物にかかる重力。1が標準的な自由落下。0で空中静止。負の数で反重力（上に向かって落ちる）。
 ---@field public hasFireResistance? boolean 設置物に火炎耐性を付与するかどうか。`true`にすると炎やマグマで焼かれなくなる。
 ---@field public callbacks? BlueArchiveCharacter.PlacementObjectCallbacksSet 設置物のコールバック関数
+
+---@class BlueArchiveCharacter.ExSkillStruct Exスキルのデータ構造体
+---@field public primary BlueArchiveCharacter.ExSkillDataSet メインのExスキルデータ
+---@field public secondary? BlueArchiveCharacter.ExSkillDataSet サブのExスキルデータ
+---@field public callbacks? BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
 ---@field physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
@@ -114,6 +123,32 @@
 ---@field public onRender? fun(self: BlueArchiveCharacter, placementObject: PlacementObject, delta: number) 各レンダーティック毎に呼ばれる関数
 ---@field public onGround? fun(self: BlueArchiveCharacter, placementObject: PlacementObject) 設置物が接地した瞬間に呼ばれる関数
 
+---@class (exact) BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数のセット
+---@field public additionalCheckFunc? fun(self: BlueArchiveCharacter): boolean Exスキルを再生するかどうかの追加チェック関数
+
+---@class (exact) BlueArchiveCharacter.ExSkillDataSet Exスキルのデータセット
+---@field public formationType BlueArchiveCharacter.FormationType この生徒の戦闘配置タイプ
+---@field public models ModelPart[] Exスキルアニメーション開始時に表示し、Exスキルアニメーション終了時に非表示にするモデルパーツ
+---@field public animations string[] Exスキルアニメーションが含まれるモデルファイル名。アニメーション名は"ex_skill_<Exスキルのインデックス番号>"にすること。
+---@field public camera BlueArchiveCharacter.ExSkillCameraSet Exスキルアニメーション中のカメラワーク
+---@field public callbacks? BlueArchiveCharacter.ExSkillAnimationCallbacks Exスキルアニメーションのコールバック関数
+
+---@class (exact) BlueArchiveCharacter.ExSkillCameraSet Exスキルアニメーション中のカメラワークのセット
+---@field public start BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション開始地点
+---@field public fin BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション終了地点
+---@field public legacyMode? boolean 旧式のカメラ補正モード。一部のキャラクターに対してのみ`true`にする。
+
+---@class (exact) BlueArchiveCharacter.ExSkillCameraPositionSet Exスキルアニメーション中のカメラワークの開始/終了地点の位置のデータセット
+---@field public pos Vector3 カメラの位置
+---@field public rot Vector3 カメラの方向
+
+---@class (exact) BlueArchiveCharacter.ExSkillAnimationCallbacks Exスキルアニメーションのコールバック関数のセット
+---@field public onPreTransition? fun(self: BlueArchiveCharacter) Exスキルアニメーション開始前のトランジション開始前に実行されるコールバック関数
+---@field public onPreAnimation? fun(self: BlueArchiveCharacter) Exスキルアニメーション開始前のトランジション終了後に実行されるコールバック関数
+---@field public onAnimationTick? fun(self: BlueArchiveCharacter, tick: integer) Exスキルアニメーション再生中のみ実行されるティック関数
+---@field public onPostAnimation? fun(self: BlueArchiveCharacter, forcedStop: boolean) Exスキルアニメーション終了後のトランジション開始前に実行されるコールバック関数
+---@field public onPostTransition? fun(self: BlueArchiveCharacter, forcedStop: boolean) Exスキルアニメーション終了後のトランジション終了後に実行されるコールバック関数
+
 ---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
 ---@field public x? BlueArchiveCharacter.PhysicAxisData x軸のデータ
@@ -159,6 +194,9 @@
 ---@field public faceParts BlueArchiveCharacter.FacePartsStruct 目や口による表情
 ---@field public arms BlueArchiveCharacter.ArmsStruct 腕
 ---@field public skirt BlueArchiveCharacter.SkirtStruct スカート
+---@field public gun BlueArchiveCharacter.GunStruct 銃
+---@field public placementObjects BlueArchiveCharacter.PlacementObjectStruct[] 設置物
+---@field public exSkill BlueArchiveCharacter.ExSkillStruct Exスキル
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
@@ -231,6 +269,28 @@ local BlueArchiveCharacter = {
 			};
 
 			placementMode = "COPY";
+		};
+	};
+
+	exSkill = {
+		primary = {
+			formationType = "STRIKER";
+
+			models = {};
+
+			animations = {"main"};
+
+			camera = {
+				start = {
+					rot = vectors.vec3(0, 180, 0);
+					pos = vectors.vec3(0, 28, -64);
+				};
+
+				fin = {
+					rot = vectors.vec3(0, 180, 0);
+					pos = vectors.vec3(0, 28, -64);
+				};
+			};
 		};
 	};
 
