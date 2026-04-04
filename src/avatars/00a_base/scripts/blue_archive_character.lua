@@ -190,7 +190,7 @@ local BlueArchiveCharacter = {
 	};
 
 	skirt = {
-
+		skirtModels = {};
 	};
 
 	gun = {
