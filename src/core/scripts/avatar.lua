@@ -82,10 +82,16 @@ Halo = require("scripts.halo")
 FaceParts = require("scripts.face_parts")
 
 ---腕の制御
+---@type Arms
 Arms = require("scripts.arms")
 
 ---スカートの制御
+---@type Skirt
 Skirt = require("scripts.skirt")
+
+---銃の制御
+---@type Gun
+Gun = require("scripts.gun")
 
 -- *** モジュールの初期化 ***
 LocaleRefreshEvent:init()
@@ -101,3 +107,4 @@ Halo:init()
 FaceParts:init()
 Arms:init()
 Skirt.init()
+Gun:init()

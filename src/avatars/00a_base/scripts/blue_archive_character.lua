@@ -1,3 +1,9 @@
+---@alias BlueArchiveCharacter.GunPutType
+---| "BODY" # アバターのBodyに銃を移動させる
+---| "HIDDEN" # 銃を隠す
+
+--[[ ******************************** ]]
+
 ---右目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.RightEyeTextures
 ---| "NORMAL" # 通常
@@ -38,6 +44,12 @@
 ---@class BlueArchiveCharacter.SkirtStruct スカートのデータ構造体
 ---@field public skirtModels? ModelPart[] スカートとして制御するモデル
 
+---@class BlueArchiveCharacter.GunStruct 銃のデータ構造体
+---@field public scale number 銃モデルの大きさの倍率
+---@field public gunPosition BlueArchiveCharacter.GunPositionSet 銃モデルの位置や向き
+---@field public sound BlueArchiveCharacter.GunSoundSet 銃の射撃音
+---@field public callbacks? BlueArchiveCharacter.GunCallbacksSet 銃のコールバック関数
+
 ---@class (exact) BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
 ---@field physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
 ---@field callbacks? BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数
@@ -60,6 +72,28 @@
 ---@field public onArmStateChanged? fun(self: BlueArchiveCharacter, right: Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState, left: Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState): {right?: Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState, left?: Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState}|nil 腕の状態が変更された際のコールバック関数
 ---@field public onAdditionalRightArmProcess? fun(self: BlueArchiveCharacter, state: Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState): boolean 右腕の追加処理
 ---@field public onAdditionalLeftArmProcess? fun(self: BlueArchiveCharacter, state: Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState): boolean 左腕の追加処理
+
+---@class (exact) BlueArchiveCharacter.GunPositionSet 銃のモデルの位置や向きのデータセット
+---@field public hold BlueArchiveCharacter.GunHoldPositionSet 銃を構えているとき
+---@field public put BlueArchiveCharacter.GunPutPositionSet 銃をしまっているとき
+
+---@class (exact) BlueArchiveCharacter.GunHoldPositionSet 構えているときの銃のモデルの位置や向きのデータセット
+---@field public firstPersonPos? BlueArchiveCharacter.Vector3RightLeftSet 一人称視点での銃の位置
+---@field public firstPersonRot? BlueArchiveCharacter.Vector3RightLeftSet 一人称視点での銃の方向
+---@field public thirdPersonPos? BlueArchiveCharacter.Vector3RightLeftSet 三人称視点での銃の位置
+---@field public thirdPersonRot? BlueArchiveCharacter.Vector3RightLeftSet 三人称視点での銃の方向
+
+---@class (exact) BlueArchiveCharacter.GunPutPositionSet しまっているときの銃のモデルの位置や向きのデータセット
+---@field public type BlueArchiveCharacter.GunPutType 銃のしまい方の種類
+---@field public pos? BlueArchiveCharacter.Vector3RightLeftSet 一人称視点での銃の位置
+---@field public rot? BlueArchiveCharacter.Vector3RightLeftSet 一人称視点での銃の方向
+
+---@class (exact) BlueArchiveCharacter.GunSoundSet 銃の音のデータセット
+---@field public name Minecraft.soundID 銃の音として使用するゲームの音源名
+---@field public pitch number 音源の再生ピッチ（0.5～2）
+
+---@class (exact) BlueArchiveCharacter.GunCallbacksSet 銃のコールバック関数のセット
+---@field public onMainHandChange? fun(self: BlueArchiveCharacter, direction: Gun.HandDirection) 利き手が変更されたときに呼び出される関数
 
 ---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
@@ -92,6 +126,12 @@
 
 ---@class (exact) BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数のセット
 ---@field public onPhysicPerformed? fun(self: BlueArchiveCharacter, model: ModelPart) 物理演算処理後に実行されるコールバック関数（省略可）。ここでモデルパーツの向きを上書きできる。
+
+--[[ ******************************** ]]
+
+---@class (exact) BlueArchiveCharacter.Vector3RightLeftSet 左右で別々にVector3が定義できるデータセット
+---@field public right? Vector3 右
+---@field public left? Vector3 左
 
 --[[ ******************************** ]]
 
@@ -132,6 +172,35 @@ local BlueArchiveCharacter = {
 
 	skirt = {
 
+	};
+
+	gun = {
+		scale = 1.2;
+
+		gunPosition = {
+			hold = {
+
+			};
+
+			put = {
+				type = "BODY";
+
+				pos = {
+					right = vectors.vec3(4.5, -3, 4);
+					left = vectors.vec3(-4.5, -3, 4);
+				};
+
+				rot = {
+					right = vectors.vec3(-90, 0, 0);
+					left = vectors.vec3(-90, 0, 0);
+				};
+			};
+		};
+
+		sound = {
+			name = "minecraft:entity.iron_golem.hurt";
+			pitch = 2;
+		};
 	};
 
 	physics = {
