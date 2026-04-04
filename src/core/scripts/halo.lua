@@ -90,10 +90,9 @@ local Halo = {
         end)
 
         events.WORLD_RENDER:register(function (delta)
-			--//TODO: 頭ブロック再実装後
-            --if not client:isPaused() and models.script_head_block.Head ~= nil and models.script_head_block.Head.HeadRing ~= nil then
-            --    models.script_head_block.Head.HeadRing:setPos(0, math.sin((self.floatCount + delta) / 80 * 2 * math.pi) * 0.25, 0)
-            --end
+            if not client:isPaused() and models.script_head_block.Skull ~= nil and models.script_head_block.Skull.Halo ~= nil then
+                models.script_head_block.Skull.Halo:setPos(0, math.sin((self.floatCount + delta) / 80 * 2 * math.pi) * 0.25, 0)
+            end
         end)
 
         ModelAlias.alias.avatar.halo:setLight(15, 15)

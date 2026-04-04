@@ -103,6 +103,10 @@ Skirt = require("scripts.skirt")
 ---@type Armor
 Armor = require("scripts.armor")
 
+---頭ブロックのモデルの制御
+---@type HeadBlock
+HeadBlock = require("scripts.head_block")
+
 ---銃の制御
 ---@type Gun
 Gun = require("scripts.gun")
@@ -138,12 +142,13 @@ Config:init()
 Locale:init()
 KeyManager:init()
 --BlueArchiveCharacter:init()
-Physics:init()
+--Physics:init()
 Halo:init()
 FaceParts:init()
 Arms:init()
 Skirt.init()
 Armor:init()
+HeadBlock:init()
 Gun:init()
 ExSkill:init()
 ExSkillFrameParticleManager.init()

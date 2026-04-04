@@ -62,17 +62,26 @@
 ---@field public hasFireResistance? boolean 設置物に火炎耐性を付与するかどうか。`true`にすると炎やマグマで焼かれなくなる。
 ---@field public callbacks? BlueArchiveCharacter.PlacementObjectCallbacksSet 設置物のコールバック関数
 
----@class BlueArchiveCharacter.ExSkillStruct Exスキルのデータ構造体
+---@class (exact) BlueArchiveCharacter.ExSkillStruct Exスキルのデータ構造体
 ---@field public primary BlueArchiveCharacter.ExSkillDataSet メインのExスキルデータ
 ---@field public secondary? BlueArchiveCharacter.ExSkillDataSet サブのExスキルデータ
 ---@field public callbacks? BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数
 
----@class BlueArchiveCharacter.CostumeStruct コスチュームのデータ構造体
+---@class (exact) BlueArchiveCharacter.CostumeStruct コスチュームのデータ構造体
 ---@field public callbacks? BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数
 
+---@class (exact) BlueArchiveCharacter.HeadModelStruct 頭モデルのデータ構造体
+---@field public callbacks? BlueArchiveCharacter.HeadModelCallbacks 頭モデルのコピー処理のコールバック関数
+
+---@class (exact) BlueArchiveCharacter.HeadBlockStruct 頭ブロックのデータ構造体
+---@field public includeModels ModelPart[] 頭ブロックに追加でアタッチするモデル
+
+---@class (exact) BlueArchiveCharacter.portraitStruct ポートレートのデータ構造体
+---@field public includeModels ModelPart[] ポートレートに追加でアタッチするモデル
+
 ---@class (exact) BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
----@field physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
----@field callbacks? BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数
+---@field public physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
+---@field public callbacks? BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数
 
 --[[ ******************************** ]]
 
@@ -156,6 +165,10 @@
 ---@field public onAltChange? fun(self: BlueArchiveCharacter, isAlt: boolean) 衣装のバリエーションが変更されたときに実行されるコールバック関数
 ---@field public onArmorChange? fun(self: BlueArchiveCharacter, parts: Armor.ArmorPart, isVisible: boolean) 防具が変更された（防具が見える/見えない）ときに実行されるコールバック関数
 
+---@class (exact) BlueArchiveCharacter.HeadModelCallbacks 頭モデルのコピー処理のコールバック関数のセット
+---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直前に実行される関数
+---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直後に実行される関数
+
 ---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
 ---@field public x? BlueArchiveCharacter.PhysicAxisData x軸のデータ
@@ -205,6 +218,9 @@
 ---@field public placementObjects BlueArchiveCharacter.PlacementObjectStruct[] 設置物
 ---@field public exSkill BlueArchiveCharacter.ExSkillStruct Exスキル
 ---@field public costume BlueArchiveCharacter.CostumeStruct コスチューム
+---@field public headModel BlueArchiveCharacter.HeadModelStruct コピーした頭モデル
+---@field public headBlock BlueArchiveCharacter.HeadBlockStruct 頭ブロック
+---@field public portrait BlueArchiveCharacter.portraitStruct ポートレート（Tabキーで表示できるプレイヤーリストに表示される顔）
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
@@ -304,6 +320,18 @@ local BlueArchiveCharacter = {
 
 	costume = {
 
+	};
+
+	headModel = {
+
+	};
+
+	headBlock = {
+		includeModels = {};
+	};
+
+	portrait = {
+		includeModels = {};
 	};
 
 	physics = {

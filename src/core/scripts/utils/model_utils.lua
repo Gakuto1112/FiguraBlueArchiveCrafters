@@ -45,15 +45,20 @@ local ModelUtils = {
     ---モデルの頭部をディープコピーし、ターゲットの子要素として挿入する。
     ---@param self ModelUtils
     ---@param target ModelPart コピーした頭部モデルの挿入先
-    copyHeadModel = function (self, target)
+    ---@param name? string コピーした頭部モデルの名前。省略した際はコピー元と同じ名前になる。
+    copyHeadModel = function (self, target, name)
         --モデルコピー前の処理
         for _, modelPart in ipairs({ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.halo}) do
             modelPart:setVisible(true)
         end
         Physics:disable()
 
+        if BlueArchiveCharacter.headModel.callbacks ~= nil and BlueArchiveCharacter.headModel.callbacks.onBeforeModelCopy ~= nil then
+            BlueArchiveCharacter.headModel.callbacks.onBeforeModelCopy(BlueArchiveCharacter)
+        end
+
         --現在の衣装を基に新たな頭ブロックのモデルを生成する。
-        local copiedPart = self:copyModel(ModelAlias.alias.avatar.head)
+        local copiedPart = self:copyModel(ModelAlias.alias.avatar.head, name)
         copiedPart:setPos(0, -24, 0)
         copiedPart:setRot()
         copiedPart:setScale()
@@ -69,9 +74,14 @@ local ModelUtils = {
             copiedPart:removeChild(copiedPart.ArmorH)
             copiedPart.ArmorH:remove()
         end
+        target:addChild(copiedPart)
+
+        if BlueArchiveCharacter.headModel.callbacks ~= nil and BlueArchiveCharacter.headModel.callbacks.onAfterModelCopy ~= nil then
+            BlueArchiveCharacter.headModel.callbacks.onAfterModelCopy(BlueArchiveCharacter)
+        end
 
         --非表示にしたモデルを元に戻す。
-        self.parent.physics:enable()
+        Physics:enable()
     end;
 }
 

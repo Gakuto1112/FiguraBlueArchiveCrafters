@@ -7,12 +7,6 @@ local Physics = {
 	velocityAverage = {{0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}, {0, 0}};
 	directionPrev = {};
 
-	---初期化関数
-	---@param self Physics
-	init = function (self)
-		self:enable()
-	end;
-
     ---2つのティックデータの間からレンダーのデルタ値を加味した値を返す。
     ---@param tickData number[] ティックデータ：1. 前ティック, 2. 現ティック
     ---@param delta number デルタ値
@@ -166,8 +160,7 @@ local Physics = {
     end;
 
     ---物理演算を無効にする。物理演算で管理していたモデルの回転をリセットする。
-    ---@param self Physics
-    disable = function (self)
+    disable = function ()
         events.TICK:remove("physics_tick")
         events.RENDER:remove("physics_render")
         for _, physicData in ipairs(BlueArchiveCharacter.physics.physicData) do
