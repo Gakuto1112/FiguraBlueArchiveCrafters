@@ -107,6 +107,10 @@ Armor = require("scripts.armor")
 ---@type HeadBlock
 HeadBlock = require("scripts.head_block")
 
+---ポートレート（Tabキーで表示できるプレイヤーリストに表示される顔）のモデルの制御
+---@type Portrait
+Portrait = require("scripts.portrait")
+
 ---銃の制御
 ---@type Gun
 Gun = require("scripts.gun")
@@ -149,6 +153,7 @@ Arms:init()
 Skirt.init()
 Armor:init()
 HeadBlock:init()
+Portrait:init()
 Gun:init()
 ExSkill:init()
 ExSkillFrameParticleManager.init()
