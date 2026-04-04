@@ -41,6 +41,38 @@ local ModelUtils = {
             originalParent:removeChild(target)
         end
     end;
+
+    ---モデルの頭部をディープコピーし、ターゲットの子要素として挿入する。
+    ---@param self ModelUtils
+    ---@param target ModelPart コピーした頭部モデルの挿入先
+    copyHeadModel = function (self, target)
+        --モデルコピー前の処理
+        for _, modelPart in ipairs({ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.halo}) do
+            modelPart:setVisible(true)
+        end
+        Physics:disable()
+
+        --現在の衣装を基に新たな頭ブロックのモデルを生成する。
+        local copiedPart = self:copyModel(ModelAlias.alias.avatar.head)
+        copiedPart:setPos(0, -24, 0)
+        copiedPart:setRot()
+        copiedPart:setScale()
+        copiedPart:setPrimaryRenderType()
+        copiedPart:setOpacity(1)
+        copiedPart:setParentType("None")
+        copiedPart.Halo:setRot(Halo.initialHaloRot, 0, 0)
+        copiedPart.Halo:setLight(15)
+        for _, modelPart in ipairs({copiedPart.FaceParts.Eyes.RightEye, copiedPart.FaceParts.Eyes.LeftEye}) do
+            modelPart:setUVPixels()
+        end
+        if copiedPart.ArmorH ~= nil then
+            copiedPart:removeChild(copiedPart.ArmorH)
+            copiedPart.ArmorH:remove()
+        end
+
+        --非表示にしたモデルを元に戻す。
+        self.parent.physics:enable()
+    end;
 }
 
 return ModelUtils
