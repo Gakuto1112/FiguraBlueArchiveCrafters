@@ -35,6 +35,9 @@
 ---@class (exact) BlueArchiveCharacter.ArmsStruct 腕のデータ構造体
 ---@field public callbacks? BlueArchiveCharacter.ArmsCallbacksSet 腕の制御のコールバック関数群
 
+---@class BlueArchiveCharacter.SkirtStruct スカートのデータ構造体
+---@field public skirtModels? ModelPart[] スカートとして制御するモデル
+
 ---@class (exact) BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
 ---@field physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
 ---@field callbacks? BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数
@@ -96,6 +99,7 @@
 ---@field public basic BlueArchiveCharacter.BasicStruct 生徒の基本情報
 ---@field public faceParts BlueArchiveCharacter.FacePartsStruct 目や口による表情
 ---@field public arms BlueArchiveCharacter.ArmsStruct 腕
+---@field public skirt BlueArchiveCharacter.SkirtStruct スカート
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
@@ -123,6 +127,10 @@ local BlueArchiveCharacter = {
 	};
 
 	arms = {
+
+	};
+
+	skirt = {
 
 	};
 

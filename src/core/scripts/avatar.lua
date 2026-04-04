@@ -84,6 +84,9 @@ FaceParts = require("scripts.face_parts")
 ---腕の制御
 Arms = require("scripts.arms")
 
+---スカートの制御
+Skirt = require("scripts.skirt")
+
 -- *** モジュールの初期化 ***
 LocaleRefreshEvent:init()
 VanillaModel.init()
@@ -97,3 +100,4 @@ Physics:init()
 Halo:init()
 FaceParts:init()
 Arms:init()
+Skirt.init()
