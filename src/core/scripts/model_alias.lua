@@ -26,6 +26,8 @@
 ---@field rightLegBottom ModelPart 右脚の下部
 ---@field leftLeg ModelPart 左脚の上部
 ---@field leftLegBottom ModelPart 左脚の下部
+---@field gun ModelPart 固有武器
+---@field muzzleAnchor ModelPart 固有武器のマズル部分
 
 ---@class (exact) ModelAlias モデルパーツのエイリアスを管理するクラス
 ---@field alias { avatar: ModelAliasTable, dummy_avatar: ModelAliasTable } モデルのエイリアスを格納するテーブル
@@ -73,6 +75,8 @@ local ModelAlias = {
 		aliasTable.rightLegBottom = aliasTable.rightLeg.RightLegBottom
 		aliasTable.leftLeg = aliasTable.legs.LeftLeg
 		aliasTable.leftLegBottom = aliasTable.leftLeg.LeftLegBottom
+		aliasTable.gun = aliasTable.body.Gun
+		aliasTable.muzzleAnchor = aliasTable.gun.MuzzleAnchor
 
 		return aliasTable
 	end;
