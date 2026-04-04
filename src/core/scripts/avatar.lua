@@ -81,6 +81,9 @@ Halo = require("scripts.halo")
 ---@type FaceParts
 FaceParts = require("scripts.face_parts")
 
+---腕の制御
+Arms = require("scripts.arms")
+
 -- *** モジュールの初期化 ***
 LocaleRefreshEvent:init()
 VanillaModel.init()
@@ -93,3 +96,4 @@ KeyManager:init()
 Physics:init()
 Halo:init()
 FaceParts:init()
+Arms:init()
