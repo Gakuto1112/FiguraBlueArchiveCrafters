@@ -67,6 +67,9 @@
 ---@field public secondary? BlueArchiveCharacter.ExSkillDataSet サブのExスキルデータ
 ---@field public callbacks? BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数
 
+---@class BlueArchiveCharacter.CostumeStruct コスチュームのデータ構造体
+---@field public callbacks? BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数
+
 ---@class (exact) BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
 ---@field physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
 ---@field callbacks? BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数
@@ -149,6 +152,10 @@
 ---@field public onPostAnimation? fun(self: BlueArchiveCharacter, forcedStop: boolean) Exスキルアニメーション終了後のトランジション開始前に実行されるコールバック関数
 ---@field public onPostTransition? fun(self: BlueArchiveCharacter, forcedStop: boolean) Exスキルアニメーション終了後のトランジション終了後に実行されるコールバック関数
 
+---@class (exact) BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数のセット
+---@field public onAltChange? fun(self: BlueArchiveCharacter, isAlt: boolean) 衣装のバリエーションが変更されたときに実行されるコールバック関数
+---@field public onArmorChange? fun(self: BlueArchiveCharacter, parts: Armor.ArmorPart, isVisible: boolean) 防具が変更された（防具が見える/見えない）ときに実行されるコールバック関数
+
 ---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
 ---@field public x? BlueArchiveCharacter.PhysicAxisData x軸のデータ
@@ -197,6 +204,7 @@
 ---@field public gun BlueArchiveCharacter.GunStruct 銃
 ---@field public placementObjects BlueArchiveCharacter.PlacementObjectStruct[] 設置物
 ---@field public exSkill BlueArchiveCharacter.ExSkillStruct Exスキル
+---@field public costume BlueArchiveCharacter.CostumeStruct コスチューム
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
@@ -292,6 +300,10 @@ local BlueArchiveCharacter = {
 				};
 			};
 		};
+	};
+
+	costume = {
+
 	};
 
 	physics = {

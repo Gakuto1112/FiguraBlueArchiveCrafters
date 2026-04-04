@@ -99,6 +99,10 @@ Arms = require("scripts.arms")
 ---@type Skirt
 Skirt = require("scripts.skirt")
 
+---防具モデルの制御
+---@type Armor
+Armor = require("scripts.armor")
+
 ---銃の制御
 ---@type Gun
 Gun = require("scripts.gun")
@@ -139,6 +143,7 @@ Halo:init()
 FaceParts:init()
 Arms:init()
 Skirt.init()
+Armor:init()
 Gun:init()
 ExSkill:init()
 ExSkillFrameParticleManager.init()
