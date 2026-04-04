@@ -4,12 +4,10 @@ local Portrait = {
     ---初期化関数
     ---@param self Portrait
     init = function (self)
-		events.ENTITY_INIT:register(function ()
-			---@diagnostic disable-next-line: discard-returns
-			models:newPart("script_portrait")
+		---@diagnostic disable-next-line: discard-returns
+		models:newPart("script_portrait")
 
-			self:generatePortraitModel()
-		end)
+		self:generatePortraitModel()
     end;
 
 	---頭ブロックのモデルを作成する。
