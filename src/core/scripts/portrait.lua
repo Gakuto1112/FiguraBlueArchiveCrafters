@@ -2,12 +2,9 @@
 local Portrait = {
 
     ---初期化関数
-    ---@param self Portrait
-    init = function (self)
+    init = function ()
 		---@diagnostic disable-next-line: discard-returns
 		models:newPart("script_portrait")
-
-		self:generatePortraitModel()
     end;
 
 	---頭ブロックのモデルを作成する。

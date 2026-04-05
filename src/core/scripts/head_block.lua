@@ -10,7 +10,6 @@ local HeadBlock = {
 		models:newPart("script_head_block")
 
 		events.ENTITY_INIT:register(function ()
-			self:generateHeadBlockModel()
 			self.forceGenerateCount = 0
 			events.WORLD_TICK:remove("head_block_world_tick")
 		end)

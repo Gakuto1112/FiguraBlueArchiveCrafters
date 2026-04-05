@@ -131,6 +131,11 @@ Gun = require("scripts.gun")
 ---@type PlacementObject
 PlacementObject = require("scripts.placement_object.placement_object")
 
+---設置物のインスタンスマネージャークラス
+---@type PlacementObjectManager
+PlacementObjectManager = require("scripts.placement_object.placement_object_manager")
+PlacementObjectManager = PlacementObjectManager:new()
+
 ---Exスキルの制御クラス
 ---@type ExSkill
 ExSkill = require("scripts.ex_skill.ex_skill")
@@ -144,10 +149,11 @@ ExSkillFrameParticle = require("scripts.ex_skill.ex_skill_frame_particle")
 ExSkillFrameParticleManager = require("scripts.ex_skill.ex_skill_frame_particle_manager")
 ExSkillFrameParticleManager = ExSkillFrameParticleManager:new()
 
----設置物のインスタンスマネージャークラス
----@type PlacementObjectManager
-PlacementObjectManager = require("scripts.placement_object.placement_object_manager")
-PlacementObjectManager = PlacementObjectManager:new()
+---衣装の管理
+---@type Costume
+Costume = require("scripts.costume")
+
+
 
 -- *** モジュールの初期化 ***
 ModelAlias:init()
@@ -170,9 +176,10 @@ events.ENTITY_INIT:register(function ()
 	Skirt.init()
 	Armor:init()
 	Nameplate:init()
-	Portrait:init()
+	Portrait.init()
 	Gun:init()
+	PlacementObjectManager:init()
 	ExSkill:init()
 	ExSkillFrameParticleManager.init()
-	PlacementObjectManager:init()
+	Costume:init()
 end)

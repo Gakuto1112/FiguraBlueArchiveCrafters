@@ -69,6 +69,7 @@
 ---@field public callbacks? BlueArchiveCharacter.ExSkillCallbacks Exスキルのコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.CostumeStruct コスチュームのデータ構造体
+---@field public isAltCostumeEnabled boolean バリエーション衣装が有効（ある）かどうか
 ---@field public callbacks? BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.HeadModelStruct 頭モデルのデータ構造体
@@ -329,7 +330,7 @@ local BlueArchiveCharacter = {
 	};
 
 	costume = {
-
+		isAltCostumeEnabled = false;
 	};
 
 	headModel = {
