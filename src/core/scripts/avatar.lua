@@ -157,6 +157,9 @@ ExSkillFrameParticleManager = ExSkillFrameParticleManager:new()
 ---@type Costume
 Costume = require("scripts.costume")
 
+---アクションホイールの管理
+---@type ActionWheel
+ActionWheel = require("scripts.action_wheel.action_wheel")
 
 
 -- *** モジュールの初期化 ***
@@ -187,4 +190,5 @@ events.ENTITY_INIT:register(function ()
 	ExSkill:init()
 	ExSkillFrameParticleManager.init()
 	Costume:init()
+	ActionWheel:init()
 end)
