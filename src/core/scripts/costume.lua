@@ -15,7 +15,7 @@ local Costume = {
 
 			if Config:loadConfig("PRIVATE", "costume.is_alt_costume", false) then
 				if BlueArchiveCharacter.costume.isAltCostumeEnabled then
-					self:setAltCostume(true)
+					pings.costume_setAltCostume(true)
 					self.changeAltCostumeAction:setToggled(true)
 					ActionWheel.setActionToggleHoverColor(self.changeAltCostumeAction, true)
 					Config.syncConfigs["isAltCostume"] = true
@@ -28,12 +28,12 @@ local Costume = {
 			if BlueArchiveCharacter.costume.isAltCostumeEnabled then
 				self.changeAltCostumeAction
 					:setOnToggle(function (_, action)
-						self:setAltCostume(true)
+						pings.costume_setAltCostume(true)
 						ActionWheel.setActionToggleHoverColor(action, true)
 						Config:saveConfig("PRIVATE", "costume.is_alt_costume", true)
 					end)
 					:setOnUntoggle(function (_, action)
-						self:setAltCostume(false)
+						pings.costume_setAltCostume(false)
 						ActionWheel.setActionToggleHoverColor(action, false)
 						Config:saveConfig("PRIVATE", "costume.is_alt_costume", false)
 					end)
