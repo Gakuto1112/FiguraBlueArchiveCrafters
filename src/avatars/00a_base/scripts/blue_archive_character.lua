@@ -188,6 +188,9 @@
 ---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直前に実行される関数
 ---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直後に実行される関数
 
+---@class BlueArchiveCharacter.ActionWheelConfigStruct アクションホイール上のアバター設定データの構造体
+---@field public isVehicleReplacementEnabled boolean 乗り物のモデル置き換えオプションを有効にするかどうか
+
 ---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
 ---@field public x? BlueArchiveCharacter.PhysicAxisData x軸のデータ
@@ -246,6 +249,7 @@
 ---@field public headBlock BlueArchiveCharacter.HeadBlockStruct 頭ブロック
 ---@field public portrait BlueArchiveCharacter.portraitStruct ポートレート（Tabキーで表示できるプレイヤーリストに表示される顔）
 ---@field public deathAnimation BlueArchiveCharacter.DeathAnimationStruct 死亡アニメーション
+---@field public actionWheelConfig BlueArchiveCharacter.ActionWheelConfigStruct アクションホイール上のアバター設定
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
@@ -370,6 +374,10 @@ local BlueArchiveCharacter = {
 
 	deathAnimation = {
 
+	};
+
+	actionWheelConfig = {
+		isVehicleReplacementEnabled = true;
 	};
 
 	physics = {
