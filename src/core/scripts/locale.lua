@@ -31,6 +31,7 @@
 ---@field package availableLocales {[string]: string} 利用可能なロケールのリスト
 ---@field package activeLocale string 現在有効になっているロケール
 ---@field package locales {[string]: {[string]: string}} ローカライズされたテキストを格納するテーブル
+---@field package localePrev string 前ティックのゲームのロケール
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locales/";
 	REMOTE_LOCALE_ENDPOINT = "http://localhost/";
@@ -56,6 +57,7 @@ local Locale = {
 	availableLocales = {};
 	activeLocale = "auto";
 	locales = {};
+	localePrev = "en_us";
 
 	---初期化関数
 	---@param self Locale
@@ -144,6 +146,15 @@ local Locale = {
 				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
 			end
 		end
+
+		self.localePrev = client:getActiveLang()
+		events.TICK:register(function ()
+			local locale = client:getActiveLang()
+			if locale ~= self.localePrev then
+				EventManager.events["ON_LOCALE_CHANGE"]:fire(locale)
+				self.localePrev = locale
+			end
+		end)
 	end;
 
 	---ロケールデータを初期化する。
