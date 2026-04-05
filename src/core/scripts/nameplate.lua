@@ -51,6 +51,10 @@ local Nameplate = {
                 nameplate.ENTITY:setPivot()
             end
         end)
+
+		EventManager.events["ON_CONFIG_SYNC"]:register(function (syncData)
+			self.setName(syncData["displayNameData"])
+		end)
     end;
 
 	---表示名設定用のデータ構造体を返す。

@@ -92,8 +92,8 @@ local Config = {
 function pings.syncAvatarConfigs(configData)
 	if not Config.isSynced then
 		Config.syncConfigs = configData
+		EventManager.events["ON_CONFIG_SYNC"]:fire(Config.syncConfigs)
 		Config.isSynced = true
-		Config.onConfigSynced()
 	end
 end
 

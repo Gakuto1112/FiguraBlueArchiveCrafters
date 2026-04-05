@@ -7,9 +7,8 @@ local LocaleRefreshEvent = {
 	---@return LocaleRefreshEvent instance
 	new = function ()
 		---@type LocaleRefreshEvent
+		---@diagnostic disable-next-line: undefined-global
 		local instance = MiscUtils.instantiate(LocaleRefreshEvent, AbstractEvent)
-
-		instance.test = "TEST"
 
 		return instance
 	end;
