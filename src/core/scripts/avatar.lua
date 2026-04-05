@@ -189,6 +189,10 @@ ActionWheelConfig = require("scripts.action_wheel.action_wheel_config")
 ---@type ActionWheelGui
 ActionWheelGui = require("scripts.action_wheel.action_wheel_gui")
 
+---FBACアップデートの確認シーケンスの制御
+---@type UpdateChecker
+UpdateChecker = require("scripts.action_wheel.update_checker")
+
 -- *** モジュールの初期化 ***
 ModelAlias:init()
 HeadBlock:init()
@@ -223,6 +227,7 @@ events.ENTITY_INIT:register(function ()
 	ActionWheel:init()
 	ActionWheelConfig:init()
 	ActionWheelGui:init()
+	UpdateChecker:init()
 	-- [[ RELEASE_EXCLUSION_START ]] --
 	DebugUtils:init()
 	-- [[ RELEASE_EXCLUSION_END ]] --
