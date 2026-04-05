@@ -165,6 +165,10 @@ Costume = require("scripts.costume")
 ---@type ActionWheel
 ActionWheel = require("scripts.action_wheel.action_wheel")
 
+---アクションホイールのアバター設定ページの管理
+---@type ActionWheelConfig
+ActionWheelConfig = require("scripts.action_wheel.action_wheel_config")
+
 
 -- *** モジュールの初期化 ***
 ModelAlias:init()
@@ -196,4 +200,5 @@ events.ENTITY_INIT:register(function ()
 	ExSkillFrameParticleManager.init()
 	Costume:init()
 	ActionWheel:init()
+	ActionWheelConfig:init()
 end)

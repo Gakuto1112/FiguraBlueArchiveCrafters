@@ -44,7 +44,7 @@ local Costume = {
 						MiscUtils.playErrorSound()
 					end)
 			end
-			ActionWheel:setAction(self.changeAltCostumeAction, "MAIN", 1)
+			ActionWheel:setAction(self.changeAltCostumeAction, 1)
 		end
 
 		if not isAltCostumeProcessed then

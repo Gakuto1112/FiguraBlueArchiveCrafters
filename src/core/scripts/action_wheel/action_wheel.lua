@@ -1,22 +1,15 @@
----アクションホイールのページを示す列挙型
----@alias ActionWheel.Page
----| "MAIN" #メインページ
----| "CONFIG" #アバター設定ページ
-
 ---@class (exact) ActionWheel アクションホイールを管理するクラス
----@field package mainPage Page アクションホイールのメインページのインスタンス
----@field package configPage Page アクションホイールのアバター設定ページのインスタンス
+---@field package page Page アクションホイールのページのインスタンス
 ---@field package isActionWheelOpenedPrev boolean 前ティックにアクションホイールが開いていたかどうか
 local ActionWheel = {
-	mainPage = action_wheel:newPage("main");
-	configPage = action_wheel:newPage("config");
+	page = action_wheel:newPage("main");
 	isActionWheelOpenedPrev = false;
 
     ---初期化関数
     ---@param self ActionWheel
     init = function (self)
 		if host:isHost() then
-			action_wheel:setPage(self.mainPage)
+			self:setMainPage()
 
 			events.TICK:register(function ()
 				if not client:isPaused() then
@@ -32,17 +25,18 @@ local ActionWheel = {
 		end
 	end;
 
+	---アクションホイールのメインページを設定する。
+	---@param self ActionWheel
+	setMainPage = function (self)
+		action_wheel:setPage(self.page)
+	end;
+
 	---アクションホイールのページにアクションを登録する。
 	---@param self ActionWheel
 	---@param action Action 登録対象のアクションのインスタンス
-	---@param target ActionWheel.Page アクションを登録するページ
 	---@param index? integer アクションのインデックス（1-8）。`nil`の場合は空いている最初のスロットに登録される。
-	setAction = function (self, action, target, index)
-		if target == "MAIN" then
-			self.mainPage:setAction(index or -1, action)
-		elseif target == "CONFIG" then
-			self.configPage:setAction(index or -1, action)
-		end
+	setAction = function (self, action, index)
+		self.page:setAction(index or -1, action)
 	end;
 
 	---アクションの雛形を生成して返す。

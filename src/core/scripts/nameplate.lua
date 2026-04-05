@@ -59,7 +59,7 @@ local Nameplate = {
 				end)
 			self:setChangeDisplayNameActionTitle()
 
-			ActionWheel:setAction(self.changeDisplayNameAction, "MAIN", 2)
+			ActionWheel:setAction(self.changeDisplayNameAction, 2)
 
 			EventManager.events["ON_ACTION_WHEEL_CLOSE"]:register(function ()
 				if self.selectingNameDisplayType ~= self.nameDisplayType or self.selectingShouldShowClubName ~= self.shouldShowClubName then

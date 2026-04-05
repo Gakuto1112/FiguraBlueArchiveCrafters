@@ -66,7 +66,7 @@ local Armor = {
 				self.toggleArmorVisibilityAction:setToggled(true)
 				ActionWheel.setActionToggleHoverColor(self.toggleArmorVisibilityAction, true)
 			end
-			ActionWheel:setAction(self.toggleArmorVisibilityAction, "MAIN", 3)
+			ActionWheel:setAction(self.toggleArmorVisibilityAction, 3)
 		end
 
 		for _, vanillaModel in ipairs({vanilla_model.HELMET, vanilla_model.CHESTPLATE, vanilla_model.LEGGINGS}) do
