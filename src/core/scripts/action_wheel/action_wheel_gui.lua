@@ -14,7 +14,7 @@ local ActionWheelGui = {
                 textTask:setScale(0.25, 0.25, 0.25)
                 textTask:setShadow(true)
                 if i == 1 then
-                    textTask:setText("Figura Blue Archive Characters (FBAC)")
+                    textTask:setText("Figura Blue Archive Crafters (FBAC)")
                 end
             end
 
