@@ -80,11 +80,6 @@ local Config = {
 			end
 		end
 	end;
-
-	---アバター設定がホストと同期された際に呼び出されるコールバック関数。
-	---ホストプレイヤー上では実行されない。
-	onConfigSynced = function ()
-	end;
 }
 
 ---アバター設定を他Figuraクライアントと同期する。
