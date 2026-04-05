@@ -56,10 +56,6 @@ EventManager = require("scripts.events.event_manager")
 ---@type LocaleRefreshEvent
 LocaleRefreshEvent = require("scripts.events.locale_refresh_event")
 
----ゲームのロケール変更イベント
----@type LocaleChangeEvent
-LocaleChangeEvent = require("scripts.events.locale_change_event")
-
 ---アバター設定データ同期イベント
 ---@type ConfigSyncEvent
 ConfigSyncEvent = require("scripts.events.config_sync_event")
@@ -200,7 +196,6 @@ Halo:init()
 
 events.ENTITY_INIT:register(function ()
 	LocaleRefreshEvent:init()
-	LocaleChangeEvent:init()
 	ConfigSyncEvent:init()
 	ActionWheelOpenEvent:init()
 	ActionWheelCloseEvent:init()
