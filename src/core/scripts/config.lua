@@ -25,7 +25,7 @@ local Config = {
 			self.isSynced = true
 			events.TICK:register(function ()
 				if self.nextSyncCount == 0 then
-					pings.syncAvatarConfigs(self.syncConfigs)
+					pings.config_syncAvatarConfigs(self.syncConfigs)
 					self.nextSyncCount = self.SYNC_INTERVAL
 				else
 					self.nextSyncCount = self.nextSyncCount - 1
@@ -84,7 +84,7 @@ local Config = {
 
 ---アバター設定を他Figuraクライアントと同期する。
 ---@param configData {[string]: any} 同期する設定値を格納したテーブル
-function pings.syncAvatarConfigs(configData)
+function pings.config_syncAvatarConfigs(configData)
 	if not Config.isSynced then
 		Config.syncConfigs = configData
 		EventManager.events["ON_CONFIG_SYNC"]:fire(Config.syncConfigs)

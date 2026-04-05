@@ -103,7 +103,7 @@ local Halo = {
 
 ---ヘイローの強制レンダリングモードを切り替える。
 ---@param value boolean 強制レンダリングモードを有効にするかどうか。
-function pings.setHaloForceRender(value)
+function pings.halo_setHaloForceRender(value)
     Halo.isForceRenderMode = value
 end
 

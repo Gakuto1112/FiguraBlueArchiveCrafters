@@ -45,27 +45,27 @@ local Bubble = {
         if host:isHost() then
             KeyManager:register("bubble_1", "key.keyboard.j"):onPress(function ()
                 if self:getCanShowBubble() then
-                    pings.showBubbleEmote("GOOD")
+                    pings.bubble_showBubbleEmote("GOOD")
                 end
             end)
             KeyManager:register("bubble_2", "key.keyboard.k"):onPress(function ()
                 if self:getCanShowBubble() then
-                    pings.showBubbleEmote("HEART")
+                    pings.bubble_showBubbleEmote("HEART")
                 end
             end)
             KeyManager:register("bubble_3", "key.keyboard.n"):onPress(function ()
                 if self:getCanShowBubble() then
-                    pings.showBubbleEmote("NOTE")
+                    pings.bubble_showBubbleEmote("NOTE")
                 end
             end)
             KeyManager:register("bubble_4", "key.keyboard.m"):onPress(function ()
                 if self:getCanShowBubble() then
-                    pings.showBubbleEmote("QUESTION")
+                    pings.bubble_showBubbleEmote("QUESTION")
                 end
             end)
             KeyManager:register("bubble_5", "key.keyboard.comma"):onPress(function ()
                 if self:getCanShowBubble() then
-                    pings.showBubbleEmote("SWEAT")
+                    pings.bubble_showBubbleEmote("SWEAT")
                 end
             end)
         end
@@ -74,7 +74,7 @@ local Bubble = {
             if host:isHost() then
                 local isChatOpened = host:isChatOpen()
                 if isChatOpened ~= self.isChatOpened then
-                    pings.setChatOpen(isChatOpened)
+                    pings.bubble_setChatOpen(isChatOpened)
 					Config.syncConfigs["isChatOpened"] = isChatOpened
 					self.isChatOpenedPrev = isChatOpened
                 end
@@ -211,14 +211,14 @@ local Bubble = {
 
 ---吹き出しエモートを表示する。
 ---@param type Bubble.BubbleType 表示する絵文字の種類
-function pings.showBubbleEmote(type)
+function pings.bubble_showBubbleEmote(type)
     Bubble:play(type, 50, true)
     Bubble.isAutoBubble = false
 end
 
 ---Bubbleのチャットを開けているフラグを更新する。
 ---@param value boolean 新しい値
-function pings.setChatOpen(value)
+function pings.bubble_setChatOpen(value)
     Bubble.isChatOpened = value
 end
 

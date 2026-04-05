@@ -56,7 +56,7 @@ local ExSkill = {
                 events.TICK:remove("ex_skill_keypress_tick")
                 if self.keyPressCount > 0 then
                     if self:getCanPlayAnimation() and self.transitionCount == 0 then
-                        pings.playExSkill(false)
+                        pings.exSkill_playExSkill(false)
                     else
                         print(Locale:getLocalizedText("message.ex_skill.unavailable" .. (renderer:isFirstPerson() and "_firstperson" or "")))
                         MiscUtils.playErrorSound()
@@ -66,7 +66,7 @@ local ExSkill = {
             end)
             KeyManager:register("ex_skill_sub", "key.keyboard.h"):setOnPress(function ()
                 if self:getCanPlayAnimation() and self.transitionCount == 0 and BlueArchiveCharacter.exSkill.secondary ~= nil then
-                    pings.playExSkill(true)
+                    pings.exSkill_playExSkill(true)
                 else
                     print(Locale:getLocalizedText(BlueArchiveCharacter.exSkill.secondary == nil and "message.ex_skill.unavailable_secondary" or ("message.ex_skill.unavailable" .. (renderer:isFirstPerson() and "_firstperson" or ""))))
                     MiscUtils.playErrorSound()
@@ -393,7 +393,7 @@ local ExSkill = {
 
 ---Exスキルを再生する。
 ---@param isSubExSkill boolean サブExスキルを再生するかどうか
-function pings.playExSkill(isSubExSkill)
+function pings.exSkill_playExSkill(isSubExSkill)
     ExSkill:play(isSubExSkill)
 end
 
