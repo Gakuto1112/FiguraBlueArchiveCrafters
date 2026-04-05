@@ -2,13 +2,17 @@
 ---@field package page Page アクションホイールのアバター設定ページのインスタンス
 ---@field package openAvatarConfigAction Action アクションホイールでアバター設定ページを開くアクション
 ---@field package vehicleVisibilityAction Action 乗り物モデルの置き換えオプションのトグルアクション
+---@field package haloForceRenderModeAction Action ヘイロー強制描画モードのトグルアクション
 ---@field public shouldReplaceVehicleModel boolean 乗り物のモデルを置き換えるべきかどうか
+---@field public isHaloForceRenderMode boolean ヘイロー強制描画モードが有効かどうか
 local ActionWheelConfig = {
 	page = action_wheel:newPage("config");
 	openAvatarConfigAction = nil;
 	customVehicleVisibilityAction = nil;
+	haloForceRenderModeAction = nil;
 
 	shouldReplaceVehicleModel = true;
+	isHaloForceRenderMode = false;
 
 	---初期化関数
 	---@param self ActionWheelConfig
@@ -44,11 +48,13 @@ local ActionWheelConfig = {
 					:setOnToggle(function (_, action)
 						pings.actionWheelConfig_setVehicleReplacement(true)
 						ActionWheel.setActionToggleHoverColor(action, true)
+						Config.syncConfigs["isVehicleReplacementEnabled"] = true
 						Config:saveConfig("PRIVATE", "action_wheel_config.is_vehicle_replacement_enabled", true)
 					end)
 					:setOnUntoggle(function (_, action)
 						pings.actionWheelConfig_setVehicleReplacement(false)
 						ActionWheel.setActionToggleHoverColor(action, false)
+						Config.syncConfigs["isVehicleReplacementEnabled"] = false
 						Config:saveConfig("PRIVATE", "action_wheel_config.is_vehicle_replacement_enabled", false)
 					end)
 			else
@@ -62,6 +68,23 @@ local ActionWheelConfig = {
 			end
 			self.page:setAction(1, self.vehicleVisibilityAction)
 
+			--　アクション2. ヘイロー強制描画モード
+			self.haloForceRenderModeAction = ActionWheel.getToggleAction()
+				:setItem("minecraft:glowstone")
+
+			self.haloForceRenderModeAction
+				:setOnToggle(function (_, action)
+					pings.actionWheelConfig_setHaloForceRenderMode(true)
+					ActionWheel.setActionToggleHoverColor(action, true)
+					Config.syncConfigs["isHaloForceRenderMode"] = true
+				end)
+				:setOnUntoggle(function (_, action)
+					pings.actionWheelConfig_setHaloForceRenderMode(false)
+					ActionWheel.setActionToggleHoverColor(action, false)
+					Config.syncConfigs["isHaloForceRenderMode"] = false
+				end)
+			self.page:setAction(2, self.haloForceRenderModeAction)
+
 			EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
 				self.openAvatarConfigAction:setTitle(Locale:getLocalizedText("action_wheel.main_page.open_avatar_config.title"))
 
@@ -72,6 +95,9 @@ local ActionWheelConfig = {
 				else
 					self.vehicleVisibilityAction:setTitle("§8" .. Locale:getLocalizedText("action_wheel.config_page.custom_vehicle_replacement.title") .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
 				end
+				self.haloForceRenderModeAction
+					:setTitle(Locale:getLocalizedText("action_wheel.config_page.halo_force_render_mode.title") .. "§c" .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
+					:setToggleTitle(Locale:getLocalizedText("action_wheel.config_page.halo_force_render_mode.title") .. "§a" .. Locale:getLocalizedText("action_wheel.action.toggle_on"))
 			end)
 
 			EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
@@ -87,10 +113,16 @@ local ActionWheelConfig = {
 	end;
 }
 
----乗り物モデルの置き換え機能のオンオフを切り替える。
+---乗り物モデルの置き換え機能のオンオフを設定する。
 ---@param isEnabled boolean 置き換え機能を有効にするかどうか
 function pings.actionWheelConfig_setVehicleReplacement(isEnabled)
 	ActionWheelConfig.shouldReplaceVehicleModel = isEnabled
+end
+
+---ヘイロー強制描画モードのオンオフを設定する。
+---@param isEnabled boolean ヘイロー強制描画モードを有効にするかどうか
+function pings.actionWheelConfig_setHaloForceRenderMode(isEnabled)
+	ActionWheelConfig.isHaloForceRenderMode = isEnabled
 end
 
 return ActionWheelConfig

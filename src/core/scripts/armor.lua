@@ -65,6 +65,7 @@ local Armor = {
 			if self.shouldShowArmor then
 				self.toggleArmorVisibilityAction:setToggled(true)
 				ActionWheel.setActionToggleHoverColor(self.toggleArmorVisibilityAction, true)
+				Config.syncConfigs["shouldShowArmor"] = true
 			end
 			ActionWheel:setAction(self.toggleArmorVisibilityAction, 3)
 		end
