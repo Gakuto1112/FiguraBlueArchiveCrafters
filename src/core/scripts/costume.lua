@@ -55,10 +55,10 @@ local Costume = {
 		EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
 			if BlueArchiveCharacter.costume.isAltCostumeEnabled then
 				self.changeAltCostumeAction
-					:setTitle(Locale:getLocalizedText("action_wheel.main_page.change_alt_costume.title") .. Locale:getLocalizedText("text_format.color_red") .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
-					:setToggleTitle(Locale:getLocalizedText("action_wheel.main_page.change_alt_costume.title") .. Locale:getLocalizedText("text_format.color_green") .. Locale:getLocalizedText("action_wheel.action.toggle_on"))
+					:setTitle(Locale:getLocalizedText("action_wheel.main_page.change_alt_costume.title") .. "§c" .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
+					:setToggleTitle(Locale:getLocalizedText("action_wheel.main_page.change_alt_costume.title") .. "§a" .. Locale:getLocalizedText("action_wheel.action.toggle_on"))
 			else
-				self.changeAltCostumeAction:setTitle(Locale:getLocalizedText("text_format.color_dark_gray") .. Locale:getLocalizedText("action_wheel.main_page.change_alt_costume.title") .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
+				self.changeAltCostumeAction:setTitle("§8" .. Locale:getLocalizedText("action_wheel.main_page.change_alt_costume.title") .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
 			end
 		end)
 

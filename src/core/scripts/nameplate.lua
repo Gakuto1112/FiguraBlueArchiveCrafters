@@ -67,7 +67,7 @@ local Nameplate = {
 					pings.nameplate_setName(displayNameData2)
 					Config.syncConfigs["displayNameData"] = displayNameData2
 					if self.selectingNameDisplayType ~= self.nameDisplayType then
-						print(Locale:getLocalizedText("message.action_wheel.change_display_name.done"):format(Locale:getLocalizedText("text_format.color_aqua"), self.getDisplayName(self.selectingNameDisplayType), Locale:getLocalizedText("text_format.reset")))
+						print(Locale:getLocalizedText("message.action_wheel.change_display_name.done"):format(self.getDisplayName(self.selectingNameDisplayType)))
 					elseif self.selectingShouldShowClubName then
 						print(Locale:getLocalizedText("message.action_wheel.change_display_name.club_name_on"))
 					else
@@ -121,16 +121,16 @@ local Nameplate = {
 	---プレイヤー表示名切り替えアクションのタイトルを更新する。
 	---@param self Nameplate
 	setChangeDisplayNameActionTitle = function (self)
-		local text = Locale:getLocalizedText("action_wheel.main_page.change_display_name.title") .. Locale:getLocalizedText("text_format.color_aqua")
+		local text = Locale:getLocalizedText("action_wheel.main_page.change_display_name.title") .. "§b"
 		text = text .. self.getDisplayName(self.selectingNameDisplayType)
 		if self.selectingNameDisplayType == 1 then
-			text = text .. "\n" .. Locale:getLocalizedText("text_format.color_dark_gray") .. Locale:getLocalizedText("action_wheel.main_page.change_display_name.sub_option") .. Locale:getLocalizedText("text_format.color_dark_gray") .. Locale:getLocalizedText(Locale:getLocalizedText("action_wheel.action.toggle_off"))
+			text = text .. "\n" .. "§8" .. Locale:getLocalizedText("action_wheel.main_page.change_display_name.sub_option") .. "§8" .. Locale:getLocalizedText("action_wheel.action.toggle_off")
 		else
-			text = text .. "\n" .. Locale:getLocalizedText("text_format.reset") .. Locale:getLocalizedText("action_wheel.main_page.change_display_name.sub_option")
+			text = text .. "\n" .. "§r" .. Locale:getLocalizedText("action_wheel.main_page.change_display_name.sub_option")
 			if self.selectingShouldShowClubName then
-				text = text .. Locale:getLocalizedText("text_format.color_green") .. Locale:getLocalizedText("action_wheel.action.toggle_on")
+				text = text .. "§a" .. Locale:getLocalizedText("action_wheel.action.toggle_on")
 			else
-				text = text .. Locale:getLocalizedText("text_format.color_red") .. Locale:getLocalizedText("action_wheel.action.toggle_off")
+				text = text .. "§c" .. Locale:getLocalizedText("action_wheel.action.toggle_off")
 			end
 		end
 		self.changeDisplayNameAction:setTitle(text)

@@ -219,8 +219,8 @@ local Armor = {
 
 		EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
 			self.toggleArmorVisibilityAction
-				:setTitle(Locale:getLocalizedText("action_wheel.main_page.toggle_armor_visibility.title") .. Locale:getLocalizedText("text_format.color_red") .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
-				:setToggleTitle(Locale:getLocalizedText("action_wheel.main_page.toggle_armor_visibility.title") .. Locale:getLocalizedText("text_format.color_green") .. Locale:getLocalizedText("action_wheel.action.toggle_on"))
+				:setTitle(Locale:getLocalizedText("action_wheel.main_page.toggle_armor_visibility.title") .. "§c" .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
+				:setToggleTitle(Locale:getLocalizedText("action_wheel.main_page.toggle_armor_visibility.title") .. "§a" .. Locale:getLocalizedText("action_wheel.action.toggle_on"))
 		end)
 
 		EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
