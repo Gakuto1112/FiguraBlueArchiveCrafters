@@ -3,16 +3,20 @@
 ---@field package openAvatarConfigAction Action アクションホイールでアバター設定ページを開くアクション
 ---@field package vehicleVisibilityAction Action 乗り物モデルの置き換えオプションのトグルアクション
 ---@field package haloForceRenderModeAction Action ヘイロー強制描画モードのトグルアクション
+---@field package fpmModeAction Action First-person Model互換モードのトグルアクション
 ---@field public shouldReplaceVehicleModel boolean 乗り物のモデルを置き換えるべきかどうか
 ---@field public isHaloForceRenderMode boolean ヘイロー強制描画モードが有効かどうか
+---@field package fpmMassageShowed boolean First-person Model互換モードの警告メッセージを表示したかどうか
 local ActionWheelConfig = {
 	page = action_wheel:newPage("config");
 	openAvatarConfigAction = nil;
 	customVehicleVisibilityAction = nil;
 	haloForceRenderModeAction = nil;
+	fpmModeAction = nil;
 
 	shouldReplaceVehicleModel = true;
 	isHaloForceRenderMode = false;
+	fpmMassageShowed = false;
 
 	---初期化関数
 	---@param self ActionWheelConfig
@@ -85,6 +89,39 @@ local ActionWheelConfig = {
 				end)
 			self.page:setAction(2, self.haloForceRenderModeAction)
 
+			--　アクション3. First-person Model互換モード
+			self.fpmModeAction = ActionWheel.getToggleAction()
+          	if client:getVersion() >= "1.20.5" then
+                self.fpmModeAction:setItem("minecraft:player_head[profile={name:\""..player:getName().."\"}]")
+            else
+                self.fpmModeAction:setItem("minecraft:player_head{SkullOwner: \""..player:getName().."\"}")
+            end
+
+			if Config:loadConfig("PRIVATE", "action_wheel_config.is_fpm_mode", false) then
+				self.fpmModeAction:setToggled(true)
+				ActionWheel.setActionToggleHoverColor(self.fpmModeAction, true)
+				events.RENDER:register(self.fpmCompatibilityModeRender, "fpm_mode_render")
+			end
+
+			self.fpmModeAction
+				:setOnToggle(function (_, action)
+					Config:saveConfig("PRIVATE", "action_wheel_config.is_fpm_mode", true)
+					ActionWheel.setActionToggleHoverColor(action, true)
+					events.RENDER:register(self.fpmCompatibilityModeRender, "fpm_mode_render")
+					if not self.fpmMassageShowed then
+						print(Locale:getLocalizedText("message.action_wheel_config.fpm_mode.warning"))
+						self.fpmMassageShowed = true
+					end
+				end)
+				:setOnUntoggle(function (_, action)
+					Config:saveConfig("PRIVATE", "action_wheel_config.is_fpm_mode", false)
+					ActionWheel.setActionToggleHoverColor(action, false)
+					events.RENDER:remove("fpm_mode_render")
+					ModelAlias.alias.avatar.head:setVisible(true)
+					ModelAlias.alias.avatar.head:setOpacity(1)
+				end)
+			self.page:setAction(3, self.fpmModeAction)
+
 			EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
 				self.openAvatarConfigAction:setTitle(Locale:getLocalizedText("action_wheel.main_page.open_avatar_config.title"))
 
@@ -95,9 +132,14 @@ local ActionWheelConfig = {
 				else
 					self.vehicleVisibilityAction:setTitle("§8" .. Locale:getLocalizedText("action_wheel.config_page.custom_vehicle_replacement.title") .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
 				end
+
 				self.haloForceRenderModeAction
 					:setTitle(Locale:getLocalizedText("action_wheel.config_page.halo_force_render_mode.title") .. "§c" .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
 					:setToggleTitle(Locale:getLocalizedText("action_wheel.config_page.halo_force_render_mode.title") .. "§a" .. Locale:getLocalizedText("action_wheel.action.toggle_on"))
+
+				self.fpmModeAction
+					:setTitle(Locale:getLocalizedText("action_wheel.config_page.fpm_mode.title") .. "§c" .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
+					:setToggleTitle(Locale:getLocalizedText("action_wheel.config_page.fpm_mode.title") .. "§a" .. Locale:getLocalizedText("action_wheel.action.toggle_on"))
 			end)
 
 			EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
@@ -111,6 +153,20 @@ local ActionWheelConfig = {
 			end)
 		end
 	end;
+
+	---First-person Model互換性モードにおけるレンダー関数
+    ---@param context Event.Render.context
+    fpmCompatibilityModeRender = function (_, context)
+        local hasShaderPack = client:hasShaderPack()
+        ModelAlias.alias.avatar.head:setVisible(context ~= "OTHER" or hasShaderPack)
+        if context == "OTHER" and hasShaderPack then
+             ModelAlias.alias.avatar.head:setPrimaryRenderType("TRANSLUCENT")
+            ModelAlias.alias.avatar.head:setOpacity(0)
+        else
+            ModelAlias.alias.avatar.head:setPrimaryRenderType()
+            ModelAlias.alias.avatar.head:setOpacity(1)
+        end
+    end;
 }
 
 ---乗り物モデルの置き換え機能のオンオフを設定する。
