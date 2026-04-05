@@ -22,6 +22,14 @@ NetUtils = require("scripts.utils.net_utils")
 ---@type MiscUtils
 MiscUtils = require("scripts.utils.misc_utils")
 
+-- [[ RELEASE_EXCLUSION_START ]] --
+
+---デバッグ用ユーティリティ
+---@type DebugUtils
+DebugUtils = require("scripts.utils.debug_utils")
+
+-- [[ RELEASE_EXCLUSION_END ]] --
+
 
 -- **.抽象クラス群 **
 
@@ -220,4 +228,7 @@ events.ENTITY_INIT:register(function ()
 	ActionWheel:init()
 	ActionWheelConfig:init()
 	ActionWheelGui:init()
+	-- [[ RELEASE_EXCLUSION_START ]] --
+	DebugUtils:init()
+	-- [[ RELEASE_EXCLUSION_END ]] --
 end)

@@ -74,7 +74,7 @@ local ExSkill = {
             end)
         end
 
-        --table.insert(self.bodyYaw, player:getBodyYaw() % 360) //TODO: 使わないなら消す
+        table.insert(self.bodyYaw, player:getBodyYaw() % 360) --//TODO: 使わないなら消す
 
         events.TICK:register(function ()
             if not renderer:isFirstPerson() then
