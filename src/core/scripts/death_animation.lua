@@ -41,10 +41,6 @@ local DeathAnimation = {
         events.DAMAGE:register(function ()
             self.deathCheckDelay = 1
         end)
-
-		KeyManager:register("debug_death_animation", "key.keyboard.keypad.5"):onPress(function (modifiers, self2)
-			self:play()
-		end)
     end;
 
     ---存在しないかもしれないモデルパーツを安全に削除する。
