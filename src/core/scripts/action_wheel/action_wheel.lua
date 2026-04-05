@@ -15,7 +15,9 @@ local ActionWheel = {
 				if not client:isPaused() then
 					local isActionWheelOpened = action_wheel:isEnabled()
 					if isActionWheelOpened ~= self.isActionWheelOpenedPrev then
-						if not isActionWheelOpened then
+						if isActionWheelOpened then
+							EventManager.events["ON_ACTION_WHEEL_OPEN"]:fire()
+						else
 							EventManager.events["ON_ACTION_WHEEL_CLOSE"]:fire()
 						end
 						self.isActionWheelOpenedPrev = isActionWheelOpened

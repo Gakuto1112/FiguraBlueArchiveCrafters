@@ -56,6 +56,10 @@ LocaleChangeEvent = require("scripts.events.locale_change_event")
 ---@type ConfigSyncEvent
 ConfigSyncEvent = require("scripts.events.config_sync_event")
 
+---アクションホイール開イベント
+---@type ActionWheelOpenEvent
+ActionWheelOpenEvent = require("scripts.events.action_wheel_open_event")
+
 ---アクションホイール閉イベント
 ---@type ActionWheelCloseEvent
 ActionWheelCloseEvent = require("scripts.events.action_wheel_close_event")
@@ -169,6 +173,9 @@ ActionWheel = require("scripts.action_wheel.action_wheel")
 ---@type ActionWheelConfig
 ActionWheelConfig = require("scripts.action_wheel.action_wheel_config")
 
+---アクションホイールの追加のGUIの管理
+---@type ActionWheelGui
+ActionWheelGui = require("scripts.action_wheel.action_wheel_gui")
 
 -- *** モジュールの初期化 ***
 ModelAlias:init()
@@ -179,6 +186,7 @@ events.ENTITY_INIT:register(function ()
 	LocaleRefreshEvent:init()
 	LocaleChangeEvent:init()
 	ConfigSyncEvent:init()
+	ActionWheelOpenEvent:init()
 	ActionWheelCloseEvent:init()
 	VanillaModel.init()
 	CompatibilityUtils:init()
@@ -201,4 +209,5 @@ events.ENTITY_INIT:register(function ()
 	Costume:init()
 	ActionWheel:init()
 	ActionWheelConfig:init()
+	ActionWheelGui:init()
 end)
