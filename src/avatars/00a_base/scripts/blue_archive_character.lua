@@ -34,6 +34,7 @@
 
 ---@class (exact) BlueArchiveCharacter.BasicStruct 生徒の基本情報のデータ構造体
 ---@field public avatarName string アバターのファイル名（例: "00a_base", "01a_shizuko", "01b_shizuko_swimsuit"）
+---@field public birth BlueArchiveCharacter.MonthDaySet 生徒の誕生日
 
 ---@class (exact) BlueArchiveCharacter.FacePartsStruct 目や口による表情のデータ構造体。UVマッピング情報は、デフォルトパーツから見て左からx番目、上からy番目とする。
 ---@field public rightEye {[BlueArchiveCharacter.RightEyeTextures]: Vector2} 右目のテクスチャのUVマッピング情報
@@ -203,6 +204,10 @@
 
 --[[ ******************************** ]]
 
+---@class (exact) BlueArchiveCharacter.MonthDaySet 日月のデータセット
+---@field public month integer 月
+---@field public day integer 日
+
 ---@class (exact) BlueArchiveCharacter.Vector3RightLeftSet 左右で別々にVector3が定義できるデータセット
 ---@field public right? Vector3 右
 ---@field public left? Vector3 左
@@ -225,6 +230,11 @@
 local BlueArchiveCharacter = {
 	basic = {
 		avatarName = "00a_base";
+
+		birth = {
+			month = 1;
+			day = 1;
+		};
 	};
 
 	faceParts = {

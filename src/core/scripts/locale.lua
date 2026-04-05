@@ -361,10 +361,11 @@ local Locale = {
 	---どちらも見つからない場合は、翻訳キー自体を返す。
 	---@param self Locale
 	---@param key string ローカライズされたテキストを取得するための翻訳キー
+	---@param forceGlobal? boolean `true`にすると、現在のロケールに関係なく、グローバルロケール（en_us）からテキストを取得する。
 	---@return string localizedText ローカライズされたテキスト、または翻訳キー自体。
-	getLocalizedText = function (self, key)
+	getLocalizedText = function (self, key, forceGlobal)
 		local locale = self.activeLocale == "auto" and client:getActiveLang() or self.activeLocale
-		if self.locales[locale] ~= nil and self.locales[locale][key] ~= nil then
+		if not forceGlobal and self.locales[locale] ~= nil and self.locales[locale][key] ~= nil then
 			return self.locales[locale][key]
 		elseif self.locales["en_us"] ~= nil and self.locales["en_us"][key] ~= nil then
 			return self.locales["en_us"][key]

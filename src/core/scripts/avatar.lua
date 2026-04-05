@@ -103,6 +103,10 @@ Skirt = require("scripts.skirt")
 ---@type Armor
 Armor = require("scripts.armor")
 
+---プレイヤーの表示名やネームプレートの制御
+---@type Nameplate
+Nameplate = require("scripts.nameplate")
+
 ---頭ブロックのモデルの制御
 ---@type HeadBlock
 HeadBlock = require("scripts.head_block")
@@ -155,6 +159,7 @@ events.ENTITY_INIT:register(function ()
 	Arms:init()
 	Skirt.init()
 	Armor:init()
+	Nameplate:init()
 	Portrait:init()
 	Gun:init()
 	ExSkill:init()
