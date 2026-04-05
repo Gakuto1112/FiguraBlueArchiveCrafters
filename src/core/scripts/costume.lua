@@ -1,6 +1,8 @@
 ---@class (exact) Costume キャラクターのコスチュームを管理するクラス
+---@field public isAltCostume boolean バリエーション衣装かどうか
 ---@field package changeAltCostumeAction Action キャラクターのバリエーション衣装を切り替えるアクション
 local Costume = {
+	isAltCostume = false;
 	changeAltCostumeAction = nil;
 
 	---初期化関数
@@ -13,7 +15,7 @@ local Costume = {
 
 			if Config:loadConfig("PRIVATE", "costume.is_alt_costume", false) then
 				if BlueArchiveCharacter.costume.isAltCostumeEnabled then
-					self.setAltCostume(true)
+					self:setAltCostume(true)
 					self.changeAltCostumeAction:setToggled(true)
 					ActionWheel.setActionToggleHoverColor(self.changeAltCostumeAction, true)
 					Config.syncConfigs["isAltCostume"] = true
@@ -26,12 +28,12 @@ local Costume = {
 			if BlueArchiveCharacter.costume.isAltCostumeEnabled then
 				self.changeAltCostumeAction
 					:setOnToggle(function (_, action)
-						self.setAltCostume(true)
+						self:setAltCostume(true)
 						ActionWheel.setActionToggleHoverColor(action, true)
 						Config:saveConfig("PRIVATE", "costume.is_alt_costume", true)
 					end)
 					:setOnUntoggle(function (_, action)
-						self.setAltCostume(false)
+						self:setAltCostume(false)
 						ActionWheel.setActionToggleHoverColor(action, false)
 						Config:saveConfig("PRIVATE", "costume.is_alt_costume", false)
 					end)
@@ -64,26 +66,28 @@ local Costume = {
 
 		EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
 			if configData["isAltCostume"] then
-				self.setAltCostume(true)
+				self:setAltCostume(true)
 			end
 		end)
     end;
 
 	---バリエーション衣装(通常衣装と少し異なる衣装、以前の「別衣装」ではない)を設定する。
+	---@param self Costume
 	---@param isAlt boolean `false`: 通常衣装, `true`: バリエーション衣装
-	setAltCostume = function (isAlt)
+	setAltCostume = function (self, isAlt)
 		if BlueArchiveCharacter.costume.isAltCostumeEnabled and BlueArchiveCharacter.costume.callbacks ~= nil and BlueArchiveCharacter.costume.callbacks.onAltChange ~= nil then
 			BlueArchiveCharacter.costume.callbacks.onAltChange(BlueArchiveCharacter, isAlt)
 			HeadBlock:generateHeadBlockModel()
 			Portrait:generateHeadModel()
 		end
+		self.isAltCostume = isAlt
 	end;
 }
 
 ---バリエーション衣装を設定する。
 ---@param isAlt boolean `false`: 通常衣装, `true`: バリエーション衣装
 function pings.costume_setAltCostume(isAlt)
-	Costume.setAltCostume(isAlt)
+	Costume:setAltCostume(isAlt)
 end
 
 return Costume

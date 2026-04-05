@@ -66,10 +66,9 @@ local Halo = {
                     else
                         ModelAlias.alias.avatar.halo:setPos(Physics.velocityAverage[3][2] * -3, math.cos(math.rad(headRot)) * Physics.velocityAverage[2][2] * -1 + math.sin(math.rad(headRot)) * Physics.velocityAverage[1][2] + floatOffset, math.cos(math.rad(headRot)) * Physics.velocityAverage[1][2] * 3 + math.sin(math.rad(headRot)) * Physics.velocityAverage[2][2])
                     end
-					--//TODO: 死亡アニメーション再実装後
-                    --if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
-                    --    self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setPos(0, floatOffset, 0)
-                    --end
+                    if ModelAlias.alias.dummy_avatar ~= nil then
+                        ModelAlias.alias.dummy_avatar.halo:setPos(0, floatOffset, 0)
+                    end
                     ModelAlias.alias.avatar.halo:setRot(headRot - (ExSkill.animationCount > -1 and ModelAlias.alias.avatar.head:getAnimRot().x or math.deg(math.asin(player:getLookDir().y))) + self.initialHaloRot, 0, 0)
                 else
                     ModelAlias.alias.avatar.halo:setRot(self.initialHaloRot, 0, 0)
@@ -77,16 +76,14 @@ local Halo = {
             end
             if context == "OTHER" and client:hasShaderPack() and not self.isForceRenderMode then
                 ModelAlias.alias.avatar.halo:setVisible(false)
-				--//TODO: 死亡アニメーション再実装後
-                --if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
-                --    self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setVisible(false)
-                --end
+                if ModelAlias.alias.dummy_avatar ~= nil then
+                    ModelAlias.alias.dummy_avatar.halo:setVisible(false)
+                end
             else
 				ModelAlias.alias.avatar.halo:setVisible(true)
-				--//TODO: 死亡アニメーション再実装後
-                --if self.parent.deathAnimation.dummyAvatarRoot ~= nil then
-                --    self.parent.deathAnimation.dummyAvatarRoot.Head.HeadRing:setVisible(true)
-                --end
+                if ModelAlias.alias.dummy_avatar ~= nil then
+                    ModelAlias.alias.dummy_avatar.halo:setVisible(true)
+                end
             end
         end)
 

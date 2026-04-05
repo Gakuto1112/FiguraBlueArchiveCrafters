@@ -169,6 +169,10 @@ Costume = require("scripts.costume")
 ---@type Bubble
 Bubble = require("scripts.bubble")
 
+---死亡演出アニメーションの制御
+---@type DeathAnimation
+DeathAnimation = require("scripts.death_animation")
+
 ---アクションホイールの管理
 ---@type ActionWheel
 ActionWheel = require("scripts.action_wheel.action_wheel")
@@ -212,6 +216,7 @@ events.ENTITY_INIT:register(function ()
 	ExSkillFrameParticleManager.init()
 	Costume:init()
 	Bubble:init()
+	DeathAnimation:init()
 	ActionWheel:init()
 	ActionWheelConfig:init()
 	ActionWheelGui:init()

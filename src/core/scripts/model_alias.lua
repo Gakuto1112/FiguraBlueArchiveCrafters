@@ -71,7 +71,9 @@ local ModelAlias = {
 		aliasTable.rightElytraPivot = aliasTable.upperBody.RightElytraPivot
 		aliasTable.leftElytraPivot = aliasTable.upperBody.LeftElytraPivot
 		aliasTable.gun = aliasTable.body.Gun
-		aliasTable.muzzleAnchor = aliasTable.gun.MuzzleAnchor
+		if aliasTable.gun ~= nil then
+			aliasTable.muzzleAnchor = aliasTable.gun.MuzzleAnchor
+		end
 		aliasTable.lowerBody = aliasTable.root.LowerBody
 		aliasTable.legs = aliasTable.lowerBody.Legs
 		aliasTable.rightLeg = aliasTable.legs.RightLeg

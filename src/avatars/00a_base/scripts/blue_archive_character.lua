@@ -84,6 +84,9 @@
 ---@class (exact) BlueArchiveCharacter.portraitStruct ポートレートのデータ構造体
 ---@field public includeModels ModelPart[] ポートレートに追加でアタッチするモデル
 
+---@class BlueArchiveCharacter.DeathAnimationStruct 死亡アニメーションのデータ構造体
+---@field public callbacks? BlueArchiveCharacter.DeathAnimationCallbacks 死亡アニメーションのコールバック関数
+
 ---@class (exact) BlueArchiveCharacter.PhysicsStruct 物理演算のデータ構造体
 ---@field public physicData BlueArchiveCharacter.PhysicDataSet[] 物理演算データ
 ---@field public callbacks? BlueArchiveCharacter.PhysicCallbacks 物理演算のコールバック関数
@@ -179,6 +182,12 @@
 ---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直前に実行される関数
 ---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直後に実行される関数
 
+---@class (exact) BlueArchiveCharacter.DeathAnimationCallbacks 死亡アニメーションのコールバック関数のセット
+---@field public onPhase1? fun(self: BlueArchiveCharacter, isAltCostume: boolean) 死亡アニメーションが再生された直後に実行される関数
+---@field public onPhase2? fun(self: BlueArchiveCharacter, isAltCostume: boolean) ダミーアバターが縄ばしごにつかまった直後に実行される関数
+---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直前に実行される関数
+---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直後に実行される関数
+
 ---@class (exact) BlueArchiveCharacter.PhysicDataSet 物理演算のデータセット
 ---@field public models ModelPart[] 物理演算の対象にするモデルパーツ
 ---@field public x? BlueArchiveCharacter.PhysicAxisData x軸のデータ
@@ -236,6 +245,7 @@
 ---@field public headModel BlueArchiveCharacter.HeadModelStruct コピーした頭モデル
 ---@field public headBlock BlueArchiveCharacter.HeadBlockStruct 頭ブロック
 ---@field public portrait BlueArchiveCharacter.portraitStruct ポートレート（Tabキーで表示できるプレイヤーリストに表示される顔）
+---@field public deathAnimation BlueArchiveCharacter.DeathAnimationStruct 死亡アニメーション
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
@@ -356,6 +366,10 @@ local BlueArchiveCharacter = {
 
 	portrait = {
 		includeModels = {};
+	};
+
+	deathAnimation = {
+
 	};
 
 	physics = {
