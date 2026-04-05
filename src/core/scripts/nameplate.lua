@@ -80,16 +80,6 @@ local Nameplate = {
 			end)
 		end
 
-        --events.TICK:register(function () --//TODO: アクションホイールによる名前変更実装後
-        --    local locale = client:getActiveLang()
-        --    if locale ~= self.localePrev then
-        --        if self.shouldShowClubName then
-        --            self:setName(self.currentName, true)
-        --        end
-        --        self.localePrev = locale
-        --    end
-        --end)
-
         events.RENDER:register(function (delta, context)
             if context ~= "PAPERDOLL" then
 				nameplate.ENTITY:setPivot(ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.nameplate):sub(player:getPos(delta)))
