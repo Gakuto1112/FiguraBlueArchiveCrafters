@@ -1,6 +1,4 @@
 ---@class (exact) ActionWheelCloseEvent : AbstractEvent アクションホイールが閉じられた際のイベントクラス
----@field public register fun(self: ActionWheelCloseEvent, callback: fun(), name?: string) イベントにコールバック関数登録する。
----@field public fire fun(self: ActionWheelCloseEvent) 登録された全てのコールバック関数を呼ぶ。
 local ActionWheelCloseEvent = {
 	---コンストラクタ
 	---@return ActionWheelCloseEvent instance
