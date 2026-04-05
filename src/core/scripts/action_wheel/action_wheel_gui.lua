@@ -28,13 +28,13 @@ local ActionWheelGui = {
 
 				local bubbleGuideTextTasks = {models.models.action_wheel_gui.Gui.BubbleGuide:getTask("action_wheel.gui.bubble_guide.title"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.GoodEmoji:getTask("bubble_guide.bubble_1.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.HeartEmoji:getTask("bubble_guide.bubble_2.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.NoteEmoji:getTask("bubble_guide.bubble_3.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.QuestionEmoji:getTask("bubble_guide.bubble_4.key_name"), models.models.action_wheel_gui.Gui.BubbleGuide.Emojis.SweatEmoji:getTask("bubble_guide.bubble_5.key_name")}
 				for i = 2, #bubbleGuideTextTasks do
-					--bubbleGuideTextTasks[i]:setText("§0" .. KeyManager.keyMappings["bubble_"..(i - 1)].keybind:getKeyName()) --//TODO: 吹き出しエモート再実装後
+					bubbleGuideTextTasks[i]:setText("§0" .. KeyManager.keyMappings["bubble_"..(i - 1)].keybind:getKeyName())
 				end
 
 				local bubbleGuideTitleWidth = client.getTextWidth(bubbleGuideTextTasks[1]:getText()) / 2 + 4
 				local bubbleGuideBodyWidth = 0
 				for i = 2, #bubbleGuideTextTasks do
-					--bubbleGuideBodyWidth = math.max(bubbleGuideBodyWidth, client.getTextWidth(bubbleGuideTextTasks[i]:getText()) * 0.5) --//TODO: 吹き出しエモート再実装後
+					bubbleGuideBodyWidth = math.max(bubbleGuideBodyWidth, client.getTextWidth(bubbleGuideTextTasks[i]:getText()) * 0.5)
 				end
 				local bubbleGuideWidth = math.max(bubbleGuideTitleWidth + 6, bubbleGuideBodyWidth + 22)
 				bubbleGuideWidth = math.max(bubbleGuideWidth, 39)

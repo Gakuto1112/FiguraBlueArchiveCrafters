@@ -165,6 +165,10 @@ ExSkillFrameParticleManager = ExSkillFrameParticleManager:new()
 ---@type Costume
 Costume = require("scripts.costume")
 
+---吹き出しエモートの管理
+---@type Bubble
+Bubble = require("scripts.bubble")
+
 ---アクションホイールの管理
 ---@type ActionWheel
 ActionWheel = require("scripts.action_wheel.action_wheel")
@@ -207,6 +211,7 @@ events.ENTITY_INIT:register(function ()
 	ExSkill:init()
 	ExSkillFrameParticleManager.init()
 	Costume:init()
+	Bubble:init()
 	ActionWheel:init()
 	ActionWheelConfig:init()
 	ActionWheelGui:init()

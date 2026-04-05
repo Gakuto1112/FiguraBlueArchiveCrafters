@@ -72,6 +72,9 @@
 ---@field public isAltCostumeEnabled boolean バリエーション衣装が有効（ある）かどうか
 ---@field public callbacks? BlueArchiveCharacter.CostumeCallbacks コスチュームのコールバック関数
 
+---@class (exact) BlueArchiveCharacter.BubbleStruct 吹き出しエモートのデータ構造体
+---@field public callbacks? BlueArchiveCharacter.BubbleCallbacks 吹き出しエモートのコールバック関数
+
 ---@class (exact) BlueArchiveCharacter.HeadModelStruct 頭モデルのデータ構造体
 ---@field public callbacks? BlueArchiveCharacter.HeadModelCallbacks 頭モデルのコピー処理のコールバック関数
 
@@ -167,6 +170,11 @@
 ---@field public onAltChange? fun(self: BlueArchiveCharacter, isAlt: boolean) 衣装のバリエーションが変更されたときに実行されるコールバック関数
 ---@field public onArmorChange? fun(self: BlueArchiveCharacter, parts: Armor.ArmorPart, isVisible: boolean) 防具が変更された（防具が見える/見えない）ときに実行されるコールバック関数
 
+---@class (exact) BlueArchiveCharacter.BubbleCallbacks 吹き出しエモートのコールバック関数のセット
+---@field public additionalCheckFunc? fun(self: BlueArchiveCharacter): boolean 吹き出しエモートを表示するかどうかの追加チェック関数
+---@field public onPlay? fun(self: BlueArchiveCharacter, type: Bubble.BubbleType, duration: integer, isShownInGui: boolean) 吹き出しエモートが再生された時に実行されるコールバック関数
+---@field public onStop? fun(self: BlueArchiveCharacter, type: Bubble.BubbleType, forcedStop: boolean) 吹き出しアニメーション終了時に実行されるコールバック関数
+
 ---@class (exact) BlueArchiveCharacter.HeadModelCallbacks 頭モデルのコピー処理のコールバック関数のセット
 ---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直前に実行される関数
 ---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直後に実行される関数
@@ -224,6 +232,7 @@
 ---@field public placementObjects BlueArchiveCharacter.PlacementObjectStruct[] 設置物
 ---@field public exSkill BlueArchiveCharacter.ExSkillStruct Exスキル
 ---@field public costume BlueArchiveCharacter.CostumeStruct コスチューム
+---@field public bubble BlueArchiveCharacter.BubbleStruct 吹き出しエモート
 ---@field public headModel BlueArchiveCharacter.HeadModelStruct コピーした頭モデル
 ---@field public headBlock BlueArchiveCharacter.HeadBlockStruct 頭ブロック
 ---@field public portrait BlueArchiveCharacter.portraitStruct ポートレート（Tabキーで表示できるプレイヤーリストに表示される顔）
@@ -331,6 +340,10 @@ local BlueArchiveCharacter = {
 
 	costume = {
 		isAltCostumeEnabled = false;
+	};
+
+	bubble = {
+
 	};
 
 	headModel = {

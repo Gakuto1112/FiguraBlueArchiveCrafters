@@ -15,7 +15,10 @@
 	"autoScripts": [
 		"scripts/avatar.lua"
 	],
-	"autoAnims": [],
+	"autoAnims": [
+		"models.main.halo_sleep",
+		"models.bubble.bubble_show"
+	],
 	"customizations": {
 		"models.models.main": {
 			"primaryRenderType": "CUTOUT"
@@ -159,13 +162,25 @@
 			"visible": false,
 			"moveTo": "models.models.main.Avatar.UpperBody.Body"
 		},
+		"models.models.ex_skill_frame.Particles": {
+			"visible": false
+		},
+		"models.models.bubble.Bubble": {
+			"moveTo": "models.models.main.Avatar.UpperBody.Body",
+			"primaryRenderType": "TRANSLUCENT",
+			"parentType": "Camera",
+			"visible": false
+		},
+		"models.models.bubble.Bubble.BubbleInner.Bullets": {
+			"visible": false
+		},
+		"models.models.bubble.Bubble.BubbleInner.Dots": {
+			"visible": false
+		},
 		"models.models.shield.Shield": {
 			"visible": false,
 			"moveTo": "models.models.main.Avatar",
 			"primaryRenderType": "CUTOUT_EMISSIVE_SOLID"
-		},
-		"models.models.ex_skill_frame.Particles": {
-			"visible": false
 		}
 	}
 }

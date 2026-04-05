@@ -240,7 +240,7 @@ local ExSkill = {
             models.models.ex_skill_frame.Gui:setColor(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].formationType == "STRIKER" and vectors.vec3(1, 0.75, 0.75) or vectors.vec3(0.75, 1, 1))
             models.models.ex_skill_frame.Gui.FrameBar:setScale(1, client:getScaledWindowSize().y * math.sqrt(2) / 16 + 1, 1)
         end
-        --self.parent.bubble:stop() //TODO: 吹き出しエモート再実装後
+        Bubble:stop()
         sounds:playSound("minecraft:entity.player.levelup", player:getPos(), 5, 2)
         if BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks ~= nil and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPreTransition ~= nil then
             BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPreTransition(BlueArchiveCharacter)
