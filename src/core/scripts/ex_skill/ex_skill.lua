@@ -59,7 +59,7 @@ local ExSkill = {
                         pings.playExSkill(false)
                     else
                         print(Locale:getLocalizedText("message.ex_skill.unavailable" .. (renderer:isFirstPerson() and "_firstperson" or "")))
-                        sounds:playSound("minecraft:block.note_block.bass", player:getPos(), 1, 0.5)
+                        MiscUtils.playErrorSound()
                     end
                     self.keyPressCount = 0
                 end
@@ -69,7 +69,7 @@ local ExSkill = {
                     pings.playExSkill(true)
                 else
                     print(Locale:getLocalizedText(BlueArchiveCharacter.exSkill.secondary == nil and "message.ex_skill.unavailable_secondary" or ("message.ex_skill.unavailable" .. (renderer:isFirstPerson() and "_firstperson" or ""))))
-                    sounds:playSound("minecraft:block.note_block.bass", player:getPos(), 1, 0.5)
+                    MiscUtils.playErrorSound()
                 end
             end)
         end

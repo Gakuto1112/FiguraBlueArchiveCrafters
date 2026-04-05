@@ -13,6 +13,11 @@ local MiscUtils = {
         setmetatable(class, {__index = super})
 		return instance
     end;
+
+	---エラーサウンドを再生する。
+	playErrorSound = function ()
+		sounds:playSound("minecraft:block.note_block.bass", player:getPos(), 1, 0.5)
+	end;
 }
 
 return MiscUtils
