@@ -127,6 +127,10 @@ Portrait = require("scripts.portrait")
 ---@type Gun
 Gun = require("scripts.gun")
 
+---シールド視覚効果の制御
+---@type Shield
+Shield = require("scripts.shield")
+
 ---設置物のインスタンスクラス
 ---@type PlacementObject
 PlacementObject = require("scripts.placement_object.placement_object")
@@ -178,6 +182,7 @@ events.ENTITY_INIT:register(function ()
 	Nameplate:init()
 	Portrait.init()
 	Gun:init()
+	Shield:init()
 	PlacementObjectManager:init()
 	ExSkill:init()
 	ExSkillFrameParticleManager.init()
