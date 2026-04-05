@@ -38,6 +38,7 @@ local Shield = {
 	---@param isVisible boolean シールドを表示するかどうか
 	setShield = function (self, isVisible)
 		if isVisible then
+			ModelAlias.alias.avatar.nameplate:setPos(0, 4, 0)
 			for i = 1, 32 do
             	self.animationCounts[i] = math.random(0, 39)
 			end
@@ -70,6 +71,7 @@ local Shield = {
 			events.TICK:remove("shield_tick")
 			events.RENDER:remove("shield_render")
 			ModelAlias.alias.avatar.root.Shield:setVisible(false)
+			ModelAlias.alias.avatar.nameplate:setPos(0, 0, 0)
         end
 		self.isShieldVisible = isVisible
 	end;

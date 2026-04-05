@@ -20,7 +20,6 @@
 ---@field leftItemPivot ModelPart 左手に持ったアイテムの接点
 ---@field rightElytraPivot ModelPart エリトラの右翼の接点
 ---@field leftElytraPivot ModelPart エリトラの左翼の接点
----@field nameplate ModelPart ネームプレートのアンカー
 ---@field gun ModelPart 固有武器
 ---@field muzzleAnchor ModelPart 固有武器のマズル部分
 ---@field lowerBody ModelPart 下半身
@@ -29,6 +28,7 @@
 ---@field rightLegBottom ModelPart 右脚の下部
 ---@field leftLeg ModelPart 左脚の上部
 ---@field leftLegBottom ModelPart 左脚の下部
+---@field nameplate ModelPart ネームプレートのアンカー
 
 ---@class (exact) ModelAlias モデルパーツのエイリアスを管理するクラス
 ---@field alias { avatar: ModelAliasTable, dummy_avatar: ModelAliasTable } モデルのエイリアスを格納するテーブル
@@ -70,7 +70,6 @@ local ModelAlias = {
 		aliasTable.leftItemPivot = aliasTable.leftArmBottom.LeftItemPivot
 		aliasTable.rightElytraPivot = aliasTable.upperBody.RightElytraPivot
 		aliasTable.leftElytraPivot = aliasTable.upperBody.LeftElytraPivot
-		aliasTable.nameplate = aliasTable.body.NameplateAnchor
 		aliasTable.gun = aliasTable.body.Gun
 		aliasTable.muzzleAnchor = aliasTable.gun.MuzzleAnchor
 		aliasTable.lowerBody = aliasTable.root.LowerBody
@@ -79,6 +78,7 @@ local ModelAlias = {
 		aliasTable.rightLegBottom = aliasTable.rightLeg.RightLegBottom
 		aliasTable.leftLeg = aliasTable.legs.LeftLeg
 		aliasTable.leftLegBottom = aliasTable.leftLeg.LeftLegBottom
+		aliasTable.nameplate = aliasTable.root.NameplateAnchor
 
 		return aliasTable
 	end;

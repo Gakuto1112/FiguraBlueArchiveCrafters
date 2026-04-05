@@ -92,8 +92,7 @@ local Nameplate = {
 
         events.RENDER:register(function (delta, context)
             if context ~= "PAPERDOLL" then
-                --nameplate.ENTITY:setPivot(ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.nameplate):sub(player:getPos(delta)):add(0, self.parent.barrier.isBarrierVisible and 1.095 or 0.895, 0)) --//TODO: バリアの再実装後
-				nameplate.ENTITY:setPivot(ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.nameplate):sub(player:getPos(delta)):add(0, 0.895, 0))
+				nameplate.ENTITY:setPivot(ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.nameplate):sub(player:getPos(delta)))
             else
                 nameplate.ENTITY:setPivot()
             end
