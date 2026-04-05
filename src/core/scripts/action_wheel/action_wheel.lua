@@ -6,15 +6,29 @@
 ---@class (exact) ActionWheel アクションホイールを管理するクラス
 ---@field package mainPage Page アクションホイールのメインページのインスタンス
 ---@field package configPage Page アクションホイールのアバター設定ページのインスタンス
+---@field package isActionWheelOpenedPrev boolean 前ティックにアクションホイールが開いていたかどうか
 local ActionWheel = {
 	mainPage = action_wheel:newPage("main");
 	configPage = action_wheel:newPage("config");
+	isActionWheelOpenedPrev = false;
 
     ---初期化関数
     ---@param self ActionWheel
     init = function (self)
 		if host:isHost() then
 			action_wheel:setPage(self.mainPage)
+
+			events.TICK:register(function ()
+				if not client:isPaused() then
+					local isActionWheelOpened = action_wheel:isEnabled()
+					if isActionWheelOpened ~= self.isActionWheelOpenedPrev then
+						if not isActionWheelOpened then
+							EventManager.events["ON_ACTION_WHEEL_CLOSE"]:fire()
+						end
+						self.isActionWheelOpenedPrev = isActionWheelOpened
+					end
+				end
+			end)
 		end
 	end;
 
@@ -29,6 +43,14 @@ local ActionWheel = {
 		elseif target == "CONFIG" then
 			self.configPage:setAction(index or -1, action)
 		end
+	end;
+
+	---アクションの雛形を生成して返す。
+	---@return Action actionTemplate アクションの雛形
+	getAction = function ()
+		return action_wheel:newAction()
+			:setColor(0.78, 0.78, 0.78)
+			:setHoverColor(1, 1, 1)
 	end;
 
 	---トグルアクションの雛形を生成して返す。

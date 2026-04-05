@@ -42,12 +42,11 @@ local Costume = {
 					:setColor(0.16, 0.16, 0.16)
 					:setOnToggle(function (_, action)
 						action:setToggled(false)
-						print(Locale:getLocalizedText("action_wheel.main_page.change_alt_costume.unavailable"))
+						print(Locale:getLocalizedText("message.action_wheel.change_alt_costume.unavailable"))
 						MiscUtils.playErrorSound()
 					end)
 			end
 			self:setChangeAltCostumeActionTitle()
-
 			ActionWheel:setAction(self.changeAltCostumeAction, "MAIN", 1)
 		end
 
@@ -77,9 +76,9 @@ local Costume = {
 		text = text .. Locale:getLocalizedText("action_wheel.main_page.change_alt_costume.title")
 		if BlueArchiveCharacter.costume.isAltCostumeEnabled then
 			if ActionWheel.getToggleActionState(self.changeAltCostumeAction) then
-				text = text .. " " .. Locale:getLocalizedText("text_format.color_green") .. Locale:getLocalizedText("action_wheel.action.toggle_on")
+				text = text .. Locale:getLocalizedText("text_format.color_green") .. Locale:getLocalizedText("action_wheel.action.toggle_on")
 			else
-				text = text .. " " .. Locale:getLocalizedText("text_format.color_red") .. Locale:getLocalizedText("action_wheel.action.toggle_off")
+				text = text .. Locale:getLocalizedText("text_format.color_red") .. Locale:getLocalizedText("action_wheel.action.toggle_off")
 			end
 		else
 			text = text .. Locale:getLocalizedText("action_wheel.action.toggle_off")

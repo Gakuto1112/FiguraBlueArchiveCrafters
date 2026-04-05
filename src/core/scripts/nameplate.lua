@@ -14,23 +14,70 @@
 
 ---@class (exact) Nameplate プレイヤーの表示名やネームプレートを制御するクラス
 ---@field public nameDisplayType integer 現在の表示名のタイプ：1. プレイヤー名, 2. 名のみ（英語）, 3. 名性（英語）, 4. 性名（英語）, 5. 名のみ（ローカル）, 6. 名性（ローカル）, 7. 性名（ローカル）
+---@field package selectingNameDisplayType integer アクションホイールで選択中の表示名タイプ
 ---@field public shouldShowClubName boolean 部活名を表示するかどうか
+---@field package selectingShouldShowClubName boolean アクションホイールで選択中の部活名表示のオンオフ
+---@field public changeDisplayNameAction Action プレイヤーの表示名を切り替えるアクション
 ---@field package localePrev string 前ティックの設定言語
 local Nameplate = {
 	nameDisplayType = 1;
+	selectingNameDisplayType = 1;
 	shouldShowClubName = false;
+	selectingShouldShowClubName = false;
+	changeDisplayNameAction = nil;
 
     ---コンストラクタ
     ---@param self Nameplate
     init = function (self)
 		if host:isHost() then
 			self.nameDisplayType = Config:loadConfig("PRIVATE", "name.name_display_type", 1)
+			self.selectingNameDisplayType = self.nameDisplayType
 			self.shouldShowClubName = Config:loadConfig("PRIVATE", "name.should_show_club_name", false)
+			self.selectingShouldShowClubName = self.shouldShowClubName
 
 			local displayNameData = self.getDisplayNameData(self.nameDisplayType, self.shouldShowClubName)
 			pings.nameplate_setName(displayNameData)
+			Config.syncConfigs["displayNameData"] = displayNameData
 
-			Config.syncConfigs["displayNameData"] = displayNameData;
+			self.changeDisplayNameAction = ActionWheel:getAction()
+				:setItem("minecraft:name_tag")
+				:setOnScroll(function (direction)
+					local lang = client:getActiveLang()
+					local maxNumber = (lang ~= "en_us" and Locale.availableLocales[lang] ~= nil) and 7 or 4
+					if direction < 0 then
+						self.selectingNameDisplayType = self.selectingNameDisplayType >= maxNumber and 1 or self.selectingNameDisplayType + 1
+					else
+						self.selectingNameDisplayType = self.selectingNameDisplayType == 1 and maxNumber or self.selectingNameDisplayType - 1
+					end
+					self:setChangeDisplayNameActionTitle()
+				end)
+				:setOnLeftClick(function (action)
+					if self.selectingNameDisplayType >= 2 then
+						self.selectingShouldShowClubName = not self.selectingShouldShowClubName
+						self:setChangeDisplayNameActionTitle()
+					end
+				end)
+			self:setChangeDisplayNameActionTitle()
+
+			ActionWheel:setAction(self.changeDisplayNameAction, "MAIN", 2)
+
+			EventManager.events["ON_ACTION_WHEEL_CLOSE"]:register(function ()
+				if self.selectingNameDisplayType ~= self.nameDisplayType or self.selectingShouldShowClubName ~= self.shouldShowClubName then
+					local displayNameData2 = self.getDisplayNameData(self.selectingNameDisplayType, self.selectingShouldShowClubName)
+					pings.nameplate_setName(displayNameData2)
+					Config.syncConfigs["displayNameData"] = displayNameData2
+					if self.selectingNameDisplayType ~= self.nameDisplayType then
+						print(Locale:getLocalizedText("message.action_wheel.change_display_name.done"):format(Locale:getLocalizedText("text_format.color_aqua"), self.getDisplayName(self.selectingNameDisplayType), Locale:getLocalizedText("text_format.reset")))
+					elseif self.selectingShouldShowClubName then
+						print(Locale:getLocalizedText("message.action_wheel.change_display_name.club_name_on"))
+					else
+						print(Locale:getLocalizedText("message.action_wheel.change_display_name.club_name_off"))
+					end
+					sounds:playSound("minecraft:ui.cartography_table.take_result", player:getPos())
+					self.nameDisplayType = self.selectingNameDisplayType
+					self.shouldShowClubName = self.selectingShouldShowClubName
+				end
+			end)
 		end
 
         --events.TICK:register(function () --//TODO: アクションホイールによる名前変更実装後
@@ -52,10 +99,53 @@ local Nameplate = {
             end
         end)
 
+		EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
+			self:setChangeDisplayNameActionTitle()
+		end)
+
 		EventManager.events["ON_CONFIG_SYNC"]:register(function (syncData)
 			self.setName(syncData["displayNameData"])
 		end)
     end;
+
+	---入力された表示タイプに対応するプレイヤーの表示名を返す。
+	---@param type integer 表示名の種類：1. プレイヤー名, 2. 名のみ（英語）, 3. 名性（英語）, 4. 性名（英語）, 5. 名のみ（ローカル）, 6. 名性（ローカル）, 7. 性名（ローカル）
+	---@return string displayName プレイヤーの表示名
+	getDisplayName = function (type)
+		if type == 1 then
+			return player:getName()
+		else
+			local name = Locale:getLocalizedText("character.first_name", type <= 4)
+			if (type - 2) % 3 == 0 then
+				return name
+			else
+				local lastName = Locale:getLocalizedText("character.last_name", type <= 4)
+				if (type - 2) % 3 == 1 then
+					return name .. " " .. lastName
+				else
+					return lastName .. " " .. name
+				end
+			end
+		end
+	end;
+
+	---プレイヤー表示名切り替えアクションのタイトルを更新する。
+	---@param self Nameplate
+	setChangeDisplayNameActionTitle = function (self)
+		local text = Locale:getLocalizedText("action_wheel.main_page.change_display_name.title") .. Locale:getLocalizedText("text_format.color_aqua")
+		text = text .. self.getDisplayName(self.selectingNameDisplayType)
+		if self.selectingNameDisplayType == 1 then
+			text = text .. "\n" .. Locale:getLocalizedText("text_format.color_dark_gray") .. Locale:getLocalizedText("action_wheel.main_page.change_display_name.sub_option") .. Locale:getLocalizedText("text_format.color_dark_gray") .. Locale:getLocalizedText(Locale:getLocalizedText("action_wheel.action.toggle_off"))
+		else
+			text = text .. "\n" .. Locale:getLocalizedText("text_format.reset") .. Locale:getLocalizedText("action_wheel.main_page.change_display_name.sub_option")
+			if self.selectingShouldShowClubName then
+				text = text .. Locale:getLocalizedText("text_format.color_green") .. Locale:getLocalizedText("action_wheel.action.toggle_on")
+			else
+				text = text .. Locale:getLocalizedText("text_format.color_red") .. Locale:getLocalizedText("action_wheel.action.toggle_off")
+			end
+		end
+		self.changeDisplayNameAction:setTitle(text)
+	end;
 
 	---表示名設定用のデータ構造体を返す。
 	---@param displayNameType integer 表示名の種類：1. プレイヤー名, 2. 名のみ（英語）, 3. 名性（英語）, 4. 性名（英語）, 5. 名のみ（ローカル）, 6. 名性（ローカル）, 7. 性名（ローカル）

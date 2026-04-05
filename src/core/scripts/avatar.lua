@@ -56,6 +56,10 @@ LocaleChangeEvent = require("scripts.events.locale_change_event")
 ---@type ConfigSyncEvent
 ConfigSyncEvent = require("scripts.events.config_sync_event")
 
+---アクションホイール閉イベント
+---@type ActionWheelClosedEvent
+ActionWheelClosedEvent = require("scripts.events.action_wheel_closed_event")
+
 
 -- ** アバターモジュール **
 
@@ -171,6 +175,7 @@ events.ENTITY_INIT:register(function ()
 	LocaleRefreshEvent:init()
 	LocaleChangeEvent:init()
 	ConfigSyncEvent:init()
+	ActionWheelClosedEvent:init()
 	VanillaModel.init()
 	CompatibilityUtils:init()
 	Config:init()
