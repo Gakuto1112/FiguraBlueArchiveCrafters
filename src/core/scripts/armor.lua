@@ -27,6 +27,7 @@
 ---@field package hasGlintPrev boolean[] 前ティックに防具がエンチャントのキラキラを持っていたかどうか
 ---@field public isArmorVisible Armor.VisiblePartsSet 各防具の部位（ヘルメット、チェストプレート、レギンス、ブーツ）が可視状態かどうか
 ---@field package textureQueue Armor.TextureQueueData[] テクスチャ処理のキュー
+---@field package toggleArmorVisibilityAction Action アクションホイールの防具表示切り替えアクション
 local Armor = {
 	shouldShowArmor = false;
 	armorSlotItems = {world.newItem("minecraft:air"), world.newItem("minecraft:air"), world.newItem("minecraft:air"), world.newItem("minecraft:air")};
@@ -39,11 +40,45 @@ local Armor = {
 		boots = false;
 	};
 	textureQueue = {};
+	toggleArmorVisibilityAction = nil;
 
 	---初期化関数
     ---@param self Armor
     init = function (self)
 		self.shouldShowArmor = Config:loadConfig("PRIVATE", "armor.should_show_armor", true)
+
+		if host:isHost() then
+			self.toggleArmorVisibilityAction = ActionWheel:getToggleAction()
+				:setItem("minecraft:iron_chestplate")
+				:setOnToggle(function (_, action)
+					pings.armor_setArmorVisibility(true)
+					ActionWheel.setActionToggleHoverColor(action, true)
+					Config.syncConfigs["shouldShowArmor"] = true
+					Config:saveConfig("PRIVATE", "armor.should_show_armor", true)
+				end)
+				:setOnUntoggle(function (_, action)
+					pings.armor_setArmorVisibility(false)
+					ActionWheel.setActionToggleHoverColor(action, false)
+					Config.syncConfigs["shouldShowArmor"] = false
+					Config:saveConfig("PRIVATE", "armor.should_show_armor", false)
+				end)
+			if self.shouldShowArmor then
+				self.toggleArmorVisibilityAction:setToggled(true)
+				ActionWheel.setActionToggleHoverColor(self.toggleArmorVisibilityAction, true)
+			end
+			ActionWheel:setAction(self.toggleArmorVisibilityAction, "MAIN", 3)
+		end
+
+		for _, vanillaModel in ipairs({vanilla_model.HELMET, vanilla_model.CHESTPLATE, vanilla_model.LEGGINGS}) do
+			vanillaModel:setVisible(false)
+		end
+		local gameVersion = client:getVersion()
+		for _, overlayPart in ipairs({ModelAlias.alias.avatar.head.ArmorH.Helmet.HelmetOverlay, ModelAlias.alias.avatar.body.ArmorB.Chestplate.ChestplateOverlay, ModelAlias.alias.avatar.rightArm.ArmorRA.RightChestplate.RightChestplateOverlay, ModelAlias.alias.avatar.leftArm.ArmorLA.LeftChestplate.LeftChestplateOverlay, ModelAlias.alias.avatar.rightArm.ArmorRA.RightChestplate.RightChestplateOverlay, ModelAlias.alias.avatar.rightArmBottom.ArmorRAB.RightChestplateBottom.RightChestplateBottomOverlay, ModelAlias.alias.avatar.leftArm.ArmorLA.LeftChestplate.LeftChestplateOverlay, ModelAlias.alias.avatar.leftArmBottom.ArmorLAB.LeftChestplateBottom.LeftChestplateBottomOverlay, ModelAlias.alias.avatar.rightLeg.ArmorRL.RightBoots.RightBootsOverlay, ModelAlias.alias.avatar.rightLegBottom.ArmorRLB.RightBootsBottom.RightBootsBottomOverlay, ModelAlias.alias.avatar.leftLeg.ArmorLL.LeftBoots.LeftBootsOverlay, ModelAlias.alias.avatar.leftLegBottom.ArmorLLB.LeftBootsBottom.LeftBootsBottomOverlay}) do
+			overlayPart:setPrimaryTexture("RESOURCE", gameVersion >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid/leather_overlay.png" or "minecraft:textures/models/armor/leather_layer_1_overlay.png")
+		end
+		for _, overlayPart in ipairs({ModelAlias.alias.avatar.body.ArmorB.Leggings.LeggingsOverlay, ModelAlias.alias.avatar.rightLeg.ArmorRL.RightLeggings.RightLeggingsOverlay, ModelAlias.alias.avatar.rightLegBottom.ArmorRLB.RightLeggingsBottom.RightLeggingsBottomOverlay, ModelAlias.alias.avatar.leftLeg.ArmorLL.LeftLeggings.LeftLeggingsOverlay, ModelAlias.alias.avatar.leftLegBottom.ArmorLLB.LeftLeggingsBottom.LeftLeggingsBottomOverlay}) do
+			overlayPart:setPrimaryTexture("RESOURCE", gameVersion >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid_leggings/leather_overlay.png" or "minecraft:textures/models/armor/leather_layer_2_overlay.png")
+		end
 
 		events.TICK:register(function ()
 			self.armorSlotItems = self.shouldShowArmor and {player:getItem(6), player:getItem(5), player:getItem(4), player:getItem(3)} or {world.newItem("minecraft:air"), world.newItem("minecraft:air"), world.newItem("minecraft:air"), world.newItem("minecraft:air")}
@@ -182,16 +217,19 @@ local Armor = {
 			self.armorSlotItemsPrev = self.armorSlotItems
 		end)
 
-		for _, vanillaModel in ipairs({vanilla_model.HELMET, vanilla_model.CHESTPLATE, vanilla_model.LEGGINGS}) do
-			vanillaModel:setVisible(false)
-		end
-		local gameVersion = client:getVersion()
-		for _, overlayPart in ipairs({ModelAlias.alias.avatar.head.ArmorH.Helmet.HelmetOverlay, ModelAlias.alias.avatar.body.ArmorB.Chestplate.ChestplateOverlay, ModelAlias.alias.avatar.rightArm.ArmorRA.RightChestplate.RightChestplateOverlay, ModelAlias.alias.avatar.leftArm.ArmorLA.LeftChestplate.LeftChestplateOverlay, ModelAlias.alias.avatar.rightArm.ArmorRA.RightChestplate.RightChestplateOverlay, ModelAlias.alias.avatar.rightArmBottom.ArmorRAB.RightChestplateBottom.RightChestplateBottomOverlay, ModelAlias.alias.avatar.leftArm.ArmorLA.LeftChestplate.LeftChestplateOverlay, ModelAlias.alias.avatar.leftArmBottom.ArmorLAB.LeftChestplateBottom.LeftChestplateBottomOverlay, ModelAlias.alias.avatar.rightLeg.ArmorRL.RightBoots.RightBootsOverlay, ModelAlias.alias.avatar.rightLegBottom.ArmorRLB.RightBootsBottom.RightBootsBottomOverlay, ModelAlias.alias.avatar.leftLeg.ArmorLL.LeftBoots.LeftBootsOverlay, ModelAlias.alias.avatar.leftLegBottom.ArmorLLB.LeftBootsBottom.LeftBootsBottomOverlay}) do
-			overlayPart:setPrimaryTexture("RESOURCE", gameVersion >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid/leather_overlay.png" or "minecraft:textures/models/armor/leather_layer_1_overlay.png")
-		end
-		for _, overlayPart in ipairs({ModelAlias.alias.avatar.body.ArmorB.Leggings.LeggingsOverlay, ModelAlias.alias.avatar.rightLeg.ArmorRL.RightLeggings.RightLeggingsOverlay, ModelAlias.alias.avatar.rightLegBottom.ArmorRLB.RightLeggingsBottom.RightLeggingsBottomOverlay, ModelAlias.alias.avatar.leftLeg.ArmorLL.LeftLeggings.LeftLeggingsOverlay, ModelAlias.alias.avatar.leftLegBottom.ArmorLLB.LeftLeggingsBottom.LeftLeggingsBottomOverlay}) do
-			overlayPart:setPrimaryTexture("RESOURCE", gameVersion >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid_leggings/leather_overlay.png" or "minecraft:textures/models/armor/leather_layer_2_overlay.png")
-		end
+		EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
+			self.toggleArmorVisibilityAction
+				:setTitle(Locale:getLocalizedText("action_wheel.main_page.toggle_armor_visibility.title") .. Locale:getLocalizedText("text_format.color_red") .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
+				:setToggleTitle(Locale:getLocalizedText("action_wheel.main_page.toggle_armor_visibility.title") .. Locale:getLocalizedText("text_format.color_green") .. Locale:getLocalizedText("action_wheel.action.toggle_on"))
+		end)
+
+		EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
+			if configData["shouldShowArmor"] then
+				pings.armor_setArmorVisibility(true)
+			else
+				pings.armor_setArmorVisibility(false)
+			end
+		end)
     end;
 
 	---防具の色を取得する。
@@ -377,5 +415,11 @@ local Armor = {
 		end
 	end;
 }
+
+---防具の可視状態を切り替える。
+---@param isVisible boolean 防具を可視にするかどうか
+function pings.armor_setArmorVisibility(isVisible)
+	Armor.shouldShowArmor = isVisible
+end
 
 return Armor
