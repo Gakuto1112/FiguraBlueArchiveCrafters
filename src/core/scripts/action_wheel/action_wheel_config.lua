@@ -7,6 +7,7 @@
 ---@field package isConfigPageOpenedPrev boolean 前ティックにアクションホイールの設定ページが開いていたかどうか
 ---@field package localeDataCheckLeft integer 前ティックのロケールデータのチェックを行う残り回数
 ---@field package fpmMassageShowed boolean First-person Model互換モードの警告メッセージを表示したかどうか
+---@field package actionWheelOpenTime integer アクションホイールを開けた瞬間の時間（UNIX時間）
 local ActionWheelConfig = {
 	page = action_wheel:newPage("config");
 	openAvatarConfigAction = nil;
@@ -18,6 +19,7 @@ local ActionWheelConfig = {
 	isConfigPageOpenedPrev = false;
 	localeDataCheckLeftPrev = 0;
 	fpmMassageShowed = false;
+	actionWheelOpenTime = 0;
 
 	---初期化関数
 	---@param self ActionWheelConfig
@@ -134,6 +136,29 @@ local ActionWheelConfig = {
 				end)
 			self.page:setAction(4, self.localeCacheResetAction)
 
+			-- アクション5. アップデートの確認
+            local updateCheckAction = ActionWheel.getAction()
+				:setItem("minecraft:compass")
+				:setOnLeftClick(function ()
+					if not net:isNetworkingAllowed() or not net:isLinkAllowed(UpdateChecker.UPDATE_CHECK_ENDPOINT_URI:match("(https?://[^:/]+)")) then
+						print(Locale:getLocalizedText("message.action_wheel_config.update_check.no_permission"):format(UpdateChecker.UPDATE_CHECK_ENDPOINT_URI:match("://([^:/]+)")))
+					elseif UpdateChecker.checkerStatus ~= "CHECKING" then
+						UpdateChecker:checkUpdate()
+					else
+						print(Locale:getLocalizedText("message.action_wheel_config.update_check.ongoing"))
+						MiscUtils.playErrorSound()
+					end
+				end):onRightClick(function ()
+					if UpdateChecker.latestVersion ~= nil and self.actionWheelOpenTime < UpdateChecker.lastCheckTime + 86400000 then
+						host:setClipboard(UpdateChecker.RELEASE_PAGE_URL .. UpdateChecker.latestVersion)
+						print(Locale:getLocalizedText("message.action_wheel_config.update_check.copy_to_clipboard"))
+					else
+						print(Locale:getLocalizedText("message.action_wheel_config.update_check.error_cache_expired"))
+						MiscUtils.playErrorSound()
+					end
+				end)
+			self.page:setAction(5, updateCheckAction)
+
 			events.TICK:register(function ()
 				local isConfigPageOpened = action_wheel:getCurrentPage():getTitle() == "config"
 				if isConfigPageOpened and not self.isConfigPageOpenedPrev then
@@ -168,6 +193,8 @@ local ActionWheelConfig = {
 					:setToggleTitle(Locale:getLocalizedText("action_wheel.config_page.fpm_mode.title") .. "§a" .. Locale:getLocalizedText("action_wheel.action.toggle_on"))
 
 				self:setLocaleCacheResetActionState()
+
+				updateCheckAction:setTitle(Locale:getLocalizedText("action_wheel.config_page.update_check.title_1") .. "\n" .. Locale:getLocalizedText("action_wheel.config_page.update_check.title_2"))
 			end)
 
 			EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
@@ -179,6 +206,9 @@ local ActionWheelConfig = {
 				end
 			end)
 
+			EventManager.events["ON_ACTION_WHEEL_OPEN"]:register(function ()
+				ActionWheelConfig.actionWheelOpenTime = client:getSystemTime()
+			end)
 
 			EventManager.events["ON_ACTION_WHEEL_CLOSE"]:register(function ()
 				ActionWheel:setMainPage()

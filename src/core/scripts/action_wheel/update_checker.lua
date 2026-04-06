@@ -12,7 +12,8 @@
 ---@class (exact) UpdateChecker FBACのアップデートの確認を管理するクラス
 ---@field package AVATAR_VERSION string 現在のFBACバージョン
 ---@field package AVATAR_NAME string アバター名
----@field package UPDATE_CHECK_ENDPOINT_URI string アップデート確認のためのAPIエンドポイントURI
+---@field public UPDATE_CHECK_ENDPOINT_URI string アップデート確認のためのAPIエンドポイントURI
+---@field public RELEASE_PAGE_URL string アバターのリリースページのURL
 ---@field public latestVersion? string リモート上にある最新のFBACバージョン
 ---@field public checkerStatus UpdateChecker.CheckerStatus アップデートチェッカーの状態
 ---@field public lastCheckTime integer 最後に更新を確認した時間（UNIX時間）
@@ -22,7 +23,8 @@
 local UpdateChecker = {
 	AVATAR_VERSION = "v3.0.0_dev";
 	AVATAR_NAME = "BaseAvatar";
-	UPDATE_CHECK_ENDPOINT_URI = "https://api.github.com/repos/Gakuto1112/FiguraBlueArchiveCharacters/tags";
+		UPDATE_CHECK_ENDPOINT_URI = "https://api.github.com/repos/Gakuto1112/FiguraBlueArchiveCharacters/tags";
+		RELEASE_PAGE_URL = "https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/releases/tag/";
 
 	latestVersion = nil;
 	checkerStatus = "INIT";
