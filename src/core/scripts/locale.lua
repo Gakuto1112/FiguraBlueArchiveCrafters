@@ -49,8 +49,7 @@ local Locale = {
 		["message.locale.err_io"] = "Failed to operate locale cache file";
 		["message.locale.err_fetch_index"] = "Failed to fetch locale index data! Cannot proceed to localize! Error code: %s";
 		["message.locale.err_fetch_en_us"] = "Failed to fetch default locale data! Cannot proceed to localize! Error code: %s";
-		["message.locale.err_fetch_locale"] = "Failed to fetch selected locale data! (%s) Redirecting to \"en_us\" locale! Error code: %s";
-		["message.locale.err_not_available"] = "The selected locale (%s) is not available! Redirecting to \"en_us\" locale.";
+		["message.locale.err_fetch_locale"] = "Failed to fetch current locale data! (%s) Redirecting to \"en_us\" locale! Error code: %s";
 	};
 
 	localeVersion = nil;
@@ -326,7 +325,6 @@ local Locale = {
 						self.locales[locale] = {}
 						self:fetchLocaleDataSet(locale)
 					else
-						print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_not_available"):format(locale))
 						self.localeDatCheckLeft = self.localeDatCheckLeft - 2
 					end
 
