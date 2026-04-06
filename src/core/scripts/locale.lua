@@ -29,8 +29,8 @@
 ---@field package HARDCODED_LOCALES {[string]: string} 外部からのロケール取得前に使用されるハードコードされた、最低限のローカライズメッセージ
 ---@field package localeVersion string? ロケールデータのバージョン
 ---@field public availableLocales {[string]: string} 利用可能なロケールのリスト
----@field package activeLocale string 現在有効になっているロケール
 ---@field package locales {[string]: {[string]: string}} ローカライズされたテキストを格納するテーブル
+---@field public localeDatCheckLeft integer ロケールデータの取得試行残り回数
 ---@field package localePrev string 前ティックのゲームのロケール
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locales/";
@@ -55,103 +55,26 @@ local Locale = {
 
 	localeVersion = nil;
 	availableLocales = {};
-	activeLocale = "auto";
 	locales = {};
+	localeDatCheckLeft = 0;
 	localePrev = "en_us";
 
 	---初期化関数
 	---@param self Locale
 	init = function (self)
 		if host:isHost() then
-			-- ロケールデータの初期化
-			self:initializeLocaleData()
-
-			-- File APIの利用可能確認
-			if self.checkAvailability() then
-				-- インデックスの取得
-				self:fetchLocaleIndex(function (status, data)
-					if status == "SUCCESS" then
-						local indexVersion = data["localeVersion"]
-						local cacheVersion = Config:loadConfig("PUBLIC", "locale.version", "v0.0.0")
-						---@cast cacheVersion string
-						if cacheVersion == nil or StringUtils.compareVersions(cacheVersion, indexVersion) ~= cacheVersion then
-							self:flushCache()
-							file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data), "utf8")
-							Config:saveConfig("PUBLIC", "locale.version", indexVersion)
-						end
-
-						-- インデックスの展開
-						for key, value in pairs(data["availableLocales"]) do
-							self.availableLocales[key] = value
-						end
-
-						-- 選択中のロケールの取得
-						local currentLocale = self.activeLocale == "auto" and client:getActiveLang() or self.activeLocale
-						if self.availableLocales[currentLocale] ~= nil then
-							self.locales[currentLocale] = {}
-							self:fetchLocale("core/" .. currentLocale .. ".json", function (status2, data2)
-								if status2 == "SUCCESS" then
-									---@cast data2 table
-									for key, value in pairs(data2) do
-										self.locales[currentLocale][key] = value
-									end
-									EventManager.events["ON_LOCALE_REFRESH"]:fire()
-								else
-									print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(currentLocale, status2))
-								end
-							end)
-							self:fetchLocale("avatars/" .. BlueArchiveCharacter.basic.avatarName .. "/" .. currentLocale .. ".json", function (status2, data2)
-								if status2 == "SUCCESS" then
-									---@cast data2 table
-									for key, value in pairs(data2) do
-										self.locales[currentLocale][key] = value
-									end
-									EventManager.events["ON_LOCALE_REFRESH"]:fire()
-								else
-									print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(currentLocale, status2))
-								end
-							end)
-						else
-							print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_not_available"):format(currentLocale))
-						end
-					else
-						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_index"):format(status))
-					end
-				end)
-
-				-- en_usロケールの取得
-				self:fetchLocale("core/en_us.json", function (status, data)
-					if status == "SUCCESS" then
-						---@cast data table
-						for key, value in pairs(data) do
-							self.locales["en_us"][key] = value
-						end
-						EventManager.events["ON_LOCALE_REFRESH"]:fire()
-					else
-						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
-					end
-				end)
-				self:fetchLocale("avatars/" .. BlueArchiveCharacter.basic.avatarName .. "/en_us.json", function (status, data)
-					if status == "SUCCESS" then
-						---@cast data table
-						for key, value in pairs(data) do
-							self.locales["en_us"][key] = value
-						end
-						EventManager.events["ON_LOCALE_REFRESH"]:fire()
-					else
-						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
-					end
-				end)
-			else
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
-			end
+			self:initializeLocale()
 		end
 
 		self.localePrev = client:getActiveLang()
 		events.TICK:register(function ()
 			local locale = client:getActiveLang()
 			if locale ~= self.localePrev then
-				EventManager.events["ON_LOCALE_CHANGE"]:fire(locale)
+				if self.locales[locale] == nil and self.availableLocales[locale] ~= nil then
+					self.locales[locale] = {}
+					self:fetchLocaleDataSet(locale)
+				end
+				EventManager.events["ON_LOCALE_REFRESH"]:fire()
 				self.localePrev = locale
 			end
 		end)
@@ -294,7 +217,7 @@ local Locale = {
 	---@param self Locale
 	---@param path string 取得するロケールデータのパス
 	---@param callback fun(status: Locale.FetchResult, data: (boolean|string|number|table)?) ロケールデータの取得が完了した際に呼び出されるコールバック関数
-	fetchLocale = function (self, path, callback)
+	fetchLocaleData = function (self, path, callback)
 		-- ローカルキャッシュから取得
 		local result, data = self:fetchFileFromCache(path)
 		if result == "SUCCESS" then
@@ -336,6 +259,91 @@ local Locale = {
 		end)
 	end;
 
+	---ロケールデータのコアとキャラクターのセットを取得する。
+	---@param self Locale
+	---@param locale string 取得するロケールのMinecraft内部の識別子（例: "en_us", "ja_jp"）
+	fetchLocaleDataSet = function (self, locale)
+		self:fetchLocaleData("core/" .. locale .. ".json", function (status, data)
+			if status == "SUCCESS" then
+				---@cast data table
+				for key, value in pairs(data) do
+					self.locales[locale][key] = value
+				end
+				EventManager.events["ON_LOCALE_REFRESH"]:fire()
+			elseif locale == "en_us" then
+				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
+			else
+				print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(locale, status))
+			end
+			self.localeDatCheckLeft = self.localeDatCheckLeft - 1
+		end)
+		self:fetchLocaleData("avatars/" .. BlueArchiveCharacter.basic.avatarName .. "/" .. locale .. ".json", function (status, data)
+			if status == "SUCCESS" then
+				---@cast data table
+				for key, value in pairs(data) do
+					self.locales[locale][key] = value
+				end
+				EventManager.events["ON_LOCALE_REFRESH"]:fire()
+			elseif locale == "en_us" then
+				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
+			else
+				print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(locale, status))
+			end
+			self.localeDatCheckLeft = self.localeDatCheckLeft - 1
+		end)
+	end;
+
+	---ロケールの初期化を行う。
+	---ロケールインデックスから必要なロケールの取得まで行う。
+	---@param self Locale
+	initializeLocale = function (self)
+		-- ロケールデータの初期化
+		self:initializeLocaleData()
+
+		-- File APIの利用可能確認
+		if self.checkAvailability() then
+			-- インデックスの取得
+			local locale = client:getActiveLang()
+			self.localeDatCheckLeft = locale == "en_us" and 3 or 5
+			self:fetchLocaleIndex(function (status, data)
+				if status == "SUCCESS" then
+					local indexVersion = data["localeVersion"]
+					local cacheVersion = Config:loadConfig("PUBLIC", "locale.version", "v0.0.0")
+					---@cast cacheVersion string
+					if cacheVersion == nil or StringUtils.compareVersions(cacheVersion, indexVersion) ~= cacheVersion then
+						self:flushCache()
+						file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data), "utf8")
+						Config:saveConfig("PUBLIC", "locale.version", indexVersion)
+					end
+
+					-- インデックスの展開
+					for key, value in pairs(data["availableLocales"]) do
+						self.availableLocales[key] = value
+					end
+
+					-- 選択中のロケールの取得
+					if self.availableLocales[locale] ~= nil then
+						self.locales[locale] = {}
+						self:fetchLocaleDataSet(locale)
+					else
+						print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_not_available"):format(locale))
+						self.localeDatCheckLeft = self.localeDatCheckLeft - 2
+					end
+
+					self.localeDatCheckLeft = self.localeDatCheckLeft - 1
+				else
+					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_index"):format(status))
+					self.localeDatCheckLeft = 0
+				end
+			end)
+
+			-- en_usロケールの取得
+			self:fetchLocaleDataSet("en_us")
+		else
+			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
+		end
+	end;
+
 	---指定したパスのディレクトリを削除する。
 	---ファイルが指定され場合でも削除する。
 	---Figura File APIの`delete()`はディレクトリを空にしないと削除できないらしい。
@@ -362,6 +370,7 @@ local Locale = {
 	flushCache = function (self)
 		if self.checkAvailability() then
 			self:initializeLocaleDirectory()
+			EventManager.events["ON_LOCALE_REFRESH"]:fire()
 		else
 			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
 		end
@@ -375,7 +384,7 @@ local Locale = {
 	---@param forceGlobal? boolean `true`にすると、現在のロケールに関係なく、グローバルロケール（en_us）からテキストを取得する。
 	---@return string localizedText ローカライズされたテキスト、または翻訳キー自体。
 	getLocalizedText = function (self, key, forceGlobal)
-		local locale = self.activeLocale == "auto" and client:getActiveLang() or self.activeLocale
+		local locale = client:getActiveLang()
 		if not forceGlobal and self.locales[locale] ~= nil and self.locales[locale][key] ~= nil then
 			return self.locales[locale][key]
 		elseif self.locales["en_us"] ~= nil and self.locales["en_us"][key] ~= nil then
