@@ -30,12 +30,14 @@ local Costume = {
 					:setOnToggle(function (_, action)
 						pings.costume_setAltCostume(true)
 						ActionWheel.setActionToggleHoverColor(action, true)
+						sounds:playSound("minecraft:item.armor.equip_leather", player:getPos())
 						Config.syncConfigs["isAltCostume"] = true
 						Config:saveConfig("PRIVATE", "costume.is_alt_costume", true)
 					end)
 					:setOnUntoggle(function (_, action)
 						pings.costume_setAltCostume(false)
 						ActionWheel.setActionToggleHoverColor(action, false)
+						sounds:playSound("minecraft:item.armor.equip_leather", player:getPos())
 						Config.syncConfigs["isAltCostume"] = false
 						Config:saveConfig("PRIVATE", "costume.is_alt_costume", false)
 					end)

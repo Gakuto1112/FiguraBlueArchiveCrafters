@@ -53,12 +53,14 @@ local Armor = {
 				:setOnToggle(function (_, action)
 					pings.armor_setArmorVisibility(true)
 					ActionWheel.setActionToggleHoverColor(action, true)
+					sounds:playSound("minecraft:item.armor.equip_iron", player:getPos())
 					Config.syncConfigs["shouldShowArmor"] = true
 					Config:saveConfig("PRIVATE", "armor.should_show_armor", true)
 				end)
 				:setOnUntoggle(function (_, action)
 					pings.armor_setArmorVisibility(false)
 					ActionWheel.setActionToggleHoverColor(action, false)
+					sounds:playSound("minecraft:item.armor.equip_iron", player:getPos())
 					Config.syncConfigs["shouldShowArmor"] = false
 					Config:saveConfig("PRIVATE", "armor.should_show_armor", false)
 				end)
