@@ -7,6 +7,8 @@
 ---@field package isConfigPageOpenedPrev boolean 前ティックにアクションホイールの設定ページが開いていたかどうか
 ---@field package localeDataCheckLeft integer 前ティックのロケールデータのチェックを行う残り回数
 ---@field package fpmMassageShowed boolean First-person Model互換モードの警告メッセージを表示したかどうか
+---@field public isLocaleDataFetchErrorOccurred boolean ロケールデータの取得時にエラーが発生したかどうか
+---@field public isLocaleReloadedByAction boolean アクション実行によってロケールデータが再読み込みされたかどうか
 ---@field package actionWheelOpenTime integer アクションホイールを開けた瞬間の時間（UNIX時間）
 local ActionWheelConfig = {
 	page = action_wheel:newPage("config");
@@ -19,6 +21,8 @@ local ActionWheelConfig = {
 	isConfigPageOpenedPrev = false;
 	localeDataCheckLeftPrev = 0;
 	fpmMassageShowed = false;
+	isLocaleDataFetchErrorOccurred = false;
+	isLocaleReloadedByAction = false;
 	actionWheelOpenTime = 0;
 
 	---初期化関数
@@ -129,9 +133,11 @@ local ActionWheelConfig = {
 			self.localeCacheResetAction = ActionWheel.getAction()
 				:setItem("minecraft:bucket")
 				:setOnLeftClick(function ()
-					if Locale.localeDatCheckLeft <= 0 then
+					if Locale.localeDataCheckLeft <= 0 then
+						self.isLocaleDataFetchErrorOccurred = false
 						Locale:flushCache()
 						Locale:initializeLocale()
+						self.isLocaleReloadedByAction = true
 					end
 				end)
 			self.page:setAction(4, self.localeCacheResetAction)
@@ -167,9 +173,9 @@ local ActionWheelConfig = {
 					end
 					self.isConfigPageOpenedPrev = isConfigPageOpened
 				end
-				if Locale.localeDatCheckLeft ~= self.localeDataCheckLeftPrev then
+				if Locale.localeDataCheckLeft ~= self.localeDataCheckLeftPrev then
 					self:setLocaleCacheResetActionState()
-					self.localeDataCheckLeftPrev = Locale.localeDatCheckLeft
+					self.localeDataCheckLeftPrev = Locale.localeDataCheckLeft
 				end
 			end)
 
@@ -195,6 +201,15 @@ local ActionWheelConfig = {
 				self:setLocaleCacheResetActionState()
 
 				updateCheckAction:setTitle(Locale:getLocalizedText("action_wheel.config_page.update_check.title_1") .. "\n" .. Locale:getLocalizedText("action_wheel.config_page.update_check.title_2"))
+
+				if Locale.localeDataCheckLeft <= 0 and not self.isLocaleDataFetchErrorOccurred and self.isLocaleReloadedByAction then
+					sounds:playSound("minecraft:item.bucket.empty", player:getPos())
+					events.TICK:register(function ()
+						events.TICK:remove("locale_cache_reset_message_delay")
+						print(Locale:getLocalizedText("message.action_wheel_config.locale_cache_reset.done"))
+					end, "locale_cache_reset_message_delay")
+					self.isLocaleReloadedByAction = false
+				end
 			end)
 
 			EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
@@ -233,7 +248,7 @@ local ActionWheelConfig = {
 	---ロケールデータのリセットアクションの状態を設定する。
 	---@param self ActionWheelConfig
 	setLocaleCacheResetActionState = function (self)
-		if Locale.localeDatCheckLeft > 0 then
+		if Locale.localeDataCheckLeft > 0 then
 			self.localeCacheResetAction
 				:setTitle("§8" .. Locale:getLocalizedText("action_wheel.config_page.locale_cache_reset.title"))
 				:setColor(0.16, 0.16, 0.16)

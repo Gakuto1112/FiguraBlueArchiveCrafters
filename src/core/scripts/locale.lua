@@ -30,7 +30,7 @@
 ---@field package localeVersion string? ロケールデータのバージョン
 ---@field public availableLocales {[string]: string} 利用可能なロケールのリスト
 ---@field package locales {[string]: {[string]: string}} ローカライズされたテキストを格納するテーブル
----@field public localeDatCheckLeft integer ロケールデータの取得試行残り回数
+---@field public localeDataCheckLeft integer ロケールデータの取得試行残り回数
 ---@field package localePrev string 前ティックのゲームのロケール
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locales/";
@@ -55,13 +55,14 @@ local Locale = {
 	localeVersion = nil;
 	availableLocales = {};
 	locales = {};
-	localeDatCheckLeft = 0;
+	localeDataCheckLeft = 0;
 	localePrev = "en_us";
 
 	---初期化関数
 	---@param self Locale
 	init = function (self)
 		if host:isHost() then
+			EventManager.events["ON_LOCALE_REFRESH"]:fire()
 			self:initializeLocale()
 		end
 
@@ -271,10 +272,12 @@ local Locale = {
 				EventManager.events["ON_LOCALE_REFRESH"]:fire()
 			elseif locale == "en_us" then
 				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
+				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
+				ActionWheelConfig.isLocaleReloadedByAction = false
 			else
 				print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(locale, status))
 			end
-			self.localeDatCheckLeft = self.localeDatCheckLeft - 1
+			self.localeDataCheckLeft = self.localeDataCheckLeft - 1
 		end)
 		self:fetchLocaleData("avatars/" .. BlueArchiveCharacter.basic.avatarName .. "/" .. locale .. ".json", function (status, data)
 			if status == "SUCCESS" then
@@ -285,10 +288,12 @@ local Locale = {
 				EventManager.events["ON_LOCALE_REFRESH"]:fire()
 			elseif locale == "en_us" then
 				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
+				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
+				ActionWheelConfig.isLocaleReloadedByAction = false
 			else
 				print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(locale, status))
 			end
-			self.localeDatCheckLeft = self.localeDatCheckLeft - 1
+			self.localeDataCheckLeft = self.localeDataCheckLeft - 1
 		end)
 	end;
 
@@ -303,7 +308,7 @@ local Locale = {
 		if self.checkAvailability() then
 			-- インデックスの取得
 			local locale = client:getActiveLang()
-			self.localeDatCheckLeft = locale == "en_us" and 3 or 5
+			self.localeDataCheckLeft = locale == "en_us" and 3 or 5
 			self:fetchLocaleIndex(function (status, data)
 				if status == "SUCCESS" then
 					local indexVersion = data["localeVersion"]
@@ -314,6 +319,7 @@ local Locale = {
 						file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data), "utf8")
 						Config:saveConfig("PUBLIC", "locale.version", indexVersion)
 					end
+					self.localeDataCheckLeft = self.localeDataCheckLeft - 1
 
 					-- インデックスの展開
 					for key, value in pairs(data["availableLocales"]) do
@@ -322,16 +328,19 @@ local Locale = {
 
 					-- 選択中のロケールの取得
 					if self.availableLocales[locale] ~= nil then
-						self.locales[locale] = {}
-						self:fetchLocaleDataSet(locale)
+						if locale ~= "en_us" then
+							self.locales[locale] = {}
+							self:fetchLocaleDataSet(locale)
+						end
 					else
-						self.localeDatCheckLeft = self.localeDatCheckLeft - 2
+						self.localeDataCheckLeft = self.localeDataCheckLeft - 2
 					end
 
-					self.localeDatCheckLeft = self.localeDatCheckLeft - 1
 				else
 					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_index"):format(status))
-					self.localeDatCheckLeft = 0
+					self.localeDataCheckLeft = 0
+					ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
+					ActionWheelConfig.isLocaleReloadedByAction = false
 				end
 			end)
 
@@ -339,6 +348,8 @@ local Locale = {
 			self:fetchLocaleDataSet("en_us")
 		else
 			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
+			ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
+			ActionWheelConfig.isLocaleReloadedByAction = false
 		end
 	end;
 
@@ -355,6 +366,7 @@ local Locale = {
 				else
 					if not file:delete(path .. "/" .. childPath) then
 						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_io"))
+						ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
 						return
 					end
 				end
@@ -371,6 +383,8 @@ local Locale = {
 			EventManager.events["ON_LOCALE_REFRESH"]:fire()
 		else
 			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
+			ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
+			ActionWheelConfig.isLocaleReloadedByAction = false
 		end
 	end;
 
