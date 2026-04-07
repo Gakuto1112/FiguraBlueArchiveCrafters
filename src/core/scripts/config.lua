@@ -35,12 +35,11 @@ local Config = {
     end;
 
 	---設定を読み出す。
-	---@generic T
 	---@param self Config
 	---@param storage Config.StorageType 読み出し先のストレージ
 	---@param keyName string 読み出す設定の名前
-	---@param defaultValue `T` 該当の設定が無い場合や、ホスト外での実行の場合はこの値が返される。
-	---@return `T` loadedValue 読み出した値
+	---@param defaultValue any 該当の設定が無い場合や、ホスト外での実行の場合はこの値が返される。
+	---@return any loadedValue 読み出した値
 	loadConfig = function (self, storage, keyName, defaultValue)
 		if host:isHost() then
 			if storage == "PUBLIC" then

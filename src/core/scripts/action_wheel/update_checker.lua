@@ -14,7 +14,7 @@
 ---@field package AVATAR_NAME string アバター名
 ---@field public UPDATE_CHECK_ENDPOINT_URI string アップデート確認のためのAPIエンドポイントURI
 ---@field public RELEASE_PAGE_URL string アバターのリリースページのURL
----@field public latestVersion? string リモート上にある最新のFBACバージョン
+---@field public latestVersion string リモート上にある最新のFBACバージョン
 ---@field public checkerStatus UpdateChecker.CheckerStatus アップデートチェッカーの状態
 ---@field public lastCheckTime integer 最後に更新を確認した時間（UNIX時間）
 ---@field package requestStatus integer 送信したリクエストのステータスコード
@@ -26,7 +26,7 @@ local UpdateChecker = {
 		UPDATE_CHECK_ENDPOINT_URI = "https://api.github.com/repos/Gakuto1112/FiguraBlueArchiveCharacters/tags";
 		RELEASE_PAGE_URL = "https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/releases/tag/";
 
-	latestVersion = nil;
+	latestVersion = "v0.0.0";
 	checkerStatus = "INIT";
 	lastCheckTime = 0;
 	requestStatus = 0;
@@ -37,7 +37,7 @@ local UpdateChecker = {
     ---@param self UpdateChecker
     init = function (self)
         if host:isHost() then
-			self.latestVersion = Config:loadConfig("PUBLIC", "update_checker.latest_version", nil)
+			self.latestVersion = Config:loadConfig("PUBLIC", "update_checker.latest_version", "v0.0.0")
 			self.lastCheckTime = Config:loadConfig("PUBLIC", "update_checker.last_update_check_time", 0)
 
             models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l2"):setText(self.AVATAR_VERSION .. " - " .. self.AVATAR_NAME)
@@ -57,12 +57,14 @@ local UpdateChecker = {
 			EventManager.events["ON_ACTION_WHEEL_OPEN"]:register(function ()
 				local textTask = models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3")
 				if self.checkerStatus == "UPDATE_AVAILABLE" then
-					if math.floor(self.textAnimationCount / 20) % 2 == 0 then
-						textTask:setText("§6§n" .. Locale:getLocalizedText("action_wheel.gui.update_check.update_available") .. self.latestVersion)
-					else
-						textTask:setText("§n" .. Locale:getLocalizedText("action_wheel.gui.update_check.update_available") .. self.latestVersion)
-					end
-					self.textAnimationCount = self.textAnimationCount + 1
+						events.TICK:register(function ()
+						if math.floor(self.textAnimationCount / 20) % 2 == 0 then
+							textTask:setText("§6§n" .. Locale:getLocalizedText("action_wheel.gui.update_check.update_available"):format(self.latestVersion))
+						else
+							textTask:setText("§n" .. Locale:getLocalizedText("action_wheel.gui.update_check.update_available"):format(self.latestVersion))
+						end
+						self.textAnimationCount = self.textAnimationCount + 1
+					end, "update_check_text_animation_tick")
 				elseif self.checkerStatus == "ERROR_REQUEST_FAILED" then
 					textTask:setText(Locale:getLocalizedText("action_wheel.gui.update_check.error_request_failed"):format(tostring(self.requestStatus)))
 				else
@@ -71,6 +73,7 @@ local UpdateChecker = {
 			end)
 
 			EventManager.events["ON_ACTION_WHEEL_CLOSE"]:register(function ()
+				events.TICK:remove("update_check_text_animation_tick")
 				self.textAnimationCount = 0
 			end)
         end
