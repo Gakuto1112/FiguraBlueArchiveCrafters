@@ -11,7 +11,6 @@
 
 ---@class (exact) UpdateChecker FBACのアップデートの確認を管理するクラス
 ---@field package AVATAR_VERSION string 現在のFBACバージョン
----@field package AVATAR_NAME string アバター名
 ---@field public UPDATE_CHECK_ENDPOINT_URI string アップデート確認のためのAPIエンドポイントURI
 ---@field public RELEASE_PAGE_URL string アバターのリリースページのURL
 ---@field public latestVersion string リモート上にある最新のFBACバージョン
@@ -22,7 +21,6 @@
 ---@field package textAnimationCount integer 新しいバージョン表示のテキストのアニメーションのカウンター
 local UpdateChecker = {
 	AVATAR_VERSION = "v3.0.0_dev";
-	AVATAR_NAME = "BaseAvatar";
 		UPDATE_CHECK_ENDPOINT_URI = "https://api.github.com/repos/Gakuto1112/FiguraBlueArchiveCharacters/tags";
 		RELEASE_PAGE_URL = "https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/releases/tag/";
 
@@ -40,7 +38,7 @@ local UpdateChecker = {
 			self.latestVersion = Config:loadConfig("PUBLIC", "update_checker.latest_version", "v0.0.0")
 			self.lastCheckTime = Config:loadConfig("PUBLIC", "update_checker.last_update_check_time", 0)
 
-            models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l2"):setText(self.AVATAR_VERSION .. " - " .. self.AVATAR_NAME)
+            models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l2"):setText(self.AVATAR_VERSION)
 
             if client:getSystemTime() >= self.lastCheckTime + 86400000 then
                 self:checkUpdate()
