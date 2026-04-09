@@ -31,15 +31,13 @@ local Gun = {
     ---初期化関数
     ---@param self Gun
     init = function (self)
-		events.ENTITY_INIT:register(function ()
-			self.isLeftHandedPrev = player:isLeftHanded();
+        self.isLeftHandedPrev = player:isLeftHanded();
 
-			ModelAlias.alias.avatar.gun:setScale(vectors.vec3(1, 1, 1):scale(BlueArchiveCharacter.gun.scale))
-			self:setGunPosition("NONE")
-			if BlueArchiveCharacter.gun.callbacks ~= nil and BlueArchiveCharacter.gun.callbacks.onMainHandChange ~= nil then
-				BlueArchiveCharacter.gun.callbacks.onMainHandChange(BlueArchiveCharacter, self.isLeftHandedPrev and "LEFT" or "RIGHT")
-			end
-		end)
+        ModelAlias.alias.avatar.gun:setScale(vectors.vec3(1, 1, 1):scale(BlueArchiveCharacter.gun.scale))
+        self:setGunPosition("NONE")
+        if BlueArchiveCharacter.gun.callbacks ~= nil and BlueArchiveCharacter.gun.callbacks.onMainHandChange ~= nil then
+            BlueArchiveCharacter.gun.callbacks.onMainHandChange(BlueArchiveCharacter, self.isLeftHandedPrev and "LEFT" or "RIGHT")
+        end
 
         events.TICK:register(function ()
             self:processGunTick()
