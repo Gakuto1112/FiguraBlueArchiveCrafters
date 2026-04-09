@@ -306,6 +306,10 @@ local Locale = {
 
 		-- File APIの利用可能確認
 		if self.checkAvailability() then
+			if not file:exists(self.CACHE_DIR_ROOT .. "avatars/" .. BlueArchiveCharacter.basic.avatarName) then
+				file:mkdirs(self.CACHE_DIR_ROOT .. "avatars/" .. BlueArchiveCharacter.basic.avatarName)
+			end
+
 			-- インデックスの取得
 			local locale = client:getActiveLang()
 			self.localeDataCheckLeft = locale == "en_us" and 3 or 5
