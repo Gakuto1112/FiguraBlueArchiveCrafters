@@ -1,3 +1,5 @@
+---@diagnostic disable: duplicate-doc-alias, duplicate-doc-field
+
 ---@alias BlueArchiveCharacter.GunPutType
 ---| "BODY" # アバターのBodyに銃を移動させる
 ---| "HIDDEN" # 銃を隠す
