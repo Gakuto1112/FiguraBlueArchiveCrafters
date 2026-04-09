@@ -31,7 +31,7 @@ local HeadBlock = {
 		models.script_head_block.Skull:setParentType("Skull")
 
 		for _, modelPart in ipairs(BlueArchiveCharacter.headBlock.includeModels) do
-			models.script_head_block.Skull:addChild(self:copyModel(modelPart))
+			models.script_head_block.Skull:addChild(ModelUtils:copyModel(modelPart))
 		end
 	end;
 
