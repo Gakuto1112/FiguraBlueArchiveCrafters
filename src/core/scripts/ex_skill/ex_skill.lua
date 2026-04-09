@@ -328,7 +328,7 @@ local ExSkill = {
         renderer:setFOV()
         self.animationCount = -1
         if BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks ~= nil and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation ~= nil then
-            BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"], false)
+            BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation(BlueArchiveCharacter, false)
         end
         self:transition("POST", function ()
             events.TICK:remove("ex_skill_tick")
@@ -340,7 +340,7 @@ local ExSkill = {
                 renderer:setRenderHUD(true)
             end
             if BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks ~= nil and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostTransition ~= nil then
-                BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostTransition(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"], false)
+                BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostTransition(BlueArchiveCharacter, false)
             end
         end)
     end;
@@ -381,10 +381,10 @@ local ExSkill = {
         end
         Physics:enable()
         if self.animationCount >= 0 and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks ~= nil and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation ~= nil then
-            BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"], true)
+            BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation(BlueArchiveCharacter, true)
         end
         if BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks ~= nil and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostTransition ~= nil then
-            BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostTransition(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"], true)
+            BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostTransition(BlueArchiveCharacter, true)
         end
         self.animationCount = -1
         self.transitionCount = 0
