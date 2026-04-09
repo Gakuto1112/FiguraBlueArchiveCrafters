@@ -68,10 +68,14 @@ local Nameplate = {
 					Config.syncConfigs["displayNameData"] = displayNameData2
 					if self.selectingNameDisplayType ~= self.nameDisplayType then
 						print(Locale:getLocalizedText("message.action_wheel.change_display_name.done"):format(self.getDisplayName(self.selectingNameDisplayType)))
+						Config:saveConfig("PRIVATE", "name.name_display_type", self.selectingNameDisplayType)
+						Config:saveConfig("PRIVATE", "name.should_show_club_name", self.selectingShouldShowClubName)
 					elseif self.selectingShouldShowClubName then
 						print(Locale:getLocalizedText("message.action_wheel.change_display_name.club_name_on"))
+						Config:saveConfig("PRIVATE", "name.should_show_club_name", true)
 					else
 						print(Locale:getLocalizedText("message.action_wheel.change_display_name.club_name_off"))
+						Config:saveConfig("PRIVATE", "name.should_show_club_name", false)
 					end
 					sounds:playSound("minecraft:ui.cartography_table.take_result", player:getPos())
 					self.nameDisplayType = self.selectingNameDisplayType
