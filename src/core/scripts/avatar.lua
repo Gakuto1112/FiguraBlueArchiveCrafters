@@ -86,6 +86,7 @@ VanillaModel = require("scripts.vanilla_model")
 ---モデルパーツのエイリアスの管理
 ---@type ModelAlias
 ModelAlias = require("scripts.model_alias")
+ModelAlias:init()
 
 ---カメラ制御管理
 ---@type CameraManager
@@ -194,7 +195,6 @@ ActionWheelGui = require("scripts.action_wheel.action_wheel_gui")
 UpdateChecker = require("scripts.action_wheel.update_checker")
 
 -- *** モジュールの初期化 ***
-ModelAlias:init()
 HeadBlock:init()
 Halo:init()
 
