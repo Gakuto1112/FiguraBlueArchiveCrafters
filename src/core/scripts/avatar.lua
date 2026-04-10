@@ -194,6 +194,9 @@ ActionWheelGui = require("scripts.action_wheel.action_wheel_gui")
 ---@type UpdateChecker
 UpdateChecker = require("scripts.action_wheel.update_checker")
 
+--　キャラクタースクリプトの実行
+require("scripts.character_script")
+
 -- *** モジュールの初期化 ***
 HeadBlock:init()
 Halo:init()
@@ -231,7 +234,4 @@ events.ENTITY_INIT:register(function ()
 	-- [[ RELEASE_EXCLUSION_START ]] --
 	DebugUtils:init()
 	-- [[ RELEASE_EXCLUSION_END ]] --
-
-	--　キャラクタースクリプトの実行
-	require("scripts.character_script")
 end)
