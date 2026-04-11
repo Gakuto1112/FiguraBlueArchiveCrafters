@@ -271,7 +271,6 @@ local CompatibilityUtils = {
                     if client:getVersion() < "1.20.5" then
                         return originalRendererIndexFunc(self2, "setPostEffect")(self3, effect)
                     else
-                        print("Warning: Attempted to set a post effect, but this version of Minecraft does not support it. This call will be ignored.")
                         return originalRendererIndexFunc(self2, "setPostEffect")
                     end
                 end
