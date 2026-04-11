@@ -344,6 +344,36 @@ local BlueArchiveCharacter = {
 	};
 
 	placementObjects = {
+		{
+			model = models.models.kitsune_puppet.PlacementObject;
+
+			boundingBox = {
+				size = vectors.vec3(12, 19, 12)
+			};
+
+			placementMode = "MOVE";
+
+			callbacks = {
+				onInit = function (self)
+					animations["models.kitsune_puppet"]["swing"]:play()
+					self.placementObjects.swingCoolDown = 60
+				end;
+
+				onTick = function (self, placementObject)
+					if raycast:entity(placementObject.currentPos, placementObject.currentPos:copy():add(0, 1.2, 0), function (entity)
+						return entity:isLiving() and entity:isMoving()
+					end) and self.placementObjects.swingCoolDown == 0 then
+						animations["models.kitsune_puppet"]["swing"]:play()
+						self.placementObjects.swingCoolDown = 60
+					end
+					self.placementObjects.swingCoolDown = math.max(self.placementObjects.swingCoolDown - 1, 0)
+				end;
+			};
+
+			---人形が揺れるアニメーション再生後に再び再生できるようになるまでの時間
+			---@type integer
+			swingCoolDown = 60
+		};
 	};
 
 	exSkill = {
@@ -855,11 +885,16 @@ local BlueArchiveCharacter = {
 
 	---初期化関数
 	init = function ()
+		---忍術ワープの表現
+		---@type Teleport
+		Teleport = require("scripts.teleport")
+
 		ModelAlias.alias.avatar.head.SunVisor.SunflowerAccessory.Sunflower:setPrimaryTexture("RESOURCE", "textures/block/sunflower_front.png")
+		Teleport:init()
 
 		events.RENDER:register(function ()
 			if ModelAlias.alias.avatar.leftLeg.LegAccessory:getVisible() then
-				ModelAlias.alias.avatar.leftLeg.CSwimsuitLL:setRot((vanilla_model.LEFT_LEG:getOriginRot().x + ModelAlias.alias.avatar.leftLeg:getTrueRot().x) * -1, 0, 0)
+				ModelAlias.alias.avatar.leftLeg.LegAccessory:setRot((vanilla_model.LEFT_LEG:getOriginRot().x + ModelAlias.alias.avatar.leftLeg:getTrueRot().x) * -1, 0, 0)
 			end
 		end)
 	end;
