@@ -9,7 +9,7 @@ ExSkillTextObject = require("scripts.ex_skill_primary_text_object")
 ExSkillTextObjectManager = require("scripts.ex_skill_primary_text_object_manager")
 ExSkillTextObjectManager = ExSkillTextObjectManager:new()
 
----忍術ワークの表現
+---忍術ワープの表現
 ---@type Teleport
 Teleport = require("scripts.teleport")
 
