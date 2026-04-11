@@ -884,6 +884,24 @@ local BlueArchiveCharacter = {
 			};
 		};
 	};
+
+	---初期化関数
+	init = function ()
+		---Exスキルで使用するテキストオブジェクトのマネージャークラス
+		---@type ExSkillTextObject
+		ExSkillTextObject = require("scripts.ex_skill_primary_text_object")
+
+		---Exスキルで使用するテキストオブジェクトのマネージャークラス
+		---@type ExSkillTextObjectManager
+		ExSkillTextObjectManager = require("scripts.ex_skill_primary_text_object_manager")
+		ExSkillTextObjectManager = ExSkillTextObjectManager:new()
+
+		---忍術ワープの表現
+		---@type Teleport
+		Teleport = require("scripts.teleport")
+
+		Teleport:init()
+	end
 }
 
 return BlueArchiveCharacter

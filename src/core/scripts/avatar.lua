@@ -194,9 +194,6 @@ ActionWheelGui = require("scripts.action_wheel.action_wheel_gui")
 ---@type UpdateChecker
 UpdateChecker = require("scripts.action_wheel.update_checker")
 
---　キャラクタースクリプトの実行
-require("scripts.character_script")
-
 -- *** モジュールの初期化 ***
 HeadBlock:init()
 Halo:init()

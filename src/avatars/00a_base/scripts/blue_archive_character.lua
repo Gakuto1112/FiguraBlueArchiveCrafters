@@ -387,6 +387,11 @@ local BlueArchiveCharacter = {
 
 		};
 	};
+
+	---初期化関数
+	---この関数は消しても構わない。
+	init = function ()
+	end;
 }
 
 return BlueArchiveCharacter
