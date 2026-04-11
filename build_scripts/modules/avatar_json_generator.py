@@ -111,14 +111,21 @@ class AvatarMetaPlaceholderData(TypedDict):
 	"""
 	生徒の名前
 	衣装違いの場合はその衣装名も併記する。
-	（例: "Shizuko", "Shizuko (Swimsuit)"）
+	（例: "Shizuko"）
 	"""
 
 	student_full_name: str
 	"""
 	生徒のフルネーム（名姓の順）
 	衣装違いの場合はその衣装名も併記する。
-	（例: "Shizuko Kawawa", "Shizuko Kawawa (Swimsuit)"）
+	（例: "Shizuko Kawawa"）
+	"""
+
+	costume_name: NotRequired[str]
+	"""
+	衣装名
+	デフォルト衣装の場合は、このフィールドは空になる。
+	（例: "Swimsuit"）
 	"""
 
 class AvatarJsonGenerator:
@@ -206,6 +213,14 @@ class AvatarJsonGenerator:
 			template["name"] = name.replace("{{STUDENT_NAME}}", meta["placeholders"]["student_name"])
 		if (description := template.get("description")) is not None:
 			template["description"] = description.replace("{{STUDENT_FULL_NAME}}", meta["placeholders"]["student_full_name"])
+		if (costume_name := meta["placeholders"].get("costume_name")) is not None:
+			for key in ("name", "description"):
+				if (value := template.get(key)) is not None:
+					template[key] = value.replace("{{COSTUME_NAME}}", f" ({costume_name})")
+		else:
+			for key in ("name", "description"):
+				if (value := template.get(key)) is not None:
+					template[key] = value.replace("{{COSTUME_NAME}}", "")
 
 		# リスト・辞書型の結合
 		if (template_auto_anims := template.get("autoAnims")) is not None and (meta_auto_anims := meta.get("autoAnims")) is not None:
