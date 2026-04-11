@@ -368,9 +368,9 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {ModelAlias.alias.avatar.rightArmBottom.DrinkBottle1, ModelAlias.alias.avatar.body.DrinkBottle2, ModelAlias.alias.avatar.body.DrinkBottle3, models.models.ex_skill_primary.Mobs};
+			models = {ModelAlias.alias.avatar.rightArmBottom.DrinkBottle1, ModelAlias.alias.avatar.body.DrinkBottle2, ModelAlias.alias.avatar.body.DrinkBottle3, models.models.ex_skill_1.Mobs};
 
-			animations = {"main", "ex_skill_primary"};
+			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -387,46 +387,46 @@ local BlueArchiveCharacter = {
 			callbacks = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob1.Mob1Head.Mob1HeadColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1Head.Mob1HeadLayerColor}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob1.Mob1Head.Mob1HeadColor, models.models.ex_skill_1.Mobs.Mob1.Mob1Head.Mob1HeadLayerColor}) do
 							modelPart:setColor(0.318, 0.235, 0.282)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob1.Mob1UpperBody.Mob1Body.Mob1BodyColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1UpperBody.Mob1Body.Mob1BodyLayerColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1UpperBody.Mob1Arms.Mob1RightArm.Mob1RightArmColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1UpperBody.Mob1Arms.Mob1RightArm.Mob1RightArmLayerColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1UpperBody.Mob1Arms.Mob1LeftArm.Mob1LeftArmColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1UpperBody.Mob1Arms.Mob1LeftArm.Mob1LeftArmLayerColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1LowerBody.Mob1Legs.Mob1RightLeg.Mob1RightLegColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1LowerBody.Mob1Legs.Mob1RightLeg.Mob1RightLegLayerColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1LowerBody.Mob1Legs.Mob1LeftLeg.Mob1LeftLegColor, models.models.ex_skill_primary.Mobs.Mob1.Mob1LowerBody.Mob1Legs.Mob1LeftLeg.Mob1LeftLegLayerColor}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob1.Mob1UpperBody.Mob1Body.Mob1BodyColor, models.models.ex_skill_1.Mobs.Mob1.Mob1UpperBody.Mob1Body.Mob1BodyLayerColor, models.models.ex_skill_1.Mobs.Mob1.Mob1UpperBody.Mob1Arms.Mob1RightArm.Mob1RightArmColor, models.models.ex_skill_1.Mobs.Mob1.Mob1UpperBody.Mob1Arms.Mob1RightArm.Mob1RightArmLayerColor, models.models.ex_skill_1.Mobs.Mob1.Mob1UpperBody.Mob1Arms.Mob1LeftArm.Mob1LeftArmColor, models.models.ex_skill_1.Mobs.Mob1.Mob1UpperBody.Mob1Arms.Mob1LeftArm.Mob1LeftArmLayerColor, models.models.ex_skill_1.Mobs.Mob1.Mob1LowerBody.Mob1Legs.Mob1RightLeg.Mob1RightLegColor, models.models.ex_skill_1.Mobs.Mob1.Mob1LowerBody.Mob1Legs.Mob1RightLeg.Mob1RightLegLayerColor, models.models.ex_skill_1.Mobs.Mob1.Mob1LowerBody.Mob1Legs.Mob1LeftLeg.Mob1LeftLegColor, models.models.ex_skill_1.Mobs.Mob1.Mob1LowerBody.Mob1Legs.Mob1LeftLeg.Mob1LeftLegLayerColor}) do
 							modelPart:setColor(0.788, 0.263, 0.275)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob1.Mob1Head.Mob1HeadRing, models.models.ex_skill_primary.Mobs.Mob2.Mob2Head.Mob2HeadRing, models.models.ex_skill_primary.Mobs.Mob3.Mob3Head.Mob3HeadRing}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob1.Mob1Head.Mob1HeadRing, models.models.ex_skill_1.Mobs.Mob2.Mob2Head.Mob2HeadRing, models.models.ex_skill_1.Mobs.Mob3.Mob3Head.Mob3HeadRing}) do
 							modelPart:setColor(0.996, 0.824, 0.843)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob2.Mob2Head.Mob2HeadColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2Head.Mob2HeadLayerColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2Head.Mob2HairTail}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob2.Mob2Head.Mob2HeadColor, models.models.ex_skill_1.Mobs.Mob2.Mob2Head.Mob2HeadLayerColor, models.models.ex_skill_1.Mobs.Mob2.Mob2Head.Mob2HairTail}) do
 							modelPart:setColor(0.502, 0.369, 0.408)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob2.Mob2UpperBody.Mob2Body.Mob2BodyColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2UpperBody.Mob2Body.Mob2BodyLayerColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2UpperBody.Mob2Arms.Mob2RightArm.Mob2RightArmColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2UpperBody.Mob2Arms.Mob2RightArm.Mob2RightArmLayerColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2UpperBody.Mob2Arms.Mob2LeftArm.Mob2LeftArmColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2UpperBody.Mob2Arms.Mob2LeftArm.Mob2LeftArmLayerColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2LowerBody.Mob2Legs.Mob2RightLeg.Mob2RightLegColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2LowerBody.Mob2Legs.Mob2RightLeg.Mob2RightLegLayerColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2LowerBody.Mob2Legs.Mob2LeftLeg.Mob2LeftLegColor, models.models.ex_skill_primary.Mobs.Mob2.Mob2LowerBody.Mob2Legs.Mob2LeftLeg.Mob2LeftLegLayerColor}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob2.Mob2UpperBody.Mob2Body.Mob2BodyColor, models.models.ex_skill_1.Mobs.Mob2.Mob2UpperBody.Mob2Body.Mob2BodyLayerColor, models.models.ex_skill_1.Mobs.Mob2.Mob2UpperBody.Mob2Arms.Mob2RightArm.Mob2RightArmColor, models.models.ex_skill_1.Mobs.Mob2.Mob2UpperBody.Mob2Arms.Mob2RightArm.Mob2RightArmLayerColor, models.models.ex_skill_1.Mobs.Mob2.Mob2UpperBody.Mob2Arms.Mob2LeftArm.Mob2LeftArmColor, models.models.ex_skill_1.Mobs.Mob2.Mob2UpperBody.Mob2Arms.Mob2LeftArm.Mob2LeftArmLayerColor, models.models.ex_skill_1.Mobs.Mob2.Mob2LowerBody.Mob2Legs.Mob2RightLeg.Mob2RightLegColor, models.models.ex_skill_1.Mobs.Mob2.Mob2LowerBody.Mob2Legs.Mob2RightLeg.Mob2RightLegLayerColor, models.models.ex_skill_1.Mobs.Mob2.Mob2LowerBody.Mob2Legs.Mob2LeftLeg.Mob2LeftLegColor, models.models.ex_skill_1.Mobs.Mob2.Mob2LowerBody.Mob2Legs.Mob2LeftLeg.Mob2LeftLegLayerColor}) do
 							modelPart:setColor(0.596, 0.6, 0.757)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob3.Mob3Head.Mob3HeadColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3Head.Mob3HeadLayerColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3Head.Mob3Bun}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob3.Mob3Head.Mob3HeadColor, models.models.ex_skill_1.Mobs.Mob3.Mob3Head.Mob3HeadLayerColor, models.models.ex_skill_1.Mobs.Mob3.Mob3Head.Mob3Bun}) do
 							modelPart:setColor(0.275, 0.212, 0.227)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob3.Mob3UpperBody.Mob3Body.Mob3BodyColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3UpperBody.Mob3Body.Mob3BodyLayerColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3UpperBody.Mob3Arms.Mob3RightArm.Mob3RightArmColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3UpperBody.Mob3Arms.Mob3RightArm.Mob3RightArmLayerColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3UpperBody.Mob3Arms.Mob3LeftArm.Mob3LeftArmColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3UpperBody.Mob3Arms.Mob3LeftArm.Mob3LeftArmLayerColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3LowerBody.Mob3Legs.Mob3RightLeg.Mob3RightLegColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3LowerBody.Mob3Legs.Mob3RightLeg.Mob3RightLegLayerColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3LowerBody.Mob3Legs.Mob3LeftLeg.Mob3LeftLegColor, models.models.ex_skill_primary.Mobs.Mob3.Mob3LowerBody.Mob3Legs.Mob3LeftLeg.Mob3LeftLegLayerColor}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob3.Mob3UpperBody.Mob3Body.Mob3BodyColor, models.models.ex_skill_1.Mobs.Mob3.Mob3UpperBody.Mob3Body.Mob3BodyLayerColor, models.models.ex_skill_1.Mobs.Mob3.Mob3UpperBody.Mob3Arms.Mob3RightArm.Mob3RightArmColor, models.models.ex_skill_1.Mobs.Mob3.Mob3UpperBody.Mob3Arms.Mob3RightArm.Mob3RightArmLayerColor, models.models.ex_skill_1.Mobs.Mob3.Mob3UpperBody.Mob3Arms.Mob3LeftArm.Mob3LeftArmColor, models.models.ex_skill_1.Mobs.Mob3.Mob3UpperBody.Mob3Arms.Mob3LeftArm.Mob3LeftArmLayerColor, models.models.ex_skill_1.Mobs.Mob3.Mob3LowerBody.Mob3Legs.Mob3RightLeg.Mob3RightLegColor, models.models.ex_skill_1.Mobs.Mob3.Mob3LowerBody.Mob3Legs.Mob3RightLeg.Mob3RightLegLayerColor, models.models.ex_skill_1.Mobs.Mob3.Mob3LowerBody.Mob3Legs.Mob3LeftLeg.Mob3LeftLegColor, models.models.ex_skill_1.Mobs.Mob3.Mob3LowerBody.Mob3Legs.Mob3LeftLeg.Mob3LeftLegLayerColor}) do
 							modelPart:setColor(0.231, 0.298, 0.22)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob4.Mob4Head.Mob4HeadColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4Head.Mob4HeadLayerColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4Head.Mob4Bun}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob4.Mob4Head.Mob4HeadColor, models.models.ex_skill_1.Mobs.Mob4.Mob4Head.Mob4HeadLayerColor, models.models.ex_skill_1.Mobs.Mob4.Mob4Head.Mob4Bun}) do
 							modelPart:setColor(0.345, 0.251, 0.251)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob4.Mob4UpperBody.Mob4Body.Mob4BodyColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4UpperBody.Mob4Body.Mob4BodyLayerColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4UpperBody.Mob4Arms.Mob4RightArm.Mob4RightArmColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4UpperBody.Mob4Arms.Mob4RightArm.Mob4RightArmLayerColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4UpperBody.Mob4Arms.Mob4LeftArm.Mob4LeftArmColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4UpperBody.Mob4Arms.Mob4LeftArm.Mob4LeftArmLayerColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4LowerBody.Mob4Legs.Mob4RightLeg.Mob4RightLegColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4LowerBody.Mob4Legs.Mob4RightLeg.Mob4RightLegLayerColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4LowerBody.Mob4Legs.Mob4LeftLeg.Mob4LeftLegColor, models.models.ex_skill_primary.Mobs.Mob4.Mob4LowerBody.Mob4Legs.Mob4LeftLeg.Mob4LeftLegLayerColor}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob4.Mob4UpperBody.Mob4Body.Mob4BodyColor, models.models.ex_skill_1.Mobs.Mob4.Mob4UpperBody.Mob4Body.Mob4BodyLayerColor, models.models.ex_skill_1.Mobs.Mob4.Mob4UpperBody.Mob4Arms.Mob4RightArm.Mob4RightArmColor, models.models.ex_skill_1.Mobs.Mob4.Mob4UpperBody.Mob4Arms.Mob4RightArm.Mob4RightArmLayerColor, models.models.ex_skill_1.Mobs.Mob4.Mob4UpperBody.Mob4Arms.Mob4LeftArm.Mob4LeftArmColor, models.models.ex_skill_1.Mobs.Mob4.Mob4UpperBody.Mob4Arms.Mob4LeftArm.Mob4LeftArmLayerColor, models.models.ex_skill_1.Mobs.Mob4.Mob4LowerBody.Mob4Legs.Mob4RightLeg.Mob4RightLegColor, models.models.ex_skill_1.Mobs.Mob4.Mob4LowerBody.Mob4Legs.Mob4RightLeg.Mob4RightLegLayerColor, models.models.ex_skill_1.Mobs.Mob4.Mob4LowerBody.Mob4Legs.Mob4LeftLeg.Mob4LeftLegColor, models.models.ex_skill_1.Mobs.Mob4.Mob4LowerBody.Mob4Legs.Mob4LeftLeg.Mob4LeftLegLayerColor}) do
 							modelPart:setColor(0.49, 0.42, 0.522)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob4.Mob4Head.Mob4HeadRing, models.models.ex_skill_primary.Mobs.Mob5.Mob5Head.Mob5HeadRing, models.models.ex_skill_primary.Mobs.Mob6.Mob6Head.Mob6HeadRing}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob4.Mob4Head.Mob4HeadRing, models.models.ex_skill_1.Mobs.Mob5.Mob5Head.Mob5HeadRing, models.models.ex_skill_1.Mobs.Mob6.Mob6Head.Mob6HeadRing}) do
 							modelPart:setColor(1, 0.98, 0.804)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob5.Mob5Head.Mob5HeadColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5Head.Mob5HeadLayerColor}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob5.Mob5Head.Mob5HeadColor, models.models.ex_skill_1.Mobs.Mob5.Mob5Head.Mob5HeadLayerColor}) do
 							modelPart:setColor(0.349, 0.286, 0.365)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob5.Mob5UpperBody.Mob5Body.Mob5BodyColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5UpperBody.Mob5Body.Mob5BodyLayerColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5UpperBody.Mob5Arms.Mob5RightArm.Mob5RightArmColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5UpperBody.Mob5Arms.Mob5RightArm.Mob5RightArmLayerColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5UpperBody.Mob5Arms.Mob5LeftArm.Mob5LeftArmColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5UpperBody.Mob5Arms.Mob5LeftArm.Mob5LeftArmLayerColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5LowerBody.Mob5Legs.Mob5RightLeg.Mob5RightLegColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5LowerBody.Mob5Legs.Mob5RightLeg.Mob5RightLegLayerColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5LowerBody.Mob5Legs.Mob5LeftLeg.Mob5LeftLegColor, models.models.ex_skill_primary.Mobs.Mob5.Mob5LowerBody.Mob5Legs.Mob5LeftLeg.Mob5LeftLegLayerColor}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob5.Mob5UpperBody.Mob5Body.Mob5BodyColor, models.models.ex_skill_1.Mobs.Mob5.Mob5UpperBody.Mob5Body.Mob5BodyLayerColor, models.models.ex_skill_1.Mobs.Mob5.Mob5UpperBody.Mob5Arms.Mob5RightArm.Mob5RightArmColor, models.models.ex_skill_1.Mobs.Mob5.Mob5UpperBody.Mob5Arms.Mob5RightArm.Mob5RightArmLayerColor, models.models.ex_skill_1.Mobs.Mob5.Mob5UpperBody.Mob5Arms.Mob5LeftArm.Mob5LeftArmColor, models.models.ex_skill_1.Mobs.Mob5.Mob5UpperBody.Mob5Arms.Mob5LeftArm.Mob5LeftArmLayerColor, models.models.ex_skill_1.Mobs.Mob5.Mob5LowerBody.Mob5Legs.Mob5RightLeg.Mob5RightLegColor, models.models.ex_skill_1.Mobs.Mob5.Mob5LowerBody.Mob5Legs.Mob5RightLeg.Mob5RightLegLayerColor, models.models.ex_skill_1.Mobs.Mob5.Mob5LowerBody.Mob5Legs.Mob5LeftLeg.Mob5LeftLegColor, models.models.ex_skill_1.Mobs.Mob5.Mob5LowerBody.Mob5Legs.Mob5LeftLeg.Mob5LeftLegLayerColor}) do
 							modelPart:setColor(0.294, 0.337, 0.49)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob6.Mob6Head.Mob6HeadColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6Head.Mob6HeadLayerColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6Head.Mob6HairTail}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob6.Mob6Head.Mob6HeadColor, models.models.ex_skill_1.Mobs.Mob6.Mob6Head.Mob6HeadLayerColor, models.models.ex_skill_1.Mobs.Mob6.Mob6Head.Mob6HairTail}) do
 							modelPart:setColor(0.506, 0.369, 0.322)
 						end
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob6.Mob6UpperBody.Mob6Body.Mob6BodyColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6UpperBody.Mob6Body.Mob6BodyLayerColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6UpperBody.Mob6Arms.Mob6RightArm.Mob6RightArmColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6UpperBody.Mob6Arms.Mob6RightArm.Mob6RightArmLayerColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6UpperBody.Mob6Arms.Mob6LeftArm.Mob6LeftArmColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6UpperBody.Mob6Arms.Mob6LeftArm.Mob6LeftArmLayerColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6LowerBody.Mob6Legs.Mob6RightLeg.Mob6RightLegColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6LowerBody.Mob6Legs.Mob6RightLeg.Mob6RightLegLayerColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6LowerBody.Mob6Legs.Mob6LeftLeg.Mob6LeftLegColor, models.models.ex_skill_primary.Mobs.Mob6.Mob6LowerBody.Mob6Legs.Mob6LeftLeg.Mob6LeftLegLayerColor}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob6.Mob6UpperBody.Mob6Body.Mob6BodyColor, models.models.ex_skill_1.Mobs.Mob6.Mob6UpperBody.Mob6Body.Mob6BodyLayerColor, models.models.ex_skill_1.Mobs.Mob6.Mob6UpperBody.Mob6Arms.Mob6RightArm.Mob6RightArmColor, models.models.ex_skill_1.Mobs.Mob6.Mob6UpperBody.Mob6Arms.Mob6RightArm.Mob6RightArmLayerColor, models.models.ex_skill_1.Mobs.Mob6.Mob6UpperBody.Mob6Arms.Mob6LeftArm.Mob6LeftArmColor, models.models.ex_skill_1.Mobs.Mob6.Mob6UpperBody.Mob6Arms.Mob6LeftArm.Mob6LeftArmLayerColor, models.models.ex_skill_1.Mobs.Mob6.Mob6LowerBody.Mob6Legs.Mob6RightLeg.Mob6RightLegColor, models.models.ex_skill_1.Mobs.Mob6.Mob6LowerBody.Mob6Legs.Mob6RightLeg.Mob6RightLegLayerColor, models.models.ex_skill_1.Mobs.Mob6.Mob6LowerBody.Mob6Legs.Mob6LeftLeg.Mob6LeftLegColor, models.models.ex_skill_1.Mobs.Mob6.Mob6LowerBody.Mob6Legs.Mob6LeftLeg.Mob6LeftLegLayerColor}) do
 							modelPart:setColor(0.58, 0.231, 0.29)
 						end
 
@@ -437,7 +437,7 @@ local BlueArchiveCharacter = {
 						self.exSkill.primary.stairs:setBlock("minecraft:oak_stairs")
 						self.exSkill.primary.stairs:setVisible(false)
 						if host:isHost() then
-							models.models.ex_skill_primary.Gui.AnxiousFrame:setColor(0.282, 0.29, 0.725)
+							models.models.ex_skill_1.Gui.AnxiousFrame:setColor(0.282, 0.29, 0.725)
 						end
 						self.exSkill.primary.isInitialized = true
 					end
@@ -455,7 +455,7 @@ local BlueArchiveCharacter = {
 					elseif tick == 32 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED", 10, true)
 					elseif tick == 38 and host:isHost() then
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob1, models.models.ex_skill_primary.Mobs.Mob4}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob1, models.models.ex_skill_1.Mobs.Mob4}) do
 							modelPart:setVisible(false)
 						end
 					elseif tick == 42 then
@@ -465,8 +465,8 @@ local BlueArchiveCharacter = {
 						sounds:playSound("minecraft:entity.wither.spawn", player:getPos(), 0.15, 2)
 						if host:isHost() then
 							local windowSize = client:getScaledWindowSize()
-							models.models.ex_skill_primary.Gui.AnxiousFrame:setScale(windowSize.x, windowSize.y, 1)
-							models.models.ex_skill_primary.Gui.AnxiousFrame:setVisible(true)
+							models.models.ex_skill_1.Gui.AnxiousFrame:setScale(windowSize.x, windowSize.y, 1)
+							models.models.ex_skill_1.Gui.AnxiousFrame:setVisible(true)
 						end
 					elseif tick == 50 then
 						FaceParts:setEmotion("INVERTED", "NORMAL", "ANXIOUS", 6, true)
@@ -478,13 +478,13 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("INVERTED", "NORMAL", "TRIANGLE", 10, true)
 					elseif tick == 80 then
 						ModelAlias.alias.avatar.root:setColor()
-						models.models.ex_skill_primary.Gui.AnxiousFrame:setVisible(false)
+						models.models.ex_skill_1.Gui.AnxiousFrame:setVisible(false)
 					elseif tick == 81 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "CLOSED", 4, true)
 					elseif tick == 85 then
 						FaceParts:setEmotion("TEAR", "TEAR", "TRIANGLE2", 15, true)
 					elseif tick == 100 then
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.DrinkBottle2, ModelAlias.alias.avatar.body.DrinkBottle3, models.models.ex_skill_primary.Mobs}) do
+						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.DrinkBottle2, ModelAlias.alias.avatar.body.DrinkBottle3, models.models.ex_skill_1.Mobs}) do
 							modelPart:setVisible(false)
 						end
 						self.exSkill.primary.stairs:setVisible(true)
@@ -502,7 +502,7 @@ local BlueArchiveCharacter = {
 					if tick >= 45 and tick <= 56 then
 						ModelAlias.alias.avatar.root:setColor(vectors.vec3(1, 1, 1):scale(1 - math.map(tick, 45, 56, 0, 0.25)))
 						if host:isHost() then
-							models.models.ex_skill_primary.Gui.AnxiousFrame:setOpacity(math.map(tick, 45, 56, 0, 1))
+							models.models.ex_skill_1.Gui.AnxiousFrame:setOpacity(math.map(tick, 45, 56, 0, 1))
 						end
 					end
 					if tick >= 8 and tick < 80 then
@@ -522,14 +522,14 @@ local BlueArchiveCharacter = {
 					self.exSkill.primary.stairs:setVisible(false)
 					ModelAlias.alias.avatar.head.FaceShadow:setVisible(false)
 					if host:isHost() then
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Mobs.Mob1, models.models.ex_skill_primary.Mobs.Mob4}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Mobs.Mob1, models.models.ex_skill_1.Mobs.Mob4}) do
 							modelPart:setVisible(true)
 						end
 					end
 					if forcedStop then
 						ModelAlias.alias.avatar.root:setColor()
 						if host:isHost() then
-							models.models.ex_skill_primary.Gui.AnxiousFrame:setVisible(false)
+							models.models.ex_skill_1.Gui.AnxiousFrame:setVisible(false)
 						end
 					end
 				end;

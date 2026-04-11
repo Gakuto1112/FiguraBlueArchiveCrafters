@@ -342,9 +342,9 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "SPECIAL";
 
-			models = {models.models.ex_skill_primary.Plate, models.models.ex_skill_primary.Gui, ModelAlias.alias.avatar.head.WinkEffect};
+			models = {models.models.ex_skill_1.Plate, models.models.ex_skill_1.Gui, ModelAlias.alias.avatar.head.WinkEffect};
 
-			animations = {"main", "ex_skill_primary"};
+			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -360,66 +360,66 @@ local BlueArchiveCharacter = {
 
 			callbacks = {
 				onPreTransition = function ()
-					for _, modelPart in ipairs({models.models.ex_skill_primary.Stall, models.models.ex_skill_primary.SoftCream}) do
+					for _, modelPart in ipairs({models.models.ex_skill_1.Stall, models.models.ex_skill_1.SoftCream}) do
 						modelPart:setVisible(true)
 					end
 				end;
 
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
-						models.models.ex_skill_primary.Plate.ShavedIceGroup.Wave:setPrimaryTexture("RESOURCE", "minecraft:textures/block/water_flow.png")
-						models.models.ex_skill_primary.Plate.ShavedIceGroup.Wave:setColor(0.4, 0.961, 1)
+						models.models.ex_skill_1.Plate.ShavedIceGroup.Wave:setPrimaryTexture("RESOURCE", "minecraft:textures/block/water_flow.png")
+						models.models.ex_skill_1.Plate.ShavedIceGroup.Wave:setColor(0.4, 0.961, 1)
 						self.exSkill.primary.isInitialized = true
 					end
-					for _, modelPart in ipairs({models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
+					for _, modelPart in ipairs({models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
 						modelPart:setUVPixels(1, 0)
 					end
 					if host:isHost() then
 						local windowSize = client:getScaledWindowSize()
-						models.models.ex_skill_primary.Gui.Frame:setScale(windowSize.x, windowSize.y)
+						models.models.ex_skill_1.Gui.Frame:setScale(windowSize.x, windowSize.y)
 						events.RENDER:register(function ()
-							models.models.ex_skill_primary.Gui.Frame:setOpacity(models.models.ex_skill_primary.Gui.FrameOpacity:getAnimScale().x)
-						end, "ex_skill_primary_render")
+							models.models.ex_skill_1.Gui.Frame:setOpacity(models.models.ex_skill_1.Gui.FrameOpacity:getAnimScale().x)
+						end, "ex_skill_1_render")
 					end
 					FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED", 71, true)
 				end;
 
 				onAnimationTick = function (self, tick)
 					if tick == 9 then
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
 							modelPart:setUVPixels(2, 0)
 						end
 					elseif tick == 12 then
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
 							modelPart:setUVPixels(3, 0)
 						end
 					elseif tick == 16 then
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
 							modelPart:setUVPixels(4, 0)
 						end
 					elseif tick == 19 then
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
 							modelPart:setUVPixels(5, 0)
 						end
 					elseif tick == 23 then
-						for _, modelPart in ipairs({models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
+						for _, modelPart in ipairs({models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce1, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce2, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce3, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce4, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIce5, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarLeft, models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceEars.ShavedIceEarRight}) do
 							modelPart:setUVPixels()
 						end
 					elseif tick == 27 then
-						models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setVisible(true)
-						models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setUVPixels(8, 0)
+						models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setVisible(true)
+						models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setUVPixels(8, 0)
 					elseif tick == 28 then
-						models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setVisible(false)
+						models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setVisible(false)
 					elseif tick == 29 then
-						models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setVisible(true)
-						models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setUVPixels(math.random() > 0.95 and 16 or 0, 0)
-						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce), 1, 0.75)
+						models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setVisible(true)
+						models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setUVPixels(math.random() > 0.95 and 16 or 0, 0)
+						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce), 1, 0.75)
 					elseif tick == 33 or tick == 50 then
-						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_primary.Plate.ShavedIceGroup)
+						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Plate.ShavedIceGroup)
 						sounds:playSound("minecraft:item.bucket.empty", anchorPos, tick == 33 and 1 or 0.25, 0.75)
 						sounds:playSound("minecraft:item.bucket.empty", anchorPos, tick == 33 and 1 or 0.25, 0.5)
 					elseif tick == 52 then
-						models.models.ex_skill_primary.Plate:moveTo(ModelAlias.alias.avatar.leftArmBottom)
+						models.models.ex_skill_1.Plate:moveTo(ModelAlias.alias.avatar.leftArmBottom)
 						ModelAlias.alias.avatar.leftArmBottom.Plate.ShavedIceGroup.Wave.WaveScaler:setOffsetPivot(48, 0)
 					elseif tick == 71 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 3, true)
@@ -444,18 +444,18 @@ local BlueArchiveCharacter = {
 					end
 
 					if tick <= 5 then
-						local particleAnchor1Pos = ModelUtils.getModelWorldPos(models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce):add(0, 1.5, 0)
+						local particleAnchor1Pos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce):add(0, 1.5, 0)
 						for _ = 1, 2 do
 							particles:newParticle("minecraft:block minecraft:snow", particleAnchor1Pos):setPower(0.25):setLifetime(10)
 						end
 					elseif tick <= 26 then
-						local particleAnchor1Pos = ModelUtils.getModelWorldPos(models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce):add(0, 1.5, 0)
+						local particleAnchor1Pos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce):add(0, 1.5, 0)
 						for _ = 1, 4 do
 							particles:newParticle("minecraft:block minecraft:light_blue_concrete", particleAnchor1Pos):setPower(0):setLifetime(10)
 						end
 					end
 					if (tick >= 33 and tick <= 41) or (tick >= 50 and tick <= 61) then
-						local root = tick < 52 and models.models.ex_skill_primary.Plate.ShavedIceGroup.Wave.WaveScaler or ModelAlias.alias.avatar.leftArmBottom.Plate.ShavedIceGroup.Wave.WaveScaler
+						local root = tick < 52 and models.models.ex_skill_1.Plate.ShavedIceGroup.Wave.WaveScaler or ModelAlias.alias.avatar.leftArmBottom.Plate.ShavedIceGroup.Wave.WaveScaler
 						local anchorPos = ModelUtils.getModelWorldPos(tick < 50 and root.WaveParticleAnchor1 or root.WaveParticleAnchor3)
 						local particleRot = ModelUtils.getModelWorldPos(tick < 50 and root.WaveParticleAnchor2 or root.WaveParticleAnchor4):sub(anchorPos)
 						for _ = 0, 15 do
@@ -465,25 +465,25 @@ local BlueArchiveCharacter = {
 					end
 
 					if tick % 4 then
-						local modelPart = tick < 52 and models.models.ex_skill_primary.Plate.ShavedIceGroup.Wave or ModelAlias.alias.avatar.leftArmBottom.Plate.ShavedIceGroup.Wave
+						local modelPart = tick < 52 and models.models.ex_skill_1.Plate.ShavedIceGroup.Wave or ModelAlias.alias.avatar.leftArmBottom.Plate.ShavedIceGroup.Wave
 						modelPart:setUVPixels(0, tick * 4 * 16)
 					end
 				end;
 
 				onPostAnimation = function (self)
 					if ModelAlias.alias.avatar.leftArmBottom.Plate ~= nil then
-						ModelAlias.alias.avatar.leftArmBottom.Plate:moveTo( models.models.ex_skill_primary)
+						ModelAlias.alias.avatar.leftArmBottom.Plate:moveTo( models.models.ex_skill_1)
 					end
-					models.models.ex_skill_primary.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setVisible(false)
-					models.models.ex_skill_primary.Plate.ShavedIceGroup.Wave.WaveScaler:setOffsetPivot()
+					models.models.ex_skill_1.Plate.ShavedIceGroup.ShavedIce.ShavedIce2.ShavedIceFace:setVisible(false)
+					models.models.ex_skill_1.Plate.ShavedIceGroup.Wave.WaveScaler:setOffsetPivot()
 					if host:isHost() then
-						events.RENDER:remove("ex_skill_primary_render")
+						events.RENDER:remove("ex_skill_1_render")
 						ExSkillSplashParticleManager:removeAll()
 					end
 				end;
 
 				onPostTransition = function ()
-					for _, modelPart in ipairs({models.models.ex_skill_primary.Stall, models.models.ex_skill_primary.SoftCream}) do
+					for _, modelPart in ipairs({models.models.ex_skill_1.Stall, models.models.ex_skill_1.SoftCream}) do
 						modelPart:setVisible(false)
 					end
 				end;

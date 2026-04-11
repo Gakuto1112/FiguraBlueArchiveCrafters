@@ -380,9 +380,9 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_primary.BeachBall};
+			models = {models.models.ex_skill_1.BeachBall};
 
-			animations = {"main", "ex_skill_primary"};
+			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -449,21 +449,21 @@ local BlueArchiveCharacter = {
 						end
 						sounds:playSound("minecraft:item.bucket.empty", avatarPos, 1 - math.map(tick, 45, 60, 0, 0.5), 0.75)
 					elseif tick == 79 and host:isHost() then
-						models.models.ex_skill_primary.CameraBackground:setVisible(true)
+						models.models.ex_skill_1.CameraBackground:setVisible(true)
 						local windowSize = client:getWindowSize()
-						models.models.ex_skill_primary.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(45))
+						models.models.ex_skill_1.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(45))
 						local shouldAdjustBackgroundRot = client:getVersion() >= "1.21"
 						events.RENDER:register(function (delta, context)
-							models.models.ex_skill_primary.CameraBackground:setVisible(context == "RENDER")
+							models.models.ex_skill_1.CameraBackground:setVisible(context == "RENDER")
 							local backgroundPos = vectors.rotateAroundAxis(player:getBodyYaw(delta) + 180, renderer:getCameraOffsetPivot():copy():add(0, 1.62, 0):add(client:getCameraDir():copy():scale(2)), 0, 1, 0):scale(16 / 0.9375)
-							models.models.ex_skill_primary.CameraBackground:setOffsetPivot(backgroundPos)
-							models.models.ex_skill_primary.CameraBackground.Background:setPos(backgroundPos)
+							models.models.ex_skill_1.CameraBackground:setOffsetPivot(backgroundPos)
+							models.models.ex_skill_1.CameraBackground.Background:setPos(backgroundPos)
 							if shouldAdjustBackgroundRot then
-								models.models.ex_skill_primary.CameraBackground.Background:setRot(0, 0, renderer:getCameraRot().z)
+								models.models.ex_skill_1.CameraBackground.Background:setRot(0, 0, renderer:getCameraRot().z)
 							end
 						end, "ex_skill_2_background_render")
 						ModelAlias.alias.avatar.root:setColor(0, 0, 0)
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.root, models.models.ex_skill_primary.BeachBall}) do
+						for _, modelPart in ipairs({ModelAlias.alias.avatar.root, models.models.ex_skill_1.BeachBall}) do
 							modelPart:setColor(0, 0, 0)
 						end
 					elseif tick == 80 then
@@ -472,8 +472,8 @@ local BlueArchiveCharacter = {
 						renderer:setPostEffect()
 					elseif tick == 85 then
 						FaceParts:setEmotion("ANGRY", "ANGRY", "OPENED", 16, true)
-						models.models.ex_skill_primary.BeachBall:setUVPixels(0, 7)
-						models.models.ex_skill_primary.BeachBall:setPrimaryRenderType("EMISSIVE_SOLID")
+						models.models.ex_skill_1.BeachBall:setUVPixels(0, 7)
+						models.models.ex_skill_1.BeachBall:setPrimaryRenderType("EMISSIVE_SOLID")
 						sounds:playSound("minecraft:entity.blaze.death", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 1, 2)
 					elseif tick == 86 then
 						local bodyYaw = player:getBodyYaw()
@@ -488,9 +488,9 @@ local BlueArchiveCharacter = {
 							end
 						end
 						if host:isHost() then
-							models.models.ex_skill_primary.CameraBackground:setVisible(false)
+							models.models.ex_skill_1.CameraBackground:setVisible(false)
 							events.RENDER:remove("ex_skill_2_background_render")
-							for _, modelPart in ipairs({ModelAlias.alias.avatar.root, models.models.ex_skill_primary.BeachBall}) do
+							for _, modelPart in ipairs({ModelAlias.alias.avatar.root, models.models.ex_skill_1.BeachBall}) do
 								modelPart:setColor()
 							end
 						end
@@ -501,7 +501,7 @@ local BlueArchiveCharacter = {
 						local particleVelocityDirection = vectors.rotateAroundAxis(-bodyYaw, vectors.rotateAroundAxis(-50, 0, 0, 1, 1, 0, 0), 0, 1, 0)
 						if tick == 101 then
 							FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 42, true)
-							models.models.ex_skill_primary.BeachBall:setUVPixels(0, 14)
+							models.models.ex_skill_1.BeachBall:setUVPixels(0, 14)
 							for i = 1, 60 do
 								local currentParticleVelocityDirection = vectors.rotateAroundAxis(i * 6, particleVelocityDirection, particleAxis)
 								for _, particleData in ipairs({{0.3, 3.5, 0.01, 0.5}, {0.5, 3.5, 0.01, 0.5}, {0.25, 7.9, 0.003, 0.2}, {0.28, 7.89, 0.003, 0.2}, {0.45, 7.85, 0.003, 0.5}}) do --[1]. 輪っかの半径, [2]. 輪っかの位置のスケール, [3]. 輪っかの拡散速度のスケール, [4]. 輪っかのパーティクルの大きさ
@@ -509,7 +509,7 @@ local BlueArchiveCharacter = {
 									particles:newParticle("minecraft:dust 1 1 1 1", vectors.rotateAroundAxis(i * 6, 0, particleData[1], 0, particleAxis):add(anchor2Pos):add(particleAxis:copy():scale(particleData[2]))):setScale(particleData[4]):setColor(1, colorOffset, colorOffset):setVelocity(currentParticleVelocityDirection:copy():scale(particleData[3])):setLifetime(45)
 								end
 							end
-							sounds:playSound("minecraft:entity.lightning_bolt.thunder", ModelUtils.getModelWorldPos(models.models.ex_skill_primary.BeachBall), 1, 2)
+							sounds:playSound("minecraft:entity.lightning_bolt.thunder", ModelUtils.getModelWorldPos(models.models.ex_skill_1.BeachBall), 1, 2)
 						end
 						for _ = 1, 10 do
 							local colorOffset = math.random() * 0.5 + 0.5
@@ -523,15 +523,15 @@ local BlueArchiveCharacter = {
 
 				onPostAnimation = function (_, forcedStop)
 					ModelAlias.alias.avatar.root:setVisible(true)
-					models.models.ex_skill_primary.BeachBall:setUVPixels()
-					models.models.ex_skill_primary.BeachBall:setPrimaryRenderType("CUTOUT")
+					models.models.ex_skill_1.BeachBall:setUVPixels()
+					models.models.ex_skill_1.BeachBall:setPrimaryRenderType("CUTOUT")
 					if host:isHost() then
-						models.models.ex_skill_primary.CameraBackground.Background:setColor()
-						models.models.ex_skill_primary.CameraBackground.Background:setOpacity(1)
+						models.models.ex_skill_1.CameraBackground.Background:setColor()
+						models.models.ex_skill_1.CameraBackground.Background:setOpacity(1)
 						if forcedStop then
 							events.RENDER:remove("ex_skill_2_background_render")
-							models.models.ex_skill_primary.CameraBackground:setVisible(false)
-							for _, modelPart in ipairs({ModelAlias.alias.avatar.root, models.models.ex_skill_primary.BeachBall}) do
+							models.models.ex_skill_1.CameraBackground:setVisible(false)
+							for _, modelPart in ipairs({ModelAlias.alias.avatar.root, models.models.ex_skill_1.BeachBall}) do
 								modelPart:setColor()
 							end
 							renderer:setPostEffect()

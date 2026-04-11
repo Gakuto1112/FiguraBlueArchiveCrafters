@@ -12,7 +12,7 @@ local ExSkillSplashParticle = {
         ---@type ExSkillSplashParticle
         local instance = MiscUtils.instantiate(ExSkillSplashParticle, SpawnObject, parent)
 
-        instance.object = models.models.ex_skill_primary.Gui.script_ex_skill_primary_splash_particles:newSprite(instance.uuid)
+        instance.object = models.models.ex_skill_1.Gui.script_ex_skill_1_splash_particles:newSprite(instance.uuid)
         instance.currentPos = pos
         instance.nextPos = instance.currentPos
         instance.velocity = velocity
@@ -20,8 +20,8 @@ local ExSkillSplashParticle = {
         instance.callbacks = {
             ---@param self ExSkillSplashParticle
             onInit = function (self)
-                self.object:setTexture(textures["textures.ex_skill_primary"])
-                self.object:setDimensions(textures["textures.ex_skill_primary"]:getDimensions())
+                self.object:setTexture(textures["textures.ex_skill_1"])
+                self.object:setDimensions(textures["textures.ex_skill_1"]:getDimensions())
                 self.object:setRegion(1, 1)
                 self.object:setSize(5, 5)
                 self.object:setUVPixels(33, 15)
@@ -29,7 +29,7 @@ local ExSkillSplashParticle = {
 
             ---@param self ExSkillSplashParticle
             onDeinit = function (self)
-                models.models.ex_skill_primary.Gui.script_ex_skill_primary_splash_particles:removeTask(self.uuid)
+                models.models.ex_skill_1.Gui.script_ex_skill_1_splash_particles:removeTask(self.uuid)
             end;
 
             ---@param self ExSkillSplashParticle

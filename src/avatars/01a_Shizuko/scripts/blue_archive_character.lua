@@ -347,7 +347,7 @@ local BlueArchiveCharacter = {
 
 	placementObjects = {
             {
-                model = models.models.ex_skill_primary.Stall;
+                model = models.models.ex_skill_1.Stall;
 
                 boundingBox = {
                     size = vectors.vec3(20, 38, 20);
@@ -361,9 +361,9 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "SPECIAL";
 
-			models = {models.models.ex_skill_primary.Stall, ModelAlias.alias.avatar.rightArmBottom.TeaSet};
+			models = {models.models.ex_skill_1.Stall, ModelAlias.alias.avatar.rightArmBottom.TeaSet};
 
-			animations = {"main", "ex_skill_primary"};
+			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -418,16 +418,16 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("SURPRISED", "SURPRISED", "TRIANGLE", 14, true)
 						local shouldAdjustBackgroundRot = client:getVersion() >= "1.21"
 						if host:isHost() then
-							models.models.ex_skill_primary.CameraBackground:setVisible(true)
+							models.models.ex_skill_1.CameraBackground:setVisible(true)
 							local windowSize = client:getWindowSize()
-							models.models.ex_skill_primary.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(45))
+							models.models.ex_skill_1.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(45))
 							events.RENDER:register(function (delta, context)
-								models.models.ex_skill_primary.CameraBackground:setVisible(context == "RENDER")
+								models.models.ex_skill_1.CameraBackground:setVisible(context == "RENDER")
 								local backgroundPos = vectors.rotateAroundAxis(player:getBodyYaw(delta) + 180, renderer:getCameraOffsetPivot():copy():add(0, 1.62, 0):add(client:getCameraDir():copy():scale(1.75)), 0, 1, 0):scale(16 / 0.9375)
-								models.models.ex_skill_primary.CameraBackground:setOffsetPivot(backgroundPos)
-								models.models.ex_skill_primary.CameraBackground.Background:setPos(backgroundPos)
+								models.models.ex_skill_1.CameraBackground:setOffsetPivot(backgroundPos)
+								models.models.ex_skill_1.CameraBackground.Background:setPos(backgroundPos)
 								if shouldAdjustBackgroundRot then
-									models.models.ex_skill_primary.CameraBackground.Background:setRot(0, 0, renderer:getCameraRot().z)
+									models.models.ex_skill_1.CameraBackground.Background:setRot(0, 0, renderer:getCameraRot().z)
 								end
 							end, "ex_skill_1_background_render")
 						end
@@ -445,7 +445,7 @@ local BlueArchiveCharacter = {
 					elseif tick == 67 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "WORRY", 8, true)
 						if host:isHost() then
-							models.models.ex_skill_primary.CameraBackground:setVisible(false)
+							models.models.ex_skill_1.CameraBackground:setVisible(false)
 							events.RENDER:remove("ex_skill_1_background_render")
 						end
 						elseif tick == 69 then
@@ -477,14 +477,14 @@ local BlueArchiveCharacter = {
 						end
 					end
 					if tick % 2 == 0 and tick >= 70 then
-						local particleAnchor5Pos = ModelUtils.getModelWorldPos(models.models.ex_skill_primary.Stall.ExSkillParticleAnchor5)
+						local particleAnchor5Pos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Stall.ExSkillParticleAnchor5)
 						for i = 0, 11 do
 							local particleRot = i * (math.pi / 6)
 							particles:newParticle("minecraft:block " .. "minecraft:dirt", particleAnchor5Pos:copy():add(math.cos(particleRot) * 0.6, 0, math.sin(particleRot) * 0.6))
 						end
 					end
-					if tick % math.ceil((animations["models.main"]["ex_skill_primary"]:getLength() * 20 - tick) / 20) == 0 then
-						sounds:playSound("minecraft:entity.boat.paddle_land", ModelUtils.getModelWorldPos(models.models.ex_skill_primary.Stall.Wheels.ExSkillSoundAnchor1))
+					if tick % math.ceil((animations["models.main"]["ex_skill_1"]:getLength() * 20 - tick) / 20) == 0 then
+						sounds:playSound("minecraft:entity.boat.paddle_land", ModelUtils.getModelWorldPos(models.models.ex_skill_1.Stall.Wheels.ExSkillSoundAnchor1))
 					end
 				end;
 
@@ -494,7 +494,7 @@ local BlueArchiveCharacter = {
 					end
 					if forcedStop then
 						if host:isHost() then
-							models.models.ex_skill_primary.CameraBackground:setVisible(false)
+							models.models.ex_skill_1.CameraBackground:setVisible(false)
 							events.RENDER:remove("ex_skill_1_background_render")
 						end
 						self.exSkill.primary.textTask:setVisible(false)

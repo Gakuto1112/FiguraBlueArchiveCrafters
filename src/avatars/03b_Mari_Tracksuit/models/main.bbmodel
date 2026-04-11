@@ -5771,69 +5771,8 @@
 	],
 	"animations": [
 		{
-			"uuid": "32fa508f-6231-249d-8d16-a70232d41da2",
-			"name": "halo_sleep",
-			"loop": "hold",
-			"override": false,
-			"length": 0.25,
-			"snapping": 20,
-			"selected": false,
-			"anim_time_update": "",
-			"blend_weight": "",
-			"start_delay": "",
-			"loop_delay": "",
-			"animators": {
-				"9cab2003-e24b-f297-b725-4b93dc192330": {
-					"name": "HaloCenter",
-					"type": "bone",
-					"keyframes": [
-						{
-							"channel": "scale",
-							"data_points": [
-								{
-									"x": "1",
-									"y": "1",
-									"z": "1"
-								}
-							],
-							"uuid": "32b748eb-7ebc-92d2-79eb-b6ec001c4265",
-							"time": 0,
-							"color": -1,
-							"uniform": true,
-							"interpolation": "bezier",
-							"bezier_linked": true,
-							"bezier_left_time": [-0.25333, -0.25333, -0.25333],
-							"bezier_left_value": [0, 0, 0],
-							"bezier_right_time": [0.25333, 0.25333, 0.25333],
-							"bezier_right_value": [0, 0, 0]
-						},
-						{
-							"channel": "scale",
-							"data_points": [
-								{
-									"x": "0",
-									"y": "0",
-									"z": "0"
-								}
-							],
-							"uuid": "92dda563-b5db-3f0a-2291-ff54fe9abeb0",
-							"time": 0.25,
-							"color": -1,
-							"uniform": true,
-							"interpolation": "bezier",
-							"bezier_linked": true,
-							"bezier_left_time": [-0.1, -0.1, -0.1],
-							"bezier_left_value": [0, 0, 0],
-							"bezier_right_time": [0.1, 0.1, 0.1],
-							"bezier_right_value": [0, 0, 0]
-						}
-					]
-				}
-			}
-		},
-		{
 			"uuid": "40ce875a-c1f9-dc7c-e611-159035230512",
-			"name": "ex_skill_primary",
+			"name": "ex_skill_1",
 			"loop": "once",
 			"override": true,
 			"length": 7.15,
@@ -9007,6 +8946,67 @@
 							"time": 5,
 							"color": -1,
 							"interpolation": "linear"
+						}
+					]
+				}
+			}
+		},
+		{
+			"uuid": "32fa508f-6231-249d-8d16-a70232d41da2",
+			"name": "halo_sleep",
+			"loop": "hold",
+			"override": false,
+			"length": 0.25,
+			"snapping": 20,
+			"selected": false,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "",
+			"animators": {
+				"9cab2003-e24b-f297-b725-4b93dc192330": {
+					"name": "HaloCenter",
+					"type": "bone",
+					"keyframes": [
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "1",
+									"y": "1",
+									"z": "1"
+								}
+							],
+							"uuid": "32b748eb-7ebc-92d2-79eb-b6ec001c4265",
+							"time": 0,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "bezier",
+							"bezier_linked": true,
+							"bezier_left_time": [-0.25333, -0.25333, -0.25333],
+							"bezier_left_value": [0, 0, 0],
+							"bezier_right_time": [0.25333, 0.25333, 0.25333],
+							"bezier_right_value": [0, 0, 0]
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "92dda563-b5db-3f0a-2291-ff54fe9abeb0",
+							"time": 0.25,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "bezier",
+							"bezier_linked": true,
+							"bezier_left_time": [-0.1, -0.1, -0.1],
+							"bezier_left_value": [0, 0, 0],
+							"bezier_right_time": [0.1, 0.1, 0.1],
+							"bezier_right_value": [0, 0, 0]
 						}
 					]
 				}

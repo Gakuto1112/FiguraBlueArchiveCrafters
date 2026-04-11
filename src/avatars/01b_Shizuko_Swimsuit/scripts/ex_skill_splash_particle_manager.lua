@@ -7,7 +7,7 @@ local ExSkillSplashParticleManager = {
         ---@type ExSkillSplashParticleManager
         local instance = MiscUtils.instantiate(ExSkillSplashParticleManager, SpawnObjectManager, parent)
 
-        instance.managerName = "ex_skill_primary_splash_particle"
+        instance.managerName = "ex_skill_1_splash_particle"
 
         return instance
     end;
@@ -15,7 +15,7 @@ local ExSkillSplashParticleManager = {
     ---初期化関数
     init = function ()
         ---@diagnostic disable-next-line: discard-returns
-        models.models.ex_skill_primary.Gui:newPart("script_ex_skill_primary_splash_particles")
+        models.models.ex_skill_1.Gui:newPart("script_ex_skill_1_splash_particles")
     end;
 
     ---Exスキルのスプラッシュパーティクルのインスタンスを生成して返す。

@@ -345,7 +345,7 @@ local BlueArchiveCharacter = {
 
 	placementObjects = {
 		{
-			model = models.models.ex_skill_primary.PlacementObject;
+			model = models.models.ex_skill_1.PlacementObject;
 
 			boundingBox = {
 				size = vectors.vec3(12, 19, 12)
@@ -355,7 +355,7 @@ local BlueArchiveCharacter = {
 
 			callbacks = {
 				onInit = function (self)
-					animations["models.ex_skill_primary"]["swing"]:play()
+					animations["models.ex_skill_1"]["swing"]:play()
 					self.placementObjects.swingCoolDown = 60
 				end;
 
@@ -363,7 +363,7 @@ local BlueArchiveCharacter = {
 					if raycast:entity(placementObject.currentPos, placementObject.currentPos:copy():add(0, 1.2, 0), function (entity)
 						return entity:isLiving() and entity:isMoving()
 					end) and self.placementObjects.swingCoolDown == 0 then
-						animations["models.ex_skill_primary"]["swing"]:play()
+						animations["models.ex_skill_1"]["swing"]:play()
 						self.placementObjects.swingCoolDown = 60
 					end
 					self.placementObjects.swingCoolDown = math.max(self.placementObjects.swingCoolDown - 1, 0)
@@ -427,19 +427,19 @@ local BlueArchiveCharacter = {
 					elseif tick == 49 then
 						sounds:playSound("minecraft:entity.player.attack.sweep", player:getPos(), 0.5, 1.5)
 					elseif tick == 50 and host:isHost() then
-						models.models.ex_skill_primary.CameraBackground:setVisible(true)
+						models.models.ex_skill_1.CameraBackground:setVisible(true)
 						local backgroundPos = vectors.rotateAroundAxis(player:getBodyYaw() + 180, renderer:getCameraOffsetPivot():copy():add(0, 1.62, 0):add(client:getCameraDir():copy():scale(1.75)), 0, 1, 0):scale(16 / 0.9375)
-						models.models.ex_skill_primary.CameraBackground:setOffsetPivot(backgroundPos)
-						models.models.ex_skill_primary.CameraBackground.Background:setPos(backgroundPos)
+						models.models.ex_skill_1.CameraBackground:setOffsetPivot(backgroundPos)
+						models.models.ex_skill_1.CameraBackground.Background:setPos(backgroundPos)
 						local windowSize = client:getWindowSize()
-						models.models.ex_skill_primary.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(40))
+						models.models.ex_skill_1.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(40))
 						ModelAlias.alias.avatar.root:setColor(0, 0, 0)
 						ExSkillTextObjectManager:setBlack(true)
 						renderer:setPostEffect("invert")
 					elseif tick == 51 then
 						FaceParts:setEmotion("ANGRY", "ANGRY", "CIRCLE", 10, true)
 					elseif tick == 53 and host:isHost() then
-						models.models.ex_skill_primary.CameraBackground:setVisible(false)
+						models.models.ex_skill_1.CameraBackground:setVisible(false)
 						ModelAlias.alias.avatar.root:setColor(1, 1, 1)
 						ExSkillTextObjectManager:setBlack(false)
 						renderer:setPostEffect()
@@ -468,7 +468,7 @@ local BlueArchiveCharacter = {
 						PlacementObjectManager:spawn(1, ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), player:getBodyYaw() * -1 + 180)
 					end
 					if tick <= 10 then
-						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_primary.ExSkillAnchor1)
+						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.ExSkillAnchor1)
 						local velocityRot = vectors.rotateAroundAxis(-player:getBodyYaw(), -0.1, 0, 0, 0, 1, 0)
 						for _ = 1, 2 do
 							particles:newParticle("minecraft:cherry_leaves", anchorPos:copy():add(math.random() * 3 -  1.5, math.random() * 3, math.random() * 3 - 1.5)):setVelocity(velocityRot)
@@ -480,7 +480,7 @@ local BlueArchiveCharacter = {
 					if forcedStop then
 						ExSkillTextObjectManager:removeAll()
 						if host:isHost() then
-							models.models.ex_skill_primary.CameraBackground:setVisible(false)
+							models.models.ex_skill_1.CameraBackground:setVisible(false)
 							ModelAlias.alias.avatar.root:setColor(1, 1, 1)
 							renderer:setPostEffect()
 						end
@@ -889,11 +889,11 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type ExSkillTextObject
-		ExSkillTextObject = require("scripts.ex_skill_primary_text_object")
+		ExSkillTextObject = require("scripts.ex_skill_1_text_object")
 
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type ExSkillTextObjectManager
-		ExSkillTextObjectManager = require("scripts.ex_skill_primary_text_object_manager")
+		ExSkillTextObjectManager = require("scripts.ex_skill_1_text_object_manager")
 		ExSkillTextObjectManager = ExSkillTextObjectManager:new()
 
 		---忍術ワープの表現
