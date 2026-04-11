@@ -270,8 +270,8 @@ local BlueArchiveCharacter = {
 	faceParts = {
 		rightEye = {
 			NORMAL = vectors.vec2(0, 0); --必須
-			SURPRISED = vectors.vec2(1, 0); --必須
-			TIRED = vectors.vec2(2, 0); --必須
+			SURPRISED = vectors.vec2(2, 0); --必須
+			TIRED = vectors.vec2(3, 0); --必須
 			CLOSED = vectors.vec2(4, 0); --必須
 		};
 
