@@ -430,7 +430,7 @@ local BlueArchiveCharacter = {
 		isAltCostumeEnabled = false;
 
 		callbacks = {
-			onArmorChange = function (self, parts, isVisible)
+			onArmorChange = function (_, parts, isVisible)
 				if parts == "CHEST_PLATE" then
 					ModelAlias.alias.avatar.body.FrontHair:setPos(0, 0, isVisible and -1 or 0)
 					ModelAlias.alias.avatar.body.VeilBody:setPos(0, 0, isVisible and 1 or 0)
@@ -445,7 +445,7 @@ local BlueArchiveCharacter = {
 
 	bubble = {
 		callbacks = {
-			onPlay = function(self, type, duration)
+			onPlay = function(_, type, duration)
 				if duration > 0 then
 					if type == "GOOD" then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "SMILE", duration, true)
@@ -461,7 +461,7 @@ local BlueArchiveCharacter = {
 				end
 			end;
 
-			onStop = function(self, _, forcedStop)
+			onStop = function(_, _, forcedStop)
 				if forcedStop then
 					FaceParts:resetEmotion()
 				end
@@ -637,7 +637,7 @@ local BlueArchiveCharacter = {
 				if shouldHideLegs and not shouldHideLegsPrev then
 					ModelAlias.alias.avatar.legs:setVisible(false)
 					ModelAlias.alias.avatar.body.Robe:setScale(1.85, 0.35, 2)
-					for _, modelPart in ipairs({ModelAlias.alias.avatar.body.Robe.Robe2, ModelAlias.alias.avatar.body.Robe.Robe2.Robe3}) do
+					for _, modelPart in ipairs({ModelAlias.alias.avatar.body.Robe, ModelAlias.alias.avatar.body.Robe.Robe2, ModelAlias.alias.avatar.body.Robe.Robe2.Robe3}) do
 						modelPart:setScale()
 					end
 				elseif not shouldHideLegs and shouldHideLegsPrev then
