@@ -211,7 +211,6 @@ events.ENTITY_INIT:register(function ()
 	Config:init()
 	Locale:init()
 	KeyManager:init()
-	--BlueArchiveCharacter:init()
 	--Physics:init()
 	FaceParts:init()
 	Arms:init()
@@ -234,4 +233,8 @@ events.ENTITY_INIT:register(function ()
 	-- [[ RELEASE_EXCLUSION_START ]] --
 	DebugUtils:init()
 	-- [[ RELEASE_EXCLUSION_END ]] --
+
+	if BlueArchiveCharacter.init ~= nil then
+		BlueArchiveCharacter:init()
+	end
 end)
