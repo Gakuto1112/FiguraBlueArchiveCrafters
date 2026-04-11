@@ -261,7 +261,7 @@ local ExSkill = {
                 modelPart:setVisible(true)
             end
             for _, modelPart in ipairs(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].animations) do
-                animations["models."..modelPart]["ex_skill_" .. (self.isSecondary and "secondary" or "primary")]:play()
+                animations["models."..modelPart]["ex_skill_" .. (self.isSecondary and "2" or "1")]:play()
             end
             if host:isHost() then
                 CameraManager:setThirdPersonCameraDistance(0)
@@ -274,7 +274,7 @@ local ExSkill = {
                 if not client:isPaused() then
                     if self.animationCount == self.animationLength - 1 then
                         self:stop()
-                    elseif self:getCanPlayAnimation() and animations["models.main"]["ex_skill_" .. (self.isSecondary and "secondary" or "primary")]:isPlaying() then
+                    elseif self:getCanPlayAnimation() and animations["models.main"]["ex_skill_" .. (self.isSecondary and "2" or "1")]:isPlaying() then
                         if BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks ~= nil and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onAnimationTick ~= nil then
                             BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onAnimationTick(BlueArchiveCharacter, self.animationCount)
                         end
@@ -303,7 +303,7 @@ local ExSkill = {
             end
             self.animationCount = 0
             Gun:processGunTick()
-            self.animationLength = math.round(animations["models.main"]["ex_skill_" .. (self.isSecondary and "secondary" or "primary")]:getLength() * 20)
+            self.animationLength = math.round(animations["models.main"]["ex_skill_" .. (self.isSecondary and "2" or "1")]:getLength() * 20)
         end)
     end;
 
@@ -322,7 +322,7 @@ local ExSkill = {
             modelPart:setVisible(false)
         end
         for _, modelPart in ipairs(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].animations) do
-            animations["models."..modelPart]["ex_skill_" .. (self.isSecondary and "secondary" or "primary")]:stop()
+            animations["models."..modelPart]["ex_skill_" .. (self.isSecondary and "2" or "1")]:stop()
         end
         Physics:enable()
         renderer:setFOV()
@@ -374,7 +374,7 @@ local ExSkill = {
             modelPart:setVisible(false)
         end
         for _, modelPart in ipairs(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].animations) do
-            animations["models."..modelPart]["ex_skill_" .. (self.isSecondary and "secondary" or "primary")]:stop()
+            animations["models."..modelPart]["ex_skill_" .. (self.isSecondary and "2" or "1")]:stop()
         end
         for _, eventName in ipairs({"ex_skill_tick", "ex_skill_animation_tick"}) do
             events.TICK:remove(eventName)
