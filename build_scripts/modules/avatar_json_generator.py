@@ -1,6 +1,7 @@
 import errno
 import json
 from typing import NotRequired, TypedDict
+import re
 
 from modules.logger import Logger
 from modules.paths import paths
@@ -210,7 +211,8 @@ class AvatarJsonGenerator:
 
 		# プレイスホルダーの置換
 		if (name := template.get("name")) is not None:
-			template["name"] = name.replace("{{STUDENT_NAME}}", meta["placeholders"]["student_name"])
+			template["name"] = name.replace("{{AVATAR_ID}}", f"{re.match(r'(\d{2}\w)', avatar_name).group(1)} ")
+			template["name"] = template["name"].replace("{{STUDENT_NAME}}", meta["placeholders"]["student_name"])
 		if (description := template.get("description")) is not None:
 			template["description"] = description.replace("{{STUDENT_FULL_NAME}}", meta["placeholders"]["student_full_name"])
 		if (costume_name := meta["placeholders"].get("costume_name")) is not None:
