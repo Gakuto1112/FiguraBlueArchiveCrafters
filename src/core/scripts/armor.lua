@@ -45,7 +45,7 @@ local Armor = {
 	---初期化関数
     ---@param self Armor
     init = function (self)
-		self.shouldShowArmor = Config:loadConfig("PRIVATE", "armor.should_show_armor", true)
+		self.shouldShowArmor = Config:loadConfig("PRIVATE", "armor.should_show_armor", false)
 
 		if host:isHost() then
 			self.toggleArmorVisibilityAction = ActionWheel:getToggleAction()

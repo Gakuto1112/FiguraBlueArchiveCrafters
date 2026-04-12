@@ -379,7 +379,7 @@ local BlueArchiveCharacter = {
 	};
 
 	actionWheelConfig = {
-		isVehicleReplacementEnabled = true;
+		isVehicleReplacementEnabled = false;
 	};
 
 	physics = {
