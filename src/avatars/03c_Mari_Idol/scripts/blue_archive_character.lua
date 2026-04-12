@@ -391,19 +391,10 @@ local BlueArchiveCharacter = {
 
 			callbacks = {
 				onPreAnimation = function (self)
-					for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Head, ModelAlias.alias.avatar.head.HatLayer, ModelAlias.alias.avatar.body.Body, ModelAlias.alias.avatar.body.BodyLayer, ModelAlias.alias.avatar.rightArm.RightArm, ModelAlias.alias.avatar.rightArm.RightArmLayer, ModelAlias.alias.avatar.rightArmBottom.RightArmBottom, ModelAlias.alias.avatar.rightArmBottom.RightArmBottomLayer, ModelAlias.alias.avatar.leftArm.LeftArm, ModelAlias.alias.avatar.leftArm.LeftArmLayer, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottom, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottomLayer, ModelAlias.alias.avatar.rightLeg.RightLeg, ModelAlias.alias.avatar.rightLeg.RightLegLayer, ModelAlias.alias.avatar.rightLegBottom.RightLegBottom, ModelAlias.alias.avatar.rightLegBottom.RightLegBottomLayer, ModelAlias.alias.avatar.leftLeg.LeftLeg, ModelAlias.alias.avatar.leftLeg.LeftLegLayer, ModelAlias.alias.avatar.leftLegBottom.leftLegBottom, ModelAlias.alias.avatar.leftLegBottom.LeftLegBottomLayer}) do
-						modelPart:setPrimaryTexture("CUSTOM", textures["textures.ex_skill_1_skin"])
-					end
-					for _, modelPart in ipairs({ModelAlias.alias.avatar.head.HairTails, ModelAlias.alias.avatar.head.Hat, ModelAlias.alias.avatar.body.Skirt, ModelAlias.alias.avatar.body.NeckRibbon, ModelAlias.alias.avatar.rightLegBottom.RLBRibbon, ModelAlias.alias.avatar.leftLegBottom.LLBRibbon}) do
-						modelPart:setVisible(false)
-					end
-					for _, modelPart in ipairs({ModelAlias.alias.avatar.head.TraineeHairTail, ModelAlias.alias.avatar.body.TraineeFrontHair}) do
-						modelPart:setVisible(true)
-					end
+					self.costume.callbacks.onAltChange(self, true)
 					ModelAlias.alias.avatar.head.Ears.RightEarPivot:setRot()
 
 					if not self.exSkill.primary.isInitialized then
-						models.models.main.Avatar.UpperBody.Body.BTrinityLogo:setColor(0.357, 0.365, 0.475)
 						for _, modelPart in ipairs({models.models.ex_skill_1.Stage.StageFloor, models.models.ex_skill_1.Stage.StageStair1, models.models.ex_skill_1.Stage.StageStair2, models.models.ex_skill_1.Stage.StageStair3, models.models.ex_skill_1.Stage.StageStair4}) do
 							modelPart:setPrimaryTexture("RESOURCE", "minecraft:textures/block/gray_concrete.png")
 						end
@@ -531,7 +522,7 @@ local BlueArchiveCharacter = {
 							for i = 1, 4 do
 								local outlineAvatar = ModelUtils:copyModel(models.models.ex_skill_1.Gui.Scrollable.Characters["Pose"..i].Avatar, "OutlineAvatar")
 								local outlineAlias = ModelAlias.getAliasTable(outlineAvatar)
-								for _, modelPart in ipairs({outlineAlias.head.Head, outlineAlias.head.HatLayer, outlineAlias.body.Body, outlineAlias.body.BodyLayer, outlineAlias.rightArm.RightArm, outlineAlias.rightArm.RightArmLayer, outlineAlias.rightArmBottom.RightArmBottom, outlineAlias.rightArmBottom.RightArmBottomLayer, outlineAlias.leftArm.LeftArm, outlineAlias.leftArm.LeftArmLayer, outlineAlias.leftArmBottom.LeftArmBottom, outlineAlias.leftArmBottom.LeftArmBottomLayer, outlineAlias.rightLeg.RightLeg, outlineAlias.rightLeg.RightLegLayer, outlineAlias.rightLegBottom.RightLegBottom, outlineAlias.rightLegBottom.RightLegBottomLayer, outlineAlias.leftLeg.LeftLeg, outlineAlias.leftLeg.LeftLegLayer, outlineAlias.leftLegBottom.leftLegBottom, outlineAlias.leftLegBottom.LeftLegBottomLayer}) do
+								for _, modelPart in ipairs({outlineAlias.head.Head, outlineAlias.head.HatLayer, outlineAlias.body.Body, outlineAlias.body.BodyLayer, outlineAlias.rightArm.RightArm, outlineAlias.rightArm.RightArmLayer, outlineAlias.rightArmBottom.RightArmBottom, outlineAlias.rightArmBottom.RightArmBottomLayer, outlineAlias.leftArm.LeftArm, outlineAlias.leftArm.LeftArmLayer, outlineAlias.leftArmBottom.LeftArmBottom, outlineAlias.leftArmBottom.LeftArmBottomLayer, outlineAlias.rightLeg.RightLeg, outlineAlias.rightLeg.RightLegLayer, outlineAlias.rightLegBottom.RightLegBottom, outlineAlias.rightLegBottom.RightLegBottomLayer, outlineAlias.leftLeg.LeftLeg, outlineAlias.leftLeg.LeftLegLayer, outlineAlias.leftLegBottom.LeftLegBottom, outlineAlias.leftLegBottom.LeftLegBottomLayer}) do
 									modelPart:setPrimaryTexture("CUSTOM", outlineTexture)
 								end
 								outlineAvatar:setPrimaryRenderType("EMISSIVE_SOLID")
@@ -709,15 +700,7 @@ local BlueArchiveCharacter = {
 							models.models.main.Avatar:setColor(vectors.vec3(1, 1, 1):scale(1 - opacity))
 						end, "ex_skill_1_background_render")
 					elseif tick == 69 then
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Head, ModelAlias.alias.avatar.head.HatLayer, ModelAlias.alias.avatar.body.Body, ModelAlias.alias.avatar.body.BodyLayer, ModelAlias.alias.avatar.rightArm.RightArm, ModelAlias.alias.avatar.rightArm.RightArmLayer, ModelAlias.alias.avatar.rightArmBottom.RightArmBottom, ModelAlias.alias.avatar.rightArmBottom.RightArmBottomLayer, ModelAlias.alias.avatar.leftArm.LeftArm, ModelAlias.alias.avatar.leftArm.LeftArmLayer, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottom, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottomLayer, ModelAlias.alias.avatar.rightLeg.RightLeg, ModelAlias.alias.avatar.rightLeg.RightLegLayer, ModelAlias.alias.avatar.rightLegBottom.RightLegBottom, ModelAlias.alias.avatar.rightLegBottom.RightLegBottomLayer, ModelAlias.alias.avatar.leftLeg.LeftLeg, ModelAlias.alias.avatar.leftLeg.LeftLegLayer, ModelAlias.alias.avatar.leftLegBottom.leftLegBottom, ModelAlias.alias.avatar.leftLegBottom.LeftLegBottomLayer}) do
-							modelPart:setPrimaryTexture("PRIMARY")
-						end
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.head.HairTails, ModelAlias.alias.avatar.body.NeckRibbon, ModelAlias.alias.avatar.rightLegBottom.RLBRibbon, ModelAlias.alias.avatar.leftLegBottom.LLBRibbon}) do
-							modelPart:setVisible(true)
-						end
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.head.TraineeHairTail, ModelAlias.alias.avatar.body.TraineeFrontHair}) do
-							modelPart:setVisible(false)
-						end
+						self.costume.callbacks.onAltChange(self, false)
 
 						if not Armor.isArmorVisible.helmet then
 							ModelAlias.alias.avatar.head.Hat:setVisible(true)
@@ -822,23 +805,8 @@ local BlueArchiveCharacter = {
 						end
 						models.models.ex_skill_1.Gui.Frame:setVisible(false)
 					end
+					self.costume.callbacks.onAltChange(self, Costume.isAltCostume)
 					if forcedStop then
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Head, ModelAlias.alias.avatar.head.HatLayer, ModelAlias.alias.avatar.body.Body, ModelAlias.alias.avatar.body.BodyLayer, ModelAlias.alias.avatar.rightArm.RightArm, ModelAlias.alias.avatar.rightArm.RightArmLayer, ModelAlias.alias.avatar.rightArmBottom.RightArmBottom, ModelAlias.alias.avatar.rightArmBottom.RightArmBottomLayer, ModelAlias.alias.avatar.leftArm.LeftArm, ModelAlias.alias.avatar.leftArm.LeftArmLayer, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottom, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottomLayer, ModelAlias.alias.avatar.rightLeg.RightLeg, ModelAlias.alias.avatar.rightLeg.RightLegLayer, ModelAlias.alias.avatar.rightLegBottom.RightLegBottom, ModelAlias.alias.avatar.rightLegBottom.RightLegBottomLayer, ModelAlias.alias.avatar.leftLeg.LeftLeg, ModelAlias.alias.avatar.leftLeg.LeftLegLayer, ModelAlias.alias.avatar.leftLegBottom.leftLegBottom, ModelAlias.alias.avatar.leftLegBottom.LeftLegBottomLayer}) do
-							modelPart:setPrimaryTexture("PRIMARY")
-						end
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.head.HairTails, ModelAlias.alias.avatar.body.NeckRibbon, ModelAlias.alias.avatar.rightLegBottom.RLBRibbon, ModelAlias.alias.avatar.leftLegBottom.LLBRibbon}) do
-							modelPart:setVisible(true)
-						end
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.head.TraineeHairTail, ModelAlias.alias.avatar.body.TraineeFrontHair}) do
-							modelPart:setVisible(false)
-						end
-						if not Armor.isArmorVisible.helmet then
-							ModelAlias.alias.avatar.head.Hat:setVisible(true)
-							ModelAlias.alias.avatar.head.Ears.RightEarPivot:setRot(-45, -10, 0)
-						end
-						if not Armor.isArmorVisible.leggings then
-							ModelAlias.alias.avatar.body.Skirt:setVisible(true)
-						end
 						self.exSkill.primary.penLightSwingOffsets = {}
 						self.exSkill.primary.particleAnchors = {}
 						if host:isHost() then
@@ -867,15 +835,35 @@ local BlueArchiveCharacter = {
 	};
 
 	costume = {
-		isAltCostumeEnabled = false;
+		isAltCostumeEnabled = true;
 
 		callbacks = {
+			onAltChange = function (_, isAlt)
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Head, ModelAlias.alias.avatar.head.HatLayer, ModelAlias.alias.avatar.body.Body, ModelAlias.alias.avatar.body.BodyLayer, ModelAlias.alias.avatar.rightArm.RightArm, ModelAlias.alias.avatar.rightArm.RightArmLayer, ModelAlias.alias.avatar.rightArmBottom.RightArmBottom, ModelAlias.alias.avatar.rightArmBottom.RightArmBottomLayer, ModelAlias.alias.avatar.leftArm.LeftArm, ModelAlias.alias.avatar.leftArm.LeftArmLayer, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottom, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottomLayer, ModelAlias.alias.avatar.rightLeg.RightLeg, ModelAlias.alias.avatar.rightLeg.RightLegLayer, ModelAlias.alias.avatar.rightLegBottom.RightLegBottom, ModelAlias.alias.avatar.rightLegBottom.RightLegBottomLayer, ModelAlias.alias.avatar.leftLeg.LeftLeg, ModelAlias.alias.avatar.leftLeg.LeftLegLayer, ModelAlias.alias.avatar.leftLegBottom.LeftLegBottom, ModelAlias.alias.avatar.leftLegBottom.LeftLegBottomLayer}) do
+					if isAlt then
+						modelPart:setPrimaryTexture("CUSTOM", textures["textures.ex_skill_1_skin"])
+					else
+						modelPart:setPrimaryTexture("PRIMARY")
+					end
+				end
+
+				ModelAlias.alias.avatar.head.Hat:setVisible(not isAlt and not Armor.isArmorVisible.helmet)
+				ModelAlias.alias.avatar.body.Skirt:setVisible(not isAlt and not Armor.isArmorVisible.leggings)
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.HairTails, ModelAlias.alias.avatar.body.NeckRibbon, ModelAlias.alias.avatar.rightLegBottom.RLBRibbon, ModelAlias.alias.avatar.leftLegBottom.LLBRibbon}) do
+					modelPart:setVisible(not isAlt)
+				end
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.TraineeHairTail, ModelAlias.alias.avatar.body.TraineeFrontHair, ModelAlias.alias.avatar.body.BTrinityLogo}) do
+					modelPart:setVisible(isAlt)
+				end
+				ModelAlias.alias.avatar.head.Ears.RightEarPivot:setRot(isAlt and vectors.vec3() or vectors.vec3(-45, -10, 0))
+			end;
+
 			onArmorChange = function (_, parts, isVisible)
 				if parts == "HELMET" then
-						ModelAlias.alias.avatar.head.Hat:setVisible(not isVisible)
-						ModelAlias.alias.avatar.head.Ears.RightEarPivot:setRot(isVisible and vectors.vec3() or vectors.vec3(-45, -10, 0))
+						ModelAlias.alias.avatar.head.Hat:setVisible(not isVisible and not Costume.isAltCostume)
+						ModelAlias.alias.avatar.head.Ears.RightEarPivot:setRot((not isVisible and not Costume.isAltCostume) and vectors.vec3(-45, -10, 0) or vectors.vec3())
 				elseif parts == "LEGGINGS" then
-					ModelAlias.alias.avatar.body.Skirt:setVisible(not isVisible)
+					ModelAlias.alias.avatar.body.Skirt:setVisible(not isVisible and not Costume.isAltCostume)
 				end
 			end;
 		};
@@ -921,15 +909,27 @@ local BlueArchiveCharacter = {
 
 	deathAnimation = {
 		callbacks = {
-			onPhase1 = function ()
+			onPhase1 = function (_, isAlt)
 				ModelAlias.alias.dummy_avatar.head.Ears.LeftEarPivot:setRot(-30, 0, 0)
-				ModelAlias.alias.dummy_avatar.body.Skirt:setRot(50, 0, 0)
+				if isAlt then
+					ModelAlias.alias.dummy_avatar.head.Ears.RightEarPivot:setRot(-30, 0, 0)
+					ModelAlias.alias.dummy_avatar.head.TraineeHairTail:setRot(17.5, 0, 0)
+				else
+					ModelAlias.alias.dummy_avatar.body.Skirt:setRot(50, 0, 0)
+					for _, modelPart in ipairs({ModelAlias.alias.dummy_avatar.head.HairTails.HairTailRight.HairRightBottom, ModelAlias.alias.dummy_avatar.head.HairTails.HairTailLeft.HairLeftBottom}) do
+						modelPart:setRot(30, 0, 0)
+					end
+				end
 			end;
 
-			onPhase2 = function ()
-				ModelAlias.alias.dummy_avatar.body.Skirt:setRot(30, 0, 0)
-				for _, modelPart in ipairs({ModelAlias.alias.dummy_avatar.head.HairTails.HairTailRight.HairRightBottom, ModelAlias.alias.dummy_avatar.head.HairTails.HairTailLeft.HairLeftBottom}) do
-					modelPart:setRot(-20, 0, 0)
+			onPhase2 = function (_, isAlt)
+				if isAlt then
+					ModelAlias.alias.dummy_avatar.head.TraineeHairTail:setRot(-15, 0, 0)
+				else
+					ModelAlias.alias.dummy_avatar.body.Skirt:setRot(30, 0, 0)
+					for _, modelPart in ipairs({ModelAlias.alias.dummy_avatar.head.HairTails.HairTailRight.HairRightBottom, ModelAlias.alias.dummy_avatar.head.HairTails.HairTailLeft.HairLeftBottom}) do
+						modelPart:setRot(-20, 0, 0)
+					end
 				end
 			end;
 		};
@@ -1162,6 +1162,119 @@ local BlueArchiveCharacter = {
 					};
 				};
 			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.TraineeFrontHair};
+
+				x = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 80;
+						sneakOffset = 30;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 0;
+							max = 80;
+						};
+
+						bodyY = {
+							multiplayer = -80;
+							min = 0;
+							max = 80;
+						};
+
+						bodyRot = {
+							multiplayer = -0.05;
+							min = 0;
+							max = 80;
+						};
+					};
+
+					horizontal = {
+						min = 0;
+						neutral = 80;
+						max = 80;
+
+						bodyX = {
+							multiplayer = -160;
+							min = 0;
+							max = 80;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.TraineeHairTail};
+
+				x = {
+					vertical = {
+						min = -170;
+						neutral = 0;
+						max = 30;
+						sneakOffset = -20;
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -80;
+							min = -90;
+							max = 10;
+						};
+
+						headRot = {
+							multiplayer = 0.05;
+							min = -90;
+							max = 0;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -170;
+							max = 0;
+						};
+					};
+
+					horizontal = {
+						min = -135;
+						neutral = -30;
+						max = -30;
+
+						headX = {
+							multiplayer = -80;
+							min = -45;
+							max = -30;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.TraineeHairTail.TraineeHairTailZPivot};
+
+				z = {
+					vertical = {
+						min = -80;
+						neutral = 0;
+						max = 80;
+
+						headZ = {
+							multiplayer = -80;
+							min = -80;
+							max = 80;
+						};
+					};
+				};
+			};
+		};
+
+		callbacks = {
+			onPhysicPerformed = function (_, model)
+				if model == ModelAlias.alias.avatar.head.TraineeHairTail then
+					model:setRot(math.min(model:getRot().x, 20), 0, 0)
+				end
+			end
 		};
 	};
 
