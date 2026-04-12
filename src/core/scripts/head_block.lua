@@ -31,15 +31,19 @@ local HeadBlock = {
 		models.script_head_block.Skull:setParentType("Skull")
 
 		for _, modelPart in ipairs(BlueArchiveCharacter.headBlock.includeModels) do
-			models.script_head_block.Skull:addChild(ModelUtils:copyModel(modelPart))
+			local model = ModelUtils:copyModel(modelPart)
+			if model ~= nil then
+				models.script_head_block.Skull:addChild(model)
+			end
 		end
 	end;
 
 	---頭ブロックを削除する。
 	deleteHeadBlockModel = function ()
 		if models.script_head_block.Skull ~= nil then
-			models.script_head_block:removeChild(models.script_head_block.Skull)
-			models.script_head_block.Skull:remove()
+			local skull = models.script_head_block.Skull
+			models.script_head_block:removeChild(skull)
+			skull:remove()
 		end
 	end;
 }

@@ -16,7 +16,10 @@ local Portrait = {
 		models.script_portrait.Portrait.Halo:remove()
 
 		for _, modelPart in ipairs(BlueArchiveCharacter.portrait.includeModels) do
-			models.script_portrait.Portrait:addChild(self:copyModel(modelPart))
+			local model = ModelUtils:copyModel(modelPart)
+			if model ~= nil then
+				models.script_portrait.Portrait:addChild(model)
+			end
 		end
 	end;
 
