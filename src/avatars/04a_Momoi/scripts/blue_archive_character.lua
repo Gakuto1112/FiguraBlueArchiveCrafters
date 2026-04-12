@@ -368,11 +368,6 @@ local BlueArchiveCharacter = {
 
 	exSkill = {
 		primary = {
-			name = {
-				en_us = "The anguish of creation";
-				ja_jp = "生みの苦しみ";
-			};
-
 			formationType = "STRIKER";
 
 			models = {ModelAlias.alias.avatar.head.EffectPanel, ModelAlias.alias.avatar.leftArmBottom.GameConsole1, models.models.ex_skill_1.Midori, models.models.ex_skill_1.Gui};
