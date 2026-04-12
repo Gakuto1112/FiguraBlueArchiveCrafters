@@ -71,8 +71,9 @@ local ModelUtils = {
             modelPart:setUVPixels()
         end
         if copiedPart.ArmorH ~= nil then
-            copiedPart:removeChild(copiedPart.ArmorH)
-            copiedPart.ArmorH:remove()
+            local model = copiedPart.ArmorH
+            copiedPart:removeChild(model)
+            model:remove()
         end
         target:addChild(copiedPart)
 
