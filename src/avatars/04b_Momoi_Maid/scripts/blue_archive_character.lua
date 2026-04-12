@@ -808,8 +808,8 @@ local BlueArchiveCharacter = {
 					end
 					models.models.ex_skill_1.Midori.MidoriHead.MidoriFaceParts.Eyes.LeftEye:setUVPixels()
 					ModelAlias.alias.avatar.gun:setVisible(false)
-					if ModelAlias.alias.avatar.gun:getParent() == ModelAlias.alias.avatar.rightArmBottom then
-						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.gun:getParent())
+					if ModelAlias.alias.avatar.rightArmBottom.Gun ~= nil  then
+						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
 					end
 
