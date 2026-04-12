@@ -430,7 +430,7 @@ local BlueArchiveCharacter = {
 		isAltCostumeEnabled = true;
 
 		callbacks = {
-			onAltChange = function (self, isAlt)
+			onAltChange = function (_, isAlt)
 				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Veil, ModelAlias.alias.avatar.body.VeilBody}) do
 					modelPart:setVisible(not isAlt)
 				end
