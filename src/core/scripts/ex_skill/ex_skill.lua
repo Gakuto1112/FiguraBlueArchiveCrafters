@@ -233,6 +233,8 @@ local ExSkill = {
     ---@param self ExSkill
     ---@param isSubExSkill boolean サブExスキルを再生するかどうか
     play = function (self, isSubExSkill)
+        self.isSecondary = isSubExSkill
+
         if host:isHost() then
             renderer:setFOV(70 / client:getFOV())
             renderer:setRenderHUD(false)
