@@ -1343,13 +1343,12 @@ local BlueArchiveCharacter = {
 		end
 
 		events.TICK:register(function ()
-			Config.syncConfigs["isFlying"] = self.costume.isFlying --//FIXME: table以外をConfig.syncConfigsに書き込んでも後に値が変わることないので、このように連続書き込みを行う必要がある。もしくは別の方法か。
-
 			if not client:isPaused() then
 				if host:isHost() then
 					local isFlying = host:isFlying()
 					if isFlying ~= self.costume.isHostFlying then
 						pings.setIsFlying(isFlying)
+						Config.syncConfigs["isFlying"] = isFlying
 					end
 					self.costume.isHostFlying = isFlying
 				end
@@ -1444,7 +1443,7 @@ local BlueArchiveCharacter = {
 			end
 
 			EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
-				configData["isFlying"] = self.costume.isFlying
+				self.costume.isFlying = configData["isFlying"]
 			end)
 		end, "costume_battle_tick")
 	end;
