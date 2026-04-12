@@ -65,6 +65,11 @@ local DeathAnimation = {
     ---@param self DeathAnimation
     ---@param parent ModelPart ダミーアバターをアタッチする親のモデルパーツ
     generateDummyAvatar = function (self, parent)
+		if ModelAlias.alias.dummy_avatar ~= nil then
+			ModelAlias.alias.dummy_avatar.root:remove()
+			ModelAlias.alias.dummy_avatar = nil
+		end
+
         for _, modelPart in ipairs({ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.halo}) do
             modelPart:setVisible(true)
         end
@@ -93,7 +98,7 @@ local DeathAnimation = {
             BlueArchiveCharacter.deathAnimation.callbacks.onBeforeModelCopy(BlueArchiveCharacter)
         end
 
-        parent:addChild(ModelUtils:copyModel(models.models.main.Avatar))
+        parent:addChild(ModelUtils:copyModel(ModelAlias.alias.avatar.root))
 		ModelAlias.alias.dummy_avatar = ModelAlias.getAliasTable(parent.Avatar)
         ModelAlias.alias.dummy_avatar.rightEye:setUVPixels(BlueArchiveCharacter.faceParts.rightEye.TIRED:copy():scale(6))
         ModelAlias.alias.dummy_avatar.leftEye:setUVPixels(BlueArchiveCharacter.faceParts.leftEye.TIRED:copy():scale(6))
@@ -172,11 +177,6 @@ local DeathAnimation = {
         self.isDummyAvatarAltCostume = Costume.isAltCostume
 
         --ダミーアバターを生成する。
-		if ModelAlias.alias.dummy_avatar ~= nil then
-			ModelAlias.alias.dummy_avatar.root:remove()
-			ModelAlias.alias.dummy_avatar = nil
-		end
-
         self:generateDummyAvatar(models.models.death_animation)
 
         --死亡アニメーションを生成する。
