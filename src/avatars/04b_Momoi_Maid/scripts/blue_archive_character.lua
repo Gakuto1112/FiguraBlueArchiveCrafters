@@ -401,7 +401,7 @@ local BlueArchiveCharacter = {
 								models.models.ex_skill_1.Covers.CoverLeft:newBlock("ex_skill_1_block_"..y * 2 + x):setBlock("minecraft:barrel[facing=up]"):setPos(x * 16, y * 16, 0)
 							end
 						end
-						models.models.ex_skill_1.Covers.CoverLeft:newBlock("ex_skill_1_block_4"):setBlock("minecraft:barrel [facing=up]"):setPos(16, 0, -16)
+						models.models.ex_skill_1.Covers.CoverLeft:newBlock("ex_skill_1_block_4"):setBlock("minecraft:barrel[facing=up]"):setPos(16, 0, -16)
 						--models.models.ex_skill_1.Covers.CoverLeft:newBlock("ex_skill_1_block_5"):setBlock("minecraft:decorated_pot"):setPos(16, 16, -16) --ブロックタスクで何故か飾り壺が描画されない...
 						for i = 0, 1 do
 							models.models.ex_skill_1.Covers.CoverRight:newBlock("ex_skill_1_block_"..6 + i):setBlock("minecraft:barrel[facing=up]"):setPos(-16, i * 16, 0)
