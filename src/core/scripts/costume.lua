@@ -82,7 +82,7 @@ local Costume = {
 		if BlueArchiveCharacter.costume.isAltCostumeEnabled and BlueArchiveCharacter.costume.callbacks ~= nil and BlueArchiveCharacter.costume.callbacks.onAltChange ~= nil then
 			BlueArchiveCharacter.costume.callbacks.onAltChange(BlueArchiveCharacter, isAlt)
 			HeadBlock:generateHeadBlockModel()
-			Portrait:generateHeadModel()
+			Portrait:generatePortraitModel()
 		end
 		self.isAltCostume = isAlt
 	end;
