@@ -17,7 +17,7 @@ local DebugUtils = {
     init = function (self)
 		if self.EX_SKILL_AUTO_PLAY_MODE ~= "NONE" then
 			events.TICK:register(function ()
-				ExSkill:play(self.EX_SKILL_AUTO_PLAY_MODE == "SUB")
+				ExSkill:play(self.EX_SKILL_AUTO_PLAY_MODE == "SECONDARY")
 				events.TICK:remove("debug_utils_ex_skill_auto_play_delay")
 			end, "debug_utils_ex_skill_auto_play_delay")
 		end
