@@ -1,0 +1,56 @@
+{
+	"placeholders": {
+		"student_name": "Yuzu",
+		"student_full_name": "Hanaoka"
+	},
+	"ignoredTextures": [
+		"textures.for_modeling.normal",
+		"textures.for_modeling.pillager",
+		"textures.for_modeling.hotbar",
+		"textures.for_modeling.hotbar_selection",
+		"textures.for_modeling.map_background",
+		"textures.for_modeling.player",
+		"textures.for_modeling.red_marker"
+	],
+	"autoAnims": [],
+	"customizations": {
+		"models.models.gun.Gun.GameDisplay.Display": {
+			"primaryRenderType": "EMISSIVE_SOLID"
+		},
+		"models.models.ex_skill_1.ExSkill1H": {
+			"moveTo": "models.models.main.Avatar.Head"
+		},
+		"models.models.ex_skill_1.ExSkill1H.FearEffect": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.ExSkill1H.NoticeEffect": {
+			"visible": false,
+			"parentType": "Camera"
+		},
+		"models.models.ex_skill_1.ExSkill1H.ShineEffect": {
+			"visible": false,
+			"primaryRenderType": "EMISSIVE_SOLID"
+		},
+		"models.models.ex_skill_1.Pillagers": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.Pillagers.Pillager1.Pillager1Question": {
+			"parentType": "Camera"
+		},
+		"models.models.ex_skill_1.Pillagers.Pillager2.Pillager2Question": {
+			"parentType": "Camera"
+		},
+		"models.models.ex_skill_1.YuzuChest": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.Gui.Hotbar": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.Gui.Map": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.Gui.ScreenEffects": {
+			"visible": false
+		}
+	}
+}
