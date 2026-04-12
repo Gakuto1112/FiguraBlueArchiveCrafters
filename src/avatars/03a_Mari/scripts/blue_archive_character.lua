@@ -427,9 +427,16 @@ local BlueArchiveCharacter = {
 	};
 
 	costume = {
-		isAltCostumeEnabled = false;
+		isAltCostumeEnabled = true;
 
 		callbacks = {
+			onAltChange = function (self, isAlt)
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Veil, ModelAlias.alias.avatar.body.VeilBody}) do
+					modelPart:setVisible(not isAlt)
+				end
+				ModelAlias.alias.avatar.head.Ears:setVisible(isAlt)
+			end;
+
 			onArmorChange = function (_, parts, isVisible)
 				if parts == "CHEST_PLATE" then
 					ModelAlias.alias.avatar.body.FrontHair:setPos(0, 0, isVisible and -1 or 0)
