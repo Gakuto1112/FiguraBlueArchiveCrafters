@@ -403,7 +403,7 @@ local BlueArchiveCharacter = {
 							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead:setPos(models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll:getTruePivot():add(0, -24, 0))
 							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.Halo:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID")
 							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts:addChild(ModelAlias.alias.avatar.mouth:copy("Mouth"))
-							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(16, 16)
+							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(144, 0)
 							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setVisible(true)
 							models.models.ex_skill_1.Gui.UI.DeadEye:moveTo(models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts)
 							for _, modelPart in ipairs(models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll:getChildren()) do
@@ -466,7 +466,7 @@ local BlueArchiveCharacter = {
 						for _, modelPart in ipairs({models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Eyes.LeftEye, models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Eyes.RightEye}) do
 							modelPart:setUVPixels()
 						end
-						models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(16, 16)
+						models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(144, 0)
 					elseif tick == 31 then
 						ExSkill1TextObjectManager:spawn("3")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
@@ -481,7 +481,7 @@ local BlueArchiveCharacter = {
 						for _, modelPart in ipairs({models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Eyes.LeftEye, models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Eyes.RightEye}) do
 							modelPart:setUVPixels()
 						end
-						models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(16, 16)
+						models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(144, 0)
 					elseif tick == 36 then
 						ExSkill1TextObjectManager:spawn("5")
 						local playerPos = player:getPos()
@@ -490,7 +490,7 @@ local BlueArchiveCharacter = {
 						if host:isHost() then
 							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll:setColor(1, 0.75, 0.75)
 							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Eyes:setVisible(false)
-							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(16, 8)
+							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(80, 0)
 							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.DeadEye:setVisible(true)
 							local task = models.models.ex_skill_1.Gui.UI:getTask("ex_skill_1_ko")
 							task:setPos(client:getScaledWindowSize().x / 2 * -1, -12, -30)
@@ -554,7 +554,7 @@ local BlueArchiveCharacter = {
 						for _, modelPart in ipairs({models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.DeadEye, models.models.ex_skill_1.Gui.TextAnchor}) do
 							modelPart:setVisible(false)
 						end
-						models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(16, 16)
+						models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(144, 0)
 						models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll:setColor()
 						models.models.ex_skill_1.Gui.UI:getTask("ex_skill_1_ko"):setVisible(false)
 						for _, eventName in ipairs ({"ex_skill_1_text_render", "ex_skill_1_ko_render"}) do
