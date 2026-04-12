@@ -612,7 +612,7 @@ local BlueArchiveCharacter = {
 			end;
 
 			onPhase2 = function ()
-				ModelAlias.alias.dummy_avatar.head.HairTail:setRot(-5, 0, -17.5)
+				ModelAlias.alias.dummy_avatar.head.HairTail:setRot(-15, 0, 0)
 				ModelAlias.alias.dummy_avatar.body.Bag:setPos()
 				ModelAlias.alias.dummy_avatar.body.Bag:setRot()
 			end;
