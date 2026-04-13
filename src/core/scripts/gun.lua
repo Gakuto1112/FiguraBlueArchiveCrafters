@@ -225,6 +225,7 @@ local Gun = {
             ModelAlias.alias.avatar.gun:setSecondaryRenderType("NONE")
             Arms:setArmState("DEFAULT", "DEFAULT")
             if BlueArchiveCharacter.gun.gunPosition.put.type == "BODY" then
+                ModelAlias.alias.avatar.gun:setVisible(true)
                 self:setBodyGunPos()
             elseif BlueArchiveCharacter.gun.gunPosition.put.type == "HIDDEN" then
                 ModelAlias.alias.avatar.gun:setVisible(false)
