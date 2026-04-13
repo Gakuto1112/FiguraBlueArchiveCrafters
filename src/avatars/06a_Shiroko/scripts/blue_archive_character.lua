@@ -690,6 +690,18 @@ local BlueArchiveCharacter = {
 
 	deathAnimation = {
 		callbacks = {
+			onBeforeModelCopy = function ()
+				if ModelAlias.alias.avatar.root.Drone ~= nil then
+					ModelAlias.alias.avatar.root.Drone:setVisible(false)
+				end
+			end;
+
+			onAfterModelCopy = function ()
+				if ModelAlias.alias.avatar.root.Drone ~= nil then
+					ModelAlias.alias.avatar.root.Drone:setVisible(true)
+				end
+			end;
+
 			onPhase1 = function ()
 				ModelAlias.alias.dummy_avatar.head.Ears.RightEarPivot:setRot(-49.02, -11.44, -9.77)
 				ModelAlias.alias.dummy_avatar.head.Ears.LeftEarPivot:setRot(-49.02, 11.44, 9.77)
