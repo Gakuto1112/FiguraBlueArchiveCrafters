@@ -383,7 +383,7 @@ local BlueArchiveCharacter = {
 					--ドローンぶら下がり
 					local isHoldingItem = false
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						isHoldingItem = (player:isLeftHanded() and player:getHeldItem(true).id or player:getHeldItem(false).id) ~= "minecraft:air"
 					end, "right_arm_tick")
 					events.RENDER:remove("right_arm_render")
@@ -398,7 +398,7 @@ local BlueArchiveCharacter = {
 				elseif state == "BICYCLE" then
 					--自転車
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						if animations["models.main"]["bicycle_idle"]:getTime() * 4 == 0 then
 							Arms:setArmState(Gun.currentGunPosition == "LEFT" and "GUN_OFF_HAND" or "BICYCLE_AWAIT", nil)
 						end
@@ -416,7 +416,7 @@ local BlueArchiveCharacter = {
 				elseif state == "BICYCLE_GUN" then
 					--自転車で銃を持っているとき
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						if player:isSwingingArm() and not player:isLeftHanded() then
 							ModelAlias.alias.avatar.rightArm:setParentType("RightArm")
 						else
@@ -470,7 +470,7 @@ local BlueArchiveCharacter = {
 					--ドローンぶら下がり
 					local isHoldingItem = false
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						isHoldingItem = (player:isLeftHanded() and player:getHeldItem(false).id or player:getHeldItem(true).id) ~= "minecraft:air"
 					end, "left_arm_tick")
 					events.RENDER:register(function (delta, context)
@@ -484,7 +484,7 @@ local BlueArchiveCharacter = {
 				elseif state == "BICYCLE" then
 					--自転車
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						if animations["models.main"]["bicycle_idle"]:getTime() * 4 == 0 then
 							Arms:setArmState(nil, Gun.CurrentGunPosition == "RIGHT" and "GUN_OFF_HAND" or "BICYCLE_AWAIT")
 						end
@@ -502,7 +502,7 @@ local BlueArchiveCharacter = {
 				elseif state == "BICYCLE_GUN" then
 					--自転車で銃を持っているとき
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						if player:isSwingingArm() and player:isLeftHanded() then
 							ModelAlias.alias.avatar.leftArm:setParentType("LeftArm")
 						else

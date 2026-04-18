@@ -36,7 +36,7 @@ local Arms = {
 
     ---腕プラプラカウンターを処理する。
     ---@param self Arms
-    processArmWingCount = function (self)
+    processArmSwingCount = function (self)
         if not client:isPaused() and not self.isSwingCountProcessed then
             self.swingCount = self.swingCount + 1
             self.swingCount = self.swingCount == 100 and 0 or self.swingCount
@@ -120,7 +120,7 @@ local Arms = {
         if state == "GUN_MAIN_HAND" then
             events.TICK:register(function ()
                 if self.armState.right == "GUN_MAIN_HAND" then
-                    self:processArmWingCount()
+                    self:processArmSwingCount()
                     if player:isSwingingArm() and not player:isLeftHanded() then
                         ModelAlias.alias.avatar.rightArm:setParentType("RightArm")
                     else
@@ -133,7 +133,7 @@ local Arms = {
             end, "right_arm_tick")
         elseif state == "GUN_OFF_HAND" then
             events.TICK:register(function ()
-                self:processArmWingCount()
+                self:processArmSwingCount()
             end, "right_arm_tick")
         elseif state == "CROSSBOW" then
             events.TICK:register(function ()
@@ -174,7 +174,7 @@ local Arms = {
         if state == "GUN_MAIN_HAND" then
             events.TICK:register(function ()
                 if self.armState.left == "GUN_MAIN_HAND" then
-                    self:processArmWingCount()
+                    self:processArmSwingCount()
                     if player:isSwingingArm() and player:isLeftHanded() then
                         ModelAlias.alias.avatar.leftArm:setParentType("LeftArm")
                     else
@@ -187,7 +187,7 @@ local Arms = {
             end, "left_arm_tick")
         elseif state == "GUN_OFF_HAND" then
             events.TICK:register(function ()
-                self:processArmWingCount()
+                self:processArmSwingCount()
             end, "left_arm_tick")
         elseif state == "CROSSBOW" then
             events.TICK:register(function ()

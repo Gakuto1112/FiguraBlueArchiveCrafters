@@ -356,7 +356,7 @@ local BlueArchiveCharacter = {
 			onAdditionalRightArmProcess = function (_, state)
 				if state == "RAIL_GUN_MAIN_HAND" then
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						if player:isSwingingArm() and not player:isLeftHanded() then
 							ModelAlias.alias.avatar.rightArm:setParentType("RightArm")
 						else
@@ -375,7 +375,7 @@ local BlueArchiveCharacter = {
 					return true
 				elseif state == "RAIL_GUN_OFF_HAND" then
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 					end, "right_arm_tick")
 					events.RENDER:register(function (delta, context)
 						local headRot = vanilla_model.HEAD:getOriginRot()
@@ -389,7 +389,7 @@ local BlueArchiveCharacter = {
 			onAdditionalLeftArmProcess = function (_, state)
 				if state == "RAIL_GUN_MAIN_HAND" then
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						if player:isSwingingArm() and player:isLeftHanded() then
 							ModelAlias.alias.avatar.leftArm:setParentType("LeftArm")
 						else
@@ -407,7 +407,7 @@ local BlueArchiveCharacter = {
 					end, "left_arm_render")
 				elseif state == "RAIL_GUN_OFF_HAND" then
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 					end, "left_arm_tick")
 					events.RENDER:register(function (delta, context)
 						local headRot = vanilla_model.HEAD:getOriginRot()

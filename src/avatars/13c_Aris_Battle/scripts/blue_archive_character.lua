@@ -359,7 +359,7 @@ local BlueArchiveCharacter = {
 					return true
 				elseif state == "FLYING" then
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						if player:getActiveItem().id == "minecraft:crossbow" then
 							Arms:setArmState("CROSSBOW", "CROSSBOW")
 						end
@@ -390,7 +390,7 @@ local BlueArchiveCharacter = {
 					return true
 				elseif state == "FLYING" then
 					events.TICK:register(function ()
-						Arms:processArmWingCount()
+						Arms:processArmSwingCount()
 						if player:getActiveItem().id == "minecraft:crossbow" then
 							Arms:setArmState("CROSSBOW", "CROSSBOW")
 						end
