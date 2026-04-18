@@ -1,0 +1,28 @@
+{
+	"placeholders": {
+		"student_name": "Hoshino",
+		"student_full_name": "Hoshino Takanashi",
+		"costume_name": "Swimsuit"
+	},
+	"ignoredTextures": [
+		"textures.for_modeling.water_still",
+		"textures.for_modeling.water_flow"
+	],
+	"autoAnims": [],
+	"customizations": {
+		"models.models.hoshino_shield.Shield": {
+			"moveTo": "models.models.main.Avatar.UpperBody.Body",
+			"parentType": "Item"
+		},
+		"models.models.main.Avatar.UpperBody.Body.GunBag": {
+			"primaryRenderType": "TRANSLUCENT"
+		},
+		"models.models.ex_skill_1.WhaleFloat": {
+			"moveTo": "models.models.main.Avatar.LowerBody",
+			"visible": false
+		},
+		"models.models.ex_skill_1.Waves": {
+			"visible": false
+		}
+	}
+}
