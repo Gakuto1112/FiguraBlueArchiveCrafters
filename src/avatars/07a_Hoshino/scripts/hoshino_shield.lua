@@ -1,6 +1,5 @@
 ---@class (exact) HoshinoShield 盾を制御するクラス
 ---@field public hasShield boolean 盾を手に持っているかどうか
----@field public setShield fun(self: HoshinoShield, value: boolean, shouldPlayShieldSound: boolean) 盾の展開状態を設定する
 local HoshinoShield = {
     hasShield = false;
 
