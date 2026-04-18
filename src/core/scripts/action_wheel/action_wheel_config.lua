@@ -4,6 +4,7 @@
 ---@field package localeCacheResetAction Action ロケールキャッシュリセットのアクション
 ---@field public shouldReplaceVehicleModel boolean 乗り物のモデルを置き換えるべきかどうか
 ---@field public isHaloForceRenderMode boolean ヘイロー強制描画モードが有効かどうか
+---@field public isFpmCompatibilityMode boolean First-person Model互換モードが有効かどうか
 ---@field package isConfigPageOpenedPrev boolean 前ティックにアクションホイールの設定ページが開いていたかどうか
 ---@field package localeDataCheckLeft integer 前ティックのロケールデータのチェックを行う残り回数
 ---@field package fpmMassageShowed boolean First-person Model互換モードの警告メッセージを表示したかどうか
@@ -17,6 +18,7 @@ local ActionWheelConfig = {
 
 	shouldReplaceVehicleModel = true;
 	isHaloForceRenderMode = false;
+	isFpmCompatibilityMode = false;
 
 	isConfigPageOpenedPrev = false;
 	localeDataCheckLeftPrev = 0;
@@ -108,6 +110,7 @@ local ActionWheelConfig = {
 				fpmModeAction:setToggled(true)
 				ActionWheel.setActionToggleHoverColor(fpmModeAction, true)
 				events.RENDER:register(self.fpmCompatibilityModeRender, "fpm_mode_render")
+				self.isFpmCompatibilityMode = true
 			end
 
 			fpmModeAction
@@ -115,6 +118,7 @@ local ActionWheelConfig = {
 					Config:saveConfig("PRIVATE", "action_wheel_config.is_fpm_mode", true)
 					ActionWheel.setActionToggleHoverColor(action, true)
 					events.RENDER:register(self.fpmCompatibilityModeRender, "fpm_mode_render")
+					self.isFpmCompatibilityMode = true
 					if not self.fpmMassageShowed then
 						print(Locale:getLocalizedText("message.action_wheel_config.fpm_mode.warning"))
 						self.fpmMassageShowed = true
@@ -124,6 +128,7 @@ local ActionWheelConfig = {
 					Config:saveConfig("PRIVATE", "action_wheel_config.is_fpm_mode", false)
 					ActionWheel.setActionToggleHoverColor(action, false)
 					events.RENDER:remove("fpm_mode_render")
+					self.isFpmCompatibilityMode = false
 					ModelAlias.alias.avatar.head:setVisible(true)
 					ModelAlias.alias.avatar.head:setOpacity(1)
 				end)
