@@ -455,7 +455,7 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
-				onPreAnimation = function (self)
+				onPreAnimation = function ()
 					FaceParts:setEmotion("CENTER", "NORMAL", "CLOSED", 13, true)
 				end;
 
