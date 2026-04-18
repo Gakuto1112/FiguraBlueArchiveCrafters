@@ -43,8 +43,8 @@
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
----| "TANK_GUN_MAIN_HAND" # 虎丸登場中の銃を持つ手
----| "TANK_GUN_OFF_HAND" # 虎丸登場中の銃を持たない手
+---| "TANK_GUN_MAIN_HAND" # 虎丸搭乗中の銃を持つ手
+---| "TANK_GUN_OFF_HAND" # 虎丸搭乗中の銃を持たない手
 
 --[[ ******************************** ]]
 
