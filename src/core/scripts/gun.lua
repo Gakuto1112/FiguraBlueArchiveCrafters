@@ -188,8 +188,7 @@ local Gun = {
     end;
 
     ---背中の銃の位置・向きを設定する。
-    ---@param self Gun
-    setBodyGunPos = function (self)
+    setBodyGunPos = function ()
         if ModelAlias.alias.avatar.gun ~= nil then
             local offsetPos = vectors.vec3()
             local offsetRot = vectors.vec3()
