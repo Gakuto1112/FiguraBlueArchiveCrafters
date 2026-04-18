@@ -29,7 +29,7 @@ local Drone = {
                     pings.launchMissiles()
                     self.missileCoolDown = 200
                 else
-                    sounds:playSound("minecraft:block.note_block.bass", player:getPos(), 1, 0.5)
+                    MiscUtils.playErrorSound()
                     print(Locale:getLocalizedText("message.drone.in_cool_down"):format(math.ceil(self.missileCoolDown / 20)))
                 end
             end

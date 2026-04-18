@@ -1236,7 +1236,7 @@ local BlueArchiveCharacter = {
 						pings.launchFireworks()
 						self.exSkill.primary.launcherCooldown = 200
 					else
-						sounds:playSound("minecraft:block.note_block.bass", player:getPos(), 1, 0.5)
+						MiscUtils.playErrorSound()
 						print(Locale:getLocalizedText("message.firework.in_cool_down"):format(self.exSkill.primary.launcherCooldown / 20))
 					end
 				end
