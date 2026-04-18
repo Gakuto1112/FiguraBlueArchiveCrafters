@@ -197,14 +197,14 @@ local Locale = {
 					callback("SUCCESS", data2)
 				else
 					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data2), self.REMOTE_LOCALE_ENDPOINT .. "index.json"))
-					callback("ERR_INVALID_DATA", nil)
+					callback("ERR_INVALID_DATA", data)
 				end
 			elseif status2 == "ERR_NOT_ALLOWED" then
 				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_not_allowed"):format(self.REMOTE_LOCALE_ENDPOINT:match("://([^:/]+)")))
-				callback("ERR_NOT_ALLOWED", nil)
+				callback("ERR_NOT_ALLOWED", data)
 			elseif status2 == "ERR_NETWORK" then
 				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_network"))
-				callback("ERR_NETWORK", nil)
+				callback("ERR_NETWORK", data)
 			elseif status2 == "ERR_RESPONSE_CODE" then
 				---@cast data2 integer
 				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_response"):format(data2, self.REMOTE_LOCALE_ENDPOINT .. "index.json"))
@@ -324,27 +324,28 @@ local Locale = {
 						Config:saveConfig("PUBLIC", "locale.version", indexVersion)
 					end
 					self.localeDataCheckLeft = self.localeDataCheckLeft - 1
-
-					-- インデックスの展開
-					for key, value in pairs(data["availableLocales"]) do
-						self.availableLocales[key] = value
-					end
-
-					-- 選択中のロケールの取得
-					if self.availableLocales[locale] ~= nil then
-						if locale ~= "en_us" then
-							self.locales[locale] = {}
-							self:fetchLocaleDataSet(locale)
-						end
-					else
-						self.localeDataCheckLeft = self.localeDataCheckLeft - 2
-					end
-
 				else
 					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_index"):format(status))
 					self.localeDataCheckLeft = 0
 					ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
 					ActionWheelConfig.isLocaleReloadedByAction = false
+				end
+
+				-- インデックスの展開
+				if type(data) == "table" then
+					for key, value in pairs(data["availableLocales"]) do
+						self.availableLocales[key] = value
+					end
+				end
+
+				-- 選択中のロケールの取得
+				if self.availableLocales[locale] ~= nil then
+					if locale ~= "en_us" then
+						self.locales[locale] = {}
+						self:fetchLocaleDataSet(locale)
+					end
+				else
+					self.localeDataCheckLeft = self.localeDataCheckLeft - 2
 				end
 			end)
 
