@@ -1,0 +1,49 @@
+{
+	"placeholders": {
+		"student_name": "Hoshino",
+		"student_full_name": "Hoshino Takanashi"
+	},
+	"ignoredTextures": [
+		"textures.for_modeling.ravager",
+		"textures.for_modeling.pillager",
+		"textures.for_modeling.vindicator",
+		"textures.for_modeling.firework_rocket",
+		"textures.for_modeling.zombie",
+		"textures.for_modeling.creeper"
+	],
+	"autoAnims": [],
+	"customizations": {
+		"models.models.gun.SubGun": {
+			"moveTo": "models.models.main.Avatar.UpperBody.Body"
+		},
+		"models.models.ex_skill_1.Illagers": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.Firework": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.Explosion": {
+			"visible": false,
+			"primaryRenderType": "EMISSIVE_SOLID"
+		},
+		"models.models.ex_skill_1.Gui": {
+			"visible": false
+		},
+		"models.models.ex_skill_2.Zombie": {
+			"visible": false
+		},
+		"models.models.ex_skill_2.Creeper": {
+			"visible": false
+		},
+		"models.models.ex_skill_2.EyeShine": {
+			"visible": false,
+			"moveTo": "models.models.main.Avatar.Head",
+			"primaryRenderType": "EMISSIVE_SOLID"
+		},
+		"models.models.ex_skill_2.MuzzleFlash": {
+			"visible": false,
+			"moveTo": "models.models.gun.Gun",
+			"primaryRenderType": "EMISSIVE_SOLID"
+		}
+	}
+}
