@@ -592,7 +592,7 @@ local BlueArchiveCharacter = {
 	};
 
 	costume = {
-		isAltCostumeEnabled = false;
+		isAltCostumeEnabled = true;
 
 		callbacks = {
 			onAltChange = function (_, isAlt)
