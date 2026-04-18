@@ -25,7 +25,7 @@ CameraManager = {
 						local _, collisionPos, _ = raycast:block(startPos, startPos:copy():add(cameraDir:copy():scale(-4)), "VISUAL", "NONE")
 						minDistance = math.min(collisionPos:copy():sub(startPos):length(), minDistance)
 					end
-                    renderer:setCameraPos(0, 0, (minDistance > self.thirdPersonCameraDistance or self.isCameraCollisionDenialEnabled) and self.thirdPersonCameraDistance - minDistance or 0)
+                    renderer:setCameraPos(0, 0, (minDistance < self.thirdPersonCameraDistance or self.isCameraCollisionDenialEnabled) and self.thirdPersonCameraDistance - minDistance or 0)
                 end
             end, "camera_manager_render")
         elseif not enabled then

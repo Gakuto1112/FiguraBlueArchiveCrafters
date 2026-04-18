@@ -1,0 +1,38 @@
+{
+	"placeholders": {
+		"student_name": "Iroha",
+		"student_full_name": "Iroha Natsume"
+	},
+	"ignoredTextures": [
+		"textures.for_modeling.trim",
+		"textures.for_modeling.trim_leggings",
+		"textures.for_modeling.oak_log_top",
+		"textures.for_modeling.oak_log",
+		"textures.for_modeling.oak"
+	],
+	"autoAnims": [],
+	"customizations": {
+		"models.models.ex_skill_1.Tank": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.Tank.TankBody.Turret.Cannon.ShineEffect": {
+			"visible": false,
+			"primaryRenderType": "EMISSIVE_SOLID"
+		},
+		"models.models.ex_skill_1.Tank.TankBody.Turret.Cannon.ShineEffect.ShineEffect2": {
+			"parentType": "Camera"
+		},
+		"models.models.ex_skill_1.Shell": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.Book": {
+			"visible": false,
+			"moveTo": "models.models.main.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom"
+		},
+		"models.models.ex_skill_1.NoticeEffect": {
+			"visible": false,
+			"parentType": "Camera",
+			"moveTo": "models.models.main.Avatar.Head"
+		}
+	}
+}
