@@ -625,7 +625,19 @@ local BlueArchiveCharacter = {
 	};
 
 	headModel = {
+		callbacks = {
+			onBeforeModelCopy = function ()
+				if ModelAlias.alias.avatar.head.Allay ~= nil then
+					ModelAlias.alias.avatar.head.Allay:setVisible(false)
+				end
+			end;
 
+			onAfterModelCopy = function ()
+				if ModelAlias.alias.avatar.head.Allay ~= nil then
+					ModelAlias.alias.avatar.head.Allay:setVisible(true)
+				end
+			end;
+		};
 	};
 
 	headBlock = {
