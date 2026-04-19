@@ -658,7 +658,7 @@ local BlueArchiveCharacter = {
 						if not Bicycle.isTyreBurst then
 							FaceParts:setEmotion("NARROW_ANGRY", "NARROW_ANGRY", "ANGRY", duration, true)
 						else
-							FaceParts:setEmotion("SURPRISED", "SURPRISED", "ANGRY", duration, true)
+							FaceParts:setEmotion("SURPRISED", "SURPRISED", "ANGRY", 60, true)
 						end
 					end
 				end

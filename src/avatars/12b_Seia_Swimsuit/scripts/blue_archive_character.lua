@@ -624,7 +624,7 @@ local BlueArchiveCharacter = {
 						if isShownInGui then
 							FaceParts:setEmotion("CLOSED2", "CLOSED2", "ANXIOUS", duration, true)
 						else
-							FaceParts:setEmotion("SURPRISED", "SURPRISED", "SMALL", duration, true)
+							FaceParts:setEmotion("SURPRISED", "SURPRISED", "SMALL", 60, true)
 						end
 					end
 				end
