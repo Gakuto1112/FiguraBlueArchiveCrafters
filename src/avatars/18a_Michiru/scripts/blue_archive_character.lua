@@ -552,9 +552,7 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmorChange = function (_, parts, isVisible)
 				if parts == "HELMET" then
-					if isVisible then
-						ModelAlias.alias.avatar.head.Cowlick:setVisible(not isVisible)
-					end
+					ModelAlias.alias.avatar.head.Cowlick:setVisible(not isVisible)
 				elseif parts == "CHEST_PLATE" then
 					ModelAlias.alias.avatar.body.AmmoBelt:setVisible(not isVisible)
 					ModelAlias.alias.avatar.body.Scarfs:setPos(0, 0, isVisible and 1 or 0)
