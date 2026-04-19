@@ -49,7 +49,7 @@ local Locale = {
 		["message.locale.err_io"] = "Failed to operate locale cache file";
 		["message.locale.err_fetch_index"] = "Failed to fetch locale index data! Cannot proceed to localize! Error code: %s";
 		["message.locale.err_fetch_en_us"] = "Failed to fetch default locale data! Cannot proceed to localize! Error code: %s";
-		["message.locale.err_fetch_locale"] = "Failed to fetch current locale data! (%s) Redirecting to \"en_us\" locale! Error code: %s";
+		["message.locale.err_fetch_locale"] = "Failed to fetch current locale data! (%s) Using cached locale or redirecting to \"en_us\" locale! Error code: %s";
 	};
 
 	localeVersion = nil;
