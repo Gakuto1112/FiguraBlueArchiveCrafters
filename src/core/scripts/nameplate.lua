@@ -94,6 +94,7 @@ local Nameplate = {
 
 		EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
 			self:setChangeDisplayNameActionTitle()
+			self.setName(self.getDisplayNameData(self.nameDisplayType, self.shouldShowClubName))
 		end)
 
 		EventManager.events["ON_CONFIG_SYNC"]:register(function (syncData)
