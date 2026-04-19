@@ -100,7 +100,7 @@ local Arms = {
             events.RENDER:remove("left_arm_render")
             local shouldPreventDefault = false
             if BlueArchiveCharacter.arms.callbacks ~= nil and BlueArchiveCharacter.arms.callbacks.onAdditionalLeftArmProcess ~= nil then
-                BlueArchiveCharacter.arms.callbacks.onAdditionalLeftArmProcess(BlueArchiveCharacter, self.armState.left)
+                shouldPreventDefault = BlueArchiveCharacter.arms.callbacks.onAdditionalLeftArmProcess(BlueArchiveCharacter, self.armState.left)
             end
             if not shouldPreventDefault then
                 if self.armState.left == "GUN_OFF_HAND" then
