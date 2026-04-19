@@ -225,7 +225,7 @@ local Locale = {
 				callback("SUCCESS", data)
 				return
 			else
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data), self.CACHE_DIR_ROOT .. "index.json"))
+				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data), self.CACHE_DIR_ROOT .. path))
 				file:delete(self.CACHE_DIR_ROOT .. path)
 				data = nil
 			end
@@ -253,7 +253,7 @@ local Locale = {
 				callback("ERR_NETWORK", nil)
 			elseif status2 == "ERR_RESPONSE_CODE" then
 				---@cast data2 integer
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_response"):format(data2, self.REMOTE_LOCALE_ENDPOINT .. "index.json"))
+				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_response"):format(data2, self.REMOTE_LOCALE_ENDPOINT .. path))
 				callback("ERR_RESPONSE_CODE", data2)
 			end
 		end)
