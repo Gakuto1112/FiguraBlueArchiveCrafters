@@ -9,7 +9,7 @@
 ---@field public EX_SKILL_AUTO_PLAY_MODE DebugUtils.AutoPlayMode アバター読み込み時にExスキルを自動再生するモード
 ---@field public DEATH_ANIMATION_DEBUG_MODE boolean 死亡アニメーションのデバッグモードを有効にするかどうか
 local DebugUtils = {
-	EX_SKILL_AUTO_PLAY_MODE = "NONE";
+	EX_SKILL_AUTO_PLAY_MODE = "PRIMARY";
 	DEATH_ANIMATION_DEBUG_MODE = true;
 
     ---初期化関数
