@@ -970,9 +970,11 @@ local BlueArchiveCharacter = {
 		end)
 
         events.RENDER:register(function ()
-            local wingRotOffset = math.map(vanilla_model.RIGHT_LEG:getOriginRot().x, -90, 90, 20, 0)
-			ModelAlias.alias.avatar.body.Wings.RightWing:setRot(0, wingRotOffset * -1, 0)
-			ModelAlias.alias.avatar.body.Wings.LeftWing:setRot(0, wingRotOffset, 0)
+			if not client:isPaused() then
+				local wingRotOffset = math.map(vanilla_model.RIGHT_LEG:getOriginRot().x, -90, 90, 20, 0)
+				ModelAlias.alias.avatar.body.Wings.RightWing:setRot(0, wingRotOffset * -1, 0)
+				ModelAlias.alias.avatar.body.Wings.LeftWing:setRot(0, wingRotOffset, 0)
+			end
         end)
 	end;
 }
