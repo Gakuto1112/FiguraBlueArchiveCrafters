@@ -543,7 +543,7 @@ local BlueArchiveCharacter = {
 			end;
 
 			onStop = function(_, _, forcedStop)
-				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Sweat, ModelAlias.alias.avatar.head.DarkFace, ModelAlias.alias.avatar.head.Cheek}) do
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Sweat, ModelAlias.alias.avatar.head.DarkFace}) do
 					modelPart:setVisible(false)
 				end
 				if forcedStop then
