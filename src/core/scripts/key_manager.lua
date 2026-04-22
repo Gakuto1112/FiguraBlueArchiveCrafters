@@ -28,21 +28,22 @@ local KeyManager = {
 
     ---キー割り当てを登録する。
     ---@param self KeyManager
-    ---@param assignName string 割り当ての名前
+    ---@param id string キーアサインのID
+    ---@param displayName string キー設定に表示する名前
     ---@param keyName Minecraft.keyCode 割当先のキー
     ---@return Keybind assignedKey キーマネージャーによって登録がされたキーバインド
-    register = function (self, assignName, keyName)
-        if self.keyMappings[assignName] == nil then
+    register = function (self, id, displayName, keyName)
+        if self.keyMappings[id] == nil then
             ---@diagnostic disable-next-line: missing-fields
-            self.keyMappings[assignName] = {}
+            self.keyMappings[id] = {}
         end
-        self.keyMappings[assignName].keybind = keybinds:newKeybind(assignName, keyName)
-        local loadedKey = Config:loadConfig("PRIVATE", "key_manager.key_assignment." .. assignName, keyName)
+        self.keyMappings[id].keybind = keybinds:newKeybind(displayName, keyName)
+        local loadedKey = Config:loadConfig("PRIVATE", "key_manager.key_assignment." .. displayName, keyName)
         if loadedKey ~= keyName then
-            self.keyMappings[assignName].keybind:setKey(loadedKey)
+            self.keyMappings[id].keybind:setKey(loadedKey)
         end
-        self.keyMappings[assignName].keyNamePrev = self.keyMappings[assignName].keybind:getKey()
-        return self.keyMappings[assignName].keybind
+        self.keyMappings[id].keyNamePrev = self.keyMappings[id].keybind:getKey()
+        return self.keyMappings[id].keybind
     end;
 }
 

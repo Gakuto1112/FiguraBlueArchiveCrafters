@@ -853,7 +853,7 @@ local BlueArchiveCharacter = {
 		end
 		avatar:store("shouldReplaceVehicleModels", ActionWheelConfig.shouldReplaceVehicleModel)
 
-		KeyManager:register("Main gun aim, fire", "key.keyboard.v"):setOnPress(function ()
+		KeyManager:register("tank_shoot", "Main gun aim, fire", "key.keyboard.v"):setOnPress(function ()
 			if self.costume.isRidingTank and self.costume.tankTick >= 36 and models.models.ex_skill_1.Tank:getColor() == vectors.vec3(1, 1, 1) then
 				if self.costume.shootCoolDown == 0 then
 					pings.tankShoot()

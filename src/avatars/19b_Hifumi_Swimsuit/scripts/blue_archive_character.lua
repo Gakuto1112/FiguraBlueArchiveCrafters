@@ -756,7 +756,7 @@ local BlueArchiveCharacter = {
 		models.models.ex_skill_1.Tank.TankBody.CoolerBox:newItem("ex_skill_1_tank_item_5"):setItem("minecraft:apple"):setPos(-7, 5.6, 3):setRot(0, 180, 0):setScale(0.7)
 		models.models.ex_skill_1.Tank.TankBody.Turret.TurretTank:newItem("ex_skill_1_tank_item_6"):setItem("minecraft:iron_shovel"):setPos(0, 0, 0.5):setRot(0, 0, 45)
 
-		KeyManager:register("2-Pounder High-Explosive Loaded!", "key.keyboard.v"):setOnPress(function ()
+		KeyManager:register("tank_shoot", "2-Pounder High-Explosive Loaded!", "key.keyboard.v"):setOnPress(function ()
 			if self.costume.isRidingTank and self.costume.tankTick >= 36 and models.models.ex_skill_1.Tank:getColor() == vectors.vec3(1, 1, 1) then
 				if self.costume.shootCoolDown == 0 then
 					pings.tankShoot()

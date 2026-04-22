@@ -1230,7 +1230,7 @@ local BlueArchiveCharacter = {
         end)
 
         if host:isHost() then
-			KeyManager:register("Ta~ ma~ ya~!", "key.keyboard.v"):onPress(function ()
+			KeyManager:register("firework_launch", "Ta~ ma~ ya~!", "key.keyboard.v"):onPress(function ()
 				if #PlacementObjectManager.objects > 0 then
 					if self.exSkill.primary.launcherCooldown == 0 then
 						pings.launchFireworks()

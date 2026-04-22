@@ -33,7 +33,7 @@ local SyupogakiDance = {
     ---@param self SyupogakiDance
     init = function (self)
         if host:isHost() then
-            KeyManager:register("Syupogaki Dance", "key.keyboard.v"):onPress(function ()
+            KeyManager:register("syupogaki_dance", "Syupogaki Dance", "key.keyboard.v"):onPress(function ()
                 if self:canPlayDance() and self.danceState == "NOT_STANDBY" then
                     pings.standbyDance()
                 else
