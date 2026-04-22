@@ -43,27 +43,27 @@ local Bubble = {
 
         --エモートガイド
         if host:isHost() then
-            KeyManager:register("bubble_1", "key.keyboard.j"):onPress(function ()
+            KeyManager:register("Bubble: Good", "key.keyboard.j"):onPress(function ()
                 if self:getCanShowBubble() then
                     pings.bubble_showBubbleEmote("GOOD")
                 end
             end)
-            KeyManager:register("bubble_2", "key.keyboard.k"):onPress(function ()
+            KeyManager:register("Bubble: Heart", "key.keyboard.k"):onPress(function ()
                 if self:getCanShowBubble() then
                     pings.bubble_showBubbleEmote("HEART")
                 end
             end)
-            KeyManager:register("bubble_3", "key.keyboard.n"):onPress(function ()
+            KeyManager:register("Bubble: Note", "key.keyboard.n"):onPress(function ()
                 if self:getCanShowBubble() then
                     pings.bubble_showBubbleEmote("NOTE")
                 end
             end)
-            KeyManager:register("bubble_4", "key.keyboard.m"):onPress(function ()
+            KeyManager:register("Bubble: Question", "key.keyboard.m"):onPress(function ()
                 if self:getCanShowBubble() then
                     pings.bubble_showBubbleEmote("QUESTION")
                 end
             end)
-            KeyManager:register("bubble_5", "key.keyboard.comma"):onPress(function ()
+            KeyManager:register("Bubble: Sweat", "key.keyboard.comma"):onPress(function ()
                 if self:getCanShowBubble() then
                     pings.bubble_showBubbleEmote("SWEAT")
                 end

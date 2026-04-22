@@ -36,7 +36,7 @@ local ExSkill = {
                 exSkill.camera.fin.pos:mul(-1, 1, 1):scale(1 / 16 *  offset)
             end
 
-            local exSkillKey = KeyManager:register("ex_skill", "key.keyboard.g")
+            local exSkillKey = KeyManager:register("Ex Skill", "key.keyboard.g")
             exSkillKey:setOnPress(function ()
                 while events.TICK:getRegisteredCount("ex_skill_keypress_tick") > 0 do
                     events.TICK:remove("ex_skill_keypress_tick")
@@ -64,7 +64,7 @@ local ExSkill = {
                     self.keyPressCount = 0
                 end
             end)
-            KeyManager:register("ex_skill_sub", "key.keyboard.h"):setOnPress(function ()
+            KeyManager:register("Ex Skill (Sub)", "key.keyboard.h"):setOnPress(function ()
                 if self:getCanPlayAnimation() and self.transitionCount == 0 and BlueArchiveCharacter.exSkill.secondary ~= nil then
                     pings.exSkill_playExSkill(true)
                 else

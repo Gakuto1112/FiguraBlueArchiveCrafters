@@ -23,7 +23,7 @@ local Drone = {
     ---初期化関数
     ---@param self Drone
     init = function (self)
-        KeyManager:register("missile_launch", "key.keyboard.v"):setOnPress(function ()
+        KeyManager:register("Launch Missile", "key.keyboard.v"):setOnPress(function ()
             if self.isMissileLaunchAllowed then
                 if self.missileCoolDown == 0 then
                     pings.launchMissiles()

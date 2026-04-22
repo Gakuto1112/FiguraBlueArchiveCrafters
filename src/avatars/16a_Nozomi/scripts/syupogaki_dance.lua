@@ -29,7 +29,7 @@ local SyupogakiDance = {
     ---初期化関数
     ---@param self SyupogakiDance
     init = function (self)
-        KeyManager:register("syupogaki_dance", "key.keyboard.v"):onPress(function ()
+        KeyManager:register("Syupogaki Dance", "key.keyboard.v"):onPress(function ()
             if self:canPlayDance() and self.danceState == "NOT_STANDBY" then
                 pings.standbyDance()
             else
