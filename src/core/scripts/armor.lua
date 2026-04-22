@@ -325,7 +325,8 @@ local Armor = {
 		ModelAlias.alias.avatar.head.ArmorH:setVisible(helmetFound)
 		if helmetFound then
 			local material = helmetItem.id:match("^minecraft:(%a+)_helmet$")
-			ModelAlias.alias.avatar.head.ArmorH.Helmet.Helmet:setPrimaryTexture("RESOURCE", client:getVersion() >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid/"..(material == "golden" and "gold" or material)..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
+			print(client:getVersion() >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid/"..(material == "golden" and "gold" or (material == "turtle" and "turtle_scute" or material))..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
+			ModelAlias.alias.avatar.head.ArmorH.Helmet.Helmet:setPrimaryTexture("RESOURCE", client:getVersion() >= "1.21.2" and "minecraft:textures/entity/equipment/humanoid/"..(material == "golden" and "gold" or (material == "turtle" and "turtle_scute" or material))..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
 		end
 		ModelAlias.alias.avatar.head.ArmorH.Helmet.HelmetOverlay:setVisible(helmetItem.id == "minecraft:leather_helmet")
 		self.isArmorVisible.helmet = helmetFound or hatFound
