@@ -38,6 +38,14 @@ local Locale = {
 	CACHE_LIFETIME = 24 * 60 * 60 * 1000;
 
 	HARDCODED_LOCALES = {
+		["action_wheel.gui.update_check.checking"] = "Checking for updates...";
+		["action_wheel.gui.update_check.latest"] = "No FBAC update available";
+		["action_wheel.gui.update_check.update_available"] = "New FBAC update is available: %s";
+		["action_wheel.gui.update_check.error_not_allowed"] = "Failed to check for updates - Networking API not allowed";
+		["action_wheel.gui.update_check.error_network_err"] = "Failed to check for updates - Network error";
+		["action_wheel.gui.update_check.error_request_failed"] = "Failed to check for updates - Request failure (%s)";
+		["action_wheel.gui.update_check.error_invalid_json_syntax"] = "Failed to check for updates - Json parsing failure";
+		["action_wheel.gui.update_check.error_invalid_json"] = "Failed to check for updates - Unexpected Response";
 		["message.label.warn"] = "§e§l[WARN]§r ";
 		["message.label.error"] = "§c§l[ERROR]§r ";
 		["message.net_utils.err_not_allowed"] = "There is no permission to use Figura Networking API or access to the remote endpoint! Please allow Figura Networking API and add the remote domain \"%s\" to the Network Filter in Figura settings!";
