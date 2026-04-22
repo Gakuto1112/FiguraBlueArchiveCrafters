@@ -53,7 +53,7 @@ local UpdateChecker = {
             end
 
 			EventManager.events["ON_ACTION_WHEEL_OPEN"]:register(function ()
-				local textTask = models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3")
+				local textTask = models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l4")
 				if self.checkerStatus == "UPDATE_AVAILABLE" then
 						events.TICK:register(function ()
 						if math.floor(self.textAnimationCount / 20) % 2 == 0 then

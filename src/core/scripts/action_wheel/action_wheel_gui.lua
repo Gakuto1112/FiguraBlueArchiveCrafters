@@ -9,7 +9,7 @@ local ActionWheelGui = {
                 textTask:setScale(0.5, 0.5, 0.5)
                 textTask:setAlignment("CENTER")
             end
-            for i = 1, 3 do
+            for i = 1, 4 do
                 local textTask = models.models.action_wheel_gui.Gui.VersionDisplay:newText("action_wheel.gui.version_display.l"..i)
                 textTask:setScale(0.25, 0.25, 0.25)
                 textTask:setShadow(true)
@@ -73,11 +73,11 @@ local ActionWheelGui = {
 				end
 
 				local versionDisplayTextTasks = {}
-				for i = 1, 3 do
+				for i = 1, 4 do
 					table.insert(versionDisplayTextTasks, models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l"..i))
 				end
 
-				for i = 2, 3 do
+				for i = 2, 4 do
 					versionDisplayTextTasks[i]:setPos(0, (i - 1) * -2.25, 0)
 				end
 

@@ -46,6 +46,7 @@ local Locale = {
 		["action_wheel.gui.update_check.error_request_failed"] = "Failed to check for updates - Request failure (%s)";
 		["action_wheel.gui.update_check.error_invalid_json_syntax"] = "Failed to check for updates - Json parsing failure";
 		["action_wheel.gui.update_check.error_invalid_json"] = "Failed to check for updates - Unexpected Response";
+		["action_wheel.gui.update_check.locale_version"] = "Locale version: %s";
 		["message.label.warn"] = "§e§l[WARN]§r ";
 		["message.label.error"] = "§c§l[ERROR]§r ";
 		["message.net_utils.err_not_allowed"] = "There is no permission to use Figura Networking API or access to the remote endpoint! Please allow Figura Networking API and add the remote domain \"%s\" to the Network Filter in Figura settings!";
@@ -70,6 +71,10 @@ local Locale = {
 	---@param self Locale
 	init = function (self)
 		if host:isHost() then
+			EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
+				models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(Locale:getLocalizedText("action_wheel.gui.update_check.locale_version"):format(self.localeVersion or "v?.?.?"))
+			end)
+
 			EventManager.events["ON_LOCALE_REFRESH"]:fire()
 			self:initializeLocale()
 		end
@@ -322,13 +327,15 @@ local Locale = {
 			local locale = client:getActiveLang()
 			self.localeDataCheckLeft = locale == "en_us" and 3 or 5
 			self:fetchLocaleIndex(function (status, data)
+				local cacheVersion = Config:loadConfig("PUBLIC", "locale.version", "v0.0.0")
+				self.localeVersion = cacheVersion
 				if status == "SUCCESS" then
 					local indexVersion = data["localeVersion"]
-					local cacheVersion = Config:loadConfig("PUBLIC", "locale.version", "v0.0.0")
 					---@cast cacheVersion string
 					if cacheVersion == nil or StringUtils.compareVersions(cacheVersion, indexVersion) ~= cacheVersion then
 						self:flushCache()
 						file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data), "utf8")
+						self.localeVersion = indexVersion
 						Config:saveConfig("PUBLIC", "locale.version", indexVersion)
 					end
 					self.localeDataCheckLeft = self.localeDataCheckLeft - 1
