@@ -108,18 +108,23 @@ class AvatarMetaPlaceholderData(TypedDict):
 	テンプレートjsonデータ内のプレイスホルダーと置換する値の構造体
 	"""
 
-	student_name: str
+	avatar_id: str
 	"""
-	生徒の名前
-	衣装違いの場合はその衣装名も併記する。
+	アバターのID
+	このフィールドはスクリプトで上書きする。
+	（例: "01a"）
+	"""
+
+	first_name: str
+	"""
+	生徒の下の名前（名）
 	（例: "Shizuko"）
 	"""
 
-	student_full_name: str
+	last_name: str
 	"""
-	生徒のフルネーム（名姓の順）
-	衣装違いの場合はその衣装名も併記する。
-	（例: "Shizuko Kawawa"）
+	生徒の上の名前（姓）
+	（例: "Kawawa"）
 	"""
 
 	costume_name: NotRequired[str]
@@ -208,21 +213,15 @@ class AvatarJsonGenerator:
 		# avatar.jsonデータの取得
 		template = AvatarJsonGenerator._get_template_avatar_json()
 		meta = AvatarJsonGenerator._get_avatar_json_config(avatar_name)
+		meta["placeholders"]["avatar_id"] = re.match(r'(\d{2}\w)', avatar_name).group(1)
+		meta["placeholders"]["costume_name"] = f"({value})" if (value := meta["placeholders"].get("costume_name")) is not None else value
 
 		# プレイスホルダーの置換
-		if (name := template.get("name")) is not None:
-			template["name"] = name.replace("{{AVATAR_ID}}", f"{re.match(r'(\d{2}\w)', avatar_name).group(1)} ")
-			template["name"] = template["name"].replace("{{STUDENT_NAME}}", meta["placeholders"]["student_name"])
-		if (description := template.get("description")) is not None:
-			template["description"] = description.replace("{{STUDENT_FULL_NAME}}", meta["placeholders"]["student_full_name"])
-		if (costume_name := meta["placeholders"].get("costume_name")) is not None:
-			for key in ("name", "description"):
-				if (value := template.get(key)) is not None:
-					template[key] = value.replace("{{COSTUME_NAME}}", f" ({costume_name})")
-		else:
-			for key in ("name", "description"):
-				if (value := template.get(key)) is not None:
-					template[key] = value.replace("{{COSTUME_NAME}}", "")
+		for template_key in ("name", "description"):
+			for meta_key, meta_value in meta["placeholders"].items():
+				template[template_key] = template[template_key].replace(f"{{{{{meta_key.upper()}}}}}", meta_value or "")
+				template[template_key] = template[template_key].strip()
+				template[template_key] = re.sub(r"\s+", " ", template[template_key])
 
 		# リスト・辞書型の結合
 		if (template_auto_anims := template.get("autoAnims")) is not None and (meta_auto_anims := meta.get("autoAnims")) is not None:
