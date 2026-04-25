@@ -10,7 +10,6 @@ on:
 jobs:
   generate_readme:
     name: Generate readme.txt
-    needs: get_avatar_branches
     runs-on: ubuntu-latest
     steps:
       - name: Checkout avatar repository
@@ -41,7 +40,7 @@ jobs:
         run: ../node_modules/.bin/ts-node ./readme_txt_generator.ts Gakuto1112/FiguraBlueArchiveCharacters ${TAG_NAME} ${RELEASE_DATE} true ${BRANCH_NAME}
         env:
           TAG_NAME: ${{ github.ref_name }}
-          RELEASE_DATE: ""
+          RELEASE_DATE: "2026/04/25"
       - name: Upload artifacts
         uses: actions/upload-artifact@v4.6.2
         with:
@@ -50,9 +49,7 @@ jobs:
           retention-days: 1
   pack_figura_avatar:
     name: Pack avatar
-    needs:
-      - get_avatar_branches
-      - generate_readme
+    needs: generate_readme
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
