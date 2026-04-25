@@ -8,6 +8,9 @@ on:
       - .github/README_templates/**
       - .github/readme_generator/**
       - .github/workflows/generate_readme.yml
+  repository_dispatch:
+    types:
+      - dispatch_readme
 
 jobs:
   generate-readme:

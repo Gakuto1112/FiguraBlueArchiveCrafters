@@ -58,13 +58,6 @@ jobs:
         uses: astral-sh/setup-uv@v8.1.0
         with:
           enable-cache: "auto"
-      - name: Remove reference images from model files
-        run: |
-          find ./src/core/models ./src/avatars -name "*.bbmodel" | while read -r model_file
-          do
-            jq 'del(.reference_images) | .textures[].path = ""' "${model_file}" > "${model_file}.tmp"
-            mv "${model_file}.tmp" "${model_file}"
-          done
       - name: Set up Python 3.14.3
         run: uv python install 3.14.3
       - name: Install dependencies
