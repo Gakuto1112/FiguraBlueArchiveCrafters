@@ -41,7 +41,7 @@ jobs:
         run: ../node_modules/.bin/ts-node ./readme_txt_generator.ts Gakuto1112/FiguraBlueArchiveCharacters ${TAG_NAME} ${RELEASE_DATE} true ${BRANCH_NAME}
         env:
           TAG_NAME: ${{ github.ref_name }}
-          RELEASE_DATE: ${{ github.event.release.created_at }}
+          RELEASE_DATE: ""
       - name: Upload artifacts
         uses: actions/upload-artifact@v4.6.2
         with:
@@ -58,7 +58,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.2.2
       - name: Set up uv
-        uses: setup-uv@v8.1.0
+        uses: astral-sh/setup-uv@v8.1.0
         with:
           enable-cache: "auto"
       - name: Remove reference images from model files
