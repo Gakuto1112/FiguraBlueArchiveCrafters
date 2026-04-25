@@ -60,10 +60,10 @@ jobs:
           enable-cache: "auto"
       - name: Remove reference images from model files
         run: |
-          for ./src/core/models ./src/avatars -name "*.bbmodel" | while read -r model_file
+          find ./src/core/models ./src/avatars -name "*.bbmodel" | while read -r model_file
           do
             jq 'del(.reference_images) | .textures[].path = ""' "${model_file}" > "${model_file}.tmp"
-            move "${model_file}.tmp" "${model_file}"
+            mv "${model_file}.tmp" "${model_file}"
           done
       - name: Set up Python 3.14.3
         run: uv python install 3.14.3
