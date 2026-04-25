@@ -8,9 +8,9 @@ local ExSkillSplashParticle = {
     ---@param pos Vector2 パーティクルをスポーンさせるスクリーン上の座標。GUIスケールも考慮される。
     ---@param velocity Vector2 パーティクルの秒間移動距離（ピクセル）
     ---@return ExSkillSplashParticle
-    new = function (parent, pos, velocity)
+    new = function (pos, velocity)
         ---@type ExSkillSplashParticle
-        local instance = MiscUtils.instantiate(ExSkillSplashParticle, SpawnObject, parent)
+        local instance = MiscUtils.instantiate(ExSkillSplashParticle, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Gui.script_ex_skill_1_splash_particles:newSprite(instance.uuid)
         instance.currentPos = pos

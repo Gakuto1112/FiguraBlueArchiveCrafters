@@ -19,12 +19,11 @@ local ExSkillSplashParticleManager = {
     end;
 
     ---Exスキルのスプラッシュパーティクルのインスタンスを生成して返す。
-    ---@param self ExSkillSplashParticleManager
     ---@param pos Vector2 パーティクルをスポーンさせる画面上の座標
     ---@param velocity Vector2 パーティクルの速度
     ---@return ExSkillSplashParticle instance 生成したインスタンス
-    getObject = function (self, pos, velocity)
-        return ExSkillSplashParticle.new(self.parent, pos, velocity)
+    getObject = function (_, pos, velocity)
+        return ExSkillSplashParticle.new(pos, velocity)
     end;
 
     ---Exスキルのスプラッシュパーティクルをスポーンさせる。

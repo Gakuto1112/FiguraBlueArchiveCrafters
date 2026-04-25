@@ -49,9 +49,7 @@ local CompatibilityUtils = {
 
         -- 古いゲームバージョン使用時の警告
         if host:isHost() and client:getVersion() < self.TARGET_MC_VERSION then
-            self.parent.avatarEvents.SCRIPT_INIT:register(function ()
-                print(self.parent.locale:getLocale("avatar.old_version_warning"))
-            end)
+            print(Locale:getLocalizedText("avatar.old_version_warning"))
         end
 
         self:injectToBlockTaskSetBlock()
