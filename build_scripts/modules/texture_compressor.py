@@ -76,5 +76,7 @@ class TextureCompressor:
 			Logger.print_error(str(e))
 			exit(1)
 
+		Logger.print_info(f"Completed compressing texture ({TextureCompressor._debug_input_path})")
+
 if __name__ == "__main__":
 	TextureCompressor.debug()
