@@ -33,12 +33,13 @@ def print_shittim_logo() -> None:
 			Logger.print_info(logo)
 		Logger.print_spacer(1)
 
-def build(target_avatars: tuple[str, ...]) -> None:
+def build(target_avatars: tuple[str, ...], shouldBuildAsRelease: bool) -> None:
 	"""
 	アバターをビルドし、Figuraで使用可能な形式にする。
 
 	Args:
 		target_avatars (list[str]): ビルドするアバターの名前のリスト。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+		shouldBuildAsRelease (bool): リリース版としてビルドするかどうか。
 	"""
 
 	# 出力先ディレクトリの準備
@@ -152,12 +153,12 @@ def main() -> None:
 	parser = argparse.ArgumentParser(description="Builds avatars for Figura Blue Archive Crafters (FBAC).")
 
 	parser.add_argument("--character", "-c", type=str, choices=paths.get_valid_avatar_names(), help="Specifies the character avatar to build. If not specified, all avatars will be built. This option is ignored in observe mode.")
-	parser.add_argument("--skip-base-avatar-build", "-s", action="store_true", help="Skips building the base avatar. This option is only effective when --character / -c option is not specified.")
 	parser.add_argument("--src-dir", "-i", type=str, default=paths.source_dir, help="Overrides default source directory path. Default: ../src/")
 	parser.add_argument("--dist-dir", "-o", type=str, default=paths.distribution_dir, help="Overrides default distribution directory path. Default: ../dist/")
 	parser.add_argument("--observe", "-w", action="store_true", help="Executes the tool in observation mode. In this mode, the tool will observe the source directory for changes and automatically rebuild the affected avatars.")
 	parser.add_argument("--colored", "-l", action="store_true", help="Enables colored output in the terminal.")
-	parser.add_argument("--debug", "-d", action="store_true", help="Enables debug outputs.")
+	parser.add_argument("--debug-output", "-d", action="store_true", help="Enables debug outputs.")
+	parser.add_argument("--release", "-r", action="store_true", help="Builds avatars as release assets.")
 
 	args = parser.parse_args()
 
@@ -166,7 +167,7 @@ def main() -> None:
 	paths.distribution_dir = Path(args.dist_dir)
 	if args.colored:
 		Logger.is_colored = True
-	if args.debug:
+	if args.debug_output:
 		Logger.should_print_debug_log = True
 
 	try:
@@ -202,14 +203,13 @@ def main() -> None:
 		Logger.print_info("Initializing the distribution directory...")
 		Logger.print_spacer(1)
 
-		build(tuple(paths.get_avatar_names()))
+		build(tuple(paths.get_avatar_names()), False)
 
 		if args.character:
 			Logger.print_warning("The --character / -c option is ignored in observe mode. All characters will be observed for changes.")
-			Logger.print_spacer(1)
-		if args.skip_base_avatar_build:
-			Logger.print_warning("The --skip-base-avatar-build / -s option is ignored in observe mode. All characters will be observed for changes.")
-			Logger.print_spacer(1)
+		if args.release:
+			Logger.print_warning("The --release / -r option is ignored in observer mode. All characters will be built as debug assets.")
+		Logger.print_spacer(1)
 
 		Logger.print_info("Observation mode started. Press Ctrl+C to stop observing and exit the tool.")
 		Logger.print_spacer(1)
@@ -235,12 +235,18 @@ def main() -> None:
 		else:
 			target_avatars = list(paths.get_avatar_names())
 
+		if args.release:
+			target_avatars.remove("00a_base")
+
+		target_avatars.sort()
+
 		Logger.print_debug(f"Target avatars: {", ".join(target_avatars)}")
+		Logger.print_debug(f"Build mode: {'Release' if args.release else 'Debug'}")
 		Logger.print_debug(f"Source directory: {paths.source_dir}")
 		Logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
 		Logger.print_spacer(1)
 
-		build(tuple(target_avatars))
+		build(tuple(target_avatars), args.release)
 
 if __name__ == "__main__":
 	main()
