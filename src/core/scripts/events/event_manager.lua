@@ -1,5 +1,6 @@
 ---@class (exact) EventManager.EventTable イベントインスタンスを格納するテーブルの構造体
 ---@field ON_LOCALE_REFRESH LocaleRefreshEvent ロケールデータ更新イベント
+---@field ON_LOCALE_READY LocaleReadyEvent ロケールデータ準備完了イベント（データ準備の成否は問わない）
 ---@field ON_CONFIG_SYNC ConfigSyncEvent アバター設定データ同期イベント
 ---@field ON_ACTION_WHEEL_OPEN ActionWheelOpenEvent アクションホイール開イベント
 ---@field ON_ACTION_WHEEL_CLOSE ActionWheelCloseEvent アクションホイール閉イベント

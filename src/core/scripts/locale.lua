@@ -75,6 +75,10 @@ local Locale = {
 				models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(Locale:getLocalizedText("action_wheel.gui.update_check.locale_version"):format(self.localeVersion or "v?.?.?"))
 			end)
 
+			EventManager.events["ON_LOCALE_READY"]:register(function ()
+				self.localeDataCheckLeft = 0
+			end)
+
 			EventManager.events["ON_LOCALE_REFRESH"]:fire()
 			self:initializeLocale()
 		end
@@ -291,6 +295,9 @@ local Locale = {
 				print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(locale, status))
 			end
 			self.localeDataCheckLeft = self.localeDataCheckLeft - 1
+			if self.localeDataCheckLeft == 0 then
+				EventManager.events["ON_LOCALE_READY"]:fire()
+			end
 		end)
 		self:fetchLocaleData("avatars/" .. BlueArchiveCharacter.basic.avatarName .. "/" .. locale .. ".json", function (status, data)
 			if status == "SUCCESS" then
@@ -307,6 +314,9 @@ local Locale = {
 				print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(locale, status))
 			end
 			self.localeDataCheckLeft = self.localeDataCheckLeft - 1
+			if self.localeDataCheckLeft == 0 then
+				EventManager.events["ON_LOCALE_READY"]:fire()
+			end
 		end)
 	end;
 
@@ -325,7 +335,7 @@ local Locale = {
 
 			-- インデックスの取得
 			local locale = client:getActiveLang()
-			self.localeDataCheckLeft = locale == "en_us" and 3 or 5
+			self.localeDataCheckLeft = 4
 			self:fetchLocaleIndex(function (status, data)
 				local cacheVersion = Config:loadConfig("PUBLIC", "locale.version", "v0.0.0")
 				self.localeVersion = cacheVersion
@@ -338,29 +348,31 @@ local Locale = {
 						self.localeVersion = indexVersion
 						Config:saveConfig("PUBLIC", "locale.version", indexVersion)
 					end
-					self.localeDataCheckLeft = self.localeDataCheckLeft - 1
+
+					-- インデックスの展開
+					if type(data) == "table" then
+						for key, value in pairs(data["availableLocales"]) do
+							self.availableLocales[key] = value
+						end
+					end
+
+					-- 選択中のロケールの取得
+					if self.availableLocales[locale] ~= nil then
+						if locale ~= "en_us" then
+							self.locales[locale] = {}
+							self:fetchLocaleDataSet(locale)
+						end
+					else
+						self.localeDataCheckLeft = self.localeDataCheckLeft - 2
+						if self.localeDataCheckLeft == 0 then
+							EventManager.events["ON_LOCALE_READY"]:fire()
+						end
+					end
 				else
 					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_index"):format(status))
-					self.localeDataCheckLeft = 0
 					ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
 					ActionWheelConfig.isLocaleReloadedByAction = false
-				end
-
-				-- インデックスの展開
-				if type(data) == "table" then
-					for key, value in pairs(data["availableLocales"]) do
-						self.availableLocales[key] = value
-					end
-				end
-
-				-- 選択中のロケールの取得
-				if self.availableLocales[locale] ~= nil then
-					if locale ~= "en_us" then
-						self.locales[locale] = {}
-						self:fetchLocaleDataSet(locale)
-					end
-				else
-					self.localeDataCheckLeft = self.localeDataCheckLeft - 2
+					EventManager.events["ON_LOCALE_READY"]:fire()
 				end
 			end)
 
@@ -370,6 +382,7 @@ local Locale = {
 			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
 			ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
 			ActionWheelConfig.isLocaleReloadedByAction = false
+			EventManager.events["ON_LOCALE_READY"]:fire()
 		end
 	end;
 
