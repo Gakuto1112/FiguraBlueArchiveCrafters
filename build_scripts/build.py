@@ -2,6 +2,7 @@ import argparse
 import errno
 from json import JSONDecodeError
 from pathlib import Path
+import shutil
 
 from modules.avatar_json_generator import AvatarJsonGenerator
 from modules.errors.operation_cancelled_error import OperationCancelledError
@@ -70,6 +71,23 @@ def build(target_avatars: tuple[str, ...], as_release: bool) -> None:
 
 	Logger.print_info("Completed preparing distribution directory.")
 	Logger.print_spacer(1)
+
+	# tmpディレクトリの準備
+	true_dist_dir: Path|None = None
+	if not paths.distribution_dir.samefile(paths.root / "dist"):
+		true_dist_dir = paths.distribution_dir
+		tmp_dir = paths.root / ".fbac_build_tmp"
+		if tmp_dir.exists():
+			try:
+				shutil.rmtree(tmp_dir)
+			except PermissionError:
+				Logger.print_error("No permission to clear the temporary directory.")
+				exit(errno.EACCES)
+			except IOError:
+				Logger.print_error("An unexpected error occurred while clearing the temporary directory.")
+				exit(errno.EIO)
+		(paths.root / ".fbac_build_tmp").mkdir(parents=True, exist_ok=True)
+		paths.distribution_dir = tmp_dir
 
 	# アバターアセットのコピー
 	Logger.print_info("Copying avatar assets...")
@@ -169,7 +187,6 @@ def build(target_avatars: tuple[str, ...], as_release: bool) -> None:
 			BBModelModifier.modify_avatar_bbmodels(target_avatar)
 	except FileNotFoundError as e:
 		Logger.print_error(f"A BBModel file is not found for avatar \"{target_avatar}\".")
-		raise e
 		exit(errno.ENOENT)
 	except IsADirectoryError:
 		Logger.print_error(f"A BBModel file for avatar \"{target_avatar}\" is a directory.")
@@ -186,6 +203,24 @@ def build(target_avatars: tuple[str, ...], as_release: bool) -> None:
 
 	Logger.print_info("Completed modifying BBModel files.")
 	Logger.print_spacer(1)
+
+	if true_dist_dir is not None:
+		# tmpディレクトリから本来の出力先ディレクトリへファイルを移動
+		Logger.print_info("Moving built avatar assets to the distribution directory...")
+
+		try:
+			shutil.copytree(paths.distribution_dir, true_dist_dir, dirs_exist_ok=True)
+			shutil.rmtree(paths.distribution_dir)
+		except PermissionError:
+			Logger.print_error("No permission to move built avatar assets to the distribution directory.")
+			exit(errno.EACCES)
+		except IOError:
+			Logger.print_error("An unexpected error occurred while moving built avatar assets to the distribution directory.")
+			exit(errno.EIO)
+
+		paths.distribution_dir = true_dist_dir
+		Logger.print_info("Completed moving built avatar assets to the distribution directory.")
+		Logger.print_spacer(1)
 
 
 def main() -> None:
