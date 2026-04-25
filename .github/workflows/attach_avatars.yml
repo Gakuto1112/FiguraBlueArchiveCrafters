@@ -16,11 +16,6 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           path: ./avatar
-      - name: Checkout generator repository
-        uses: actions/checkout@v4.2.2
-        with:
-          repository: Gakuto1112/FiguraAvatarsReadmeTemplate
-          path: ./generator
       - name: Checkout packer repository
         uses: actions/checkout@v4.2.2
         with:
@@ -37,7 +32,7 @@ jobs:
         run: npm install
       - name: Generate readme.txt
         working-directory: ./packer/src/
-        run: ../node_modules/.bin/ts-node ./readme_txt_generator.ts Gakuto1112/FiguraBlueArchiveCharacters ${TAG_NAME} ${RELEASE_DATE} true ${BRANCH_NAME}
+        run: ../node_modules/.bin/ts-node ./readme_txt_generator.ts Gakuto1112/FiguraBlueArchiveCharacters ${TAG_NAME} ${RELEASE_DATE} false
         env:
           TAG_NAME: ${{ github.ref_name }}
           RELEASE_DATE: "2026/04/25"
