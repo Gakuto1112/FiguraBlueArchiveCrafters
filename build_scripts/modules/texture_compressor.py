@@ -3,6 +3,7 @@ from pathlib import Path
 import subprocess
 import re
 
+from modules.paths import paths
 from modules.logger import Logger
 
 class TextureCompressor:
@@ -42,6 +43,25 @@ class TextureCompressor:
 			Logger.print_warning(f"Failed to get texture palette color count ({texture_path})")
 		elif palette_color > 256:
 			Logger.print_warning(f"The texture \"{texture_path}\" has {palette_color} colors, but reduced to 256 colors by pngquant. Please check the texture's quality.")
+
+	@staticmethod
+	def compress_avatar_textures(avatar_name: str) -> None:
+		"""
+		指定されたアバターのテクスチャ画像をすべて圧縮する。
+
+		Args:
+			avatar_name (str): 圧縮するアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+
+		Raises:
+			ValueError: `avatar_name`が`paths.get_avatar_names()`で取得できる名前のいずれでもない場合
+			RuntimeError: pngquantの実行に失敗した場合
+		"""
+
+		if not avatar_name in paths.get_avatar_names():
+			raise ValueError(f"The specified avatar name \"{avatar_name}\" is not valid.")
+
+		for texture_path in (paths.distribution_dir / avatar_name / "textures").rglob(f"*.png"):
+			TextureCompressor._compress_texture(texture_path)
 
 	@staticmethod
 	def _set_debug_args() -> None:

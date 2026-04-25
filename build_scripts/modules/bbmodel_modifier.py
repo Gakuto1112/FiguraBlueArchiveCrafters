@@ -5,6 +5,7 @@ import base64
 from pathlib import Path
 
 from modules.logger import Logger
+from modules.paths import paths
 
 class BBModelModifier:
 	"""
@@ -144,12 +145,12 @@ class BBModelModifier:
 		if "textures" in bbmodel_data:
 			for texture in bbmodel_data["textures"]:
 				if "source" in texture:
-					texture["source"] = BBModelModifier._get_texture_base64_string((bbmodel_path.parent / texture["relative_path"]).resolve())
+					texture["source"] = BBModelModifier._get_texture_base64_string((bbmodel_path.parent / texture["relative_path"].replace("../../../core/textures/", "../textures/")).resolve())
 
 		return bbmodel_data
 
 	@staticmethod
-	def modify_bbmodel(bbmodel_path: Path) -> None:
+	def _modify_bbmodel(bbmodel_path: Path) -> None:
 		"""
 		指定されたパスのBBModelファイルを変更する。
 		変更内容は以下の通り。
@@ -173,6 +174,29 @@ class BBModelModifier:
 		bbmodel_data = BBModelModifier._remove_texture_absolute_paths(bbmodel_data)
 		bbmodel_data = BBModelModifier._update_embedded_texture_data(bbmodel_path, bbmodel_data)
 		BBModelModifier._write_bbmodel_data(bbmodel_path, bbmodel_data)
+
+	@staticmethod
+	def modify_avatar_bbmodels(avatar_name: str) -> None:
+		"""
+		指定されたアバターのBBModelファイルをすべて変更する。
+
+		Args:
+			avatar_name (str): 変更するアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+
+		Raises:
+			ValueError: `avatar_name`が`paths.get_avatar_names()`で取得できる名前のいずれでもない場合
+			FileNotFoundError: BBModelファイルが存在しない場合
+			IsADirectoryError: BBModelファイルがディレクトリである場合
+			PermissionError: BBModelファイルに対する読み取り/書き込み権限がない場合
+			IOError: その他の入出力エラーが発生した場合
+			json.JSONDecodeError: BBModelファイルの内容が有効なJSON形式でない場合
+		"""
+
+		if not avatar_name in paths.get_avatar_names():
+			raise ValueError(f"The specified avatar name \"{avatar_name}\" is not valid.")
+
+		for bbmodel_path in (paths.distribution_dir / avatar_name / "models").rglob(f"*.bbmodel"):
+			BBModelModifier._modify_bbmodel(bbmodel_path)
 
 	@staticmethod
 	def _set_debug_args() -> None:

@@ -10,6 +10,8 @@ from modules.logger import Logger
 from modules.observer import AvatarFileObserver
 from modules.paths import paths
 from modules.thumbnail_generator import ThumbnailGenerator
+from modules.texture_compressor import TextureCompressor
+from modules.bbmodel_modifier import BBModelModifier
 
 
 def print_shittim_logo() -> None:
@@ -143,6 +145,48 @@ def build(target_avatars: tuple[str, ...], as_release: bool) -> None:
 
 	Logger.print_info("Completed generating thumbnail images.")
 	Logger.print_spacer(1)
+
+	# テクスチャの圧縮
+	Logger.print_info("Compressing textures...")
+
+	try:
+		for target_avatar in target_avatars:
+			Logger.print_info(f"Compressing textures for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+			TextureCompressor.compress_avatar_textures(target_avatar)
+	except RuntimeError as e:
+		Logger.print_error("An error occurred from pngquant while compressing textures.")
+		exit(errno.EPERM)
+
+	Logger.print_info("Completed compressing textures.")
+	Logger.print_spacer(1)
+
+	# BBモデルファイルの編集
+	Logger.print_info("Modifying BBModel files...")
+
+	try:
+		for target_avatar in target_avatars:
+			Logger.print_info(f"Modifying BBModel files for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+			BBModelModifier.modify_avatar_bbmodels(target_avatar)
+	except FileNotFoundError as e:
+		Logger.print_error(f"A BBModel file is not found for avatar \"{target_avatar}\".")
+		raise e
+		exit(errno.ENOENT)
+	except IsADirectoryError:
+		Logger.print_error(f"A BBModel file for avatar \"{target_avatar}\" is a directory.")
+		exit(errno.EISDIR)
+	except PermissionError:
+		Logger.print_error(f"No permission to read/write a BBModel file for avatar \"{target_avatar}\".")
+		exit(errno.EACCES)
+	except JSONDecodeError:
+		Logger.print_error(f"Failed to parse a BBModel file for avatar \"{target_avatar}\".")
+		exit(errno.EINVAL)
+	except IOError:
+		Logger.print_error(f"An unexpected error occurred while modifying BBModel files for avatar \"{target_avatar}\".")
+		exit(errno.EIO)
+
+	Logger.print_info("Completed modifying BBModel files.")
+	Logger.print_spacer(1)
+
 
 def main() -> None:
 	"""
