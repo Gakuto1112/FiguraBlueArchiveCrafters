@@ -3,8 +3,7 @@ name: Generate README
 on:
   push:
     branches:
-      - base
-      - '[A-Z]*'
+      - main
     paths:
       - .github/README_templates/**
       - .github/readme_generator/**
@@ -16,5 +15,3 @@ jobs:
     permissions:
       contents: write
     uses: ./.github/workflows/generate_readme_core.yml
-    with:
-      branch-name: ${{ github.ref_name }}
