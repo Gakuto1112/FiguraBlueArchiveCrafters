@@ -1,5 +1,3 @@
--- [[ NOT_INCLUDED_IN_RELEASE ]] --
-
 ---@alias DebugUtils.AutoPlayMode
 ---| "NONE" # 自動再生なし
 ---| "PRIMARY" # メインExスキル

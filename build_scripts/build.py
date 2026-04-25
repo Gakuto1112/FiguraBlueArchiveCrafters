@@ -33,13 +33,13 @@ def print_shittim_logo() -> None:
 			Logger.print_info(logo)
 		Logger.print_spacer(1)
 
-def build(target_avatars: tuple[str, ...], shouldBuildAsRelease: bool) -> None:
+def build(target_avatars: tuple[str, ...], as_release: bool) -> None:
 	"""
 	アバターをビルドし、Figuraで使用可能な形式にする。
 
 	Args:
 		target_avatars (list[str]): ビルドするアバターの名前のリスト。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
-		shouldBuildAsRelease (bool): リリース版としてビルドするかどうか。
+		as_release (bool): リリースアセットとしてビルドするかどうか。
 	"""
 
 	# 出力先ディレクトリの準備
@@ -75,7 +75,7 @@ def build(target_avatars: tuple[str, ...], shouldBuildAsRelease: bool) -> None:
 	try:
 		for target_avatar in target_avatars:
 			Logger.print_info(f"Copying assets for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-			FileOperator.copy_assets(target_avatar)
+			FileOperator.copy_assets(target_avatar, as_release)
 	except NotADirectoryError:
 		Logger.print_error("The specified character directory path is not a directory.")
 		exit(errno.ENOTDIR)

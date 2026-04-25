@@ -1,6 +1,7 @@
 import argparse
 import errno
 import shutil
+import re
 from pathlib import Path
 
 from modules.errors.operation_cancelled_error import OperationCancelledError
@@ -11,6 +12,11 @@ from modules.paths import paths
 class FileOperator:
 	"""
 	ディレクトリの準備、アセットのコピーなどのファイル操作を行うクラス
+	"""
+
+	_RELEASE_REMOTE_LOCALE_ENDPOINT: str = "https://raw.githubusercontent.com/Gakuto1112/FBAC_Locales/refs/heads/main/src/"
+	"""
+	アバターの言語データを取得する、リモートのエンドポイント
 	"""
 
 	_target_directory_path: Path = paths.distribution_dir
@@ -55,13 +61,18 @@ class FileOperator:
 			dir_path.mkdir(parents=True)
 
 	@staticmethod
-	def copy_assets(avatar_name: str) -> None:
+	def copy_assets(avatar_name: str, as_release: bool) -> None:
 		"""
 		コアアセットとキャラクター固有アセットの統合し、出力先ディレクトリにコピーする。
 		コアアセットとキャラクター固有アセットに同じ相対パスのファイルが存在する場合、キャラクター固有アセットのほうで上書きされる。
 
 		Args:
 			avatar_name (str): コピーするアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+			as_release (bool): リリースアセットとしてコピーするかどうか。
+				リリースアセットでは以下の変更を行う。
+				 - `debug_utils.lua`を削除
+				 - `avatar.lua`から`debug_utils`の`require()`を除外
+				 - `locale.lua`のリモートエンドポイントをリリース用のものに変更
 
 		Raises:
 			ValueError: `avatar_name`が`paths.get_avatar_names()`で取得できる名前のいずれでもない場合
@@ -81,6 +92,41 @@ class FileOperator:
 			(paths.distribution_dir / avatar_name / subdirectory).mkdir(parents=True, exist_ok=True)
 			shutil.copytree(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
 			shutil.copytree(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
+
+		# リリースアセット用に変更する部分
+		if as_release:
+			# 1. `debug_utils.lua`を削除
+			debug_utils_lua_path: Path = paths.distribution_dir / avatar_name / "scripts" / "utils" / "debug_utils.lua"
+			if debug_utils_lua_path.exists():
+				debug_utils_lua_path.unlink()
+			else:
+				Logger.print_warning(f"debug_utils.lua not found in the distribution directory for avatar \"{avatar_name}\". No action taken for deleting debug_utils.lua.")
+
+			# 2. `avatar.lua`から`debug_utils`の`require()`を除外
+			avatar_lua_path: Path = paths.distribution_dir / avatar_name / "scripts" / "avatar.lua"
+			if avatar_lua_path.exists():
+				avatar_lua_content: str = ""
+				with avatar_lua_path.open("r", encoding="utf-8") as f:
+					avatar_lua_content = f.read()
+				avatar_lua_content = re.sub(r"\n?--\s\[\[\sRELEASE_EXCLUSION_START\s\]\]\s--.*?--\s\[\[\sRELEASE_EXCLUSION_END\s\]\]\s--\n?", "", avatar_lua_content, flags=re.DOTALL)
+				with avatar_lua_path.open("w", encoding="utf-8") as f:
+					f.write(avatar_lua_content)
+			else:
+				Logger.print_error(f"avatar.lua not found in the distribution directory for avatar \"{avatar_name}\". This script is required for the avatar to work properly!")
+				raise FileNotFoundError(f"avatar.lua not found in the distribution directory for avatar \"{avatar_name}\".")
+
+			# 3. `locale.lua`のリモートエンドポイントをリリース用のものに変更
+			locale_lua_path: Path = paths.distribution_dir / avatar_name / "scripts" / "locale.lua"
+			if locale_lua_path.exists():
+				locale_lua_content: str = ""
+				with locale_lua_path.open("r", encoding="utf-8") as f:
+					locale_lua_content = f.read()
+				locale_lua_content = re.sub(r"REMOTE_LOCALE_ENDPOINT\s=\s\".*?\";", f"REMOTE_LOCALE_ENDPOINT = \"{FileOperator._RELEASE_REMOTE_LOCALE_ENDPOINT}\";", locale_lua_content)
+				with locale_lua_path.open("w", encoding="utf-8") as f:
+					f.write(locale_lua_content)
+			else:
+				Logger.print_error(f"locale.lua not found in the distribution directory for avatar \"{avatar_name}\". This script is required for the avatar to work properly!")
+				raise FileNotFoundError(f"locale.lua not found in the distribution directory for avatar \"{avatar_name}\".")
 
 	@staticmethod
 	def copy_single_asset_path(src_path: Path) -> None:
