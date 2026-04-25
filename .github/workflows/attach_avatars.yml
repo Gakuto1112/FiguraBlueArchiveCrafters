@@ -69,6 +69,7 @@ jobs:
         run: uv python install 3.14.3
       - name: Install dependencies
         run: uv sync
+        working-directory: ./build_scripts/
       - name: Build avatars
         run: uv run build.py -r
         working-directory: ./build_scripts/
