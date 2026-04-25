@@ -6,7 +6,16 @@ import re
 from modules.logger import Logger
 
 class TextureCompressor:
+	"""
+	アバターのテクスチャ画像の圧縮を行うクラス
+	テクスチャ画像の圧縮にはpngquantを使用する。
+	クラスの使用前にpngquantがシステムにインストールされている必要がある。
+	"""
+
 	_debug_input_path: Path = Path()
+	"""
+	コマンドライン引数から受け取った、圧縮を行う対象のテクスチャ画像までのパス（デバッグ用変数）
+	"""
 
 	@staticmethod
 	def _compress_texture(texture_path: Path) -> None:
