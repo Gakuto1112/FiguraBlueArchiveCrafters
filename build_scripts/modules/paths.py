@@ -108,7 +108,6 @@ class AvatarPaths:
 
 		return tuple(avatar.name for avatar in self.character_dir.iterdir() if avatar.is_dir() and re.match(r"\d{2}\w_", avatar.name))
 
-
 	def get_valid_avatar_names(self) -> tuple[str, ...]:
 		"""
 		ビルドスクリプトでキャラクターを指定してビルドする際の、有効なアバター名のリストを返す。
