@@ -16,6 +16,11 @@ jobs:
         uses: actions/checkout@v4.2.2
         with:
           path: ./avatar
+      - name: Checkout generator repository
+        uses: actions/checkout@v4.2.2
+        with:
+          repository: Gakuto1112/FiguraAvatarsReadmeTemplate
+          path: ./generator
       - name: Checkout packer repository
         uses: actions/checkout@v4.2.2
         with:
