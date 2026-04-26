@@ -148,7 +148,6 @@ class CreationStatusWriter:
 					result += f" ([#{entry['issue_number']}](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/{entry['issue_number']}))"
 			result += "\n"
 
-		result.rstrip()
 		return result
 
 	def debug() -> None:

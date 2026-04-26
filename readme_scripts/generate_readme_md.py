@@ -1,11 +1,14 @@
 import argparse
 import errno
+import json
+import re
 from pathlib import Path
 
 from modules.paths import paths
 from modules.logger import Logger
 from modules.enums.template_locale import TemplateLocale
 from modules.template_reader import TemplateReader
+from modules.creation_status_writer import CreationStatusWriter
 
 
 def generate_readme_md(locale: TemplateLocale) -> None:
@@ -37,6 +40,45 @@ def generate_readme_md(locale: TemplateLocale) -> None:
 
 	Logger.print_info("Completed reading template.")
 	Logger.print_spacer(1)
+
+	# 作成状況の置換
+	Logger.print_info("Replacing creation status...")
+
+	try:
+		creation_status_data = CreationStatusWriter.read_creation_status()
+		for category in ("done", "in_progress", "planned", "requested"):
+			entries_md = CreationStatusWriter.get_entries_md(creation_status_data[category], locale, category != "done")
+			if len(entries_md) == 0:
+				if category == "done":
+					entries_md = "（現在利用可能なキャラクターはいません。）" if locale == TemplateLocale.JP else "(There is no character available now.)"
+				elif category == "in_progress":
+					entries_md = "（現在作成中のアバターはありません。）" if locale == TemplateLocale.JP else "(There is no avatar currently being created.)"
+				elif category == "planned":
+					entries_md = "（作成予定のアバターはありません。）" if locale == TemplateLocale.JP else "(There is no avatar planned to be created.)"
+				elif category == "not_planned":
+					entries_md = "（リクエストされたアバターはありません。）" if locale == TemplateLocale.JP else "(There is no requested avatar.)"
+				entries_md += "\n"
+
+			entries_md += "\n"
+			result = re.sub(rf" *<!--\sCREATION_STATUS_{category.upper()}\s-->\s*\n", entries_md, result)
+	except FileNotFoundError:
+		Logger.print_error(f"Creation status JSON file not found.")
+		exit(errno.ENOENT)
+	except IsADirectoryError:
+		Logger.print_error(f"Creation status JSON file is a directory.")
+		exit(errno.EISDIR)
+	except PermissionError:
+		Logger.print_error(f"No permission to read creation status JSON file.")
+		exit(errno.EACCES)
+	except json.JSONDecodeError:
+		Logger.print_error(f"Failed to parse creation status JSON file.")
+		exit(errno.EINVAL)
+	except TypeError:
+		Logger.print_error(f"Creation status JSON file has invalid structure.")
+		exit(errno.EINVAL)
+	except IOError:
+		Logger.print_error(f"An unexpected error occurred while reading creation status JSON file.")
+		exit(errno.EIO)
 
 	# 生成済みドキュメントの出力
 	Logger.print_info("Writing document...")
