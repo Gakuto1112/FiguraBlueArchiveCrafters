@@ -267,9 +267,44 @@ No special operation is needed.
 > [!WARNING]
 > Repeating update checks in a short period may trigger temporary limits from GitHub, and update checks may become unavailable for a while.
 
-<!-- $inject(how_to_use) -->
+<!-- USAGE_START -->
+## How to use
 
-<!-- $inject(notes) -->
+Figura is available in [Forge](https://files.minecraftforge.net/net/minecraftforge/forge/), [Fabric](https://fabricmc.net/) and [NeoForge](https://neoforged.net/).
+
+1. Install the mod loader which you want to use and make the mods available.
+2. Install [Figura](https://modrinth.com/mod/figura). Note the mod dependencies.
+3. Go to the [release page](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/releases).
+4. Download the zip file attached in "Assets" section of the release notes.
+5. Unzip the zipped file and take the avatar data inside this.
+6. Put avatar files at `<minecraft_instance_directory>/figura/avatars/`.
+   - The directory will automatically generated after launching the game with Figura installed. You can also create it manually if it doesn't exist.
+7. Open the Figura menu (Δ mark) from the game menu.
+8. Select the avatar from the avatar list at the left of the Figura menu.
+9. In order for the avatar to work properly, you need to allow network communication.
+   Go to the Figura menu → Settings → "Networking" category and update the following settings.
+   - Allow Networking → "Enabled"
+   - Networking Restriction → "Whitelist"
+10. Add the following entries to the "Network Filter" in the same category.
+    - api.github.com
+    - raw.githubusercontent.com
+11. By uploading your avatar to the Figura server in Figura menu, other Figura players can see your avatar.
+    - **If your Minecraft is Pirated (cracked, unlicensed, free), you cannot upload your avatar.**
+      This is a Figura specification and I cannot help you with this.
+<!-- USAGE_END -->
+
+<!-- NOTES_START -->
+## Notes
+
+- I'm not responsible for any damages caused by using this avatar.
+- This avatar is designed for work with no resource pack and no other mods are installed.
+  An unexpected issue may occurs when you use it with any resource packs and mods (texture and armor inconsistencies, etc.).
+  However, I may not support you in these cases.
+- Please [report an issue](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues) if you find it.
+- Please contact me via [Discussions](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/discussions) or [Discord](https://discord.com/) if you want to do for my avatars.
+  My Discord name is "vinny_san" and display name is "ばにーさん".
+  My display name in [Figura Discord server](https://discord.gg/figuramc) is "BunnySan/ばにーさん".
+<!-- NOTES_END -->
 
 ---
 
