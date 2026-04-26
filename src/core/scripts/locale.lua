@@ -34,7 +34,7 @@
 ---@field package localePrev string 前ティックのゲームのロケール
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locales/";
-	REMOTE_LOCALE_ENDPOINT = "http://localhost/";
+	REMOTE_LOCALE_ENDPOINT = "https://raw.githubusercontent.com/Gakuto1112/FBAC_Locales/refs/heads/main/src/";
 	CACHE_LIFETIME = 24 * 60 * 60 * 1000;
 
 	HARDCODED_LOCALES = {
