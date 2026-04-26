@@ -29,14 +29,12 @@ jobs:
         working-directory: ./readme_scripts/
       - id: check_diff
         name: Check diff
-        working-directory: ./avatar
         continue-on-error: true
         run: |
           git add -N --all
           git diff --exit-code
       - name: Commit and push
         if: ${{ steps.check_diff.outcome == 'failure' }}
-        working-directory: ./avatar
         run: |
           git remote set-url origin https://github-actions:${{ github.token }}@github.com/${{ github.repository }}
           git config user.name github-actions[bot]
