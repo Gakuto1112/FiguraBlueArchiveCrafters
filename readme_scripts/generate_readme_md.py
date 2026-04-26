@@ -93,7 +93,7 @@ def generate_readme_md(locale: TemplateLocale) -> None:
 	Logger.print_info("Writing document...")
 
 	try:
-		with open(paths.distribution_dir / f"README{'' if locale == TemplateLocale.EN else '_JP'}.md", "w") as f:
+		with open(paths.distribution_dir / f"README{'' if locale == TemplateLocale.EN else '_jp'}.md", "w") as f:
 			f.write(result)
 	except PermissionError:
 		Logger.print_error(f"No permission to write output README.md for locale {locale.name}.")
