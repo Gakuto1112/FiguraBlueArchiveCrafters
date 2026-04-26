@@ -11,7 +11,7 @@ Target Figura version: [0.1.5](https://modrinth.com/mod/figura/version/0.1.5b+1.
 
 <!-- DESCRIPTION_END -->
 
-![Thumbnail](../README_images/thumbnail.jpg)
+![Thumbnail](../images/thumbnail.jpg)
 
 <https://youtu.be/JrPhLR34mLA>
 
@@ -29,57 +29,88 @@ Watch also:
 - [FBAC videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
 - [FBAC short videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
 
-<!-- CREATION_STATUS -->
+## Creation status
+
+### Done
+
+The avatars for these characters are completed.
+You can download and use avatars below in the game according to the chapter "[How to use](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/blob/base/.github/README.md#how-to-use)".
+
+<!-- CREATION_STATUS_DONE -->
+
+### In progress
+
+The avatars for these characters are worked in progress.
+It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule.
+Click on the link in brackets to go to the issue about the character, where you can check the progress.
+
+<!-- CREATION_STATUS_IN_PROGRESS -->
+
+### Planned
+
+Although the avatars for these characters are not created, there are plans to create them in the future.
+They will be created in order from top to bottom.
+This is just a plan and the order may change or creation may be discontinued.
+
+<!-- CREATION_STATUS_PLANNED -->
+
+### Requested
+
+I have received requests to create these characters.
+However, I can't promise that I'll create them.
+Please understand this.
+
+<!-- CREATION_STATUS_REQUESTED -->
 
 ## Features
 
 - Ex Skill cut-ins are recreated.
 
-  ![Ex skill](../README_images/ex_skill.jpg)
+  ![Ex skill](../images/ex_skill.jpg)
 
 - For Ex Skills that "leave something in place", an object remains after the Ex Skill animation.
   - It does not affect gameplay at all.
   - The object disappears when its collision overlaps with a block.
   - Hold the Ex Skill play key (default: V) to remove all placed objects.
 
-  ![Placement object](../README_images/placement_object.jpg)
+  ![Placement object](../images/placement_object.jpg)
 
 - Student-specific weapons are held instead of bows and crossbows.
   Bullets are fired instead of arrows.
   - This is visual only. In actual gameplay, you are still firing arrows.
 
-  ![Gun](../README_images/gun.jpg)
+  ![Gun](../images/gun.jpg)
 
 - Speech bubbles can be shown with the arrow keys (up/right/down/left).
   - While loading a crossbow, a reload bubble appears automatically.
 
-  ![Speech bubble 1](../README_images/bubble_good.jpg)
+  ![Speech bubble 1](../images/bubble_good.jpg)
 
-  ![Speech bubble 2](../README_images/bubble_reload.jpg)
+  ![Speech bubble 2](../images/bubble_reload.jpg)
 
 - A barrier appears when the player has Absorption hearts (yellow hearts).
 
-  ![Barrier](../README_images/barrier.jpg)
+  ![Barrier](../images/barrier.jpg)
 
 - When the player dies, they are recovered by helicopter.
   - Due to Minecraft and Figura behavior, this animation is not shown if the player is not rendered.
 
-  ![Rescued by helicopter](../README_images/death_animation.jpg)
+  ![Rescued by helicopter](../images/death_animation.jpg)
 
 - Some students have unique models for in-game vehicles.
 
-  ![Vehicle models](../README_images/vehicle_model.jpg)
+  ![Vehicle models](../images/vehicle_model.jpg)
 
 - The player's displayed name can be changed to a student's name.
   - Club names can also be displayed.
   - For other players to see this name, **they also need Figura and must grant you sufficient trust settings on their side**.
 
-  ![Display name](../README_images/display_name.jpg)
+  ![Display name](../images/display_name.jpg)
 
 - On each student's birthday, a small cake mark is added to the name.
   - It is not shown when the displayed name is the player name.
 
-  ![Birth day](../README_images/birth_day.svg)
+  ![Birth day](../images/birth_day.svg)
 
 - In addition to the above, there are features available only for specific students.
 
@@ -118,7 +149,7 @@ To play an Ex Skill, press the Ex Skill key (default: "G") in **third-person vie
 > [!IMPORTANT]
 > From v1.9.4, the Ex Skill action key was changed from "V" to "G".
 
-![Ex skill](../README_images/ex_skill.jpg)
+![Ex skill](../images/ex_skill.jpg)
 
 Some students have two Ex Skills.
 The secondary Ex Skill can be played with the "H" key.
@@ -142,13 +173,13 @@ This repository's avatars include shared actions.
 > [!IMPORTANT]
 > From v1.8.4, the Ex Skill action was changed to key-based playback.
 
-![Action wheel](../README_images/action_wheel.jpg)
+![Action wheel](../images/action_wheel.jpg)
 
 ### Action 1. Change variation costume
 
 If variation costumes are available (costume changes that do not change Ex Skills), you can switch costumes.
 
-![Variation costume](../README_images/alt_costume.jpg)
+![Variation costume](../images/alt_costume.jpg)
 
 ### Action 2. Change display name
 
@@ -157,14 +188,14 @@ Scroll to choose a name, then close the action wheel to confirm.
 Left-click resets to the current value during selection, and right-click resets to the default.
 However, for other players to see the changed name, **they also need Figura and must grant you sufficient trust settings on their side**.
 
-![Display name](../README_images/display_name.jpg)
+![Display name](../images/display_name.jpg)
 
 ### Action 3. Toggle armor visibility
 
 Toggles whether armor is visible.
 Since armor can hide the avatar, I recommend hiding armor.
 
-![Armor](../README_images/armor.jpg)
+![Armor](../images/armor.jpg)
 
 ### Action 4. Open avatar settings
 
@@ -174,14 +205,14 @@ Moves to the [avatar settings page](#avatar-settings-action-wheel).
 
 You can move to this page from [Action 4](#action-4-open-avatar-settings) in [The action wheel](#the-action-wheel).
 
-![Avatar settings action wheel](../README_images/action_config.jpg)
+![Avatar settings action wheel](../images/action_config.jpg)
 
 ### Action 1. Toggle student-specific vehicle models
 
 Toggles whether student-specific vehicle model replacement is enabled.
 This option is disabled for students without vehicle replacements.
 
-![Vehicle models](../README_images/vehicle_model_2.jpg)
+![Vehicle models](../images/vehicle_model_2.jpg)
 
 ### Action 2. Toggle halo force rendering mode
 
@@ -246,7 +277,7 @@ Please note that if you have never checked updates, or have not checked for a lo
 From v2.0.0, while the action wheel is open, the current FBAC version and update status are shown in the top-left corner of the screen.
 From v3.0.0, the language-data version is also shown.
 
-![FBAC version display](../README_images/fbac_version.jpg)
+![FBAC version display](../images/fbac_version.jpg)
 
 FBAC and language-data updates are checked automatically once a day, and can also be checked manually from the [Avatar settings action wheel](#avatar-settings-action-wheel).
 
@@ -308,4 +339,4 @@ Figura is available in [Forge](https://files.minecraftforge.net/net/minecraftfor
 
 ---
 
-![ID card](../README_images/id_card.jpg)
+![ID card](../images/id_card.jpg)
