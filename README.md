@@ -1,33 +1,38 @@
 Language: 　**English**　|　[日本語](./README_jp.md)
 
-# FiguraBlueArchiveCharacters
-<!-- DESCRIPTION_START -->
-This is the avatars for [Figura](https://modrinth.com/mod/figura), the skin mod for [Minecraft](https://www.minecraft.net/en-us) Java Edition, which are imitated characters who appear in "[Blue Archive](https://bluearchive.jp/)" the game for mobile devices.
+# FiguraBlueArchiveCrafters
 
-Target figura version: [0.1.5](https://modrinth.com/mod/figura/version/0.1.5b+1.21.4)
+(Formerly: Figura Blue Archive Characters)
 
-<!-- DESCRIPTION_END -->
+Avatar data for [Figura](https://modrinth.com/mod/figura), a skin mod for [Minecraft](https://www.minecraft.net/en-us) Java Edition, recreating characters from the mobile game "[Blue Archive](https://bluearchive.jp/)".
 
-![Thumbnail](./.github/README_images/thumbnail.jpg)
+Target Figura version: [0.1.5](https://modrinth.com/mod/figura/version/0.1.5b+1.21.4)
 
-https://youtu.be/JrPhLR34mLA
+
+![Thumbnail](./readme_scripts/images/thumbnail.jpg)
+
+<https://youtu.be/JrPhLR34mLA>
 
 ---
 
-**\[NEW!\]** I have released an FBAC animation video inspired by the daily life of a sensei!
+**\[NEW!\]** I released an FBAC animation video inspired by a sensei's daily life!
 Please take a look!
 
-https://youtu.be/GfJJ7iNA_Bs
+<https://youtu.be/GfJJ7iNA_Bs>
 
 ---
 
 Watch also:
+
 - [FBAC videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
 - [FBAC short videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
 
 ## Creation status
+
 ### Done
-The avatars for these characters are completed. You can download and use avatars below in the game according to the chapter "[How to use](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/base/.github/README.md#how-to-use)".
+
+The avatars for these characters are completed.
+You can download and use avatars below in the game according to the chapter "[How to use](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/blob/base/.github/README.md#how-to-use)".
 
 - Shizuko Kawawa
 - Izuna Kuda
@@ -52,21 +57,30 @@ The avatars for these characters are completed. You can download and use avatars
 - Hanae Asagao
 
 ### In progress
-The avatars for these characters are worked in progress. It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule. Click on the link in brackets to go to the issue about the character, where you can check the progress.
+
+The avatars for these characters are worked in progress.
+It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule.
+Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
 (There is no avatar currently being created.)
 
 ### Planned
-Although the avatars for these characters are not created, there are plans to create them in the future. They will be created in order from top to bottom. This is just a plan and the order may change or creation may be discontinued.
+
+Although the avatars for these characters are not created, there are plans to create them in the future.
+They will be created in order from top to bottom.
+This is just a plan and the order may change or creation may be discontinued.
 
 - Yuzu Hanaoka (Battle) ([#161](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/161))
-- Kei  ([#162](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/162))
+- Kei ([#162](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/162))
 - Azusa Shirasu ([#155](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/155))
 - Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102))
 - Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37))
 
 ### Requested
-I have received requests to create these characters. However, I can't promise that I'll create them. Please understand this.
+
+I have received requests to create these characters.
+However, I can't promise that I'll create them.
+Please understand this.
 
 - Haruka Igusa ([#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98))
 - Toki Asuma ([#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104))
@@ -84,199 +98,276 @@ I have received requests to create these characters. However, I can't promise th
 - Karin Kakudate ([#154](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/154))
 
 ## Features
-- Imitated ex skill cut-ins.
 
-  ![Ex skill](./.github/README_images/ex_skill.jpg)
+- Ex Skill cut-ins are recreated.
 
-- An object remains after the ex skill if the ex skill type is "leaving something in a place".
-  - The object doesn't affect the game at all.
-  - The object will be remove when the hit boxes of a block and it are overlapped.
-  - You can remove all placement objects by holding the Ex skill key (default: V).
+  ![Ex skill](./readme_scripts/images/ex_skill.jpg)
 
-  ![Placement object](./.github/README_images/placement_object.jpg)
+- For Ex Skills that "leave something in place", an object remains after the Ex Skill animation.
+  - It does not affect gameplay at all.
+  - The object disappears when its collision overlaps with a block.
+  - Hold the Ex Skill play key (default: V) to remove all placed objects.
 
-- Press cursor keys (↑→↓←) to show speech bubbles.
-  - The "reload" speech bubble will appear automatically while loading a crossbow.
+  ![Placement object](./readme_scripts/images/placement_object.jpg)
 
-  ![Speech bubble 1](./.github/README_images/bubble_good.jpg)
+- Student-specific weapons are held instead of bows and crossbows.
+  Bullets are fired instead of arrows.
+  - This is visual only. In actual gameplay, you are still firing arrows.
 
-  ![Speech bubble 2](./.github/README_images/bubble_reload.jpg)
+  ![Gun](./readme_scripts/images/gun.jpg)
 
-- Holds the character's specific weapon instead of bows and crossbows. Shoots bullets instead of arrows.
-  - Note that these changes are only in appearance. You are just shooting arrows in actual.
+- Speech bubbles can be shown with the arrow keys (up/right/down/left).
+  - While loading a crossbow, a reload bubble appears automatically.
 
-  ![Gun](./.github/README_images/gun.jpg)
+  ![Speech bubble 1](./readme_scripts/images/bubble_good.jpg)
 
-- A barrier will applied when the player has absorption hearts (yellow hearts).
+  ![Speech bubble 2](./readme_scripts/images/bubble_reload.jpg)
 
-  ![Barrier](./.github/README_images/barrier.jpg)
+- A barrier appears when the player has Absorption hearts (yellow hearts).
 
-- Will be rescued by the helicopter when the player dies.
-  - This animation won't visible if the player isn't visible because of Minecraft and Figura specifications.
+  ![Barrier](./readme_scripts/images/barrier.jpg)
 
-  ![Rescued by helicopter](./.github/README_images/death_animation.jpg)
+- When the player dies, they are recovered by helicopter.
+  - Due to Minecraft and Figura behavior, this animation is not shown if the player is not rendered.
 
-- Can change costume if the character has multiple costumes.
+  ![Rescued by helicopter](./readme_scripts/images/death_animation.jpg)
 
-  ![Costume](./.github/README_images/costume.jpg)
+- Some students have unique models for in-game vehicles.
 
-- Some characters have unique models for in-game vehicles.
+  ![Vehicle models](./readme_scripts/images/vehicle_model.jpg)
 
-  ![Vehicle models](./.github/README_images/vehicle_model.jpg)
+- The player's displayed name can be changed to a student's name.
+  - Club names can also be displayed.
+  - For other players to see this name, **they also need Figura and must grant you sufficient trust settings on their side**.
 
-- Can change your display name to the character's name.
-  - Can also display the club name which the character is participated in.
-  - **Other players also need to install Figura and give enough permissions** to see your display name.
+  ![Display name](./readme_scripts/images/display_name.jpg)
 
-  ![Display name](./.github/README_images/display_name.jpg)
+- On each student's birthday, a small cake mark is added to the name.
+  - It is not shown when the displayed name is the player name.
 
-- A cake emoji will be added during the student's birthday.
-  - It won't be displayed if the display name is the player name.
+  ![Birth day](./readme_scripts/images/birth_day.svg)
 
-  ![Birth day](./.github/README_images/birth_day.svg)
+- In addition to the above, there are features available only for specific students.
 
-- In addition to the above, there are other features that available only to certain characters.
-
-  (Character names in the below table with parentheses indicate functions related to a specific costume, while those without parentheses indicate functions not related to a costume.)
-
-  | Character name | Features |
+  | Student | Features |
   | - | - |
   | Shizuko (Normal) | - Leaves a stall in place after playing the Ex Skill. |
-  | Izuna | - Has a special performance when warping with ender pearl, etc. |
-  | Shiroko | - Grabs her drone and fries away during creative flights. <br> - Her drone can launch missiles (visual only). <br> - The horse is replaced with her bicycle when riding a horse, mule, or donkey with a saddle. <br> - Drinking portions are replaced with a sports bottle when riding a bicycle (horses). |
-  | Hoshino | - Shields are replaced with her own. |
-  | Hoshino (Swimsuit) | - The boat are replaced with a whale float when she is alone in the boat. |
-  | Hoshino (Battle) | - Holds her shotgun and handgun when you holds bows or crossbows with both hands. |
-  | Umika | - Leaves a firework launcher in place after playing the Ex Skill. <br> - Firework launchers can launch fireworks (visual only). |
-  | Serina (Normal) | - Leaves a medical box in place after playing the Ex Skill. <br> - Medical boxes play performances to cure when a player (not only you) touches it. <br> - Hearing potions are replaced with a medical box. |
-  | Serina (Christmas) | - Bells are replaced with her hand bell. <br> - Can play Christmas songs with her hand bell after playing the Ex Skill. (7 songs). |
-  | Iroha | - The camel are replaced with Toramaru (a tank) when she is alone on the camel with a saddle. Only Ibuki can get on the Toramaru with Iroha. <br> - Toramaru can shoot a shell (visual only). |
-  | Ibuki | - I can patrol with Iroha! |
-  | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (this is a substitute for the long-tailed tit.). <br> - The horse is replaced with her convertible car when riding a horse, mule, or donkey with a saddle. |
-  | Aris | - After the Ex Skill is played, her rail gun will be overcharged state and can shoot a more powerful shot (visual only). |
-  | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. She hides in the chest while sneaking. |
+  | Izuna | - Has a special effect when warping with an Ender Pearl, etc. |
+  | Shiroko | - During creative flight, she flies while holding onto her drone. <br> - Her drone can launch missiles (visual only). <br> - Saddled horse-type mobs are replaced with her bicycle. <br> - While riding the bicycle, drinkable potions are replaced with a sports bottle. |
+  | Hoshino | - Shields are replaced with her unique model. |
+  | Hoshino (Swimsuit) | - If she is alone in a boat, the boat is replaced with a whale float. |
+  | Hoshino (Battle) | - Holds a shotgun and handgun when using bows/crossbows in both hands. |
+  | Umika | - Leaves a fireworks launcher in place after playing the Ex Skill. <br> - Fireworks launchers can launch fireworks (visual only). |
+  | Serina (Normal) | - Leaves a medical box in place after playing the Ex Skill. <br> - Medical boxes play a healing-like effect when touched by players (including other players). <br> - Healing potions are replaced with a medical box. |
+  | Serina (Christmas) | - Bells are replaced with her handbell. <br> - After Ex Skill playback, she can perform random Christmas songs with her handbell (7 songs). |
+  | Iroha | - If she rides a saddled camel alone, the camel is replaced with Toramaru (a tank). Only Ibuki can ride with Iroha on Toramaru. <br> - Toramaru can fire shells (visual only). |
+  | Ibuki | - Can patrol with Iroha-senpai! |
+  | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (as a substitute for a long-tailed tit). <br> - Saddled horse-type mobs are replaced with her convertible. |
+  | Aris | - After playing the Ex Skill animation, her railgun enters an overcharged state and can fire a stronger shot (visual only). |
+  | Aris (Battle) | - Has a dedicated animation during creative flight. |
+  | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. Sneaking hides her inside the chest. |
   | Hikari | - Can dance with Nozomi. |
-  | Nozomi | - Rushes the train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
-  | Reisa (Normal) | - Places a challenge letter in front of her after playing the Ex Skill. It has some challenging words written on it. |
+  | Nozomi | - Charges a train after playing the Ex Skill (visual only). <br> - Can dance with Hikari. |
+  | Reisa (Normal) | - Slams a challenge letter in front of her after playing the Ex Skill. It has provocative words written on it. |
   | Reisa (Magical) | - Gains a small amount of magical power after playing the Ex Skill. |
-  | Michiru | - Has a special performance when warping with ender pearl, etc. <br> - Swords and rocket fireworks are replace with unique models. |
-  | Hifumi (Normal) | - Places a Peroro doll n front of her after playing the Ex Skill (visual only). |
-  | Hifumi (Swimsuit) | - The camel are replaced with Crusader-chan (a tank) when she is alone on the camel with a saddle. <br> - Crusader-chan can shoot a shell (visual only). |
-  | Hina (Swimsuit) | - Equips her swim ring during equipping a Turtle Shell (helmet). This feature will not be applied while armors are visible. |
+  | Michiru | - Has a special effect when warping with an Ender Pearl, etc. <br> - Swords and firework rockets are replaced with unique models. |
+  | Hifumi (Normal) | - Places a Peroro doll in front of her after playing the Ex Skill (visual only). |
+  | Hifumi (Swimsuit) | - If she rides a saddled camel alone, the camel is replaced with Crusader-chan (a tank). <br> - Crusader-chan can fire shells (visual only). |
+  | Hina (Swimsuit) | - Equips a swim ring when wearing a Turtle Shell (helmet). Not applied while armor is visible. |
   | Hanae (Normal) | - Regeneration potions are replaced with a medical box. |
 
 ## Ex Skill
-The familiar Ex skill cut-in from the original game is imitated. To play Ex skill cut-in, press the Ex skill key (default is "G" key) while in the **third-person perspective**.
+
+The familiar Ex Skill cut-in from the original game is recreated.
+To play an Ex Skill, press the Ex Skill key (default: "G") in **third-person view**.
 
 > [!IMPORTANT]
-> From v1.9.4, the Ex skill action play key has been changed from the "V" key to the "G" key.
+> From v1.9.4, the Ex Skill action key was changed from "V" to "G".
 
-![Ex skill](./.github/README_images/ex_skill.jpg)
+![Ex skill](./readme_scripts/images/ex_skill.jpg)
 
-Some characters have the secondary Ex skill. It can be played by pressing the "H" key.
+Some students have two Ex Skills.
+The secondary Ex Skill can be played with the "H" key.
 
-Ex skill cut-ins are only visual and have no effect. However, some Ex skills leave objects in place after the cut-in (also only visual).
+Ex Skill cut-ins are visual only and have no gameplay effect.
+However, some Ex Skills leave objects in place after the cut-in (also visual only).
 
 > [!NOTE]
-> - Ex skill animations are designed for the case where the screen ratio is 16:9. Although you can play them in a screen ratio other than 16:9, but some parts may be crowded out of the screen.
-> - Ex skill animations are design for the case where the field of view (FOV) is standard (70). The FOV will be temporarily adjusted to the standard if it is not standard. However, use of some other mods or FOV changes because of changes of the player's movement speed prevents the script from adjusting it.
+>
+> - Ex Skill animations are designed for a 16:9 screen ratio.
+>   They can still be played in other ratios, but parts may be cut off.
+> - Ex Skill animations are designed for the standard field of view (FOV 70).
+>   If your FOV is not standard, it is temporarily corrected during Ex Skill playback.
+>   However, this correction may fail in some environments, such as when using certain mods together or when FOV changes due to movement-speed effects.
 
 ## The action wheel
-Figura provides the action wheel with which players can play some actions (emotes, animations, configs, and etc.). It will be shown when holding the action wheel key (default is B key). This avatar also has some actions.
+
+Figura includes an action wheel (default key: "B") that lets players perform actions such as emotes.
+This repository's avatars include shared actions.
 
 > [!IMPORTANT]
-> From v1.8.4, the Ex skill action has been changed to play on key press.
+> From v1.8.4, the Ex Skill action was changed to key-based playback.
 
-![Action wheel](./.github/README_images/action_wheel.jpg)
+![Action wheel](./readme_scripts/images/action_wheel.jpg)
 
-### Action 1. Change costume
-Changes costume if the character has multiple costumes. Scroll to select the costume and closing the action wheel to confirm. Left-click to reset to current selection, and right-clock to reset to default during selection.
+### Action 1. Change variation costume
 
-![Costume](./.github/README_images/costume.jpg)
+If variation costumes are available (costume changes that do not change Ex Skills), you can switch costumes.
+
+![Variation costume](./readme_scripts/images/alt_costume.jpg)
 
 ### Action 2. Change display name
-Changes the player's display name. Scroll to select the name and closing the action wheel to confirm. Left-click to reset to current selection, and right-clock to reset to default during selection. However, **Other players also need to install Figura and give enough permissions** to see your display name.
 
-![Display name](./.github/README_images/display_name_2.jpg)
+Changes the player's displayed name.
+Scroll to choose a name, then close the action wheel to confirm.
+Left-click resets to the current value during selection, and right-click resets to the default.
+However, for other players to see the changed name, **they also need Figura and must grant you sufficient trust settings on their side**.
 
-### Action 3. Toggle armors visible
-Toggles whether equipped armors are visible or not. Some costumes will be hidden not to interfere with the armors while equips them. This setting will only affects to vanilla armors.
+![Display name](./readme_scripts/images/display_name.jpg)
 
-I recommend to hide armors because they hide the avatar.
+### Action 3. Toggle armor visibility
 
-### Action 4. Toggle first-person weapon models
-Toggles whether weapon models (including students' guns) are visible or not in first person perspective. If toggled off, Minecraft items will be displayed instead. Regardless of this setting, weapon models are always displayed in third person perspective.
+Toggles whether armor is visible.
+Since armor can hide the avatar, I recommend hiding armor.
 
-![First-person weapon models](./.github/README_images/first_person_weapons.jpg)
+![Armor](./readme_scripts/images/armor.jpg)
 
-### Action 5. Change amount of Ex skill frame particles
-Changes the amount of triangular particles that appear from the red or blue borders that appear during Ex skill animations. Reducing or disabling particles may improve performance.
+### Action 4. Open avatar settings
 
-As an additional option, I have added an option to disable the frame during the Ex skill animations. This is the closest to the original one.
+Moves to the [avatar settings page](#avatar-settings-action-wheel).
 
-### Action 6. Toggle vehicle models
-Toggles the vehicle models replacement feature for some characters. This option is disabled for characters with no vehicle models.
+## Avatar settings action wheel
 
-![Vehicle models](./.github/README_images/vehicle_model_2.jpg)
+You can move to this page from [Action 4](#action-4-open-avatar-settings) in [The action wheel](#the-action-wheel).
 
-### Action 7. FPM compatibility mode
-This mode is for compatibility with [First-person Model](https://modrinth.com/mod/first-person-model). Avatar's head will be hidden in first-person perspective when enibling this mode. The head may not be rendered correctly in some environments, in which case this mode should be disabled.
+![Avatar settings action wheel](./readme_scripts/images/action_config.jpg)
 
-### Action 8. Check for FBAC updates
-Left click to check for FBAC updates. You can try to check updates again even if the check fails. In addition to manually checking for updates from here, the script will automatically check for updates once a day.
+### Action 1. Toggle student-specific vehicle models
+
+Toggles whether student-specific vehicle model replacement is enabled.
+This option is disabled for students without vehicle replacements.
+
+![Vehicle models](./readme_scripts/images/vehicle_model_2.jpg)
+
+### Action 2. Toggle halo force rendering mode
+
+Toggles halo force rendering mode on/off.
+
+[To reproduce behavior close to the original setting](https://dic.pixiv.net/a/ヘイロー%28ブルーアーカイブ%29#:~:text=シナリオライターが言及\)-,ヘイローは影が投影されない%E3%80%82), halo shadows are not projected when shader packs are used.
+As a side effect of this behavior, halos may not render correctly in some situations.
+If that happens, enable halo force rendering mode.
+This mode is reset to off each time the avatar is reloaded.
+
+#### Confirmed scene where halo may fail to render
+
+- When using [Freecam](https://modrinth.com/mod/freecam) in free camera view with a shader pack.
+
+### Action 3. FPM compatibility mode
+
+A mode for compatibility with [First-person Model](https://modrinth.com/mod/first-person-model).
+When enabled, the head is hidden only in first-person view.
+In some environments, the head may fail to render; in that case, disable this mode.
+
+#### Confirmed scene where the head may fail to render
+
+- When using [Freecam](https://modrinth.com/mod/freecam) in free camera view.
+
+### Action 4. Reload language data
+
+Click to clear the FBAC avatar language-data cache and reload it from remote.
+Use this when language data has issues or when you want to refresh manually.
+In addition to manual refresh, update checks run automatically once a day, and if new data is found, it is updated automatically.
 
 > [!IMPORTANT]
-> To check for FBAC updates, you must turn on "Allow Networking" and add `api.github.com` to the Network Filter from Figura settings!
+> To check updates, you must enable "Allow Networking" in Figura settings and add `raw.githubusercontent.com` to the network whitelist.
 
 > [!CAUTION]
-> It is DANGEROUS to use a network filter other than "Whitelist" when activating Figura's Networking Feature. Although this avatar uses secure links, there is no guarantee that links used by other players' avatars are secure. I'm not responsible for any damages caused by using this feature.
+> It is dangerous to operate Figura's Networking feature with a network filter mode other than "Whitelist".
+> This avatar uses safe links, but there is no guarantee that links used by other players' avatars are safe.
+> I am not responsible for any damage caused by using this feature.
+
+### Action 5. Check for FBAC updates
+
+Left-click checks whether FBAC updates are available.
+Even if the update check fails, you can retry from this action.
+In addition to manual checks here, update checks are also run automatically once a day.
+
+> [!IMPORTANT]
+> To check updates, you must enable "Allow Networking" in Figura settings and add `api.github.com` to the network whitelist.
+
+> [!CAUTION]
+> It is dangerous to operate Figura's Networking feature with a network filter mode other than "Whitelist".
+> This avatar uses safe links, but there is no guarantee that links used by other players' avatars are safe.
+> I am not responsible for any damage caused by using this feature.
 
 > [!WARNING]
-> If you repeatedly check for updates in a short period of time, GitHub will impose a temporary restriction and avatar scripts will not be able to check for updates for a while.
+> Repeating update checks in a short period may trigger temporary limits from GitHub, and update checks may become unavailable for a while.
 
-Right click to copy the latest FBAC download link to your clipboard. Please access the download page from your browser.Please note that if you have not checked for updates once or have not checked for updates for a long period of time, you will not get the correct link.
+Right-click copies the latest FBAC download link to your clipboard.
+Open the download page from your browser.
+Please note that if you have never checked updates, or have not checked for a long time, the link may not be valid.
 
 ## FBAC version display
-From v2.0.0, when the action wheel is open, the version of FBAC currently in use and whether it has been updated are displayed in the upper left corner of the screen.
 
-![FBAC version display](./.github/README_images/fbac_version.jpg)
+From v2.0.0, while the action wheel is open, the current FBAC version and update status are shown in the top-left corner of the screen.
+From v3.0.0, the language-data version is also shown.
 
-Updates are automatically checked once a day, but can also be done manually via the [action wheel](#action-8-check-for-fbac-updates).
+![FBAC version display](./readme_scripts/images/fbac_version.jpg)
 
-A notification will be sent when a new FBAC version is available. You can get the download link for the latest version from the [action wheel](#action-8-check-for-fbac-updates), which you can access from your browser.
+FBAC and language-data updates are checked automatically once a day, and can also be checked manually from the [Avatar settings action wheel](#avatar-settings-action-wheel).
+
+When a new FBAC version is available, a notification is shown.
+You can get the latest download link from the [Avatar settings action wheel](#avatar-settings-action-wheel) and open it in your browser.
+
+When a new language-data version is available, it is downloaded automatically.
+No special operation is needed.
 
 > [!IMPORTANT]
-> To check for FBAC updates, you must turn on "Allow Networking" and add `api.github.com` to the Network Filter from Figura settings!
+> To check updates, you must enable "Allow Networking" in Figura settings and add both `api.github.com` and `raw.githubusercontent.com` to the network whitelist.
 
 > [!CAUTION]
-> It is DANGEROUS to use a network filter other than "Whitelist" when activating Figura's Networking Feature. Although this avatar uses secure links, there is no guarantee that links used by other players' avatars are secure. I'm not responsible for any damages caused by using this feature.
+> It is dangerous to operate Figura's Networking feature with a network filter mode other than "Whitelist".
+> This avatar uses safe links, but there is no guarantee that links used by other players' avatars are safe.
+> I am not responsible for any damage caused by using this feature.
 
 > [!WARNING]
-> If you repeatedly check for updates in a short period of time, GitHub will impose a temporary restriction and avatar scripts will not be able to check for updates for a while.
+> Repeating update checks in a short period may trigger temporary limits from GitHub, and update checks may become unavailable for a while.
 
 ## How to use
+
 Figura is available in [Forge](https://files.minecraftforge.net/net/minecraftforge/forge/), [Fabric](https://fabricmc.net/) and [NeoForge](https://neoforged.net/).
 
 1. Install the mod loader which you want to use and make the mods available.
 2. Install [Figura](https://modrinth.com/mod/figura). Note the mod dependencies.
-3. Go to the [release page](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/releases).
-   - You can also go there from the right side of [the repository's home page](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters).
-4. Download the avatar of your choice that attached to "Assets" section of the release notes.
+3. Go to the [release page](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/releases).
+4. Download the zip file attached in "Assets" section of the release notes.
 5. Unzip the zipped file and take the avatar data inside this.
 6. Put avatar files at `<minecraft_instance_directory>/figura/avatars/`.
    - The directory will automatically generated after launching the game with Figura installed. You can also create it manually if it doesn't exist.
 7. Open the Figura menu (Δ mark) from the game menu.
 8. Select the avatar from the avatar list at the left of the Figura menu.
-9. Sets your permission if you need.
-10. Other Figura players can see your avatar after uploading your avatar to the Figura server.
-    - **If your Minecraft is Pirated (cracked, unlicensed, free), you cannot upload your avatar.** This is a Figura specification and I cannot help you with this.
+9. In order for the avatar to work properly, you need to allow network communication.
+   Go to the Figura menu → Settings → "Networking" category and update the following settings.
+   - Allow Networking → "Enabled"
+   - Networking Restriction → "Whitelist"
+10. Add the following entries to the "Network Filter" in the same category.
+    - api.github.com
+    - raw.githubusercontent.com
+11. By uploading your avatar to the Figura server in Figura menu, other Figura players can see your avatar.
+    - **If your Minecraft is Pirated (cracked, unlicensed, free), you cannot upload your avatar.**
+      This is a Figura specification and I cannot help you with this.
 
 ## Notes
+
 - I'm not responsible for any damages caused by using this avatar.
-- This avatar is designed for work with no resource pack and no other mods are installed. An unexpected issue may occurs when you use it with any resource packs and mods (texture and armor inconsistencies, etc.). However, I may not support you in these cases.
-- Please [report an issue](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues) if you find it.
-- Please contact me via [Discussions](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/discussions) or [Discord](https://discord.com/) if you want to do for my avatars. My Discord name is "vinny_san" and display name is "ばにーさん". My display name in [Figura Discord server](https://discord.gg/figuramc) is "BunnySan/ばにーさん".
+- This avatar is designed for work with no resource pack and no other mods are installed.
+  An unexpected issue may occurs when you use it with any resource packs and mods (texture and armor inconsistencies, etc.).
+  However, I may not support you in these cases.
+- Please [report an issue](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues) if you find it.
+- Please contact me via [Discussions](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/discussions) or [Discord](https://discord.com/) if you want to do for my avatars.
+  My Discord name is "vinny_san" and display name is "ばにーさん".
+  My display name in [Figura Discord server](https://discord.gg/figuramc) is "BunnySan/ばにーさん".
 
 ---
 
-![ID card](./.github/README_images/id_card.jpg)
+![ID card](./readme_scripts/images/id_card.jpg)
