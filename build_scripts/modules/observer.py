@@ -204,7 +204,7 @@ class AvatarFileObserver():
 	"""
 
 	@staticmethod
-	def observe():
+	def observe() -> None:
 		"""
 		アバターアセットの更新監視を開始する。
 		"""

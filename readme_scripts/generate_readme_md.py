@@ -5,7 +5,7 @@ from modules.paths import paths
 from modules.logger import Logger
 
 
-def main():
+def main() -> None:
 	# 引数の設定
 	parser = argparse.ArgumentParser(description="Readme generation tool for Figura Blue Archive Crafters (FBAC).")
 	parser.add_argument("--template-dir", "-t", type=str, default=paths.template_dir, help="Overrides default template directory path. Default: ./template/")

@@ -262,7 +262,7 @@ class AvatarJsonGenerator:
 			json.dump(merged_data, f, indent=4)
 
 	@staticmethod
-	def debug():
+	def debug() -> None:
 		"""
 		`avatar.json`ジェネレーターのデバッグ動作を実行する。
 		"""
