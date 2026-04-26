@@ -36,7 +36,10 @@ class TextureCompressor:
 			# pngquant側でエラーが発生
 			raise RuntimeError(f"Failed to compress texture \"{texture_path}\" with pngquant. Error code = {result.returncode}")
 
-		print(result.stdout)
+		print(f"--- Debug: {texture_path} ---")
+		print(f"Return Code: {result.returncode}")
+		print(f"STDOUT: '{result.stdout}'")
+		print(f"STDERR: '{result.stderr}'")
 
 		palette_color_match: re.Match[str] | None = re.search(r"made\shistogram\.\.\.(\d+)\scolors\sfound", result.stdout)
 		palette_color: int = int(palette_color_match.group(1)) if palette_color_match else 0
