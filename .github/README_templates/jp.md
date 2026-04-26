@@ -282,7 +282,7 @@ Figuraは[Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)、[
 8. 画面左のアバターリストからアバターを選択します。
 9. アバターを正常に動作させるため、ネットワーク通信を許可する必要あります。
    Figuraメニュー →　設定 → 「Networking」カテゴリー に移動し、以下の設定値を更新してください。
-   - 「Allow Networking」 → 「オン」
+   - Allow Networking → 「オン」
    - Networking Restriction → 「Whitelist」
 10. 同カテゴリー内の「Network Filter」に以下のエントリーを追加してください。
     - api.github.com
