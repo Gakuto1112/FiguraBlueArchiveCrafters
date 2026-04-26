@@ -80,6 +80,9 @@ def generate_readme_md(locale: TemplateLocale) -> None:
 		Logger.print_error(f"An unexpected error occurred while reading creation status JSON file.")
 		exit(errno.EIO)
 
+	Logger.print_info("Completed replacing creation status.")
+	Logger.print_spacer(1)
+
 	# 画像URLの修正
 	result = result.replace("../images/", "./readme_scripts/images/")
 
