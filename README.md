@@ -70,11 +70,11 @@ Although the avatars for these characters are not created, there are plans to cr
 They will be created in order from top to bottom.
 This is just a plan and the order may change or creation may be discontinued.
 
-- Yuzu Hanaoka (Battle) ([#161](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/161))
-- Kei ([#162](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/162))
-- Azusa Shirasu ([#155](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/155))
-- Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102))
-- Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37))
+- Yuzu Hanaoka (Battle) ([#161](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/161))
+- Kei ([#162](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/162))
+- Azusa Shirasu ([#155](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/155))
+- Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102))
+- Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37))
 
 ### Requested
 
@@ -82,20 +82,20 @@ I have received requests to create these characters.
 However, I can't promise that I'll create them.
 Please understand this.
 
-- Haruka Igusa ([#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98))
-- Toki Asuma ([#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104))
-- Aru Rikuhachima ([#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103))
-- Kazusa Kyoyama ([#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114))
-- Rio TsukaTsuki ([#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116))
-- Hasumi Hanekawa ([#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128))
-- Mutsuki Asagi ([#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129))
-- Momiji Akiizumi ([#138](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/138))
-- Natsu Yutori ([#139](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/139))
-- Ichika Nakamasa ([#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140))
-- Tsurugi Kenzaki ([#145](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/145))
-- Akari Wakibuchi ([#146](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/146))
-- Shun Sunohara ([#153](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/153))
-- Karin Kakudate ([#154](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/154))
+- Haruka Igusa ([#98](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/98))
+- Toki Asuma ([#104](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/104))
+- Aru Rikuhachima ([#103](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/103))
+- Kazusa Kyoyama ([#114](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/114))
+- Rio TsukaTsuki ([#116](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/116))
+- Hasumi Hanekawa ([#128](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/128))
+- Mutsuki Asagi ([#129](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/129))
+- Momiji Akiizumi ([#138](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/138))
+- Natsu Yutori ([#139](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/139))
+- Ichika Nakamasa ([#140](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/140))
+- Tsurugi Kenzaki ([#145](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/145))
+- Akari Wakibuchi ([#146](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/146))
+- Shun Sunohara ([#153](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/153))
+- Karin Kakudate ([#154](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/154))
 
 ## Features
 

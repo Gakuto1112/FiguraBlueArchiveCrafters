@@ -70,11 +70,11 @@
 上から順に作成予定です。
 これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
-- 花岡 ユズ（臨戦）（[#161](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/161)）
-- ケイ（[#162](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/162)）
-- 白洲 アズサ（[#155](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/155)）
-- 早瀬 ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/102)）
-- 黒見 セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/37)）
+- 花岡 ユズ（臨戦）（[#161](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/161)）
+- ケイ（[#162](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/162)）
+- 白洲 アズサ（[#155](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/155)）
+- 早瀬 ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102)）
+- 黒見 セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37)）
 
 ### リクエスト
 
@@ -82,20 +82,20 @@
 ただし、リクエストを受けたからといって、必ず作成するとは約束できません。
 ご了承ください。
 
-- 伊草 ハルカ（[#98](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/98)）
-- 飛鳥馬 トキ（[#104](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/104)）
-- 陸八魔 アル（[#103](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/103)）
-- 杏山 カズサ（[#114](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/114)）
-- 調月 リオ（[#116](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/116)）
-- 羽川 ハスミ（[#128](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/128)）
-- 浅黄 ムツキ（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/129)）
-- 秋泉 モミジ（[#138](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/138)）
-- 柚鳥 ナツ（[#139](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/139)）
-- 仲正 イチカ（[#140](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/140)）
-- 剣先 ツルギ（[#145](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/145)）
-- 鰐渕 アカリ（[#146](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/146)）
-- 春原 シュン（[#153](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/153)）
-- 角楯 カリン（[#154](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/154)）
+- 伊草 ハルカ（[#98](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/98)）
+- 飛鳥馬 トキ（[#104](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/104)）
+- 陸八魔 アル（[#103](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/103)）
+- 杏山 カズサ（[#114](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/114)）
+- 調月 リオ（[#116](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/116)）
+- 羽川 ハスミ（[#128](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/128)）
+- 浅黄 ムツキ（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/129)）
+- 秋泉 モミジ（[#138](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/138)）
+- 柚鳥 ナツ（[#139](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/139)）
+- 仲正 イチカ（[#140](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/140)）
+- 剣先 ツルギ（[#145](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/145)）
+- 鰐渕 アカリ（[#146](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/146)）
+- 春原 シュン（[#153](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/153)）
+- 角楯 カリン（[#154](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/154)）
 
 ## 特徴
 
