@@ -30,7 +30,7 @@ class TextureCompressor:
 		Raises:
 			RuntimeError: pngquantの実行に失敗した場合
 		"""
-		result = subprocess.run(["pngquant", "--speed", "1", "--ext", ".png", "--skip-if-larger", "--verbose", "--strip", "--force", texture_path], capture_output=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+		result = subprocess.run(["pngquant", "--speed", "1", "--ext", ".png", "--skip-if-larger", "--verbose", "--strip", "--force", texture_path], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
 		if result.returncode != 0 and result.returncode != 98:
 			# pngquant側でエラーが発生
