@@ -30,24 +30,20 @@ class TextureCompressor:
 		Raises:
 			RuntimeError: pngquantの実行に失敗した場合
 		"""
-		result = subprocess.run(["pngquant", "--speed", "1", "--ext", ".png", "--skip-if-larger", "--verbose", "--strip", "--force", texture_path], capture_output=True, text=True)
+		result = subprocess.run(["pngquant", "--speed", "1", "--ext", ".png", "--skip-if-larger", "--verbose", "--strip", "--force", texture_path], capture_output=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 
 		if result.returncode != 0 and result.returncode != 98:
 			# pngquant側でエラーが発生
 			raise RuntimeError(f"Failed to compress texture \"{texture_path}\" with pngquant. Error code = {result.returncode}")
 
-		print(f"--- Debug: {texture_path} ---")
-		print(f"Return Code: {result.returncode}")
-		print(f"STDOUT: '{result.stdout}'")
-		print(f"STDERR: '{result.stderr}'")
+		if result.returncode == 0:
+			palette_color_match: re.Match[str] | None = re.search(r"made\shistogram\.\.\.(\d+)\scolors\sfound", result.stdout)
+			palette_color: int = int(palette_color_match.group(1)) if palette_color_match else 0
 
-		palette_color_match: re.Match[str] | None = re.search(r"made\shistogram\.\.\.(\d+)\scolors\sfound", result.stdout)
-		palette_color: int = int(palette_color_match.group(1)) if palette_color_match else 0
-
-		if palette_color == 0:
-			Logger.print_warning(f"Failed to get texture palette color count ({texture_path})")
-		elif palette_color > 256:
-			Logger.print_warning(f"The texture \"{texture_path}\" has {palette_color} colors, but reduced to 256 colors by pngquant. Please check the texture's quality.")
+			if palette_color == 0:
+				Logger.print_warning(f"Failed to get texture palette color count ({texture_path})")
+			elif palette_color > 256:
+				Logger.print_warning(f"The texture \"{texture_path}\" has {palette_color} colors, but reduced to 256 colors by pngquant. Please check the texture's quality.")
 
 	@staticmethod
 	def compress_avatar_textures(avatar_name: str) -> None:
