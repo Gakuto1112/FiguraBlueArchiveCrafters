@@ -83,6 +83,9 @@ def generate_readme_md(locale: TemplateLocale) -> None:
 	# 画像URLの修正
 	result = result.replace("../images/", "./readme_scripts/images/")
 
+	# 不要なアンカータグの削除
+	result = re.sub(r" *<!--.+--> *\n", "", result)
+
 	# 生成済みドキュメントの出力
 	Logger.print_info("Writing document...")
 
