@@ -8,48 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  generate_readme:
-    name: Generate readme.txt
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout avatar repository
-        uses: actions/checkout@v4.2.2
-        with:
-          path: ./avatar
-      - name: Checkout generator repository
-        uses: actions/checkout@v4.2.2
-        with:
-          repository: Gakuto1112/FiguraAvatarsReadmeTemplate
-          path: ./generator
-      - name: Checkout packer repository
-        uses: actions/checkout@v4.2.2
-        with:
-          repository: Gakuto1112/MyFiguraAvatarPacker
-          path: ./packer
-      - name: Setup Node.js@20.12.0
-        uses: actions/setup-node@v4.4.0
-        with:
-          node-version: 20.12.0
-          cache: npm
-          cache-dependency-path: ./packer/package-lock.json
-      - name: Install dependencies
-        working-directory: ./packer/
-        run: npm install
-      - name: Generate readme.txt
-        working-directory: ./packer/src/
-        run: ../node_modules/.bin/ts-node ./readme_txt_generator.ts Gakuto1112/FiguraBlueArchiveCharacters ${TAG_NAME} ${RELEASE_DATE} false
-        env:
-          TAG_NAME: ${{ github.ref_name }}
-          RELEASE_DATE: "2026/04/25"
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4.6.2
-        with:
-          name: readme
-          path: ./out/
-          retention-days: 1
   pack_figura_avatar:
     name: Pack avatar
-    needs: generate_readme
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -60,7 +20,7 @@ jobs:
           enable-cache: "auto"
       - name: Set up Python 3.14.3
         run: uv python install 3.14.3
-      - name: Install dependencies
+      - name: Install dependencies for build scripts
         run: uv sync
         working-directory: ./build_scripts/
       - name: Build avatars
@@ -69,15 +29,19 @@ jobs:
       - name: Move license files
         run: |
           mv ./LICENSE ./dist/LICENSE
-      - name: Download artifacts
-        uses: actions/download-artifact@v4.3.0
-        with:
-          name: readme
-          path: ./readmes
+      - name: Install dependencies for readme generation scripts
+        run: uv sync
+        working-directory: ./readme_scripts/
+      - name: Generate readmes
+        run: uv run generate_readme_txt.py ${TAG_NAME} ${RELEASE_DATE}
+        env:
+          TAG_NAME: "v3.0.0"
+          RELEASE_DATE: "2026/04/26"
+        working-directory: ./readme_scripts/
       - name: Move readme
         run: |
-          mv ./readmes/README.txt ./dist/README.txt
-          mv ./readmes/お読みください.txt ./dist/お読みください.txt
+          mv ./README.txt ./dist/README.txt
+          mv ./お読みください.txt ./dist/お読みください.txt
       - name: Upload artifact
         uses: actions/upload-artifact@v4.6.2
         with:
