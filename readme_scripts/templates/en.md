@@ -298,6 +298,18 @@ No special operation is needed.
 > [!WARNING]
 > Repeating update checks in a short period may trigger temporary limits from GitHub, and update checks may become unavailable for a while.
 
+## Locale Data
+
+From FBAC v3.0.0, the locale data used within avatars has been changed to be retrieved entirely from remote resources, except for the minimum necessary during initialization.
+This means that, previously only English and Japanese were supported, but it is now possible to translate to other languages.
+I am currently working on this in the following repository, so if you have the time, I would appreciate your help with the translation work.
+
+<https://github.com/Gakuto1112/FBAC_Locales>
+
+Please note that due to this specification, if there are problems with your internet connection, locale data may not be retrieved correctly, and only internal keys may be displayed.
+There will be no problems with the avatar's operation, so we appreciate your understanding.
+Also, if you encounter any issues that you believe to be clearly bugs, I would appreciate it if you could report them to [Issues](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues).
+
 <!-- USAGE_START -->
 ## How to use
 
