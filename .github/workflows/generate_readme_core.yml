@@ -1,7 +1,12 @@
 name: Generate readme
 
 on:
-  workflow_call:
+  push:
+    branches:
+      - main
+    paths:
+      - readme_scripts/**
+      - .github/workflows/generate_readme.yml
 
 jobs:
   generate:
@@ -10,29 +15,18 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: Checkout avatar repository
+      - name: Checkout
         uses: actions/checkout@v4.2.2
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v8.1.0
         with:
-          path: ./avatar
-      - name: Checkout template repository
-        uses: actions/checkout@v4.2.2
-        with:
-          repository: Gakuto1112/FiguraAvatarsReadmeTemplate
-          path: ./generator
-      - name: Setup Node.js@20.12.0
-        uses: actions/setup-node@v4.4.0
-        with:
-          node-version: 20.12.0
-          cache: npm
-          cache-dependency-path: ./avatar/.github/readme_generator/package-lock.json
-      - name: Install script dependencies
-        working-directory: ./avatar/.github/readme_generator
-        run: npm install
-      - name: Generate readme
-        working-directory: ./avatar/.github/readme_generator
-        run: ./node_modules/.bin/ts-node ./src/fbac_readme_generator.ts ../../ ${REPOSITORY_NAME}
-        env:
-          REPOSITORY_NAME: ${{ github.repository }}
+          enable-cache: "auto"
+      - name: Install dependencies
+        run: uv sync
+        working-directory: ./readme_scripts/
+      - name: Generate readmes
+        run: uv run generate_readme_md.py
+        working-directory: ./readme_scripts/
       - id: check_diff
         name: Check diff
         working-directory: ./avatar

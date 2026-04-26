@@ -196,7 +196,6 @@ class BBModelModifier:
 			raise ValueError(f"The specified avatar name \"{avatar_name}\" is not valid.")
 
 		for bbmodel_path in (paths.distribution_dir / avatar_name / "models").rglob(f"*.bbmodel"):
-			print(f"Modifying BBModel ({bbmodel_path})...")
 			BBModelModifier._modify_bbmodel(bbmodel_path)
 
 	@staticmethod
