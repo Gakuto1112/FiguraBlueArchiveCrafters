@@ -1,0 +1,27 @@
+{
+	"placeholders": {
+		"first_name": "Michiru",
+		"last_name": "Chidori"
+	},
+	"ignoredTextures": [
+		"textures.for_modeling.firework_rocket"
+	],
+	"autoAnims": [],
+	"customizations": {
+		"models.models.ex_skill_1.Sweat": {
+			"visible": false,
+			"moveTo": "models.models.main.Avatar.Head"
+		},
+		"models.models.ex_skill_1.Firework": {
+			"parentType": "Item",
+			"moveTo": "models.models.main.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom"
+		},
+		"models.models.ex_skill_1.CameraBackground": {
+			"visible": false,
+			"primaryRenderType": "CUTOUT_EMISSIVE_SOLID"
+		},
+		"models.models.ex_skill_1.ExSkill1ParticleAnchor3": {
+			"moveTo": "models.models.main.Avatar.Head"
+		}
+	}
+}

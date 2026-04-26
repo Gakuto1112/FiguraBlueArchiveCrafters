@@ -1,0 +1,42 @@
+{
+	"placeholders": {
+		"first_name": "Shiroko",
+		"last_name": "Sunaookami",
+		"costume_name": "Swimsuit"
+	},
+	"ignoredTextures": [
+		"textures.for_modeling.stone",
+		"textures.for_modeling.water_still"
+	],
+	"autoAnims": [],
+	"customizations": {
+		"models.models.drone.Drone": {
+			"visible": false
+		},
+		"models.models.drone.Missile": {
+			"visible": false
+		},
+		"models.models.bicycle.Bicycle": {
+			"moveTo": "models.models.main.Avatar.LowerBody",
+			"visible": false
+		},
+		"models.models.ex_skill_1.UnderWater": {
+			"parentType": "Camera",
+			"visible": false
+		},
+		"models.models.ex_skill_1.Stage": {
+			"visible": false
+		},
+		"models.models.ex_skill_1.FishingRod": {
+			"moveTo": "models.models.main.Avatar.UpperBody.Arms.RightArm.RightArmBottom",
+			"visible": false
+		},
+		"models.models.ex_skill_1.Flash": {
+			"parentType": "Camera",
+			"visible": false
+		},
+		"models.models.ex_skill_1.Flash.ForCameraOffset2.FlashCore": {
+			"primaryRenderType": "EMISSIVE_SOLID"
+		}
+	}
+}
