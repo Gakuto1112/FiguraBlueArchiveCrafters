@@ -1,4 +1,4 @@
-<!-- $inject(locale_link) -->
+Language: 　**English**　|　[日本語](./README_jp.md)
 
 # FiguraBlueArchiveCrafters
 
@@ -29,7 +29,7 @@ Watch also:
 - [FBAC videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9N_3SI0zvIE-f6MhBpZ52U&si=AOZ1et55lUzqA-lm)
 - [FBAC short videos playlist](https://youtube.com/playlist?list=PLTN-ereqPxq9OP7sIgSyHLK9JXk4mxIKk&si=ddSN5eqrJqhgsUfN)
 
-<!-- $inject(creation_status) -->
+<!-- CREATION_STATUS -->
 
 ## Features
 
@@ -168,7 +168,7 @@ Since armor can hide the avatar, I recommend hiding armor.
 
 ### Action 4. Open avatar settings
 
-Moves to the avatar settings page.
+Moves to the [avatar settings page](#avatar-settings-action-wheel).
 
 ## Avatar settings action wheel
 
