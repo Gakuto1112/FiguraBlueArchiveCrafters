@@ -12,7 +12,7 @@ class AvatarPaths:
 	レポジトリのルートディレクトリ
 	"""
 
-	_template_dir: Path = root / "readme_scripts" / "template"
+	_template_dir: Path = root / "readme_scripts" / "templates"
 	"""
 	テンプレートファイルが格納されるディレクトリ
 	"""
