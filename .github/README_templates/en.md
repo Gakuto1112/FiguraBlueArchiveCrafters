@@ -187,7 +187,7 @@ This option is disabled for students without vehicle replacements.
 
 Toggles halo force rendering mode on/off.
 
-To reproduce behavior close to the original setting, halo shadows are not projected when shader packs are used.
+[To reproduce behavior close to the original setting](https://dic.pixiv.net/a/ヘイロー%28ブルーアーカイブ%29#:~:text=シナリオライターが言及\)-,ヘイローは影が投影されない%E3%80%82), halo shadows are not projected when shader packs are used.
 As a side effect of this behavior, halos may not render correctly in some situations.
 If that happens, enable halo force rendering mode.
 This mode is reset to off each time the avatar is reloaded.
