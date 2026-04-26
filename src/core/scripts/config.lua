@@ -43,9 +43,9 @@ local Config = {
 	loadConfig = function (self, storage, keyName, defaultValue)
 		if host:isHost() then
 			if storage == "PUBLIC" then
-				config:setName("FiguraBlueArchiveCharacters_public")
+				config:setName("FiguraBlueArchiveCrafters_public")
 			else
-				config:setName("FiguraBlueArchiveCharacters_" .. BlueArchiveCharacter.basic.avatarName)
+				config:setName("FiguraBlueArchiveCrafters_" .. BlueArchiveCharacter.basic.avatarName)
 			end
 
 			local loadedData = config:load(keyName)
@@ -68,9 +68,9 @@ local Config = {
 	saveConfig = function (self, storage, keyName, valueToSave)
 		if host:isHost() then
 			if storage == "PUBLIC" then
-				config:setName("FiguraBlueArchiveCharacters_public")
+				config:setName("FiguraBlueArchiveCrafters_public")
 			else
-				config:setName("FiguraBlueArchiveCharacters_" .. BlueArchiveCharacter.basic.avatarName)
+				config:setName("FiguraBlueArchiveCrafters_" .. BlueArchiveCharacter.basic.avatarName)
 			end
 			if self.defaultValues[keyName] == valueToSave then
 				config:save(keyName, nil)

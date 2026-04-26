@@ -143,9 +143,9 @@ class CreationStatusWriter:
 					result += f" ({entry['costume_name']['en']})"
 			if include_issue and "issue_number" in entry and entry["issue_number"] is not None:
 				if locale == TemplateLocale.JP:
-					result += f"（[#{entry['issue_number']}](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/{entry['issue_number']})）"
+					result += f"（[#{entry['issue_number']}](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/{entry['issue_number']})）"
 				else:
-					result += f" ([#{entry['issue_number']}](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/issues/{entry['issue_number']}))"
+					result += f" ([#{entry['issue_number']}](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/{entry['issue_number']}))"
 			result += "\n"
 
 		return result
