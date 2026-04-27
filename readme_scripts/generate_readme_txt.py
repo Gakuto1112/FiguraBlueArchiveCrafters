@@ -144,7 +144,7 @@ def main() -> None:
 		Logger.print_info(f"Generating readme for locale {locale.name} ({i + 1}/{len(TemplateLocale)})...")
 		Logger.print_spacer(1)
 
-		generate_readme_txt(locale, args.tag_name, datetime.strptime(args.release_date, "%Y/%m/%d"))
+		generate_readme_txt(locale, args.tag_name, datetime.fromisoformat(args.release_date).date())
 
 	Logger.print_info(f"Completed generating all readme documents ({len(TemplateLocale)} locales).")
 
