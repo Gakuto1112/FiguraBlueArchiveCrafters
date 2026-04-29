@@ -379,6 +379,11 @@ Figuraは[Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)、[
 - アバター関係で私に連絡したい方は[Discussions](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/discussions)または、[Discord](https://discord.com/)でご連絡ください。
   私のDiscordのアカウント名は「vinny_san」で表示名は「ばにーさん」です。[FiguraのDiscordサーバー](https://discord.gg/figuramc)での表示名は「BunnySan/ばにーさん」です。
 
+## ローカルでのアバタービルド
+
+本レポジトリをクローンして使用する場合には、ビルドツールによるアバターのビルドが必要です。
+詳しくは[ビルドツールの説明](./build_scripts/README_jp.md)をご覧ください。
+
 ---
 
 ![IDカード](./readme_scripts/images/id_card.jpg)

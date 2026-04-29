@@ -380,6 +380,11 @@ Figura is available in [Forge](https://files.minecraftforge.net/net/minecraftfor
   My Discord name is "vinny_san" and display name is "ばにーさん".
   My display name in [Figura Discord server](https://discord.gg/figuramc) is "BunnySan/ばにーさん".
 
+## Building avatars in local environment
+
+Avatar builds by FBAC build tool is required to use avatars in the game if you want to use them by cloning this repository.
+For more information please refer to [the instruction of the FBAC build tool](./build_scripts/README.md).
+
 ---
 
 ![ID card](./readme_scripts/images/id_card.jpg)
