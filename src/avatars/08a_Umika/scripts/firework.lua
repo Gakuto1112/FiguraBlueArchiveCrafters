@@ -78,7 +78,7 @@ local Firework = {
     ---@param self Firework
     blast = function (self)
         local fireworkColor = vectors.hsvToRGB(math.random(), 0.8, 1)
-        particles:newParticle("minecraft:flash", self.currentPos):setColor(fireworkColor)
+        particles:newParticle("minecraft:flash{color:[" .. fireworkColor[1] .. ", " .. fireworkColor[2] .. ", " .. fireworkColor[3] .. ", 1]}", self.currentPos):setColor(fireworkColor)
         for _ = 1, 400 do
             local particleAngleX = math.random() * math.pi * 2
             local particleAngleY = math.random() * math.pi * 2

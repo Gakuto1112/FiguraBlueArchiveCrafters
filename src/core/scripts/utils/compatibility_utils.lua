@@ -49,7 +49,7 @@ local CompatibilityUtils = {
 
         local clientVersion = client:getVersion()
         local compareResult = StringUtils.compareVersions(clientVersion, self.TARGET_MC_VERSION)
-        if host:isHost() and compareResult ~= nil and compareResult == self.TARGET_MC_VERSION  then
+        if host:isHost() and compareResult ~= nil and compareResult == self.TARGET_MC_VERSION and compareResult ~= clientVersion then
             EventManager.events["ON_LOCALE_READY"]:register(function ()
                 EventManager.events["ON_LOCALE_READY"]:remove("compatibility_utils_old_version_warning")
                 print(Locale:getLocalizedText("message.compatibility_utils.old_version_warning"):format(self.TARGET_MC_VERSION))
@@ -219,11 +219,20 @@ local CompatibilityUtils = {
                     if trueParticleID:find(":") == nil then
                         trueParticleID = "minecraft:" .. trueParticleID
                     end
-                    local spaceIndex = name:find(" ")
                     local arg = ""
+                    local bracketMatch = trueParticleID:match("{(.-)}")
+                    if bracketMatch ~= nil then
+                        local bracketIndex = trueParticleID:find("{")
+                        local gameVersion = client:getVersion()
+                        if StringUtils.compareVersions(gameVersion, "1.21.9") == gameVersion then
+                            arg = "{" .. bracketMatch .. "}"
+                        end
+                        trueParticleID = trueParticleID:sub(1, bracketIndex - 1)
+                    end
+                    local spaceIndex = trueParticleID:find(" ")
                     if spaceIndex ~= nil then
-                        arg = name:sub(spaceIndex)
-                        trueParticleID = name:sub(1, spaceIndex - 1)
+                        arg = trueParticleID:sub(spaceIndex)
+                        trueParticleID = trueParticleID:sub(1, spaceIndex - 1)
                     end
                     trueParticleID = self:checkParticle(trueParticleID)
                     if trueParticleID == self.ALTERNATIVE_ENTRIES.particle then
