@@ -348,6 +348,11 @@ Figuraは[Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)、[
   私のDiscordのアカウント名は「vinny_san」で表示名は「ばにーさん」です。[FiguraのDiscordサーバー](https://discord.gg/figuramc)での表示名は「BunnySan/ばにーさん」です。
 <!-- NOTES_END -->
 
+## ローカルでのアバタービルド
+
+本レポジトリをクローンして使用する場合には、ビルドツールによるアバターのビルドが必要です。
+詳しくは[ビルドツールの説明](./build_scripts/README_jp.md)をご覧ください。
+
 ---
 
 ![IDカード](../images/id_card.jpg)
