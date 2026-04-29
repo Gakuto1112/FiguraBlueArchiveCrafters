@@ -112,3 +112,31 @@
 | issue_number | 数値 or null | このエントリーに関するissue番号 <br> ない場合は`null`にする。 |
 
 もしエントリーが0の項目がある場合は、マークダウンリストの代わりにその旨のメッセージのテキストが挿入されます。
+
+
+## 実行手順
+
+本生成ツールの実行にはPythonのバージョン管理ツールである[uv](https://docs.astral.sh/uv/)が必要です。
+また、手順内にあるコマンド例はMac/Linux準拠になります。
+
+1. ワーキングディレクトリを"/src/readme_scripts"に設定します。
+
+   ```sh
+   cd <path_to_repository_root_directory>/readme_scripts/
+   ```
+
+2. Python及び依存パッケージのインストールをします。
+   以下のコマンドを実行するだけでインストールできます。
+
+   ```sh
+   uv sync
+   ```
+
+3. ビルドスクリプトを実行します。
+   テキストファイルを生成する場合は、引数にタグ名とリリース日を渡す必要があります。
+   デフォルトパスの場合、`../`に生成済みドキュメントが出力されます。
+
+   ```sh
+   uv run generate_readme_md.py # マークダウンファイルの生成の場合
+   uv run generate_readme_txt.py ${TAG_NAME} ${RELEASE_DATE} # テキストファイルの生成の場合
+   ```
