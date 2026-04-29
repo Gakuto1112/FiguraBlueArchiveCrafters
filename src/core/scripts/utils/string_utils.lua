@@ -25,14 +25,14 @@ local StringUtils = {
     ---@param version2 string 比較するバージョン文字列2
     ---@return string|nil newerVersion 新しい方のバージョン文字列。比較不可能だった場合はnilを返す。
     compareVersions = function (version1, version2)
-        local major1, minor1, patch1 = version1:match("^v(%d+)%.(%d+)%.(%d+)")
-        local major2, minor2, patch2 = version2:match("^v(%d+)%.(%d+)%.(%d+)")
+        local major1, minor1, patch1 = version1:match("^v?(%d+)%.(%d+)%.?(%d*)")
+        local major2, minor2, patch2 = version2:match("^v?(%d+)%.(%d+)%.?(%d*)")
         major1 = tonumber(major1)
         minor1 = tonumber(minor1)
-        patch1 = tonumber(patch1)
+        patch1 = patch1 ~= nil and tonumber(patch1) or 0
         major2 = tonumber(major2)
         minor2 = tonumber(minor2)
-        patch2 = tonumber(patch2)
+        patch2 = patch2 ~= nil and tonumber(patch2) or 0
         if major1 ~= nil and minor1 ~= nil and patch1 ~= nil and major2 ~= nil and minor2 ~= nil and patch2 ~= nil then
             return (major1 > major2 or (major1 == major2 and minor1 > minor2) or (major1 == major2 and minor1 == minor2 and patch1 > patch2)) and version1 or version2
         end
