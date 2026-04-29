@@ -13,7 +13,7 @@
 ### テンプレートマークダウン内のアンカータグ
 
 テンプレートマークダウンファイル（"[en.md](./templates/en.md)"および"[jp.md](./templates/jp.md)"）には、マークダウンコメント形式（`<!-- -->`）で記入されたアンカータグがあります。
-これらのアンカータグはR、README生成ツールにおいて目印として利用されます。
+これらのアンカータグはREADME生成ツールにおいて目印として利用されます。
 
 アンカータグは次のような形式で記入されています：
 
@@ -103,7 +103,7 @@
 | character_name.first_name | オブジェクト | キャラクターの下の名前 |
 | character_name.first_name.en | 文字列 | キャラクターの下の名前の英名 |
 | character_name.first_name.jp | 文字列 | キャラクターの下の名前の日本語名 |
-| character_name.last_name | オブジェクト | キャラクターの下の名前 |
+| character_name.last_name | オブジェクト | キャラクターの上の名前 |
 | character_name.last_name.en | 文字列 | キャラクターの上の名前の英名 |
 | character_name.last_name.jp | 文字列 | キャラクターの上の名前の日本語名 |
 | costume_name | オブジェクト or null | キャラクターの衣装名 <br> デフォルト衣装は`null`にする。 |
