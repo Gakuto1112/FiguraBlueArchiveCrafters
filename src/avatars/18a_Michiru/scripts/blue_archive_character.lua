@@ -1324,7 +1324,7 @@ local BlueArchiveCharacter = {
                                 ModelAlias.alias.avatar.body.SwordGroup.Sword:setRot()
                             end
                             local material = item.id:match("^minecraft:(%a+)_sword$")
-                            ModelAlias.alias.avatar.body.SwordGroup.Sword.SwordBlade:setUVPixels(material == "wooden" and -4 or (material == "stone" and -2 or (material == "golden" and 2 or (material == "diamond" and 4 or (material == "netherite" and 6 or 0)))), 0)
+                            ModelAlias.alias.avatar.body.SwordGroup.Sword.SwordBlade:setUVPixels(material == "wooden" and -6 or (material == "stone" and -4 or (material == "copper" and -2 or (material == "golden" and 2 or (material == "diamond" and 4 or (material == "netherite" and 6 or 0))))), 0)
                             ModelAlias.alias.avatar.body.SwordGroup.Sword:setSecondaryRenderType(item:hasGlint() and "GLINT"..(version and "2" or "") or "NONE")
                             return ModelAlias.alias.avatar.body.SwordGroup.Sword
                         end
