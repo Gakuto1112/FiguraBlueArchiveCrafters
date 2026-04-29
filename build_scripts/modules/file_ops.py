@@ -61,7 +61,7 @@ class FileOperator:
 			dir_path.mkdir(parents=True)
 
 	@staticmethod
-	def copy_assets(avatar_name: str, as_release: bool) -> None:
+	def copy_assets(avatar_name: str, as_release: bool = False) -> None:
 		"""
 		コアアセットとキャラクター固有アセットの統合し、出力先ディレクトリにコピーする。
 		コアアセットとキャラクター固有アセットに同じ相対パスのファイルが存在する場合、キャラクター固有アセットのほうで上書きされる。

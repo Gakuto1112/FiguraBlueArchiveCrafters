@@ -187,12 +187,13 @@ class AvatarJsonGenerator:
 			return json.load(f)
 
 	@staticmethod
-	def _merge_avatar_json(avatar_name: str) -> AvatarJsonData:
+	def _merge_avatar_json(avatar_name: str, no_ignored_textures: bool = False) -> AvatarJsonData:
 		"""
 		テンプレートjsonデータを基に、指定したアバターのメタデータを結合し、最終的な`avatar.json`の内容オブジェクトを返す。
 
 		Args:
 			avatar_name (str): 結合するアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+			no_ignored_textures (bool): "avatar.json"内の`ignoredTextures`フィールドを空にするかどうか。開発版Figuraの不具合への対応。これを`true`にするとアバターの容量が増加する。
 
 		Returns:
 			AvatarJsonData: 結合された`avatar.json`の内容を格納したオブジェクト
@@ -226,20 +227,24 @@ class AvatarJsonGenerator:
 		# リスト・辞書型の結合
 		if (template_auto_anims := template.get("autoAnims")) is not None and (meta_auto_anims := meta.get("autoAnims")) is not None:
 			template["autoAnims"] = list(set(template_auto_anims) | set(meta_auto_anims))
-		if (template_ignored_textures := template.get("ignoredTextures")) is not None and (meta_ignored_textures := meta.get("ignoredTextures")) is not None:
+		if not no_ignored_textures and (template_ignored_textures := template.get("ignoredTextures")) is not None and (meta_ignored_textures := meta.get("ignoredTextures")) is not None:
 			template["ignoredTextures"] = list(set(template_ignored_textures) | set(meta_ignored_textures))
 		if (template_customizations := template.get("customizations")) is not None and (meta_customizations := meta.get("customizations")) is not None:
 			template["customizations"] = template_customizations | meta_customizations
 
+		if no_ignored_textures:
+			del template["ignoredTextures"]
+
 		return template
 
 	@staticmethod
-	def write_merged_avatar_json(avatar_name: str):
+	def write_merged_avatar_json(avatar_name: str, no_ignored_textures: bool = False) -> None:
 		"""
 		結合した`avatar.json`データを出力先ディレクトリの該当アバターフォルダ内に出力する。
 
 		Args:
 			avatar_name (str): 出力するアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+			no_ignored_textures (bool): "avatar.json"内の`ignoredTextures`フィールドを空にするかどうか。開発版Figuraの不具合への対応。これを`true`にするとアバターの容量が増加する。
 
 		Raises:
 			ValueError: `avatar_name`が`paths.get_avatar_names()`で取得できる名前のいずれでもない場合
@@ -255,7 +260,7 @@ class AvatarJsonGenerator:
 			raise ValueError(f"The specified avatar name \"{avatar_name}\" is not valid.")
 
 		# 結合されたavatar.jsonデータの取得
-		merged_data = AvatarJsonGenerator._merge_avatar_json(avatar_name)
+		merged_data = AvatarJsonGenerator._merge_avatar_json(avatar_name, no_ignored_textures)
 
 		# avatar.jsonの書き込み
 		with open(paths.distribution_dir / avatar_name / "avatar.json", "w") as f:

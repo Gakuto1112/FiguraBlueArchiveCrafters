@@ -36,13 +36,14 @@ def print_shittim_logo() -> None:
 			Logger.print_info(logo)
 		Logger.print_spacer(1)
 
-def build(target_avatars: tuple[str, ...], as_release: bool) -> None:
+def build(target_avatars: tuple[str, ...], as_release: bool = False, no_ignored_textures: bool = False) -> None:
 	"""
 	アバターをビルドし、Figuraで使用可能な形式にする。
 
 	Args:
 		target_avatars (list[str]): ビルドするアバターの名前のリスト。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
 		as_release (bool): リリースアセットとしてビルドするかどうか。
+		no_ignored_textures (bool): "avatar.json"内の`ignoredTextures`フィールドを空にするかどうか。開発版Figuraの不具合への対応。これを`true`にするとアバターの容量が増加する。
 	"""
 
 	# 出力先ディレクトリの準備
@@ -118,7 +119,7 @@ def build(target_avatars: tuple[str, ...], as_release: bool) -> None:
 	try:
 		for target_avatar in target_avatars:
 			Logger.print_info(f"Generating avatar.json for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-			AvatarJsonGenerator.write_merged_avatar_json(target_avatar)
+			AvatarJsonGenerator.write_merged_avatar_json(target_avatar, no_ignored_textures)
 	except FileNotFoundError:
 		Logger.print_error("Avatar JSON template file or avatar JSON config file not found.")
 		exit(errno.ENOENT)
@@ -238,6 +239,7 @@ def main() -> None:
 	parser.add_argument("--colored", "-l", action="store_true", help="Enables colored output in the terminal.")
 	parser.add_argument("--debug-output", "-d", action="store_true", help="Enables debug outputs.")
 	parser.add_argument("--release", "-r", action="store_true", help="Builds avatars as release assets.")
+	parser.add_argument("--no-ignored-textures", "-n", action="store_true", help="Disables texture ignorance features for avatars. The size of the avatar will be larger than normal builds.")
 
 	args = parser.parse_args()
 
@@ -282,7 +284,7 @@ def main() -> None:
 		Logger.print_info("Initializing the distribution directory...")
 		Logger.print_spacer(1)
 
-		build(tuple(paths.get_avatar_names()), False)
+		build(tuple(paths.get_avatar_names()), no_ignored_textures=args.no_ignored_textures)
 
 		if args.character:
 			Logger.print_warning("The --character / -c option is ignored in observe mode. All characters will be observed for changes.")
@@ -325,7 +327,7 @@ def main() -> None:
 		Logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
 		Logger.print_spacer(1)
 
-		build(tuple(target_avatars), args.release)
+		build(tuple(target_avatars), args.release, args.no_ignored_textures)
 
 if __name__ == "__main__":
 	main()
