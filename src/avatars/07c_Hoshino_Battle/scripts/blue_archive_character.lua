@@ -657,11 +657,12 @@ local BlueArchiveCharacter = {
 					if not self.exSkill.secondary.isInitialized then
 						models.models.ex_skill_2.Zombie:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/zombie/zombie.png")
 						local gameVersion = client:getVersion()
+						local isNewerPath = StringUtils.compareVersions(gameVersion, "1.21.2") == gameVersion
 						for _, modelPart in ipairs({models.models.ex_skill_2.Zombie.ZHead.ZHelmet, models.models.ex_skill_2.Zombie.ZUpperBody.ZBody.ZChestPlateB, models.models.ex_skill_2.Zombie.ZUpperBody.ZArms.ZRightArm.ZChestPlateRA, models.models.ex_skill_2.Zombie.ZUpperBody.ZArms.ZLeftArm.ZChestPlateLA, models.models.ex_skill_2.Zombie.ZLowerBody.ZLegs.ZRightLeg.ZBootsRL, models.models.ex_skill_2.Zombie.ZLowerBody.ZLegs.ZLeftLeg.ZBootsLL}) do
-							modelPart:setPrimaryTexture("RESOURCE", gameVersion >="1.21.2" and "minecraft:textures/entity/equipment/humanoid/iron.png" or "minecraft:textures/models/armor/iron_layer_1.png")
+							modelPart:setPrimaryTexture("RESOURCE", isNewerPath and "minecraft:textures/entity/equipment/humanoid/iron.png" or "minecraft:textures/models/armor/iron_layer_1.png")
 						end
 						for _, modelPart in ipairs({models.models.ex_skill_2.Zombie.ZUpperBody.ZBody.ZLeggingsB,models.models.ex_skill_2.Zombie.ZLowerBody.ZLegs.ZRightLeg.ZLeggingsRL, models.models.ex_skill_2.Zombie.ZLowerBody.ZLegs.ZLeftLeg.ZLeggingsLL}) do
-							modelPart:setPrimaryTexture("RESOURCE", gameVersion >="1.21.2" and "minecraft:textures/entity/equipment/humanoid_leggings/iron.png" or "minecraft:textures/models/armor/iron_layer_2.png")
+							modelPart:setPrimaryTexture("RESOURCE", isNewerPath and "minecraft:textures/entity/equipment/humanoid_leggings/iron.png" or "minecraft:textures/models/armor/iron_layer_2.png")
 						end
 						models.models.ex_skill_2.Creeper:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/creeper/creeper.png")
 						self.exSkill.secondary.isInitialized = true

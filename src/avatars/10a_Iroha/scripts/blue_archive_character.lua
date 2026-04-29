@@ -349,7 +349,8 @@ local BlueArchiveCharacter = {
 						Arms:processArmSwingCount()
 						local heldItem = player:getHeldItem(not player:isLeftHanded())
 						local gameVersion = client:getVersion()
-						isHolding = player:getActiveItem().id == "minecraft:bow" or (heldItem.id == "minecraft:crossbow" and ((gameVersion >= "1.20.5" and #heldItem.tag["minecraft:charged_projectiles"] >= 1) or (gameVersion < "1.20.5" and heldItem.tag.Charged == 1)))
+						local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
+						isHolding = player:getActiveItem().id == "minecraft:bow" or (heldItem.id == "minecraft:crossbow" and ((isNewerNbt and #heldItem.tag["minecraft:charged_projectiles"] >= 1) or (not isNewerNbt and heldItem.tag.Charged == 1)))
 						ModelAlias.alias.avatar.rightArm:setParentType((isHolding or self.costume.shootTick >= 0) and "Body" or "RightArm")
 					end, "right_arm_tick")
 					events.RENDER:remove("right_arm_render")
@@ -387,7 +388,8 @@ local BlueArchiveCharacter = {
 						Arms:processArmSwingCount()
 						local heldItem = player:getHeldItem(player:isLeftHanded())
 						local gameVersion = client:getVersion()
-						isHolding = player:getActiveItem().id == "minecraft:bow" or (heldItem.id == "minecraft:crossbow" and ((gameVersion >= "1.20.5" and #heldItem.tag["minecraft:charged_projectiles"] >= 1) or (gameVersion < "1.20.5" and heldItem.tag.Charged == 1)))
+						local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
+						isHolding = player:getActiveItem().id == "minecraft:bow" or (heldItem.id == "minecraft:crossbow" and ((isNewerNbt and #heldItem.tag["minecraft:charged_projectiles"] >= 1) or (not isNewerNbt and heldItem.tag.Charged == 1)))
 						ModelAlias.alias.avatar.leftArm:setParentType((isHolding or self.costume.shootTick >= 0) and "Body" or "LeftArm")
 					end, "left_arm_tick")
 					events.RENDER:remove("left_arm_render")

@@ -51,9 +51,9 @@ local Gun = {
                     local quickChargeLevel = 0
                     local activeItem = player:getActiveItem()
                     local gameVersion = client:getVersion()
-                    if gameVersion >= "1.21.5" then
+                    if StringUtils.compareVersions(gameVersion, "1.21.5") == gameVersion then
                         quickChargeLevel = activeItem.tag["minecraft:enchantments"]["minecraft:quick_charge"] ~= nil and activeItem.tag["minecraft:enchantments"]["minecraft:quick_charge"] or 0
-                    elseif gameVersion >= "1.20.5" then
+                    elseif StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion then
                         quickChargeLevel = activeItem.tag["minecraft:enchantments"].levels["minecraft:quick_charge"] ~= nil and activeItem.tag["minecraft:enchantments"].levels["minecraft:quick_charge"] or 0
                     elseif activeItem.tag.Enchantments ~= nil then
                         for _, enchant in ipairs(activeItem.tag.Enchantments) do
@@ -90,13 +90,14 @@ local Gun = {
                                 end
                                 local activeItemId = player:getActiveItem().id
                                 local gameVersion = client:getVersion()
+                                local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
                                 if activeItemId == "minecraft:bow" then
                                     ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, -2.25, 4.25):add(offsetPos))
                                     ModelAlias.alias.avatar.gun:setRot(vectors.vec3(20, -7.5, -5):add(offsetRot))
                                 elseif activeItemId == "minecraft:crossbow" then
                                     ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, 0.25, 4.25):add(offsetPos))
                                     ModelAlias.alias.avatar.gun:setRot(vectors.vec3(0, 0, 0):add(offsetRot))
-                                elseif item.id == "minecraft:crossbow" and ((gameVersion >= "1.20.5" and #item.tag["minecraft:charged_projectiles"] >= 1) or (gameVersion < "1.20.5" and item.tag.Charged == 1)) then
+                                elseif item.id == "minecraft:crossbow" and ((isNewerNbt and #item.tag["minecraft:charged_projectiles"] >= 1) or (not isNewerNbt and item.tag.Charged == 1)) then
                                     if player:isLeftHanded() then
                                         ModelAlias.alias.avatar.gun:setPos(vectors.vec3(-10, -1.25, 6):add(offsetPos))
                                         ModelAlias.alias.avatar.gun:setRot(vectors.vec3(0, 10, 0):add(offsetRot))
@@ -132,13 +133,14 @@ local Gun = {
                                 end
                                 local activeItemId = player:getActiveItem().id
                                 local gameVersion = client:getVersion()
+                                local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
                                 if activeItemId == "minecraft:bow" then
                                     ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, -2.25, 4.25):add(offsetPos))
                                     ModelAlias.alias.avatar.gun:setRot(vectors.vec3(20, 7.5, 5):add(offsetRot))
                                 elseif activeItemId == "minecraft:crossbow" then
                                     ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, 0.25, 4.25):add(offsetPos))
                                     ModelAlias.alias.avatar.gun:setRot(vectors.vec3(0, 0, 0):add(offsetRot))
-                                elseif item.id == "minecraft:crossbow" and ((gameVersion >= "1.20.5" and #item.tag["minecraft:charged_projectiles"] >= 1) or (gameVersion < "1.20.5" and item.tag.Charged == 1)) then
+                                elseif item.id == "minecraft:crossbow" and ((isNewerNbt and #item.tag["minecraft:charged_projectiles"] >= 1) or (not isNewerNbt and item.tag.Charged == 1)) then
                                     if player:isLeftHanded() then
                                         ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, -1.25, 4.25):add(offsetPos))
                                         ModelAlias.alias.avatar.gun:setRot(vectors.vec3(0, 0, 0):add(offsetRot))

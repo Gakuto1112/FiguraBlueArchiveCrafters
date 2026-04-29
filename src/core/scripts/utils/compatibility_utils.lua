@@ -48,7 +48,7 @@ local CompatibilityUtils = {
         self.checkedTable.sound["minecraft:empty"] = true
 
         local clientVersion = client:getVersion()
-        local compareResult = StringUtils.compareVersions("v" .. clientVersion, "v" .. self.TARGET_MC_VERSION)
+        local compareResult = StringUtils.compareVersions(clientVersion, self.TARGET_MC_VERSION)
         if host:isHost() and compareResult ~= nil and compareResult == self.TARGET_MC_VERSION  then
             EventManager.events["ON_LOCALE_READY"]:register(function ()
                 EventManager.events["ON_LOCALE_READY"]:remove("compatibility_utils_old_version_warning")
@@ -270,7 +270,7 @@ local CompatibilityUtils = {
             if key == "setPostEffect" then
                 return function (self3, effect)
                     -- ゲームバージョン1.20.5以降、ゲーム内レンダープロファイルが削除され、以降アクセスを試みるとエラーになる。
-                    if client:getVersion() < "1.20.5" then
+                    if StringUtils.compareVersions(client:getVersion(), "1.20.5") == "1.20.5" then
                         return originalRendererIndexFunc(self2, "setPostEffect")(self3, effect)
                     else
                         return originalRendererIndexFunc(self2, "setPostEffect")

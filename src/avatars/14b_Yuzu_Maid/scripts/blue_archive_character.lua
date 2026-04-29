@@ -467,7 +467,8 @@ local BlueArchiveCharacter = {
 							for _, modelPart in ipairs({models.models.ex_skill_1.Gui.ScreenEffects.ScreenEffectTLBack, models.models.ex_skill_1.Gui.ScreenEffects.ScreenEffectBRBack}) do
 								modelPart:setColor(0.231, 0.725, 0.988)
 							end
-							if client:getVersion() >= "1.20.2" then
+							local gameVersion = client:getVersion()
+							if StringUtils.compareVersions(gameVersion, "1.20.2") == gameVersion then
 								for i = 1, 9 do
 									models.models.ex_skill_1.Gui.Hotbar["HotbarSection"..i]["HotbarSection"..i]:setPrimaryTexture("RESOURCE", "minecraft:textures/gui/sprites/hud/hotbar.png")
 								end

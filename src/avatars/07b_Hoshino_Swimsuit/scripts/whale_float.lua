@@ -120,7 +120,8 @@ local WhaleFloat = {
                                 local vehicle2 = player:getVehicle()
                                 if vehicle2 ~= nil then
                                     local gameVersion = client:getVersion()
-                                    if (gameVersion >= "1.21.2" and vehicle2:getType():match("^minecraft:bamboo_[%l_]*raft$")) or (gameVersion < "1.21.2" and vehicle2:getNbt().Type == "bamboo") then
+                                    local isNewerID = StringUtils.compareVersions(gameVersion, "1.21.2")
+                                    if (isNewerID and vehicle2:getType():match("^minecraft:bamboo_[%l_]*raft$")) or (not isNewerID and vehicle2:getNbt().Type == "bamboo") then
                                         ModelAlias.alias.avatar.root:setPos(0, -6, 0)
                                         if host:isHost() then
                                             self.eyeHeightOffset = 0.1875
@@ -137,7 +138,8 @@ local WhaleFloat = {
                                 local vehicle2 = player:getVehicle()
                                 if vehicle2 ~= nil then
                                     local gameVersion = client:getVersion()
-                                    if (gameVersion >= "1.21.2" and vehicle2:getType():match("^minecraft:bamboo_[%l_]*raft$")) or (gameVersion < "1.21.2" and vehicle2:getNbt().Type == "bamboo") then
+                                    local isNewerID = StringUtils.compareVersions(gameVersion, "1.21.2")
+                                    if (isNewerID and vehicle2:getType():match("^minecraft:bamboo_[%l_]*raft$")) or (not isNewerID and vehicle2:getNbt().Type == "bamboo") then
                                         ModelAlias.alias.avatar.root:setPos(0, -9, 0)
                                         if host:isHost() then
                                             self.eyeHeightOffset = 0

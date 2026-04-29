@@ -416,7 +416,8 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "FRUST", 6, true)
 					elseif tick == 53 then
 						FaceParts:setEmotion("SURPRISED", "SURPRISED", "TRIANGLE", 14, true)
-						local shouldAdjustBackgroundRot = client:getVersion() >= "1.21"
+						local gameVersion = client:getVersion()
+						local shouldAdjustBackgroundRot = StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion
 						if host:isHost() then
 							models.models.ex_skill_1.CameraBackground:setVisible(true)
 							local windowSize = client:getWindowSize()
@@ -433,7 +434,7 @@ local BlueArchiveCharacter = {
 						end
 						local particleAnchor = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root):add(0, 5, 0)
 						local fireworkColor = vectors.hsvToRGB(math.random(), 0.8, 1)
-						particles:newParticle("minecraft:flash", particleAnchor):setColor(fireworkColor)
+						particles:newParticle("minecraft:flash{color:[" .. fireworkColor[1] .. ", " .. fireworkColor[2] .. ", " .. fireworkColor[3] .. ", 1]}", particleAnchor):setColor(fireworkColor)
 						for _ = 1, 400 do
 							local particleAngleX = math.random() * math.pi * 2
 								local particleAngleY = math.random() * math.pi * 2

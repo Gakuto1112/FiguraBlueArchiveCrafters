@@ -398,7 +398,8 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.rightArmBottom.Key:newItem("ex_skill_1_key_item"):setPos(0, -1, 0):setScale(0.25, 0.25, 0.25):setVisible(false)
 						self.exSkill.primary.isInitialized = true
 					end
-					if math.random() >= 0.95 and client:getVersion() >= "1.21" then
+					local gameVersion = client:getVersion()
+					if math.random() >= 0.95 and StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion then
 						ModelAlias.alias.avatar.rightArmBottom.Key.KeyModel:setVisible(false)
 						local task = ModelAlias.alias.avatar.rightArmBottom.Key:getTask("ex_skill_1_key_item")
 						---@cast task ItemTask
