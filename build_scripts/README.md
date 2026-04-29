@@ -11,11 +11,11 @@ The FBAC source files (models, textures, scripts, and other metadata) are divide
 ### Core Part
 
 The core part refers to the resources related to systems common to all characters (expressions, halos, Ex-skill playback logic, etc.).
-The core is stored under "[/src/core](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/main/src/core)".
+The core is stored under "[/src/core](../src/core/)".
 
 #### avatar_template.json
 
-"[avatar_template.json](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/main/src/core/avatar_template.json)" is a template file for building "[avatar.json](https://figura-wiki.pages.dev/start_here/Avatar%20File%20Format)" to let Figura recognize it as an avatar.
+"[avatar_template.json](../src/core/avatar_template.json)" is a template file for building "[avatar.json](https://figura-wiki.pages.dev/start_here/Avatar%20File%20Format)" to let Figura recognize it as an avatar.
 The structure of the template file is almost identical to that of "avatar.json", but placeholders are enabled on some fields where specific values will be inserted during the build process.
 
 | Placeholder Name | Description | Examples of Specific Values | Supported Fields |
@@ -28,8 +28,8 @@ The structure of the template file is almost identical to that of "avatar.json",
 ### Character-Specific Part
 
 The character-specific part refers to the resources specifically implemented for a particular character based on the core.
-The character-specific part is stored under "[/src/avatars](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/main/src/avatars)", and the respective resources are further stored in each character's subdirectory.
-However, "[00a_base](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/main/src/avatars/00a_base)" acts as a boilerplate avatar when creating a new character.
+The character-specific part is stored under "[/src/avatars](../src/avatars/)", and the respective resources are further stored in each character's subdirectory.
+However, "[00a_base](../src/avatars/00a_base/)" acts as a boilerplate avatar when creating a new character.
 In other words, it is the "base body" avatar for the characters.
 
 The naming conventions for character subdirectories are as follows.
@@ -41,7 +41,7 @@ Also, the first letter should be capitalized, with subsequent letters in lowerca
 
 #### avatar_json_config.json
 
-"[avatar_json_config.json](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/main/src/avatars/00a_base/avatar_json_config.json)" is a file used to insert and merge concrete values into the core's "[avatar_template.json](#avatar_templatejson)".
+"[avatar_json_config.json](../src/avatars/00a_base/avatar_json_config.json)" is a file used to insert and merge concrete values into the core's "[avatar_template.json](#avatar_templatejson)".
 The structure of this json file is as follows:
 
 ```
@@ -73,7 +73,7 @@ If there are duplicate keys, they will be overwritten with the values from "avat
 
 #### thumbnail_config.json
 
-"[thumbnail_config.json](https://github.com/Gakuto1112/FiguraBlueArchiveCharacters/blob/main/src/avatars/00a_base/thumbnail_config.json)" is a file storing the configuration values used when generating avatar thumbnails.
+"[thumbnail_config.json](../src/avatars/00a_base/thumbnail_config.json)" is a file storing the configuration values used when generating avatar thumbnails.
 The structure of this json file is as follows:
 
 ```
