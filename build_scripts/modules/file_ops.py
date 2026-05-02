@@ -61,13 +61,14 @@ class FileOperator:
 			dir_path.mkdir(parents=True)
 
 	@staticmethod
-	def copy_assets(avatar_name: str, as_release: bool = False) -> None:
+	def copy_assets(avatar_name: str, tag_name: str | None = None, as_release: bool = False) -> None:
 		"""
 		コアアセットとキャラクター固有アセットの統合し、出力先ディレクトリにコピーする。
 		コアアセットとキャラクター固有アセットに同じ相対パスのファイルが存在する場合、キャラクター固有アセットのほうで上書きされる。
 
 		Args:
 			avatar_name (str): コピーするアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+			tag_name (str | None): "update_checker.lua"内のアバターのバージョン名を上書きするための文字列。指定しない場合は上書きしない。
 			as_release (bool): リリースアセットとしてコピーするかどうか。
 				リリースアセットでは以下の変更を行う。
 				 - `debug_utils.lua`を削除
@@ -115,7 +116,21 @@ class FileOperator:
 				Logger.print_error(f"avatar.lua not found in the distribution directory for avatar \"{avatar_name}\". This script is required for the avatar to work properly!")
 				raise FileNotFoundError(f"avatar.lua not found in the distribution directory for avatar \"{avatar_name}\".")
 
-			# 3. `locale.lua`のリモートエンドポイントをリリース用のものに変更
+			# 3. `update_checker.lua`内のアバターバージョン名を上書き
+			if tag_name is not None:
+				update_checker_lua_path: Path = paths.distribution_dir / avatar_name / "scripts" / "action_wheel" / "update_checker.lua"
+				if update_checker_lua_path.exists():
+					update_checker_lua_content: str = ""
+					with update_checker_lua_path.open("r", encoding="utf-8") as f:
+						update_checker_lua_content = f.read()
+					update_checker_lua_content = re.sub(r"AVATAR_VERSION\s=\s\".*?\";", f"AVATAR_VERSION = \"{tag_name}\";", update_checker_lua_content)
+					with update_checker_lua_path.open("w", encoding="utf-8") as f:
+						f.write(update_checker_lua_content)
+				else:
+					Logger.print_error(f"update_checker.lua not found in the distribution directory for avatar \"{avatar_name}\". This script is required for the avatar to work properly!")
+					raise FileNotFoundError(f"update_checker.lua not found in the distribution directory for avatar \"{avatar_name}\".")
+
+			# 4. `locale.lua`のリモートエンドポイントをリリース用のものに変更
 			locale_lua_path: Path = paths.distribution_dir / avatar_name / "scripts" / "locale.lua"
 			if locale_lua_path.exists():
 				locale_lua_content: str = ""

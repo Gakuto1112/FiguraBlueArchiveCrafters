@@ -36,12 +36,13 @@ def print_shittim_logo() -> None:
 			Logger.print_info(logo)
 		Logger.print_spacer(1)
 
-def build(target_avatars: tuple[str, ...], as_release: bool = False, no_ignored_textures: bool = False) -> None:
+def build(target_avatars: tuple[str, ...], tag_name: str | None = None, as_release: bool = False, no_ignored_textures: bool = False) -> None:
 	"""
 	アバターをビルドし、Figuraで使用可能な形式にする。
 
 	Args:
 		target_avatars (list[str]): ビルドするアバターの名前のリスト。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
+		tag_name (str | None): "update_checker.lua"内のアバターのバージョン名を上書きするための文字列。指定しない場合は上書きしない。
 		as_release (bool): リリースアセットとしてビルドするかどうか。
 		no_ignored_textures (bool): "avatar.json"内の`ignoredTextures`フィールドを空にするかどうか。開発版Figuraの不具合への対応。これを`true`にするとアバターの容量が増加する。
 	"""
@@ -96,7 +97,7 @@ def build(target_avatars: tuple[str, ...], as_release: bool = False, no_ignored_
 	try:
 		for target_avatar in target_avatars:
 			Logger.print_info(f"Copying assets for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-			FileOperator.copy_assets(target_avatar, as_release)
+			FileOperator.copy_assets(target_avatar, tag_name, as_release)
 	except NotADirectoryError:
 		Logger.print_error("The specified character directory path is not a directory.")
 		exit(errno.ENOTDIR)
@@ -238,6 +239,7 @@ def main() -> None:
 	parser.add_argument("--observe", "-w", action="store_true", help="Executes the tool in observation mode. In this mode, the tool will observe the source directory for changes and automatically rebuild the affected avatars.")
 	parser.add_argument("--colored", "-l", action="store_true", help="Enables colored output in the terminal.")
 	parser.add_argument("--debug-output", "-d", action="store_true", help="Enables debug outputs.")
+	parser.add_argument("--tag-name", "-t", type=str, help="Overrides the avatar version name. This option is ignored in observe mode.")
 	parser.add_argument("--release", "-r", action="store_true", help="Builds avatars as release assets.")
 	parser.add_argument("--no-ignored-textures", "-n", action="store_true", help="Disables texture ignorance features for avatars. The size of the avatar will be larger than normal builds.")
 
@@ -284,10 +286,12 @@ def main() -> None:
 		Logger.print_info("Initializing the distribution directory...")
 		Logger.print_spacer(1)
 
-		build(tuple(paths.get_avatar_names()), no_ignored_textures=args.no_ignored_textures)
+		build(tuple(paths.get_avatar_names()))
 
 		if args.character:
 			Logger.print_warning("The --character / -c option is ignored in observe mode. All characters will be observed for changes.")
+		if args.tag_name:
+			Logger.print_warning("The --tag-name / -t option is ignored in observe mode. Avatar version names will not be overridden.")
 		if args.release:
 			Logger.print_warning("The --release / -r option is ignored in observer mode. All characters will be built as debug assets.")
 		Logger.print_spacer(1)
@@ -319,15 +323,13 @@ def main() -> None:
 		if args.release:
 			target_avatars.remove("00a_base")
 
-		target_avatars.sort()
-
 		Logger.print_debug(f"Target avatars: {", ".join(target_avatars)}")
 		Logger.print_debug(f"Build mode: {'Release' if args.release else 'Debug'}")
 		Logger.print_debug(f"Source directory: {paths.source_dir}")
 		Logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
 		Logger.print_spacer(1)
 
-		build(tuple(target_avatars), args.release, args.no_ignored_textures)
+		build(tuple(target_avatars), tag_name=args.tag_name, as_release=args.release, no_ignored_textures=args.no_ignored_textures)
 
 if __name__ == "__main__":
 	main()
