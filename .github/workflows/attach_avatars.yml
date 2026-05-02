@@ -32,7 +32,9 @@ jobs:
         run: uv sync
         working-directory: ./build_scripts/
       - name: Build avatars
-        run: uv run build.py -r ${{ matrix.extra_args }}
+        run: uv run build.py -r -t ${TAG_NAME} ${{ matrix.extra_args }}
+        env:
+          TAG_NAME: ${{ github.ref_name }}
         working-directory: ./build_scripts/
       - name: Move license files
         run: |
