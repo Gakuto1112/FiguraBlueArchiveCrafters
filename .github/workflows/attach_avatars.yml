@@ -5,12 +5,18 @@ on:
     types:
       - released
       - prereleased
-  workflow_dispatch:
 
 jobs:
   pack_figura_avatar:
     name: Pack avatar
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - extra_args: ""
+            artifact_name: FiguraBlueArchiveCrafters-figura0.1.5+1.16.5-1.21.4
+          - extra_args: "-n"
+            artifact_name: FiguraBlueArchiveCrafters-figura0.1.5+1.21.5-1.21.11
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
@@ -26,7 +32,7 @@ jobs:
         run: uv sync
         working-directory: ./build_scripts/
       - name: Build avatars
-        run: uv run build.py -r
+        run: uv run build.py -r ${{ matrix.extra_args }}
         working-directory: ./build_scripts/
       - name: Move license files
         run: |
@@ -47,7 +53,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4.6.2
         with:
-          name: figura_blue_archive_crafters
+          name: ${{ matrix.artifact_name }}
           path: ./dist/
   attach_avatar:
     name: Attach avatars to release assets
@@ -59,13 +65,20 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4.3.0
         with:
-          name: figura_blue_archive_crafters
-          path: ./
+          path: ./artifacts
       - name: Zip artifact
-        run: zip -r figura_blue_archive_crafters.zip ./
+        run: |
+          for dir in */; do
+            dir_name=${dir%/}
+            cd "$dir_name"
+            zip -r "../${dir_name}.zip" ./*
+            cd ..
+          done
+        working-directory: ./artifacts
       - name: Attach artifacts to release assets
-        run: gh release upload ${TAG_NAME} ./figura_blue_archive_crafters.zip --repo ${REPOSITORY}
+        run: gh release upload ${TAG_NAME} ./*.zip --repo ${REPOSITORY}
         env:
           GH_TOKEN: ${{ github.token }}
           TAG_NAME: ${{ github.event.release.tag_name }}
           REPOSITORY: ${{ github.repository }}
+        working-directory: ./artifacts
