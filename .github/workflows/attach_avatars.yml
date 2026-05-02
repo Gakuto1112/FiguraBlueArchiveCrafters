@@ -5,7 +5,6 @@ on:
     types:
       - released
       - prereleased
-  workflow_dispatch:
 
 jobs:
   pack_figura_avatar:
@@ -44,8 +43,8 @@ jobs:
       - name: Generate readmes
         run: uv run generate_readme_txt.py ${TAG_NAME} ${RELEASE_DATE}
         env:
-          TAG_NAME: "v3.0.0"
-          RELEASE_DATE: "2026-04-26T13:00:27Z"
+          TAG_NAME: ${{ github.ref_name }}
+          RELEASE_DATE: ${{ github.event.release.created_at }}
         working-directory: ./readme_scripts/
       - name: Move readme
         run: |
