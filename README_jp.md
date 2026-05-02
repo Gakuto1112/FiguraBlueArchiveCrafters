@@ -62,7 +62,7 @@
 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。
 括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
 
-（現在作成中のアバターはありません。）
+- ケイ（[#162](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/162)）
 
 ### 作成予定
 
@@ -71,7 +71,6 @@
 これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
 - 花岡 ユズ（臨戦）（[#161](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/161)）
-- ケイ（[#162](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/162)）
 - 白洲 アズサ（[#155](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/155)）
 - 早瀬 ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102)）
 - 黒見 セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37)）
