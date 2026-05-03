@@ -384,7 +384,276 @@ local BlueArchiveCharacter = {
 
 	physics = {
 		physicData = {
+			{
+				models = {ModelAlias.alias.avatar.body.Hairs.FrontHair};
 
+				x = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 80;
+						sneakOffset = 30;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 0;
+							max = 80;
+						};
+
+						bodyY = {
+							multiplayer = -80;
+							min = 0;
+							max = 80;
+						};
+
+						bodyRot = {
+							multiplayer = -0.05;
+							min = 0;
+							max = 80;
+						};
+					};
+
+					horizontal = {
+						min = 0;
+						neutral = 80;
+						max = 80;
+
+						bodyX = {
+							multiplayer = -160;
+							min = 0;
+							max = 80;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.Hairs.BackHair};
+
+				x = {
+					vertical = {
+						min = -170;
+						neutral = 0;
+						max = 0;
+
+						bodyX = {
+							multiplayer = -40;
+							min = -80;
+							max = 0;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -170;
+							max = 0;
+						};
+
+						bodyRot = {
+							multiplayer = 0.025;
+							min = -80;
+							max = 0;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.Ribbon.RibbonRightTip};
+
+				z = {
+					vertical = {
+						min = -40;
+						neutral = 0;
+						max = 40;
+
+						bodyY = {
+							multiplayer = -20;
+							min = -40;
+							max = 40;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.Ribbon.RibbonRightTip.RibbonRightTipZPivot};
+
+				y = {
+					vertical = {
+						min = -80;
+						neutral = 0;
+						max = 0;
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -80;
+							min = -80;
+							max = 0;
+						};
+
+						headRot = {
+							multiplayer = 0.1;
+							min = -80;
+							max = 0;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.Ribbon.RibbonLeftTip};
+
+				z = {
+					vertical = {
+						min = -40;
+						neutral = 0;
+						max = 40;
+
+						bodyY = {
+							multiplayer = 20;
+							min = -40;
+							max = 40;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.Ribbon.RibbonLeftTip.RibbonLeftTipZPivot};
+
+				y = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 80;
+						headRotMultiplayer = 1;
+
+						headX = {
+							multiplayer = 80;
+							min = 0;
+							max = 80;
+						};
+
+						headRot = {
+							multiplayer = -0.1;
+							min = 0;
+							max = 80;
+						};
+					};
+				};
+			};
+
+
+			{
+				models = {ModelAlias.alias.avatar.head.Ribbon.RibbonBottomTip.RibbonBottomRightTip, ModelAlias.alias.avatar.head.Ribbon.RibbonBottomTip.RibbonBottomLeftTip};
+
+				x = {
+					vertical = {
+						min = -170;
+						neutral = 0;
+						max = 0;
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -160;
+							min = -80;
+							max = 0;
+						};
+
+						headRot = {
+							multiplayer = 0.1;
+							min = -80;
+							max = 0;
+						};
+
+						bodyY = {
+							multiplayer = 160;
+							min = -170;
+							max = 0;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.Ribbon.RibbonBottomTip.RibbonBottomRightTip.RibbonBottomRightTipZPivot};
+
+				z = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 22.5;
+
+						headX = {
+							multiplayer = 10;
+							min = 0;
+							max = 22.5;
+						};
+
+						headRot = {
+							multiplayer = -0.025;
+							min = 0;
+							max = 22.5;
+						};
+
+						bodyY = {
+							multiplayer = 10;
+							min = 0;
+							max = 22.5;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.Ribbon.RibbonBottomTip.RibbonBottomLeftTip.RibbonBottomLeftTipZPivot};
+
+				z = {
+					vertical = {
+						min = -22.5;
+						neutral = 0;
+						max = 0;
+
+						headX = {
+							multiplayer = -10;
+							min = -22.5;
+							max = 0;
+						};
+
+						headRot = {
+							multiplayer = 0.025;
+							min = -22.5;
+							max = 0;
+						};
+
+						bodyY = {
+							multiplayer = -10;
+							min = -22.5;
+							max = 0;
+						};
+					};
+				};
+			};
+		};
+
+		callbacks = {
+			onPhysicPerformed = function (_, model)
+				if model == ModelAlias.alias.avatar.head.Ribbon.RibbonRightTip.RibbonRightTipZPivot then
+					model:setRot(0, math.min(model:getRot().y, 0), 0)
+				elseif model == ModelAlias.alias.avatar.head.Ribbon.RibbonLeftTip.RibbonLeftTipZPivot then
+					model:setRot(0, math.max(model:getRot().y, 0), 0)
+				elseif model == ModelAlias.alias.avatar.head.Ribbon.RibbonBottomTip.RibbonBottomRightTip or model == ModelAlias.alias.avatar.head.Ribbon.RibbonBottomTip.RibbonBottomLeftTip then
+					model:setRot(math.min(model:getRot().x, 0), 0, 0)
+				elseif model == ModelAlias.alias.avatar.body.Hairs.BackHair then
+					if player:isCrouching() then
+						local rot = model:getRot().x
+						model:setRot(math.min(rot + 30, 0))
+						model.BackHairBottom:setRot(math.max(rot + 30, 0))
+					else
+						model.BackHairBottom:setRot()
+					end
+				end
+			end;
 		};
 	};
 
