@@ -30,7 +30,8 @@
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
----| "NONE" # 固有の腕の状態なし（追加時にこれは削除する）
+---| "RAIL_GUN_MAIN_HAND" # レールガンを構えている際の、武器を構えている方の腕
+---| "RAIL_GUN_OFF_HAND" # レールガンを構えている際の、武器を構えていない方の腕
 
 --[[ ******************************** ]]
 
@@ -284,7 +285,97 @@ local BlueArchiveCharacter = {
 	};
 
 	arms = {
+		callbacks = {
+			onArmStateChanged = function (_, right, left)
+				local result = {right = right, left = left}
+				if right == "GUN_MAIN_HAND" then
+					result.right = "RAIL_GUN_MAIN_HAND"
+				elseif right == "GUN_OFF_HAND" then
+					result.right = "RAIL_GUN_OFF_HAND"
+				elseif right == "CROSSBOW" and Gun.currentGunPosition == "RIGHT" then
+					result.right = "RAIL_GUN_MAIN_HAND"
+				end
 
+				if left == "GUN_MAIN_HAND" then
+					result.left = "RAIL_GUN_MAIN_HAND"
+				elseif left == "GUN_OFF_HAND" then
+					result.left = "RAIL_GUN_OFF_HAND"
+				elseif left == "CROSSBOW" and Gun.currentGunPosition == "LEFT" then
+					result.left = "RAIL_GUN_MAIN_HAND"
+				end
+
+				return result
+			end;
+
+			onAdditionalRightArmProcess = function (_, state)
+				if state == "RAIL_GUN_MAIN_HAND" then
+					events.TICK:register(function ()
+						if Arms.armState.right == "RAIL_GUN_MAIN_HAND" then
+							Arms:processArmSwingCount()
+							if player:isSwingingArm() and not player:isLeftHanded() then
+								ModelAlias.alias.avatar.rightArm:setParentType("RightArm")
+							else
+								ModelAlias.alias.avatar.rightArm:setParentType("Body")
+							end
+							if player:getActiveItem().id == "minecraft:crossbow" then
+								Arms:setArmState("CROSSBOW", "CROSSBOW")
+							end
+						end
+					end, "right_arm_tick")
+					events.RENDER:register(function (delta)
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						local rotY = headRot.y % 360
+						rotY = rotY > 180 and 0 or rotY
+						ModelAlias.alias.avatar.rightArm:setRot(player:isSwingingArm() and not player:isLeftHanded() and vectors.vec3() or vectors.vec3(math.max(headRot.x - 40 + (player:isCrouching() and 30 or 0), -40) + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5, rotY, 0))
+					end, "right_arm_render")
+					return true
+				elseif state == "RAIL_GUN_OFF_HAND" then
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+					end, "right_arm_tick")
+					events.RENDER:register(function (delta, context)
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						local isSwingingArm = player:isSwingingArm() and not player:isLeftHanded()
+						ModelAlias.alias.avatar.rightArm:setParentType((isSwingingArm or context == "FIRST_PERSON") and "RightArm" or "Body")
+						ModelAlias.alias.avatar.rightArm:setRot(isSwingingArm and vectors.vec3() or vectors.vec3(math.max(headRot.x + 50 + (player:isCrouching() and 30 or 0), 40), math.min(math.map((headRot.y + 180) % 360 - 180, -50, 50, -21, 78) + 30, 65) + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5, 0))
+					end, "right_arm_render")
+				end
+			end;
+
+			onAdditionalLeftArmProcess = function (_, state)
+				if state == "RAIL_GUN_MAIN_HAND" then
+					events.TICK:register(function ()
+						if Arms.armState.left == "RAIL_GUN_MAIN_HAND" then
+							Arms:processArmSwingCount()
+							if player:isSwingingArm() and player:isLeftHanded() then
+								ModelAlias.alias.avatar.leftArm:setParentType("LeftArm")
+							else
+								ModelAlias.alias.avatar.leftArm:setParentType("Body")
+							end
+							if player:getActiveItem().id == "minecraft:crossbow" then
+								Arms:setArmState("CROSSBOW", "CROSSBOW")
+							end
+						end
+					end, "left_arm_tick")
+					events.RENDER:register(function (delta)
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						local rotY = headRot.y % 360
+						rotY = rotY < 180 and 0 or rotY
+						ModelAlias.alias.avatar.leftArm:setRot(player:isSwingingArm() and player:isLeftHanded() and vectors.vec3() or vectors.vec3(math.max(headRot.x - 40 + (player:isCrouching() and 30 or 0), -40) + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * -2.5, rotY, 0))
+					end, "left_arm_render")
+				elseif state == "RAIL_GUN_OFF_HAND" then
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+					end, "left_arm_tick")
+					events.RENDER:register(function (delta, context)
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						local isSwingingArm = player:isSwingingArm() and player:isLeftHanded()
+						ModelAlias.alias.avatar.leftArm:setParentType((isSwingingArm or context == "FIRST_PERSON") and "LeftArm" or "Body")
+						ModelAlias.alias.avatar.leftArm:setRot(isSwingingArm and vectors.vec3() or vectors.vec3(math.max(headRot.x + 50 + (player:isCrouching() and 30 or 0), 40), math.max(math.map((headRot.y + 180) % 360 - 180, -50, 50, -78, 21) - 30, -65) + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * -2.5, 0))
+					end, "left_arm_render")
+				end
+			end;
+		};
 	};
 
 	skirt = {
@@ -292,18 +383,18 @@ local BlueArchiveCharacter = {
 	};
 
 	gun = {
-		scale = 2.2;
+		scale = 3;
 
 		gunPosition = {
 			hold = {
 				firstPersonPos = {
-					right = vectors.vec3(6, -3, -15);
-					left = vectors.vec3(-6, -3, -15);
+					right = vectors.vec3(6, 0, -22);
+					left = vectors.vec3(-6, 0, -22);
 				};
 
 				thirdPersonPos = {
-					right = vectors.vec3(0, 10, 0);
-					left = vectors.vec3(0, 10, 0);
+					right = vectors.vec3(0, 7, 3);
+					left = vectors.vec3(0, 7, 3);
 				};
 
 				thirdPersonRot = {
@@ -316,13 +407,13 @@ local BlueArchiveCharacter = {
 				type = "BODY";
 
 				pos = {
-					right = vectors.vec3(0, 1.5, 6);
-					left = vectors.vec3(0, 1.5, 6);
+					right = vectors.vec3(0, 1.5, 4);
+					left = vectors.vec3(0, 1.5, 4);
 				};
 
 				rot = {
-					right = vectors.vec3(0, -90, -32.5);
-					left = vectors.vec3(0, 90, 32.5);
+					right = vectors.vec3(0, -90, -25);
+					left = vectors.vec3(0, 90, 25);
 				};
 			};
 		};
@@ -673,6 +764,11 @@ local BlueArchiveCharacter = {
 	---初期化関数
 	---この関数は消しても構わない。
 	init = function ()
+		---レールガンを制御するクラス
+		---@type RailGun
+		RailGun = require("scripts.rail_gun")
+
+		RailGun:enable()
 	end;
 }
 

@@ -5441,7 +5441,7 @@
 			"uuid": "dd6dbe41-e1ab-cc21-6b2f-591e67615bce"
 		},
 		{
-			"name": "MuzzleEmmisive1",
+			"name": "MuzzleEmissive1",
 			"box_uv": false,
 			"rescale": false,
 			"locked": false,
@@ -5528,7 +5528,7 @@
 			"uuid": "e4686045-e257-9cbc-1d36-483cb8dc0867"
 		},
 		{
-			"name": "MuzzleEmmisive2",
+			"name": "MuzzleEmissive2",
 			"box_uv": false,
 			"rescale": false,
 			"locked": false,
@@ -5615,7 +5615,7 @@
 			"uuid": "f996dc11-f5ef-6fa3-aa3e-4642f77aa507"
 		},
 		{
-			"name": "MuzzleEmmisive3",
+			"name": "MuzzleEmissive3",
 			"box_uv": false,
 			"rescale": false,
 			"locked": false,
@@ -5660,7 +5660,7 @@
 			"uuid": "3db6843f-5ae7-15eb-afc2-6f7d2f6d4a16"
 		},
 		{
-			"name": "MuzzleEmmisive4",
+			"name": "MuzzleEmissive4",
 			"box_uv": false,
 			"rescale": false,
 			"locked": false,
@@ -5710,7 +5710,7 @@
 			"locked": false,
 			"visibility": true,
 			"autouv": 0,
-			"selected": true,
+			"selected": false,
 			"children": [
 				{
 					"name": "UpperShell",
@@ -5827,46 +5827,40 @@
 					"uuid": "3c9f917d-d15c-cc8a-1d3b-3d026fa40a71",
 					"export": true,
 					"mirror_uv": false,
-					"isOpen": true,
+					"isOpen": false,
+					"locked": false,
+					"visibility": true,
+					"autouv": 0,
+					"selected": true,
+					"children": ["dd6dbe41-e1ab-cc21-6b2f-591e67615bce", "c150153d-b9e1-16a6-7a0e-87070a6635ba"]
+				},
+				{
+					"name": "Muzzle3",
+					"origin": [0, 2.0531, -1.54085],
+					"color": 0,
+					"uuid": "8b18470b-8d8b-a5af-f065-090386a70012",
+					"export": true,
+					"mirror_uv": false,
+					"isOpen": false,
 					"locked": false,
 					"visibility": true,
 					"autouv": 0,
 					"selected": false,
-					"children": [
-						"dd6dbe41-e1ab-cc21-6b2f-591e67615bce",
-						"c150153d-b9e1-16a6-7a0e-87070a6635ba",
-						{
-							"name": "Muzzle2",
-							"origin": [0, 2.0531, -1.16585],
-							"color": 0,
-							"uuid": "7cadd78f-d290-c4b4-b665-dae7e6678983",
-							"export": true,
-							"mirror_uv": false,
-							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
-							"children": [
-								"e4686045-e257-9cbc-1d36-483cb8dc0867",
-								"50ce83b6-173f-b2f7-a561-3443b50b4425",
-								{
-									"name": "Muzzle3",
-									"origin": [0, 2.0531, -1.54085],
-									"color": 0,
-									"uuid": "8b18470b-8d8b-a5af-f065-090386a70012",
-									"export": true,
-									"mirror_uv": false,
-									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
-									"children": ["f996dc11-f5ef-6fa3-aa3e-4642f77aa507", "3db6843f-5ae7-15eb-afc2-6f7d2f6d4a16", "46c00fe0-8919-8c4b-0ff5-d1ad76ccfd52"]
-								}
-							]
-						}
-					]
+					"children": ["f996dc11-f5ef-6fa3-aa3e-4642f77aa507", "3db6843f-5ae7-15eb-afc2-6f7d2f6d4a16", "46c00fe0-8919-8c4b-0ff5-d1ad76ccfd52"]
+				},
+				{
+					"name": "Muzzle2",
+					"origin": [0, 2.0531, -1.16585],
+					"color": 0,
+					"uuid": "7cadd78f-d290-c4b4-b665-dae7e6678983",
+					"export": true,
+					"mirror_uv": false,
+					"isOpen": false,
+					"locked": false,
+					"visibility": true,
+					"autouv": 0,
+					"selected": false,
+					"children": ["e4686045-e257-9cbc-1d36-483cb8dc0867", "50ce83b6-173f-b2f7-a561-3443b50b4425"]
 				},
 				"a1cd5d06-a236-d854-4966-7a744d2b808f",
 				"8a9741c1-ee42-0982-5204-161020907784",
@@ -5944,7 +5938,7 @@
 					"uuid": "343a56f2-2d3f-376c-b4e7-9326e2bc9348",
 					"export": true,
 					"mirror_uv": false,
-					"isOpen": false,
+					"isOpen": true,
 					"locked": false,
 					"visibility": true,
 					"autouv": 0,
@@ -6008,7 +6002,7 @@
 					"uuid": "8866d63e-c523-70fe-0af2-2e23ea2748ae",
 					"export": true,
 					"mirror_uv": false,
-					"isOpen": false,
+					"isOpen": true,
 					"locked": false,
 					"visibility": true,
 					"autouv": 0,
