@@ -292,30 +292,43 @@ local BlueArchiveCharacter = {
 	};
 
 	gun = {
-		scale = 1.2;
+		scale = 2.2;
 
 		gunPosition = {
 			hold = {
+				firstPersonPos = {
+					right = vectors.vec3(6, -3, -15);
+					left = vectors.vec3(-6, -3, -15);
+				};
 
+				thirdPersonPos = {
+					right = vectors.vec3(0, 10, 0);
+					left = vectors.vec3(0, 10, 0);
+				};
+
+				thirdPersonRot = {
+					right = vectors.vec3(130, 0, 0);
+					left = vectors.vec3(130, 0, 0);
+				};
 			};
 
 			put = {
 				type = "BODY";
 
 				pos = {
-					right = vectors.vec3(4.5, -3, 4);
-					left = vectors.vec3(-4.5, -3, 4);
+					right = vectors.vec3(0, 1.5, 6);
+					left = vectors.vec3(0, 1.5, 6);
 				};
 
 				rot = {
-					right = vectors.vec3(-90, 0, 0);
-					left = vectors.vec3(-90, 0, 0);
+					right = vectors.vec3(0, -90, -32.5);
+					left = vectors.vec3(0, 90, 32.5);
 				};
 			};
 		};
 
 		sound = {
-			name = "minecraft:entity.iron_golem.hurt";
+			name = "minecraft:entity.blaze.hurt";
 			pitch = 2;
 		};
 	};
