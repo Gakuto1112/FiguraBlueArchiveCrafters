@@ -53,7 +53,6 @@
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
----| "NONE" # 固有の腕の状態なし（追加時にこれは削除する）
 ---| "RAIL_GUN_MAIN_HAND" # レールガンを構えている際の、武器を構えている方の腕
 ---| "RAIL_GUN_OFF_HAND" # レールガンを構えている際の、武器を構えていない方の腕
 
@@ -356,14 +355,16 @@ local BlueArchiveCharacter = {
 			onAdditionalRightArmProcess = function (_, state)
 				if state == "RAIL_GUN_MAIN_HAND" then
 					events.TICK:register(function ()
-						Arms:processArmSwingCount()
-						if player:isSwingingArm() and not player:isLeftHanded() then
-							ModelAlias.alias.avatar.rightArm:setParentType("RightArm")
-						else
-							ModelAlias.alias.avatar.rightArm:setParentType("Body")
-						end
-						if player:getActiveItem().id == "minecraft:crossbow" then
-							Arms:setArmState("CROSSBOW", "CROSSBOW")
+						if Arms.armState.right == "RAIL_GUN_MAIN_HAND" then
+							Arms:processArmSwingCount()
+							if player:isSwingingArm() and not player:isLeftHanded() then
+								ModelAlias.alias.avatar.rightArm:setParentType("RightArm")
+							else
+								ModelAlias.alias.avatar.rightArm:setParentType("Body")
+							end
+							if player:getActiveItem().id == "minecraft:crossbow" then
+								Arms:setArmState("CROSSBOW", "CROSSBOW")
+							end
 						end
 					end, "right_arm_tick")
 					events.RENDER:register(function (delta)
@@ -389,14 +390,16 @@ local BlueArchiveCharacter = {
 			onAdditionalLeftArmProcess = function (_, state)
 				if state == "RAIL_GUN_MAIN_HAND" then
 					events.TICK:register(function ()
-						Arms:processArmSwingCount()
-						if player:isSwingingArm() and player:isLeftHanded() then
-							ModelAlias.alias.avatar.leftArm:setParentType("LeftArm")
-						else
-							ModelAlias.alias.avatar.leftArm:setParentType("Body")
-						end
-						if player:getActiveItem().id == "minecraft:crossbow" then
-							Arms:setArmState("CROSSBOW", "CROSSBOW")
+						if Arms.armState.left == "RAIL_GUN_MAIN_HAND" then
+							Arms:processArmSwingCount()
+							if player:isSwingingArm() and player:isLeftHanded() then
+								ModelAlias.alias.avatar.leftArm:setParentType("LeftArm")
+							else
+								ModelAlias.alias.avatar.leftArm:setParentType("Body")
+							end
+							if player:getActiveItem().id == "minecraft:crossbow" then
+								Arms:setArmState("CROSSBOW", "CROSSBOW")
+							end
 						end
 					end, "left_arm_tick")
 					events.RENDER:register(function (delta)
