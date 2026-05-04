@@ -20,7 +20,7 @@
 ---@field package responseHandler Future.HttpResponse|nil httpレスポンスのハンドラ
 ---@field package textAnimationCount integer 新しいバージョン表示のテキストのアニメーションのカウンター
 local UpdateChecker = {
-	AVATAR_VERSION = "v3.0.1";
+	AVATAR_VERSION = "v3.0.2";
 	UPDATE_CHECK_ENDPOINT_URI = "https://api.github.com/repos/Gakuto1112/FiguraBlueArchiveCrafters/tags";
 	RELEASE_PAGE_URL = "https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/releases/tag/";
 
