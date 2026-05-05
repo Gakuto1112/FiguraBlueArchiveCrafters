@@ -440,19 +440,19 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {};
+			models = {ModelAlias.alias.avatar.gun.UpperShell.UpperShellTop.BeltFront, ModelAlias.alias.avatar.gun.BeltBack, models.models.ex_skill_1.Desk, models.models.ex_skill_1.CyberArea};
 
-			animations = {"main", "ex_skill_1"};
+			animations = {"main", "gun", "ex_skill_1"};
 
 			camera = {
 				start = {
-					rot = vectors.vec3(0, 180, 0);
-					pos = vectors.vec3(0, 28, -64);
+					rot = vectors.vec3(45, 160, 0);
+					pos = vectors.vec3(25, 40, 91);
 				};
 
 				fin = {
-					rot = vectors.vec3(0, 180, 0);
-					pos = vectors.vec3(0, 28, -64);
+					rot = vectors.vec3(0, -180, 0);
+					pos = vectors.vec3(0, 23.5, -52);
 				};
 			};
 
@@ -505,7 +505,10 @@ local BlueArchiveCharacter = {
 				end;
 
 				onAnimationTick = function (self, tick)
-					if tick == 36 then
+					if tick == 0 then
+						ModelAlias.alias.avatar.gun:setPos()
+						ModelAlias.alias.avatar.gun:setRot()
+					elseif tick == 36 then
 						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(10, 0)
 					elseif tick == 46 then
 						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(20, 0)
@@ -514,15 +517,14 @@ local BlueArchiveCharacter = {
 					elseif tick == 65 then
 						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setPrimaryRenderType("EMISSIVE_SOLID")
 					end
-
-					if tick == 96 then
-						for _, modelName in ipairs(self.exSkill.primary.animations) do
-							animations["models."..modelName]["ex_skill_1"]:pause()
-						end
-					end
 				end;
 
 				onPostAnimation = function (self, forcedStop)
+					if Gun.currentGunPosition == "NONE" then
+						local isLeftHanded = player:isLeftHanded()
+						ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, 12, 0):add(self.gun.gunPosition.put.pos[isLeftHanded and "left" or "right"]))
+						ModelAlias.alias.avatar.gun:setRot(self.gun.gunPosition.put.rot[isLeftHanded and "left" or "right"])
+					end
 					models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels()
 					models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setPrimaryRenderType("CUTOUT")
 				end;
