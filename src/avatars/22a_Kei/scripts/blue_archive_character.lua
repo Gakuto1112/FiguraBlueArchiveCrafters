@@ -16,6 +16,8 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "CLOSED2" # 閉じた目2
+---| "CENTER" # 少し反対側を見る目
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -23,10 +25,13 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "CLOSED2" # 閉じた目2
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
 ---| "NORMAL" # 通常
+---| "CLOSED" # 閉じた口
+---| "SMILE" # にっこり
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -267,9 +272,11 @@ local BlueArchiveCharacter = {
 	faceParts = {
 		rightEye = {
 			NORMAL = vectors.vec2(0, 0); --必須
-			SURPRISED = vectors.vec2(1, 0); --必須
-			TIRED = vectors.vec2(2, 0); --必須
-			CLOSED = vectors.vec2(3, 0); --必須
+			SURPRISED = vectors.vec2(2, 0); --必須
+			TIRED = vectors.vec2(3, 0); --必須
+			CLOSED = vectors.vec2(4, 0); --必須
+			CLOSED2 = vectors.vec2(5, 0);
+			CENTER = vectors.vec2(6, 0)
 		};
 
 		leftEye = {
@@ -277,10 +284,12 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(1, 0); --必須
 			TIRED = vectors.vec2(2, 0); --必須
 			CLOSED = vectors.vec2(3, 0); --必須
+			CLOSED2 = vectors.vec2(4, 0);
 		};
 
 		mouth = {
-
+			CLOSED = vectors.vec2(0, 0);
+			SMILE = vectors.vec2(1, 0);
 		};
 	};
 
@@ -499,9 +508,10 @@ local BlueArchiveCharacter = {
 							:setPos(-46, 16.5, 8)
 							:setRot(90, 70, 0)
 
-
 						self.exSkill.primary.isInitialized = true
 					end
+
+					FaceParts:setEmotion("CLOSED2", "CLOSED2", "CLOSED", 188, true)
 				end;
 
 				onAnimationTick = function (self, tick)
@@ -516,6 +526,8 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(30, 0)
 					elseif tick == 65 then
 						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setPrimaryRenderType("EMISSIVE_SOLID")
+					elseif tick == 188 then
+						FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 37, true)
 					end
 				end;
 
