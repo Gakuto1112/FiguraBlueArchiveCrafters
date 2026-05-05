@@ -442,7 +442,7 @@ local BlueArchiveCharacter = {
 
 			models = {};
 
-			animations = {"main"};
+			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -455,6 +455,82 @@ local BlueArchiveCharacter = {
 					pos = vectors.vec3(0, 28, -64);
 				};
 			};
+
+			callbacks = {
+				onPreAnimation = function (self)
+					if not self.exSkill.primary.isInitialized then
+						--デスクの準備
+						for i = 0, 1 do
+							models.models.ex_skill_1.Desk:newBlock("ex_skill_1_desk_block_" .. (i + 1))
+								:setBlock("minecraft:smooth_quartz_stairs[facing=east,half=top]")
+								:setPos(-16, 0, i * 16)
+						end
+						for i = 0, 2 do
+							for j = 0, 1 do
+								models.models.ex_skill_1.Desk:newBlock("ex_skill_1_desk_block_" .. (i * 2 + j + 3))
+									:setBlock("minecraft:smooth_quartz_slab[type=top]")
+									:setPos((i + 2) * -16, 0, j * 16)
+							end
+						end
+						for i = 0, 1 do
+							models.models.ex_skill_1.Desk:newBlock("ex_skill_1_desk_block_" .. (i + 9))
+								:setBlock("minecraft:smooth_quartz_stairs[facing=west,half=top]")
+								:setPos(-80, 0, i * 16)
+						end
+						local paintings = {"minecraft:alban", "minecraft:aztec", "minecraft:aztec2", "minecraft:bomb", "minecraft:kebab", "minecraft:plant", "minecraft:wasteland", "minecraft:meditative"}
+						local gameVersion = client:getVersion()
+						for i = 0, 1 do
+							models.models.ex_skill_1.Desk:newBlock("ex_skill_1_desk_block_" .. (i + 11))
+								:setBlock("minecraft:iron_block")
+								:setPos(i * 16 - 48, 16, 16)
+							models.models.ex_skill_1.Desk:newEntity("ex_skill_1_entity_" .. (i + 1))
+								:setNbt("minecraft:painting", "{variant: \"" .. (paintings[math.random(StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion and 7 or #paintings)]) .. "\"}")
+								:setPos(i * -16 - 24, 24, 16)
+								:setRot(0, 180, 0)
+						end
+						models.models.ex_skill_1.Desk:newBlock("ex_skill_1_desk_block_13")
+							:setBlock("minecraft:potted_blue_orchid")
+							:setPos(-64, 16, 16)
+						models.models.ex_skill_1.Desk:newBlock("ex_skill_1_desk_block_14")
+							:setBlock("minecraft:heavy_weighted_pressure_plate")
+							:setPos(-32, 16, 0)
+						models.models.ex_skill_1.Desk:newItem("ex_skill_1_desk_item")
+							:setItem("minecraft:iron_pickaxe")
+							:setPos(-46, 16.5, 8)
+							:setRot(90, 70, 0)
+
+
+						self.exSkill.primary.isInitialized = true
+					end
+				end;
+
+				onAnimationTick = function (self, tick)
+					if tick == 36 then
+						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(10, 0)
+					elseif tick == 46 then
+						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(20, 0)
+					elseif tick == 59 then
+						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(30, 0)
+					elseif tick == 65 then
+						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setPrimaryRenderType("EMISSIVE_SOLID")
+					end
+
+					if tick == 96 then
+						for _, modelName in ipairs(self.exSkill.primary.animations) do
+							animations["models."..modelName]["ex_skill_1"]:pause()
+						end
+					end
+				end;
+
+				onPostAnimation = function (self, forcedStop)
+					models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels()
+					models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setPrimaryRenderType("CUTOUT")
+				end;
+			};
+
+			---このExスキルが初期化されたかどうか
+			---@type boolean
+			isInitialized = false;
 		};
 	};
 
