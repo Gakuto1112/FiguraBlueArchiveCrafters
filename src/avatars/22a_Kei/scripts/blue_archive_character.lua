@@ -508,15 +508,15 @@ local BlueArchiveCharacter = {
 							:setPos(-46, 16.5, 8)
 							:setRot(90, 70, 0)
 
-						--写真の色味調整
-						for i = 1, 4 do
-							models.models.ex_skill_1.CyberArea.CyberImages["CyberImage" .. i]["CyberImage" .. i]:setLight(15, 15)
-						end
-
 						self.exSkill.primary.isInitialized = true
 					end
 
 					if host:isHost() then
+						--写真の色味調整
+						for i = 1, 4 do
+							models.models.ex_skill_1.CyberArea.CyberImages["CyberImage" .. i]["CyberImage" .. i]:setColor(vectors.vec3(1, 1, 1):scale(client:hasShaderPack() and 0.5 or 1))
+						end
+
 						local gameVersion = client:getVersion()
 						local shouldAdjustBackgroundRot = StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion
 						models.models.ex_skill_1.Gui.ScreenFilter:setScale(client:getScaledWindowSize():copy():augmented(1))
