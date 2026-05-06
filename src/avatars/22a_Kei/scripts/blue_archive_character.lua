@@ -449,7 +449,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {ModelAlias.alias.avatar.gun.UpperShell.UpperShellTop.BeltFront, ModelAlias.alias.avatar.gun.BeltBack, models.models.ex_skill_1.Desk, models.models.ex_skill_1.CyberArea};
+			models = {ModelAlias.alias.avatar.head.EyeShines, ModelAlias.alias.avatar.gun.UpperShell.UpperShellTop.BeltFront, ModelAlias.alias.avatar.gun.BeltBack, models.models.ex_skill_1.Desk, models.models.ex_skill_1.Gui};
 
 			animations = {"main", "gun", "ex_skill_1"};
 
@@ -508,8 +508,30 @@ local BlueArchiveCharacter = {
 							:setPos(-46, 16.5, 8)
 							:setRot(90, 70, 0)
 
+						--写真の色味調整
+						for i = 1, 4 do
+							models.models.ex_skill_1.CyberArea.CyberImages["CyberImage" .. i]["CyberImage" .. i]:setLight(15, 15)
+						end
+
 						self.exSkill.primary.isInitialized = true
 					end
+
+					if host:isHost() then
+						local gameVersion = client:getVersion()
+						local shouldAdjustBackgroundRot = StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion
+						models.models.ex_skill_1.Gui.ScreenFilter:setScale(client:getScaledWindowSize():copy():augmented(1))
+						events.RENDER:register(function ()
+							if shouldAdjustBackgroundRot then
+								for i = 1, 4 do
+									models.models.ex_skill_1.CyberArea.CyberImages["CyberImage" .. i]["CyberImage" .. i]:setRot(0, 0, renderer:getCameraRot().z)
+								end
+							end
+							models.models.ex_skill_1.Gui.ScreenFilter:setOpacity(models.models.ex_skill_1.Gui.ScreenFilterOpacity:getAnimScale().x)
+						end, "ex_skill_1_render_host")
+					end
+					events.RENDER:register(function ()
+						ModelAlias.alias.avatar.head.EyeShines:setOpacity(ModelAlias.alias.avatar.head.EyeShines.EyeShinesOpacity:getAnimScale().x)
+					end, "ex_skill_1_render")
 
 					FaceParts:setEmotion("CLOSED2", "CLOSED2", "CLOSED", 188, true)
 				end;
@@ -519,19 +541,67 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setPos()
 						ModelAlias.alias.avatar.gun:setRot()
 					elseif tick == 36 then
-						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(10, 0)
+						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(0, 7)
 					elseif tick == 46 then
-						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(20, 0)
+						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(0, 14)
 					elseif tick == 59 then
-						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(30, 0)
+						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels(0, 21)
+						sounds:playSound("minecraft:block.beacon.activate", ModelUtils.getModelWorldPos(models.models.ex_skill_1.Desk.Mascot), 0.5, 2)
 					elseif tick == 65 then
 						models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setPrimaryRenderType("EMISSIVE_SOLID")
+					elseif tick == 93 and host:isHost() then
+						models.models.ex_skill_1.CyberArea.CyberAreaBase:setColor(0, 0, 1)
+						models.models.ex_skill_1.CyberArea.CyberAreaEffect1:setColor(0.757, 0.859, 1)
+						models.models.ex_skill_1.CyberArea:setVisible(true)
+					elseif tick == 94 and host:isHost() then
+						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.CyberArea.Face)
+						local bodyYaw = player:getBodyYaw()
+						for _ = 1, 50 do
+							local offset = vectors.vec3(math.random() * 2.5 - 1.25, math.random() * 1.75 - 0.875, 0)
+							particles:newParticle("minecraft:end_rod", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, offset, 0, 1, 0))):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1, offset.x * 0.025, offset.y * 0.025, 0.15 * math.random(), 0, 1, 0)):setColor(0.833, 0.977, 0.999)
+						end
+						sounds:playSound("minecraft:entity.player.splash", anchorPos, 1, 2)
+					elseif tick == 185 and host:isHost() then
+						models.models.ex_skill_1.CyberArea.CyberAreaBase:setColor(0.987, 0.731, 0.910)
+						models.models.ex_skill_1.CyberArea.CyberAreaEffect1:setColor(0.998, 0.959, 1)
+						models.models.ex_skill_1.CyberArea.CyberImages:setVisible(false)
 					elseif tick == 188 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 37, true)
+						local bodyYaw = player:getBodyYaw()
+						local anchorPos = ModelUtils.getModelWorldPos(models.models.main.Avatar):copy():add(vectors.rotateAroundAxis(bodyYaw * -1, 0, 1.5, -1, 0, 1, 0))
+						for i = 0, 35 do
+							particles:newParticle("minecraft:end_rod", anchorPos):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(i * 10, 0, 0.1 + math.random() * 0.1, 0, 0, 0, 1), 0, 1, 0))
+						end
+						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 1.5)
+					end
+
+					if tick >= 80 then
+						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace)
+						local bodyYaw = player:getBodyYaw()
+						for _ = 1, 2 do
+							particles:newParticle("minecraft:end_rod", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 0.2083 - 0.1042, math.random() * 0.1458 - 0.0729, 0, 0, 1, 0))):setScale(0.05):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1, 0, 0, 0.008, 0, 1, 0)):setColor(1, 0.749, 0.271)
+						end
+					end
+					if host:isHost() and tick % 4 == 0 then
+						local face = math.random(1, 4)
+						if face == 1 then
+							--下面
+							ExSkill1TextManager:spawn(vectors.vec3(math.random() * 144 - 72, math.random() * 10, 72), face)
+						elseif face == 2 then
+							--上面
+							ExSkill1TextManager:spawn(vectors.vec3(math.random() * 144 - 72, 144 - math.random() * 10, 72), face)
+						elseif face == 3 then
+							--左面
+							ExSkill1TextManager:spawn(vectors.vec3(math.random() * 10 - 72, math.random() * 144, 72), face)
+						elseif face == 4 then
+							--右面
+							ExSkill1TextManager:spawn(vectors.vec3(math.random() * 10 + 62, math.random() * 144, 72), face)
+						end
 					end
 				end;
 
 				onPostAnimation = function (self, forcedStop)
+					events.RENDER:remove("ex_skill_1_render")
 					if Gun.currentGunPosition == "NONE" then
 						local isLeftHanded = player:isLeftHanded()
 						ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, 12, 0):add(self.gun.gunPosition.put.pos[isLeftHanded and "left" or "right"]))
@@ -539,6 +609,12 @@ local BlueArchiveCharacter = {
 					end
 					models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setUVPixels()
 					models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace:setPrimaryRenderType("CUTOUT")
+					if host:isHost() then
+						events.RENDER:remove("ex_skill_1_render_host")
+						models.models.ex_skill_1.CyberArea:setVisible(false)
+						models.models.ex_skill_1.CyberArea.CyberImages:setVisible(true)
+						ExSkill1TextManager:removeAll()
+					end
 				end;
 			};
 
@@ -857,6 +933,15 @@ local BlueArchiveCharacter = {
 		---レールガンを制御するクラス
 		---@type RailGun
 		RailGun = require("scripts.rail_gun")
+
+		---Exスキルで使用するテキストオブジェクトのインスタンスクラス
+		---@type ExSkillSprite
+		ExSkill1Text = require("scripts.ex_skill_1_text")
+
+		---Exスキルで使用するテキストオブジェクトのマネージャークラス
+		---@type ExSkill1TextManager
+		ExSkill1TextManager = require("scripts.ex_skill_1_text_manager")
+		ExSkill1TextManager = ExSkill1TextManager.new()
 
 		RailGun:enable()
 	end;
