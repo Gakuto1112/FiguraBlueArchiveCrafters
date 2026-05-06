@@ -579,7 +579,7 @@ local BlueArchiveCharacter = {
 						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Desk.Mascot.MascotHead.MascotFace)
 						local bodyYaw = player:getBodyYaw()
 						for _ = 1, 2 do
-							particles:newParticle("minecraft:end_rod", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 0.2083 - 0.1042, math.random() * 0.1458 - 0.0729, 0, 0, 1, 0))):setScale(0.05):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1, 0, 0, 0.008, 0, 1, 0)):setColor(1, 0.749, 0.271)
+							particles:newParticle("minecraft:end_rod", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 0.2083 - 0.1042, math.random() * 0.1458 - 0.0729, 0, 0, 1, 0))):setScale(0.05):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1, 0, 0, 0.008, 0, 1, 0)):setColor(1, 0.749, 0.271):setGravity(0)
 						end
 					end
 					if host:isHost() and tick % 4 == 0 then
