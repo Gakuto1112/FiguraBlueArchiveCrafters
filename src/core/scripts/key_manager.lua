@@ -38,7 +38,7 @@ local KeyManager = {
             self.keyMappings[id] = {}
         end
         self.keyMappings[id].keybind = keybinds:newKeybind(displayName, keyName)
-        local loadedKey = Config:loadConfig("PRIVATE", "key_manager.key_assignment." .. displayName, keyName)
+        local loadedKey = Config:loadConfig("PRIVATE", "key_manager.key_assignment." .. id, keyName)
         if loadedKey ~= keyName then
             self.keyMappings[id].keybind:setKey(loadedKey)
         end
