@@ -636,6 +636,14 @@ local BlueArchiveCharacter = {
 					end
 
 					if host:isHost() then
+						--高解像度の写真が入手可能であればそれに置換
+						if textures["ex_skill_1_image_1_high_resolution"] == nil and #Locale:getLocalizedText("ex_skill.photo_data_1") >= 32 then
+							for i = 1, 4 do
+								textures:read("ex_skill_1_image_" .. i .. "_high_resolution", Locale:getLocalizedText("ex_skill.photo_data_" .. i))
+								models.models.ex_skill_1.CyberArea.CyberImages["CyberImage" .. i]["CyberImage" .. i]:setPrimaryTexture("CUSTOM", textures["ex_skill_1_image_" .. i .. "_high_resolution"])
+							end
+						end
+
 						--写真の色味調整
 						for i = 1, 4 do
 							models.models.ex_skill_1.CyberArea.CyberImages["CyberImage" .. i]["CyberImage" .. i]:setColor(vectors.vec3(1, 1, 1):scale(client:hasShaderPack() and 0.5 or 1))
