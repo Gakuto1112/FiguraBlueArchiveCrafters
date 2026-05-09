@@ -767,6 +767,17 @@ local BlueArchiveCharacter = {
 
 	costume = {
 		isAltCostumeEnabled = false;
+
+		callbacks = {
+			onArmorChange = function (_, parts, isVisible)
+				if parts == "HELMET" then
+					ModelAlias.alias.avatar.head.Ribbon:setVisible(not isVisible)
+				elseif parts == "CHEST_PLATE" then
+					ModelAlias.alias.avatar.body.Hairs.FrontHair:setPos(0, 0, isVisible and -1 or 0)
+					ModelAlias.alias.avatar.body.Hairs.BackHair:setPos(0, 0, isVisible and 1 or 0)
+				end
+			end;
+		};
 	};
 
 	bubble = {
