@@ -6,8 +6,19 @@
 	"ignoredTextures": [],
 	"autoAnims": [],
 	"customizations": {
-		"models.models.placement_object.PlacementObject": {
+		"models.models.placement_object.FieldGenerator": {
 			"visible": false
+		},
+		"models.models.placement_object.FieldGenerator.FieldGeneratorMuzzle.FieldGeneratorMuzzleEmissives": {
+			"primaryRenderType": "EMISSIVE_SOLID"
+		},
+		"models.models.placement_object.FieldTile": {
+			"visible": false,
+			"primaryRenderType": "CUTOUT_EMISSIVE_SOLID"
+		},
+		"models.models.placement_object.FieldCube": {
+			"visible": false,
+			"primaryRenderType": "EMISSIVE_SOLID"
 		},
 		"models.models.gun.Gun.Muzzle1.MuzzleEmissive1": {
 			"primaryRenderType": "EMISSIVE_SOLID"

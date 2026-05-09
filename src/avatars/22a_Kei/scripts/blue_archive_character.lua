@@ -435,13 +435,84 @@ local BlueArchiveCharacter = {
 
 	placementObjects = {
 		{
-			model = models.models.placement_object.PlacementObject;
+			model = models.models.placement_object.FieldGenerator;
 
 			boundingBox = {
-				size = vectors.vec3(8, 8, 8)
+				size = vectors.vec3(10, 12, 10)
 			};
 
-			placementMode = "COPY";
+			placementMode = "MOVE";
+
+			callbacks = {
+				onGround = function (self, placementObject)
+					if not self.placementObjects[1].onGroundFlag then
+						animations["models.placement_object"]["field_generator"]:play()
+						sounds:playSound("minecraft:block.beacon.activate", placementObject.currentPos, 1, 1.5)
+						self.placementObjects[1].beaconSound = sounds:playSound("minecraft:block.beacon.ambient", placementObject.currentPos, 1, 1.5, true)
+
+						for i = -96, 96, 6 do
+							local radius = math.sqrt(9216 - math.pow(i, 2))
+							local offset = -6
+							while(radius - offset >= radius * -1) do
+								PlacementObjectTileManager:spawn(placementObject.object, vectors.vec3(i, 0.1, radius - offset), vectors.vec3(0, 0, 0), vectors.vec3(0.983, 0.645, 0.816), (radius * 2 - offset) * 2, false, offset < 0)
+								offset = offset + 6
+							end
+						end
+
+						self.placementObjects[1].onGroundFlag = true
+					end
+				end;
+
+				onDeinit = function (self)
+					if self.placementObjects[1].onGroundFlag then
+						self.placementObjects[1].beaconSound:stop()
+						self.placementObjects[1].beaconSound = nil
+						PlacementObjectTileManager:removeAll()
+						self.placementObjects[1].tickCount = 0
+						self.placementObjects[1].onGroundFlag = false
+					end
+				end;
+
+				onTick = function (self, placementObject)
+					if self.placementObjects[1].onGroundFlag then
+						for i = 0, 1 do
+							particles:newParticle("minecraft:end_rod", placementObject.currentPos:copy():add(vectors.rotateAroundAxis(self.placementObjects[1].tickCount * 15 + i * 180, 0, 0.2, 1, 0, 1, 0))):setGravity(0):setColor(0.976, 0.522, 0.514):setLifetime(8)
+						end
+						for i = 0, 71 do
+							particles:newParticle("minecraft:end_rod", placementObject.currentPos:copy():add(vectors.rotateAroundAxis(i * 5, 0, 0, (self.placementObjects[1].tickCount % 24) / 4, 0, 1, 0))):setScale(math.random() * 0.25 + 0.75):setVelocity(0, 0.2, 0):setGravity(2):setColor(0.983, 0.645, 0.816):setLifetime(3)
+							particles:newParticle("minecraft:end_rod", placementObject.currentPos:copy():add(vectors.rotateAroundAxis(i * 5, 0, 0, 6, 0, 1, 0))):setScale(math.random() * 0.25 + 0.75):setGravity(0):setColor(0.983, 0.645, 0.816):setLifetime(1)
+						end
+
+						if self.placementObjects[1].tickCount > 0 then
+							if self.placementObjects[1].tickCount % 12 == 0 then
+								for i = -96, 96, 6 do
+									local radius = math.sqrt(9216 - math.pow(i, 2))
+									PlacementObjectTileManager:spawn(placementObject.object, vectors.vec3(i, 0.1, radius), vectors.vec3(0, 0, 0), vectors.vec3(0.983, 0.645, 0.816), radius * 4, false, false)
+								end
+								for i = 0, 71 do
+									PlacementObjectTileManager:spawn(placementObject.object, vectors.rotateAroundAxis(i * 5, 0, 0, 96, 0, 1, 0), vectors.vec3(90, i * 5, 0), vectors.vec3(0.983, 0.645, 0.816), math.random(100, 150), true, false)
+								end
+							end
+							PlacementObjectCubeManager:spawn(placementObject.object, vectors.vec3(math.random() * 128 - 64, 0, math.random() * 128 - 64), vectors.vec3(0.983, 0.645, 0.816))
+						end
+
+						self.placementObjects[1].beaconSound:setPos(placementObject.currentPos)
+						self.placementObjects[1].tickCount = self.placementObjects[1].tickCount + 1
+					end
+				end;
+			};
+
+			---オブジェクト出現後に着地したフラグ
+			---@type boolean
+			onGroundFlag = false;
+
+			---`onGroundFlag`が`true`になった後の経過時間(ティック)
+			---@type integer
+			tickCount = 0;
+
+			---ビーコンの音のインスタンスを格納する変数
+			---@type Sound|nil
+			beaconSound = nil;
 		};
 	};
 
@@ -639,6 +710,10 @@ local BlueArchiveCharacter = {
 						if forcedStop then
 							ExSkill1SpriteManager:removeAll()
 						end
+					end
+					if not forcedStop then
+						local bodyYaw = player:getBodyYaw()
+						PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 5, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
 					end
 				end;
 			};
@@ -977,7 +1052,28 @@ local BlueArchiveCharacter = {
 		ExSkill1SpriteManager = require("scripts.ex_skill_1_sprite_manager")
 		ExSkill1SpriteManager = ExSkill1SpriteManager.new()
 
+		--設置物で使用するタイルオブジェクトのインスタンスクラス
+		---@type PlacementObjectTile
+		PlacementObjectTile = require("scripts.placement_object_tile")
+
+		--設置物で使用するタイルオブジェクトのマネージャークラス
+		---@type PlacementObjectTileManager
+		PlacementObjectTileManager = require("scripts.placement_object_tile_manager")
+		PlacementObjectTileManager = PlacementObjectTileManager.new()
+
+		--設置物で使用するキューブオブジェクトのインスタンスクラス
+		---@type PlacementObjectCube
+		PlacementObjectCube = require("scripts.placement_object_cube")
+
+		--設置物で使用するキューブオブジェクトのマネージャークラス
+		---@type PlacementObjectCubeManager
+		PlacementObjectCubeManager = require("scripts.placement_object_cube_manager")
+		PlacementObjectCubeManager = PlacementObjectCubeManager.new()
+
 		RailGun:enable()
+
+		local bodyYaw = player:getBodyYaw()
+		PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
 	end;
 }
 
