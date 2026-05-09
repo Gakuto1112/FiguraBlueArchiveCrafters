@@ -3,13 +3,19 @@
 		"first_name": "Kei",
 		"last_name": "Tendo"
 	},
-	"ignoredTextures": [],
+	"ignoredTextures": [
+		"textures.for_modeling.beacon_beam"
+	],
 	"autoAnims": [],
 	"customizations": {
 		"models.models.placement_object.FieldGenerator": {
 			"visible": false
 		},
-		"models.models.placement_object.FieldGenerator.FieldGeneratorMuzzle.FieldGeneratorMuzzleEmissives": {
+		"models.models.placement_object.FieldGenerator.Generator.FieldGeneratorMuzzle.FieldGeneratorMuzzleEmissives": {
+			"primaryRenderType": "EMISSIVE_SOLID"
+		},
+		"models.models.placement_object.FieldGenerator.BeaconBeam": {
+			"visible": false,
 			"primaryRenderType": "EMISSIVE_SOLID"
 		},
 		"models.models.placement_object.FieldTile": {
