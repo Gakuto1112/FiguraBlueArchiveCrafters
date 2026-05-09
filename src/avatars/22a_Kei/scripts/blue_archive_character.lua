@@ -536,7 +536,7 @@ local BlueArchiveCharacter = {
 					FaceParts:setEmotion("CLOSED2", "CLOSED2", "CLOSED", 188, true)
 				end;
 
-				onAnimationTick = function (self, tick)
+				onAnimationTick = function (_, tick)
 					if tick == 0 then
 						ModelAlias.alias.avatar.gun:setPos()
 						ModelAlias.alias.avatar.gun:setRot()
@@ -565,6 +565,7 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.CyberArea.CyberAreaBase:setColor(0.987, 0.731, 0.910)
 						models.models.ex_skill_1.CyberArea.CyberAreaEffect1:setColor(0.998, 0.959, 1)
 						models.models.ex_skill_1.CyberArea.CyberImages:setVisible(false)
+						ExSkill1SpriteManager:removeAll()
 					elseif tick == 188 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 37, true)
 						local bodyYaw = player:getBodyYaw()
@@ -580,6 +581,27 @@ local BlueArchiveCharacter = {
 						local bodyYaw = player:getBodyYaw()
 						for _ = 1, 2 do
 							particles:newParticle("minecraft:end_rod", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 0.2083 - 0.1042, math.random() * 0.1458 - 0.0729, 0, 0, 1, 0))):setScale(0.05):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1, 0, 0, 0.008, 0, 1, 0)):setColor(1, 0.749, 0.271):setGravity(0)
+						end
+					end
+					if host:isHost() and tick <= 188 and tick % 4 == 0 then
+						for _ = 1, 16 do
+							for i = 1, 4 do
+								local target = models.models.ex_skill_1.CyberArea.CyberImages["CyberImage" .. i]["CyberImage" .. i];
+								local face = math.random(1, 4)
+								if face == 1 then
+									--下面
+									ExSkill1SpriteManager:spawn(target, vectors.vec3(math.random() * 16 - 8, -4.5, 0))
+								elseif face == 2 then
+									--上面
+									ExSkill1SpriteManager:spawn(target, vectors.vec3(math.random() * 16 - 8, 4.5, 0))
+								elseif face == 3 then
+									--左面
+									ExSkill1SpriteManager:spawn(target, vectors.vec3(-8, math.random() * 9 - 4.5, 0))
+								elseif face == 4 then
+									--左面
+									ExSkill1SpriteManager:spawn(target, vectors.vec3(8, math.random() * 9 - 4.5, 0))
+								end
+							end
 						end
 					end
 					if host:isHost() and tick % 4 == 0 then
@@ -614,6 +636,9 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.CyberArea:setVisible(false)
 						models.models.ex_skill_1.CyberArea.CyberImages:setVisible(true)
 						ExSkill1TextManager:removeAll()
+						if forcedStop then
+							ExSkill1SpriteManager:removeAll()
+						end
 					end
 				end;
 			};
@@ -935,13 +960,22 @@ local BlueArchiveCharacter = {
 		RailGun = require("scripts.rail_gun")
 
 		---Exスキルで使用するテキストオブジェクトのインスタンスクラス
-		---@type ExSkillSprite
+		---@type ExSkill1Text
 		ExSkill1Text = require("scripts.ex_skill_1_text")
 
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type ExSkill1TextManager
 		ExSkill1TextManager = require("scripts.ex_skill_1_text_manager")
 		ExSkill1TextManager = ExSkill1TextManager.new()
+
+		--Exスキルで使用するスプライトオブジェクトのインスタンスクラス
+		---@type ExSkill1Sprite
+		ExSkill1Sprite = require("scripts.ex_skill_1_sprite")
+
+		--Exスキルで使用するスプライトオブジェクトのマネージャークラス
+		---@type ExSkill1SpriteManager
+		ExSkill1SpriteManager = require("scripts.ex_skill_1_sprite_manager")
+		ExSkill1SpriteManager = ExSkill1SpriteManager.new()
 
 		RailGun:enable()
 	end;
