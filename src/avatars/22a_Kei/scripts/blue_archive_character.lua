@@ -18,6 +18,8 @@
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
 ---| "CLOSED2" # 閉じた目2
 ---| "CENTER" # 少し反対側を見る目
+---| "INVERTED" # 反対側を見る目
+---| "ANGRY" # 怒った目
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -26,12 +28,16 @@
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
 ---| "CLOSED2" # 閉じた目2
+---| "ANGRY" # 怒った目
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
 ---| "NORMAL" # 通常
 ---| "CLOSED" # 閉じた口
 ---| "SMILE" # にっこり
+---| "TEETH" # 歯を見せてにっこり
+---| "ANXIOUS" # への口
+---| "ANGRY" # あんぐり口（アングリーだけにっつってな）
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -276,7 +282,9 @@ local BlueArchiveCharacter = {
 			TIRED = vectors.vec2(3, 0); --必須
 			CLOSED = vectors.vec2(4, 0); --必須
 			CLOSED2 = vectors.vec2(5, 0);
-			CENTER = vectors.vec2(6, 0)
+			CENTER = vectors.vec2(6, 0);
+			INVERTED = vectors.vec2(7, 0);
+			ANGRY = vectors.vec2(8, 0);
 		};
 
 		leftEye = {
@@ -285,11 +293,15 @@ local BlueArchiveCharacter = {
 			TIRED = vectors.vec2(2, 0); --必須
 			CLOSED = vectors.vec2(3, 0); --必須
 			CLOSED2 = vectors.vec2(4, 0);
+			ANGRY = vectors.vec2(7, 0);
 		};
 
 		mouth = {
 			CLOSED = vectors.vec2(0, 0);
 			SMILE = vectors.vec2(1, 0);
+			TEETH = vectors.vec2(2, 0);
+			ANXIOUS = vectors.vec2(3, 0);
+			ANGRY = vectors.vec2(4, 0);
 		};
 	};
 
@@ -781,11 +793,37 @@ local BlueArchiveCharacter = {
 	};
 
 	bubble = {
+		callbacks = {
+			onPlay = function (_, type, duration)
+				if type == "GOOD" then
+					FaceParts:setEmotion("NORMAL", "NORMAL", "CLOSED", duration, true)
+				elseif type == "HEART" then
+					FaceParts:setEmotion("CLOSED", "CLOSED", "TEETH", duration, true)
+				elseif type == "NOTE" then
+					FaceParts:setEmotion("NORMAL", "NORMAL", "SMILE", duration, true)
+				elseif type == "QUESTION" then
+					ModelAlias.alias.avatar.head.FaceLayer:setVisible(true)
+					FaceParts:setEmotion("INVERTED", "NORMAL", "ANXIOUS", duration, true)
+				elseif type == "SWEAT" then
+					FaceParts:setEmotion("ANGRY", "ANGRY", "ANGRY", duration, true)
+				end
+			end;
 
+			onStop = function(_, _, forcedStop)
+				ModelAlias.alias.avatar.head.FaceLayer:setVisible(false)
+				if forcedStop then
+					FaceParts:resetEmotion()
+				end
+			end;
+		};
 	};
 
 	headModel = {
-
+		callbacks = {
+			onBeforeModelCopy = function ()
+				ModelAlias.alias.avatar.head.FaceLayer:setVisible(false)
+			end;
+		};
 	};
 
 	headBlock = {
@@ -798,6 +836,10 @@ local BlueArchiveCharacter = {
 
 	deathAnimation = {
 		callbacks = {
+			onBeforeModelCopy = function ()
+				ModelAlias.alias.avatar.head.FaceLayer:setVisible(false)
+			end;
+
 			onPhase1 = function ()
 				ModelAlias.alias.dummy_avatar.body.Hairs.BackHair:setRot(-10, 0, 0)
 				ModelAlias.alias.dummy_avatar.body.Hairs.BackHair.BackHairBottom:setRot(-80, 0, 0)

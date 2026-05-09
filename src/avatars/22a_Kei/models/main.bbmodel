@@ -12,8 +12,8 @@
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
 	"resolution": {
-		"width": 64,
-		"height": 64
+		"width": 54,
+		"height": 6
 	},
 	"elements": [
 		{
@@ -2866,6 +2866,49 @@
 			},
 			"type": "cube",
 			"uuid": "8bcd3c77-5048-f6f9-806d-4db904256441"
+		},
+		{
+			"name": "FaceLayer",
+			"box_uv": false,
+			"rescale": false,
+			"locked": false,
+			"light_emission": 0,
+			"render_order": "default",
+			"allow_mirror_modeling": true,
+			"from": [-3, 24, -4.02],
+			"to": [3, 26, -4.02],
+			"autouv": 0,
+			"color": 4,
+			"visibility": false,
+			"origin": [-3, 24, -4],
+			"faces": {
+				"north": {
+					"uv": [6, 30, 12, 32],
+					"texture": 4
+				},
+				"east": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"south": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"west": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"up": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"down": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				}
+			},
+			"type": "cube",
+			"uuid": "d8eae499-4d34-ad58-1c9f-b0a65bf54314"
 		}
 	],
 	"outliner": [
@@ -2897,6 +2940,7 @@
 					"children": [
 						"a66c63cf-0082-7797-3f4e-08ff434a1cac",
 						"d48552a8-9f0d-7335-2a82-794f3264fc9d",
+						"d8eae499-4d34-ad58-1c9f-b0a65bf54314",
 						{
 							"name": "FaceParts",
 							"origin": [0, 24, 0],
@@ -3023,7 +3067,7 @@
 									"uuid": "8457ef57-32a3-9df4-1b05-2afc5f04824b",
 									"export": true,
 									"mirror_uv": false,
-									"isOpen": true,
+									"isOpen": false,
 									"locked": false,
 									"visibility": true,
 									"autouv": 0,
@@ -3052,7 +3096,7 @@
 									"uuid": "820b4abf-6f1d-b7ed-5947-024b4b370f74",
 									"export": true,
 									"mirror_uv": false,
-									"isOpen": true,
+									"isOpen": false,
 									"locked": false,
 									"visibility": true,
 									"autouv": 0,
@@ -3665,9 +3709,9 @@
 			"namespace": "",
 			"id": "1",
 			"group": "",
-			"width": 42,
+			"width": 54,
 			"height": 6,
-			"uv_width": 42,
+			"uv_width": 54,
 			"uv_height": 6,
 			"particle": false,
 			"use_as_default": false,
@@ -3685,7 +3729,7 @@
 			"saved": true,
 			"uuid": "801d62ca-429b-f74e-93be-11af57228437",
 			"relative_path": "../textures/eyes.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAGCAYAAAC1rQwWAAAAAXNSR0IArs4c6QAAANRJREFUOE9jZBgigJGfl+8/zK0fP39ihLFJFaeWf3HZC3YYsiSyo0kVR3YsTC+y54n1DDZ74Q59+OgJ2Bx+AV6GtQYJDCEXF4JDGya+WN+fIefhPgZGRkYUcZjlAoJ8KLGDLZZIcSjIXphbXA5MZoBH9f///8FJ4Hn6TAahWCcGDls1sBwhcZAabB7b45DL8Pz9I4bcR/uxxhospNFDDyYOshfmFnYbVUyH/lh7DuxxzhBjFIfiEoeFEiik0T127ORxhuR768FKSE0CIIfC7OQINmIAAElOkfivWyFfAAAAAElFTkSuQmCC"
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAGCAYAAACIP21wAAAAAXNSR0IArs4c6QAAASFJREFUOE9jZBimgJGfl+8/zG8fP39ihLFJFadW+JBrL0gfsvvBHkE2DNmTpIojew6mF9kyYj1Pqr0g9R8+fWQQ4ONngNkH99jDR0/A9vIL8DKsNUhgCLm4EBybMPHF+v4MOQ/3MTAyMqKIwxwrIMiHEvvYUgEpHgPZC3OLy4HJDDDzQR6YIu/EEHtxI9g4ZHEwH+o5eNL7//8/OEk+T5/JIBTrxMBhqwaWIyQOUoMtIPY45DI8f/+IIffRfqypAhay6LEDEwfZC3MLu40qOEBBdv04fOv/u8X7GCRnpoM9BgtokIfhgczHz4DhsR9rz4HlOUOMUTyGSxxmGMxi5IA4dvI4POZJTZIgc2B2cgQbwT32fc1ZcASAxGAeQ89OILsAXRrKMAwRfMoAAAAASUVORK5CYII="
 		},
 		{
 			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/22a_Kei/textures/mouths.png",
@@ -3694,9 +3738,9 @@
 			"namespace": "",
 			"id": "3",
 			"group": "",
-			"width": 32,
+			"width": 80,
 			"height": 8,
-			"uv_width": 32,
+			"uv_width": 80,
 			"uv_height": 8,
 			"particle": false,
 			"use_as_default": false,
@@ -3714,7 +3758,7 @@
 			"saved": true,
 			"uuid": "94007dbe-5540-4027-04a9-8608282ae7e1",
 			"relative_path": "../textures/mouths.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAICAYAAACYhf2vAAAAAXNSR0IArs4c6QAAADxJREFUOE9jZBhgwDjA9jPQxAE3+xr+qxc1oJiNTQzkeZwOAGlADh10AwmFHLH6aRIChByHLD/qgAEPAQBsZRAJNJ122AAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAICAYAAABuzHg3AAAAAXNSR0IArs4c6QAAALlJREFUSEtjZBgFFIUAI0W6aaD559cv//EZy87NQ1M3v9+/H26/oKMj2C5sYjA30sQxN/sa/qsXNaCYjU0MPaC+ffr0n5OXF2+0/Pr2lYHYQATZCTIM3S24LEAOKHyOgAUsSA3OAIRZDjOIWEfA1JOrH5QC2bi4sbqf1MCDuZmYyENPaRQHIA1yJ9FG4srGxKY8oi1CU0jVFEiuI4a6PlggImdT5NSJLk6TMnCoByIp7h8NQFJCC4taAGcaTgmwLCWhAAAAAElFTkSuQmCC"
 		},
 		{
 			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/22a_Kei/textures/accessories.png",
@@ -3743,7 +3787,7 @@
 			"saved": true,
 			"uuid": "c8fd457b-b271-5b5c-7fcf-71f3439f77f2",
 			"relative_path": "../textures/accessories.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAiCAYAAABWQVnHAAAAAXNSR0IArs4c6QAAATBJREFUSEvtlc0RgjAQhRPQi+PFMhxverAAm7AGS7IGW7AADzbEAHFemBeXJUEQZ7jIJSHJfvt2Nz/WqK+qnONQljW9ujYGfbR5bq00af1gAgAu/gOaxI1KonPOyYzHABiz9l2JVhXmB3APyLhjfbmZWiHMC0h5575ndRgSwwghxADaSJb1t4C+5EGy3lAyDB/CUPmxPHwFwFaGU+TBd1IS+6Tz5ooCpFRdRs5RRZCCg4TBMQcKKnwOYIQ2BmAV9DEPCihRK0CCGKe8kemMDjv3Acm8OJhkqpMV8BAQi6I0y/PV1LeLfib8/0K9Bcl3oaycw2K0NORYlAwFcoKGenGvgpRRyqOGBbkpg09qpgMOx1N4jaW35+PeeXhjKu12t/eA1XrTmh8F0MYgDQZMDeEFIaByElnbfQUAAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAiCAYAAABWQVnHAAAAAXNSR0IArs4c6QAAAV1JREFUSEvtVTFOAzEQXN8FKUI06dKmPNGRggfkE7yB96Si4gH5Ag9AiDekzROiKHeOxqcx6419RwApDdfYZ3tnZ2fXXifma1vvuVRV/azrRDDHWNfOaZPkBxsA4OF/gF64i0T03nuteA4Aa859ZSLJwvUBWAM67txcF1MSwnUBSt5Z98wOQ2IYMYQcgDXSaf1bgCHxQNkWlA4jhPBd+jkdfgSAUoZT6BAmJYpD1PlyZQE0VZtG7pFFpIKLhMVLLhRYBA1ghDEHwCzYax4ZkKJlAIEYp36R6YwOz94DIvPhoMhkpzMQQIB4OBzl5ulFus2zbRPhf2J6QbEvHFvvcRgjDbmWRQYDvUFDe3iQQcmo5NGCRbolgzE2vwdYPq5iN9bePt/f+ou224X9ej4/a8Qhjc39QzhwezdL2H68rkWmU6kWi2DYbbde9nupmiZt7wCwxjAggzFt3FgIYwAnLJl8EtuwSJkAAAAASUVORK5CYII="
 		}
 	],
 	"animations": [
@@ -3754,7 +3798,7 @@
 			"override": true,
 			"length": 11.25,
 			"snapping": 20,
-			"selected": false,
+			"selected": true,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
