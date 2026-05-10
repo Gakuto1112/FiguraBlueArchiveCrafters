@@ -786,9 +786,25 @@ local BlueArchiveCharacter = {
 	};
 
 	costume = {
-		isAltCostumeEnabled = false;
+		isAltCostumeEnabled = true;
 
 		callbacks = {
+			onAltChange = function (_, isAlt)
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Head, ModelAlias.alias.avatar.head.HatLayer, ModelAlias.alias.avatar.body.Body, ModelAlias.alias.avatar.body.BodyLayer, ModelAlias.alias.avatar.rightArm.RightArm, ModelAlias.alias.avatar.rightArm.RightArmLayer, ModelAlias.alias.avatar.rightArmBottom.RightArmBottom, ModelAlias.alias.avatar.rightArmBottom.RightArmBottomLayer, ModelAlias.alias.avatar.leftArm.LeftArm, ModelAlias.alias.avatar.leftArm.LeftArmLayer, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottom, ModelAlias.alias.avatar.leftArmBottom.LeftArmBottomLayer, ModelAlias.alias.avatar.rightLeg.RightLeg, ModelAlias.alias.avatar.rightLeg.RightLegLayer, ModelAlias.alias.avatar.rightLegBottom.RightLegBottom, ModelAlias.alias.avatar.rightLegBottom.RightLegBottomLayer, ModelAlias.alias.avatar.leftLeg.LeftLeg, ModelAlias.alias.avatar.leftLeg.LeftLegLayer, ModelAlias.alias.avatar.leftLegBottom.LeftLegBottom, ModelAlias.alias.avatar.leftLegBottom.LeftLegBottomLayer}) do
+					if isAlt then
+						modelPart:setPrimaryTexture("CUSTOM", textures["textures.skin_alt"])
+					else
+						modelPart:setPrimaryTexture("PRIMARY")
+					end
+				end
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Ribbon, ModelAlias.alias.avatar.body.Hairs, ModelAlias.alias.avatar.body.RightPatch, ModelAlias.alias.avatar.body.LeftPatch, ModelAlias.alias.avatar.rightArmBottom.RightSleeve, ModelAlias.alias.avatar.rightArmBottom.RightPatch, ModelAlias.alias.avatar.leftArmBottom.LeftSleeve, ModelAlias.alias.avatar.leftArmBottom.LeftPatch}) do
+					modelPart:setVisible(not isAlt)
+				end
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.head.SideTailRibbonAlt, ModelAlias.alias.avatar.head.HRibbonAlt, ModelAlias.alias.avatar.head.SideTailAlt, ModelAlias.alias.avatar.body.HairsAlt, ModelAlias.alias.avatar.body.MillenniumLogoAlt, ModelAlias.alias.avatar.rightArmBottom.RightSleeveAlt, ModelAlias.alias.avatar.leftArmBottom.LeftSleeveAlt}) do
+					modelPart:setVisible(isAlt)
+				end
+			end;
+
 			onArmorChange = function (_, parts, isVisible)
 				if parts == "HELMET" then
 					ModelAlias.alias.avatar.head.Ribbon:setVisible(not isVisible)
@@ -835,7 +851,7 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {ModelAlias.alias.avatar.body.Hairs};
+		includeModels = {ModelAlias.alias.avatar.body.Hairs, ModelAlias.alias.avatar.body.HairsAlt};
 	};
 
 	portrait = {
@@ -870,7 +886,69 @@ local BlueArchiveCharacter = {
 	physics = {
 		physicData = {
 			{
-				models = {ModelAlias.alias.avatar.body.Hairs.FrontHair};
+				models = {ModelAlias.alias.avatar.head.SideTailAlt};
+
+				x = {
+					vertical = {
+						min = -90;
+						neutral = 0;
+						max = 90;
+
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -80;
+							min = -90;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = -45;
+						neutral = 45;
+						max = 45;
+
+						headX = {
+							multiplayer = -40;
+							min = -45;
+							max = 45;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.SideTailAlt.SideTailAlt};
+
+				z = {
+					vertical = {
+						min = -170;
+						neutral = 0;
+						max = 0;
+
+						headZ = {
+							multiplayer = -40;
+							min = -60;
+							max = 0;
+						};
+
+						headRot = {
+							multiplayer = 0.025;
+							min = -60;
+							max = 0;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -170;
+							max = 0;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.Hairs.FrontHair, ModelAlias.alias.avatar.body.HairsAlt.FrontHairAlt};
 
 				x = {
 					vertical = {
@@ -913,7 +991,7 @@ local BlueArchiveCharacter = {
 			};
 
 			{
-				models = {ModelAlias.alias.avatar.body.Hairs.BackHair};
+				models = {ModelAlias.alias.avatar.body.Hairs.BackHair, ModelAlias.alias.avatar.body.HairsAlt.BackHairAlt};
 
 				x = {
 					vertical = {
@@ -1136,6 +1214,14 @@ local BlueArchiveCharacter = {
 						model.BackHairBottom:setRot(math.max(rot + 30, 0))
 					else
 						model.BackHairBottom:setRot()
+					end
+				elseif model == ModelAlias.alias.avatar.body.HairsAlt.BackHairAlt then
+					if player:isCrouching() then
+						local rot = model:getRot().x
+						model:setRot(math.min(rot + 30, 0))
+						model.BackHairBottomAlt:setRot(math.max(rot + 30, 0))
+					else
+						model.BackHairBottomAlt:setRot()
 					end
 				end
 			end;
