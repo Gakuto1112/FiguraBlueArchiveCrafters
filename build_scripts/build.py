@@ -36,13 +36,13 @@ def print_shittim_logo() -> None:
 			Logger.print_info(logo)
 		Logger.print_spacer(1)
 
-def build(target_avatars: tuple[str, ...], tag_name: str | None = None, as_release: bool = False, no_ignored_textures: bool = False) -> None:
+def build(target_avatars: tuple[str, ...], tag_name: str|None = None, as_release: bool = False, no_ignored_textures: bool = False) -> None:
 	"""
 	アバターをビルドし、Figuraで使用可能な形式にする。
 
 	Args:
 		target_avatars (list[str]): ビルドするアバターの名前のリスト。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
-		tag_name (str | None): "update_checker.lua"内のアバターのバージョン名を上書きするための文字列。指定しない場合は上書きしない。
+		tag_name (str|None): "update_checker.lua"内のアバターのバージョン名を上書きするための文字列。指定しない場合は上書きしない。
 		as_release (bool): リリースアセットとしてビルドするかどうか。
 		no_ignored_textures (bool): "avatar.json"内の`ignoredTextures`フィールドを空にするかどうか。開発版Figuraの不具合への対応。これを`true`にするとアバターの容量が増加する。
 	"""
@@ -76,7 +76,7 @@ def build(target_avatars: tuple[str, ...], tag_name: str | None = None, as_relea
 
 	# tmpディレクトリの準備
 	true_dist_dir: Path|None = None
-	if not paths.distribution_dir.samefile(paths.root / "dist"):
+	if paths.distribution_dir != (paths.root / "dist"):
 		true_dist_dir = paths.distribution_dir
 		tmp_dir = paths.root / ".fbac_build_tmp"
 		if tmp_dir.exists():
