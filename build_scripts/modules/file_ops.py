@@ -19,6 +19,17 @@ class FileOperator:
 	アバターの言語データを取得する、リモートのエンドポイント
 	"""
 
+	_COPY_FILTERS: dict[str, tuple[str, ...]] = {
+		"models": ("*.bbmodel",),
+		"textures": ("*.png",),
+		"scripts": ("*.lua",)
+	}
+	"""
+	ファイルコピーのフィルター
+	このフィルターに合致するもののみがコピーされる（ホワイトリスト）。
+	キーはディレクトリ名、値はそのディレクトリ内でコピーするファイルのフィルターのタプル。
+	"""
+
 	_target_directory_path: Path = paths.distribution_dir
 	"""
 	出力先ディレクトリのパス（デバッグ用変数）
@@ -61,6 +72,34 @@ class FileOperator:
 			dir_path.mkdir(parents=True)
 
 	@staticmethod
+	def _copy_directory_with_filters(src: Path, dst: Path, filters: tuple[str, ...]) -> None:
+		"""
+		指定されたディレクトリ配下のファイル/サブディレクトリを出力先ディレクトリにコピーする。
+		ただし、フィルターに合致したファイル/サブディレクトリのみコピーする（ホワイトリスト）。
+		コピーの対象は`src/`ディレクトリ以下とし、その範囲外のパスが指定されても何もコピーしない。
+
+		Args:
+			src (Path): コピー元のディレクトリのパス
+			dst (Path): コピー先のディレクトリのパス
+			filters (tuple[str, ...]): コピーするファイル/サブディレクトリのフィルター。フィルターに合致したファイル/サブディレクトリのみコピーされる（ホワイトリスト）。
+
+		Raises:
+			PermissionError: コピー元のファイル/ディレクトリに対して読み取り権限や、出力先ディレクトリに対して書き込み権限がない場合
+			IOError: その他の入出力エラーが発生した場合
+		"""
+
+		for filter in filters:
+			for path in src.rglob(filter):
+				if path.is_relative_to(src):
+					relative_path: Path = path.relative_to(src)
+					if path.is_dir() and not (dst / relative_path).exists():
+						(dst / relative_path).mkdir(parents=True, exist_ok=True)
+					elif path.is_file():
+						if not (dst / relative_path).parent.exists():
+							(dst / relative_path).parent.mkdir(parents=True, exist_ok=True)
+						shutil.copy2(path, dst / relative_path)
+
+	@staticmethod
 	def copy_assets(avatar_name: str, tag_name: str | None = None, as_release: bool = False) -> None:
 		"""
 		コアアセットとキャラクター固有アセットの統合し、出力先ディレクトリにコピーする。
@@ -91,8 +130,8 @@ class FileOperator:
 		subdirectories: tuple[str, ...] = ("models", "textures", "scripts")
 		for subdirectory in subdirectories:
 			(paths.distribution_dir / avatar_name / subdirectory).mkdir(parents=True, exist_ok=True)
-			shutil.copytree(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
-			shutil.copytree(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, dirs_exist_ok=True)
+			FileOperator._copy_directory_with_filters(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, FileOperator._COPY_FILTERS[subdirectory])
+			FileOperator._copy_directory_with_filters(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, FileOperator._COPY_FILTERS[subdirectory])
 
 		# リリースアセット用に変更する部分
 		if as_release:
