@@ -57,9 +57,9 @@ class Logger:
 		"""
 
 		if Logger.is_colored:
-			print(f"\033[1;33m[WARN]\033[0m {message}")
+			print(f"\033[1;33m[WARNING]\033[0m {message}")
 		else:
-			print(f"[WARN] {message}")
+			print(f"[WARNING] {message}")
 		Logger._last_spacer_count = 0
 
 	@staticmethod
