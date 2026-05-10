@@ -65,6 +65,51 @@ class FileOperator:
 						shutil.copy2(path, dst / relative_path)
 
 	@staticmethod
+	def _get_avatar_subdirectory(path: Path) -> AvatarDataSubdirectory | None:
+		"""
+		指定されたパスが所属しているアバターサブディレクトリを取得する。
+		いずれのサブディレクトリにも所属していない場合はNoneを返す。
+
+		Args:
+			path (Path): アバターサブディレクトリの取得を試みる対象のパス
+
+		Returns:
+			AvatarDataSubdirectory | None: 指定されたパスが所属しているアバターサブディレクトリ。
+				いずれのサブディレクトリにも所属していない場合はNoneを返す。
+		"""
+
+		path_list = tuple(reversed(path.parts))
+		for i, part in enumerate(path_list):
+			for subdirectory in AvatarDataSubdirectory:
+				if part == subdirectory.value and re.fullmatch(r"^(core|\d{2}\w_\w+)$", path_list[i + 1]):
+					return subdirectory
+
+		return None
+
+	@staticmethod
+	def _get_is_whitelisted_asset(path: Path) -> bool:
+		"""
+		指定されたパスのアセットがホワイトリストに合致するかどうかを取得する。
+		ディレクトリが指定された場合は、アバターサブディレクトリ内に所属しているのであれば、`True`を返す。
+
+		Args:
+			path (Path): ホワイトリストの合致を試みる対象のパス
+
+		Returns:
+			bool: 指定されたパスがホワイトリストに合致するかどうか
+		"""
+
+		subdirectory: AvatarDataSubdirectory | None = FileOperator._get_avatar_subdirectory(path)
+		if subdirectory is not None:
+			if path.is_dir():
+				return True
+			for filter in FileOperator._COPY_FILTERS[subdirectory]:
+				if path.match(f"**/{filter}"):
+					return True
+
+		return False
+
+	@staticmethod
 	def prepare_directory(dir_path: Path) -> None:
 		"""
 		指定されたディレクトリの準備を行う。
@@ -204,6 +249,9 @@ class FileOperator:
 		# 入力されたパスの確認
 		if not src_path.is_relative_to(paths.source_dir):
 			raise ValueError(f"The specified asset path ({src_path}) is outside of the source directory.")
+		elif not FileOperator._get_is_whitelisted_asset(src_path):
+			Logger.print_warning(f"The specified asset path ({src_path}) will not be copied. The path does not match any of the whitelist filters.")
+			return
 
 		if src_path.is_relative_to(paths.core_dir):
 			# コアディレクトリ内のファイル更新
