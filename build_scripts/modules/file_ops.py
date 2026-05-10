@@ -65,7 +65,7 @@ class FileOperator:
 						shutil.copy2(path, dst / relative_path)
 
 	@staticmethod
-	def _get_avatar_subdirectory(path: Path) -> AvatarDataSubdirectory | None:
+	def _get_avatar_subdirectory(path: Path) -> AvatarDataSubdirectory|None:
 		"""
 		指定されたパスが所属しているアバターサブディレクトリを取得する。
 		いずれのサブディレクトリにも所属していない場合はNoneを返す。
@@ -74,7 +74,7 @@ class FileOperator:
 			path (Path): アバターサブディレクトリの取得を試みる対象のパス
 
 		Returns:
-			AvatarDataSubdirectory | None: 指定されたパスが所属しているアバターサブディレクトリ。
+			AvatarDataSubdirectory|None: 指定されたパスが所属しているアバターサブディレクトリ。
 				いずれのサブディレクトリにも所属していない場合はNoneを返す。
 		"""
 
@@ -99,7 +99,7 @@ class FileOperator:
 			bool: 指定されたパスがホワイトリストに合致するかどうか
 		"""
 
-		subdirectory: AvatarDataSubdirectory | None = FileOperator._get_avatar_subdirectory(path)
+		subdirectory: AvatarDataSubdirectory|None = FileOperator._get_avatar_subdirectory(path)
 		if subdirectory is not None:
 			if path.is_dir():
 				return True
@@ -146,14 +146,14 @@ class FileOperator:
 			dir_path.mkdir(parents=True)
 
 	@staticmethod
-	def copy_assets(avatar_name: str, tag_name: str | None = None, as_release: bool = False) -> None:
+	def copy_assets(avatar_name: str, tag_name: str|None = None, as_release: bool = False) -> None:
 		"""
 		コアアセットとキャラクター固有アセットの統合し、出力先ディレクトリにコピーする。
 		コアアセットとキャラクター固有アセットに同じ相対パスのファイルが存在する場合、キャラクター固有アセットのほうで上書きされる。
 
 		Args:
 			avatar_name (str): コピーするアバターの名前。`paths.get_avatar_names()`で取得できる名前のいずれかを指定する。
-			tag_name (str | None): "update_checker.lua"内のアバターのバージョン名を上書きするための文字列。指定しない場合は上書きしない。
+			tag_name (str|None): "update_checker.lua"内のアバターのバージョン名を上書きするための文字列。指定しない場合は上書きしない。
 			as_release (bool): リリースアセットとしてコピーするかどうか。
 				リリースアセットでは以下の変更を行う。
 				 - `debug_utils.lua`を削除
