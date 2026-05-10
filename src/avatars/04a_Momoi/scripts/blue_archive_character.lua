@@ -576,9 +576,13 @@ local BlueArchiveCharacter = {
 	};
 
 	costume = {
-		isAltCostumeEnabled = false;
+		isAltCostumeEnabled = true;
 
 		callbacks = {
+			onAltChange = function (_, isAlt)
+				ModelAlias.alias.avatar.head.Phone:setVisible(not isAlt)
+			end;
+
 			onArmorChange = function (_, parts, isVisible)
 				if parts == "HELMET" then
 					ModelAlias.alias.avatar.head.EffectPanel:setPos(0, 0, isVisible and -1 or 0)
