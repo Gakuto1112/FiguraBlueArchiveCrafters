@@ -140,6 +140,7 @@ Please understand this.
   | Hifumi (Swimsuit) | - If she rides a saddled camel alone, the camel is replaced with Crusader-chan (a tank). <br> - Crusader-chan can fire shells (visual only). |
   | Hina (Swimsuit) | - Equips a swim ring when wearing a Turtle Shell (helmet). Not applied while armor is visible. |
   | Hanae (Normal) | - Regeneration potions are replaced with a medical box. |
+  | Kei | - Leaves an amplifier in place after playing the Ex Skill. It seems that she leaves a beacon occasionally. |
 
 ## Ex Skill
 
