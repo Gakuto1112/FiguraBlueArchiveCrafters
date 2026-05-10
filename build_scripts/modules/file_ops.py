@@ -4,6 +4,7 @@ import shutil
 import re
 from pathlib import Path
 
+from modules.enums.avatar_data_subdirectory import AvatarDataSubdirectory
 from modules.errors.operation_cancelled_error import OperationCancelledError
 from modules.logger import Logger
 from modules.paths import paths
@@ -19,15 +20,15 @@ class FileOperator:
 	アバターの言語データを取得する、リモートのエンドポイント
 	"""
 
-	_COPY_FILTERS: dict[str, tuple[str, ...]] = {
-		"models": ("*.bbmodel",),
-		"textures": ("*.png",),
-		"scripts": ("*.lua",)
+	_COPY_FILTERS: dict[AvatarDataSubdirectory, tuple[str, ...]] = {
+		AvatarDataSubdirectory.MODELS: ("*.bbmodel",),
+		AvatarDataSubdirectory.TEXTURES: ("*.png",),
+		AvatarDataSubdirectory.SCRIPTS: ("*.lua",)
 	}
 	"""
 	ファイルコピーのフィルター
 	このフィルターに合致するもののみがコピーされる（ホワイトリスト）。
-	キーはディレクトリ名、値はそのディレクトリ内でコピーするファイルのフィルターのタプル。
+	キーはディレクトリの列挙名、値はそのディレクトリ内でコピーするファイルのフィルターのタプル。
 	"""
 
 	_target_directory_path: Path = paths.distribution_dir
@@ -127,11 +128,10 @@ class FileOperator:
 			raise ValueError(f"The specified avatar name \"{avatar_name}\" is not valid.")
 
 		# アセットのコピー
-		subdirectories: tuple[str, ...] = ("models", "textures", "scripts")
-		for subdirectory in subdirectories:
-			(paths.distribution_dir / avatar_name / subdirectory).mkdir(parents=True, exist_ok=True)
-			FileOperator._copy_directory_with_filters(paths.core_dir / subdirectory, paths.distribution_dir / avatar_name / subdirectory, FileOperator._COPY_FILTERS[subdirectory])
-			FileOperator._copy_directory_with_filters(paths.character_dir / avatar_name / subdirectory, paths.distribution_dir / avatar_name / subdirectory, FileOperator._COPY_FILTERS[subdirectory])
+		for subdirectory in AvatarDataSubdirectory:
+			(paths.distribution_dir / avatar_name / subdirectory.value).mkdir(parents=True, exist_ok=True)
+			FileOperator._copy_directory_with_filters(paths.core_dir / subdirectory.value, paths.distribution_dir / avatar_name / subdirectory.value, FileOperator._COPY_FILTERS[subdirectory])
+			FileOperator._copy_directory_with_filters(paths.character_dir / avatar_name / subdirectory.value, paths.distribution_dir / avatar_name / subdirectory.value, FileOperator._COPY_FILTERS[subdirectory])
 
 		# リリースアセット用に変更する部分
 		if as_release:
