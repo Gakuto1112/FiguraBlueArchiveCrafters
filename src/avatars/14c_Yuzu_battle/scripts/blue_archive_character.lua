@@ -632,6 +632,168 @@ local BlueArchiveCharacter = {
 
 	physics = {
 		physicData = {
+			{
+				models = {ModelAlias.alias.avatar.head.HairTip};
+
+				x = {
+					vertical = {
+						min = -15;
+						neutral = 52.5;
+						max = 82.5;
+
+						bodyY = {
+							multiplayer = -40;
+							min = -15;
+							max = 82.5;
+						};
+					};
+
+					horizontal = {
+						min = -15;
+						neutral = 52.5;
+						max = 82.5;
+
+						bodyX = {
+							multiplayer = -80;
+							min = -15;
+							max = 82.5;
+						};
+					};
+				};
+
+				y = {
+					vertical = {
+						min = -40;
+						neutral = -40;
+						max = -40;
+					};
+
+					horizontal = {
+						min = -40;
+						neutral = -40;
+						max = -40;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairTail};
+
+				x = {
+					vertical = {
+						min = -170;
+						neutral = 0;
+						max = 30;
+						sneakOffset = -20;
+
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -80;
+							min = -90;
+							max = 10;
+						};
+
+						headRot = {
+							multiplayer = 0.05;
+							min = -90;
+							max = 0;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -170;
+							max = 0;
+						};
+					};
+
+					horizontal = {
+						min = -135;
+						neutral = -30;
+						max = -30;
+
+						headX = {
+							multiplayer = -80;
+							min = -45;
+							max = -30;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairTail.HairTailZPivot};
+
+				z = {
+					vertical = {
+						min = -80;
+						neutral = 0;
+						max = 80;
+
+						headZ = {
+							multiplayer = -80;
+							min = -80;
+							max = 80;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.FrontHair};
+
+				x = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 80;
+						sneakOffset = 30;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 0;
+							max = 80;
+						};
+
+						bodyY = {
+							multiplayer = -80;
+							min = 0;
+							max = 80;
+						};
+
+						bodyRot = {
+							multiplayer = -0.05;
+							min = 0;
+							max = 80;
+						};
+					};
+
+					horizontal = {
+						min = 0;
+						neutral = 80;
+						max = 80;
+
+						bodyX = {
+							multiplayer = -160;
+							min = 0;
+							max = 80;
+						};
+					};
+				};
+			};
+		};
+
+		callbacks = {
+			onPhysicPerformed = function (_, model)
+				if model == ModelAlias.alias.avatar.head.HairTail then
+					local modelRot = model:getRot()
+					local headRotY = math.deg(math.asin(player:getLookDir().y))
+					if headRotY < 0 then
+						modelRot.x = math.min(modelRot.x, 30)
+					end
+					model:setRot(modelRot)
+				end
+			end;
 		};
 	};
 
