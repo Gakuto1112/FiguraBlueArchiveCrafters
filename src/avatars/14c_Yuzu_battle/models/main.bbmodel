@@ -12,8 +12,8 @@
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
 	"resolution": {
-		"width": 64,
-		"height": 81
+		"width": 65,
+		"height": 20
 	},
 	"elements": [
 		{
@@ -3648,6 +3648,49 @@
 			},
 			"type": "cube",
 			"uuid": "54c09e49-de4c-2303-9d4a-3670286fc7ce"
+		},
+		{
+			"name": "FearEffect",
+			"box_uv": false,
+			"rescale": false,
+			"locked": false,
+			"light_emission": 0,
+			"render_order": "default",
+			"allow_mirror_modeling": true,
+			"from": [-1, 27, -4.001],
+			"to": [1, 29, -4.001],
+			"autouv": 0,
+			"color": 4,
+			"visibility": false,
+			"origin": [-1, 27, -4],
+			"faces": {
+				"north": {
+					"uv": [57, 0, 65, 8],
+					"texture": 1
+				},
+				"east": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"south": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"west": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"up": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"down": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				}
+			},
+			"type": "cube",
+			"uuid": "f7319254-b378-1f40-ab1b-027c3a542de3"
 		}
 	],
 	"outliner": [
@@ -3752,7 +3795,7 @@
 							"uuid": "db381b6c-e0d3-6ca8-6433-4371d36cc6c6",
 							"export": true,
 							"mirror_uv": false,
-							"isOpen": true,
+							"isOpen": false,
 							"locked": false,
 							"visibility": true,
 							"autouv": 0,
@@ -3843,7 +3886,7 @@
 							"uuid": "14c95518-6200-4cfd-6ea7-58004c99eaec",
 							"export": true,
 							"mirror_uv": false,
-							"isOpen": true,
+							"isOpen": false,
 							"locked": false,
 							"visibility": true,
 							"autouv": 0,
@@ -3909,6 +3952,20 @@
 									]
 								}
 							]
+						},
+						{
+							"name": "FearEffect",
+							"origin": [0, 0, 0],
+							"color": 0,
+							"uuid": "1c82522c-13c2-d680-2d25-534173f3e394",
+							"export": true,
+							"mirror_uv": false,
+							"isOpen": true,
+							"locked": false,
+							"visibility": false,
+							"autouv": 0,
+							"selected": true,
+							"children": ["f7319254-b378-1f40-ab1b-027c3a542de3"]
 						},
 						"82926e85-55b7-3c02-f606-d97f18fcc59a",
 						{
@@ -4337,13 +4394,13 @@
 			"namespace": "",
 			"id": "1",
 			"group": "",
-			"width": 57,
+			"width": 65,
 			"height": 20,
-			"uv_width": 57,
+			"uv_width": 65,
 			"uv_height": 20,
 			"particle": false,
 			"use_as_default": false,
-			"layers_enabled": false,
+			"layers_enabled": true,
 			"sync_to_project": "",
 			"render_mode": "default",
 			"render_sides": "auto",
@@ -4356,8 +4413,21 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "4ee2c100-3f44-69bd-a819-2e480cd023c8",
+			"layers": [
+				{
+					"name": "layer",
+					"offset": [0, 0],
+					"scale": [1, 1],
+					"opacity": 100,
+					"visible": true,
+					"blend_mode": "default",
+					"width": 65,
+					"height": 20,
+					"data_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAUCAYAAADStFABAAAAAXNSR0IArs4c6QAAAzNJREFUWEetVz1rVFEQnWvAsFmIYRXSiMWCoI2t/gUFwcou/0FSia6KRi3tbG3S2VrkFwjaCRYqrmk0NsoTxRAixCtz2XmcnczMu4+4zfu6d+bOueecO5vynYf5z8EBHV9YIL7yj+/5h884Br/reVYsiVOCzuJbuThW2pgkXpNcZR2SR+eW7192vtFoZYlWlpdLDMkl15/v32X9jp9PnDufSkJdYPSMRURgYcJakHnO4uN7cwXI+hBAuZ8D8sHt8jqllHLOpWC+5ysDsP2xofHZEVnXtH/rfrZQ1oyQMXqRMt/aMW+3I5A5PjJBxnrx27U/uktN09BoNGqvvUDAXauht95lzQ6kPwJsSUoXFzHBk2xh5FGYgHSLGCEFaL3p+VgU+ooFlAVQrSfgOngNV958oK0Xm62ULl9dy/JcLQdthF4BXXKwjC8yWIsdukCPLVx80f7GJP199SQfu7TegoDPCIKwWLyhzPeM0fIESYhyQE+wWCDmqQvxDDYCGVmCa+jDBJzH9+V0OKqxcSBLxxZgsgANHB6HWm5o3JgHzZPnfLpxM59eGtDOdKrrpPHzzWQdkQzAHBO6NOtp3TM+SxY6xqHVzqitdxnlpAETMBgsBmn7+tqhfoBBsHLJu1YO8sJrRjyQrMaEx+qd0g2QN88CQNak5aBzMBDMhMFwSHu7u22oThAsTetdjFiC4GmTqy1UxklRFhAiBTRDvbtcy9bL13RxfIa+fm/o86/fdGH1ZJFDyATdLHW1x/oYbSk1a3eFutL0WN+xPY68QwqWMQiSBRjXcu3tlJ6dGhYQJrRY0uPRaUrQ6xOshkcYobWNNBVtylWkwfEYGOt7tEvIVO904PkSl/uD3iBEC4i0jd+ie4lv7ZzO7clBs8kCA0F4OiD6sbdfzwQLBIt2ntFZReqxFphd5imFRp2qBkPkoGvqlIMuotbFPX3WABjl1N2i9hjvhOhidGiMHl1rdrP2GIxY5EkATwz0IPxXWXP61IBTjg69kGg3rfHeu0gGluN3SUvMtaawPmNcENCMagqPWBH1AZ408D0yIToh+hSOY9smosa9+ySJaB5JDXNoRqJJ/s/1/gPSfBYX6KGfBAAAAABJRU5ErkJggg=="
+				}
+			],
 			"relative_path": "../textures/accessories.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAAUCAYAAAA3KpVtAAAAAXNSR0IArs4c6QAAAuhJREFUWEeVV8FqFFEQfGPAsFkIYRW8iAc/wKv+goLgyVv+QTyJbhSNevTm1Yuf4CFfIOhN8CSsXjRelA2IISQQR3pMjbW13T0ve5mdnfe6u6qr68027dbT9uj4uJxdWSl2tY99tw/f8xp+rvu8WIjTBT2J7+WyWM32tLGacEUdyKO58fzb7o8y2VgrG+vrXQzksmsXUAFk91xkRgYnqSXR9qw+f7RQIOpjgvB9gagnD7qfm6Zp2rZt8b27Ht5/3HosaUexRovAfo/xqFsZiRafO4m1Ufy+9mcPy3w+L5PJpL8a4B4ks14jP+2SdpflyQR6ktfis05GI9UpKuskyyHrKApUvet+Lprn2iPCI6B2JrkOq+HGh09l583rXurXb262uO/lqkYTFTgkV89YMgPzuqsAom4buE6O29Pmz7sX7Zlrd3uQfB8ajzeTCMhy5Zn0ughz0kIjA8tI5C5zDafupEooMiCeD2+OPEJQmBLDx4WOAxsj52Fzsj2f79xrL66Nyu5sxvj/OW40k9m5qNL23NKTrXZ6qZoT6WmXWO5KCMAaGUbCl9ubnYT5swAykmg2U8o8givTesBH+zyAkLzKVXMYUOvkaDwuB/v7fagF4/E6hJXRUZA9rwWCdSjaAwqpstloxwzkztv35erlS+X7z3n5+ut3uXLh3PLLwNDrmx4zSASW0XUc6t5zfn3LZheAsIZJ8AgxkLc+zsqr8+MO5LSsDs+kdimSM8sIs4Gr7cHcG3DvuTebnklF7mprEdfOxyWQWQIUqAe0J68hlj3mNXckV1WDB5ZBvhyVsndw+L+THkiv4MhI1Gg8Ymp/83Jkb1oKFnJVTP0bgpdgaF5qO6qxhxyYn+uMRw6bKXIJZFRAJt0hgjIVRBJlAuH6ano17t01ios/rfTU6r2kXhf5GKgByc6tb1dDnpKC5GH3iNDfssM/Owcz5SAHdzJz2AhwKNcahrI1WYei7np/45ggNqEat0Z9fwHMnrJZtBBJCQAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEEAAAAUCAYAAADStFABAAAAAXNSR0IArs4c6QAAAzNJREFUWEetVz1rVFEQnWvAsFmIYRXSiMWCoI2t/gUFwcou/0FSia6KRi3tbG3S2VrkFwjaCRYqrmk0NsoTxRAixCtz2XmcnczMu4+4zfu6d+bOueecO5vynYf5z8EBHV9YIL7yj+/5h884Br/reVYsiVOCzuJbuThW2pgkXpNcZR2SR+eW7192vtFoZYlWlpdLDMkl15/v32X9jp9PnDufSkJdYPSMRURgYcJakHnO4uN7cwXI+hBAuZ8D8sHt8jqllHLOpWC+5ysDsP2xofHZEVnXtH/rfrZQ1oyQMXqRMt/aMW+3I5A5PjJBxnrx27U/uktN09BoNGqvvUDAXauht95lzQ6kPwJsSUoXFzHBk2xh5FGYgHSLGCEFaL3p+VgU+ooFlAVQrSfgOngNV958oK0Xm62ULl9dy/JcLQdthF4BXXKwjC8yWIsdukCPLVx80f7GJP199SQfu7TegoDPCIKwWLyhzPeM0fIESYhyQE+wWCDmqQvxDDYCGVmCa+jDBJzH9+V0OKqxcSBLxxZgsgANHB6HWm5o3JgHzZPnfLpxM59eGtDOdKrrpPHzzWQdkQzAHBO6NOtp3TM+SxY6xqHVzqitdxnlpAETMBgsBmn7+tqhfoBBsHLJu1YO8sJrRjyQrMaEx+qd0g2QN88CQNak5aBzMBDMhMFwSHu7u22oThAsTetdjFiC4GmTqy1UxklRFhAiBTRDvbtcy9bL13RxfIa+fm/o86/fdGH1ZJFDyATdLHW1x/oYbSk1a3eFutL0WN+xPY68QwqWMQiSBRjXcu3tlJ6dGhYQJrRY0uPRaUrQ6xOshkcYobWNNBVtylWkwfEYGOt7tEvIVO904PkSl/uD3iBEC4i0jd+ie4lv7ZzO7clBs8kCA0F4OiD6sbdfzwQLBIt2ntFZReqxFphd5imFRp2qBkPkoGvqlIMuotbFPX3WABjl1N2i9hjvhOhidGiMHl1rdrP2GIxY5EkATwz0IPxXWXP61IBTjg69kGg3rfHeu0gGluN3SUvMtaawPmNcENCMagqPWBH1AZ408D0yIToh+hSOY9smosa9+ySJaB5JDXNoRqJJ/s/1/gPSfBYX6KGfBAAAAABJRU5ErkJggg=="
 		},
 		{
 			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/14c_Yuzu_battle/textures/eyes.png",
