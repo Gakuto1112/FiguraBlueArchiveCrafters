@@ -663,15 +663,15 @@ local BlueArchiveCharacter = {
 
 				y = {
 					vertical = {
-						min = -40;
-						neutral = -40;
-						max = -40;
+						min = 40;
+						neutral = 40;
+						max = 40;
 					};
 
 					horizontal = {
-						min = -40;
-						neutral = -40;
-						max = -40;
+						min = 40;
+						neutral = 40;
+						max = 40;
 					};
 				};
 			};
