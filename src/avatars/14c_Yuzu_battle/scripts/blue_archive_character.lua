@@ -609,7 +609,7 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {ModelAlias.alias.avatar.body.Hairs};
+		includeModels = {ModelAlias.alias.avatar.body.FrontHair};
 	};
 
 	portrait = {
