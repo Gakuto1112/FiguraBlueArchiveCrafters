@@ -801,13 +801,8 @@ local BlueArchiveCharacter = {
 					elseif tick == 14 then
 						FaceParts:setEmotion("ANGRY", "ANGRY", "BRAVE", 17, true)
 					elseif tick == 20 then
-						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root)
-						local bodyYaw = player:getBodyYaw()
-						for i = 0, 35 do
-							particles:newParticle("minecraft:cloud", anchorPos):setScale(2):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 - 90, vectors.rotateAroundAxis(i * 10, 0, 1, 0, 0, 0, 1):add(0, 0, 2), 0, 1, 0)):setLifetime(4)
-						end
-						sounds:playSound("minecraft:entity.firework_rocket.launch", anchorPos, 1, 2)
-						sounds:playSound("minecraft:entity.generic.explode", anchorPos, 1, 1)
+						self.costume.emitBoosterSonic()
+						sounds:playSound("minecraft:entity.firework_rocket.launch", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 1, 2)
 					elseif tick == 30 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "BRAVE", 2, true)
 					elseif tick == 32 then
@@ -1017,6 +1012,16 @@ local BlueArchiveCharacter = {
 				self.costume.flyingSound:stop()
 				self.costume.flyingSound = nil
 			end
+		end;
+
+		---ブースター開始時の空気弾の演出を再生する。
+		emitBoosterSonic = function ()
+			local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root)
+			local dirVec = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root.BoosterSonicAnchor):copy():sub(anchorPos):normalize()
+			for i = 0, 35 do
+				particles:newParticle("minecraft:cloud", anchorPos):setScale(2):setVelocity(vectors.rotateAroundAxis(i * 10, 0, 0, 1, dirVec)):setLifetime(4)
+			end
+			sounds:playSound("minecraft:entity.generic.explode", anchorPos, 1, 1)
 		end;
 
 		---クリエイティブ飛行で制御した四肢をリセットする。
@@ -1365,9 +1370,11 @@ local BlueArchiveCharacter = {
 
 		events.TICK:register(function ()
 			if not client:isPaused() then
-
 				if player:getPose() == "FALL_FLYING" then
 					local isBoosting = player:getNearestEntity("minecraft:firework_rocket", 0.4) ~= nil
+					if isBoosting and not self.costume.isBoosterLighting then
+						self.costume.emitBoosterSonic()
+					end
 					self.costume.isBoosterLighting = isBoosting
 				elseif not self.costume.isFlying and ExSkill.animationCount == -1 then
 					self.costume.isBoosterLighting = false
