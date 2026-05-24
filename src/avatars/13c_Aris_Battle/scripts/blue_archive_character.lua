@@ -1159,6 +1159,15 @@ local BlueArchiveCharacter = {
 
 	deathAnimation = {
 		callbacks = {
+			onAfterModelCopy = function (self)
+				events.TICK:register(function ()
+					if player:getHealth() > 0 then
+						vanilla_model.ELYTRA:setVisible(false)
+						events.TICK:remove("elytra_hide_tick")
+					end
+				end, "elytra_hide_tick")
+			end;
+
 			onPhase1 = function ()
 				ModelAlias.alias.dummy_avatar.head.HairTails.RightHairTail:setRot(30, 0, 30)
 				ModelAlias.alias.dummy_avatar.head.HairTails.LeftHairTail:setRot(30, 0, -30)
