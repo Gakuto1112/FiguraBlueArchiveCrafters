@@ -514,10 +514,7 @@ local BlueArchiveCharacter = {
 					ModelAlias.alias.avatar.gun:setParentType("None")
 
 					events.RENDER:register(function ()
-						local colorIntensity = models.models.ex_skill_1.BoosterExhaustColor:getAnimScale().x
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RightBoosterExhaust, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LeftBoosterExhaust, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLArmorBoosterExhaust, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLArmorBoosterExhaust}) do
-							modelPart:setColor(vectors.vec3(1, 1, 1):scale(colorIntensity))
-						end
+						self.costume.setBoosterExhaustLight(models.models.ex_skill_1.BoosterExhaustColor:getAnimScale().x)
 					end, "ex_skill_3_render")
 
 					FaceParts:setEmotion("NORMAL", "NORMAL", "SMALL", 31, true)
@@ -711,9 +708,7 @@ local BlueArchiveCharacter = {
 
 				onPostAnimation = function (self, forcedStop)
 					events.RENDER:remove("ex_skill_3_render")
-					for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RightBoosterExhaust, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LeftBoosterExhaust, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLArmorBoosterExhaust, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLArmorBoosterExhaust}) do
-						modelPart:setColor(0, 0, 0)
-					end
+					self.costume.setBoosterExhaustLight(0)
 					for i = 1, 10 do
 						models.models.ex_skill_1.Windows.Window13.Window13Inner["Window13_Gauge1_" .. i]:setUVPixels()
 						models.models.ex_skill_1.Windows.Window13.Window13Inner["Window13_Gauge2_" .. i]:setUVPixels()
@@ -776,9 +771,7 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun.ExSkill2ShineEffects:setVisible(true)
 						models.models.ex_skill_2.Gui.Background:setScale(client:getScaledWindowSize():copy():augmented(1))
 					end
-					for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RightBoosterExhaust, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LeftBoosterExhaust, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLArmorBoosterExhaust, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLArmorBoosterExhaust}) do
-						modelPart:setColor(vectors.vec3(1, 1, 1))
-					end
+					self.costume.setBoosterExhaustLight(1)
 					ModelAlias.alias.avatar.gun:setParentType("None")
 					for _, pixel in ipairs({{14, 0}, {14, 2}}) do
 						textures["textures.accessories"]:setPixel(pixel[1], pixel[2], vectors.vec3(0.920, 0.744, 0.983))
@@ -954,9 +947,7 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
 						ModelAlias.alias.avatar.gun:setParentType("Item")
 					end
-					for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RightBoosterExhaust, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LeftBoosterExhaust, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLArmorBoosterExhaust, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLArmorBoosterExhaust}) do
-						modelPart:setColor(vectors.vec3(0, 0, 0))
-					end
+					self.costume.setBoosterExhaustLight(0)
 					for _, pixel in ipairs({{14, 0}, {14, 2}}) do
 						textures["textures.accessories"]:setPixel(pixel[1], pixel[2], vectors.vec3(0.625, 0.988, 0.990))
 					end
@@ -1035,6 +1026,29 @@ local BlueArchiveCharacter = {
 			Arms:setArmState(Arms.armState.right == "FLYING" and "DEFAULT" or Arms.armState.right, Arms.armState.left == "FLYING" and "DEFAULT" or Arms.armState.left)
 		end;
 
+		---ブースターの噴出口の光の強さを設定する。
+		---@param lightIntensity boolean ブースターの噴出口を光の強さ。0が真っ暗、1が最大光。
+		setBoosterExhaustLight = function (lightIntensity)
+			for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RightBoosterExhaust, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LeftBoosterExhaust, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLArmorBoosterExhaust, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLArmorBoosterExhaust}) do
+				modelPart:setColor(vectors.vec3(1, 1, 1):scale(lightIntensity))
+			end
+		end;
+
+		---スラスター飛行パーティクルを描画する。
+		emitBoosterParticles = function ()
+			for _, modelParts in ipairs({{ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RBoosterAnchor1, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RBoosterAnchor2, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RBoosterAnchor3}, {ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LBoosterAnchor1, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LBoosterAnchor2, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LBoosterAnchor3}, {ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLBoosterAnchor1, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLBoosterAnchor2, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLBoosterAnchor3}, {ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLBoosterAnchor1, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLBoosterAnchor2, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLBoosterAnchor3}}) do
+				local anchorPos = ModelUtils.getModelWorldPos(modelParts[1])
+				local dirVectorX = ModelUtils.getModelWorldPos(modelParts[2]):copy():sub(anchorPos):normalize()
+				local dirVectorY = ModelUtils.getModelWorldPos(modelParts[3]):copy():sub(anchorPos):normalize()
+				local dirVectorZ = vectors.rotateAroundAxis(90, dirVectorY, dirVectorX)
+				particles:newParticle("minecraft:soul_fire_flame", anchorPos):setScale(1.5):setVelocity(dirVectorX:copy():scale(0.5):add(dirVectorY:copy():scale(math.random() * 0.1 - 0.05)):add(dirVectorZ:copy():scale(math.random() * 0.1 - 0.05))):setLifetime(2)
+				particles:newParticle("minecraft:firework", anchorPos):setScale(0.5):setVelocity(dirVectorX:copy():scale(1):add(dirVectorY:copy():scale(math.random() * 0.1 - 0.05)):add(dirVectorZ:copy():scale(math.random() * 0.1 - 0.05))):setGravity(0):setLifetime(20)
+			end
+			for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RBoosterAnchor1, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LBoosterAnchor1}) do
+				particles:newParticle("minecraft:end_rod", ModelUtils.getModelWorldPos(modelPart)):setScale(1):setColor(0, 1, 1):setGravity(0):setLifetime(200)
+			end
+		end;
+
 		---ブースター点火/消火直後の黒煙を描画する。
 		emitBoosterSmoke = function ()
 			for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RBoosterAnchor1, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LBoosterAnchor1, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLBoosterAnchor1, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLBoosterAnchor1}) do
@@ -1092,6 +1106,14 @@ local BlueArchiveCharacter = {
 		---クリエイティブ飛行中状態で静止しているときのアニメーションのタイミングを測るカウンター（腕のわずかな動き、飛行の上下のブレ）
 		---@type number
 		idleAnimationCount = 0;
+
+		---ブースターが点火中かどうか
+		---@type boolean
+		isBoosterLighting = false;
+
+		---ブースターの光の強さ
+		---@type number
+		boosterIntensity = 0;
 	};
 
 	bubble = {
@@ -1339,12 +1361,18 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		vanilla_model.ELYTRA:setVisible(false)
 
-		for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RightBoosterExhaust, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LeftBoosterExhaust, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLArmorBoosterExhaust, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLArmorBoosterExhaust}) do
-			modelPart:setColor(vectors.vec3(0, 0, 0))
-		end
+		self.costume.setBoosterExhaustLight(0)
 
 		events.TICK:register(function ()
 			if not client:isPaused() then
+
+				if player:getPose() == "FALL_FLYING" then
+					local isBoosting = player:getNearestEntity("minecraft:firework_rocket", 0.4) ~= nil
+					self.costume.isBoosterLighting = isBoosting
+				elseif not self.costume.isFlying and ExSkill.animationCount == -1 then
+					self.costume.isBoosterLighting = false
+				end
+
 				if host:isHost() then
 					local isFlying = host:isFlying()
 					if isFlying ~= self.costume.isHostFlying then
@@ -1366,13 +1394,9 @@ local BlueArchiveCharacter = {
 						for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLeg, ModelAlias.alias.avatar.leftLeg}) do
 							modelPart:setParentType("None")
 						end
-						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RightBoosterExhaust, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LeftBoosterExhaust, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLArmorBoosterExhaust, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLArmorBoosterExhaust}) do
-							modelPart:setColor(vectors.vec3(1, 1, 1))
-						end
+						self.costume.setBoosterExhaustLight(1)
 						Arms:setArmState(Arms.armState.right == "DEFAULT" and "FLYING" or Arms.armState.right, Arms.armState.left == "DEFAULT" and "FLYING" or Arms.armState.left)
-						self.costume.emitBoosterSmoke()
 						local playerPos = player:getPos()
-						sounds:playSound("minecraft:item.firecharge.use", playerPos, 1, 2)
 						if host:isHost() then
 							self.costume.flyingSound = sounds:playSound("minecraft:item.elytra.flying", playerPos, 0.2, 0.8, true)
 						end
@@ -1387,17 +1411,7 @@ local BlueArchiveCharacter = {
 							self.costume.bodyRot = vectors.vec3(math.clamp(Physics.velocityAverage[5][1] / 1.6 * -90, -90, 10), 0, math.clamp(Physics.velocityAverage[6][1] / 1.6 * -90, -30, 30))
 
 							if self.costume.isFlying and self.costume.flyingAnimationTransitionPercentage > 0 then
-								for _, modelParts in ipairs({{ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RBoosterAnchor1, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RBoosterAnchor2, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RBoosterAnchor3}, {ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LBoosterAnchor1, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LBoosterAnchor2, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LBoosterAnchor3}, {ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLBoosterAnchor1, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLBoosterAnchor2, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLBoosterAnchor3}, {ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLBoosterAnchor1, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLBoosterAnchor2, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLBoosterAnchor3}}) do
-									local anchorPos = ModelUtils.getModelWorldPos(modelParts[1])
-									local dirVectorX = ModelUtils.getModelWorldPos(modelParts[2]):copy():sub(anchorPos):normalize()
-									local dirVectorY = ModelUtils.getModelWorldPos(modelParts[3]):copy():sub(anchorPos):normalize()
-									local dirVectorZ = vectors.rotateAroundAxis(90, dirVectorY, dirVectorX)
-									particles:newParticle("minecraft:soul_fire_flame", anchorPos):setScale(1.5):setVelocity(dirVectorX:copy():scale(0.5):add(dirVectorY:copy():scale(math.random() * 0.1 - 0.05)):add(dirVectorZ:copy():scale(math.random() * 0.1 - 0.05))):setLifetime(2)
-									particles:newParticle("minecraft:firework", anchorPos):setScale(0.5):setVelocity(dirVectorX:copy():scale(1):add(dirVectorY:copy():scale(math.random() * 0.1 - 0.05)):add(dirVectorZ:copy():scale(math.random() * 0.1 - 0.05))):setGravity(0):setLifetime(20)
-								end
-								for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RBoosterAnchor1, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LBoosterAnchor1}) do
-									particles:newParticle("minecraft:end_rod", ModelUtils.getModelWorldPos(modelPart)):setScale(1):setColor(0, 1, 1):setGravity(0):setLifetime(200)
-								end
+								self.costume.isBoosterLighting = true
 							elseif not self.costume.isFlying then
 								self.costume.resetArmsAndLegs()
 								if self.costume.flyingSound ~= nil then
@@ -1405,9 +1419,6 @@ local BlueArchiveCharacter = {
 									self.costume.flyingSound = nil
 									self.costume.emitBoosterSmoke()
 									sounds:playSound("minecraft:block.fire.extinguish", player:getPos(), 1, 1)
-									for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RightBoosterExhaust, ModelAlias.alias.avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LeftBoosterExhaust, ModelAlias.alias.avatar.rightLeg.RLArmor.RLArmorBooster.RLArmorBoosterExhaust, ModelAlias.alias.avatar.leftLeg.LLArmor.LLArmorBooster.LLArmorBoosterExhaust}) do
-										modelPart:setColor(vectors.vec3(0, 0, 0))
-									end
 								end
 							end
 
@@ -1441,12 +1452,26 @@ local BlueArchiveCharacter = {
 					self.costume.stopFlyingAnimation(self)
 				end
 				self.costume.flyingAnimationTransitionPercentagePrev = self.costume.flyingAnimationTransitionPercentage
-			end
 
-			EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
-				self.costume.isFlying = configData["isFlying"]
-			end)
+				if self.costume.isBoosterLighting then
+					if self.costume.boosterIntensity < 1 then
+						self.costume.setBoosterExhaustLight(1)
+						sounds:playSound("minecraft:item.firecharge.use", player:getPos(), 1, 2)
+						self.costume.emitBoosterSmoke()
+
+					end
+					self.costume.boosterIntensity = 1
+					self.costume.emitBoosterParticles()
+				elseif self.costume.boosterIntensity > 0 then
+					self.costume.boosterIntensity = math.max(self.costume.boosterIntensity - 0.025, 0)
+					self.costume.setBoosterExhaustLight(self.costume.boosterIntensity)
+				end
+			end
 		end, "costume_battle_tick")
+
+		EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
+			self.costume.isFlying = configData["isFlying"]
+		end)
 	end;
 }
 
