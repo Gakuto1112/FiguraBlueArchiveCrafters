@@ -379,7 +379,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "SPECIAL";
 
-			models = {models.models.ex_skill_1.Cockpit, models.models.ex_skill_1.CockpitFront};
+			models = {models.models.ex_skill_1.Cockpit, models.models.ex_skill_1.CockpitFront, models.models.ex_skill_1.Gui};
 
 			animations = {"main", "ex_skill_1"};
 
@@ -406,9 +406,11 @@ local BlueArchiveCharacter = {
 					ModelAlias.alias.avatar.leftEye:setPos(0, -0.5, 0)
 					ModelAlias.alias.avatar.head.FearEffect:setVisible(true)
 					if host:isHost() then
+						models.models.ex_skill_1.Gui.ScreenFilter:setScale(client:getScaledWindowSize():copy():augmented(1))
 						self.exSkill.primary.baseFOV = renderer:getFOV()
 
 						events.RENDER:register(function (delta, ctx, matrix)
+							models.models.ex_skill_1.Gui.ScreenFilter:setOpacity(models.models.ex_skill_1.Gui.FilterOpacity:getAnimScale().x)
 							renderer:setFOV(self.exSkill.primary.baseFOV * models.models.ex_skill_1.FOVScale:getAnimScale().x)
 						end, "ex_skill_1_render")
 					end
