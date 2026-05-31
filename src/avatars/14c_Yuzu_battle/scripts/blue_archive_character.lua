@@ -396,10 +396,17 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
-				onPreAnimation = function ()
+				onPreAnimation = function (self)
 					FaceParts:setEmotion("CIRCLE", "CIRCLE_TEAR", "SHOCK", 26, true)
 					ModelAlias.alias.avatar.leftEye:setPos(0, -0.5, 0)
 					ModelAlias.alias.avatar.head.FearEffect:setVisible(true)
+					if host:isHost() then
+						self.exSkill.primary.baseFOV = renderer:getFOV()
+
+						events.RENDER:register(function (delta, ctx, matrix)
+							renderer:setFOV(self.exSkill.primary.baseFOV * models.models.ex_skill_1.FOVScale:getAnimScale().x)
+						end, "ex_skill_1_render")
+					end
 				end;
 
 				onAnimationTick = function (_, tick)
@@ -407,6 +414,10 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "FRUST", 8, true)
 						ModelAlias.alias.avatar.leftEye:setPos()
 						ModelAlias.alias.avatar.head.FearEffect:setVisible(false)
+					elseif tick == 22 then
+						sounds:playSound("minecraft:block.beacon.activate", player:getPos(), 0.5, 5)
+					elseif (tick == 24 or tick == 60) and host:isHost() then
+						sounds:playSound("minecraft:entity.player.attack.sweep", player:getPos(), 0.25, 1.2)
 					elseif tick == 34 then
 						FaceParts:setEmotion("NARROW", "NARROW_CENTER", "FEAR", 28, true)
 					elseif tick == 62 then
@@ -421,20 +432,56 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "OPENED2", 3, true)
 					elseif tick == 99 then
 						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "SMALL", 22, true)
+						particles:newParticle("minecraft:snowflake", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.mouth)):setScale(0.5):setVelocity(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, -0.05, 0.05, 0, 1, 0)):setGravity(0):setLifetime(11)
+					elseif tick == 101 then
+						sounds:playSound("minecraft:block.beacon.deactivate", player:getPos(), 0.5, 5)
 					elseif tick == 121 then
 						FaceParts:setEmotion("ANGRY", "ANGRY", "ANGRY", 23, true)
+						sounds:playSound("minecraft:entity.player.levelup", player:getPos(), 1, 1.5)
 					elseif tick == 144 then
 						FaceParts:setEmotion("ANGRY", "ANGRY", "CLOSED2", 41, true)
+						sounds:playSound("minecraft:entity.lightning_bolt.thunder", player:getPos(), 1, 2)
+						sounds:playSound("minecraft:entity.blaze.death", player:getPos(), 0.75, 0.5)
+						if host:isHost() then
+							models.models.ex_skill_1.CockpitFront:setVisible(false)
+						end
+					end
+
+					if tick < 26 then
+						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.head)
+						particles:newParticle("minecraft:splash", anchorPos):setPower(2)
+						if tick % 2 == 0 then
+							sounds:playSound("minecraft:entity.item.pickup", anchorPos, 0.25, 2)
+						end
+					end
+
+					if tick == 22 or tick == 101 then
+						local bodyYaw = player:getBodyYaw()
+						for i = 1, 2 do
+							local screenModel = models.models.ex_skill_1.CockpitFront["CockpitScreen" .. i]
+							local screenRot = screenModel:getRot().y
+							local anchorPos = ModelUtils.getModelWorldPos(screenModel)
+							for _ = 1, 20 do
+								particles:newParticle("minecraft:end_rod", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1 + screenRot, math.random() * 0.5 - 0.25, math.random() * 0.28125, 0.05, 0, 1, 0))):setScale(0.05):setColor(0, 1, 1):setGravity(0):setLifetime(math.random(4, 8))
+							end
+						end
 					end
 				end;
 
 				onPostAnimation = function (_, forcedStop)
+					if host:isHost() then
+						events.RENDER:remove("ex_skill_1_render")
+					end
 					if forcedStop then
 						ModelAlias.alias.avatar.leftEye:setPos()
 						ModelAlias.alias.avatar.head.FearEffect:setVisible(false)
 					end
 				end;
 			};
+
+			---Exスキルのために調整したFOV基準値
+			---@type number
+			baseFOV = 0;
 		};
 	};
 
