@@ -803,6 +803,10 @@ local BlueArchiveCharacter = {
 
 	deathAnimation = {
 		callbacks = {
+			onBeforeModelCopy = function ()
+				ModelAlias.alias.avatar.head.FearEffect:setVisible(false)
+			end;
+
 			onPhase1 = function ()
 				ModelAlias.alias.dummy_avatar.head.HairTail:setRot(20, 0, 0)
 				ModelAlias.alias.dummy_avatar.body.Skirt1:setScale(1.5, 0.5, 1.5)
