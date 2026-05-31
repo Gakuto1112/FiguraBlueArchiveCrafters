@@ -377,7 +377,7 @@ local BlueArchiveCharacter = {
 
 	exSkill = {
 		primary = {
-			formationType = "STRIKER";
+			formationType = "SPECIAL";
 
 			models = {models.models.ex_skill_1.Cockpit, models.models.ex_skill_1.CockpitFront};
 
