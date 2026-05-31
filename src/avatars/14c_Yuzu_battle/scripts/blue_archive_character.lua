@@ -399,7 +399,7 @@ local BlueArchiveCharacter = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
 						models.models.ex_skill_1.CockpitFront.CockpitScreen1.TextAnchor:setPrimaryRenderType("CUTOUT")
-						models.models.ex_skill_1.CockpitFront.CockpitScreen1.TextAnchor:newText("ex_skill_1_screen_1_text"):setText("§b§kcanning...\n\nScan complete\nThe enemy is very strong.\n\nBut, don't worry.\nYou can defeat it."):setPos(0, 3.8, 0):setRot(0, 0, 0):setScale(0.03, 0.03, 0.03):setWidth(100)
+						models.models.ex_skill_1.CockpitFront.CockpitScreen1.TextAnchor:newText("ex_skill_1_screen_1_text"):setText("§b§kScanning...\n\nScan complete\nThe enemy is very strong.\n\nBut, don't worry.\nYou can defeat it."):setPos(-2.75, 3.5, 0):setRot(0, 0, 0):setScale(0.03, 0.03, 0.03):setAlignment("RIGHT"):setWidth(100)
 						self.exSkill.primary.isInitialized = true
 					end
 					FaceParts:setEmotion("CIRCLE", "CIRCLE_TEAR", "SHOCK", 26, true)
