@@ -558,10 +558,17 @@ local BlueArchiveCharacter = {
 
 	deathAnimation = {
 		callbacks = {
+			onBeforeModelCopy = function ()
+				ModelAlias.alias.avatar.head.FearEffect:setVisible(false)
+			end;
+
+			onPhase1 = function ()
+				ModelAlias.alias.dummy_avatar.head.HairTail:setRot(22.5, 0, 0)
+			end;
+
 			onPhase2 = function ()
-				ModelAlias.alias.dummy_avatar.body.Hairs.BackHair:setPos(0, 0.5, 0.5)
-				ModelAlias.alias.dummy_avatar.body.Hairs.BackHair:setRot(-15, 0, -15)
-				ModelAlias.alias.dummy_avatar.rightLegBottom:setOffsetPivot(0, 0, -2)
+				ModelAlias.alias.dummy_avatar.head.HairTail:setRot(-17.5, 0, -5)
+				ModelAlias.alias.dummy_avatar.body.FrontHair:setRot(0, 0, -15)
 			end;
 		};
 	};
