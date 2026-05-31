@@ -406,10 +406,17 @@ local BlueArchiveCharacter = {
 					ModelAlias.alias.avatar.leftEye:setPos(0, -0.5, 0)
 					ModelAlias.alias.avatar.head.FearEffect:setVisible(true)
 					if host:isHost() then
+						--高解像度の写真が入手可能であればそれに置換
+						if textures["ex_skill_1_image_high_resolution"] == nil and #Locale:getLocalizedText("ex_skill.photo_data") >= 32 then
+							textures:read("ex_skill_1_image_high_resolution", Locale:getLocalizedText("ex_skill.photo_data"))
+							models.models.ex_skill_1.CockpitFront.CockpitScreen2.CockpitScreen2Base:setPrimaryTexture("CUSTOM", textures["ex_skill_1_image_high_resolution"])
+						end
+						models.models.ex_skill_1.CockpitFront.CockpitScreen2.CockpitScreen2Base:setColor(vectors.vec3(1, 1, 1):scale(client:hasShaderPack() and 0.5 or 1))
+
 						models.models.ex_skill_1.Gui.ScreenFilter:setScale(client:getScaledWindowSize():copy():augmented(1))
 						self.exSkill.primary.baseFOV = renderer:getFOV()
 
-						events.RENDER:register(function (delta, ctx, matrix)
+						events.RENDER:register(function ()
 							models.models.ex_skill_1.Gui.ScreenFilter:setOpacity(models.models.ex_skill_1.Gui.FilterOpacity:getAnimScale().x)
 							renderer:setFOV(self.exSkill.primary.baseFOV * models.models.ex_skill_1.FOVScale:getAnimScale().x)
 						end, "ex_skill_1_render")
