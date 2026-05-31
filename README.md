@@ -63,7 +63,7 @@ The avatars for these characters are worked in progress.
 It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule.
 Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-- Yuzu Hanaoka (Battle) ([#161](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/161))
+(There is no avatar currently being created.)
 
 ### Planned
 
