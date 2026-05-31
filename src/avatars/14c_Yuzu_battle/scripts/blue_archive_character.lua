@@ -441,8 +441,9 @@ local BlueArchiveCharacter = {
 					elseif tick == 144 then
 						FaceParts:setEmotion("ANGRY", "ANGRY", "CLOSED2", 41, true)
 						sounds:playSound("minecraft:entity.lightning_bolt.thunder", player:getPos(), 1, 2)
-						sounds:playSound("minecraft:entity.blaze.death", player:getPos(), 0.75, 0.5)
+						sounds:playSound("minecraft:entity.blaze.death", player:getPos(), 1, 0.5)
 						if host:isHost() then
+							models.models.ex_skill_1.Background:setVisible(true)
 							models.models.ex_skill_1.CockpitFront:setVisible(false)
 						end
 					end
@@ -471,6 +472,7 @@ local BlueArchiveCharacter = {
 				onPostAnimation = function (_, forcedStop)
 					if host:isHost() then
 						events.RENDER:remove("ex_skill_1_render")
+						models.models.ex_skill_1.Background:setVisible(false)
 					end
 					if forcedStop then
 						ModelAlias.alias.avatar.leftEye:setPos()
