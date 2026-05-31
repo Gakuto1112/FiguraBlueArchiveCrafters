@@ -504,10 +504,13 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmorChange = function (_, parts, isVisible)
 				if parts == "HELMET" then
-					ModelAlias.alias.avatar.head.HairTip2:setVisible(not isVisible)
+					ModelAlias.alias.avatar.head.HairTip:setVisible(not isVisible)
 				elseif parts == "CHEST_PLATE" then
-					ModelAlias.alias.avatar.body.Hairs.FrontHair:setPos(0, 0, isVisible and -1 or 0)
-					ModelAlias.alias.avatar.body.Hairs.BackHair:setPos(0, 0, isVisible and 1 or 0)
+					ModelAlias.alias.avatar.body.FrontHair:setPos(0, 0, isVisible and -1 or 0)
+				elseif parts == "LEGGINGS" then
+					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLeg.RightPorch, ModelAlias.alias.avatar.leftLeg.LeftPorch}) do
+						modelPart:setVisible(not isVisible)
+					end
 				end
 			end;
 		};
