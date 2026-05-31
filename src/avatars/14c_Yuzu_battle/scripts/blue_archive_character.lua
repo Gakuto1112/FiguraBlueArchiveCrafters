@@ -16,13 +16,13 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
----| "UNEQUAL" # 不等号目（><）
----| "INVERTED" # 反対側を見る目
 ---| "ANGRY" # 怒った目
----| "CLOSED2" # 閉じた目2
 ---| "FEAR" # 恐怖を感じているときの目
----| "FEAR_CENTER" # 恐怖を感じてつつ少し反対側を見る目
----| "CLOSED2_WITH_TEAR" # 涙ぐみつつ閉じた目2
+---| "CIRCLE" # 丸目
+---| "UNEQUAL" # 不等号目
+---| "NARROW" # 半目
+---| "CLOSED2" # 閉じた目2
+---| "NARROW_CENTER" # 中央を見る半目
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -30,26 +30,26 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
----| "UNEQUAL" # 不等号目（><）
----| "ANGRY_INVERTED" # 怒りつつ反対側を見る目
----| "CLOSED2" # 閉じた目2
----| "FEAR" # 恐怖を感じているときの目
----| "FEAR_CENTER" # 恐怖を感じてつつ少し反対側を見る目
----| "CLOSED2_WITH_TEAR" # 涙ぐみつつ閉じた目2
 ---| "ANGRY" # 怒った目
----| "INVERTED" # 反対側を見る目
+---| "FEAR" # 恐怖を感じているときの目
+---| "CIRCLE_TEAR" # 涙を流しながらの丸目
+---| "UNEQUAL" # 不等号目
+---| "NARROW_CENTER" # 中央を見る半目
+---| "CLOSED2" # 閉じた目2
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
 ---| "NORMAL" # 通常
 ---| "SHOCK" # あんぐり口
 ---| "FRUST" # ぐにゅぐにゅ口
----| "SMALL" # 小さく開けた口
 ---| "CLOSED" # 閉じた口
----| "ANGRY" # 怒った口
 ---| "FEAR" # 恐怖を感じているときの口
 ---| "SMILE" # にっこり
 ---| "OPENED" # 開いた口
+---| "OPENED2" # 開いた口2
+---| "SMALL" # 小さく開いた口
+---| "ANGRY" # ムッとする口
+---| "CLOSED2" # 閉じた口2
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -292,13 +292,13 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(2, 0); --必須
 			TIRED = vectors.vec2(3, 0); --必須
 			CLOSED = vectors.vec2(4, 0); --必須
-			UNEQUAL = vectors.vec2(5, 0);
-			INVERTED = vectors.vec2(6, 0);
-			ANGRY = vectors.vec2(7, 0);
-			CLOSED2 = vectors.vec2(9, 0);
-			FEAR = vectors.vec2(10, 0);
-			FEAR_CENTER = vectors.vec2(11, 0);
-			CLOSED2_WITH_TEAR = vectors.vec2(12, 0);
+			ANGRY = vectors.vec2(5, 0);
+			FEAR = vectors.vec2(7, 0);
+			CIRCLE = vectors.vec2(8, 0);
+			UNEQUAL = vectors.vec2(10, 0);
+			NARROW = vectors.vec2(11, 0);
+			CLOSED2 = vectors.vec2(13, 0);
+			NARROW_CENTER = vectors.vec2(15, 0);
 		};
 
 		leftEye = {
@@ -306,25 +306,26 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(1, 0); --必須
 			TIRED = vectors.vec2(2, 0); --必須
 			CLOSED = vectors.vec2(3, 0); --必須
-			UNEQUAL = vectors.vec2(4, 0);
-			ANGRY_INVERTED = vectors.vec2(7, 0);
-			CLOSED2 = vectors.vec2(8, 0);
-			FEAR = vectors.vec2(9, 0);
-			FEAR_CENTER = vectors.vec2(10, 0);
-			CLOSED2_WITH_TEAR = vectors.vec2(11, 0);
-			ANGRY = vectors.vec2(12, 0);
-			INVERTED = vectors.vec2(13, 0);
+			ANGRY = vectors.vec2(5, 0);
+			FEAR = vectors.vec2(6, 0);
+			CIRCLE_TEAR = vectors.vec2(8, 0);
+			UNEQUAL = vectors.vec2(9, 0);
+			NARROW_CENTER = vectors.vec2(11, 0);
+			CLOSED2 = vectors.vec2(12, 0);
+			NARROW = vectors.vec2(13, 0);
 		};
 
 		mouth = {
 			SHOCK = vectors.vec2(0, 0);
 			FRUST = vectors.vec2(1, 0);
-			SMALL = vectors.vec2(2, 0);
-			CLOSED = vectors.vec2(3, 0);
-			ANGRY = vectors.vec2(4, 0);
-			FEAR = vectors.vec2(5, 0);
-			SMILE = vectors.vec2(6, 0);
-			OPENED = vectors.vec2(7, 0);
+			CLOSED = vectors.vec2(2, 0);
+			FEAR = vectors.vec2(3, 0);
+			SMILE = vectors.vec2(4, 0);
+			OPENED = vectors.vec2(5, 0);
+			OPENED2 = vectors.vec2(6, 0);
+			SMALL = vectors.vec2(7, 0);
+			ANGRY = vectors.vec2(8, 0);
+			CLOSED2 = vectors.vec2(9, 0);
 		};
 	};
 
@@ -395,6 +396,44 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
+				onPreAnimation = function ()
+					FaceParts:setEmotion("CIRCLE", "CIRCLE_TEAR", "SHOCK", 26, true)
+					ModelAlias.alias.avatar.leftEye:setPos(0, -0.5, 0)
+					ModelAlias.alias.avatar.head.FearEffect:setVisible(true)
+				end;
+
+				onAnimationTick = function (_, tick)
+					if tick == 26 then
+						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "FRUST", 8, true)
+						ModelAlias.alias.avatar.leftEye:setPos()
+						ModelAlias.alias.avatar.head.FearEffect:setVisible(false)
+					elseif tick == 34 then
+						FaceParts:setEmotion("NARROW", "NARROW_CENTER", "FEAR", 28, true)
+					elseif tick == 62 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "FEAR", 2, true)
+					elseif tick == 64 then
+						FaceParts:setEmotion("NARROW_CENTER", "NARROW", "FRUST", 27, true)
+					elseif tick == 91 then
+						FaceParts:setEmotion("NARROW", "NARROW", "FRUST", 1, true)
+					elseif tick == 92 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED2", 4, true)
+					elseif tick == 96 then
+						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "OPENED2", 3, true)
+					elseif tick == 99 then
+						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "SMALL", 22, true)
+					elseif tick == 121 then
+						FaceParts:setEmotion("ANGRY", "ANGRY", "ANGRY", 23, true)
+					elseif tick == 144 then
+						FaceParts:setEmotion("ANGRY", "ANGRY", "CLOSED2", 41, true)
+					end
+				end;
+
+				onPostAnimation = function (_, forcedStop)
+					if forcedStop then
+						ModelAlias.alias.avatar.leftEye:setPos()
+						ModelAlias.alias.avatar.head.FearEffect:setVisible(false)
+					end
+				end;
 			};
 		};
 	};
