@@ -572,7 +572,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {ModelAlias.alias.avatar.head.EyeShines, ModelAlias.alias.avatar.gun.UpperShell.UpperShellTop.BeltFront, ModelAlias.alias.avatar.gun.BeltBack, models.models.ex_skill_1.Desk, models.models.ex_skill_1.Gui};
+			models = {ModelAlias.alias.avatar.gun.UpperShell.UpperShellTop.BeltFront, ModelAlias.alias.avatar.gun.BeltBack, models.models.ex_skill_1.Desk, models.models.ex_skill_1.Gui};
 
 			animations = {"main", "gun", "ex_skill_1"};
 
@@ -660,6 +660,11 @@ local BlueArchiveCharacter = {
 							end
 							models.models.ex_skill_1.Gui.ScreenFilter:setOpacity(models.models.ex_skill_1.Gui.ScreenFilterOpacity:getAnimScale().x)
 						end, "ex_skill_1_render_host")
+
+						local isShaderApplied = client:hasShaderPack()
+						for i = 1, 2 do
+							models.models.ex_skill_1.CyberArea["CyberAreaEffect" .. i]:setPrimaryRenderType(isShaderApplied and "CUTOUT_EMISSIVE_SOLID" or "EMISSIVE")
+						end
 					end
 					events.RENDER:register(function ()
 						ModelAlias.alias.avatar.head.EyeShines:setOpacity(ModelAlias.alias.avatar.head.EyeShines.EyeShinesOpacity:getAnimScale().x)
@@ -700,6 +705,7 @@ local BlueArchiveCharacter = {
 						ExSkill1SpriteManager:removeAll()
 					elseif tick == 188 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 37, true)
+						ModelAlias.alias.avatar.head.EyeShines:setVisible(true)
 						local bodyYaw = player:getBodyYaw()
 						local anchorPos = ModelUtils.getModelWorldPos(models.models.main.Avatar):copy():add(vectors.rotateAroundAxis(bodyYaw * -1, 0, 1.5, -1, 0, 1, 0))
 						for i = 0, 35 do
@@ -756,6 +762,7 @@ local BlueArchiveCharacter = {
 
 				onPostAnimation = function (self, forcedStop)
 					events.RENDER:remove("ex_skill_1_render")
+					ModelAlias.alias.avatar.head.EyeShines:setVisible(false)
 					if Gun.currentGunPosition == "NONE" then
 						local isLeftHanded = player:isLeftHanded()
 						ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, 12, 0):add(self.gun.gunPosition.put.pos[isLeftHanded and "left" or "right"]))
