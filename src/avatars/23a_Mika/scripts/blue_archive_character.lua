@@ -386,7 +386,156 @@ local BlueArchiveCharacter = {
 
 	physics = {
 		physicData = {
+			{
+				models = {ModelAlias.alias.avatar.body.Hairs.BackHair},
 
+				x = {
+					vertical = {
+						min = -150;
+						neutral = -7.5;
+						max = -7.5;
+
+						bodyX = {
+							multiplayer = -80;
+							min = -90;
+							max = -7.5;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -150;
+							max = -7.5;
+						};
+
+						bodyRot = {
+							multiplayer = 0.05;
+							min = -90;
+							max = -7.5;
+						};
+					};
+
+					horizontal = {
+						min = -90;
+						neutral = -10;
+						max = -10;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.Hairs.FrontHair};
+
+				x = {
+					vertical = {
+						min = 5;
+						neutral = 5;
+						max = 150;
+						sneakOffset = 30;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 5;
+							max = 90;
+						};
+
+						bodyY = {
+							multiplayer = -80;
+							min = 5;
+							max = 150;
+						};
+
+						bodyRot = {
+							multiplayer = -0.05;
+							min = 5;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = 5;
+						neutral = 90;
+						max = 150;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 5;
+							max = 150;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.Bun.BunRibbon};
+
+				z = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 125;
+
+						bodyY = {
+							multiplayer = -80;
+							min = 0;
+							max = 125;
+						};
+
+						headZ = {
+							multiplayer = -80;
+							min = 0;
+							max = 65;
+						};
+
+						headRot = {
+							multiplayer = -0.05;
+							min = 0;
+							max = 65;
+						};
+					};
+
+					horizontal = {
+						min = 0;
+						neutral = 0;
+						max = 0;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.Wings.RightWing},
+
+				z = {
+					vertical = {
+						min = -5;
+						neutral = 0;
+						max = 10;
+
+						bodyY = {
+							multiplayer = -20;
+							min = -5;
+							max = 10;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.Wings.LeftWing},
+
+				z = {
+					vertical = {
+						min = -5;
+						neutral = 0;
+						max = 10;
+
+						bodyY = {
+							multiplayer = 20;
+							min = -5;
+							max = 10;
+						};
+					};
+				};
+			};
 		};
 	};
 
@@ -422,8 +571,8 @@ local BlueArchiveCharacter = {
 				end
 
 				local wingRotOffset = math.map(vanilla_model.RIGHT_LEG:getOriginRot().x, -90, 90, 20, 0)
-				ModelAlias.alias.avatar.body.Wings.RightWing:setRot(0, wingRotOffset * -1, 0)
-				ModelAlias.alias.avatar.body.Wings.LeftWing:setRot(0, wingRotOffset, 0)
+				ModelAlias.alias.avatar.body.Wings.RightWing.RightWingYPivot:setRot(0, wingRotOffset * -1, 0)
+				ModelAlias.alias.avatar.body.Wings.LeftWing.LeftWingYPivot:setRot(0, wingRotOffset, 0)
 			end
 		end)
 	end;
