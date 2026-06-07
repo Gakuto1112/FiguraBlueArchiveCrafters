@@ -288,7 +288,7 @@ local BlueArchiveCharacter = {
 	};
 
 	skirt = {
-		skirtModels = {};
+		skirtModels = {ModelAlias.alias.avatar.body.Skirt};
 	};
 
 	gun = {
