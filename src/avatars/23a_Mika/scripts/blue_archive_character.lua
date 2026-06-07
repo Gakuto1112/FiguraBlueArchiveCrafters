@@ -408,14 +408,18 @@ local BlueArchiveCharacter = {
 		end
 
 		events.TICK:register(function ()
-			for _, shine in ipairs(self.costume.haloShines) do
-				shine.callbacks.onTick(shine)
+			if not client:isPaused() then
+				for _, shine in ipairs(self.costume.haloShines) do
+					shine.callbacks.onTick(shine)
+				end
 			end
 		end)
 
 		events.RENDER:register(function (delta, ctx)
-			for _, shine in ipairs(self.costume.haloShines) do
-				shine.callbacks.onRender(shine, delta, ctx)
+			if not client:isPaused() then
+				for _, shine in ipairs(self.costume.haloShines) do
+					shine.callbacks.onRender(shine, delta, ctx)
+				end
 			end
 		end)
 	end;

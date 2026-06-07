@@ -36,43 +36,41 @@ local HaloShine = {
 
 			---@param self HaloShine
 			onTick = function (self)
-				if not client:isPaused() then
-					if self.shineCount == 0 then
-						if self.isShineVisible then
-							self.shineCount = math.random(0, 400) + 1
-							self.flickerLength = 0
-							self.flickerCount = 0
-						else
-							local yaw = math.random() * 360
-							local heightRandomValue = math.random()
-							local cPink = vectors.vec3(1.000, 0.961, 1.000)
-							local cBlue = vectors.vec3(0.937, 0.980, 1.000)
-							local cMagenta = vectors.vec3(0.969, 0.906, 1.000)
-							local shineColor = cBlue:copy():sub(cPink):scale(math.abs(math.cos(yaw + 45))):add(cPink)
-							shineColor = cMagenta:copy():sub(shineColor):scale(heightRandomValue):add(shineColor)
-							self.object:setPos(vectors.rotateAroundAxis(yaw, 0, heightRandomValue * 3 - 2, 2 + math.random() * 5, 0, 1, 0):sub(self.posOffset))
-							self.object:setColor(shineColor)
-							self.shineCount = self.shineLength + 1
-						end
-						self.object:setVisible(not self.isShineVisible)
-						self.isShineVisible = not self.isShineVisible
-					end
-					self.shineCount = self.shineCount - 1
-
+				if self.shineCount == 0 then
 					if self.isShineVisible then
-						if self.flickerCount == 0 then
-							self.flickerLength = math.random(2, 6)
-							self.flickerCount = 1
-						end
-
-						self.flickerCount = math.max(self.flickerCount - 1 / self.flickerLength , 0)
+						self.shineCount = math.random(0, 400) + 1
+						self.flickerLength = 0
+						self.flickerCount = 0
+					else
+						local yaw = math.random() * 360
+						local heightRandomValue = math.random()
+						local cPink = vectors.vec3(1.000, 0.961, 1.000)
+						local cBlue = vectors.vec3(0.937, 0.980, 1.000)
+						local cMagenta = vectors.vec3(0.969, 0.906, 1.000)
+						local shineColor = cBlue:copy():sub(cPink):scale(math.abs(math.cos(yaw + 45))):add(cPink)
+						shineColor = cMagenta:copy():sub(shineColor):scale(heightRandomValue):add(shineColor)
+						self.object:setPos(vectors.rotateAroundAxis(yaw, 0, heightRandomValue * 3 - 2, 2 + math.random() * 5, 0, 1, 0):sub(self.posOffset))
+						self.object:setColor(shineColor)
+						self.shineCount = self.shineLength + 1
 					end
+					self.object:setVisible(not self.isShineVisible)
+					self.isShineVisible = not self.isShineVisible
+				end
+				self.shineCount = self.shineCount - 1
+
+				if self.isShineVisible then
+					if self.flickerCount == 0 then
+						self.flickerLength = math.random(2, 6)
+						self.flickerCount = 1
+					end
+
+					self.flickerCount = math.max(self.flickerCount - 1 / self.flickerLength , 0)
 				end
 			end;
 
 			---@param self HaloShine
 			onRender = function (self, delta)
-				if not client:isPaused() and self.isShineVisible then
+				if self.isShineVisible then
 					local trueTick = self.shineCount + delta
 					local baseScale = 1
 					if trueTick < 100 then
