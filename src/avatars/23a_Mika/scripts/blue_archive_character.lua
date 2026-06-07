@@ -420,6 +420,10 @@ local BlueArchiveCharacter = {
 				for _, shine in ipairs(self.costume.haloShines) do
 					shine.callbacks.onRender(shine, delta, ctx)
 				end
+
+				local wingRotOffset = math.map(vanilla_model.RIGHT_LEG:getOriginRot().x, -90, 90, 20, 0)
+				ModelAlias.alias.avatar.body.Wings.RightWing:setRot(0, wingRotOffset * -1, 0)
+				ModelAlias.alias.avatar.body.Wings.LeftWing:setRot(0, wingRotOffset, 0)
 			end
 		end)
 	end;
