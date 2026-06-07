@@ -379,11 +379,15 @@ local BlueArchiveCharacter = {
 	};
 
 	headModel = {
-
+		callbacks = {
+			onBeforeModelCopy = function (self)
+				ModelAlias.alias.avatar.body.Hairs.BackHair:setRot()
+			end;
+		};
 	};
 
 	headBlock = {
-		includeModels = {};
+		includeModels = {ModelAlias.alias.avatar.body.Hairs};
 	};
 
 	portrait = {
