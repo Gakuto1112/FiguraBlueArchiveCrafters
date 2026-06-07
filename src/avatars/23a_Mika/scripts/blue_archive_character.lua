@@ -564,10 +564,10 @@ local BlueArchiveCharacter = {
 			end
 		end)
 
-		events.RENDER:register(function (delta, ctx)
+		events.RENDER:register(function (delta, context)
 			if not client:isPaused() then
 				for _, shine in ipairs(self.costume.haloShines) do
-					shine.callbacks.onRender(shine, delta, ctx)
+					shine.callbacks.onRender(shine, delta, context)
 				end
 
 				local wingRotOffset = math.map(vanilla_model.RIGHT_LEG:getOriginRot().x, -90, 90, 20, 0)
@@ -577,6 +577,17 @@ local BlueArchiveCharacter = {
 				local rightLegRotX = vanilla_model.RIGHT_LEG:getOriginRot().x
 				ModelAlias.alias.avatar.rightLeg:setRot(rightLegRotX * -0.45, 0, 0)
 				ModelAlias.alias.avatar.leftLeg:setRot(vanilla_model.LEFT_LEG:getOriginRot().x * -0.45, 0, 0)
+
+				local blockLightLevel = 15
+				local skyLightLevel = 15
+				if context ~= "FIGURA_GUI" and context ~= "MINECRAFT_GUI" and context ~= "PAPERDOLL" then
+					local playerPos = player:getPos()
+					blockLightLevel = world.getBlockLightLevel(playerPos)
+					skyLightLevel = world.getSkyLightLevel(playerPos)
+				end
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.body.Skirt.Skirt5StarLayer, ModelAlias.alias.avatar.body.Skirt.Skirt6StarLayer, ModelAlias.alias.avatar.body.Skirt.Skirt7StarLayer, ModelAlias.alias.avatar.body.Skirt.Skirt8StarLayer}) do
+					modelPart:setLight(math.min(blockLightLevel + 5, 15), math.min(skyLightLevel + 5, 15))
+				end
 			end
 		end)
 	end;
