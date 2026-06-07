@@ -383,11 +383,64 @@ local BlueArchiveCharacter = {
 			onBeforeModelCopy = function (self)
 				ModelAlias.alias.avatar.body.Hairs.BackHair:setRot()
 			end;
+
+			onAfterModelCopy = function (self)
+				if models.script_head_block and not self.headBlock.isHeadBlockInitialized then
+
+					HaloShine = require("scripts.halo_shine")
+
+					for i = 1, 4 do
+						models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable["HaloShine" .. i]["HaloShine" .. i .. "Inner"]:setParentType("Camera")
+					end
+					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
+
+					for _, shine in ipairs(self.headBlock.headBlockHaloShines) do
+						shine.callbacks.onInit(shine)
+					end
+
+					events.WORLD_TICK:register(function ()
+						if not client:isPaused() then
+							self.headBlock.headBlockHaloRot = self.headBlock.headBlockHaloRot + 0.15
+
+							for _, shine in ipairs(self.headBlock.headBlockHaloShines) do
+								shine.callbacks.onTick(shine)
+							end
+						end
+					end)
+
+					events.WORLD_RENDER:register(function (delta)
+						if not client:isPaused() then
+							models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable:setRot(0, self.headBlock.headBlockHaloRot + 0.15 * delta, 0)
+
+							for _, shine in ipairs(self.headBlock.headBlockHaloShines) do
+								shine.callbacks.onRender(shine, delta)
+							end
+						end
+					end)
+
+					self.headBlock.isHeadBlockInitialized = true
+				end
+			end;
 		};
 	};
 
 	headBlock = {
 		includeModels = {ModelAlias.alias.avatar.body.Hairs};
+
+		---頭ブロックが初期化されたかどうか
+		---@type boolean
+		isHeadBlockInitialized = false;
+
+		---頭ブロックのヘイローのキラキラエフェクトのクラスを格納する配列
+		---@type HaloShine[]
+		headBlockHaloShines = {};
+
+		---頭ブロックのヘイローの回転角度
+		---@type number
+		headBlockHaloRot = 0;
 	};
 
 	portrait = {
