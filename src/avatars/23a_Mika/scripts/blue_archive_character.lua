@@ -356,6 +356,8 @@ local BlueArchiveCharacter = {
 
 	costume = {
 		isAltCostumeEnabled = false;
+
+		haloShines = {}
 	};
 
 	bubble = {
@@ -390,7 +392,32 @@ local BlueArchiveCharacter = {
 
 	---初期化関数
 	---この関数は消しても構わない。
-	init = function ()
+	---@param self BlueArchiveCharacter
+	init = function (self)
+		---ヘイローのキラキラエフェクトオブジェクトのクラス
+		---@type HaloShine
+		HaloShine = require("scripts.halo_shine")
+
+		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
+		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
+		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
+		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
+
+		for _, shine in ipairs(self.costume.haloShines) do
+			shine.callbacks.onInit(shine)
+		end
+
+		events.TICK:register(function ()
+			for _, shine in ipairs(self.costume.haloShines) do
+				shine.callbacks.onTick(shine)
+			end
+		end)
+
+		events.RENDER:register(function (delta, ctx)
+			for _, shine in ipairs(self.costume.haloShines) do
+				shine.callbacks.onRender(shine, delta, ctx)
+			end
+		end)
 	end;
 }
 
