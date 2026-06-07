@@ -573,6 +573,10 @@ local BlueArchiveCharacter = {
 				local wingRotOffset = math.map(vanilla_model.RIGHT_LEG:getOriginRot().x, -90, 90, 20, 0)
 				ModelAlias.alias.avatar.body.Wings.RightWing.RightWingYPivot:setRot(0, wingRotOffset * -1, 0)
 				ModelAlias.alias.avatar.body.Wings.LeftWing.LeftWingYPivot:setRot(0, wingRotOffset, 0)
+
+				local rightLegRotX = vanilla_model.RIGHT_LEG:getOriginRot().x
+				ModelAlias.alias.avatar.rightLeg:setRot(rightLegRotX * -0.45, 0, 0)
+				ModelAlias.alias.avatar.leftLeg:setRot(vanilla_model.LEFT_LEG:getOriginRot().x * -0.45, 0, 0)
 			end
 		end)
 	end;
