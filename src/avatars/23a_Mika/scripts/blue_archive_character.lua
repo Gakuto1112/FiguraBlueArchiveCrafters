@@ -357,7 +357,21 @@ local BlueArchiveCharacter = {
 	costume = {
 		isAltCostumeEnabled = false;
 
-		haloShines = {}
+		---ヘイローのキラキラエフェクトのクラスを格納する配列
+		---@type HaloShine[]
+		haloShines = {};
+
+		---現ティックで脚とスカートの調整をするかどうか
+		---@type boolean
+		shouldAdjustLegs = false;
+
+		---前ティックに脚とスカートの調整をしたかどうか
+		---@type boolean
+		shouldAdjustLegsPrev = false;
+
+		---前ティックは脚を隠すべきだったかどうか
+		---@type boolean
+		shouldHideLegsPrev = false;
 	};
 
 	bubble = {
@@ -561,6 +575,25 @@ local BlueArchiveCharacter = {
 				for _, shine in ipairs(self.costume.haloShines) do
 					shine.callbacks.onTick(shine)
 				end
+
+				local shouldHideLegs = player:getVehicle() ~= nil
+				if shouldHideLegs and not self.costume.shouldHideLegsPrev then
+					ModelAlias.alias.avatar.legs:setVisible(false)
+					ModelAlias.alias.avatar.body.Skirt:setScale(1.5, 0.6, 1.5)
+				elseif not shouldHideLegs and self.costume.shouldHideLegsPrev then
+					ModelAlias.alias.avatar.legs:setVisible(true)
+					ModelAlias.alias.avatar.body.Skirt:setScale()
+				end
+
+				self.costume.shouldAdjustLegs = not shouldHideLegs
+				if not self.costume.shouldAdjustLegs and self.costume.shouldAdjustLegsPrev then
+					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLeg, ModelAlias.alias.avatar.leftLeg}) do
+						modelPart:setRot()
+					end
+				end
+
+				self.costume.shouldHideLegsPrev = shouldHideLegs
+				self.costume.shouldAdjustLegsPrev = self.costume.shouldAdjustLegs
 			end
 		end)
 
@@ -574,9 +607,17 @@ local BlueArchiveCharacter = {
 				ModelAlias.alias.avatar.body.Wings.RightWing.RightWingYPivot:setRot(0, wingRotOffset * -1, 0)
 				ModelAlias.alias.avatar.body.Wings.LeftWing.LeftWingYPivot:setRot(0, wingRotOffset, 0)
 
-				local rightLegRotX = vanilla_model.RIGHT_LEG:getOriginRot().x
-				ModelAlias.alias.avatar.rightLeg:setRot(rightLegRotX * -0.45, 0, 0)
-				ModelAlias.alias.avatar.leftLeg:setRot(vanilla_model.LEFT_LEG:getOriginRot().x * -0.45, 0, 0)
+				if self.costume.shouldAdjustLegs then
+					local rightLegRotX = vanilla_model.RIGHT_LEG:getOriginRot().x
+					ModelAlias.alias.avatar.rightLeg:setRot(rightLegRotX * -0.45, 0, 0)
+					ModelAlias.alias.avatar.leftLeg:setRot(vanilla_model.LEFT_LEG:getOriginRot().x * -0.45, 0, 0)
+				end
+
+				local playerPose = player:getPose()
+				local skirtFlipVal = math.min(math.abs(Physics.getValueBetweenTicks(Physics.velocityAverage[7], delta)) * 0.00025 + ((playerPose == "SWIMMING" or playerPose == "FALL_FLYING") and 0 or math.max(Physics.getValueBetweenTicks(Physics.velocityAverage[2], delta) * -0.25, 0)), 0.5)
+				ModelAlias.alias.avatar.body.Skirt.Skirt1_1:setScale(1 + skirtFlipVal / 4, 1 - skirtFlipVal / 4, 1 + skirtFlipVal / 4)
+				ModelAlias.alias.avatar.body.Skirt.Skirt2_1:setScale(1 + skirtFlipVal / 2, 1 - skirtFlipVal / 2, 1 + skirtFlipVal / 2)
+
 
 				local blockLightLevel = 15
 				local skyLightLevel = 15
@@ -585,7 +626,8 @@ local BlueArchiveCharacter = {
 					blockLightLevel = world.getBlockLightLevel(playerPos)
 					skyLightLevel = world.getSkyLightLevel(playerPos)
 				end
-				for _, modelPart in ipairs({ModelAlias.alias.avatar.body.Skirt.Skirt5StarLayer, ModelAlias.alias.avatar.body.Skirt.Skirt6StarLayer, ModelAlias.alias.avatar.body.Skirt.Skirt7StarLayer, ModelAlias.alias.avatar.body.Skirt.Skirt8StarLayer}) do
+
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.body.Skirt.Skirt2_1.Skirt5StarLayer, ModelAlias.alias.avatar.body.Skirt.Skirt2_1.Skirt2_2.Skirt6StarLayer, ModelAlias.alias.avatar.body.Skirt.Skirt2_1.Skirt2_2.Skirt2_3.Skirt7StarLayer, ModelAlias.alias.avatar.body.Skirt.Skirt2_1.Skirt2_2.Skirt2_3.Skirt2_4.Skirt8StarLayer}) do
 					modelPart:setLight(math.min(blockLightLevel + 5, 15), math.min(skyLightLevel + 5, 15))
 				end
 			end
