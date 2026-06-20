@@ -2154,7 +2154,7 @@
 			"locked": false,
 			"visibility": true,
 			"autouv": 0,
-			"selected": false,
+			"selected": true,
 			"children": [
 				"59773412-1b34-ff4b-5774-9927faed5f67",
 				"51052b1a-0c9a-d1fa-57cd-22193312c81b",
@@ -2296,6 +2296,57 @@
 			"uuid": "7bd4b824-3db6-476b-99e3-dde805a618f1",
 			"relative_path": "../textures/gun.png",
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEkAAAAjCAYAAADYHCfgAAAAAXNSR0IArs4c6QAABHhJREFUaEPNmUtIlFEUx8+nY+GiXZBWZo9lG4nJVi3CBxW+Igna9DKwpiaMDKRFC1tkRCRY9iCjVlIE2UgFKUS0KqQH0rrMRw/a5Eai0Ylz9U7X+9373XPvfDPj3Ywz99zH+X3n/O+5n14yOZsCAIhuqYaRd8PkTxyja3sa4nDrfCWsih4IMrPqG/86DmXryqAwUuBZDVwwTo31p7zy/U5jPQ7JZWHdmBs9I6wrFt8a2rSZQOKAXEExSLZRxO2pkVRashma6g/BwOA9+Pb9kxM4V0gyGBdQWYkkTDdsFzrPsM/e648gdqLZCQ4f9GXsM6wv3wAV0U3klNEBsQWVhmQbTRRN+hnZzsxqd9alI4lHlM0nAnaBhGuHEkn1u2NMuMX2ONGjZcD1RmUQP73Nm03OpZoaTuZVuEUwQZCoEeXpIEUihT4OyeQsIKQXQ/d9fbU1BwEh1dc1pmqrzuVcuHVgqJCCgHk9V9+wSDraVgl3ut8y547Ho6CDxPUG7fCYb+2cH4Nt8FkvgwRza/ISSSpHKelmiigWSR19l9OOdrWcBUw3CiQ+iEcRfueQROHOSLEXBttoEjrN11TVRqZ+eb/pdENQCAibCVL/zVZmNz31Ph1JGEV8cgSPUcaFO5uQuMMIQ/ybryn/poostNWNZ322moTphpAQEDaebipIuay4TSmTSb8Wku7p8ysH79dBwv6BxLUwgojNoSomKZW0LOg8alQb082nhOTiWa4jSXRI1B9Rb6h+iKkmph7XM2tIIgxRg2RI2YykoNQxnWamfhEst02XANiJR7+pRSKFvmvBrpqW1POhPp9wZ0OTCiYfMJHV7VMnzKK9OJ6kVVy48UR7NTFpYgTdsS6jDZYEYbTR0ddw+267DwjJMcJpR51nUboFXUe402IxGQYI3RylJRtZlwoS/q7SJFGUVRV4UFUuR5poa61J2QTD5+aAgiDJoOQUUgEznXRZP93CgicC0kHSFY0clMpZXRTxfQcVmSySsDo+dekjQIEH079/QOuxI7C3uUopjijSYQGR5ylattw3deLp/0qesq5tRa0CLq+zKN0mpj7A2tUVlL3AzMwvaGyYf6lm054krkBx8UrlEHZBFl7diN9VpUdQRIn1kioV+Qbkk1I1p0+TqKAQks7ZIGiu41SQVOuoTixKZR60Z6VwU0C5Ous6TgfJpE86zRGFX7QRBT8dbaoLril90FFsNpHEnazesS9lMw7XSf79A2KxatpfkEibBFw1t1MJQIGke/IIqSiywuSnr98ESXfdsP09FEhtvR1w8XC7L5KommFNhzDAVCRSaihV+mWcbsMvH5L/tUPwMzQTWaRNkWS6mjCNctWkpQpJFmoTJMrTSb/y1NUNlEmWso0Oks2eGST+0snmFYS8SBibsdk41TaMfWkhBZXrumpWrjfEmoP6MKjOU+1ChSSre9Dkpguk6qTIBySdKFPEWnwI7ISiVK2qY9ZUtMmRlA/dCyWSqGEbhp3tEwxjTTGqXdfPWa1j0rGwgOjmcQWE8/0DARSL5unLVXMAAAAASUVORK5CYII="
+		}
+	],
+	"animations": [
+		{
+			"uuid": "e430d578-61b5-8ae7-9b76-9d46eb163428",
+			"name": "ex_skill_1",
+			"loop": "hold",
+			"override": false,
+			"length": 0,
+			"snapping": 20,
+			"selected": true,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "",
+			"animators": {
+				"20fe1cca-22a6-ca36-3dc4-e85c7c10e012": {
+					"name": "Gun",
+					"type": "bone",
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "93.5086806433",
+									"y": "-0.0518248498",
+									"z": "14.3848996475"
+								}
+							],
+							"uuid": "a03c5808-ece7-d079-2bc1-f03f944fa71b",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-7",
+									"y": "4.25",
+									"z": "0"
+								}
+							],
+							"uuid": "b84ffb37-1014-1d79-c2ea-63b8638afefa",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear"
+						}
+					]
+				}
+			}
 		}
 	],
 	"reference_images": [
