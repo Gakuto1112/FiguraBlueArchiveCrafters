@@ -351,7 +351,7 @@ local BlueArchiveCharacter = {
 
 			models = {};
 
-			animations = {"main", "gun"};
+			animations = {"main", "gun", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -367,6 +367,20 @@ local BlueArchiveCharacter = {
 
 			callbacks = {
 				onPreAnimation = function ()
+					if host:isHost() then
+						local windowSize = client:getWindowSize()
+						models.models.ex_skill_1.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(40))
+						models.models.ex_skill_1.CameraBackground.Background:setColor(vectors.vec3(1, 1, 1):scale(client:hasShaderPack() and 0.6 or 1))
+						events.RENDER:register(function (delta, context)
+							models.models.ex_skill_1.CameraBackground:setVisible(context ~= "OTHER")
+							local opacity = models.models.ex_skill_1.CameraBackground.BackgroundOpacity:getAnimScale().x
+							models.models.ex_skill_1.CameraBackground:setOpacity(opacity)
+							local backgroundPos = vectors.rotateAroundAxis(player:getBodyYaw(delta) + 180, renderer:getCameraOffsetPivot():copy():add(0, 1.62, 0):add(client:getCameraDir():copy():scale(1.7)), 0, 1, 0):scale(16 / 0.9375)
+							models.models.ex_skill_1.CameraBackground:setOffsetPivot(backgroundPos)
+							models.models.ex_skill_1.CameraBackground.Background:setPos(backgroundPos)
+						end, "ex_skill_1_render")
+					end
+
 					FaceParts:setEmotion("CLOSED2", "CLOSED2", "OPENED", 35, true)
 				end;
 
@@ -379,6 +393,16 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setVisible(true)
 					elseif tick == 35 then
 						FaceParts:setEmotion("NARROW2", "NARROW2", "OPENED", 6, true)
+						local bodyYaw = player:getBodyYaw()
+						local anchorPos = player:getPos():copy():add(vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, -0.5, 0, 1, 0))
+
+						for j = 0, 4 do
+							local offsetValue = 1 / 4 * j
+							local color = vectors.vec3(1, 1, 1):sub(vectors.vec3(1, 1, 1):sub(0.997, 0.923, 0.998):scale(offsetValue))
+							for i = 0, 35 do
+								particles:newParticle("minecraft:end_rod", anchorPos):setScale(1.5):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(i * 10 + (j % 2 + 5), 0, 0.08 + offsetValue * 0.12, 0, 0, 0, 1), 0, 1, 0)):setColor(color):setLifetime(32 + math.random(0, 4))
+							end
+						end
 					elseif tick == 41 then
 						FaceParts:setEmotion("NARROW", "NARROW", "SMILE", 84, true)
 					end
@@ -389,6 +413,10 @@ local BlueArchiveCharacter = {
 						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
 						ModelAlias.alias.avatar.gun:setVisible(false)
+					end
+					if host:isHost() then
+						events.RENDER:remove("ex_skill_1_render")
+						models.models.ex_skill_1.CameraBackground.Background:setVisible(false)
 					end
 				end;
 			};
