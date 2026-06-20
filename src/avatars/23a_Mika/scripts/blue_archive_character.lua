@@ -366,7 +366,7 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
-				onPreAnimation = function ()
+				onPreAnimation = function (self)
 					if host:isHost() then
 						local windowSize = client:getWindowSize()
 						models.models.ex_skill_1.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(40))
@@ -380,6 +380,50 @@ local BlueArchiveCharacter = {
 							models.models.ex_skill_1.CameraBackground.Background:setPos(backgroundPos)
 						end, "ex_skill_1_render")
 					end
+
+					if not self.exSkill.primary.isInitialized then
+						local DISTANCE = 160
+						local entityTaskCount = 1
+
+						---モンスターの向きをミカの方向を向くように設定する。
+						---@param entity EntityTask 向き変更を行うエンティティレンダータスク
+						local function setMonsterYaw(entity)
+							local pos = entity:getPos()
+							entity:setRot(0, math.deg(math.atan2(pos.x, pos.z * -1 + DISTANCE)) * -1, 0)
+						end
+
+						---エンティティタスクのIDの連番を返す。
+						---@return integer entityTaskCount エンティティタスクのIDの連番。エンティティタスクの名前に使用します。
+						local function getEntityTaskCount()
+							local result = entityTaskCount
+							entityTaskCount = entityTaskCount + 1
+							return result
+						end
+
+						---@diagnostic disable-next-line: discard-returns
+						local monsterParent = models.models.ex_skill_1:newPart("ExSkill1Monsters")
+						monsterParent:setPos(0, 0, DISTANCE * -1)
+						setMonsterYaw(models.models.ex_skill_1.ExSkill1Monsters:newEntity("ex_skill_1_entity_" .. getEntityTaskCount()):setNbt("minecraft:warden", "{}"))
+						for i = 0, 1 do
+							setMonsterYaw(models.models.ex_skill_1.ExSkill1Monsters:newEntity("ex_skill_1_entity_" .. getEntityTaskCount()):setNbt("minecraft:creaking", "{}"):setPos(36 - i * 72, 0, 0))
+							setMonsterYaw(models.models.ex_skill_1.ExSkill1Monsters:newEntity("ex_skill_1_entity_" .. getEntityTaskCount()):setNbt("minecraft:enderman", "{}"):setPos(24 - i * 48, 0, -16))
+							setMonsterYaw(models.models.ex_skill_1.ExSkill1Monsters:newEntity("ex_skill_1_entity_" .. getEntityTaskCount()):setNbt("minecraft:ravager", "{}"):setPos(80 - i * 160, 0, -24))
+						end
+						local monsterTable = {"minecraft:zombie", "minecraft:skeleton", "minecraft:creeper"}
+						for i = 0, 1 do
+							for j = 0, 8 do
+								setMonsterYaw(models.models.ex_skill_1.ExSkill1Monsters:newEntity("ex_skill_1_entity_" .. getEntityTaskCount()):setNbt(monsterTable[math.random(#monsterTable)], "{}"):setPos(96 - j * 24 + (i == 1 and -12 or 0), 0, 16 * (i + 1)))
+								if i == 1 and j == 7 then
+									break
+								end
+							end
+						end
+						for i = 0, 4 do
+							setMonsterYaw(models.models.ex_skill_1.ExSkill1Monsters:newEntity("ex_skill_1_entity_" .. getEntityTaskCount()):setNbt("minecraft:spider", "{}"):setPos(72 - i * 36, 0, 56))
+						end
+					end
+
+					models.models.ex_skill_1.ExSkill1Monsters:setVisible(true)
 
 					FaceParts:setEmotion("CLOSED2", "CLOSED2", "OPENED", 35, true)
 				end;
@@ -418,8 +462,13 @@ local BlueArchiveCharacter = {
 						events.RENDER:remove("ex_skill_1_render")
 						models.models.ex_skill_1.CameraBackground.Background:setVisible(false)
 					end
+					models.models.ex_skill_1.ExSkill1Monsters:setVisible(false)
 				end;
 			};
+
+			---このExスキルの初期化処理がされたかどうか
+			---@type boolean
+			isInitialized = false;
 		};
 	};
 
