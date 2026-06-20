@@ -16,6 +16,9 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "CLOSED2" # 閉じた目2
+---| "NARROW2" # 細目2
+---| "NARROW" # 細目
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -23,10 +26,15 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "CLOSED2" # 閉じた目2
+---| "NARROW2" # 細目2
+---| "NARROW" # 細目
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
 ---| "NORMAL" # 通常
+---| "OPENED" # 開いた口
+---| "SMILE" # にっこり
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -269,6 +277,9 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(2, 0); --必須
 			TIRED = vectors.vec2(3, 0); --必須
 			CLOSED = vectors.vec2(4, 0); --必須
+			CLOSED2 = vectors.vec2(5, 0);
+			NARROW2 = vectors.vec2(6, 0);
+			NARROW = vectors.vec2(8, 0);
 		};
 
 		leftEye = {
@@ -276,10 +287,14 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(1, 0); --必須
 			TIRED = vectors.vec2(2, 0); --必須
 			CLOSED = vectors.vec2(3, 0); --必須
+			CLOSED2 = vectors.vec2(4, 0);
+			NARROW2 = vectors.vec2(6, 0);
+			NARROW = vectors.vec2(8, 0);
 		};
 
 		mouth = {
-
+			OPENED = vectors.vec2(0, 0);
+			SMILE = vectors.vec2(1, 0);
 		};
 	};
 
@@ -351,6 +366,10 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
+				onPreAnimation = function ()
+					FaceParts:setEmotion("CLOSED2", "CLOSED2", "OPENED", 35, true)
+				end;
+
 				onAnimationTick = function (_, tick)
 					if tick == 0 then
 						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.body)
@@ -358,6 +377,10 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setPos()
 						ModelAlias.alias.avatar.gun:setRot()
 						ModelAlias.alias.avatar.gun:setVisible(true)
+					elseif tick == 35 then
+						FaceParts:setEmotion("NARROW2", "NARROW2", "OPENED", 6, true)
+					elseif tick == 41 then
+						FaceParts:setEmotion("NARROW", "NARROW", "SMILE", 84, true)
 					end
 				end;
 
