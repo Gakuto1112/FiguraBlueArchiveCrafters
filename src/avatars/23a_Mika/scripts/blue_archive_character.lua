@@ -437,8 +437,9 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setVisible(true)
 					elseif tick == 35 then
 						FaceParts:setEmotion("NARROW2", "NARROW2", "OPENED", 6, true)
+						local playerPos = player:getPos()
 						local bodyYaw = player:getBodyYaw()
-						local anchorPos = player:getPos():copy():add(vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, -0.5, 0, 1, 0))
+						local anchorPos = playerPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, -0.5, 0, 1, 0))
 
 						for j = 0, 4 do
 							local offsetValue = 1 / 4 * j
@@ -447,8 +448,12 @@ local BlueArchiveCharacter = {
 								particles:newParticle("minecraft:end_rod", anchorPos):setScale(1.5):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(i * 10 + (j % 2 + 5), 0, 0.08 + offsetValue * 0.12, 0, 0, 0, 1), 0, 1, 0)):setColor(color):setLifetime(32 + math.random(0, 4))
 							end
 						end
+
+						sounds:playSound("minecraft:entity.wind_charge.wind_burst", playerPos, 0.75, 0.5)
 					elseif tick == 41 then
 						FaceParts:setEmotion("NARROW", "NARROW", "SMILE", 84, true)
+					elseif tick == 88 then
+						sounds:playSound("minecraft:item.trident.thunder", player:getPos(), 1, 0.8)
 					end
 				end;
 
