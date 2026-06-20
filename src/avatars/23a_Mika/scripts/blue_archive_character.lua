@@ -498,7 +498,7 @@ local BlueArchiveCharacter = {
 
 	headModel = {
 		callbacks = {
-			onBeforeModelCopy = function (self)
+			onBeforeModelCopy = function ()
 				ModelAlias.alias.avatar.body.Hairs.BackHair:setRot()
 			end;
 
