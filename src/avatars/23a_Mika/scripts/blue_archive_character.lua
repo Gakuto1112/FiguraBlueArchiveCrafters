@@ -341,17 +341,17 @@ local BlueArchiveCharacter = {
 			camera = {
 				start = {
 					rot = vectors.vec3(0, 180, 0);
-					pos = vectors.vec3(0, 28, -64);
+					pos = vectors.vec3(0, 18, -10);
 				};
 
 				fin = {
-					rot = vectors.vec3(0, 180, 0);
-					pos = vectors.vec3(0, 28, -64);
+					rot = vectors.vec3(0, 20, 5);
+					pos = vectors.vec3(19, 21, 25);
 				};
 			};
 
 			callbacks = {
-				onAnimationTick = function (tick)
+				onAnimationTick = function (_, tick)
 					if tick == 0 then
 						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.body)
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.rightArmBottom.Gun
@@ -361,7 +361,7 @@ local BlueArchiveCharacter = {
 					end
 				end;
 
-				onPostAnimation = function (self, forcedStop)
+				onPostAnimation = function ()
 					if Gun.currentGunPosition == "NONE" then
 						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
