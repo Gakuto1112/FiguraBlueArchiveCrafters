@@ -165,6 +165,7 @@ local CompatibilityUtils = {
     end;
 
     ---`models:newBlock():setBlock()`メソッドに対し、ブロックIDのチェック機能を注入する。
+    ---@param self CompatibilityUtils
     injectToBlockTaskSetBlock = function (self)
         local dummyBlock = models:newBlock("dummy_block")
         local blockMT = getmetatable(dummyBlock)
@@ -198,6 +199,7 @@ local CompatibilityUtils = {
     end;
 
     ---`models:newItem():setItem()`メソッドに対し、アイテムIDのチェック機能を注入する。
+    ---@param self CompatibilityUtils
     injectToItemTaskSetItem = function (self)
         local dummyItem = models:newItem("dummy_item")
         local itemMT = getmetatable(dummyItem)
@@ -221,6 +223,7 @@ local CompatibilityUtils = {
     end;
 
     ---ParticleAPIを改変し、`particles:newParticle()`メソッドに対し、パーティクルIDのチェック機能を注入する。
+    ---@param self CompatibilityUtils
     injectToParticlesNewParticle = function (self)
         local particlesMT = figuraMetatables.ParticleAPI
         local originalParticleIndexFunc = particlesMT.__index
@@ -264,6 +267,7 @@ local CompatibilityUtils = {
     end;
 
     ---SoundAPIを改変し、`sounds:playSound()`メソッドに対し、サウンドIDのチェック機能を注入する。
+    ---@param self CompatibilityUtils
     injectToSoundsPlaySound = function (self)
         local soundsMT = figuraMetatables.SoundAPI
         local originalSoundIndexFunc = soundsMT.__index
