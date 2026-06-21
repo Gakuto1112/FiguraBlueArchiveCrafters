@@ -340,7 +340,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.CameraBackground};
+			models = {};
 
 			animations = {"main", "gun", "ex_skill_1"};
 
@@ -358,20 +358,6 @@ local BlueArchiveCharacter = {
 
 			callbacks = {
 				onPreAnimation = function (self)
-					if host:isHost() then
-						local windowSize = client:getWindowSize()
-						models.models.ex_skill_1.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(40))
-						models.models.ex_skill_1.CameraBackground.Background:setColor(vectors.vec3(1, 1, 1):scale(client:hasShaderPack() and 0.6 or 1))
-						events.RENDER:register(function (delta, context)
-							models.models.ex_skill_1.CameraBackground:setVisible(context ~= "OTHER")
-							local opacity = models.models.ex_skill_1.CameraBackground.BackgroundOpacity:getAnimScale().x
-							models.models.ex_skill_1.CameraBackground:setOpacity(opacity)
-							local backgroundPos = vectors.rotateAroundAxis(player:getBodyYaw(delta) + 180, renderer:getCameraOffsetPivot():copy():add(0, 1.62, 0):add(client:getCameraDir():copy():scale(1.7)), 0, 1, 0):scale(16 / 0.9375)
-							models.models.ex_skill_1.CameraBackground:setOffsetPivot(backgroundPos)
-							models.models.ex_skill_1.CameraBackground.Background:setPos(backgroundPos)
-						end, "ex_skill_1_render")
-					end
-
 					if not self.exSkill.primary.isInitialized then
 						local DISTANCE = 160
 						local entityTaskCount = 1
@@ -447,21 +433,37 @@ local BlueArchiveCharacter = {
 						end
 
 						sounds:playSound("minecraft:entity.wind_charge.wind_burst", playerPos, 0.75, 0.5)
+					elseif tick == 37 and host:isHost() then
+						local windowSize = client:getWindowSize()
+						models.models.ex_skill_1.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(40))
+						models.models.ex_skill_1.CameraBackground.Background:setColor(vectors.vec3(1, 1, 1):scale(client:hasShaderPack() and 0.6 or 1))
+						events.RENDER:register(function (delta, context)
+							models.models.ex_skill_1.CameraBackground:setVisible(context ~= "OTHER")
+							local opacity = models.models.ex_skill_1.CameraBackground.BackgroundOpacity:getAnimScale().x
+							models.models.ex_skill_1.CameraBackground:setOpacity(opacity)
+							local backgroundPos = vectors.rotateAroundAxis(player:getBodyYaw(delta) + 180, renderer:getCameraOffsetPivot():copy():add(0, 1.62, 0):add(client:getCameraDir():copy():scale(1.7)), 0, 1, 0):scale(16 / 0.9375)
+							models.models.ex_skill_1.CameraBackground:setOffsetPivot(backgroundPos)
+							models.models.ex_skill_1.CameraBackground.Background:setPos(backgroundPos)
+						end, "ex_skill_1_render")
 					elseif tick == 41 then
 						FaceParts:setEmotion("NARROW", "NARROW", "SMILE", 84, true)
+					elseif tick == 63 and host:isHost() then
+						events.RENDER:remove("ex_skill_1_render")
+						models.models.ex_skill_1.CameraBackground:setVisible(false)
 					elseif tick == 88 then
 						sounds:playSound("minecraft:item.trident.thunder", player:getPos(), 1, 0.8)
 					end
 				end;
 
-				onPostAnimation = function ()
+				onPostAnimation = function (_, forcedStop)
 					if Gun.currentGunPosition == "NONE" then
 						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
 						ModelAlias.alias.avatar.gun:setVisible(false)
 					end
-					if host:isHost() then
+					if host:isHost() and forcedStop then
 						events.RENDER:remove("ex_skill_1_render")
+						models.models.ex_skill_1.CameraBackground:setVisible(false)
 					end
 					models.models.ex_skill_1.ExSkill1Monsters:setVisible(false)
 				end;
