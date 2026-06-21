@@ -412,7 +412,13 @@ local BlueArchiveCharacter = {
 						local monsterTable = {"minecraft:zombie", "minecraft:skeleton", "minecraft:creeper"}
 						for i = 0, 1 do
 							for j = 0, 8 do
-								setMonsterYaw(models.models.ex_skill_1.ExSkill1Monsters:newEntity("ex_skill_1_entity_" .. getEntityTaskCount()):setNbt(monsterTable[math.random(#monsterTable)], "{}"):setPos(96 - j * 24 + (i == 1 and -12 or 0), 0, 16 * (i + 1)))
+								local randomIndex = math.random(#monsterTable)
+								local monsterPos = vectors.vec3(96 - j * 24 + (i == 1 and -12 or 0), 0, 16 * (i + 1))
+								if monsterTable[randomIndex] == "minecraft:skeleton" then
+									setMonsterYaw(models.models.ex_skill_1.ExSkill1Monsters:newEntity("ex_skill_1_entity_" .. getEntityTaskCount()):setNbt("minecraft:skeleton", "{HandItems:[{id:\"minecraft:bow\",count:1},{}]}"):setPos(monsterPos))
+								else
+									setMonsterYaw(models.models.ex_skill_1.ExSkill1Monsters:newEntity("ex_skill_1_entity_" .. getEntityTaskCount()):setNbt(monsterTable[randomIndex], "{}"):setPos(monsterPos))
+								end
 								if i == 1 and j == 7 then
 									break
 								end
