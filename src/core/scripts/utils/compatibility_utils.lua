@@ -9,7 +9,7 @@
 ---@class (exact) CompatibilityUtils Minecraftのゲームバージョンが異なっていてもある程度互換性を確保するためのユーティリティクラス
 ---@field package TARGET_MC_VERSION string アバターが想定しているMinecraftの最低バージョン。このバージョンより古い場合は読み込み時に警告メッセージが表示される。
 ---@field package ALTERNATIVE_ENTRIES {block: Minecraft.blockID, item: Minecraft.itemID, particle: Minecraft.particleID, sound: Minecraft.soundID, entity: Minecraft.entityID} レジストリに存在しないIDが指定された場合に代わりに使用するIDを格納するテーブル
----@field package registries {block: Minecraft.blockID[], item: Minecraft.itemID[], particle: Minecraft.particleID[], sound: Minecraft.soundID[], entity: Minecraft.entityID} ゲームから取得した全アイテム名を保持するテーブル
+---@field package registries {block: Minecraft.blockID[], item: Minecraft.itemID[], particle: Minecraft.particleID[], sound: Minecraft.soundID[], entity: Minecraft.entityID[]} ゲームから取得した全アイテム名を保持するテーブル
 ---@field package checkedTable {block: {[Minecraft.blockID]: boolean}, item: {[Minecraft.itemID]: boolean}, particle: {[Minecraft.particleID]: boolean}, sound: {[Minecraft.soundID]: boolean}, entity: {[Minecraft.entityID]: boolean}} レジストリへの確認が済んでいるIDを保持するテーブル
 local CompatibilityUtils = {
 
