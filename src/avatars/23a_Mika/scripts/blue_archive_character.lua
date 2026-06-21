@@ -349,7 +349,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {};
+			models = {models.models.ex_skill_1.CameraBackground};
 
 			animations = {"main", "gun", "ex_skill_1"};
 
@@ -471,7 +471,6 @@ local BlueArchiveCharacter = {
 					end
 					if host:isHost() then
 						events.RENDER:remove("ex_skill_1_render")
-						models.models.ex_skill_1.CameraBackground.Background:setVisible(false)
 					end
 					models.models.ex_skill_1.ExSkill1Monsters:setVisible(false)
 				end;
