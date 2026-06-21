@@ -111,7 +111,7 @@ local CompatibilityUtils = {
     ---指定されたブロックIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:dirt"を返す。
     ---@param self CompatibilityUtils
     ---@param block Minecraft.blockID 確認対象のブロックID
-    ---@return Minecraft.blockID blockID レジストリに登録してある場合は確認対象のブロックIDをそのまま返し、未登録の場合は"minecraft:dirt"が返す。
+    ---@return Minecraft.blockID blockID レジストリに登録してある場合は確認対象のブロックIDをそのまま返し、未登録の場合は"minecraft:dirt"を返す。
     checkBlock = function (self, block)
         if self.checkedTable.block[block] == nil then
             self.checkedTable.block[block] = self:find("BLOCK", block)
@@ -122,7 +122,7 @@ local CompatibilityUtils = {
     ---指定されたアイテムIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:barrier"を返す。
     ---@param self CompatibilityUtils
     ---@param item Minecraft.itemID 確認対象のアイテムID
-    ---@return Minecraft.itemID blockID レジストリに登録してある場合は確認対象のアイテムIDをそのまま返し、未登録の場合は"minecraft:barrier"が返す。
+    ---@return Minecraft.itemID blockID レジストリに登録してある場合は確認対象のアイテムIDをそのまま返し、未登録の場合は"minecraft:barrier"を返す。
     checkItem = function (self, item)
         if self.checkedTable.item[item] == nil then
             self.checkedTable.item[item] = self:find("ITEM", item)
@@ -133,7 +133,7 @@ local CompatibilityUtils = {
     ---指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
     ---@param self CompatibilityUtils
     ---@param particle Minecraft.particleID 確認対象のパーティクルID
-    ---@return Minecraft.particleID particleID レジストリに登録してある場合は確認対象のパーティクルIDをそのまま返し、未登録の場合は"minecraft:poof"が返す。
+    ---@return Minecraft.particleID particleID レジストリに登録してある場合は確認対象のパーティクルIDをそのまま返し、未登録の場合は"minecraft:poof"を返す。
     checkParticle = function (self, particle)
         if self.checkedTable.particle[particle] == nil then
             self.checkedTable.particle[particle] = self:find("PARTICLE", particle)
@@ -144,7 +144,7 @@ local CompatibilityUtils = {
     ---指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
     ---@param self CompatibilityUtils
     ---@param sound Minecraft.soundID 確認対象のサウンドID
-    ---@return Minecraft.soundID particleID レジストリに登録してある場合は確認対象のサウンドIDをそのまま返し、未登録の場合は"minecraft:empty"が返す。
+    ---@return Minecraft.soundID particleID レジストリに登録してある場合は確認対象のサウンドIDをそのまま返し、未登録の場合は"minecraft:empty"を返す。
     checkSound = function (self, sound)
         if self.checkedTable.sound[sound] == nil then
             self.checkedTable.sound[sound] = self:find("SOUND", sound)
