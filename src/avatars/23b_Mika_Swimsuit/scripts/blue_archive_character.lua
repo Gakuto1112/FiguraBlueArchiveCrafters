@@ -763,6 +763,10 @@ local BlueArchiveCharacter = {
 				ModelAlias.alias.avatar.body.Wings.LeftWing:setRot(0, wingRotOffset, 0)
 			end
 		end)
+
+		ModelAlias.alias.avatar.head.HWaterDrops:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID"):setOpacity(0.05)
+		ModelAlias.alias.avatar.body.Hairs.FrontHair.FHWaterDrops:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID"):setOpacity(0.05)
+		ModelAlias.alias.avatar.body.Hairs.BackHair.BHWaterDrops:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID"):setOpacity(0.05)
 	end;
 }
 
