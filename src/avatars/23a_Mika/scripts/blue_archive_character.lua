@@ -266,8 +266,8 @@ local BlueArchiveCharacter = {
 		avatarName = "00a_base";
 
 		birth = {
-			month = 1;
-			day = 1;
+			month = 5;
+			day = 8;
 		};
 	};
 
