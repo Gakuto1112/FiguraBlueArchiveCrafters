@@ -311,9 +311,9 @@ local CompatibilityUtils = {
                 local trueEntityIdPrev = trueEntityId
                 trueEntityId = self:checkEntity(trueEntityId)
 
-                return originalSetNbtFunc(self2, trueEntityId, trueEntityId == trueEntityIdPrev and nbt or "{}")
+                return originalSetNbtFunc(self2, trueEntityId, trueEntityId == trueEntityIdPrev and trueNbt or "{}")
             else
-                return originalSetNbtFunc(self2, nbt)
+                return originalSetNbtFunc(self2, trueNbt)
             end
         end
 
