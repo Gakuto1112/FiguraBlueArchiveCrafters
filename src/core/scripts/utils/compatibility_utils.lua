@@ -112,7 +112,7 @@ local CompatibilityUtils = {
     ---指定されたブロックIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:dirt"を返す。
     ---@param self CompatibilityUtils
     ---@param block Minecraft.blockID 確認対象のブロックID
-    ---@return Minecraft.blockID blockID レジストリに登録してある場合は確認対象のブロックIDをそのまま返し、未登録の場合は"minecraft:dirt"を返す。
+    ---@return Minecraft.blockID blockId レジストリに登録してある場合は確認対象のブロックIDをそのまま返し、未登録の場合は"minecraft:dirt"を返す。
     checkBlock = function (self, block)
         if self.checkedTable.block[block] == nil then
             self.checkedTable.block[block] = self:find("BLOCK", block)
@@ -123,7 +123,7 @@ local CompatibilityUtils = {
     ---指定されたアイテムIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:barrier"を返す。
     ---@param self CompatibilityUtils
     ---@param item Minecraft.itemID 確認対象のアイテムID
-    ---@return Minecraft.itemID blockID レジストリに登録してある場合は確認対象のアイテムIDをそのまま返し、未登録の場合は"minecraft:barrier"を返す。
+    ---@return Minecraft.itemID itemId レジストリに登録してある場合は確認対象のアイテムIDをそのまま返し、未登録の場合は"minecraft:barrier"を返す。
     checkItem = function (self, item)
         if self.checkedTable.item[item] == nil then
             self.checkedTable.item[item] = self:find("ITEM", item)
@@ -134,7 +134,7 @@ local CompatibilityUtils = {
     ---指定されたパーティクルIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:poof"を返す。
     ---@param self CompatibilityUtils
     ---@param particle Minecraft.particleID 確認対象のパーティクルID
-    ---@return Minecraft.particleID particleID レジストリに登録してある場合は確認対象のパーティクルIDをそのまま返し、未登録の場合は"minecraft:poof"を返す。
+    ---@return Minecraft.particleID particleId レジストリに登録してある場合は確認対象のパーティクルIDをそのまま返し、未登録の場合は"minecraft:poof"を返す。
     checkParticle = function (self, particle)
         if self.checkedTable.particle[particle] == nil then
             self.checkedTable.particle[particle] = self:find("PARTICLE", particle)
@@ -145,7 +145,7 @@ local CompatibilityUtils = {
     ---指定されたサウンドIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:empty"を返す。
     ---@param self CompatibilityUtils
     ---@param sound Minecraft.soundID 確認対象のサウンドID
-    ---@return Minecraft.soundID particleID レジストリに登録してある場合は確認対象のサウンドIDをそのまま返し、未登録の場合は"minecraft:empty"を返す。
+    ---@return Minecraft.soundID soundId レジストリに登録してある場合は確認対象のサウンドIDをそのまま返し、未登録の場合は"minecraft:empty"を返す。
     checkSound = function (self, sound)
         if self.checkedTable.sound[sound] == nil then
             self.checkedTable.sound[sound] = self:find("SOUND", sound)
@@ -177,21 +177,21 @@ local CompatibilityUtils = {
             if type(block) == "BlockState" then
                 return originalSetBlockFunc(self2, block)
             else
-                local trueBlockID = block
-                if trueBlockID:find(":") == nil then
-                    trueBlockID = "minecraft:" .. block
+                local trueBlockId = block
+                if trueBlockId:find(":") == nil then
+                    trueBlockId = "minecraft:" .. block
                 end
-                local stateBracketStart, stateBracketEnd = trueBlockID:find("%b[]")
+                local stateBracketStart, stateBracketEnd = trueBlockId:find("%b[]")
                 local blockState = ""
                 if stateBracketStart ~= nil and stateBracketEnd ~= nil then
-                    blockState = trueBlockID:sub(stateBracketStart, stateBracketEnd)
-                    trueBlockID = trueBlockID:sub(1, stateBracketStart - 1)
+                    blockState = trueBlockId:sub(stateBracketStart, stateBracketEnd)
+                    trueBlockId = trueBlockId:sub(1, stateBracketStart - 1)
                 end
-                trueBlockID = self:checkBlock(trueBlockID)
-                if trueBlockID == self.ALTERNATIVE_ENTRIES.block then
+                trueBlockId = self:checkBlock(trueBlockId)
+                if trueBlockId == self.ALTERNATIVE_ENTRIES.block then
                     blockState = ""
                 end
-                return originalSetBlockFunc(self2, self:checkBlock(trueBlockID) .. blockState)
+                return originalSetBlockFunc(self2, self:checkBlock(trueBlockId) .. blockState)
             end
         end
 
@@ -211,11 +211,11 @@ local CompatibilityUtils = {
             if type(item) == "ItemStack" then
                 return originalSetItemFunc(self2, item)
             else
-                local trueItemID = item
-                if trueItemID:find(":") == nil then
-                    trueItemID = "minecraft:" .. trueItemID
+                local trueItemId = item
+                if trueItemId:find(":") == nil then
+                    trueItemId = "minecraft:" .. trueItemId
                 end
-                return originalSetItemFunc(self2, self:checkItem(trueItemID))
+                return originalSetItemFunc(self2, self:checkItem(trueItemId))
             end
         end
 
@@ -235,30 +235,30 @@ local CompatibilityUtils = {
                 ---@param self3 ParticleAPI
                 ---@param name Minecraft.particleID
                 return function (self3, name, ...)
-                    local trueParticleID = name
-                    if trueParticleID:find(":") == nil then
-                        trueParticleID = "minecraft:" .. trueParticleID
+                    local trueParticleId = name
+                    if trueParticleId:find(":") == nil then
+                        trueParticleId = "minecraft:" .. trueParticleId
                     end
                     local arg = ""
-                    local bracketMatch = trueParticleID:match("{(.-)}")
+                    local bracketMatch = trueParticleId:match("{(.-)}")
                     if bracketMatch ~= nil then
-                        local bracketIndex = trueParticleID:find("{")
+                        local bracketIndex = trueParticleId:find("{")
                         local gameVersion = client:getVersion()
                         if StringUtils.compareVersions(gameVersion, "1.21.9") == gameVersion then
                             arg = "{" .. bracketMatch .. "}"
                         end
-                        trueParticleID = trueParticleID:sub(1, bracketIndex - 1)
+                        trueParticleId = trueParticleId:sub(1, bracketIndex - 1)
                     end
-                    local spaceIndex = trueParticleID:find(" ")
+                    local spaceIndex = trueParticleId:find(" ")
                     if spaceIndex ~= nil then
-                        arg = trueParticleID:sub(spaceIndex)
-                        trueParticleID = trueParticleID:sub(1, spaceIndex - 1)
+                        arg = trueParticleId:sub(spaceIndex)
+                        trueParticleId = trueParticleId:sub(1, spaceIndex - 1)
                     end
-                    trueParticleID = self:checkParticle(trueParticleID)
-                    if trueParticleID == self.ALTERNATIVE_ENTRIES.particle then
+                    trueParticleId = self:checkParticle(trueParticleId)
+                    if trueParticleId == self.ALTERNATIVE_ENTRIES.particle then
                         arg = ""
                     end
-                    return originalParticleIndexFunc(self2, "newParticle")(self3, self:checkParticle(trueParticleID) .. arg, ...)
+                    return originalParticleIndexFunc(self2, "newParticle")(self3, self:checkParticle(trueParticleId) .. arg, ...)
                 end
             else
                 return originalParticleIndexFunc(self2, key)
@@ -277,11 +277,11 @@ local CompatibilityUtils = {
         soundsMT.__index = function (self2, key)
             if key == "playSound" then
                 return function (self3, soundName, ...)
-                    local trueSoundID = soundName
-                    if trueSoundID:find(":") == nil then
-                        trueSoundID = "minecraft:" .. trueSoundID
+                    local trueSoundId = soundName
+                    if trueSoundId:find(":") == nil then
+                        trueSoundId = "minecraft:" .. trueSoundId
                     end
-                    return originalSoundIndexFunc(self2, "playSound")(self3, self:checkSound(trueSoundID), ...)
+                    return originalSoundIndexFunc(self2, "playSound")(self3, self:checkSound(trueSoundId), ...)
                 end
             else
                 return originalSoundIndexFunc(self2, key)
