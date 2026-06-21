@@ -77,7 +77,7 @@ local Wet = {
 						self:sortDropsRandom()
 					elseif self.wetCount == 0 and self.isDropMasterVisible then
 						self.nextDropCount = 0
-						self.sequenceIndex =
+						self.sequenceIndex = 0
 						self:setDropsVisibleAll(false)
 					end
 					self.wetCount = math.max(self.wetCount - 1, 0)
@@ -101,6 +101,10 @@ local Wet = {
 						while self.sequenceIndex < #self.waterDrops - math.floor(self.wetCount / self.MAX_WET_COUNT * #self.waterDrops) do
 							self.waterDrops[self.sequenceIndex + 1].model:setVisible(false)
 							self.sequenceIndex = self.sequenceIndex + 1
+						end
+
+						if world:getDimension() == "minecraft:the_nether" then
+							self.wetCount = 0
 						end
 					end
 				end
