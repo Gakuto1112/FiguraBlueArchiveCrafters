@@ -65,6 +65,7 @@ local CompatibilityUtils = {
         self:injectToItemTaskSetItem()
         self:injectToParticlesNewParticle()
         self:injectToSoundsPlaySound()
+        self:injectToEntitySetNbt()
         self:injectToRendererSetPostEffect()
     end;
 
