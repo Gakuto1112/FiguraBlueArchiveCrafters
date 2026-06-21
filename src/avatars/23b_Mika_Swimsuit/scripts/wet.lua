@@ -29,7 +29,7 @@ local Wet = {
 	initializeWaterDropModels = function (self)
 		for _, waterDrop in ipairs(self.waterDrops) do
 			waterDrop.model:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID")
-			waterDrop.model:setOpacity(0.05)
+			waterDrop.model:setOpacity(0.5)
 			waterDrop.model:setVisible(false)
 		end
 	end;
