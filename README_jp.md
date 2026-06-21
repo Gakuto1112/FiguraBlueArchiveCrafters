@@ -71,6 +71,7 @@
 上から順に作成予定です。
 これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
+- 柚鳥 ナツ（[#139](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/139)）
 - 白洲 アズサ（[#155](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/155)）
 - 早瀬 ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102)）
 - 黒見 セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37)）
@@ -89,7 +90,6 @@
 - 羽川 ハスミ（[#128](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/128)）
 - 浅黄 ムツキ（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/129)）
 - 秋泉 モミジ（[#138](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/138)）
-- 柚鳥 ナツ（[#139](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/139)）
 - 仲正 イチカ（[#140](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/140)）
 - 剣先 ツルギ（[#145](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/145)）
 - 鰐渕 アカリ（[#146](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/146)）
