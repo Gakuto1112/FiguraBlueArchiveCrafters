@@ -152,6 +152,17 @@ local CompatibilityUtils = {
         return self.checkedTable.sound[sound] and sound or self.ALTERNATIVE_ENTRIES.sound
     end;
 
+    ---指定されたエンティティIDがレジストリに登録されているか確認する。レジストリに未登録の場合は"minecraft:zombie"を返す。
+    ---@param self CompatibilityUtils
+    ---@param entity Minecraft.entityID 確認対象のエンティティID
+    ---@return Minecraft.entityID entityId レジストリに登録してある場合は確認対象のエンティティIDをそのまま返し、未登録の場合は"minecraft:zombie"を返す。
+    checkEntity = function (self, entity)
+        if self.checkedTable.entity[entity] == nil then
+            self.checkedTable.entity[entity] = self:find("ENTITY", entity)
+        end
+        return self.checkedTable.entity[entity] and entity or self.ALTERNATIVE_ENTRIES.entity
+    end;
+
     ---`models:newBlock():setBlock()`メソッドに対し、ブロックIDのチェック機能を注入する。
     injectToBlockTaskSetBlock = function (self)
         local dummyBlock = models:newBlock("dummy_block")
