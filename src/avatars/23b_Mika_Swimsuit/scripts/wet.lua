@@ -3,12 +3,14 @@
 ---@field package waterDrops {model: ModelPart, sortValue: integer}[] 水滴のモデルパーツを格納するテーブル
 ---@field package wetCount integer 水濡れの時間を測るカウンター
 ---@field package isDropMasterVisible boolean 水滴モデル全体が見える状態かどうか（個別にオフになっている可能性もある）
+---@field package nextDropCount integer 次の水滴パーティクルを再生するまでのカウンター
 local Wet = {
 	MAX_WET_COUNT = 2400;
 
 	waterDrops = {};
 	wetCount = 0;
 	isDropMasterVisible = false;
+	nextDropCount = 0;
 
 	---水滴モデルを`waterDrops`テーブルに格納する。
 	---@param self Wet
@@ -63,6 +65,23 @@ local Wet = {
 						self:setDropsVisibleAll(false)
 					end
 					self.wetCount = math.max(self.wetCount - 1, 0)
+
+					if self.wetCount > 0 then
+						if self.nextDropCount == 0 then
+							particles:newParticle("minecraft:falling_water", player:getPos():copy():add(math.random() * 1 - 0.5, math.random() * 1 + 1, math.random() * 1 - 0.5))
+
+							if self.wetCount >= self.MAX_WET_COUNT * 0.75 then
+								self.nextDropCount = math.random(1, 4)
+							elseif self.wetCount >= self.MAX_WET_COUNT * 0.5 then
+								self.nextDropCount = math.random(5, 8)
+							elseif self.wetCount >= self.MAX_WET_COUNT * 0.25 then
+								self.nextDropCount = math.random(9, 12)
+							else
+								self.nextDropCount = math.random(13, 16)
+							end
+						end
+						self.nextDropCount = math.max(self.nextDropCount - 1, 0)
+					end
 				end
 			end
 		end)
