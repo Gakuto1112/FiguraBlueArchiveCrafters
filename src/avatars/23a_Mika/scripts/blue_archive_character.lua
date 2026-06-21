@@ -486,6 +486,26 @@ local BlueArchiveCharacter = {
 	costume = {
 		isAltCostumeEnabled = false;
 
+		callbacks = {
+			onArmorChange = function (self, parts, isVisible)
+				if parts == "CHEST_PLATE" then
+					ModelAlias.alias.avatar.body.Chest:setVisible(not isVisible)
+					ModelAlias.alias.avatar.body.Hairs.FrontHair:setPos(0, 0, isVisible and -1 or 0)
+					self.physics.physicData[2].x.vertical.min = isVisible and 0 or 5
+					self.physics.physicData[2].x.vertical.neutral = isVisible and 0 or 5
+					self.physics.physicData[2].x.vertical.bodyX.min = isVisible and 0 or 5
+					self.physics.physicData[2].x.vertical.bodyY.min = isVisible and 0 or 5
+					self.physics.physicData[2].x.vertical.bodyRot.min = isVisible and 0 or 5
+					self.physics.physicData[2].x.vertical.bodyX.min = isVisible and 0 or 5
+					self.physics.physicData[2].x.horizontal.min = isVisible and 0 or 5
+					self.physics.physicData[2].x.horizontal.bodyX.min = isVisible and 0 or 5
+				end
+				if parts == "CHEST_PLATE" or parts == "LEGGINGS" then
+					ModelAlias.alias.avatar.body.Skirt:setVisible(not (Armor.isArmorVisible.chestplate or Armor.isArmorVisible.leggings))
+				end
+			end;
+		};
+
 		---ヘイローのキラキラエフェクトのクラスを格納する配列
 		---@type HaloShine[]
 		haloShines = {};
