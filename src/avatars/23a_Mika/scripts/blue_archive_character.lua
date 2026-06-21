@@ -263,7 +263,7 @@
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
-		avatarName = "00a_base";
+		avatarName = "23a_Mika";
 
 		birth = {
 			month = 5;
