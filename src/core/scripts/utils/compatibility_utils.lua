@@ -284,6 +284,41 @@ local CompatibilityUtils = {
         end;
     end;
 
+    ---`models:newEntity():setNbt()`メソッドに対し、エンティティIDのチェック機能を注入する。
+    ---@param self CompatibilityUtils
+    injectToEntitySetNbt = function (self)
+        local dummyEntity = models:newEntity("dummy_entity")
+        local entityMT = getmetatable(dummyEntity)
+        local originalSetNbtFunc = entityMT.__index.setNbt
+
+        ---@param self2 EntityTask
+        ---@param entityId Minecraft.entityID
+        ---@param nbt? string
+        entityMT.__index.setNbt = function (self2, entityId, nbt)
+            local trueEntityId = entityId
+            local trueNbt = nbt
+            if trueNbt == nil then
+                trueEntityId = nil
+                trueNbt = entityId
+            end
+
+            if trueEntityId ~= nil then
+                if trueEntityId:find(":") == nil then
+                    trueEntityId = "minecraft:" .. trueEntityId
+                end
+
+                local trueEntityIdPrev = trueEntityId
+                trueEntityId = self:checkEntity(trueEntityId)
+
+                return originalSetNbtFunc(self2, trueEntityId, trueEntityId == trueEntityIdPrev and nbt or "{}")
+            else
+                return originalSetNbtFunc(self2, nbt)
+            end
+        end
+
+        models:removeTask("dummy_entity")
+    end;
+
     ---RendererAPIを改変し、`renderer:setPostEffect()`メソッドに対し、ゲームバージョンチェック機能を注入する。
     injectToRendererSetPostEffect = function ()
         local rendererMT = figuraMetatables.RendererAPI
