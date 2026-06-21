@@ -4,6 +4,7 @@
 ---@field package wetCount integer 水濡れの時間を測るカウンター
 ---@field package isDropMasterVisible boolean 水滴モデル全体が見える状態かどうか（個別にオフになっている可能性もある）
 ---@field package nextDropCount integer 次の水滴パーティクルを再生するまでのカウンター
+---@field package sequenceIndex integer 現在の水滴を削除している位置
 local Wet = {
 	MAX_WET_COUNT = 2400;
 
@@ -11,6 +12,7 @@ local Wet = {
 	wetCount = 0;
 	isDropMasterVisible = false;
 	nextDropCount = 0;
+	sequenceIndex = 0;
 
 	---水滴モデルを`waterDrops`テーブルに格納する。
 	---@param self Wet
@@ -42,6 +44,17 @@ local Wet = {
 		self.isDropMasterVisible = value
 	end;
 
+	---`waterDrops`テーブル内の要素をランダムに並び替える。
+	---@param self Wet
+	sortDropsRandom = function (self)
+		for _, waterDrop in ipairs(self.waterDrops) do
+			waterDrop.sortValue = math.random(0, 10000)
+		end
+		table.sort(self.waterDrops, function (a, b)
+			return b.sortValue - a.sortValue >= 0
+		end)
+	end;
+
 	---初期化関数
 	---@param self Wet
 	init = function (self)
@@ -52,7 +65,8 @@ local Wet = {
 			if not client:isPaused() then
 				if player:isInWater() then
 					self.wetCount = self.MAX_WET_COUNT
-					self.nextDropCount = 0;
+					self.nextDropCount = 0
+					self.sequenceIndex = 0
 
 					local isUnderwater = player:isUnderwater()
 					if isUnderwater == self.isDropMasterVisible then
@@ -60,8 +74,10 @@ local Wet = {
 					end
 				else
 					if self.wetCount == self.MAX_WET_COUNT then
+						self:sortDropsRandom()
 					elseif self.wetCount == 0 and self.isDropMasterVisible then
-						self.nextDropCount = 0;
+						self.nextDropCount = 0
+						self.sequenceIndex =
 						self:setDropsVisibleAll(false)
 					end
 					self.wetCount = math.max(self.wetCount - 1, 0)
@@ -81,6 +97,11 @@ local Wet = {
 							end
 						end
 						self.nextDropCount = math.max(self.nextDropCount - 1, 0)
+
+						while self.sequenceIndex < #self.waterDrops - math.floor(self.wetCount / self.MAX_WET_COUNT * #self.waterDrops) do
+							self.waterDrops[self.sequenceIndex + 1].model:setVisible(false)
+							self.sequenceIndex = self.sequenceIndex + 1
+						end
 					end
 				end
 			end
