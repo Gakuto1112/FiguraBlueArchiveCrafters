@@ -20,6 +20,7 @@ local CompatibilityUtils = {
         item = "minecraft:barrier";
         particle = "minecraft:poof";
         sound = "minecraft:empty";
+        entity = "minecraft:zombie"
     };
 
     registries = {};
@@ -28,6 +29,7 @@ local CompatibilityUtils = {
         item = {};
         particle = {};
         sound = {};
+        entity = {};
     };
 
     ---初期化関数
@@ -38,16 +40,18 @@ local CompatibilityUtils = {
         self.registries.item = client.getRegistry("minecraft:item")
         self.registries.particle = client.getRegistry("minecraft:particle_type")
         self.registries.sound = client.getRegistry("minecraft:sound_event")
+        self.registries.entity = client.getRegistry("minecraft:entity_type")
+
         for name, _ in pairs(self.registries) do
             table.sort(self.registries[name])
         end
 
-        -- 代替地のフラグ立て
-        self.checkedTable.block["minecraft:dirt"] = true
-        self.checkedTable.item["minecraft:barrier"] = true
-        self.checkedTable.particle["minecraft:poof"] = true
-        self.checkedTable.sound["minecraft:empty"] = true
+        -- 代替値のフラグ立て
+        for index, ct in pairs(self.checkedTable) do
+            ct[self.ALTERNATIVE_ENTRIES[index]] = true
+        end
 
+        -- 非推奨ゲームバージョンに対する警告
         local clientVersion = client:getVersion()
         local compareResult = StringUtils.compareVersions(clientVersion, self.TARGET_MC_VERSION)
         if host:isHost() and compareResult ~= nil and compareResult == self.TARGET_MC_VERSION and compareResult ~= clientVersion then
