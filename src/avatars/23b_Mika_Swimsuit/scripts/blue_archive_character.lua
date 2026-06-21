@@ -735,6 +735,11 @@ local BlueArchiveCharacter = {
 		---@type HaloShine
 		HaloShine = require("scripts.halo_shine")
 
+		---水濡れを制御するクラス
+		---@type Wet
+		Wet = require("scripts.wet")
+		Wet:init()
+
 		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
 		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
 		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
@@ -763,10 +768,6 @@ local BlueArchiveCharacter = {
 				ModelAlias.alias.avatar.body.Wings.LeftWing:setRot(0, wingRotOffset, 0)
 			end
 		end)
-
-		ModelAlias.alias.avatar.head.HWaterDrops:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID"):setOpacity(0.05)
-		ModelAlias.alias.avatar.body.Hairs.FrontHair.FHWaterDrops:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID"):setOpacity(0.05)
-		ModelAlias.alias.avatar.body.Hairs.BackHair.BHWaterDrops:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID"):setOpacity(0.05)
 	end;
 }
 
