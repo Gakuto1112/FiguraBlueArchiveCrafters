@@ -84,7 +84,7 @@ local Wet = {
 
 					if self.wetCount > 0 then
 						if self.nextDropCount == 0 then
-							particles:newParticle("minecraft:falling_water", player:getPos():copy():add(math.random() * 1 - 0.5, math.random() * 1 + 1, math.random() * 1 - 0.5)):setScale(0.5)
+							particles:newParticle("minecraft:falling_water", player:getPos():copy():add(vectors.rotateAroundAxis(player:getBodyYaw() * -1, ModelAlias.alias.avatar.root:getAnimPos():copy():scale(0.0625 * 0.9375):mul(-1, 1, -1), 0, 1, 0)):add(math.random() * 1 - 0.5, math.random() * 1 + 1, math.random() * 1 - 0.5)):setScale(0.5)
 
 							if self.wetCount >= self.MAX_WET_COUNT * 0.75 then
 								self.nextDropCount = math.random(1, 4)
