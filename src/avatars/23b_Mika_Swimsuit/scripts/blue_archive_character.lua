@@ -358,7 +358,7 @@ local BlueArchiveCharacter = {
 
 			models = {models.models.ex_skill_1.CameraBackground};
 
-			animations = {"main", "gun", "ex_skill_1"};
+			animations = {"main"};
 
 			camera = {
 				start = {
@@ -380,6 +380,16 @@ local BlueArchiveCharacter = {
 				onAnimationTick = function (_, tick)
 					if tick == 31 then
 						FaceParts:setEmotion("NARROW", "NARROW_CENTER", "OPENED", 14, true)
+					elseif tick == 42 then
+						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.leftArmBottom.ExSkill1ParticleAnchor1)
+						local bodyYaw = player:getBodyYaw()
+						for i = 0, 35 do
+							particles:newParticle("minecraft:end_rod", anchorPos):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 + 80, vectors.rotateAroundAxis(i * 10, 0, 0.2, 0, 0, 0, 1), 0, 1, 0)):setColor(0.991, 0.783, 0.999):setLifetime(5)
+						end
+						for _ = 1, 20 do
+							particles:newParticle("minecraft:firework", anchorPos):setScale(0.1):setVelocity(math.random() * 0.1 - 0.05, math.random() * 0.1 - 0.05, math.random() * 0.1 - 0.05):setColor(0.991, 0.783, 0.999):setGravity(0)
+						end
+						sounds:playSound("minecraft:entity.player.levelup", player:getPos(), 1, 3)
 					elseif tick == 45 then
 						FaceParts:setEmotion("NARROW", "NARROW_CENTER", "SMILE", 16, true)
 					elseif tick == 61 then
@@ -392,6 +402,17 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("NARROW", "NARROW_CENTER", "OPENED3", 21, true)
 					elseif tick == 171 then
 						FaceParts:setEmotion("CLOSED", "NARROW_CENTER", "TEETH", 62, true)
+					end
+
+					if tick >= 42 and tick < 55 then
+						local anchorPos = player:getPos()
+						local bodyYaw = player:getBodyYaw()
+						for i = 0, 1 do
+							for j = 0, 1 do
+								local tickCount = tick - 42
+								particles:newParticle("minecraft:end_rod", vectors.rotateAroundAxis(bodyYaw * -1 + 50 - ((tickCount * 2 + j) * 10) , 0, 1.2 + (i == 0 and (tickCount * 0.04) or (tickCount * 0.15)), 0.8, 0, 1, 0):add(anchorPos)):setScale(0.5):setColor(0.991, 0.783, 0.999):setLifetime(8)
+							end
+						end
 					end
 				end;
 			};
