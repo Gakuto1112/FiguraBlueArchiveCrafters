@@ -19,6 +19,8 @@
 ---| "CLOSED2" # 閉じた目2
 ---| "NARROW2" # 細目2
 ---| "NARROW" # 細目
+---| "NARROW_CENTER" # 少し反対側を見る細目
+---| "UNEQUAL" # 不等号目
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -29,12 +31,18 @@
 ---| "CLOSED2" # 閉じた目2
 ---| "NARROW2" # 細目2
 ---| "NARROW" # 細目
+---| "NARROW_CENTER" # 少し反対側を見る細目
+---| "UNEQUAL" # 不等号目
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
 ---| "NORMAL" # 通常
----| "OPENED" # 開いた口
+---| "OPENED_SMALL" # 小さく開いた口
 ---| "SMILE" # にっこり
+---| "TEETH" # 歯を見せてにっこり
+---| "OPENED" # 開いた口
+---| "OPENED2" # 開いた口2
+---| "OPENED3" # 開いた口3
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -280,6 +288,8 @@ local BlueArchiveCharacter = {
 			CLOSED2 = vectors.vec2(5, 0);
 			NARROW2 = vectors.vec2(6, 0);
 			NARROW = vectors.vec2(8, 0);
+			NARROW_CENTER = vectors.vec2(11, 0);
+			UNEQUAL = vectors.vec2(12, 0);
 		};
 
 		leftEye = {
@@ -290,11 +300,17 @@ local BlueArchiveCharacter = {
 			CLOSED2 = vectors.vec2(4, 0);
 			NARROW2 = vectors.vec2(6, 0);
 			NARROW = vectors.vec2(8, 0);
+			NARROW_CENTER = vectors.vec2(9, 0);
+			UNEQUAL = vectors.vec2(11, 0);
 		};
 
 		mouth = {
-			OPENED = vectors.vec2(0, 0);
+			OPENED_SMALL = vectors.vec2(0, 0);
 			SMILE = vectors.vec2(1, 0);
+			TEETH = vectors.vec2(2, 0);
+			OPENED = vectors.vec2(3, 0);
+			OPENED2 = vectors.vec2(4, 0);
+			OPENED3 = vectors.vec2(5, 0);
 		};
 	};
 
@@ -354,6 +370,30 @@ local BlueArchiveCharacter = {
 					rot = vectors.vec3(-5, 90, 0);
 					pos = vectors.vec3(-175, 23.4, -20);
 				};
+			};
+
+			callbacks = {
+				onPreAnimation = function ()
+					FaceParts:setEmotion("NARROW", "NARROW_CENTER", "TEETH", 31, true)
+				end;
+
+				onAnimationTick = function (_, tick)
+					if tick == 31 then
+						FaceParts:setEmotion("NARROW", "NARROW_CENTER", "OPENED", 14, true)
+					elseif tick == 45 then
+						FaceParts:setEmotion("NARROW", "NARROW_CENTER", "SMILE", 16, true)
+					elseif tick == 61 then
+						FaceParts:setEmotion("NARROW_CENTER", "NARROW", "SMILE", 6, true)
+					elseif tick == 67 then
+						FaceParts:setEmotion("NARROW", "NARROW", "SMILE", 16, true)
+					elseif tick == 83 then
+						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "OPENED2", 67, true)
+					elseif tick == 150 then
+						FaceParts:setEmotion("NARROW", "NARROW_CENTER", "OPENED3", 21, true)
+					elseif tick == 171 then
+						FaceParts:setEmotion("CLOSED", "NARROW_CENTER", "TEETH", 62, true)
+					end
+				end;
 			};
 		};
 	};
