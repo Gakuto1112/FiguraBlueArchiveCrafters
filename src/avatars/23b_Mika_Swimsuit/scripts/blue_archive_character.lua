@@ -414,6 +414,11 @@ local BlueArchiveCharacter = {
 							end
 						end
 					end
+
+					if tick % 4 == 0 then
+						local bodyYaw = player:getBodyYaw()
+						ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(bodyYaw * -1 - 90, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(bodyYaw * -1 - 90, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+					end
 				end;
 			};
 		};
@@ -685,6 +690,15 @@ local BlueArchiveCharacter = {
 		---@type Wet
 		Wet = require("scripts.wet")
 		Wet:init()
+
+		---Exスキルで使用する流れ星パーティクルのインスタンスクラス
+		---@type ExSkillShootingStar
+		ExSkillShootingStar = require("scripts.ex_skill_shooting_star")
+
+		---Exスキルで使用する流れ星パーティクルのマネージャークラス
+		---@type ExSkillShootingStarManager
+		ExSkillShootingStarManager = require("scripts.ex_skill_shooting_star_manager")
+		ExSkillShootingStarManager = ExSkillShootingStarManager.new()
 
 		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
 		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
