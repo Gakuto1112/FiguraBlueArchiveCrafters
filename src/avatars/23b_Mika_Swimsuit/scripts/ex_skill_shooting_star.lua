@@ -33,10 +33,6 @@ local ExSkillShootingStar = {
 			end;
 
 			---@param self ExSkillShootingStar
-			onDeinit = function (self)
-			end;
-
-			---@param self ExSkillShootingStar
 			onTick = function (self)
 				--オブジェクトの位置を強制更新
 				self.object:setPos(self.nextPos)
