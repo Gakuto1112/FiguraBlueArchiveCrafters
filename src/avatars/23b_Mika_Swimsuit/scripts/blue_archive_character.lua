@@ -587,14 +587,16 @@ local BlueArchiveCharacter = {
 			self.costume.shootingStarLifetimeCount = 600
 
 			events.TICK:register(function ()
-				if self.costume.shootingStarLifetimeCount % 4 == 0 then
-					ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
-				end
+				if not client:isPaused() then
+					if self.costume.shootingStarLifetimeCount % 4 == 0 then
+						ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+					end
 
-				if self.costume.shootingStarLifetimeCount == 0 then
-					events.TICK:remove("shooting_star_tick")
+					if self.costume.shootingStarLifetimeCount == 0 then
+						events.TICK:remove("shooting_star_tick")
+					end
+					self.costume.shootingStarLifetimeCount = self.costume.shootingStarLifetimeCount - 1
 				end
-				self.costume.shootingStarLifetimeCount = self.costume.shootingStarLifetimeCount - 1
 			end, "shooting_star_tick")
 		end;
 	};
