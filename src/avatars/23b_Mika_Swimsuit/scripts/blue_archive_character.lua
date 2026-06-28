@@ -452,20 +452,7 @@ local BlueArchiveCharacter = {
 					end
 
 					if not forcedStop then
-						self.costume.shootingStarBasePos = player:getPos()
-						self.costume.shootingStarBaseDir = player:getBodyYaw() % 360
-						self.costume.shootingStarLifetimeCount = 600
-
-						events.TICK:register(function ()
-							if self.costume.shootingStarLifetimeCount % 4 == 0 then
-								ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 - 90, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 - 90, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
-							end
-
-							if self.costume.shootingStarLifetimeCount == 0 then
-								events.TICK:remove("shooting_star_tick")
-							end
-							self.costume.shootingStarLifetimeCount = self.costume.shootingStarLifetimeCount - 1
-						end, "shooting_star_tick")
+						self.costume.showerShootingStars(self, -90)
 					end
 				end;
 			};
@@ -539,9 +526,13 @@ local BlueArchiveCharacter = {
 					end
 				end;
 
-				onPostAnimation = function ()
+				onPostAnimation = function (self, forcedStop)
 					if host:isHost() then
 						events.RENDER:remove("ex_skill_2_render")
+					end
+
+					if not forcedStop then
+						self.costume.showerShootingStars(self, 0)
 					end
 				end;
 			};
@@ -586,6 +577,26 @@ local BlueArchiveCharacter = {
 		---流れ星の残り時間
 		---@type integer
 		shootingStarLifetimeCount = 0;
+
+		---流れ星を30秒間降らせる。
+		---@param self BlueArchiveCharacter
+		---@param yaw number 流れ星を降らせる方向（ヨー）
+		showerShootingStars = function (self, yaw)
+			self.costume.shootingStarBasePos = player:getPos()
+			self.costume.shootingStarBaseDir = player:getBodyYaw() % 360
+			self.costume.shootingStarLifetimeCount = 600
+
+			events.TICK:register(function ()
+				if self.costume.shootingStarLifetimeCount % 4 == 0 then
+					ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+				end
+
+				if self.costume.shootingStarLifetimeCount == 0 then
+					events.TICK:remove("shooting_star_tick")
+				end
+				self.costume.shootingStarLifetimeCount = self.costume.shootingStarLifetimeCount - 1
+			end, "shooting_star_tick")
+		end;
 	};
 
 	bubble = {
