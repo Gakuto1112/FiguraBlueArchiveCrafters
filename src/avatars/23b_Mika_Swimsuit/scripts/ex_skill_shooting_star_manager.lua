@@ -1,7 +1,7 @@
 ---@class (exact) ExSkillShootingStarManager : SpawnObjectManager Exスキル内で使用する流れ星のマネージャークラス
 ---@field public objects ExSkillShootingStar[] インスタンスで制御するオブジェクト
----@field public getObject fun(self: ExSkillShootingStar, pos: Vector3, dir: Vector3): ExSkill1Sprite 流れ星パーティクルのインスタンスを生成して返す
----@field public spawn fun(self: ExSkillShootingStar, pos: Vector3, pos: Vector3) 流れ星パーティクルをスポーンさせる
+---@field public getObject fun(self: ExSkillShootingStar, pos: Vector3, dir: Vector3): ExSkillShootingStar 流れ星パーティクルのインスタンスを生成して返す
+---@field public spawn fun(self: ExSkillShootingStar, pos: Vector3, dir: Vector3) 流れ星パーティクルをスポーンさせる
 local ExSkillShootingStarManager = {
 	---コンストラクタ
 	---@return ExSkillShootingStarManager
