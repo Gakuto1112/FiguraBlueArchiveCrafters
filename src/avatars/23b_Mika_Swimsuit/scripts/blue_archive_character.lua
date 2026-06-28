@@ -498,6 +498,22 @@ local BlueArchiveCharacter = {
 				onAnimationTick = function (_, tick)
 					if tick == 50 then
 						FaceParts:setEmotion("NARROW", "NARROW", "SMILE", 33, true)
+
+						local bodyYaw = player:getBodyYaw()
+						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root)
+							:copy()
+							:add(vectors.rotateAroundAxis(bodyYaw * -1 + 30, 0, 0, -1, 0, 1, 0))
+							:add(0, 1, 0)
+						for i = 0, 35 do
+							particles:newParticle("minecraft:firework", anchorPos)
+								:setScale(0.5)
+								:setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 + 30, vectors.rotateAroundAxis(i * 10, 0, 0.1 + math.random() * 0.15, 0, 0, 0, 1), 0, 1, 0))
+								:setColor(0.991, 0.783, 0.999)
+								:setGravity(0)
+								:setLifetime(40 + math.random(-3, 3))
+						end
+
+						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 3)
 					elseif tick == 83 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMILE", 9, true)
 					elseif tick == 92 then
