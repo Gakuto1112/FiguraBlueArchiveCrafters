@@ -21,6 +21,7 @@
 ---| "NARROW" # 細目
 ---| "NARROW_CENTER" # 少し反対側を見る細目
 ---| "UNEQUAL" # 不等号目
+---| "FRUST" # 不満そうな目
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -33,6 +34,7 @@
 ---| "NARROW" # 細目
 ---| "NARROW_CENTER" # 少し反対側を見る細目
 ---| "UNEQUAL" # 不等号目
+---| "FRUST" # 不満そうな目
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
@@ -43,6 +45,7 @@
 ---| "OPENED" # 開いた口
 ---| "OPENED2" # 開いた口2
 ---| "OPENED3" # 開いた口3
+---| "FRUST" # への口
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -290,6 +293,7 @@ local BlueArchiveCharacter = {
 			NARROW = vectors.vec2(8, 0);
 			NARROW_CENTER = vectors.vec2(11, 0);
 			UNEQUAL = vectors.vec2(12, 0);
+			FRUST = vectors.vec2(13, 0);
 		};
 
 		leftEye = {
@@ -302,6 +306,7 @@ local BlueArchiveCharacter = {
 			NARROW = vectors.vec2(8, 0);
 			NARROW_CENTER = vectors.vec2(9, 0);
 			UNEQUAL = vectors.vec2(11, 0);
+			FRUST = vectors.vec2(13, 0);
 		};
 
 		mouth = {
@@ -311,6 +316,7 @@ local BlueArchiveCharacter = {
 			OPENED = vectors.vec2(3, 0);
 			OPENED2 = vectors.vec2(4, 0);
 			OPENED3 = vectors.vec2(5, 0);
+			FRUST = vectors.vec2(6, 0);
 		};
 	};
 
@@ -591,7 +597,27 @@ local BlueArchiveCharacter = {
 	};
 
 	bubble = {
+		callbacks = {
+			onPlay = function (_, type, duration)
+				if type == "GOOD" then
+					FaceParts:setEmotion("NORMAL", "NORMAL", "SMILE", duration, true)
+				elseif type == "HEART" then
+					FaceParts:setEmotion("NARROW", "NARROW", "OPENED3", duration, true)
+				elseif type == "NOTE" then
+					FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "OPENED2", duration, true)
+				elseif type == "QUESTION" then
+					FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED_SMALL", duration, true)
+				elseif type == "SWEAT" then
+					FaceParts:setEmotion("FRUST", "FRUST", "FRUST", duration, true)
+				end
+			end;
 
+			onStop = function(_, _, forcedStop)
+				if forcedStop then
+					FaceParts:resetEmotion()
+				end
+			end;
+		};
 	};
 
 	headModel = {
