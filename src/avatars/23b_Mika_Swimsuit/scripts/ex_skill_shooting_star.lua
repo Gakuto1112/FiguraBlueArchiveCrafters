@@ -4,7 +4,7 @@
 ---@field package nextPos Vector3 流れ星の次のティックの位置
 ---@field package dir Vector3 流れ星を流す方向
 ---@field package color Vector3 流れ星パーティクルの色
----@field package lifetime integer 流れ星の残り時間を測るカウンター
+---@field package lifetime number 流れ星の残り時間を測るカウンター
 local ExSkillShootingStar = {
     ---コンストラクタ
 	---@param pos Vector3 流れ星をスポーンするワールド座標
