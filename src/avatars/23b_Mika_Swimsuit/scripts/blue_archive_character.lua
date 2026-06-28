@@ -507,6 +507,11 @@ local BlueArchiveCharacter = {
 					elseif tick == 107 then
 						FaceParts:setEmotion("NARROW_CENTER", "NARROW", "OPENED", 79, true)
 					end
+
+					if tick % 4 == 0 then
+						local bodyYaw = player:getBodyYaw()
+						ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+					end
 				end;
 			};
 		};
