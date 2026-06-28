@@ -492,6 +492,8 @@ local BlueArchiveCharacter = {
 
 			callbacks = {
 				onPreAnimation = function ()
+					events.TICK:remove("shooting_star_tick")
+
 					FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMILE", 50, true)
 				end;
 
