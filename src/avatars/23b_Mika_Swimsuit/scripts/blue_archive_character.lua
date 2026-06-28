@@ -374,6 +374,8 @@ local BlueArchiveCharacter = {
 
 			callbacks = {
 				onPreAnimation = function ()
+					events.TICK:remove("shooting_star_tick")
+
 					if host:isHost() then
 						models.models.ex_skill_1.Gui.ScreenFilter:setScale(client:getScaledWindowSize():copy():augmented(1))
 						events.RENDER:register(function ()
@@ -444,9 +446,26 @@ local BlueArchiveCharacter = {
 					end
 				end;
 
-				onPostAnimation = function ()
+				onPostAnimation = function (self, forcedStop)
 					if host:isHost() then
 						events.RENDER:remove("ex_skill_1_render")
+					end
+
+					if not forcedStop then
+						self.costume.shootingStarBasePos = player:getPos()
+						self.costume.shootingStarBaseDir = player:getBodyYaw() % 360
+						self.costume.shootingStarLifetimeCount = 600
+
+						events.TICK:register(function ()
+							if self.costume.shootingStarLifetimeCount % 4 == 0 then
+								ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 - 90, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 - 90, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+							end
+
+							if self.costume.shootingStarLifetimeCount == 0 then
+								events.TICK:remove("shooting_star_tick")
+							end
+							self.costume.shootingStarLifetimeCount = self.costume.shootingStarLifetimeCount - 1
+						end, "shooting_star_tick")
 					end
 				end;
 			};
@@ -479,6 +498,18 @@ local BlueArchiveCharacter = {
 		---ヘイローのキラキラエフェクトのクラスを格納する配列
 		---@type HaloShine[]
 		haloShines = {};
+
+		---流れ星の基準ワールド座標
+		---@type Vector3
+		shootingStarBasePos = vectors.vec3();
+
+		---流れ星の発生させる基準の向き
+		---@type number
+		shootingStarBaseDir = 0;
+
+		---流れ星の残り時間
+		---@type integer
+		shootingStarLifetimeCount = 0;
 	};
 
 	bubble = {
