@@ -480,13 +480,13 @@ local BlueArchiveCharacter = {
 
 			camera = {
 				start = {
-					rot = vectors.vec3();
-					pos = vectors.vec3();
+					rot = vectors.vec3(0, 150, 0);
+					pos = vectors.vec3(10.4, 22.5, -36);
 				};
 
 				fin = {
-					rot = vectors.vec3();
-					pos = vectors.vec3();
+					rot = vectors.vec3(-40, -20, 0);
+					pos = vectors.vec3(11.4, 26.5, -17);
 				};
 			};
 		};
