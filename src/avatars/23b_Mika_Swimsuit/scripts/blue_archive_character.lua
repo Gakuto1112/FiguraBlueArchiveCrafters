@@ -489,6 +489,26 @@ local BlueArchiveCharacter = {
 					pos = vectors.vec3(11.4, 26.5, -17);
 				};
 			};
+
+			callbacks = {
+				onPreAnimation = function ()
+					FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMILE", 50, true)
+				end;
+
+				onAnimationTick = function (_, tick)
+					if tick == 50 then
+						FaceParts:setEmotion("NARROW", "NARROW", "SMILE", 33, true)
+					elseif tick == 83 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMILE", 9, true)
+					elseif tick == 92 then
+						FaceParts:setEmotion("NARROW_CENTER", "NARROW", "OPENED_SMALL", 11, true)
+					elseif tick == 103 then
+						FaceParts:setEmotion("NARROW_CENTER", "NARROW", "SMILE", 4, true)
+					elseif tick == 107 then
+						FaceParts:setEmotion("NARROW_CENTER", "NARROW", "OPENED", 79, true)
+					end
+				end;
+			};
 		};
 	};
 
