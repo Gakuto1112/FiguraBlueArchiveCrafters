@@ -56,6 +56,7 @@ You can download and use avatars below in the game according to the chapter "[Ho
 - Hina Sorasaki
 - Hanae Asagao
 - Kei Tendo
+- Mika Misono
 
 ### In progress
 
@@ -63,7 +64,7 @@ The avatars for these characters are worked in progress.
 It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule.
 Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-- Mika Misono ([#162](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/162))
+(There is no avatar currently being created.)
 
 ### Planned
 
@@ -175,6 +176,8 @@ Please understand this.
   | Hina (Swimsuit) | - Equips a swim ring when wearing a Turtle Shell (helmet). Not applied while armor is visible. |
   | Hanae (Normal) | - Regeneration potions are replaced with a medical box. |
   | Kei | - Leaves an amplifier in place after playing the Ex Skill. It seems that she leaves a beacon occasionally. |
+  | Mika (Normal) | - A meteorite drops in front of the her after playing the Ex Skill (visual effect only). |
+  | Mika (Swimsuit) | - Gets wet when submerged in water. Its appearance is like stars floating in the night sky...<br> - Unleashes a show of shooting stars after playing the Ex Skill. |
 
 ## Ex Skill
 
