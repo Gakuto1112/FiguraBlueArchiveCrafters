@@ -470,6 +470,26 @@ local BlueArchiveCharacter = {
 				end;
 			};
 		};
+
+		secondary = {
+			formationType = "STRIKER";
+
+			models = {};
+
+			animations = {"main"};
+
+			camera = {
+				start = {
+					rot = vectors.vec3();
+					pos = vectors.vec3();
+				};
+
+				fin = {
+					rot = vectors.vec3();
+					pos = vectors.vec3();
+				};
+			};
+		};
 	};
 
 	costume = {
