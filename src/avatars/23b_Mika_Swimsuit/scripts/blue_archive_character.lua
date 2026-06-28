@@ -669,14 +669,12 @@ local BlueArchiveCharacter = {
 				ModelAlias.alias.dummy_avatar.body.Hairs.BackHair:setRot(5, 0, 0)
 				ModelAlias.alias.dummy_avatar.body.Wings.RightWing:setRot(0, 0, -10)
 				ModelAlias.alias.dummy_avatar.body.Wings.LeftWing:setRot(0, 0, 10)
-				ModelAlias.alias.dummy_avatar.body.Skirt:setRot(60, 0, 0)
 			end;
 
 			onPhase2 = function ()
 				ModelAlias.alias.dummy_avatar.body.Hairs.BackHair:setRot(-15, 0, -15)
 				ModelAlias.alias.dummy_avatar.body.Wings.RightWing:setRot(0, 0, -50)
 				ModelAlias.alias.dummy_avatar.body.Wings.LeftWing:setRot(0, 0, 35)
-				ModelAlias.alias.dummy_avatar.body.Skirt:setRot(20, 0, 0)
 			end;
 		};
 	};
