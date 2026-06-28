@@ -789,7 +789,7 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.leftArmBottom.Gun
 						ModelAlias.alias.avatar.gun:setPos()
 						ModelAlias.alias.avatar.gun:setRot()
-						ModelAlias.alias.avatar.gun:setSecondaryRenderType("GLINT2")
+						ModelAlias.alias.avatar.gun:setSecondaryRenderType("GLINT")
 						ModelAlias.alias.avatar.gun:setVisible(true)
 						sounds:playSound("minecraft:entity.player.attack.sweep", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 1, 1)
 					elseif tick == 4 then

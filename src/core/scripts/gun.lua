@@ -239,7 +239,7 @@ local Gun = {
                     local hasGlint = false
                     for _, gunItem in ipairs(self.GUN_ITEMS) do
                         if gunItem == heldItem.id and heldItem:hasGlint() then
-                            ModelAlias.alias.avatar.gun:setSecondaryRenderType("GLINT"..(client:getVersion() == "1.21.4" and "2" or ""))
+                            ModelAlias.alias.avatar.gun:setSecondaryRenderType("GLINT")
                             hasGlint = true
                             break
                         end
@@ -263,7 +263,7 @@ local Gun = {
                     local hasGlint = false
                     for _, gunItem in ipairs(self.GUN_ITEMS) do
                         if gunItem == heldItem.id and heldItem:hasGlint() then
-                            ModelAlias.alias.avatar.gun:setSecondaryRenderType("GLINT"..(client:getVersion() == "1.21.4" and "2" or ""))
+                            ModelAlias.alias.avatar.gun:setSecondaryRenderType("GLINT")
                             hasGlint = true
                             break
                         end

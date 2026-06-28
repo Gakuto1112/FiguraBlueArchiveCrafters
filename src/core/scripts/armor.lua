@@ -103,7 +103,7 @@ local Armor = {
 				local glint = armorSlotItem:hasGlint()
 				if glint ~= self.hasGlintPrev[index] then
 					--エンチャント変更
-					local renderType = glint and "GLINT"..(client:getVersion() == "1.21.4" and "2" or "") or "NONE"
+					local renderType = glint and "GLINT" or "NONE"
 					if index == 1 then
 						ModelAlias.alias.avatar.head.ArmorH.Helmet:setSecondaryRenderType(renderType)
 					elseif index == 2 then

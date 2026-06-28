@@ -1313,7 +1313,6 @@ local BlueArchiveCharacter = {
                 if hasSword then
                     ModelAlias.alias.avatar.body.SwordGroup.Sword:setParentType("Item")
                     sounds:playSound("minecraft:block.anvil.place", player:getPos(), 0.5, 5)
-                    local version = client:getVersion() == "1.21.4"
                     events.ITEM_RENDER:register(function (item, mode)
                         if item.id:match("^minecraft:(%a+)_sword$") ~= nil and mode ~= "HEAD" then
                             if mode == "FIRST_PERSON_LEFT_HAND" or mode == "FIRST_PERSON_RIGHT_HAND" then
@@ -1325,7 +1324,7 @@ local BlueArchiveCharacter = {
                             end
                             local material = item.id:match("^minecraft:(%a+)_sword$")
                             ModelAlias.alias.avatar.body.SwordGroup.Sword.SwordBlade:setUVPixels(material == "wooden" and -6 or (material == "stone" and -4 or (material == "copper" and -2 or (material == "golden" and 2 or (material == "diamond" and 4 or (material == "netherite" and 6 or 0))))), 0)
-                            ModelAlias.alias.avatar.body.SwordGroup.Sword:setSecondaryRenderType(item:hasGlint() and "GLINT"..(version and "2" or "") or "NONE")
+                            ModelAlias.alias.avatar.body.SwordGroup.Sword:setSecondaryRenderType(item:hasGlint() and "GLINT" or "NONE")
                             return ModelAlias.alias.avatar.body.SwordGroup.Sword
                         end
                     end, "sword_item_render")
@@ -1345,7 +1344,6 @@ local BlueArchiveCharacter = {
                 if shouldReplaceFireworkModel then
                     ModelAlias.alias.avatar.leftArmBottom.Firework:setParentType("Item")
                     ModelAlias.alias.avatar.leftArmBottom.Firework:setVisible(true)
-                    local version = client:getVersion() == "1.21.4"
                     events.ITEM_RENDER:register(function (item, mode)
                         if item.id == "minecraft:firework_rocket" then
                             if mode == "FIRST_PERSON_LEFT_HAND" then
@@ -1365,7 +1363,7 @@ local BlueArchiveCharacter = {
                                 ModelAlias.alias.avatar.leftArmBottom.Firework:setRot(90, 0, 0)
                                 ModelAlias.alias.avatar.leftArmBottom.Firework:setScale(2, 2, 2)
                             end
-                            ModelAlias.alias.avatar.leftArmBottom.Firework:setSecondaryRenderType(item:hasGlint() and "GLINT"..(version and "2" or "") or "NONE")
+                            ModelAlias.alias.avatar.leftArmBottom.Firework:setSecondaryRenderType(item:hasGlint() and "GLINT" or "NONE")
                             return ModelAlias.alias.avatar.leftArmBottom.Firework
                         end
                     end, "firework_item_render")

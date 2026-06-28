@@ -1015,7 +1015,6 @@ local BlueArchiveCharacter = {
             if hasSword ~= self.costume.hadSwordPrev then
                 if hasSword then
                     sounds:playSound("minecraft:block.anvil.place", player:getPos(), 0.5, 5)
-                    local version = client:getVersion() == "1.21.4"
                     events.ITEM_RENDER:register(function (item, mode)
                         if item.id:match("^minecraft:(%a+)_sword$") ~= nil and mode ~= "HEAD" then
                             if mode == "FIRST_PERSON_LEFT_HAND" or mode == "FIRST_PERSON_RIGHT_HAND" then
@@ -1027,7 +1026,7 @@ local BlueArchiveCharacter = {
                             end
                             local material = item.id:match("^minecraft:(%a+)_sword$")
                             models.models.sword.Sword.SwordBlade:setUVPixels(material == "wooden" and -6 or (material == "stone" and -4 or (material == "copper" and -2 or (material == "golden" and 2 or (material == "diamond" and 4 or (material == "netherite" and 6 or 0))))), 0)
-                            models.models.sword.Sword:setSecondaryRenderType(item:hasGlint() and "GLINT"..(version and "2" or "") or "NONE")
+                            models.models.sword.Sword:setSecondaryRenderType(item:hasGlint() and "GLINT" or "NONE")
                             return models.models.sword.Sword
                         end
                     end, "sword_item_render")
