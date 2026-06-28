@@ -56,7 +56,7 @@ local ExSkillShootingStar = {
 			end;
 
 			---@param self ExSkillShootingStar
-			onRender = function (self, delta, context)
+			onRender = function (self, delta)
 				self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos))
 			end;
 		}
