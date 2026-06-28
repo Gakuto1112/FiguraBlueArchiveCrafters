@@ -461,7 +461,9 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
 						ModelAlias.alias.avatar.gun:setVisible(false)
 					end
-					if host:isHost() and forcedStop then
+					if not forcedStop then
+						MeteorManager:spawn(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 0, 10, 0, 1, 0):add(player:getPos()))
+					elseif host:isHost() and forcedStop then
 						events.RENDER:remove("ex_skill_1_render")
 						models.models.ex_skill_1.CameraBackground:setVisible(false)
 					end
@@ -772,6 +774,16 @@ local BlueArchiveCharacter = {
 		---ヘイローのキラキラエフェクトオブジェクトのクラス
 		---@type HaloShine
 		HaloShine = require("scripts.halo_shine")
+
+		---隕石のインスタンスクラス
+		---@type Meteor
+		Meteor = require("scripts.meteor")
+
+		---隕石のマネージャークラス
+		---@type MeteorManager
+		MeteorManager = require("scripts.meteor_manager")
+		MeteorManager = MeteorManager.new()
+		MeteorManager.init()
 
 		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
 		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
