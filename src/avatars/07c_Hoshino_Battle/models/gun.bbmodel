@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "Barrel1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.446, 2, -8],
 			"to": [0.446, 3.784, -6.578],
@@ -48,13 +49,13 @@
 				},
 				"up": {
 					"uv": [3, 0, 0, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [3, 1, 0, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -63,10 +64,10 @@
 		{
 			"name": "Barrel2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.0455, -6.578],
 			"to": [0.2925, 3.6305, -0.279],
@@ -92,13 +93,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -107,10 +108,10 @@
 		{
 			"name": "Barrel3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, -6.578],
 			"to": [0.2925, 3.9375, -0.279],
@@ -136,13 +137,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -151,10 +152,10 @@
 		{
 			"name": "BarrelBridge1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6305, -6.578],
 			"to": [0.2925, 3.6865, -6.104],
@@ -180,13 +181,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -195,10 +196,10 @@
 		{
 			"name": "BarrelBridge2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3175, 3.0455, -5.909],
 			"to": [0.3175, 3.6865, -5.073],
@@ -224,13 +225,13 @@
 				},
 				"up": {
 					"uv": [7, 0, 10, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -239,10 +240,10 @@
 		{
 			"name": "BarrelBridge3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6305, -4.348],
 			"to": [0.2925, 3.6865, -4.041],
@@ -268,13 +269,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -283,10 +284,10 @@
 		{
 			"name": "BarrelBridge4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6305, -3.038],
 			"to": [0.2925, 3.6865, -2.731],
@@ -312,13 +313,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -327,10 +328,10 @@
 		{
 			"name": "BarrelBridge5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6305, -1.728],
 			"to": [0.2925, 3.6865, -1.421],
@@ -356,13 +357,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -371,10 +372,10 @@
 		{
 			"name": "FrontSight",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.05, 3.9375, -6.467],
 			"to": [0.05, 4.1325, -6.244],
@@ -400,13 +401,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -415,10 +416,10 @@
 		{
 			"name": "MagazineTube1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 2.1535, -6.578],
 			"to": [0.2925, 2.7385, -4.655],
@@ -444,13 +445,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -459,10 +460,10 @@
 		{
 			"name": "BarrelBridge7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.05, 2.7385, -5.909],
 			"to": [0.05, 3.0455, -5.073],
@@ -488,13 +489,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -503,10 +504,10 @@
 		{
 			"name": "MagazineTube2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 2.0695, -5.937],
 			"to": [0.2925, 2.1535, -5.63],
@@ -532,13 +533,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -547,10 +548,10 @@
 		{
 			"name": "MagazineTube3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 2.0145, -5.575],
 			"to": [0.2925, 2.1535, -5.38],
@@ -576,13 +577,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -591,10 +592,10 @@
 		{
 			"name": "MagazineTube4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 2.0695, -5.324],
 			"to": [0.2925, 2.1535, -5.017],
@@ -620,13 +621,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -635,10 +636,10 @@
 		{
 			"name": "MagazineTube5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.432, 2.014, -4.655],
 			"to": [0.432, 2.878, -4.098],
@@ -664,13 +665,13 @@
 				},
 				"up": {
 					"uv": [10.223, 3, 7, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [10.223, 3, 7, 8],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -679,10 +680,10 @@
 		{
 			"name": "Foreend",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.446, 1.819, -4.098],
 			"to": [0.446, 3.129, -0.279],
@@ -708,13 +709,13 @@
 				},
 				"up": {
 					"uv": [1, 0, 2, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [24.492, 13, 7, 14],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -723,10 +724,10 @@
 		{
 			"name": "GunBody1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.446, 1.93, -0.279],
 			"to": [0.446, 3.686, 2.258],
@@ -752,13 +753,13 @@
 				},
 				"up": {
 					"uv": [1, 0, 2, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 0, 2, 1],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -767,10 +768,10 @@
 		{
 			"name": "GunBody2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.446, 2.153, 2.258],
 			"to": [0.446, 3.686, 4.596],
@@ -796,13 +797,13 @@
 				},
 				"up": {
 					"uv": [22.6, 16, 12, 17],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [22.6, 22, 12, 23],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -811,10 +812,10 @@
 		{
 			"name": "BarrelBridge6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6305, -0.418],
 			"to": [0.2925, 3.6865, -0.279],
@@ -840,13 +841,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -855,10 +856,10 @@
 		{
 			"name": "Barrel4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, -0.279],
 			"to": [0.2925, 3.9655, -0.056],
@@ -884,13 +885,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -899,10 +900,10 @@
 		{
 			"name": "Barrel5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, -0.056],
 			"to": [0.2925, 3.8816, 0.0834],
@@ -928,13 +929,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -943,10 +944,10 @@
 		{
 			"name": "Barrel6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 0.0834],
 			"to": [0.2925, 3.9655, 0.3064],
@@ -972,13 +973,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -987,10 +988,10 @@
 		{
 			"name": "Barrel7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 0.3064],
 			"to": [0.2925, 3.8816, 0.4458],
@@ -1016,13 +1017,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1031,10 +1032,10 @@
 		{
 			"name": "Barrel8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 0.4458],
 			"to": [0.2925, 3.9655, 0.6688],
@@ -1060,13 +1061,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1075,10 +1076,10 @@
 		{
 			"name": "Barrel9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 0.6688],
 			"to": [0.2925, 3.8816, 0.8082],
@@ -1104,13 +1105,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1119,10 +1120,10 @@
 		{
 			"name": "Barrel10",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 0.8082],
 			"to": [0.2925, 3.9655, 1.0312],
@@ -1148,13 +1149,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1163,10 +1164,10 @@
 		{
 			"name": "Barrel11",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 1.0312],
 			"to": [0.2925, 3.8816, 1.1706],
@@ -1192,13 +1193,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1207,10 +1208,10 @@
 		{
 			"name": "Barrel12",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 1.1706],
 			"to": [0.2925, 3.9655, 1.3936],
@@ -1236,13 +1237,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1251,10 +1252,10 @@
 		{
 			"name": "Barrel13",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 1.3936],
 			"to": [0.2925, 3.8816, 1.533],
@@ -1280,13 +1281,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1295,10 +1296,10 @@
 		{
 			"name": "Barrel14",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 1.533],
 			"to": [0.2925, 3.9655, 1.7839],
@@ -1324,13 +1325,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1339,10 +1340,10 @@
 		{
 			"name": "Barrel15",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 1.7839],
 			"to": [0.2925, 4.1325, 2.2859],
@@ -1368,13 +1369,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1383,10 +1384,10 @@
 		{
 			"name": "Barrel16",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2925, 3.6865, 2.2859],
 			"to": [0.2925, 4.3275, 2.9269],
@@ -1412,13 +1413,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1427,10 +1428,10 @@
 		{
 			"name": "Grip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.446, 2.153, 4.596],
 			"to": [0.446, 3.65, 8.537],
@@ -1457,13 +1458,13 @@
 				},
 				"up": {
 					"uv": [41.428, 16, 23, 17],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1472,10 +1473,10 @@
 		{
 			"name": "Grip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.446, 2.153, 4.596],
 			"to": [0.446, 3.65, 8.804],
@@ -1502,13 +1503,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [61.677, 22, 42, 23],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1517,10 +1518,10 @@
 		{
 			"name": "Grip3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.446, 3.65, 8.271],
 			"to": [0.446, 3.888, 8.804],
@@ -1547,13 +1548,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1562,10 +1563,10 @@
 		{
 			"name": "AbydosMarkFront",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.446, 2.9, 7.046],
 			"to": [0.446, 3.422, 7.796],
@@ -1591,13 +1592,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1606,10 +1607,10 @@
 		{
 			"name": "AbydosFront",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.446, 3.35, 5.846],
 			"to": [0.446, 3.529, 6.846],
@@ -1635,13 +1636,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1650,10 +1651,10 @@
 		{
 			"name": "AbydosMarkBack",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.446, 2.9, 7.046],
 			"to": [-0.446, 3.422, 7.796],
@@ -1679,13 +1680,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1694,10 +1695,10 @@
 		{
 			"name": "AbydosBack",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.446, 3.35, 5.846],
 			"to": [-0.446, 3.529, 6.846],
@@ -1723,13 +1724,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1738,10 +1739,10 @@
 		{
 			"name": "GripTip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.05, 1.835, 7.639],
 			"to": [0.05, 2.036, 7.739],
@@ -1767,13 +1768,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [3, 0, 4, 1],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1782,10 +1783,10 @@
 		{
 			"name": "GripTip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.128, 2.036, 7.561],
 			"to": [0.128, 2.153, 7.817],
@@ -1811,13 +1812,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1826,10 +1827,10 @@
 		{
 			"name": "Grip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.375, -0.381, 3.122],
 			"to": [0.375, 2.153, 4.198],
@@ -1855,13 +1856,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [25, 12, 29, 13],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1870,10 +1871,10 @@
 		{
 			"name": "TriggerGuard1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 1.239, 2.091],
 			"to": [0.125, 1.93, 2.331],
@@ -1900,13 +1901,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1915,10 +1916,10 @@
 		{
 			"name": "TriggerGuard2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 1.707, 2.258],
 			"to": [0.125, 2.153, 2.565],
@@ -1944,13 +1945,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1959,10 +1960,10 @@
 		{
 			"name": "TriggerGuard3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 2.042, 2.258],
 			"to": [0.125, 2.153, 3.145],
@@ -1988,13 +1989,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2003,10 +2004,10 @@
 		{
 			"name": "TriggerGuard4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 1.384, 2.512],
 			"to": [0.125, 1.579, 3.014],
@@ -2032,13 +2033,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2047,10 +2048,10 @@
 		{
 			"name": "TriggerGuard5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 1.384, 3.014],
 			"to": [0.125, 1.579, 3.415],
@@ -2077,13 +2078,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2092,10 +2093,10 @@
 		{
 			"name": "Grip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1.428, 4.198],
 			"to": [0.25, 1.814, 4.624],
@@ -2122,13 +2123,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [4, 1, 7, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2137,10 +2138,10 @@
 		{
 			"name": "Trigger",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 1.624, 3],
 			"to": [0.125, 2.042, 3.125],
@@ -2167,13 +2168,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2182,10 +2183,10 @@
 		{
 			"name": "ShotgunAmmo1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.95, 2.55, 0.75],
 			"to": [-0.45, 3.8, 1.25],
@@ -2211,13 +2212,13 @@
 				},
 				"up": {
 					"uv": [29, 0, 30, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [29, 3, 30, 4],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2226,10 +2227,10 @@
 		{
 			"name": "ShotgunAmmo2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.95, 2.55, 1.35],
 			"to": [-0.45, 3.8, 1.85],
@@ -2255,13 +2256,13 @@
 				},
 				"up": {
 					"uv": [29, 0, 30, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [29, 3, 30, 4],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2270,10 +2271,10 @@
 		{
 			"name": "ShotgunAmmo3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.95, 2.55, 1.95],
 			"to": [-0.45, 3.8, 2.45],
@@ -2299,13 +2300,13 @@
 				},
 				"up": {
 					"uv": [29, 0, 30, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [29, 3, 30, 4],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2314,10 +2315,10 @@
 		{
 			"name": "ShotgunAmmo4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.95, 2.55, 2.55],
 			"to": [-0.45, 3.8, 3.05],
@@ -2343,13 +2344,13 @@
 				},
 				"up": {
 					"uv": [29, 0, 30, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [29, 3, 30, 4],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2358,10 +2359,10 @@
 		{
 			"name": "ShotgunAmmo5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.95, 2.55, 3.15],
 			"to": [-0.45, 3.8, 3.65],
@@ -2387,13 +2388,13 @@
 				},
 				"up": {
 					"uv": [29, 0, 30, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [29, 3, 30, 4],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2402,10 +2403,10 @@
 		{
 			"name": "ShotgunAmmo6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.95, 2.55, 3.75],
 			"to": [-0.45, 3.8, 4.25],
@@ -2431,13 +2432,13 @@
 				},
 				"up": {
 					"uv": [29, 0, 30, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [29, 3, 30, 4],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2446,10 +2447,10 @@
 		{
 			"name": "AmmoHolder1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, 2.925, 0.7],
 			"to": [-0.45, 3.425, 4.3],
@@ -2475,13 +2476,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2490,10 +2491,10 @@
 		{
 			"name": "AmmoHolder2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 2.925, 0.45],
 			"to": [-0.45, 3.425, 0.7],
@@ -2519,13 +2520,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2534,10 +2535,10 @@
 		{
 			"name": "AmmoHolder3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 2.925, 4.3],
 			"to": [-0.45, 3.425, 4.55],
@@ -2563,13 +2564,13 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 2],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2578,10 +2579,10 @@
 		{
 			"name": "Barrel",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.28275, 3, -3],
 			"to": [0.28275, 3.5655, -2.7672],
@@ -2620,10 +2621,10 @@
 		{
 			"name": "Body1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3493, 2.4345, -2.7672],
 			"to": [0.3493, 3.5655, -2.3348],
@@ -2662,10 +2663,10 @@
 		{
 			"name": "Body2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3493, 2.3015, -2.3348],
 			"to": [0.3493, 3.2662, -2.102],
@@ -2704,10 +2705,10 @@
 		{
 			"name": "Body3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3493, 2.2349, -2.102],
 			"to": [0.3493, 3.2661, 0.792],
@@ -2746,10 +2747,10 @@
 		{
 			"name": "BodyTip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3993, 2.2349, -2.102],
 			"to": [0.3993, 2.5675, -0.6051],
@@ -2763,8 +2764,8 @@
 				},
 				"east": {
 					"uv": [29, 8, 34, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [30, 1, 31, 2],
@@ -2772,8 +2773,8 @@
 				},
 				"west": {
 					"uv": [29, 8, 34, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [30, 1, 31, 2],
@@ -2790,10 +2791,10 @@
 		{
 			"name": "BodyTip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3993, 2.3015, -2.3348],
 			"to": [0.3993, 2.6341, -2.102],
@@ -2807,8 +2808,8 @@
 				},
 				"east": {
 					"uv": [35, 8, 30, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [30, 1, 31, 2],
@@ -2816,8 +2817,8 @@
 				},
 				"west": {
 					"uv": [35, 8, 30, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [30, 1, 31, 2],
@@ -2834,10 +2835,10 @@
 		{
 			"name": "BodyTip3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3993, 2.1018, -2.0687],
 			"to": [0.3993, 2.2349, -1.8359],
@@ -2847,23 +2848,23 @@
 			"faces": {
 				"north": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
@@ -2871,8 +2872,8 @@
 				},
 				"down": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2881,10 +2882,10 @@
 		{
 			"name": "BodyTip4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3993, 2.1018, -1.7361],
 			"to": [0.3993, 2.2349, -1.47],
@@ -2894,23 +2895,23 @@
 			"faces": {
 				"north": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
@@ -2918,8 +2919,8 @@
 				},
 				"down": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2928,10 +2929,10 @@
 		{
 			"name": "BodyTip5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3993, 2.1018, -1.3037],
 			"to": [0.3993, 2.2349, -0.6051],
@@ -2941,23 +2942,23 @@
 			"faces": {
 				"north": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
@@ -2965,8 +2966,8 @@
 				},
 				"down": {
 					"uv": [32, 8, 31, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2975,10 +2976,10 @@
 		{
 			"name": "Body4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3493, 2.2349, 0.792],
 			"to": [0.3493, 3.5654, 2.9209],
@@ -3004,8 +3005,8 @@
 				},
 				"up": {
 					"uv": [39.525, 23, 23.015, 24],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [30, 1, 31, 2],
@@ -3018,10 +3019,10 @@
 		{
 			"name": "InnerBarrel",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.28275, 3.2661, -2.3348],
 			"to": [0.28275, 3.4989, 0.792],
@@ -3060,10 +3061,10 @@
 		{
 			"name": "Sight1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.05, 3.5655, -2.734],
 			"to": [0.05, 3.7651, -2.368],
@@ -3093,8 +3094,8 @@
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -3103,10 +3104,10 @@
 		{
 			"name": "Sight2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.05, 3.5655, 1.856],
 			"to": [0.05, 3.7318, 2.2219],
@@ -3136,8 +3137,8 @@
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -3146,10 +3147,10 @@
 		{
 			"name": "Hammer1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2493, 2.8336, 2.9209],
 			"to": [0.2493, 3.3758, 3.2968],
@@ -3188,10 +3189,10 @@
 		{
 			"name": "Hammer2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2493, 2.2349, 2.9209],
 			"to": [0.2493, 2.6341, 3.3201],
@@ -3230,10 +3231,10 @@
 		{
 			"name": "GripBase",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3493, -0.3597, 1.092],
 			"to": [0.3493, 2.2349, 2.7153],
@@ -3263,8 +3264,8 @@
 				},
 				"down": {
 					"uv": [60, 19, 72.59, 20],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -3273,10 +3274,10 @@
 		{
 			"name": "TriggerGuard1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 2.0018, -0.3551],
 			"to": [0.125, 2.2346, 0.2104],
@@ -3315,10 +3316,10 @@
 		{
 			"name": "TriggerGuard2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 1.5533, -0.1888],
 			"to": [0.125, 2.0018, 0.044],
@@ -3357,10 +3358,10 @@
 		{
 			"name": "TriggerGuard3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 1.3205, 0.044],
 			"to": [0.125, 1.5533, 1.4518],
@@ -3399,10 +3400,10 @@
 		{
 			"name": "Trigger",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 1.5948, 0.8013],
 			"to": [0.125, 2.2349, 0.9943],
@@ -3442,10 +3443,10 @@
 		{
 			"name": "Magazine",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2993, -0.6923, 1.142],
 			"to": [0.2993, -0.3597, 2.4726],
@@ -3485,10 +3486,10 @@
 		{
 			"name": "MagazineLock",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.05, -0.6258, 2.4726],
 			"to": [0.05, -0.3597, 2.6653],
@@ -3526,32 +3527,384 @@
 			"uuid": "11454324-9a27-85bf-54eb-06672beccb99"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "Gun",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "20fe1cca-22a6-ca36-3dc4-e85c7c10e012",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": true,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Barrel",
+			"uuid": "d7856635-d222-d2e9-bdbf-56c7677628f3",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-6, -2.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MagazineTube",
+			"uuid": "6b1f1fb4-272d-ed02-da93-5b51db0694cd",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [3, -1.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "GunBody",
+			"uuid": "63476026-5691-5957-2300-bc1ab0c5f7a8",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [3, -1.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RearGrip",
+			"uuid": "cfa619dc-915f-ba8d-1a4c-4f35e157be89",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.65, 4.596],
+			"rotation": [11, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Grip2",
+			"uuid": "e43d26e7-be73-ab59-b02e-838c9f115b42",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.65, 4.596],
+			"rotation": [24, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "FrontGrip",
+			"uuid": "1ef9749f-ccda-ac76-470e-939b19a29f09",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2.153, 3.122],
+			"rotation": [-12.8, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Trigger",
+			"uuid": "eece60a5-b7c5-cdca-8d59-ffd7c59ffb2c",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [3, -1.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "MuzzleAnchor",
+			"uuid": "99d3ecd3-b825-dc3b-c762-f9b30c0db07b",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.338, -8],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ExSkill2Anchor3",
+			"uuid": "00599eb2-ad70-5599-211d-a38d3956b951",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.338, -9],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": true
+		},
+		{
+			"name": "ExSkill2Anchor4",
+			"uuid": "df8a3d04-e3bb-2ae3-b6b4-46de154f82ea",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 4.338, -8],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SubGun",
+			"uuid": "e036cd42-c1e0-8ae9-4097-96234540b8cb",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2.61251, -0.43178],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Grip",
+			"uuid": "cce830c4-ce0d-97ab-f681-c55a3df5a35f",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2.2349, 1.092],
+			"rotation": [-17, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MuzzleAnchor2",
+			"uuid": "313ab809-5269-1526-d770-3972a294e118",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.2828, -3],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ExSkill2Anchor1",
+			"uuid": "446aa0d7-2025-72cd-edaa-5decc66099a6",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.2828, -4],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ExSkill2Anchor2",
+			"uuid": "467d1870-5484-fbb0-552f-0331dc10f8ef",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 4.2828, -3],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "20fe1cca-22a6-ca36-3dc4-e85c7c10e012",
+			"isOpen": true,
 			"children": [
 				{
-					"name": "Barrel",
-					"origin": [-6, -2.5, 0],
-					"color": 0,
 					"uuid": "d7856635-d222-d2e9-bdbf-56c7677628f3",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"ea0fdb94-b8d7-6e5e-d652-47b269a54f0e",
 						"143f6d47-21fc-9b61-f984-0c62ef593202",
@@ -3580,17 +3933,8 @@
 					]
 				},
 				{
-					"name": "MagazineTube",
-					"origin": [3, -1.5, 0],
-					"color": 0,
 					"uuid": "6b1f1fb4-272d-ed02-da93-5b51db0694cd",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"7976e1ef-9523-be99-04a3-acae1ec9843c",
 						"5c539202-3e99-5131-cfe1-4859b6b5c355",
@@ -3601,17 +3945,8 @@
 					]
 				},
 				{
-					"name": "GunBody",
-					"origin": [3, -1.5, 0],
-					"color": 0,
 					"uuid": "63476026-5691-5957-2300-bc1ab0c5f7a8",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"84f74822-cea7-ed9c-78eb-8082b9aaec37",
 						"f92a19a0-dec4-aafe-eb0c-3bd42241e95c",
@@ -3627,18 +3962,8 @@
 					]
 				},
 				{
-					"name": "RearGrip",
-					"origin": [0, 3.65, 4.596],
-					"rotation": [11, 0, 0],
-					"color": 0,
 					"uuid": "cfa619dc-915f-ba8d-1a4c-4f35e157be89",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"73153994-fb3f-97ba-67f1-696a0c2288d9",
 						"f91260b5-99a4-dd39-797c-59276cb89548",
@@ -3646,18 +3971,8 @@
 						"56c12641-c56f-0fa4-977f-951fa0182353",
 						"94bf19da-960f-e2cc-80b9-80056ce709ba",
 						{
-							"name": "Grip2",
-							"origin": [0, 3.65, 4.596],
-							"rotation": [24, 0, 0],
-							"color": 0,
 							"uuid": "e43d26e7-be73-ab59-b02e-838c9f115b42",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"9fd35e3a-37ea-3d65-9bda-aa01f5b9c036",
 								"79963540-a8fc-9907-eb3d-31c277fcb1be",
@@ -3668,32 +3983,13 @@
 					]
 				},
 				{
-					"name": "FrontGrip",
-					"origin": [0, 2.153, 3.122],
-					"rotation": [-12.8, 0, 0],
-					"color": 0,
 					"uuid": "1ef9749f-ccda-ac76-470e-939b19a29f09",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["de7aadd6-877d-119e-6ff1-72969e644455", "4cde4d21-69d7-5472-e345-9740821abe28"]
 				},
 				{
-					"name": "Trigger",
-					"origin": [3, -1.5, 0],
-					"color": 0,
 					"uuid": "eece60a5-b7c5-cdca-8d59-ffd7c59ffb2c",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"be54a723-a8f6-4609-be4f-c2021d297bd0",
 						"75be783e-7a2c-0206-89fc-a477d67a9086",
@@ -3704,61 +4000,25 @@
 					]
 				},
 				{
-					"name": "MuzzleAnchor",
-					"origin": [0, 3.338, -8],
-					"color": 0,
 					"uuid": "99d3ecd3-b825-dc3b-c762-f9b30c0db07b",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				{
-					"name": "ExSkill2Anchor3",
-					"origin": [0, 3.338, -9],
-					"color": 0,
 					"uuid": "00599eb2-ad70-5599-211d-a38d3956b951",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": true,
 					"children": []
 				},
 				{
-					"name": "ExSkill2Anchor4",
-					"origin": [0, 4.338, -8],
-					"color": 0,
 					"uuid": "df8a3d04-e3bb-2ae3-b6b4-46de154f82ea",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
 		},
 		{
-			"name": "SubGun",
-			"origin": [0, 2.61251, -0.43178],
-			"color": 0,
 			"uuid": "e036cd42-c1e0-8ae9-4097-96234540b8cb",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				"b8bf1ecf-d520-70cb-9c77-503900e229cf",
 				"e738d77d-4e4c-f357-c993-4b27942cf127",
@@ -3776,18 +4036,8 @@
 				"06e7e826-9c96-2551-c488-cdbe85d85ed8",
 				"d8934681-3a37-4229-59aa-343a2170eb6b",
 				{
-					"name": "Grip",
-					"origin": [0, 2.2349, 1.092],
-					"rotation": [-17, 0, 0],
-					"color": 0,
 					"uuid": "cce830c4-ce0d-97ab-f681-c55a3df5a35f",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["70856a7c-a020-84f0-26bf-52f956a9c99a", "d4144d17-2e6f-5c44-c4e9-f486e0ab78b7", "11454324-9a27-85bf-54eb-06672beccb99"]
 				},
 				"87cb388f-0f87-23fb-89c8-83a99e9d1f4d",
@@ -3795,45 +4045,18 @@
 				"b4cdf217-19b1-6bc5-fa37-0d6dc41c6188",
 				"620ccbe3-9458-ff70-d9d7-2383297a15ef",
 				{
-					"name": "MuzzleAnchor2",
-					"origin": [0, 3.2828, -3],
-					"color": 0,
 					"uuid": "313ab809-5269-1526-d770-3972a294e118",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				{
-					"name": "ExSkill2Anchor1",
-					"origin": [0, 3.2828, -4],
-					"color": 0,
 					"uuid": "446aa0d7-2025-72cd-edaa-5decc66099a6",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				{
-					"name": "ExSkill2Anchor2",
-					"origin": [0, 4.2828, -3],
-					"color": 0,
 					"uuid": "467d1870-5484-fbb0-552f-0331dc10f8ef",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
@@ -3841,12 +4064,13 @@
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/07c_Hoshino_Battle/textures/gun.png",
 			"name": "gun.png",
+			"relative_path": "../textures/gun.png",
 			"folder": "",
 			"namespace": "",
 			"id": "0",
 			"group": "",
+			"scope": 0,
 			"width": 74,
 			"height": 40,
 			"uv_width": 74,
@@ -3855,9 +4079,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -3866,8 +4093,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "7bd4b824-3db6-476b-99e3-dde805a618f1",
-			"relative_path": "../textures/gun.png",
-			"source": "data:image/png;base64,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"
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAAoCAYAAABZ7GwgAAAG1ElEQVR4AdyabYgVZRTHz1zDD/YiiLBBWq3rumAamZqGieFqvoaUZYSxG0tpSVYuWGn1JQj6pBCkRLS4SyJZCoWaZiuJSYoWYRJprkKEtB8KsrKo1ml+T3uGc2efmTv3unfbkv3P/5zznPO8/O8zL947hXD3l2FPT49Da2treObltpAYmD1ncThl+swQLgfUJGHr//z8tnDS5GkDgnvvWx5aSI5/d86eF44efWNRXYG6ufOWCNiwYUOAD7q+OAb1wcNNy4pi14+pK/LVueaq4aLQmPIVraHU1o6tOnS8PIw4Cl9+4dL88bJ/33sO7Kza55qFGEwBi4UVWzq2q+n427NdjgfbYdKt0+MpnTt3RhRxMDJUGDhyM//cjhoyZIgk4au68MtPLqzsHM9BxT3w0a4AHD38cZ8sFlJNdGzZ7HYsA9vdq6chpxZtikULlqrp5YI3aoKIojh+5JBbOEyMtBmzZkNlYenIccJCqomJN0+S5AeRNklE6uo6LXBaTkmh2B0K2wkx/MMHD0AOmx57Rjo3viqwC5gDp7dxhYWsWr1aFPiK1rXPu3b1K2HGSn4QxHzY/cEOqasbJzDtXd+ckqnTZmDK7dNmOS4pFDtH4Sp6D8Q4rRSEGxpGiUyoFccEEkAsQHjmrDsgL/bv2+ONlxtMCpxVryLZHBWJWEmh2DkKbvnc5mFidGBx6tR3IifPiWPbkLC5sBI6dPATUeAnMXfewmSoKj47SGEH+PTowdh1QkV3O0mCDD59Cy7K+MpRjXv+gonX3zNDLo2/QWB84oC+LLi4IhDXEBvf+e7WwOLxR5cX+bYtj03/FnYstRGorr5BFOofO3rYpahYBZ6f0uAyq3B45+0OufrKK2T9s6sEW4GoSbCDK53Ci+tXBxaIW2lfbkdVWpxVV9j7lSh8eW1tbdLS0uJrGpSxTKF0oZWwXS2CWNi2f9vmlON0U+D75pQpFE/ojRvXSbmgzsI3MLHBsqsQR8G8fMgUyleQJ8Y1z+a1t7cH7Qa2beDs7JGyHjapzBQq+m+NexLXZ6VymFoFA6VhMOwqRLqsJ3PuOHzdcv78+TBtof+HOA+b9snct6YCzztZ4FpTU1PDc1b8zNTc3Bzbydu59a3QNp6cCLtKY93d3WrKtq3b4281fH3Fif1gIFZWN31OPa4vk6dMd99PYQP1tSMWxl1M/YFkPjQVU8WvZHwu3nqn8zHttt8+D5w//vDPJworKMCGs4CoFlm52saiLRBC29KYHFvDpaES0RAjDcmx+5x6nx0/Ikkcf+VNF7PFvl2VPIVtvs9msSzawpfHTcHGOSVtDba2lxJswi1TBdTXj5dSIE/R59TTAS0Hc26y7n/CLiVYuYtwQnV3f+/qksxppNcn2CWZg29XmeZBYSLYWx3b4rv2Sy88HYA3Xt8YlAJ5CidUTc21gkiWWSWnEqehMrHLgd4AlC+nr3JrEQyUW6f5TigcRLKM7QPXCwueuK1v7aFDRRa8tk5aHlkhi+5eIj//+pfc/0BTzE88udb5xHzY+f4uvst3vwzxsBssmhjQ/0NNDzrGzgOb71tTnlghz0AmJ0+fcc7ePbuCCNKLgK85IoiBjWHTpowd99VrcAqBXtcRvsIFqnGId1SOzpkMny6cI92lkEsNwHbB6IAPbCwKF/3RDjQHxgfYJMP4CmJVQV6hdEJMgknhY+cBucDm4gP6Ig5bn1geaB21efIrzskjFJNgQgyCDeOrjZ8FcoHNwQd5+3C1KQf6Af3RV8oQInmEClKq0+Ip6UVhFgWy+qAdaA6MD7DpEFuhMeL9jlJCMYmsQTPbOzs7JULYC7Vhmb9wMQgjVlgfW6HtcFEsmhjiKCK3en+lhGISaWIQpz1zdo2NjZJEsmDYsOHJ0KDzs4RCCCasYqivnIyTWzEQq1xUPFgFhWlCIYYKQbf4sML65Flfc3Lz3LsaBfDDaDnIPUA/JPqEYtG6eGzgG4q4QvN9eZkxdtH+DztdzoqVK90bKGHPpSLmB1MfXNEAHZJCsXAWzfCwAj8JbYNpg6nHLhsjL1wUBDt75rSMGTtOlMvuqEoFSaHShkEE25b0bVuRHd3x3F3Osk3Qn7y//iN0r+ksXdZUxNruY9tPtW0rFLvBJwBx5qFtyhqnTUFbHD9x4qRs2tTGXS+I7nxF0IKOLZsrfldK+xgIVqFYHItMjpkWJ4982rEt4viaNU8FO3ZsxbftRfZ1o0bL779dFFiR9DUOaxuv9BR1VGUHoVhs2mLS4jqttHbi9Kt5ZbPvC39idfUNrq+s96tcQj8fEIouWVQpkKcolUu75mbyiBEj3Ss3iKBAjDRkdlbFxr8BAAD//2HStmIAAAAGSURBVAMAwpV31HA+zgQAAAAASUVORK5CYII="
 		}
 	],
 	"animations": [
@@ -3878,7 +4104,9 @@
 			"override": true,
 			"length": 0.65,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -3887,13 +4115,15 @@
 				"20fe1cca-22a6-ca36-3dc4-e85c7c10e012": {
 					"name": "Gun",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-273.84049",
-									"y": "6.50576",
+									"x": "273.84049",
+									"y": "-6.50576",
 									"z": "2.29873"
 								}
 							],
@@ -3906,8 +4136,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-226.03",
-									"y": "47.33",
+									"x": "226.03",
+									"y": "-47.33",
 									"z": "58.52"
 								}
 							],
@@ -3920,7 +4150,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6",
+									"x": "6",
 									"y": "9",
 									"z": "2"
 								}
@@ -3934,7 +4164,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6",
+									"x": "6",
 									"y": "7",
 									"z": "0"
 								}
@@ -3956,6 +4186,8 @@
 			"length": 8.5,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -3964,12 +4196,14 @@
 				"20fe1cca-22a6-ca36-3dc4-e85c7c10e012": {
 					"name": "Gun",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "90",
+									"x": "-90",
 									"y": "0",
 									"z": "15"
 								}
@@ -3983,7 +4217,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "60",
+									"x": "-60",
 									"y": "0",
 									"z": "0"
 								}
@@ -3997,7 +4231,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "80",
+									"x": "-80",
 									"y": "0",
 									"z": "0"
 								}
@@ -4011,7 +4245,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "60",
+									"x": "-60",
 									"y": "0",
 									"z": "0"
 								}
@@ -4025,8 +4259,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "60.0945",
-									"y": "2.49762",
+									"x": "-60.0945",
+									"y": "-2.49762",
 									"z": "4.33287"
 								}
 							],
@@ -4039,7 +4273,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "90",
+									"x": "-90",
 									"y": "0",
 									"z": "15"
 								}
@@ -4053,8 +4287,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "60.09",
-									"y": "2.5",
+									"x": "-60.09",
+									"y": "-2.5",
 									"z": "4.33"
 								}
 							],
@@ -4067,8 +4301,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-2.41",
-									"y": "2.5",
+									"x": "2.41",
+									"y": "-2.5",
 									"z": "4.33"
 								}
 							],
@@ -4081,8 +4315,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-2.41",
-									"y": "2.5",
+									"x": "2.41",
+									"y": "-2.5",
 									"z": "4.33"
 								}
 							],
@@ -4095,8 +4329,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-2.85418",
-									"y": "32.46999",
+									"x": "2.85418",
+									"y": "-32.46999",
 									"z": "2.90199"
 								}
 							],
@@ -4109,8 +4343,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "48.93899",
-									"y": "11.0596",
+									"x": "-48.93899",
+									"y": "-11.0596",
 									"z": "17.8778"
 								}
 							],
@@ -4123,8 +4357,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "48.94",
-									"y": "11.06",
+									"x": "-48.94",
+									"y": "-11.06",
 									"z": "17.88"
 								}
 							],
@@ -4137,8 +4371,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "31.94305",
-									"y": "3.12026",
+									"x": "-31.94305",
+									"y": "-3.12026",
 									"z": "-61.0732"
 								}
 							],
@@ -4151,8 +4385,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "31.94",
-									"y": "3.12",
+									"x": "-31.94",
+									"y": "-3.12",
 									"z": "-61.07"
 								}
 							],
@@ -4165,8 +4399,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "157.99045",
-									"y": "24.78328",
+									"x": "-157.99045",
+									"y": "-24.78328",
 									"z": "67.75724"
 								}
 							],
@@ -4179,8 +4413,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "74.96137",
-									"y": "1.15849",
+									"x": "-74.96137",
+									"y": "-1.15849",
 									"z": "22.26105"
 								}
 							],
@@ -4193,8 +4427,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "74.96",
-									"y": "1.16",
+									"x": "-74.96",
+									"y": "-1.16",
 									"z": "22.26"
 								}
 							],
@@ -4207,8 +4441,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "76.90875",
-									"y": "47.73453",
+									"x": "-76.90875",
+									"y": "-47.73453",
 									"z": "20.52716"
 								}
 							],
@@ -4221,7 +4455,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6",
+									"x": "6",
 									"y": "8",
 									"z": "0.5"
 								}
@@ -4235,7 +4469,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-5.5",
+									"x": "5.5",
 									"y": "8",
 									"z": "-2"
 								}
@@ -4249,7 +4483,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-5.5",
+									"x": "5.5",
 									"y": "8",
 									"z": "0"
 								}
@@ -4263,7 +4497,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-5.5",
+									"x": "5.5",
 									"y": "8",
 									"z": "-1.5"
 								}
@@ -4277,7 +4511,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.25",
+									"x": "6.25",
 									"y": "8",
 									"z": "-2"
 								}
@@ -4291,7 +4525,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6",
+									"x": "6",
 									"y": "8",
 									"z": "0.5"
 								}
@@ -4305,7 +4539,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.25",
+									"x": "6.25",
 									"y": "8",
 									"z": "-2"
 								}
@@ -4319,7 +4553,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.25",
+									"x": "6.25",
 									"y": "12",
 									"z": "-7"
 								}
@@ -4333,7 +4567,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.25",
+									"x": "6.25",
 									"y": "12",
 									"z": "-7"
 								}
@@ -4347,7 +4581,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-8.25",
+									"x": "8.25",
 									"y": "12",
 									"z": "-5"
 								}
@@ -4361,7 +4595,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.75",
+									"x": "6.75",
 									"y": "8",
 									"z": "-3"
 								}
@@ -4375,7 +4609,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.75",
+									"x": "6.75",
 									"y": "8",
 									"z": "-3"
 								}
@@ -4389,7 +4623,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-3.75",
+									"x": "3.75",
 									"y": "11",
 									"z": "-4"
 								}
@@ -4403,7 +4637,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-3.75",
+									"x": "3.75",
 									"y": "11",
 									"z": "-4"
 								}
@@ -4417,7 +4651,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-4.75",
+									"x": "4.75",
 									"y": "10",
 									"z": "5"
 								}
@@ -4431,7 +4665,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-7.25",
+									"x": "7.25",
 									"y": "9",
 									"z": "-0.5"
 								}
@@ -4445,7 +4679,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-7.25",
+									"x": "7.25",
 									"y": "9",
 									"z": "-0.5"
 								}
@@ -4459,7 +4693,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.5",
+									"x": "6.5",
 									"y": "9",
 									"z": "-1"
 								}
@@ -4504,12 +4738,14 @@
 				"e036cd42-c1e0-8ae9-4097-96234540b8cb": {
 					"name": "SubGun",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "90",
+									"x": "-90",
 									"y": "0",
 									"z": "0"
 								}
@@ -4523,7 +4759,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "5.5",
+									"x": "-5.5",
 									"y": "8",
 									"z": "-2.5"
 								}

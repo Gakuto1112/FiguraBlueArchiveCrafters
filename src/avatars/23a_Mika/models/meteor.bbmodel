@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "MeteorCube",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, -4, -4],
 			"to": [4, 4, 4],
@@ -61,10 +62,10 @@
 		{
 			"name": "ExplosionEffect",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-40, -40, -40],
 			"to": [40, 40, 40],
@@ -101,30 +102,47 @@
 			"uuid": "e46702ad-7696-0270-a46e-151cf113103c"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "Meteor",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "9d7edaf0-fb82-d070-fe22-a1ecf78f8e1c",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": true,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
-			"selected": false,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "9d7edaf0-fb82-d070-fe22-a1ecf78f8e1c",
+			"isOpen": true,
 			"children": ["2af6045d-0881-8d84-2077-ab7f18bb1191", "e46702ad-7696-0270-a46e-151cf113103c"]
 		}
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/23a_Mika/textures/meteor.png",
 			"name": "meteor.png",
+			"relative_path": "../textures/meteor.png",
 			"folder": "block",
 			"namespace": "",
 			"id": "1",
 			"group": "",
+			"scope": 0,
 			"width": 17,
 			"height": 16,
 			"uv_width": 17,
@@ -133,9 +151,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -144,8 +165,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "94398752-4ee9-963b-5cfb-692fa82e290e",
-			"relative_path": "../textures/meteor.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAQCAYAAADwMZRfAAAAAXNSR0IArs4c6QAAAItJREFUOE9jfP73//+OlCMM2EDnXBuG8mTscsjqGUGc/MTD/0E0MZrQ1YD4KIZgdQ4RgkQZgs2FyGI4DSHGazBHwg0hRRO6D4nyDrImbJaRbAi2cCbKEFxehYljGEJO2BDlEkJJhWDsEEojIAuo6xKYk/GFCS45sEt+/Pv/n5jcih42OGMHl0J8gQsA0RRmkyFgs3UAAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAQCAYAAADwMZRfAAAAvElEQVR4AYxOwRGCQBCDswp7sRnHAnxag0VYjfZiC34EJkB2Qthjjplwt8kmufL9j+P9+k7xG+qaesr51Pfd+j1fl/W2HI/bZ7nI33cwF9G7zKQ67r6DeROCpQxoc165aoguoc1DlIsQNcGgS5iPECGtJi9DeIRgaEFW1hSStaOQ/C6EApaIrB0a+V0IBSy1IkKyFyAk452LkNoLMt65CEEr4C3giJo2h6joLQzA6Rp9c4iLMBBc5KwnfRMAAAD//yJRL94AAAAGSURBVAMApIdno/Vy5wsAAAAASUVORK5CYII="
 		}
 	]
 }

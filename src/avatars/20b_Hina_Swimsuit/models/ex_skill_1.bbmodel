@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "SRBase1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-11, 0, -3],
 			"to": [11, 6, 3],
@@ -61,10 +62,10 @@
 		{
 			"name": "SRBase2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-11, 16, -3],
 			"to": [11, 22, 3],
@@ -103,10 +104,10 @@
 		{
 			"name": "SRBase3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-11, 6, -3],
 			"to": [-5, 16, 3],
@@ -145,10 +146,10 @@
 		{
 			"name": "SRBase4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5, 6, -3],
 			"to": [11, 16, 3],
@@ -187,10 +188,10 @@
 		{
 			"name": "SRArmband",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5, 11.5, -3],
 			"to": [11, 16.5, 3],
@@ -230,10 +231,10 @@
 		{
 			"name": "SRDuckHead",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.5, 0.5, -8],
 			"to": [2.5, 5.5, -3],
@@ -272,10 +273,10 @@
 		{
 			"name": "SRDuckBeak",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.75, -1.5, -5],
 			"to": [1.75, 0.5, -4],
@@ -314,10 +315,10 @@
 		{
 			"name": "SRDuckRibbon",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.51, 3, -7.25],
 			"to": [2.51, 5, -5.9167],
@@ -331,8 +332,8 @@
 				},
 				"east": {
 					"uv": [5, 10, 8, 12],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
@@ -357,10 +358,10 @@
 		{
 			"name": "SRDuckRibbonLayer",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.51, 3, -7.25],
 			"to": [2.51, 5, -5.9167],
@@ -375,8 +376,8 @@
 				},
 				"east": {
 					"uv": [5, 12, 8, 14],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
@@ -401,10 +402,10 @@
 		{
 			"name": "SRRope1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-10.75, 0.25, -3.25],
 			"to": [10.75, 0.5, -3],
@@ -414,8 +415,8 @@
 			"faces": {
 				"north": {
 					"uv": [12, 0, 13, 86],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [12, 85, 13, 86],
@@ -431,13 +432,13 @@
 				},
 				"up": {
 					"uv": [12, 86, 13, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [12, 86, 13, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -446,10 +447,10 @@
 		{
 			"name": "SRRope2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-10.75, 21.5, -3.25],
 			"to": [10.75, 21.75, -3],
@@ -459,8 +460,8 @@
 			"faces": {
 				"north": {
 					"uv": [12, 3, 13, 89],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [12, 88, 13, 89],
@@ -476,13 +477,13 @@
 				},
 				"up": {
 					"uv": [12, 89, 13, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [12, 89, 13, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -491,10 +492,10 @@
 		{
 			"name": "SRRope3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-10.75, 0.5, -3.25],
 			"to": [-10.5, 21.5, -3],
@@ -520,13 +521,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -535,10 +536,10 @@
 		{
 			"name": "SRRope4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [10.5, 0.5, -3.25],
 			"to": [10.75, 21.5, -3],
@@ -564,13 +565,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -579,10 +580,10 @@
 		{
 			"name": "SRRopeAnchor1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [10.375, 0.125, -3.3],
 			"to": [10.875, 0.625, -3],
@@ -621,10 +622,10 @@
 		{
 			"name": "SRRopeAnchor2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-10.875, 0.125, -3.3],
 			"to": [-10.375, 0.625, -3],
@@ -663,10 +664,10 @@
 		{
 			"name": "SRRopeAnchor3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [10.375, 21.375, -3.3],
 			"to": [10.875, 21.875, -3],
@@ -705,10 +706,10 @@
 		{
 			"name": "SRRopeAnchor4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-10.875, 21.375, -3.3],
 			"to": [-10.375, 21.875, -3],
@@ -747,10 +748,10 @@
 		{
 			"name": "RightCheek",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1, 24, -4.01],
 			"to": [3, 25, -4.01],
@@ -789,10 +790,10 @@
 		{
 			"name": "LeftCheek",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, 24, -4.01],
 			"to": [-1, 25, -4.01],
@@ -831,10 +832,10 @@
 		{
 			"name": "SRArmbandClip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11.775, 14.75, -2.75],
 			"to": [12.025, 15.75, -2.5],
@@ -873,10 +874,10 @@
 		{
 			"name": "SRArmbandClip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11.025, 14.75, -2.75],
 			"to": [11.275, 15.75, -2.5],
@@ -915,10 +916,10 @@
 		{
 			"name": "SRArmbandClip3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11.275, 14.5, -2.75],
 			"to": [11.775, 14.75, -2.5],
@@ -957,10 +958,10 @@
 		{
 			"name": "SRArmbandClip4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11.275, 15, -2.75],
 			"to": [11.775, 15.25, -2.5],
@@ -999,10 +1000,10 @@
 		{
 			"name": "SRArmbandClip5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11.025, 15.75, -2.75],
 			"to": [11.275, 16.25, -2.5],
@@ -1042,10 +1043,10 @@
 		{
 			"name": "SRArmbandClip6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11.775, 15.75, -2.75],
 			"to": [12.025, 16.25, -2.5],
@@ -1085,10 +1086,10 @@
 		{
 			"name": "SRArmbandClip7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11.275, 16.25, -2.75],
 			"to": [11.775, 16.5, -2.5],
@@ -1128,10 +1129,10 @@
 		{
 			"name": "SRArmbandEmissive",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5, 11.5, -3],
 			"to": [11, 11.75, 3],
@@ -1171,10 +1172,10 @@
 		{
 			"name": "RightWingBone1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 11, 2],
 			"to": [3, 14, 3],
@@ -1204,8 +1205,8 @@
 				},
 				"down": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1214,10 +1215,10 @@
 		{
 			"name": "RightWingMembrane1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.5, 11, 2.5],
 			"to": [2, 14, 2.5],
@@ -1257,10 +1258,10 @@
 		{
 			"name": "RightWingBone2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 8, 2],
 			"to": [3, 11, 3],
@@ -1286,13 +1287,13 @@
 				},
 				"up": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1301,10 +1302,10 @@
 		{
 			"name": "RightWingFinger1_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, 9.5, 2.25],
 			"to": [2, 10, 2.75],
@@ -1330,13 +1331,13 @@
 				},
 				"up": {
 					"uv": [16, 0, 14, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1345,10 +1346,10 @@
 		{
 			"name": "RightWingMenbrane2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.5, 10, 2.5],
 			"to": [2.5, 12, 2.5],
@@ -1388,10 +1389,10 @@
 		{
 			"name": "RightWingMenbrane3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.5, 7, 2.5],
 			"to": [2.5, 9.5, 2.5],
@@ -1431,10 +1432,10 @@
 		{
 			"name": "RightWingTip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 9.5, 2.25],
 			"to": [-3, 10, 2.75],
@@ -1474,10 +1475,10 @@
 		{
 			"name": "RightWingBone3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 6, 2],
 			"to": [3, 8, 3],
@@ -1503,13 +1504,13 @@
 				},
 				"up": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1518,10 +1519,10 @@
 		{
 			"name": "RightWingFinger2_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.25, 7, 2.25],
 			"to": [2, 7.5, 2.75],
@@ -1547,13 +1548,13 @@
 				},
 				"up": {
 					"uv": [16, 0, 14, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1562,10 +1563,10 @@
 		{
 			"name": "RightWingMenbrane4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, 7.5, 2.5],
 			"to": [2.5, 9, 2.5],
@@ -1605,10 +1606,10 @@
 		{
 			"name": "RightWingMenbrane5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, 4, 2.5],
 			"to": [2.5, 7, 2.5],
@@ -1648,10 +1649,10 @@
 		{
 			"name": "RightWingTip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.25, 7, 2.25],
 			"to": [-3.25, 7.5, 2.75],
@@ -1690,10 +1691,10 @@
 		{
 			"name": "RightWingBone4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 3, 2],
 			"to": [3, 6, 3],
@@ -1719,13 +1720,13 @@
 				},
 				"up": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1734,10 +1735,10 @@
 		{
 			"name": "RightWingFinger3_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.25, 3, 2.25],
 			"to": [2, 3.5, 2.75],
@@ -1763,13 +1764,13 @@
 				},
 				"up": {
 					"uv": [16, 0, 14, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1778,10 +1779,10 @@
 		{
 			"name": "RightWingMenbrane6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, 3.5, 2.5],
 			"to": [2.25, 4.5, 2.5],
@@ -1821,10 +1822,10 @@
 		{
 			"name": "RightWingMenbrane7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, -0.5, 2.5],
 			"to": [4.25, 3, 2.5],
@@ -1835,8 +1836,8 @@
 			"faces": {
 				"north": {
 					"uv": [70, 0, 76, 14],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -1865,10 +1866,10 @@
 		{
 			"name": "RightWingTip3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.25, 3, 2.25],
 			"to": [-3.25, 3.5, 2.75],
@@ -1908,10 +1909,10 @@
 		{
 			"name": "RightWingBone5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 1, 2],
 			"to": [3, 3, 3],
@@ -1937,13 +1938,13 @@
 				},
 				"up": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1952,10 +1953,10 @@
 		{
 			"name": "RightWingBone6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, -1.5, 2],
 			"to": [3, 1, 3],
@@ -1981,13 +1982,13 @@
 				},
 				"up": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1996,10 +1997,10 @@
 		{
 			"name": "RightWingMenbrane8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, -2, 2.5],
 			"to": [2, 1, 2.5],
@@ -2039,10 +2040,10 @@
 		{
 			"name": "RightWingBone7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, -3.5, 2],
 			"to": [3, -1.5, 3],
@@ -2068,8 +2069,8 @@
 				},
 				"up": {
 					"uv": [14, 0, 16, 1],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [0, -7, 0, -7],
@@ -2082,10 +2083,10 @@
 		{
 			"name": "RightWingMenbrane9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, -4, 2.51],
 			"to": [2.5, -0.5, 2.51],
@@ -2125,10 +2126,10 @@
 		{
 			"name": "RightWingBone8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, -5.5, 2],
 			"to": [3, -3.5, 3],
@@ -2167,10 +2168,10 @@
 		{
 			"name": "RightWingFinger4_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, -4.75, 2.25],
 			"to": [2.5, 1.25, 2.75],
@@ -2209,10 +2210,10 @@
 		{
 			"name": "RightWingMenbrane10",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.5, -4.75, 2.5],
 			"to": [6, 1.25, 2.5],
@@ -2231,8 +2232,8 @@
 				},
 				"south": {
 					"uv": [13, 17, 25, 24],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -2253,10 +2254,10 @@
 		{
 			"name": "RightWingFinger4_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 1.25, 2.25],
 			"to": [2.5, 9.25, 2.75],
@@ -2295,10 +2296,10 @@
 		{
 			"name": "RightWingMenbrane11",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.5, 1.25, 2.5],
 			"to": [5.5, 9.25, 2.5],
@@ -2317,8 +2318,8 @@
 				},
 				"south": {
 					"uv": [54, 22, 70, 28],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -2339,10 +2340,10 @@
 		{
 			"name": "RightWingFinger4_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 9.25, 2.25],
 			"to": [2.5, 12.25, 2.75],
@@ -2381,10 +2382,10 @@
 		{
 			"name": "RightWingMenbrane12",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.5, 9.25, 2.5],
 			"to": [3.5, 11.75, 2.5],
@@ -2424,10 +2425,10 @@
 		{
 			"name": "RightWingTip4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 12.25, 2.25],
 			"to": [2.5, 13.25, 2.75],
@@ -2465,33 +2466,730 @@
 			"uuid": "8005e42c-a55c-9ab6-3689-8eb103d03a05"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "Cheek",
-			"origin": [0, 24, 0],
-			"color": 0,
 			"uuid": "555c6186-6cbb-d84b-eb39-23006e23e24f",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": false,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 24, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
-			"selected": false,
-			"children": ["e27dd688-b942-eb36-b99e-f7b0b4e040ed", "b3154edb-3584-f995-f905-290bec778880"]
+			"isOpen": false,
+			"primary_selected": false
 		},
 		{
 			"name": "SwimRing",
-			"origin": [0, 11, 0],
-			"color": 0,
 			"uuid": "5595a7f2-bf14-9e30-89f0-5936d5b446bc",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": false,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 11, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SRArmbandClip",
+			"uuid": "3a10de82-294f-2256-00e1-908d52e4030e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11.525, 15.51786, -2.625],
+			"rotation": [0, 0, 17.5],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SRArmbandEmissive",
+			"uuid": "c5a9c9d1-f8e0-3ff1-ac88-a2095074962b",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [8, 11.25, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWing",
+			"uuid": "e8cb5103-04e5-2da0-b983-44b712787e26",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2.5, 13.5, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingZPivot",
+			"uuid": "e76f5618-a1b1-3315-89c6-25cff7948a28",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2.5, 13.5, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingBone1",
+			"uuid": "3fa506cc-20df-df53-132d-795d9896b953",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2.5, 13.5, 2.5],
+			"rotation": [0, 0, 27.5],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingBone2",
+			"uuid": "f5c7da5f-2215-13ff-1e35-d11cb9c50e10",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 11, 2.5],
+			"rotation": [0, 0, 30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingFinger1",
+			"uuid": "94f80838-3fd5-748a-9944-e944ce7beda6",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 10, 2.5],
+			"rotation": [0, 0, 10.75],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane2",
+			"uuid": "2d0c1b01-4584-0015-2d81-c292be696a5e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 10, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane3",
+			"uuid": "fd63a808-7994-3513-fa9e-817b5df64854",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [1.9, 9.5, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingBone3",
+			"uuid": "7e095b53-50d1-923e-f5e7-afccf74d6263",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 8, 2.5],
+			"rotation": [0, 0, 20],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingFinger2",
+			"uuid": "13f85834-6d32-40a7-73e1-05f9c08c9f0b",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 7.5, 2.5],
+			"rotation": [0, 0, 12.5],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane4",
+			"uuid": "8a84f2cb-9dfc-2c50-7409-725a6fbb1b59",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 7.5, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane5",
+			"uuid": "e1e3167f-531c-238f-750a-065ce9d187e8",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [1.9, 7, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingBone4",
+			"uuid": "faa23ad8-754b-6d98-e11d-a6aa4e15434c",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 6, 2.5],
+			"rotation": [0, 0, 32.5],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingFinger3",
+			"uuid": "768f2a26-cd35-1c67-5ffb-9a55e3ccf3bb",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 3, 2.5],
+			"rotation": [0, 0, -6.25],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane6",
+			"uuid": "9f291c7e-0f61-7614-c80c-cee53125c7b1",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 3.5, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane7",
+			"uuid": "69f3aa5f-210d-aea4-0520-0d18a9f1dd3e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 3, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingBone5",
+			"uuid": "9f15306f-a853-8b40-9f76-ab2c9d94d90e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 3, 2.5],
+			"rotation": [0, 0, 25],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingBone6",
+			"uuid": "3193f170-2b4a-e469-77fa-f48fcdee5e34",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 1, 2.5],
+			"rotation": [0, 0, 45],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane8",
+			"uuid": "8aae2a4a-43cb-0608-4572-fe297757aa8d",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, -0.5, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": true
+		},
+		{
+			"name": "RightWingBone7",
+			"uuid": "3f45a36f-dd9b-07bf-0965-735d38cb6c12",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, -1.5, 2.5],
+			"rotation": [0, 0, 37.5],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane9",
+			"uuid": "c98a7d3e-077e-0941-f8cd-dc3f830df0e8",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2.5, -1.5, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingBone8",
+			"uuid": "c7ff0115-05b0-30f9-ff2d-43af6bff5b34",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, -3.5, 2.5],
+			"rotation": [0, 0, 30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingFinger4",
+			"uuid": "8dbebe46-91b3-9e1f-c6db-4483e1665bea",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, -4.75, 2.5],
+			"rotation": [0, 0, 7.5],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane10",
+			"uuid": "77b67bff-7918-e549-a454-39e3620f1201",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2.5, -4.75, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingFinger4_2",
+			"uuid": "4ec5fde4-9832-6bac-ef3b-023a5a291603",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 1.25, 2.5],
+			"rotation": [0, 0, -30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane11",
+			"uuid": "2d1d4c53-9285-5342-4b7c-efcbb601d5f9",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2.5, 1.25, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingFinger4_3",
+			"uuid": "7a747dc5-ea39-8e8c-38be-3f3e4a954385",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, 9.25, 2.5],
+			"rotation": [0, 0, -20],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RightWingMenbrane12",
+			"uuid": "e8b0f20e-ad92-6e53-b001-379d5a8013b8",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2.5, 9.25, 2.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "555c6186-6cbb-d84b-eb39-23006e23e24f",
+			"isOpen": false,
+			"children": ["e27dd688-b942-eb36-b99e-f7b0b4e040ed", "b3154edb-3584-f995-f905-290bec778880"]
+		},
+		{
+			"uuid": "5595a7f2-bf14-9e30-89f0-5936d5b446bc",
+			"isOpen": false,
 			"children": [
 				"dfb14449-8444-2bef-6d90-a2d4c5a00792",
 				"1720b387-bf3f-332d-c9b3-a9f5f7fadd3a",
@@ -2499,18 +3197,8 @@
 				"3e860536-d05a-74b3-c09a-c23cd34fc4df",
 				"a767eae8-13dd-9010-5042-7e2c9f6b5992",
 				{
-					"name": "SRArmbandClip",
-					"origin": [11.525, 15.51786, -2.625],
-					"rotation": [0, 0, 17.5],
-					"color": 0,
 					"uuid": "3a10de82-294f-2256-00e1-908d52e4030e",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"d6175bb1-33dc-3a23-e903-1cfda3820cc4",
 						"4d7cf523-17c0-b815-a4fc-d656e0edb2a1",
@@ -2522,17 +3210,8 @@
 					]
 				},
 				{
-					"name": "SRArmbandEmissive",
-					"origin": [8, 11.25, 0],
-					"color": 0,
 					"uuid": "c5a9c9d1-f8e0-3ff1-ac88-a2095074962b",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["995139cf-9721-c0bd-1b38-fbaaa96b8874"]
 				},
 				"5d619ffe-057a-ed3b-6c34-efeb2744b950",
@@ -2550,403 +3229,146 @@
 			]
 		},
 		{
-			"name": "RightWing",
-			"origin": [2.5, 13.5, 2.5],
-			"color": 0,
 			"uuid": "e8cb5103-04e5-2da0-b983-44b712787e26",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "RightWingZPivot",
-					"origin": [2.5, 13.5, 2.5],
-					"color": 0,
 					"uuid": "e76f5618-a1b1-3315-89c6-25cff7948a28",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "RightWingBone1",
-							"origin": [2.5, 13.5, 2.5],
-							"rotation": [0, 0, 27.5],
-							"color": 0,
 							"uuid": "3fa506cc-20df-df53-132d-795d9896b953",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"76d85364-3e05-e7f8-efd4-8eadac738763",
 								"14180900-568b-d340-7fa7-35157af3e727",
 								{
-									"name": "RightWingBone2",
-									"origin": [2, 11, 2.5],
-									"rotation": [0, 0, 30],
-									"color": 0,
 									"uuid": "f5c7da5f-2215-13ff-1e35-d11cb9c50e10",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": [
 										"51150167-0878-b76d-f1b6-ee7c132587e0",
 										{
-											"name": "RightWingFinger1",
-											"origin": [2, 10, 2.5],
-											"rotation": [0, 0, 10.75],
-											"color": 0,
 											"uuid": "94f80838-3fd5-748a-9944-e944ce7beda6",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": false,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": [
 												"bbb780fa-99fe-c5ce-91a5-28dfd12bb5c7",
 												{
-													"name": "RightWingMenbrane2",
-													"origin": [2, 10, 2.5],
-													"color": 0,
 													"uuid": "2d0c1b01-4584-0015-2d81-c292be696a5e",
-													"export": true,
-													"mirror_uv": false,
 													"isOpen": false,
-													"locked": false,
-													"visibility": true,
-													"autouv": 0,
-													"selected": false,
 													"children": ["179758bf-70e6-d51a-4241-252f73fc1d0d"]
 												},
 												{
-													"name": "RightWingMenbrane3",
-													"origin": [1.9, 9.5, 2.5],
-													"color": 0,
 													"uuid": "fd63a808-7994-3513-fa9e-817b5df64854",
-													"export": true,
-													"mirror_uv": false,
 													"isOpen": false,
-													"locked": false,
-													"visibility": true,
-													"autouv": 0,
-													"selected": false,
 													"children": ["bfb584e1-3698-1097-8820-329288c09b2b"]
 												},
 												"ffd4ab55-85db-c5f5-9173-55c3a62e5f4b"
 											]
 										},
 										{
-											"name": "RightWingBone3",
-											"origin": [2, 8, 2.5],
-											"rotation": [0, 0, 20],
-											"color": 0,
 											"uuid": "7e095b53-50d1-923e-f5e7-afccf74d6263",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": true,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": [
 												"7166443a-53e7-7204-2c44-a4b55569eb4f",
 												{
-													"name": "RightWingFinger2",
-													"origin": [2, 7.5, 2.5],
-													"rotation": [0, 0, 12.5],
-													"color": 0,
 													"uuid": "13f85834-6d32-40a7-73e1-05f9c08c9f0b",
-													"export": true,
-													"mirror_uv": false,
 													"isOpen": true,
-													"locked": false,
-													"visibility": true,
-													"autouv": 0,
-													"selected": false,
 													"children": [
 														"3bc055ef-c5e0-f569-56c8-d180a2cd6ed9",
 														{
-															"name": "RightWingMenbrane4",
-															"origin": [2, 7.5, 2.5],
-															"color": 0,
 															"uuid": "8a84f2cb-9dfc-2c50-7409-725a6fbb1b59",
-															"export": true,
-															"mirror_uv": false,
 															"isOpen": false,
-															"locked": false,
-															"visibility": true,
-															"autouv": 0,
-															"selected": false,
 															"children": ["18066989-9d8c-2229-1290-9c011136ab8f"]
 														},
 														{
-															"name": "RightWingMenbrane5",
-															"origin": [1.9, 7, 2.5],
-															"color": 0,
 															"uuid": "e1e3167f-531c-238f-750a-065ce9d187e8",
-															"export": true,
-															"mirror_uv": false,
 															"isOpen": false,
-															"locked": false,
-															"visibility": true,
-															"autouv": 0,
-															"selected": false,
 															"children": ["7bd8e7da-98a0-823d-b182-bcde291e269b"]
 														},
 														"fff4d20c-ec13-948f-b947-900585250e3f"
 													]
 												},
 												{
-													"name": "RightWingBone4",
-													"origin": [2, 6, 2.5],
-													"rotation": [0, 0, 32.5],
-													"color": 0,
 													"uuid": "faa23ad8-754b-6d98-e11d-a6aa4e15434c",
-													"export": true,
-													"mirror_uv": false,
 													"isOpen": true,
-													"locked": false,
-													"visibility": true,
-													"autouv": 0,
-													"selected": false,
 													"children": [
 														"79885839-b607-4284-6afa-85b464a3f66d",
 														{
-															"name": "RightWingFinger3",
-															"origin": [2, 3, 2.5],
-															"rotation": [0, 0, -6.25],
-															"color": 0,
 															"uuid": "768f2a26-cd35-1c67-5ffb-9a55e3ccf3bb",
-															"export": true,
-															"mirror_uv": false,
 															"isOpen": true,
-															"locked": false,
-															"visibility": true,
-															"autouv": 0,
-															"selected": false,
 															"children": [
 																"209256ee-81c1-0e7b-7946-b6e65c14da5e",
 																{
-																	"name": "RightWingMenbrane6",
-																	"origin": [2, 3.5, 2.5],
-																	"color": 0,
 																	"uuid": "9f291c7e-0f61-7614-c80c-cee53125c7b1",
-																	"export": true,
-																	"mirror_uv": false,
 																	"isOpen": false,
-																	"locked": false,
-																	"visibility": true,
-																	"autouv": 0,
-																	"selected": false,
 																	"children": ["70ff1d9e-1746-6192-7413-0efce0725211"]
 																},
 																{
-																	"name": "RightWingMenbrane7",
-																	"origin": [2, 3, 2.5],
-																	"color": 0,
 																	"uuid": "69f3aa5f-210d-aea4-0520-0d18a9f1dd3e",
-																	"export": true,
-																	"mirror_uv": false,
 																	"isOpen": false,
-																	"locked": false,
-																	"visibility": true,
-																	"autouv": 0,
-																	"selected": false,
 																	"children": ["7c57e8cf-9e05-ca16-294a-8515ed666dff"]
 																},
 																"42824074-49b4-0340-8d30-6d0590646376"
 															]
 														},
 														{
-															"name": "RightWingBone5",
-															"origin": [2, 3, 2.5],
-															"rotation": [0, 0, 25],
-															"color": 0,
 															"uuid": "9f15306f-a853-8b40-9f76-ab2c9d94d90e",
-															"export": true,
-															"mirror_uv": false,
 															"isOpen": true,
-															"locked": false,
-															"visibility": true,
-															"autouv": 0,
-															"selected": false,
 															"children": [
 																"70a2534e-3a32-d217-01ca-2f6ea3d101f1",
 																{
-																	"name": "RightWingBone6",
-																	"origin": [2, 1, 2.5],
-																	"rotation": [0, 0, 45],
-																	"color": 0,
 																	"uuid": "3193f170-2b4a-e469-77fa-f48fcdee5e34",
-																	"export": true,
-																	"mirror_uv": false,
 																	"isOpen": true,
-																	"locked": false,
-																	"visibility": true,
-																	"autouv": 0,
-																	"selected": false,
 																	"children": [
 																		"77cbb341-93aa-1bf3-76f6-b62a339f4884",
 																		{
-																			"name": "RightWingMenbrane8",
-																			"origin": [2, -0.5, 2.5],
-																			"color": 0,
 																			"uuid": "8aae2a4a-43cb-0608-4572-fe297757aa8d",
-																			"export": true,
-																			"mirror_uv": false,
 																			"isOpen": false,
-																			"locked": false,
-																			"visibility": true,
-																			"autouv": 0,
-																			"selected": true,
 																			"children": ["22681317-4303-a18f-3769-9782e349c8dd"]
 																		},
 																		{
-																			"name": "RightWingBone7",
-																			"origin": [2, -1.5, 2.5],
-																			"rotation": [0, 0, 37.5],
-																			"color": 0,
 																			"uuid": "3f45a36f-dd9b-07bf-0965-735d38cb6c12",
-																			"export": true,
-																			"mirror_uv": false,
 																			"isOpen": true,
-																			"locked": false,
-																			"visibility": true,
-																			"autouv": 0,
-																			"selected": false,
 																			"children": [
 																				"030c02d5-82a1-3c78-33f9-32c4b277995a",
 																				{
-																					"name": "RightWingMenbrane9",
-																					"origin": [2.5, -1.5, 2.5],
-																					"color": 0,
 																					"uuid": "c98a7d3e-077e-0941-f8cd-dc3f830df0e8",
-																					"export": true,
-																					"mirror_uv": false,
 																					"isOpen": false,
-																					"locked": false,
-																					"visibility": true,
-																					"autouv": 0,
-																					"selected": false,
 																					"children": ["1c792368-f48d-9910-8ea2-28173415aced"]
 																				},
 																				{
-																					"name": "RightWingBone8",
-																					"origin": [2, -3.5, 2.5],
-																					"rotation": [0, 0, 30],
-																					"color": 0,
 																					"uuid": "c7ff0115-05b0-30f9-ff2d-43af6bff5b34",
-																					"export": true,
-																					"mirror_uv": false,
 																					"isOpen": true,
-																					"locked": false,
-																					"visibility": true,
-																					"autouv": 0,
-																					"selected": false,
 																					"children": [
 																						"287869a9-40be-6a92-2852-76c1137671ec",
 																						{
-																							"name": "RightWingFinger4",
-																							"origin": [2, -4.75, 2.5],
-																							"rotation": [0, 0, 7.5],
-																							"color": 0,
 																							"uuid": "8dbebe46-91b3-9e1f-c6db-4483e1665bea",
-																							"export": true,
-																							"mirror_uv": false,
 																							"isOpen": true,
-																							"locked": false,
-																							"visibility": true,
-																							"autouv": 0,
-																							"selected": false,
 																							"children": [
 																								"a1daf31f-0871-f4fe-97e7-e7db310ee7a6",
 																								{
-																									"name": "RightWingMenbrane10",
-																									"origin": [2.5, -4.75, 2.5],
-																									"color": 0,
 																									"uuid": "77b67bff-7918-e549-a454-39e3620f1201",
-																									"export": true,
-																									"mirror_uv": false,
 																									"isOpen": true,
-																									"locked": false,
-																									"visibility": true,
-																									"autouv": 0,
-																									"selected": false,
 																									"children": ["f705b215-d1a9-164d-d7ae-e7e4a159c52f"]
 																								},
 																								{
-																									"name": "RightWingFinger4_2",
-																									"origin": [2, 1.25, 2.5],
-																									"rotation": [0, 0, -30],
-																									"color": 0,
 																									"uuid": "4ec5fde4-9832-6bac-ef3b-023a5a291603",
-																									"export": true,
-																									"mirror_uv": false,
 																									"isOpen": true,
-																									"locked": false,
-																									"visibility": true,
-																									"autouv": 0,
-																									"selected": false,
 																									"children": [
 																										"d7628263-ec4b-4dd6-5b9c-ceea6597c915",
 																										{
-																											"name": "RightWingMenbrane11",
-																											"origin": [2.5, 1.25, 2.5],
-																											"color": 0,
 																											"uuid": "2d1d4c53-9285-5342-4b7c-efcbb601d5f9",
-																											"export": true,
-																											"mirror_uv": false,
 																											"isOpen": false,
-																											"locked": false,
-																											"visibility": true,
-																											"autouv": 0,
-																											"selected": false,
 																											"children": ["3a1bf331-654d-819d-1e26-dbfcc64def3f"]
 																										},
 																										{
-																											"name": "RightWingFinger4_3",
-																											"origin": [2, 9.25, 2.5],
-																											"rotation": [0, 0, -20],
-																											"color": 0,
 																											"uuid": "7a747dc5-ea39-8e8c-38be-3f3e4a954385",
-																											"export": true,
-																											"mirror_uv": false,
 																											"isOpen": true,
-																											"locked": false,
-																											"visibility": true,
-																											"autouv": 0,
-																											"selected": false,
 																											"children": [
 																												"d4611f90-858f-7a24-4bd6-af300d5c151a",
 																												{
-																													"name": "RightWingMenbrane12",
-																													"origin": [2.5, 9.25, 2.5],
-																													"color": 0,
 																													"uuid": "e8b0f20e-ad92-6e53-b001-379d5a8013b8",
-																													"export": true,
-																													"mirror_uv": false,
 																													"isOpen": false,
-																													"locked": false,
-																													"visibility": true,
-																													"autouv": 0,
-																													"selected": false,
 																													"children": ["60f3f168-88c8-fb5e-1775-a44cce6560f2"]
 																												},
 																												"8005e42c-a55c-9ab6-3689-8eb103d03a05"
@@ -2979,12 +3401,13 @@
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/20b_Hina_Swimsuit/textures/ex_skill_1.png",
 			"name": "ex_skill_1.png",
+			"relative_path": "../textures/ex_skill_1.png",
 			"folder": "",
 			"namespace": "",
 			"id": "2",
 			"group": "",
+			"scope": 0,
 			"width": 77,
 			"height": 28,
 			"uv_width": 77,
@@ -2993,9 +3416,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -3004,8 +3430,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "550a4745-cf67-14a3-7693-c49de0fa4c64",
-			"relative_path": "../textures/ex_skill_1.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAAAcCAYAAAAk2zLiAAAAAXNSR0IArs4c6QAAA0lJREFUaEPtmb9rFEEUx98g4s+EE70UokUMij8KMRLUQBSu0b9Aggn+wEJQS0EEJQkpQiCNYKxVLOwsRNBCQQUNiEELf2IQiY0XxeMSRbEYeXfO8XacX292c96h2+yyM/fmzWe/78fuiXLpqwTD0ZpbJi60dMqTs5OJ84nyE5ibvg7rOo/Bge374fztcWH6fT3ujR4aTPh++vKg0xd9vslHZQPnmuwN952VwgbtytoeGFr8AQa+r0mci8WPIIT4a6DoRl0QTBvmzLdBw/X/Q/v9FHTIUdA61rcbI+zexGvY3LGi4ZWmO49Q6qI0XFgPUcxpzRCeChpVEBeayUYtPIcuPaiMDxzuqT0gLAQmqUkpZTNBwz3Q5B5boCj8Sk4zQcNCYDqaTWkcSC5VpoJWeHqnaXKaKbm7IPpCWY1blWYrBM3SclA4vvDktCc419pyIDTs0fSjkcLTpZr8qnyt8Z35NFPJz7ZCkAm0BZPT8GPlGCz6fApW7+2GI0f74O3UG7jRPwJwcFvDVE8dGgVFx+oCbcn7Iizc2i5+Pnsn8UwdeDH1Rcb0aaFPWc1TfZXvtYb6ZoMWWgwUXNdbhzU8XdBiW4400CjIGEgKhg+qCZoe1glo9x89hN27uis+2Xo0HKsXNJs6TPknFEboPH1t+sCtSssaWmwnbgKnQ/OBQBtplYZrUBUK+a0sYeQqwL4ugNIcwMTL6nWuBeDaXRDDx1PntCyhqQ4/BJaCnj20568kwoGdm6prIDRyrUOLCc8YaK7eyvbdjAPSVxyospRddU/IcxelDRj0FkBs2ZhQmg5NdzSkApkaT3VPAR67Oe7bF3tc980F2Q+ttwBQmgW49biqstzy6vWZfhBLW/+A1pZvszpsq0C2Mm57daH3fQqi4ReyvvKFY5fmRvZ3MezT9uzYkAoaLeNZQ6ObC5GiD5zJHhsahmdapdFQtOUuTmuB6gpJEy6IoaGKNjKHxnnS9JNyyJ8krtektNDQb99rmII+L9BCwWUFzaQgTm7Tf6/3Zfo4G5ovp8VswNSS+P6Oo+uYFMKFxlEqG1pMn+ZLyGmh+ezbxjl5jNr4J6HFVMyGghb69YOrphAwLpuu8GYrLfZ7GnfTaefPJ7RfBdXKlCm53EUAAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAAAcCAYAAAAk2zLiAAADmklEQVR4AeRYMWgUQRSdWTGKeBLUKxQRY2WwCASEaFDQxkKwsBJSRFsjWFpoSEJsBAXFRCxSmEKxEgQFg2KhREUhXYyCaFBR8EROoxAQWe/t5t/9zM7s7qyTu1ty8O7/+f/Pn//fzcyy5/0s//Z1EJXPSKHTrwjBpV/5zH247Rc3Fv1TB/sCP2IagfO9gz5HUg081qRTDvhJ53K456zvcQPXQdTQ6k8BYVwiprD1iCx9K8nLE6MS42YBGiXY1nR6fFACSfP6b5yTRtKSJi9nv5E07C4Qo8qZd2WYmx6040i6LNhI2sD8FgFgMS7bt7fClBvgyAFZCjYRHpA2dP2JAHjik3NTEiiVvi6SPCYPOhpPUyfiOPgc2Pk4II0bSMeDQAfy50miaSCpZuxIQlyskTTTpLzcaaifCCAJW1Zw0o2k4QGgQ57uNDQKJBGVllTKFZA2cGyvANTkeACoUGMaOaZmdfLCvVFBcF2jp0u4YuqjePPwsDh+56Y4Mz8r3vZ0i/tdRdE3MqYLbxob3lIIS1mUlrSWDavE+o4xCfnjz3d56doVeffBhJS9nTLrnYatrYPaHMXADh0S4DrGNiAiaeepkvw8J+1ebiNdSxo5dbIRd5qJMGqWpK5e2PDKB0C3BchT51RJe/zsadW3sqMteKckWXUkKu4CiCiSyMx1jEEEAL2eqJK2b/eeJVtXbdblQthlLvPpcuE4Y8cB8HuFlr+icHFcFKZficLki0D3J1/6/vRr3++/GvnrJ+udhsVcgH4AkAW4yGmbwxPvP4dzyr9CiW/os1+gRVCvOw2/KhApYMGAY6liwRURIBeIOBQDYgiKS8BONk/ceiREV3s4fj6zWD96ILTHfCMZR0yolYty4mioIJ8qkxZIS3JSnvBO27ZJiNa1tVjS2zbXbEzjxTKzUcWO4TAF0tGDnzeIcRwoFjGk6yT8aYEeTbGeHD4h5c4dUnbvkoF+aH9NX7MueIryyS7uNBDIc7rU45pV1wGxqo2PkQtAHEC+cKfRKIV0daepxPFdppaBggHVzsdojsZcJ5tJIi9g8uvs1qTpknCbTcF8XqN1G+Kck4bm602cq/VAHIAeIAkYc1iTlvZOQyMEviDX6YjGHU0eT02oksdk1alWyKQc1qThTlOLThonFfG/ft36aXKCIEKaeIqxJo0m5llmIYr323DSYo8mr9RSJ2J00jJVJNyatLR3WmQlgwH3mg6G8KYw/wMAAP//f/znOgAAAAZJREFUAwB2LJnI/F1QewAAAABJRU5ErkJggg=="
 		}
 	],
 	"animations": [
@@ -3016,7 +3441,9 @@
 			"override": false,
 			"length": 4.95,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -3025,6 +3452,8 @@
 				"5595a7f2-bf14-9e30-89f0-5936d5b446bc": {
 					"name": "SwimRing",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3072,7 +3501,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "2",
+									"x": "-2",
 									"y": "1",
 									"z": "6"
 								}
@@ -3086,7 +3515,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "2",
+									"x": "-2",
 									"y": "1",
 									"z": "6"
 								}
@@ -3100,7 +3529,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "2",
+									"x": "-2",
 									"y": "1",
 									"z": "5.5"
 								}
@@ -3114,7 +3543,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "2",
+									"x": "-2",
 									"y": "1",
 									"z": "6"
 								}
@@ -3129,6 +3558,8 @@
 				"555c6186-6cbb-d84b-eb39-23006e23e24f": {
 					"name": "Cheek",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -3180,6 +3611,8 @@
 				"c5a9c9d1-f8e0-3ff1-ac88-a2095074962b": {
 					"name": "SRArmbandEmissive",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -3216,6 +3649,8 @@
 				"e8cb5103-04e5-2da0-b983-44b712787e26": {
 					"name": "RightWing",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3394,12 +3829,14 @@
 				"3fa506cc-20df-df53-132d-795d9896b953": {
 					"name": "RightWingBone1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-10",
+									"x": "10",
 									"y": "0",
 									"z": "-37.5"
 								}
@@ -3441,7 +3878,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-10",
+									"x": "10",
 									"y": "0",
 									"z": "-37.5"
 								}
@@ -3456,6 +3893,8 @@
 				"f5c7da5f-2215-13ff-1e35-d11cb9c50e10": {
 					"name": "RightWingBone2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3475,7 +3914,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-12.5",
+									"x": "12.5",
 									"y": "0",
 									"z": "-5"
 								}
@@ -3489,7 +3928,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-12.5",
+									"x": "12.5",
 									"y": "0",
 									"z": "-5"
 								}
@@ -3518,6 +3957,8 @@
 				"7e095b53-50d1-923e-f5e7-afccf74d6263": {
 					"name": "RightWingBone3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3537,7 +3978,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-12.5",
+									"x": "12.5",
 									"y": "0",
 									"z": "-7.5"
 								}
@@ -3551,7 +3992,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-12.5",
+									"x": "12.5",
 									"y": "0",
 									"z": "-7.5"
 								}
@@ -3580,6 +4021,8 @@
 				"e1e3167f-531c-238f-750a-065ce9d187e8": {
 					"name": "RightWingMenbrane5",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3599,8 +4042,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-12.4539205436",
-									"y": "-1.0808891363",
+									"x": "12.4539205436",
+									"y": "1.0808891363",
 									"z": "-4.8820597709"
 								}
 							],
@@ -3627,8 +4070,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-12.4539205436",
-									"y": "-1.0808891363",
+									"x": "12.4539205436",
+									"y": "1.0808891363",
 									"z": "-4.8820597709"
 								}
 							],
@@ -3642,6 +4085,8 @@
 				"faa23ad8-754b-6d98-e11d-a6aa4e15434c": {
 					"name": "RightWingBone4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3661,8 +4106,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-31.7781049463",
-									"y": "18.5128700551",
+									"x": "31.7781049463",
+									"y": "-18.5128700551",
 									"z": "-41.5523816413"
 								}
 							],
@@ -3675,8 +4120,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-26.7781049463",
-									"y": "18.5128700551",
+									"x": "26.7781049463",
+									"y": "-18.5128700551",
 									"z": "-41.5523816413"
 								}
 							],
@@ -3690,6 +4135,8 @@
 				"69f3aa5f-210d-aea4-0520-0d18a9f1dd3e": {
 					"name": "RightWingMenbrane7",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3709,7 +4156,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-10",
+									"x": "10",
 									"y": "0",
 									"z": "0"
 								}
@@ -3723,7 +4170,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-10",
+									"x": "10",
 									"y": "0",
 									"z": "0"
 								}
@@ -3752,6 +4199,8 @@
 				"9f15306f-a853-8b40-9f76-ab2c9d94d90e": {
 					"name": "RightWingBone5",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3771,8 +4220,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-16.0483519106",
-									"y": "19.0377111105",
+									"x": "16.0483519106",
+									"y": "-19.0377111105",
 									"z": "-16.2460452141"
 								}
 							],
@@ -3799,8 +4248,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-16.0483519106",
-									"y": "19.0377111105",
+									"x": "16.0483519106",
+									"y": "-19.0377111105",
 									"z": "-16.2460452141"
 								}
 							],
@@ -3814,6 +4263,8 @@
 				"3f45a36f-dd9b-07bf-0965-735d38cb6c12": {
 					"name": "RightWingBone7",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3876,6 +4327,8 @@
 				"c98a7d3e-077e-0941-f8cd-dc3f830df0e8": {
 					"name": "RightWingMenbrane9",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -3942,6 +4395,8 @@
 				"8dbebe46-91b3-9e1f-c6db-4483e1665bea": {
 					"name": "RightWingFinger4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",

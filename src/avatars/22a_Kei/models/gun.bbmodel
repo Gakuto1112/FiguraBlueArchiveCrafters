@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "UpperShellBase3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3662, 2.6321, -8],
 			"to": [0.3662, 2.7821, -0.60335],
@@ -61,10 +62,10 @@
 		{
 			"name": "UpperShellBase1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5162, 2, -8],
 			"to": [-0.3662, 2.7821, -0.60335],
@@ -103,10 +104,10 @@
 		{
 			"name": "UpperShellBase2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.3662, 2, -8],
 			"to": [0.5162, 2.7821, -0.60335],
@@ -145,10 +146,10 @@
 		{
 			"name": "LowerShellBase1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.3662, 1.3743, -8],
 			"to": [0.5162, 2, -0.60335],
@@ -187,10 +188,10 @@
 		{
 			"name": "LowerShellBase2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5162, 1.3743, -8],
 			"to": [-0.3662, 2, -0.60335],
@@ -229,10 +230,10 @@
 		{
 			"name": "LowerShellBase3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3662, 1.3743, -8],
 			"to": [0.3662, 1.5243, -0.60335],
@@ -271,10 +272,10 @@
 		{
 			"name": "UpperShellCaseTip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.6162, 2.3799, -7.7318],
 			"to": [0.6412, 2.6235, -7.6469],
@@ -285,18 +286,18 @@
 			"faces": {
 				"north": {
 					"uv": [16, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [16, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [16, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -304,13 +305,13 @@
 				},
 				"up": {
 					"uv": [16, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [16, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -319,10 +320,10 @@
 		{
 			"name": "UpperShellCase4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5162, 2.0447, -2.9498],
 			"to": [0.6162, 2.1564, -2.0783],
@@ -332,8 +333,8 @@
 			"faces": {
 				"north": {
 					"uv": [6, 1, 7, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [4.38, 0, 6.09, 1],
@@ -341,8 +342,8 @@
 				},
 				"south": {
 					"uv": [4, 1, 5, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -350,8 +351,8 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [6.09, 0, 4.38, 1],
@@ -364,10 +365,10 @@
 		{
 			"name": "UpperShellCase3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5162, 2.0447, -4.9609],
 			"to": [0.6162, 2.1564, -4.0894],
@@ -377,8 +378,8 @@
 			"faces": {
 				"north": {
 					"uv": [10, 1, 11, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [8.78, 0, 10.49, 1],
@@ -386,8 +387,8 @@
 				},
 				"south": {
 					"uv": [8, 1, 9, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -395,8 +396,8 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [10.49, 0, 8.78, 1],
@@ -409,10 +410,10 @@
 		{
 			"name": "UpperShellCase1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5162, 2.1564, -7.933],
 			"to": [0.6162, 2.6704, -0.60335],
@@ -422,8 +423,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 0, 17, 1],
@@ -431,8 +432,8 @@
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -440,13 +441,13 @@
 				},
 				"up": {
 					"uv": [17, 1, 1, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -455,10 +456,10 @@
 		{
 			"name": "UpperShellCase2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5162, 2.0223, -7.933],
 			"to": [0.6162, 2.1564, -5.9442],
@@ -468,8 +469,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [12.65, 0, 17, 1],
@@ -477,8 +478,8 @@
 				},
 				"south": {
 					"uv": [12, 1, 13, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -486,13 +487,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [12.65, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -501,10 +502,10 @@
 		{
 			"name": "UpperShellCaseTip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 2.3799, -7.7318],
 			"to": [-0.6162, 2.6235, -7.6469],
@@ -515,8 +516,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -524,23 +525,23 @@
 				},
 				"south": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -549,10 +550,10 @@
 		{
 			"name": "UpperShellCase8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 2.0447, -2.9498],
 			"to": [-0.5162, 2.1564, -2.0783],
@@ -562,8 +563,8 @@
 			"faces": {
 				"north": {
 					"uv": [6, 0, 7, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -571,8 +572,8 @@
 				},
 				"south": {
 					"uv": [4, 0, 5, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [6.09, 0, 4.38, 1],
@@ -580,8 +581,8 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [4.38, 0, 6.09, 1],
@@ -594,10 +595,10 @@
 		{
 			"name": "UpperShellCase7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 2.0447, -4.9609],
 			"to": [-0.5162, 2.1564, -4.0894],
@@ -607,8 +608,8 @@
 			"faces": {
 				"north": {
 					"uv": [10, 0, 11, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -616,8 +617,8 @@
 				},
 				"south": {
 					"uv": [8, 0, 9, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [10.49, 0, 8.78, 1],
@@ -625,8 +626,8 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [8.78, 0, 10.49, 1],
@@ -639,10 +640,10 @@
 		{
 			"name": "UpperShellCase6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 2.0223, -7.933],
 			"to": [-0.5162, 2.1564, -5.9442],
@@ -652,8 +653,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -661,8 +662,8 @@
 				},
 				"south": {
 					"uv": [12, 0, 13, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [17, 0, 12.65, 1],
@@ -670,13 +671,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [12.65, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -685,10 +686,10 @@
 		{
 			"name": "UpperShellCase5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 2.1564, -7.933],
 			"to": [-0.5162, 2.6704, -0.6034],
@@ -698,8 +699,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -707,8 +708,8 @@
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [17, 0, 1, 1],
@@ -716,13 +717,13 @@
 				},
 				"up": {
 					"uv": [17, 0, 1, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -731,10 +732,10 @@
 		{
 			"name": "LowerShellCase1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5162, 1.3063, -7.933],
 			"to": [0.6162, 1.8426, -0.6034],
@@ -744,8 +745,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 0, 17, 1],
@@ -753,8 +754,8 @@
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -762,13 +763,13 @@
 				},
 				"up": {
 					"uv": [17, 1, 1, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -777,10 +778,10 @@
 		{
 			"name": "LowerShellCase2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5162, 1.8426, -7.933],
 			"to": [0.6162, 1.9767, -5.9442],
@@ -790,8 +791,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 1, 17, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [12.65, 0, 17, 1],
@@ -799,8 +800,8 @@
 				},
 				"south": {
 					"uv": [12, 1, 13, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -808,13 +809,13 @@
 				},
 				"up": {
 					"uv": [17, 1, 12.65, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -823,10 +824,10 @@
 		{
 			"name": "LowerShellCase3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5162, 1.8426, -4.9609],
 			"to": [0.6162, 1.9543, -4.0894],
@@ -836,8 +837,8 @@
 			"faces": {
 				"north": {
 					"uv": [10, 1, 11, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [8.78, 0, 10.49, 1],
@@ -845,8 +846,8 @@
 				},
 				"south": {
 					"uv": [8, 1, 9, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -867,10 +868,10 @@
 		{
 			"name": "LowerShellCase4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5162, 1.8426, -2.9498],
 			"to": [0.6162, 1.9543, -2.0783],
@@ -880,8 +881,8 @@
 			"faces": {
 				"north": {
 					"uv": [6, 1, 7, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [4.38, 0, 6.09, 1],
@@ -889,8 +890,8 @@
 				},
 				"south": {
 					"uv": [4, 1, 5, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -911,10 +912,10 @@
 		{
 			"name": "LowerShellCaseTip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.6162, 1.3515, -7.7318],
 			"to": [0.6412, 1.5951, -7.6469],
@@ -925,18 +926,18 @@
 			"faces": {
 				"north": {
 					"uv": [17, 1, 16, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [17, 1, 16, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [17, 1, 16, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
@@ -944,13 +945,13 @@
 				},
 				"up": {
 					"uv": [17, 1, 16, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [17, 1, 16, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -959,10 +960,10 @@
 		{
 			"name": "LowerShellCaseTip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 1.3515, -7.7318],
 			"to": [-0.6162, 1.5951, -7.6469],
@@ -973,8 +974,8 @@
 			"faces": {
 				"north": {
 					"uv": [17, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -982,23 +983,23 @@
 				},
 				"south": {
 					"uv": [17, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [17, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [17, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [17, 0, 16, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1007,10 +1008,10 @@
 		{
 			"name": "LowerShellCase8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.8426, -2.9498],
 			"to": [-0.5162, 1.9543, -2.0783],
@@ -1020,8 +1021,8 @@
 			"faces": {
 				"north": {
 					"uv": [6, 0, 7, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -1029,8 +1030,8 @@
 				},
 				"south": {
 					"uv": [4, 0, 5, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [6.09, 0, 4.38, 1],
@@ -1051,10 +1052,10 @@
 		{
 			"name": "LowerShellCase7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.8426, -4.9609],
 			"to": [-0.5162, 1.9543, -4.0894],
@@ -1064,8 +1065,8 @@
 			"faces": {
 				"north": {
 					"uv": [10, 0, 11, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -1073,8 +1074,8 @@
 				},
 				"south": {
 					"uv": [8, 0, 9, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [10.49, 0, 8.78, 1],
@@ -1095,10 +1096,10 @@
 		{
 			"name": "LowerShellCase6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.8426, -7.933],
 			"to": [-0.5162, 1.9767, -5.9442],
@@ -1108,8 +1109,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -1117,8 +1118,8 @@
 				},
 				"south": {
 					"uv": [12, 0, 13, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [17, 0, 12.65, 1],
@@ -1126,13 +1127,13 @@
 				},
 				"up": {
 					"uv": [17, 0, 12.65, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1141,10 +1142,10 @@
 		{
 			"name": "LowerShellCase5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.3063, -7.933],
 			"to": [-0.5162, 1.8426, -0.6034],
@@ -1154,8 +1155,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
@@ -1163,8 +1164,8 @@
 				},
 				"south": {
 					"uv": [1, 0, 2, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [17, 0, 1, 1],
@@ -1172,13 +1173,13 @@
 				},
 				"up": {
 					"uv": [17, 0, 1, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1187,10 +1188,10 @@
 		{
 			"name": "LowerShellCaseBottom1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.3063, -7.933],
 			"to": [0.6162, 1.5247, -0.6534],
@@ -1201,8 +1202,8 @@
 			"faces": {
 				"north": {
 					"uv": [16, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 0, 17, 1],
@@ -1222,8 +1223,8 @@
 				},
 				"down": {
 					"uv": [1, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1232,10 +1233,10 @@
 		{
 			"name": "LowerShellCaseBottom2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.0875, -4.6022],
 			"to": [0.6162, 1.41495, -0.6034],
@@ -1274,10 +1275,10 @@
 		{
 			"name": "LowerShellCaseBottom3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.04685, -3.98125],
 			"to": [0.6162, 1.0875, -0.6034],
@@ -1316,10 +1317,10 @@
 		{
 			"name": "BarrelNozzle",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5162, 1.5531, -0.60335],
 			"to": [0.4894, 2.5587, -0.40225],
@@ -1358,10 +1359,10 @@
 		{
 			"name": "EnergyCore1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5363, 1.5084, 0.648],
 			"to": [0.5363, 2.581, 1.1843],
@@ -1371,8 +1372,8 @@
 			"faces": {
 				"north": {
 					"uv": [6, 1, 15, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 6, 10],
@@ -1380,8 +1381,8 @@
 				},
 				"south": {
 					"uv": [6, 1, 15, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [6, 1, 1, 10],
@@ -1389,13 +1390,13 @@
 				},
 				"up": {
 					"uv": [6, 1, 1, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 6, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1404,10 +1405,10 @@
 		{
 			"name": "EnergyCore2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.4916, 1.5531, 1.1843],
 			"to": [0.4916, 2.5363, 1.9888],
@@ -1417,8 +1418,8 @@
 			"faces": {
 				"north": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [15, 1, 16, 10],
@@ -1426,8 +1427,8 @@
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [15, 1, 16, 10],
@@ -1435,13 +1436,13 @@
 				},
 				"up": {
 					"uv": [15, 1, 16, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [15, 1, 16, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1450,10 +1451,10 @@
 		{
 			"name": "EnergyCore3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5363, 1.5084, 1.9888],
 			"to": [0.5363, 2.581, 2.324],
@@ -1463,8 +1464,8 @@
 			"faces": {
 				"north": {
 					"uv": [6, 1, 15, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 10],
@@ -1472,8 +1473,8 @@
 				},
 				"south": {
 					"uv": [6, 1, 15, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [2, 1, 1, 10],
@@ -1481,13 +1482,13 @@
 				},
 				"up": {
 					"uv": [2, 1, 1, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1496,10 +1497,10 @@
 		{
 			"name": "GunBody1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 2.2565, -0.40225],
 			"to": [0.6162, 2.7822, 0.648],
@@ -1509,33 +1510,33 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1544,10 +1545,10 @@
 		{
 			"name": "GunBody2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 2.581, 0.648],
 			"to": [-0.4162, 2.7821, 0.84915],
@@ -1561,28 +1562,28 @@
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1591,10 +1592,10 @@
 		{
 			"name": "GunBody3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.4162, 2.581, 0.648],
 			"to": [0.6162, 2.7821, 0.84915],
@@ -1608,28 +1609,28 @@
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1638,10 +1639,10 @@
 		{
 			"name": "GunBody4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 2.1001, 0.3128],
 			"to": [0.6162, 2.2565, 0.648],
@@ -1651,33 +1652,33 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1686,10 +1687,10 @@
 		{
 			"name": "GunBody5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.9884, 0.6033],
 			"to": [0.6162, 2.1001, 0.648],
@@ -1699,33 +1700,33 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1734,10 +1735,10 @@
 		{
 			"name": "GunBody6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.832, 0.3128],
 			"to": [0.6162, 1.9884, 0.648],
@@ -1747,33 +1748,33 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1782,10 +1783,10 @@
 		{
 			"name": "GunBody7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.3063, -0.40225],
 			"to": [0.6162, 1.832, 0.648],
@@ -1795,33 +1796,33 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1830,10 +1831,10 @@
 		{
 			"name": "GunBody8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5162, 1.832, -0.40225],
 			"to": [0.4894, 2.2565, 0.59775],
@@ -1872,10 +1873,10 @@
 		{
 			"name": "GunBody9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6662, 2.3012, -0.3353],
 			"to": [0.6662, 2.6587, 0.6032],
@@ -1885,8 +1886,8 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 10.22, 12, 14.79],
@@ -1894,8 +1895,8 @@
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [12, 10.22, 0, 14.79],
@@ -1903,13 +1904,13 @@
 				},
 				"up": {
 					"uv": [12, 10, 0, 11],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 10, 12, 11],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1918,10 +1919,10 @@
 		{
 			"name": "GunBody10",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6662, 2.3012, -0.3353],
 			"to": [0.6662, 2.6587, 0.6032],
@@ -1931,8 +1932,8 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 10.22, 12, 14.79],
@@ -1940,8 +1941,8 @@
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [12, 10.22, 0, 14.79],
@@ -1949,13 +1950,13 @@
 				},
 				"up": {
 					"uv": [12, 10, 0, 11],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 10, 12, 11],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1964,10 +1965,10 @@
 		{
 			"name": "GunBody11",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6662, 1.5084, -0.38],
 			"to": [0.6662, 1.6201, 0.4692],
@@ -1977,33 +1978,33 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2012,10 +2013,10 @@
 		{
 			"name": "GunBody12",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6662, 2.581, 0.848],
 			"to": [-0.4162, 2.8268, 2.3229],
@@ -2025,33 +2026,33 @@
 			"faces": {
 				"north": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2060,10 +2061,10 @@
 		{
 			"name": "GunBody13",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.4162, 2.581, 0.84915],
 			"to": [0.6662, 2.8268, 2.32405],
@@ -2073,33 +2074,33 @@
 			"faces": {
 				"north": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2108,10 +2109,10 @@
 		{
 			"name": "GunBody14",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.4162, 1.2402, 0.648],
 			"to": [-0.2662, 1.5084, 2.2793],
@@ -2122,33 +2123,33 @@
 			"faces": {
 				"north": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 9, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2157,10 +2158,10 @@
 		{
 			"name": "GunBody15",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.2662, 1.2402, 0.648],
 			"to": [0.4162, 1.5084, 2.2793],
@@ -2171,33 +2172,33 @@
 			"faces": {
 				"north": {
 					"uv": [0, 8, 1, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 8, 1, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 8, 1, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 8, 1, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 8, 1, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 8, 1, 9],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2206,10 +2207,10 @@
 		{
 			"name": "GunBody16",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 0.972, 0.9609],
 			"to": [0.6162, 1.2402, 1.9888],
@@ -2219,33 +2220,33 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2254,10 +2255,10 @@
 		{
 			"name": "GunBody17",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.4162, 0.972, 0.48415],
 			"to": [0.6162, 1.2402, 0.9609],
@@ -2268,33 +2269,33 @@
 			"faces": {
 				"north": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2303,10 +2304,10 @@
 		{
 			"name": "GunBody18",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.4162, 1.30629, 0.64761],
 			"to": [0.6162, 1.50739, 0.84876],
@@ -2320,28 +2321,28 @@
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2350,10 +2351,10 @@
 		{
 			"name": "GunBody19",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 1.3063, 0.648],
 			"to": [-0.4162, 1.5074, 0.84915],
@@ -2367,28 +2368,28 @@
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2397,10 +2398,10 @@
 		{
 			"name": "GunBody18",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 0.972, 0.48415],
 			"to": [-0.4162, 1.2402, 0.9609],
@@ -2411,33 +2412,33 @@
 			"faces": {
 				"north": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2446,10 +2447,10 @@
 		{
 			"name": "GunBody20",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 0.8603, 1.6983],
 			"to": [0.6162, 1.0167, 2.1452],
@@ -2459,33 +2460,33 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -2494,10 +2495,10 @@
 		{
 			"name": "UpperShellTop1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 2.8268, 0.0446],
 			"to": [0.6412, 3.7206, 1.9887],
@@ -2523,8 +2524,8 @@
 				},
 				"up": {
 					"uv": [36.58, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [17, 0, 18, 1],
@@ -2537,10 +2538,10 @@
 		{
 			"name": "UpperShellTop2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 3.3976, -1.8995],
 			"to": [0.6412, 3.7206, 0.0446],
@@ -2568,8 +2569,8 @@
 				},
 				"up": {
 					"uv": [19.56, 15, 0, 16],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [17, 0, 18, 1],
@@ -2582,10 +2583,10 @@
 		{
 			"name": "UpperShellTop4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 2.8268, -1.2502],
 			"to": [0.6412, 3.1771, 0.0446],
@@ -2624,10 +2625,10 @@
 		{
 			"name": "UpperShellTop5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 2.7768, -1.668],
 			"to": [0.6412, 2.8268, 0.115],
@@ -2666,10 +2667,10 @@
 		{
 			"name": "UpperShellTop6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5162, 2.4694, -1.31845],
 			"to": [0.6412, 2.7822, -0.40225],
@@ -2708,10 +2709,10 @@
 		{
 			"name": "UpperShellTop7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 2.4694, -1.31845],
 			"to": [-0.5162, 2.7822, -0.40225],
@@ -2750,10 +2751,10 @@
 		{
 			"name": "UpperShellTop8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 3.63733, 1.503],
 			"to": [0.6412, 3.9218, 1.7876],
@@ -2793,10 +2794,10 @@
 		{
 			"name": "UpperShellTop9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 3.00982, 1.46516],
 			"to": [0.6412, 3.72486, 2.00144],
@@ -2836,10 +2837,10 @@
 		{
 			"name": "UpperShellTop10",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.4162, 2.7768, 0.115],
 			"to": [0.4162, 2.8268, 1.9887],
@@ -2878,10 +2879,10 @@
 		{
 			"name": "LowerShellBottom1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 0.9041, -3.172],
 			"to": [0.6412, 1.4628, -0.334],
@@ -2920,10 +2921,10 @@
 		{
 			"name": "LowerShellBottom2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 1.0012, -3.172],
 			"to": [0.6412, 1.4628, -2.85724],
@@ -2963,10 +2964,10 @@
 		{
 			"name": "LowerShellBottom3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 0.5913, -0.334],
 			"to": [0.6412, 1.3511, 0.6492],
@@ -3005,10 +3006,10 @@
 		{
 			"name": "LowerShellBottom4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 0.5913, -3.18919],
 			"to": [0.6412, 0.9022, -0.334],
@@ -3049,10 +3050,10 @@
 		{
 			"name": "LowerShellBottom5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 1.4628, -1.3843],
 			"to": [0.6412, 1.7756, -0.334],
@@ -3091,10 +3092,10 @@
 		{
 			"name": "LowerShellBottom6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6422, 0.47951, -0.34259],
 			"to": [0.6402, 0.5922, 0.52181],
@@ -3134,10 +3135,10 @@
 		{
 			"name": "LowerShellBottom7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.64218, 0.78395, -0.01989],
 			"to": [0.6412, 1.35557, 0.64753],
@@ -3177,10 +3178,10 @@
 		{
 			"name": "LowerShellBottom8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 0.7262, 0.8004],
 			"to": [0.6162, 0.972, 1.6325],
@@ -3219,10 +3220,10 @@
 		{
 			"name": "GunBody21",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 1.3519, 2.32405],
 			"to": [0.8912, 2.6927, 5.47485],
@@ -3248,8 +3249,8 @@
 				},
 				"up": {
 					"uv": [26.17, 29, 11, 30],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [25, 14, 26, 15],
@@ -3262,10 +3263,10 @@
 		{
 			"name": "GunBody22",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 2.1105, 1.891],
 			"to": [0.8912, 3.6312, 2.891],
@@ -3281,8 +3282,8 @@
 				},
 				"east": {
 					"uv": [11, 33, 12, 29],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [11, 29, 12, 30],
@@ -3290,8 +3291,8 @@
 				},
 				"west": {
 					"uv": [11, 29, 12, 33],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
@@ -3308,10 +3309,10 @@
 		{
 			"name": "GunBody25",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 3.0408, 1.63118],
 			"to": [0.8912, 3.35044, 2.95628],
@@ -3350,10 +3351,10 @@
 		{
 			"name": "GunBody23",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 2.6927, 1.73768],
 			"to": [0.8912, 2.97947, 2.57921],
@@ -3368,16 +3369,16 @@
 				},
 				"east": {
 					"uv": [13, 29, 14, 35.8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 1, 1]
 				},
 				"west": {
 					"uv": [13, 35.8, 14, 29],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 1, 1]
@@ -3393,10 +3394,10 @@
 		{
 			"name": "GunBody24",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 2.95447, 2.5332],
 			"to": [0.8912, 2.98877, 2.5812],
@@ -3436,10 +3437,10 @@
 		{
 			"name": "GunBody26",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 0.771, 1.9888],
 			"to": [0.8912, 1.5084, 2.5028],
@@ -3465,13 +3466,13 @@
 				},
 				"up": {
 					"uv": [25, 13, 28, 12],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [25, 15, 28, 14],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -3480,10 +3481,10 @@
 		{
 			"name": "GunBody27",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 0.771, 2.1651],
 			"to": [0.8912, 1.4849, 2.5028],
@@ -3499,8 +3500,8 @@
 				},
 				"east": {
 					"uv": [25, 11.8, 26, 15],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [25, 14, 26, 15],
@@ -3508,8 +3509,8 @@
 				},
 				"west": {
 					"uv": [25, 15, 26, 11.8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
@@ -3526,10 +3527,10 @@
 		{
 			"name": "GunBody28",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 0.7485, 4.067],
 			"to": [0.8912, 1.4283, 5.37637],
@@ -3569,10 +3570,10 @@
 		{
 			"name": "GunBody29",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 0.74817, 3.2548],
 			"to": [0.8912, 0.91727, 4.06646],
@@ -3613,10 +3614,10 @@
 		{
 			"name": "GunBodyEmissive1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.7912, 2.0223, 5.47485],
 			"to": [0.7912, 2.2234, 5.89945],
@@ -3655,10 +3656,10 @@
 		{
 			"name": "GunBody30",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 2.2223, 5.47485],
 			"to": [0.8912, 2.4234, 5.94415],
@@ -3672,8 +3673,8 @@
 				},
 				"east": {
 					"uv": [11, 30.4, 12, 29],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [11, 29, 12, 30],
@@ -3681,8 +3682,8 @@
 				},
 				"west": {
 					"uv": [11, 29, 12, 30.4],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
@@ -3699,10 +3700,10 @@
 		{
 			"name": "GunBody31",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 1.8212, 5.47485],
 			"to": [0.8912, 2.0223, 5.94415],
@@ -3716,8 +3717,8 @@
 				},
 				"east": {
 					"uv": [11, 34.6, 12, 36],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [25, 14, 26, 15],
@@ -3725,8 +3726,8 @@
 				},
 				"west": {
 					"uv": [11, 36, 12, 34.6],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [12, 11, 13, 12],
@@ -3743,10 +3744,10 @@
 		{
 			"name": "GunBody32",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 2.1913, 5.40356],
 			"to": [0.8912, 2.42356, 5.94464],
@@ -3787,10 +3788,10 @@
 		{
 			"name": "GunBody34",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 1.8212, 5.47485],
 			"to": [0.8912, 2.0223, 5.94415],
@@ -3804,8 +3805,8 @@
 				},
 				"east": {
 					"uv": [11, 34.6, 12, 36],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [25, 14, 26, 15],
@@ -3813,8 +3814,8 @@
 				},
 				"west": {
 					"uv": [11, 36, 12, 34.6],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [12, 11, 13, 12],
@@ -3831,10 +3832,10 @@
 		{
 			"name": "GunBody33",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 2.4234, 5.47485],
 			"to": [0.8912, 2.4264, 5.47995],
@@ -3873,10 +3874,10 @@
 		{
 			"name": "UpperShellTop3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 3.1771, -0.4157],
 			"to": [0.6412, 3.3703, 0.0446],
@@ -3915,10 +3916,10 @@
 		{
 			"name": "GunBody35",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 1.8212, 5.28044],
 			"to": [0.8912, 2.1056, 5.94415],
@@ -3959,10 +3960,10 @@
 		{
 			"name": "GunBody36",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8912, 1.7556, 5.47485],
 			"to": [0.8912, 1.8212, 5.54055],
@@ -4001,10 +4002,10 @@
 		{
 			"name": "GunBodyTip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.9412, 2.389, 2.6019],
 			"to": [0.9412, 2.5007, 3.0712],
@@ -4043,10 +4044,10 @@
 		{
 			"name": "GunBodyTip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.9412, 1.5435, 2.6019],
 			"to": [0.9412, 1.6552, 3.0712],
@@ -4085,10 +4086,10 @@
 		{
 			"name": "GunBodyTip3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.9412, 1.4765, 2.9371],
 			"to": [1.2094, 2.5678, 3.2053],
@@ -4127,10 +4128,10 @@
 		{
 			"name": "GunBodyTip4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.2094, 1.4765, 2.9371],
 			"to": [-0.9412, 2.5678, 3.2053],
@@ -4169,10 +4170,10 @@
 		{
 			"name": "GunBody37",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 3.2184, 2.257],
 			"to": [0.6162, 3.8771, 3.6648],
@@ -4211,10 +4212,10 @@
 		{
 			"name": "GunBody38",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 3.2184, 1.8702],
 			"to": [0.6162, 3.8771, 2.257],
@@ -4254,10 +4255,10 @@
 		{
 			"name": "GunBody39",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6162, 3.8771, 3.0168],
 			"to": [0.6162, 4.0335, 3.6648],
@@ -4296,10 +4297,10 @@
 		{
 			"name": "GunBodyEmissive2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6662, 3.8074, 2.4581],
 			"to": [-0.5662, 3.9191, 3.0168],
@@ -4338,10 +4339,10 @@
 		{
 			"name": "GunBodyEmissive3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5662, 3.8074, 2.4581],
 			"to": [0.6662, 3.9191, 3.0168],
@@ -4380,10 +4381,10 @@
 		{
 			"name": "GunBody40",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 2.6492, 3.76797],
 			"to": [0.6412, 3.58768, 7.7989],
@@ -4422,10 +4423,10 @@
 		{
 			"name": "GunBody41",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 3.3175, 6.31402],
 			"to": [0.6412, 3.71653, 7.81572],
@@ -4465,10 +4466,10 @@
 		{
 			"name": "GunBody42",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 3.5401, 4.0447],
 			"to": [0.6412, 4.3687, 6.3796],
@@ -4507,10 +4508,10 @@
 		{
 			"name": "GunBody43",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 3.6235, 5.34756],
 			"to": [0.6412, 3.97333, 6.34756],
@@ -4550,10 +4551,10 @@
 		{
 			"name": "GunBody44",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.6412, 3.3687, 2.6625],
 			"to": [0.6412, 4.3687, 4.0447],
@@ -4593,10 +4594,10 @@
 		{
 			"name": "MainDial1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8412, 2.425, 3.6],
 			"to": [0.8412, 3.8313, 5.0063],
@@ -4636,10 +4637,10 @@
 		{
 			"name": "Dial1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.1, 4.3687, 4.4947],
 			"to": [0.5, 4.4687, 4.8947],
@@ -4677,10 +4678,10 @@
 		{
 			"name": "Dial2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.1, 4.3687, 5.0947],
 			"to": [0.5, 4.4687, 5.4947],
@@ -4718,10 +4719,10 @@
 		{
 			"name": "Dial4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 4.3687, 5.0947],
 			"to": [-0.1, 4.4687, 5.4947],
@@ -4759,10 +4760,10 @@
 		{
 			"name": "Dial3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 4.3687, 4.4947],
 			"to": [-0.1, 4.4687, 4.8947],
@@ -4800,10 +4801,10 @@
 		{
 			"name": "TriggerGuard1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3662, -0.1005, 2.3234],
 			"to": [0.3662, 0.19, 4.424],
@@ -4842,10 +4843,10 @@
 		{
 			"name": "TriggerGuard2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3662, 0.19, 2.3315],
 			"to": [0.3662, 1.298, 2.8566],
@@ -4860,8 +4861,8 @@
 				},
 				"east": {
 					"uv": [32, 17, 33, 20.3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [32, 19, 33, 20],
@@ -4869,8 +4870,8 @@
 				},
 				"west": {
 					"uv": [32, 20.3, 33, 17],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
@@ -4887,10 +4888,10 @@
 		{
 			"name": "TriggerGuard3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3662, -0.1675, 3.3967],
 			"to": [0.3662, -0.1005, 4.1565],
@@ -4929,10 +4930,10 @@
 		{
 			"name": "TriggerGuard4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3662, -0.1675, 2.3904],
 			"to": [0.3662, -0.1005, 2.882],
@@ -4971,10 +4972,10 @@
 		{
 			"name": "TriggerGuard5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3662, -0.1005, 3.664],
 			"to": [0.3662, 1.0802, 4.424],
@@ -5013,10 +5014,10 @@
 		{
 			"name": "TriggerGuard6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3662, -0.2451, 3.664],
 			"to": [0.3662, -0.1005, 3.8882],
@@ -5056,10 +5057,10 @@
 		{
 			"name": "TriggerGuard7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3672, 0.7605, 4.2909],
 			"to": [0.3652, 2.07, 4.425],
@@ -5098,10 +5099,10 @@
 		{
 			"name": "TriggerGuard8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3672, 0.7605, 3.768],
 			"to": [0.3652, 3.8921, 4.2909],
@@ -5114,8 +5115,8 @@
 				},
 				"east": {
 					"uv": [32, 18, 33, 20.45],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [32, 19, 33, 20],
@@ -5123,8 +5124,8 @@
 				},
 				"west": {
 					"uv": [32, 20.45, 33, 18],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 1, 1]
@@ -5139,10 +5140,10 @@
 		{
 			"name": "GunBody45",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3672, 1.6751, 5.89945],
 			"to": [0.3652, 2.1751, 7.84355],
@@ -5161,8 +5162,8 @@
 				},
 				"south": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [33.44, 46, 14, 51],
@@ -5170,8 +5171,8 @@
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
@@ -5184,10 +5185,10 @@
 		{
 			"name": "TriggerGuard9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3672, 3.4318, 4.2909],
 			"to": [0.3652, 3.8921, 4.425],
@@ -5226,10 +5227,10 @@
 		{
 			"name": "TriggerGuard10",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3672, 1.7864, 3.6218],
 			"to": [0.3652, 2.1971, 3.7681],
@@ -5243,8 +5244,8 @@
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
@@ -5252,8 +5253,8 @@
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
@@ -5270,10 +5271,10 @@
 		{
 			"name": "GunBody46",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3672, 2.0147, 7.0391],
 			"to": [0.3652, 2.3231, 7.3475],
@@ -5284,13 +5285,13 @@
 			"faces": {
 				"north": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
@@ -5298,13 +5299,13 @@
 				},
 				"west": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 1, 2, 0],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
@@ -5317,10 +5318,10 @@
 		{
 			"name": "TriggerGuard11",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2662, 0.0995, 4.424],
 			"to": [0.2662, 0.676, 4.5402],
@@ -5359,10 +5360,10 @@
 		{
 			"name": "GunBodyEmissive4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.2672, 0.8269, 2.2456],
 			"to": [0.2652, 1.104, 2.3305],
@@ -5401,10 +5402,10 @@
 		{
 			"name": "Muzzle1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1.8031, -0.97835],
 			"to": [0.25, 2.3031, -0.60335],
@@ -5443,10 +5444,10 @@
 		{
 			"name": "MuzzleEmissive1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1.8031, -0.8742],
 			"to": [0.25, 2.3031, -0.7075],
@@ -5473,13 +5474,13 @@
 				},
 				"up": {
 					"uv": [33, 9.5, 34, 15.5],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [33, 9.5, 34, 15.5],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -5488,10 +5489,10 @@
 		{
 			"name": "Muzzle2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1.8031, -1.35335],
 			"to": [0.25, 2.3031, -0.97835],
@@ -5530,10 +5531,10 @@
 		{
 			"name": "MuzzleEmissive2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1.8031, -1.2492],
 			"to": [0.25, 2.3031, -1.0825],
@@ -5560,13 +5561,13 @@
 				},
 				"up": {
 					"uv": [33, 9.5, 34, 15.5],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [33, 9.5, 34, 15.5],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -5575,10 +5576,10 @@
 		{
 			"name": "Muzzle3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1.8031, -1.72835],
 			"to": [0.25, 2.3031, -1.35335],
@@ -5617,10 +5618,10 @@
 		{
 			"name": "MuzzleEmissive3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1.8031, -1.6242],
 			"to": [0.25, 2.3031, -1.4575],
@@ -5647,13 +5648,13 @@
 				},
 				"up": {
 					"uv": [33, 9.5, 34, 15.5],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [33, 9.5, 34, 15.5],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -5662,10 +5663,10 @@
 		{
 			"name": "MuzzleEmissive4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.1786, 1.8745, -1.72835],
 			"to": [0.1785, 2.2316, -1.72835],
@@ -5700,10 +5701,10 @@
 		{
 			"name": "BeltFront",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.1666, 3.25114, -1.057],
 			"to": [0.1634, 3.58114, -1.057],
@@ -5743,10 +5744,10 @@
 		{
 			"name": "BeltFront",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.1666, 3.95114, 6.343],
 			"to": [0.1634, 4.28114, 6.343],
@@ -5784,32 +5785,384 @@
 			"uuid": "cd951c9d-569d-c3f0-c657-54570df41aff"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "Gun",
-			"origin": [0, 2.14365, 0],
-			"color": 0,
 			"uuid": "20fe1cca-22a6-ca36-3dc4-e85c7c10e012",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": true,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2.14365, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
-			"selected": true,
+			"isOpen": true,
+			"primary_selected": true
+		},
+		{
+			"name": "UpperShell",
+			"uuid": "9db6cad5-415d-e9a0-a8c0-c59b08534eaf",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 5.15448, -3.63198],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "UpperShellTop",
+			"uuid": "87054f3d-7241-96f0-0976-c6b0614d2218",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 5.15448, -3.63198],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "BeltFront",
+			"uuid": "1fc5b488-73f8-1758-0688-848a3d404bcf",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.25114, -1.057],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "LowerShell",
+			"uuid": "e4692868-d7d2-fa5d-5a4f-01840035501a",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "LowerShellBottom",
+			"uuid": "9de946b5-0b90-b736-3572-c6d984c1b3c4",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Muzzle1",
+			"uuid": "3c9f917d-d15c-cc8a-1d3b-3d026fa40a71",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2.0531, -0.79085],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Muzzle3",
+			"uuid": "8b18470b-8d8b-a5af-f065-090386a70012",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2.0531, -1.54085],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Muzzle2",
+			"uuid": "7cadd78f-d290-c4b4-b665-dae7e6678983",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2.0531, -1.16585],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "GunBody42",
+			"uuid": "b27b1d78-ddac-e329-f064-871037236c60",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 4.3687, 4.0447],
+			"rotation": [19.51, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "TriggerGuard2",
+			"uuid": "343a56f2-2d3f-376c-b4e7-9326e2bc9348",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0.19, 2.8566],
+			"rotation": [-31.5, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "TriggerGuard5",
+			"uuid": "ed009aa4-290a-4963-7664-f3b3624dbbd4",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, -0.1005, 4.424],
+			"rotation": [32.83, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "TriggerGuard7",
+			"uuid": "00d66ca8-ec52-ec65-6539-4f8ac327696c",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0.7605, 4.424],
+			"rotation": [39.99, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "EnergyCore",
+			"uuid": "8866d63e-c523-70fe-0af2-2e23ea2748ae",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2.0447, 1.55303],
+			"rotation": [0, 0, 45],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "BeltBack",
+			"uuid": "f3b88898-3314-a422-112e-bc30877c5982",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 4.00114, 6.343],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MuzzleAnchor",
+			"uuid": "d343c25a-cbb6-ede8-44ff-ff620de8068f",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 2.0531, -1.5409],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "20fe1cca-22a6-ca36-3dc4-e85c7c10e012",
+			"isOpen": true,
 			"children": [
 				{
-					"name": "UpperShell",
-					"origin": [0, 5.15448, -3.63198],
-					"color": 0,
 					"uuid": "9db6cad5-415d-e9a0-a8c0-c59b08534eaf",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"35b07cc7-dd81-4f7e-3d98-33c02923ec19",
 						"a5a6c3f9-77c4-0c52-f110-677bd16db225",
@@ -5825,17 +6178,8 @@
 						"916e4a19-6f08-cb4e-b600-865822d863e6",
 						"6ed678a0-0702-b4fa-8403-20ba14d3b83b",
 						{
-							"name": "UpperShellTop",
-							"origin": [0, 5.15448, -3.63198],
-							"color": 0,
 							"uuid": "87054f3d-7241-96f0-0976-c6b0614d2218",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"273f5c50-6918-bb56-4cca-f8dfe67daf8c",
 								"82b33f4e-a022-3f5a-96f8-28866c604b93",
@@ -5848,17 +6192,8 @@
 								"fc6e0620-4c95-d165-0088-34278c9981b5",
 								"f46ec6c0-b56c-191e-c34f-c65402c7b265",
 								{
-									"name": "BeltFront",
-									"origin": [0, 3.25114, -1.057],
-									"color": 0,
 									"uuid": "1fc5b488-73f8-1758-0688-848a3d404bcf",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["c587d2b6-e30f-08a0-d68a-a1183c970a83"]
 								}
 							]
@@ -5866,17 +6201,8 @@
 					]
 				},
 				{
-					"name": "LowerShell",
-					"origin": [0, 2, 0],
-					"color": 0,
 					"uuid": "e4692868-d7d2-fa5d-5a4f-01840035501a",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"aed1fe6f-5916-00c3-16cb-5f733173aac3",
 						"c0cad7ee-6f33-6360-cdd5-a92fba4156e7",
@@ -5895,17 +6221,8 @@
 						"d863314b-afeb-8a31-b99f-b3de1ae26382",
 						"5201d6cb-87c9-4b3c-b1dd-4979d99702c9",
 						{
-							"name": "LowerShellBottom",
-							"origin": [0, 2, 0],
-							"color": 0,
 							"uuid": "9de946b5-0b90-b736-3572-c6d984c1b3c4",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"8030ba6f-3125-c775-c1f0-9cf0604f1345",
 								"4323631e-8fc1-77c4-718e-8634066cc2e7",
@@ -5921,45 +6238,18 @@
 				},
 				"83e600f3-b2c1-115e-4e2e-b9c88c627d10",
 				{
-					"name": "Muzzle1",
-					"origin": [0, 2.0531, -0.79085],
-					"color": 0,
 					"uuid": "3c9f917d-d15c-cc8a-1d3b-3d026fa40a71",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["dd6dbe41-e1ab-cc21-6b2f-591e67615bce", "c150153d-b9e1-16a6-7a0e-87070a6635ba"]
 				},
 				{
-					"name": "Muzzle3",
-					"origin": [0, 2.0531, -1.54085],
-					"color": 0,
 					"uuid": "8b18470b-8d8b-a5af-f065-090386a70012",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["f996dc11-f5ef-6fa3-aa3e-4642f77aa507", "3db6843f-5ae7-15eb-afc2-6f7d2f6d4a16", "46c00fe0-8919-8c4b-0ff5-d1ad76ccfd52"]
 				},
 				{
-					"name": "Muzzle2",
-					"origin": [0, 2.0531, -1.16585],
-					"color": 0,
 					"uuid": "7cadd78f-d290-c4b4-b665-dae7e6678983",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["e4686045-e257-9cbc-1d36-483cb8dc0867", "50ce83b6-173f-b2f7-a561-3443b50b4425"]
 				},
 				"a1cd5d06-a236-d854-4966-7a744d2b808f",
@@ -6005,18 +6295,8 @@
 				"ba3e89ef-3e01-6c58-7274-9233824a0c7b",
 				"5a35ddef-5aba-adc9-827c-3f67df9c92c1",
 				{
-					"name": "GunBody42",
-					"origin": [0, 4.3687, 4.0447],
-					"rotation": [19.51, 0, 0],
-					"color": 0,
 					"uuid": "b27b1d78-ddac-e329-f064-871037236c60",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"d2ef2cd8-120e-4633-2a86-3cd662342958",
 						"37cdb2a1-9bac-078f-573c-282424c5e97f",
@@ -6031,52 +6311,22 @@
 				"8bf98e49-7aba-25e2-4646-c58331174703",
 				"ac078aa4-2eb1-0cdd-a2c4-0ea690d8f8dc",
 				{
-					"name": "TriggerGuard2",
-					"origin": [0, 0.19, 2.8566],
-					"rotation": [-31.5, 0, 0],
-					"color": 0,
 					"uuid": "343a56f2-2d3f-376c-b4e7-9326e2bc9348",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["304bd392-ff7b-fdfd-fd7a-98cdb48bc3c8", "1d98ae8c-8a1f-25ab-2413-adb86a189852"]
 				},
 				"800117b5-b3df-c907-54e9-fabdba4ac13e",
 				"39e4df45-5b01-16a1-e03b-98fe71146737",
 				{
-					"name": "TriggerGuard5",
-					"origin": [0, -0.1005, 4.424],
-					"rotation": [32.83, 0, 0],
-					"color": 0,
 					"uuid": "ed009aa4-290a-4963-7664-f3b3624dbbd4",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"2c952170-e2b3-eac0-0dbe-73eb9fdcfdd7",
 						"ba3be44c-93d3-0f71-9930-652d0707744b",
 						"bd0728f2-40e9-1978-96af-6d91ea35cd5c",
 						{
-							"name": "TriggerGuard7",
-							"origin": [0, 0.7605, 4.424],
-							"rotation": [39.99, 0, 0],
-							"color": 0,
 							"uuid": "00d66ca8-ec52-ec65-6539-4f8ac327696c",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"5db38cee-0c64-61de-b8d1-40a26c405c99",
 								"38ca9083-98f5-d8bc-0e6d-e9117da06b9b",
@@ -6095,46 +6345,18 @@
 				"28fd01f2-edaa-dd2a-2a2c-3b88d15cb562",
 				"517094c6-e9a1-a957-82d0-7df3835b6e1a",
 				{
-					"name": "EnergyCore",
-					"origin": [0, 2.0447, 1.55303],
-					"rotation": [0, 0, 45],
-					"color": 0,
 					"uuid": "8866d63e-c523-70fe-0af2-2e23ea2748ae",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["1160fe89-39b4-a881-5aef-94b1f36cc267", "92e84428-325b-8724-66cc-8de561d998ae", "c12034c2-0e56-95db-b302-805263f27be8"]
 				},
 				{
-					"name": "BeltBack",
-					"origin": [0, 4.00114, 6.343],
-					"color": 0,
 					"uuid": "f3b88898-3314-a422-112e-bc30877c5982",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["cd951c9d-569d-c3f0-c657-54570df41aff"]
 				},
 				{
-					"name": "MuzzleAnchor",
-					"origin": [0, 2.0531, -1.5409],
-					"color": 0,
 					"uuid": "d343c25a-cbb6-ede8-44ff-ff620de8068f",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
@@ -6142,12 +6364,13 @@
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/22a_Kei/textures/gun.png",
 			"name": "gun.png",
+			"relative_path": "../textures/gun.png",
 			"folder": "",
 			"namespace": "",
 			"id": "0",
 			"group": "",
+			"scope": 0,
 			"width": 45,
 			"height": 57,
 			"uv_width": 45,
@@ -6156,9 +6379,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -6167,8 +6393,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "7bd4b824-3db6-476b-99e3-dde805a618f1",
-			"relative_path": "../textures/gun.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAA5CAYAAACiXaIXAAAAAXNSR0IArs4c6QAABBpJREFUaEPtmc9LlEEYx5/XIsxDSeAGWbpuYpuCGiUURtAhdzMPaxc7RZ1kqVQQ/RtkxfRQqAcpxUOnWALXlU5hgoSiCZW4uq6mQiuCdpC8ODG7zTr7/pp5Z9/X3cQB2X3fed6Zz/Pd53lm5lVyud1o6N0oZEkAkspfFsTvJ/qpa/hnX/fgPsjbSmQZKioqYXtnR9HHutHf1wc2mw2i0SjY7XZJbi91+LrRxtoSzM5MQuW1m0n9DkdR7LrAfjlxfzWyFPseDi/Dy7tf4WT9uIQdP3To7FP7MPF5AqpvVyfN3dLSqvCSGPT0dKHm6u8gVQ2oQmM7UbVDCwvg9Xqht7cXwuGwUulP4xNoZnpSDLpuDaTibk1oUfDT2dkwNzcH5eXl4Pf7ldB/9vZQYHQUPo4F4Z7LnaT0Q49HU+n3fj+qvzMJ0rkOXWgRcC6lt7Y2LYU2Cs5UGidiSUlRRkEzlcbQwonIEdN0vPEmJlPpkZEPKBQKiSUio3qIlkGm0qjKi5pvnUipTrMWC7qf1HS8oLU+fwLDw4OKZPd4PEi3evzaRrGF4ffmIpzJK1bMvx1dhFxbMZDPx4/MWf1oaIQQkiS87sabw+FAunWaht5XrGvxQQg0/t7U9EJT2LFgULVEEnV/rq7ApYLC2PMEuuvVWzifewCM+yKRCNJdxmnoL1OzCqAb1ysT0FPTszA0OKAKLU8y2gEWtO0s3t8cgBuCVqPB6rOU1qsKGJ4FnZLSIjHNU8ZwWOBWU+OCH/PzivCQK727u5sI1JycHOUyrrZD0wpaHkCtuCZjyquHUEynExo7olX29Mooc7ND9g34k2dTj6uCvKmVSWJD28tjWwv8UKD1VKP7TIXmndRKOzqfpIaGBiRyjksFUK2Gs8ZLgnY6ryAcq3Sz2gm9CsNz3ozFNPaCbjwJx1JGr59VFulniai0kKafpHmcMQItHw+LbPpJ2mpoPD5XySO1utAefw8ibzwrJY8zajZqvwo3NGtSq8AthSa/htlJbDm0FeApQ191OllREusn208uY8qIt6qYFtNywI319aRbF/LzE9djwaDCH5fbDcfQtCxYQVo1rRA4VlqmjNTY2Ij6+/s1347S9kZOOZYqbSTDS0uvxg6c5N2FkWd5bC1JRKtWPZZDcme4S166gLFDQtDpBBaCTjewYehMAD760JmisiGlMxoan3ZZdTKd/fiIpyh5VkNrnSuNCKGA9vl83ErX1tZC2dPX8O3NM8i7WGZkXqYt73s8PJCEodva2piDdnZ2AoYmLSOgMZRWw06pQZNXuGqvd5kqyAyElKahSAjgcQOBABDo9vb2xBaW/IPJKJyWfcrQ9MBHCtoshUXGSSSiPGbJYFpKi0xm1jP/PzSretCJaJZqIuMYqtMZBc3rbaZA/wUtP5iVA8CD2gAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAA5CAYAAACiXaIXAAAFW0lEQVR4AdRZXWgcVRQ+M0WEiG2UZgNWutsfdDU/DRijRfBnH5pkFS36EH2RUp9CuqUY86AVrQWfQsOCpnEFa/FFg1UahGRDIOBTtVRoAzbbUptttEK2tU1Su/2zuc5327vcvXtnZ2a7O90u+80595xzz/3m3Dszd3bN9o4ONjfP2LkFxs4vMvbPJcYu/MvYxcuMzWcZW7Rw6Qpjl68ylr3G2BULV68zdv2Ghf8Yu3GTMeRQEQ4/zrq6urQ+NVZtp9Npls1mGSRpPuZLkXb69KMYvfHK07T7wxh9sjNGuz6I0cfvx2j/lwO0z8LE+AiNJ0coOTZCiaEB+mLvAL3XGyPzp+fpvmWGoclbUZOJ7GvXrqH6+tUEKWPHjl4DeH3zZkMAbQBxyx59DN21CIbW0LFjR6l2xQqtv5gxEonQ4OAgQerizI0b23R2d7aHlheNC5ZIvLm5mYaGhghSN4D5TFsrrQ6to5V1AS6hC+g6CBti6OH7RdNWBksgPjU1Rd3d3QRJmo/56+EjGnN5TV6Jo8JFK33o0OHyMixDNlS4aKUxxmz6Dzp/LkOQMuCzA+LowjU7d4HdS7UdK93UsK5gANeGi4uuQ70EOlY6umuMTp+eobm5WS6hC8Tjexjw48GDTABtADE3/zrJuYwnk4YbpFInjPmFBd7nm+/GqG5lvXX/L+zrWOnMxF7aufsz+mrft1xCF3hry7vUGX2VnnvxNWp4soHLseQEASdOnqKXEw8QnmZenn6csXJg1kc2OVZaDp7PnCIVql9uCx3rFRW0q7aI+3P2jFBzElsIw/rkDJYyOTlJPT09BGk1C778iSisR347SiqEDxI+SB3OpGdI3mvoYuxsVqGZnU9nzyPd1tpCKuROrU+1yM2cDsIbNrQQqi2MWDaAaBeTVqE97V/ySC+vW08q5MFqA+vlJtd1hLnj9gHEsSyATZvab1vzhVrpQCDAA4TkDelgvv1mJwHbYjEuocvYvv2WHfKFZ8OkboDEehY5dev6+PFpA4jH49qKqpXOZDI8nZC8IR3yKi3ZfVH3fL6ferdtKRgrFAoZNTU1BmSB0zK4Io0lAKjr1upf8MXdQAWWiIDoIGYTxEW88DlJV6Sdkjj58SCxg1Nfnd8VaaxbQL476JLBJipYihSzoZPyA8xULywMXGnIF2spY5nilQjkBUpJVGof+QSg6/Ko15OJaQdxGSCv61wWm0MSEJehEkZ3vqZBXAZO4G4SBzEB7AyHh4dzu0jYOWkoMnAC1URc5oZZ0JJGEIjLdwtME+w6wOdlZnR3Bzubbjxb0mowTkK1iTZ8fs6Ma9KCoJ30k3jZSONk/CLuifQT4TA5oaOjM29fjZNxC1xkKnR9PZGeTqXIDTDQ32fPkgzYBCxieKHNg/C5kZ5Iu0noR4xn0qieH8SKjeGZ9COrVhXL54vPDAWDWFu5x6S13mx1Xxi5GMRMJBLa9zZdX7ycAjqfasOMyJD91tMPP/LkQfY76fw/FyuJq/9GlpaWqKmp2SlnyX47HmpC12sa+ws374jqAJVouyJdTYRRBEfS1UbYkXQ1EnYkjYBqhO3yqNYqo4i2pOGsVpioqA4gjLcRnc9PG3io8FhptbtzGy8GdwLdCObWre+QWxw48ANNPxghyJ9/SZEb2P2Gp9q97Hl4pfv6+sgJ4ox//7pHqHdNctIYvb+/n+wAvw7iR0adr5K2HGkMEo1GCej7foZL6LALNDY2GgKwiSmG7ifySIuBq2EJCC46qSWtC1Rt9bWGUU6o+Yu1SyZdLGmlffc+6dHRUVJR6aqVkj9X6WL36VISV7IPJ213f5btlSThNff/AAAA//9y0QQzAAAABklEQVQDALh0em5ChhC0AAAAAElFTkSuQmCC"
 		}
 	],
 	"animations": [
@@ -6179,7 +6404,9 @@
 			"override": true,
 			"length": 0,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -6188,13 +6415,15 @@
 				"20fe1cca-22a6-ca36-3dc4-e85c7c10e012": {
 					"name": "Gun",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "15",
-									"y": "-25",
+									"x": "-15",
+									"y": "25",
 									"z": "0"
 								}
 							],
@@ -6207,7 +6436,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6",
+									"x": "-6",
 									"y": "9",
 									"z": "1"
 								}
@@ -6222,13 +6451,15 @@
 				"1fc5b488-73f8-1758-0688-848a3d404bcf": {
 					"name": "BeltFront",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-21.630223536",
-									"y": "-5.7004967293",
+									"x": "21.630223536",
+									"y": "5.7004967293",
 									"z": "-16.5845159008"
 								}
 							],
@@ -6257,13 +6488,15 @@
 				"f3b88898-3314-a422-112e-bc30877c5982": {
 					"name": "BeltBack",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "62.4053210942",
-									"y": "4.3287500131",
+									"x": "-62.4053210942",
+									"y": "-4.3287500131",
 									"z": "-2.5047687216"
 								}
 							],

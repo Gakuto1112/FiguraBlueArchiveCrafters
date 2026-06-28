@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "BroomBase",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, 1, -1.5],
 			"to": [3, 1.5, 1.5],
@@ -36,8 +37,8 @@
 				},
 				"east": {
 					"uv": [10, 2, 11, 5],
-					"rotation": 90,
-					"texture": 1
+					"texture": 1,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [4, 5, 10, 6],
@@ -45,8 +46,8 @@
 				},
 				"west": {
 					"uv": [3, 2, 4, 5],
-					"rotation": 90,
-					"texture": 1
+					"texture": 1,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [4, 2, 10, 5],
@@ -63,10 +64,10 @@
 		{
 			"name": "BroomTip",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, 0, -1.25],
 			"to": [2.75, 1, 1.25],
@@ -105,10 +106,10 @@
 		{
 			"name": "BroomStick",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1.5, -0.25],
 			"to": [0.25, 29.5, 0.25],
@@ -147,10 +148,10 @@
 		{
 			"name": "BroomStrapRing1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.05, 29.15, -0.5],
 			"to": [0.05, 29.25, 0.5],
@@ -189,10 +190,10 @@
 		{
 			"name": "BroomStrapRing2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.05, 29.15, -0.5],
 			"to": [0.85, 29.25, -0.4],
@@ -231,10 +232,10 @@
 		{
 			"name": "BroomStrapRing3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.05, 29.15, 0.4],
 			"to": [0.85, 29.25, 0.5],
@@ -273,10 +274,10 @@
 		{
 			"name": "BroomStrapRing4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.85, 29.15, -0.5],
 			"to": [0.95, 29.25, 0.5],
@@ -315,10 +316,10 @@
 		{
 			"name": "BroomStrapHead1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.55, 28.575, -0.175],
 			"to": [1.3, 29.075, 0.2],
@@ -357,10 +358,10 @@
 		{
 			"name": "BroomStrapHead2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.525, 28.7, -0.05],
 			"to": [1.325, 28.95, 0.075],
@@ -399,10 +400,10 @@
 		{
 			"name": "BroomStrapBody",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.625, 28.075, -0.15],
 			"to": [1.225, 28.575, 0.175],
@@ -441,10 +442,10 @@
 		{
 			"name": "BroomStrapRightArm",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.225, 28.2, -0.05],
 			"to": [1.35, 28.575, 0.075],
@@ -483,10 +484,10 @@
 		{
 			"name": "BroomStrapLeftArm",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5, 28.2, -0.05],
 			"to": [0.625, 28.575, 0.075],
@@ -525,10 +526,10 @@
 		{
 			"name": "BroomStrapRightLeg",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1, 27.7, -0.05],
 			"to": [1.125, 28.075, 0.075],
@@ -567,10 +568,10 @@
 		{
 			"name": "BroomStrapLeftLeg",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.725, 27.7, -0.05],
 			"to": [0.85, 28.075, 0.075],
@@ -609,10 +610,10 @@
 		{
 			"name": "BroomStrapHead3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.85, 29.075, -0.0125],
 			"to": [0.95, 29.25, 0.0375],
@@ -651,10 +652,10 @@
 		{
 			"name": "Coin1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.125, 2.5, -0.375],
 			"to": [4.125, 10.75, 0.375],
@@ -693,10 +694,10 @@
 		{
 			"name": "Coin2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.375, 1.75, -0.375],
 			"to": [3.375, 11.5, 0.375],
@@ -735,10 +736,10 @@
 		{
 			"name": "Coin3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.875, 1, -0.375],
 			"to": [1.875, 12.25, 0.375],
@@ -777,10 +778,10 @@
 		{
 			"name": "Coin4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.875, 3.25, -0.375],
 			"to": [4.875, 10, 0.375],
@@ -819,10 +820,10 @@
 		{
 			"name": "Coin5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5.625, 4.75, -0.375],
 			"to": [5.625, 8.5, 0.375],
@@ -861,10 +862,10 @@
 		{
 			"name": "Water",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8, 0, -8],
 			"to": [8, 0, 8],
@@ -903,10 +904,10 @@
 		{
 			"name": "Cube",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, -4, -4],
 			"to": [4, 4, 4],
@@ -943,154 +944,382 @@
 			"uuid": "97c9c67f-c550-989e-bc2c-e8593034b13c"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "Broom",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "be139a75-fa09-a1f4-e927-c3c66a70d7c8",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": false,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomTop",
+			"uuid": "b54d94fc-de91-0a1c-dc8a-07469e4070ce",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 1.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomStrap",
+			"uuid": "3b2283fa-5e61-b2b2-0260-8418628d71ef",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 29.2, 0],
+			"rotation": [0, 0, -35],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomStrapCore",
+			"uuid": "0a7cbabd-ecda-a096-41a3-69e22b14e29b",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0.9, 29.2, 0],
+			"rotation": [0, 0, 45],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomStrapHead",
+			"uuid": "592c0a7a-24b9-4165-f5c5-b9b389a5b754",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-3.45, 4.575, -0.425],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomStrapBody",
+			"uuid": "d30adea8-1028-d34f-6ce4-87ef5f8f2fff",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-3.45, 4.575, -0.425],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomStrapRightArm",
+			"uuid": "8329fc27-556a-1993-4a9c-384bcbd9775a",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [1.2875, 28.5375, 0.0125],
+			"rotation": [0, 0, 30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomStrapLeftArm",
+			"uuid": "8c811a21-ce56-de25-b74f-0f93d623e510",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0.5625, 28.5375, 0.0125],
+			"rotation": [0, 0, -30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomStrapRightLeg",
+			"uuid": "cd05ee0a-e0e6-171b-26a8-bc96a71e1264",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [1.0625, 28.075, 0.0125],
+			"rotation": [25, 0, 15],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomStrapLeftLeg",
+			"uuid": "be99f6db-cb57-db91-b731-9f5e6bd45346",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0.7875, 28.075, 0.0125],
+			"rotation": [25, 0, -15],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "BroomParticleNAnchor",
+			"uuid": "1c231eab-f636-4bcc-e120-8c597ffa3ad5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [1, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Coin",
+			"uuid": "6a46a2f0-977e-508a-9db9-de04e8e0a615",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 6.625, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Water",
+			"uuid": "cfd76697-22fe-5c2c-97d8-9408092b2375",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Cube",
+			"uuid": "4e8e063d-61d9-3527-eed5-b8083c9a518f",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "be139a75-fa09-a1f4-e927-c3c66a70d7c8",
+			"isOpen": false,
 			"children": [
 				"9744ad34-1511-a6d0-e49d-5da877403914",
 				"4a800044-1c5b-359a-71fd-1d79dac05d1a",
 				{
-					"name": "BroomTop",
-					"origin": [0, 1.5, 0],
-					"color": 0,
 					"uuid": "b54d94fc-de91-0a1c-dc8a-07469e4070ce",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"dc398f1a-f3b4-2354-9d80-02edf044c85e",
 						{
-							"name": "BroomStrap",
-							"origin": [0, 29.2, 0],
-							"rotation": [0, 0, -35],
-							"color": 0,
 							"uuid": "3b2283fa-5e61-b2b2-0260-8418628d71ef",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"232b8a27-c6e1-7aa8-50be-17c545248e85",
 								"90d4fd2b-24b4-42e4-74c4-0b505d98bafa",
 								"bf38f72f-5ed9-f8ca-1bdc-9dea62df9538",
 								"cbcdf7b4-8e07-d072-98d4-b8a52680a3bc",
 								{
-									"name": "BroomStrapCore",
-									"origin": [0.9, 29.2, 0],
-									"rotation": [0, 0, 45],
-									"color": 0,
 									"uuid": "0a7cbabd-ecda-a096-41a3-69e22b14e29b",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": [
 										{
-											"name": "BroomStrapHead",
-											"origin": [-3.45, 4.575, -0.425],
-											"color": 0,
 											"uuid": "592c0a7a-24b9-4165-f5c5-b9b389a5b754",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": true,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": ["5eaae703-a35b-ace7-e9b3-83f123cae531", "63949a8a-12ee-6452-1cd9-c50e62782ceb", "4ace7715-c48e-3e69-2e75-a01bcbdef2a9"]
 										},
 										{
-											"name": "BroomStrapBody",
-											"origin": [-3.45, 4.575, -0.425],
-											"color": 0,
 											"uuid": "d30adea8-1028-d34f-6ce4-87ef5f8f2fff",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": false,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": ["3db89e76-aed9-1465-1d30-f812e5f7d502"]
 										},
 										{
-											"name": "BroomStrapRightArm",
-											"origin": [1.2875, 28.5375, 0.0125],
-											"rotation": [0, 0, 30],
-											"color": 0,
 											"uuid": "8329fc27-556a-1993-4a9c-384bcbd9775a",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": false,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": ["ea961b55-ea81-e819-ff35-25900a9a750f"]
 										},
 										{
-											"name": "BroomStrapLeftArm",
-											"origin": [0.5625, 28.5375, 0.0125],
-											"rotation": [0, 0, -30],
-											"color": 0,
 											"uuid": "8c811a21-ce56-de25-b74f-0f93d623e510",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": false,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": ["15c3e409-5191-1573-385e-2de2a96b9171"]
 										},
 										{
-											"name": "BroomStrapRightLeg",
-											"origin": [1.0625, 28.075, 0.0125],
-											"rotation": [25, 0, 15],
-											"color": 0,
 											"uuid": "cd05ee0a-e0e6-171b-26a8-bc96a71e1264",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": false,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": ["758f4f23-8320-9d21-9295-9583d24e2550"]
 										},
 										{
-											"name": "BroomStrapLeftLeg",
-											"origin": [0.7875, 28.075, 0.0125],
-											"rotation": [25, 0, -15],
-											"color": 0,
 											"uuid": "be99f6db-cb57-db91-b731-9f5e6bd45346",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": false,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": ["cb976129-e78e-f840-a369-dab28e181eb7"]
 										}
 									]
@@ -1100,33 +1329,15 @@
 					]
 				},
 				{
-					"name": "BroomParticleNAnchor",
-					"origin": [1, 0, 0],
-					"color": 0,
 					"uuid": "1c231eab-f636-4bcc-e120-8c597ffa3ad5",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
 		},
 		{
-			"name": "Coin",
-			"origin": [0, 6.625, 0],
-			"color": 0,
 			"uuid": "6a46a2f0-977e-508a-9db9-de04e8e0a615",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				"0e96551e-0585-5bf8-4648-7375db895831",
 				"da5fa40e-2cc2-dd68-3e2c-2fe8f97a6567",
@@ -1136,42 +1347,25 @@
 			]
 		},
 		{
-			"name": "Water",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "cfd76697-22fe-5c2c-97d8-9408092b2375",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": ["765e2568-313d-9b08-53dc-ce9d6c8f4141"]
 		},
 		{
-			"name": "Cube",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "4e8e063d-61d9-3527-eed5-b8083c9a518f",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": ["97c9c67f-c550-989e-bc2c-e8593034b13c"]
 		}
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/13b_Aris_Maid/textures/ex_skill_1.png",
 			"name": "ex_skill_1.png",
+			"relative_path": "../textures/ex_skill_1.png",
 			"folder": "",
 			"namespace": "",
 			"id": "0",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 35,
 			"uv_width": 16,
@@ -1180,9 +1374,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -1191,16 +1388,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "4e27c05a-2b69-4058-0157-0dd0fd72728b",
-			"relative_path": "../textures/ex_skill_1.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAjCAYAAACdHYpiAAAAAXNSR0IArs4c6QAAAnpJREFUSEvFld1LVEEYxp8pza9AAhHddinNYOkDFYlOXdQ/0EIREkThF0Q3Bt10ERYEXe1NRDcSmAR9IlFhRATddJEDSmtIIWRK7LaKGtHFuutaTbwzZ863uGtC52bPzjvvb5553nfmsNn0rMhmcqioKsdav11nO/DqzWsGx8OmP8+IQpIJ3tC0E4wxN6AYBfWhelcyCSlKQePuBj/gnxWkkimRX15x+lLUO9OApXfxohJpcuXhS2BvB7pF+OgVbBjgT/UuS8mmn1+s96BxqeDpjXbRHIu7FOjJTgCRvOMScLX7oOi8/Gj9WwhSUKibq25BA1bzQ8c3tgqFyvbOk1WI30+ipjbkii3OpzEyxn297wMMXo+Jm89/BwoYH325NoA68UL/3H8EkAfXHmTWr4A86Oob9u115Far8FIP9Sb8Fwp5cKTnjhXQicb5Az5VvH9UjjlB8jhrACUb59ropgNofcJ6dTCA3x6zILIPTlwcYjK5p81MEsBUgC9NW01VAnzgvYQw7YEEdLYCdGtPZ4DGKscWBCAYMKPHBfhgwgZEq1MwOlqU3K9ZYEelSmaUaHIILIQdp63cTagLpa5kCsaZFjUzmQUiFZZUk2T/T+aASLk0iN8bV3di6VICxulm5di3ZWB7mWmiuSq5qQ1N54BQmQI8/OAAnNqvVpnLA3VbVAI93iroOAD+eMKxhfZ9KmF+BagtDa4hGbmQt+J8aALuKpzcq1b8/guoKXEYaKpZNMdp9ScfVRVcfXB8j126HwFHfNtmK86ffVIA+jKFI2G5Y9kLsajqBedjlZI8EeDDk3YnehveOgvHot4Q+ItJOeY6C75Z5kChp/Ev/4WX1UJ2C0cAAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAjCAYAAACdHYpiAAACj0lEQVR4AZxVy2oUURA9fXVhEkzU6EKIhiRuBcck0LoVxA9woQhmEQxu1IXg0g9w48KFH5GNqCiKax1wESHic5yAggPGgK9kBnWmPaemb0/Pjc7DhjNV91TVqepqusdVPlaS8tuVpBd74tjxBMHlqus1DAxtQy/2/qMHQTngei1WXsQrVOhrgrBY574mUEEIV6/XgQiobtS62nJpJQnhkF4bj6+hX6jUlR9elf1vZBN4hcbIFDw8J+s5WZ093Nq37943676+Mxv+/JNfWn4f5kLJQhgQJ+R5Vzi4P3/u29+0g7yC7tcjz+d9Nzq8PX9u8zWuR1sgd8gmGDx6Bf1COvYUzpw6jUsXL7dB3OSBiagb3Be+ztVoFz6s1togTh26wU3t3dMtp2M820HHrA5B20GHeNeQ7eDZ03tRiJtnK3hyo5Dk8Te1TTvwBfH5WYTwsbxQ2w6UEC9MI16YAer8ADcI2RTxuRmLKc+LZDsQGc9PAw2G6vx5w7f0NSHrkQrG84ft9pgJ24EcgwrVrbQOTA7lMAhM8Fz6wQacSkJWANgtWPe5Q81gmcXjLJBQg5N40YSF4wOA4vyMxnMFm8Lt4J+KiZG08XVQB8FEWEidbCcWJ6EY/dbbqAJ1JAlZdWaeFSpZcTVRXGeBvt0CLbfO7JS0Io0sIRXKmiBzlOw5+tlTgJEcl6T56iZBz8uK8/FUy57CkQtLUXHxeXOJo1uBT7/oM0MCgoqF1Z/AbsbpFxeXobrWEqXsk3duAT7/BtZSyBfEK0dQPuFmT16ngakVb71o7oIdMML1eAzTF8RzF8pTdxW6sX1jkRxBZPHOKxRvv+QtcB8qELRQQrziylO+QGmZFhQUincpFEC80MoG/gAAAP//xxCIigAAAAZJREFUAwCVqDIXhTSnlgAAAABJRU5ErkJggg=="
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/13b_Aris_Maid/textures/for_modeling/oak_planks.png",
 			"name": "oak_planks.png",
+			"relative_path": "../textures/for_modeling/oak_planks.png",
 			"folder": "",
 			"namespace": "",
 			"id": "1",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 16,
 			"uv_width": 16,
@@ -1209,9 +1406,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -1220,16 +1420,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "e14e4640-1b43-02cd-f8ed-4dd900c4be6e",
-			"relative_path": "../textures/for_modeling/oak_planks.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAVlJREFUOE91U8FKAzEUTJCC21ZZVkR7KcVe+xN+gODFs+ClP+An9O5FvImf4LVn/8MiQtmKsuTQdgWRLfPqlNm05pLk5WXyZt7Ej++vq/Jn6ZJG0zWTPRePZfn7b3zy9u48AHAJIBj59MsladulrX0D5eA5Y3ko7Mg/311VcSL2uBAW37WCAIrBfKvg4fa8mhXr10+z9YvYfxQLW59kLZuxx1rjWBsFcH/NP12/c1x7MY5BD1JBdZ00q1Ng2SgVCWWYb/TQ0lUX/zS6MBEpGl+goGe97paQqo0fXg4MgFyhg2rA2zynVszZaIAD5Xh0eLDlCQ0gF600ABpJE+I2UhfO5p0wd/7l8aaK1VUg9p4x8kcHrALVYJcPqA+1oScIaBWg30DkX0BF1oVQ1LxBX+j/MCtrj+lx5Qpw4/z36bTVBkBe6gUaiT7Y9TcAahqo35UzebLn+hd4tgJnUgM/K1gwfwAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABxElEQVR4AXzTPWtUURDG8eGI4EaLRUQIQnBTGdTCF0S0ECGFjYWFlYXgZ/B72IidpXUKmxQ2WiwiviAKsdBcCciC0bDkbQMhbO7vJAMhRRYe5pxnZi7zn3u3zD9/PJ579nAsvnv5ZHxYR/kvnt4dl2h/neMTMdrejP+ra/F9oYlfg+V63hzttNkIUY6caTBciU73VBSNqjyEJs+dicnuaVYoSg03tqqX9WpGw/Uogz//ov/5R9Xi76XI+/zbhXj/sYlm8W+V85dvS8Gfe/Op1n/9uRxl+vxUzN6+GL3ps3Fpplfl/uj+jbh5vVdzeb919ULcuzNTpf7B7LU9BExGwpj8ohFFPkX7g0nq4RRsOF0kuidPtGURGRXySQ2pJ70FG+Hrt7uwA2esGPGSHJ9M1rS70Vdw4MWJ0Vu4cnkqeAcln7IrtXZUvwN89mB2oxIPfyrvGSGYpEx0joUGbCRB+DzQLijP6dfd+JBevf4QGLHh99Tkw2gXmRMzp0e+4MSCCRs52w1fHjvfu3eW41PBlCPaA2YIcIztzid1opw+qkvElU3YFPLguHuQJp46MVUw4iJnbFg1a/T/6Lffh1yz/+6xp3YBAAD//0lO058AAAAGSURBVAMAl6zKjJOM5rgAAAAASUVORK5CYII="
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/13b_Aris_Maid/textures/for_modeling/water_still.png",
 			"name": "water_still.png",
+			"relative_path": "../textures/for_modeling/water_still.png",
 			"folder": "",
 			"namespace": "",
 			"id": "2",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 512,
 			"uv_width": 16,
@@ -1238,9 +1438,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -1249,8 +1452,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "2f77e040-dded-ba9e-9324-9fb1a3db3709",
-			"relative_path": "../textures/for_modeling/water_still.png",
-			"source": "data:image/png;base64,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"
+			"source": "data:image/png;base64,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"
 		}
 	],
 	"animations": [
@@ -1261,7 +1463,9 @@
 			"override": true,
 			"length": 6.2,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -1270,13 +1474,15 @@
 				"be139a75-fa09-a1f4-e927-c3c66a70d7c8": {
 					"name": "Broom",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "27.52235",
-									"y": "2.21738",
+									"x": "-27.52235",
+									"y": "-2.21738",
 									"z": "39.65495"
 								}
 							],
@@ -1289,8 +1495,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "66.97148",
-									"y": "-7.38188",
+									"x": "-66.97148",
+									"y": "7.38188",
 									"z": "13.97039"
 								}
 							],
@@ -1303,8 +1509,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "66.97",
-									"y": "-7.38",
+									"x": "-66.97",
+									"y": "7.38",
 									"z": "13.97"
 								}
 							],
@@ -1317,8 +1523,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "88.09931",
-									"y": "-15.33269",
+									"x": "-88.09931",
+									"y": "15.33269",
 									"z": "-79.42454"
 								}
 							],
@@ -1331,8 +1537,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "88.1",
-									"y": "-15.33",
+									"x": "-88.1",
+									"y": "15.33",
 									"z": "-79.42"
 								}
 							],
@@ -1345,8 +1551,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "73.3328",
-									"y": "-77.79825",
+									"x": "-73.3328",
+									"y": "77.79825",
 									"z": "-73.48665"
 								}
 							],
@@ -1359,8 +1565,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "134.65474",
-									"y": "36.83612",
+									"x": "-134.65474",
+									"y": "-36.83612",
 									"z": "-108.83388"
 								}
 							],
@@ -1373,8 +1579,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "232.03132",
-									"y": "77.02325",
+									"x": "-232.03132",
+									"y": "-77.02325",
 									"z": "-140.17019"
 								}
 							],
@@ -1401,7 +1607,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-17",
+									"x": "17",
 									"y": "-0.5",
 									"z": "0"
 								}
@@ -1415,7 +1621,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-5.5",
+									"x": "5.5",
 									"y": "0.5",
 									"z": "15"
 								}
@@ -1429,7 +1635,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-5.5",
+									"x": "5.5",
 									"y": "0.5",
 									"z": "15"
 								}
@@ -1443,7 +1649,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-0.5",
+									"x": "0.5",
 									"y": "8.5",
 									"z": "17.5"
 								}
@@ -1457,7 +1663,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-0.5",
+									"x": "0.5",
 									"y": "8.5",
 									"z": "17.5"
 								}
@@ -1471,7 +1677,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-1.5",
+									"x": "1.5",
 									"y": "0.5",
 									"z": "1.5"
 								}
@@ -1485,7 +1691,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-16.5",
+									"x": "16.5",
 									"y": "15",
 									"z": "7.5"
 								}
@@ -1499,7 +1705,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "3.05",
+									"x": "-3.05",
 									"y": "3.5",
 									"z": "-1.75"
 								}
@@ -1513,7 +1719,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-10.5",
+									"x": "10.5",
 									"y": "29",
 									"z": "2.25"
 								}
@@ -1528,13 +1734,15 @@
 				"b54d94fc-de91-0a1c-dc8a-07469e4070ce": {
 					"name": "BroomTop",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-34.64233",
-									"y": "4.59902",
+									"x": "34.64233",
+									"y": "-4.59902",
 									"z": "8.88927"
 								}
 							],
@@ -1547,8 +1755,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-14.65993",
-									"y": "-3.21132",
+									"x": "14.65993",
+									"y": "3.21132",
 									"z": "-12.08681"
 								}
 							],
@@ -1561,8 +1769,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-14.66",
-									"y": "-3.21",
+									"x": "14.66",
+									"y": "3.21",
 									"z": "-12.09"
 								}
 							],
@@ -1575,8 +1783,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-14.94548",
-									"y": "-1.29256",
+									"x": "14.94548",
+									"y": "1.29256",
 									"z": "-4.83045"
 								}
 							],
@@ -1589,8 +1797,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-14.95",
-									"y": "-1.29",
+									"x": "14.95",
+									"y": "1.29",
 									"z": "-4.83"
 								}
 							],
@@ -1603,8 +1811,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-12.4941",
-									"y": "-0.96392",
+									"x": "12.4941",
+									"y": "0.96392",
 									"z": "-2.34608"
 								}
 							],
@@ -1617,8 +1825,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-12.46163",
-									"y": "-1.00603",
+									"x": "12.46163",
+									"y": "1.00603",
 									"z": "-2.92486"
 								}
 							],
@@ -1645,7 +1853,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-52.5",
+									"x": "52.5",
 									"y": "0",
 									"z": "0"
 								}
@@ -1674,13 +1882,15 @@
 				"3b2283fa-5e61-b2b2-0260-8418628d71ef": {
 					"name": "BroomStrap",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
 									"x": "0",
-									"y": "17.5",
+									"y": "-17.5",
 									"z": "-25"
 								}
 							],
@@ -1694,7 +1904,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "17.5",
+									"y": "-17.5",
 									"z": "-25"
 								}
 							],
@@ -1708,7 +1918,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "-30",
+									"y": "30",
 									"z": "-25"
 								}
 							],
@@ -1722,7 +1932,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "35",
+									"y": "-35",
 									"z": "-25"
 								}
 							],
@@ -1764,7 +1974,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "47.5",
+									"y": "-47.5",
 									"z": "-25"
 								}
 							],
@@ -1778,7 +1988,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "15",
+									"y": "-15",
 									"z": "-25"
 								}
 							],
@@ -1791,8 +2001,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "3.31914",
-									"y": "14.63639",
+									"x": "-3.31914",
+									"y": "-14.63639",
 									"z": "-12.07362"
 								}
 							],
@@ -1805,8 +2015,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "13.06757",
-									"y": "-7.43728",
+									"x": "-13.06757",
+									"y": "7.43728",
 									"z": "94.15041"
 								}
 							],
@@ -1819,8 +2029,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "13.07",
-									"y": "-7.44",
+									"x": "-13.07",
+									"y": "7.44",
 									"z": "94.15"
 								}
 							],
@@ -1833,8 +2043,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "13.55445",
-									"y": "16.90876",
+									"x": "-13.55445",
+									"y": "-16.90876",
 									"z": "99.88282"
 								}
 							],
@@ -1847,8 +2057,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "13.55",
-									"y": "16.91",
+									"x": "-13.55",
+									"y": "-16.91",
 									"z": "99.88"
 								}
 							],
@@ -1861,8 +2071,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "13.15194",
-									"y": "-9.87406",
+									"x": "-13.15194",
+									"y": "9.87406",
 									"z": "93.57555"
 								}
 							],
@@ -1876,13 +2086,15 @@
 				"0a7cbabd-ecda-a096-41a3-69e22b14e29b": {
 					"name": "BroomStrapCore",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "22.32648",
-									"y": "-2.86313",
+									"x": "-22.32648",
+									"y": "2.86313",
 									"z": "6.93488"
 								}
 							],
@@ -1895,8 +2107,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "29.82648",
-									"y": "-2.86313",
+									"x": "-29.82648",
+									"y": "2.86313",
 									"z": "6.93488"
 								}
 							],
@@ -1909,8 +2121,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "22.32648",
-									"y": "-2.86313",
+									"x": "-22.32648",
+									"y": "2.86313",
 									"z": "6.93488"
 								}
 							],
@@ -1923,8 +2135,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "29.82648",
-									"y": "-2.86313",
+									"x": "-29.82648",
+									"y": "2.86313",
 									"z": "6.93488"
 								}
 							],
@@ -1937,8 +2149,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "22.32648",
-									"y": "-2.86313",
+									"x": "-22.32648",
+									"y": "2.86313",
 									"z": "6.93488"
 								}
 							],
@@ -1951,8 +2163,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "29.82648",
-									"y": "-2.86313",
+									"x": "-29.82648",
+									"y": "2.86313",
 									"z": "6.93488"
 								}
 							],
@@ -1965,8 +2177,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "22.32648",
-									"y": "-2.86313",
+									"x": "-22.32648",
+									"y": "2.86313",
 									"z": "6.93488"
 								}
 							],
@@ -1979,8 +2191,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "29.82648",
-									"y": "-2.86313",
+									"x": "-29.82648",
+									"y": "2.86313",
 									"z": "6.93488"
 								}
 							],
@@ -1993,13 +2205,13 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "22.32648",
-									"y": "-2.86313",
+									"x": "-22.32648",
+									"y": "2.86313",
 									"z": "6.93488"
 								},
 								{
 									"x": "0",
-									"y": "-12.5",
+									"y": "12.5",
 									"z": "25"
 								}
 							],
@@ -2012,8 +2224,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "10",
-									"y": "-12.5",
+									"x": "-10",
+									"y": "12.5",
 									"z": "25"
 								}
 							],
@@ -2027,7 +2239,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "-12.5",
+									"y": "12.5",
 									"z": "25"
 								}
 							],
@@ -2040,8 +2252,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-31.88034",
-									"y": "6.6782",
+									"x": "31.88034",
+									"y": "-6.6782",
 									"z": "35.59061"
 								}
 							],
@@ -2054,8 +2266,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "35.62",
-									"y": "6.68",
+									"x": "-35.62",
+									"y": "-6.68",
 									"z": "35.59"
 								}
 							],
@@ -2068,7 +2280,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-25",
+									"x": "25",
 									"y": "0",
 									"z": "35"
 								}
@@ -2082,7 +2294,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "12.5",
+									"x": "-12.5",
 									"y": "0",
 									"z": "35"
 								}
@@ -2096,7 +2308,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "12.5",
+									"x": "-12.5",
 									"y": "0",
 									"z": "35"
 								}
@@ -2110,8 +2322,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "5.88323",
-									"y": "4.42337",
+									"x": "-5.88323",
+									"y": "-4.42337",
 									"z": "18.84721"
 								}
 							],
@@ -2124,8 +2336,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "5.88",
-									"y": "4.42",
+									"x": "-5.88",
+									"y": "-4.42",
 									"z": "18.85"
 								}
 							],
@@ -2138,8 +2350,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "22.28606",
-									"y": "5.58645",
+									"x": "-22.28606",
+									"y": "-5.58645",
 									"z": "6.35653"
 								}
 							],
@@ -2152,8 +2364,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-0.22472",
-									"y": "-22.94452",
+									"x": "0.22472",
+									"y": "22.94452",
 									"z": "110.30349"
 								}
 							],
@@ -2166,8 +2378,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-0.22",
-									"y": "-22.94",
+									"x": "0.22",
+									"y": "22.94",
 									"z": "110.3"
 								}
 							],
@@ -2180,8 +2392,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "54.08387",
-									"y": "9.85234",
+									"x": "-54.08387",
+									"y": "-9.85234",
 									"z": "75.19448"
 								}
 							],
@@ -2194,8 +2406,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "54.08",
-									"y": "9.85",
+									"x": "-54.08",
+									"y": "-9.85",
 									"z": "75.19"
 								}
 							],
@@ -2208,8 +2420,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-23.42",
-									"y": "9.85",
+									"x": "23.42",
+									"y": "-9.85",
 									"z": "75.19"
 								}
 							],
@@ -2222,8 +2434,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "6.58",
-									"y": "9.85",
+									"x": "-6.58",
+									"y": "-9.85",
 									"z": "75.19"
 								}
 							],
@@ -2236,8 +2448,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "11.33356",
-									"y": "-1.55019",
+									"x": "-11.33356",
+									"y": "1.55019",
 									"z": "113.97249"
 								}
 							],

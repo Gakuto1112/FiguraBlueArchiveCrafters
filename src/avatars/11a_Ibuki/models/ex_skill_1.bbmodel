@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "SketchBookBase",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 0, -0.25],
 			"to": [4, 6, 0.25],
@@ -36,8 +37,8 @@
 				},
 				"east": {
 					"uv": [0, 0, 1, 8],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
@@ -45,8 +46,8 @@
 				},
 				"west": {
 					"uv": [0, 0, 1, 8],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"up": {
 					"uv": [0, 0, 1, 8],
@@ -63,10 +64,10 @@
 		{
 			"name": "SketchBookCanvas",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 0, 0.25],
 			"to": [4, 6, 0.25],
@@ -105,10 +106,10 @@
 		{
 			"name": "SketchBookRing1_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.8, 5.6, -0.4],
 			"to": [-3.7, 5.7, 0.4],
@@ -147,10 +148,10 @@
 		{
 			"name": "SketchBookRing1_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.8, 5.7, -0.4],
 			"to": [-3.7, 6.05, -0.3],
@@ -189,10 +190,10 @@
 		{
 			"name": "SketchBookRing1_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.8, 5.7, 0.3],
 			"to": [-3.7, 6.05, 0.4],
@@ -231,10 +232,10 @@
 		{
 			"name": "SketchBookRing1_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.8, 6.05, -0.4],
 			"to": [-3.7, 6.15, 0.4],
@@ -273,10 +274,10 @@
 		{
 			"name": "SketchBookRing2_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.3, 5.6, -0.4],
 			"to": [-3.2, 5.7, 0.4],
@@ -315,10 +316,10 @@
 		{
 			"name": "SketchBookRing2_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.3, 5.7, -0.4],
 			"to": [-3.2, 6.05, -0.3],
@@ -357,10 +358,10 @@
 		{
 			"name": "SketchBookRing2_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.3, 5.7, 0.3],
 			"to": [-3.2, 6.05, 0.4],
@@ -399,10 +400,10 @@
 		{
 			"name": "SketchBookRing2_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.3, 6.05, -0.4],
 			"to": [-3.2, 6.15, 0.4],
@@ -441,10 +442,10 @@
 		{
 			"name": "SketchBookRing3_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.8, 5.6, -0.4],
 			"to": [-2.7, 5.7, 0.4],
@@ -483,10 +484,10 @@
 		{
 			"name": "SketchBookRing3_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.8, 5.7, -0.4],
 			"to": [-2.7, 6.05, -0.3],
@@ -525,10 +526,10 @@
 		{
 			"name": "SketchBookRing3_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.8, 5.7, 0.3],
 			"to": [-2.7, 6.05, 0.4],
@@ -567,10 +568,10 @@
 		{
 			"name": "SketchBookRing3_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.8, 6.05, -0.4],
 			"to": [-2.7, 6.15, 0.4],
@@ -609,10 +610,10 @@
 		{
 			"name": "SketchBookRing4_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.3, 5.6, -0.4],
 			"to": [-2.2, 5.7, 0.4],
@@ -651,10 +652,10 @@
 		{
 			"name": "SketchBookRing4_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.3, 5.7, -0.4],
 			"to": [-2.2, 6.05, -0.3],
@@ -693,10 +694,10 @@
 		{
 			"name": "SketchBookRing4_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.3, 5.7, 0.3],
 			"to": [-2.2, 6.05, 0.4],
@@ -735,10 +736,10 @@
 		{
 			"name": "SketchBookRing4_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.3, 6.05, -0.4],
 			"to": [-2.2, 6.15, 0.4],
@@ -777,10 +778,10 @@
 		{
 			"name": "SketchBookRing5_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.8, 5.6, -0.4],
 			"to": [-1.7, 5.7, 0.4],
@@ -819,10 +820,10 @@
 		{
 			"name": "SketchBookRing5_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.8, 5.7, -0.4],
 			"to": [-1.7, 6.05, -0.3],
@@ -861,10 +862,10 @@
 		{
 			"name": "SketchBookRing5_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.8, 5.7, 0.3],
 			"to": [-1.7, 6.05, 0.4],
@@ -903,10 +904,10 @@
 		{
 			"name": "SketchBookRing5_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.8, 6.05, -0.4],
 			"to": [-1.7, 6.15, 0.4],
@@ -945,10 +946,10 @@
 		{
 			"name": "SketchBookRing6_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.3, 5.6, -0.4],
 			"to": [-1.2, 5.7, 0.4],
@@ -987,10 +988,10 @@
 		{
 			"name": "SketchBookRing6_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.3, 5.7, -0.4],
 			"to": [-1.2, 6.05, -0.3],
@@ -1029,10 +1030,10 @@
 		{
 			"name": "SketchBookRing6_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.3, 5.7, 0.3],
 			"to": [-1.2, 6.05, 0.4],
@@ -1071,10 +1072,10 @@
 		{
 			"name": "SketchBookRing6_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.3, 6.05, -0.4],
 			"to": [-1.2, 6.15, 0.4],
@@ -1113,10 +1114,10 @@
 		{
 			"name": "SketchBookRing7_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8, 5.6, -0.4],
 			"to": [-0.7, 5.7, 0.4],
@@ -1155,10 +1156,10 @@
 		{
 			"name": "SketchBookRing7_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8, 5.7, -0.4],
 			"to": [-0.7, 6.05, -0.3],
@@ -1197,10 +1198,10 @@
 		{
 			"name": "SketchBookRing7_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8, 5.7, 0.3],
 			"to": [-0.7, 6.05, 0.4],
@@ -1239,10 +1240,10 @@
 		{
 			"name": "SketchBookRing7_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.8, 6.05, -0.4],
 			"to": [-0.7, 6.15, 0.4],
@@ -1281,10 +1282,10 @@
 		{
 			"name": "SketchBookRing8_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3, 5.6, -0.4],
 			"to": [-0.2, 5.7, 0.4],
@@ -1323,10 +1324,10 @@
 		{
 			"name": "SketchBookRing8_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3, 5.7, -0.4],
 			"to": [-0.2, 6.05, -0.3],
@@ -1365,10 +1366,10 @@
 		{
 			"name": "SketchBookRing8_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3, 5.7, 0.3],
 			"to": [-0.2, 6.05, 0.4],
@@ -1407,10 +1408,10 @@
 		{
 			"name": "SketchBookRing8_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3, 6.05, -0.4],
 			"to": [-0.2, 6.15, 0.4],
@@ -1449,10 +1450,10 @@
 		{
 			"name": "SketchBookRing9_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3, 5.6, -0.4],
 			"to": [-0.2, 5.7, 0.4],
@@ -1491,10 +1492,10 @@
 		{
 			"name": "SketchBookRing9_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3, 5.7, -0.4],
 			"to": [-0.2, 6.05, -0.3],
@@ -1533,10 +1534,10 @@
 		{
 			"name": "SketchBookRing9_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3, 5.7, 0.3],
 			"to": [-0.2, 6.05, 0.4],
@@ -1575,10 +1576,10 @@
 		{
 			"name": "SketchBookRing9_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.3, 6.05, -0.4],
 			"to": [-0.2, 6.15, 0.4],
@@ -1617,10 +1618,10 @@
 		{
 			"name": "SketchBookRing10_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.2, 5.6, -0.4],
 			"to": [0.3, 5.7, 0.4],
@@ -1659,10 +1660,10 @@
 		{
 			"name": "SketchBookRing10_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.2, 5.7, -0.4],
 			"to": [0.3, 6.05, -0.3],
@@ -1701,10 +1702,10 @@
 		{
 			"name": "SketchBookRing10_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.2, 5.7, 0.3],
 			"to": [0.3, 6.05, 0.4],
@@ -1743,10 +1744,10 @@
 		{
 			"name": "SketchBookRing10_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.2, 6.05, -0.4],
 			"to": [0.3, 6.15, 0.4],
@@ -1785,10 +1786,10 @@
 		{
 			"name": "SketchBookRing11_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.7, 5.6, -0.4],
 			"to": [0.8, 5.7, 0.4],
@@ -1827,10 +1828,10 @@
 		{
 			"name": "SketchBookRing11_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.7, 5.7, -0.4],
 			"to": [0.8, 6.05, -0.3],
@@ -1869,10 +1870,10 @@
 		{
 			"name": "SketchBookRing11_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.7, 5.7, 0.3],
 			"to": [0.8, 6.05, 0.4],
@@ -1911,10 +1912,10 @@
 		{
 			"name": "SketchBookRing11_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.7, 6.05, -0.4],
 			"to": [0.8, 6.15, 0.4],
@@ -1953,10 +1954,10 @@
 		{
 			"name": "SketchBookRing12_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.2, 5.6, -0.4],
 			"to": [1.3, 5.7, 0.4],
@@ -1995,10 +1996,10 @@
 		{
 			"name": "SketchBookRing12_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.2, 5.7, -0.4],
 			"to": [1.3, 6.05, -0.3],
@@ -2037,10 +2038,10 @@
 		{
 			"name": "SketchBookRing12_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.2, 5.7, 0.3],
 			"to": [1.3, 6.05, 0.4],
@@ -2079,10 +2080,10 @@
 		{
 			"name": "SketchBookRing12_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.2, 6.05, -0.4],
 			"to": [1.3, 6.15, 0.4],
@@ -2121,10 +2122,10 @@
 		{
 			"name": "SketchBookRing13_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.7, 5.6, -0.4],
 			"to": [1.8, 5.7, 0.4],
@@ -2163,10 +2164,10 @@
 		{
 			"name": "SketchBookRing13_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.7, 5.7, -0.4],
 			"to": [1.8, 6.05, -0.3],
@@ -2205,10 +2206,10 @@
 		{
 			"name": "SketchBookRing13_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.7, 5.7, 0.3],
 			"to": [1.8, 6.05, 0.4],
@@ -2247,10 +2248,10 @@
 		{
 			"name": "SketchBookRing13_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.7, 6.05, -0.4],
 			"to": [1.8, 6.15, 0.4],
@@ -2289,10 +2290,10 @@
 		{
 			"name": "SketchBookRing14_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.2, 5.6, -0.4],
 			"to": [2.3, 5.7, 0.4],
@@ -2331,10 +2332,10 @@
 		{
 			"name": "SketchBookRing14_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.2, 5.7, -0.4],
 			"to": [2.3, 6.05, -0.3],
@@ -2373,10 +2374,10 @@
 		{
 			"name": "SketchBookRing14_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.2, 5.7, 0.3],
 			"to": [2.3, 6.05, 0.4],
@@ -2415,10 +2416,10 @@
 		{
 			"name": "SketchBookRing14_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.2, 6.05, -0.4],
 			"to": [2.3, 6.15, 0.4],
@@ -2457,10 +2458,10 @@
 		{
 			"name": "SketchBookRing15_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.7, 5.6, -0.4],
 			"to": [2.8, 5.7, 0.4],
@@ -2499,10 +2500,10 @@
 		{
 			"name": "SketchBookRing15_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.7, 5.7, -0.4],
 			"to": [2.8, 6.05, -0.3],
@@ -2541,10 +2542,10 @@
 		{
 			"name": "SketchBookRing15_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.7, 5.7, 0.3],
 			"to": [2.8, 6.05, 0.4],
@@ -2583,10 +2584,10 @@
 		{
 			"name": "SketchBookRing15_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.7, 6.05, -0.4],
 			"to": [2.8, 6.15, 0.4],
@@ -2625,10 +2626,10 @@
 		{
 			"name": "SketchBookRing16_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.2, 5.6, -0.4],
 			"to": [3.3, 5.7, 0.4],
@@ -2667,10 +2668,10 @@
 		{
 			"name": "SketchBookRing16_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.2, 5.7, -0.4],
 			"to": [3.3, 6.05, -0.3],
@@ -2709,10 +2710,10 @@
 		{
 			"name": "SketchBookRing16_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.2, 5.7, 0.3],
 			"to": [3.3, 6.05, 0.4],
@@ -2751,10 +2752,10 @@
 		{
 			"name": "SketchBookRing16_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.2, 6.05, -0.4],
 			"to": [3.3, 6.15, 0.4],
@@ -2793,10 +2794,10 @@
 		{
 			"name": "SketchBookRing17_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.7, 5.6, -0.4],
 			"to": [3.8, 5.7, 0.4],
@@ -2835,10 +2836,10 @@
 		{
 			"name": "SketchBookRing17_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.7, 5.7, -0.4],
 			"to": [3.8, 6.05, -0.3],
@@ -2877,10 +2878,10 @@
 		{
 			"name": "SketchBookRing17_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.7, 5.7, 0.3],
 			"to": [3.8, 6.05, 0.4],
@@ -2919,10 +2920,10 @@
 		{
 			"name": "SketchBookRing17_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.7, 6.05, -0.4],
 			"to": [3.8, 6.15, 0.4],
@@ -2961,10 +2962,10 @@
 		{
 			"name": "TableTop",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-16, 7, -22],
 			"to": [16, 8, -6],
@@ -2978,8 +2979,8 @@
 				},
 				"east": {
 					"uv": [0, 0, 1, 16],
-					"rotation": 270,
-					"texture": 3
+					"texture": 3,
+					"rotation": 270
 				},
 				"south": {
 					"uv": [32, 0, 0, 1],
@@ -2987,8 +2988,8 @@
 				},
 				"west": {
 					"uv": [15, 0, 16, 16],
-					"rotation": 90,
-					"texture": 3
+					"texture": 3,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [32, 16, 0, 0],
@@ -3005,10 +3006,10 @@
 		{
 			"name": "Crayon",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 0, -2.5],
 			"to": [0.5, 1, 2.5],
@@ -3022,8 +3023,8 @@
 				},
 				"east": {
 					"uv": [1, 0, 2, 10],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"south": {
 					"uv": [1, 9, 2, 10],
@@ -3031,13 +3032,13 @@
 				},
 				"west": {
 					"uv": [1, 0, 2, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 0, 2, 10],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [1, 0, 2, 10],
@@ -3050,10 +3051,10 @@
 		{
 			"name": "CrayonTip",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 0.25, -3.25],
 			"to": [0.25, 0.75, -2.5],
@@ -3092,10 +3093,10 @@
 		{
 			"name": "Crayon",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 0, -2.5],
 			"to": [0.5, 1, 2.5],
@@ -3109,8 +3110,8 @@
 				},
 				"east": {
 					"uv": [2, 0, 3, 10],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"south": {
 					"uv": [2, 9, 3, 10],
@@ -3118,13 +3119,13 @@
 				},
 				"west": {
 					"uv": [2, 0, 3, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [2, 0, 3, 10],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [2, 0, 3, 10],
@@ -3137,10 +3138,10 @@
 		{
 			"name": "CrayonTip",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 0.25, -3.25],
 			"to": [0.25, 0.75, -2.5],
@@ -3179,10 +3180,10 @@
 		{
 			"name": "Crayon",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 0, -2.5],
 			"to": [0.5, 1, 2.5],
@@ -3196,8 +3197,8 @@
 				},
 				"east": {
 					"uv": [3, 0, 4, 10],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"south": {
 					"uv": [3, 9, 4, 10],
@@ -3205,13 +3206,13 @@
 				},
 				"west": {
 					"uv": [3, 0, 4, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [3, 0, 4, 10],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [3, 0, 4, 10],
@@ -3224,10 +3225,10 @@
 		{
 			"name": "CrayonTip",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 0.25, -3.25],
 			"to": [0.25, 0.75, -2.5],
@@ -3266,10 +3267,10 @@
 		{
 			"name": "TableFeet1_side",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-15, 0, -11],
 			"to": [-11, 7, -7],
@@ -3308,10 +3309,10 @@
 		{
 			"name": "TableFeet2_side",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-15, 0, -21],
 			"to": [-11, 7, -17],
@@ -3350,10 +3351,10 @@
 		{
 			"name": "TableFeet3_side",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11, 0, -21],
 			"to": [15, 7, -17],
@@ -3392,10 +3393,10 @@
 		{
 			"name": "TableFeet4_side",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11, 0, -11],
 			"to": [15, 7, -7],
@@ -3434,10 +3435,10 @@
 		{
 			"name": "TableFeet4_bottom",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11, 0, -21],
 			"to": [15, 7, -17],
@@ -3476,10 +3477,10 @@
 		{
 			"name": "TableFeet3_bottom",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-15, 0, -21],
 			"to": [-11, 7, -17],
@@ -3518,10 +3519,10 @@
 		{
 			"name": "TableFeet2_bottom",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-15, 0, -11],
 			"to": [-11, 7, -7],
@@ -3560,10 +3561,10 @@
 		{
 			"name": "TableFeet1_bottom",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [11, 0, -11],
 			"to": [15, 7, -7],
@@ -3602,10 +3603,10 @@
 		{
 			"name": "NoticeEffect1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-12, 27, 0],
 			"to": [-8, 29, 0],
@@ -3645,10 +3646,10 @@
 		{
 			"name": "NoticeEffect2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-11, 30, 0],
 			"to": [-7, 32, 0],
@@ -3688,10 +3689,10 @@
 		{
 			"name": "NoticeEffect3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-9, 32.25, 0],
 			"to": [-5, 34.25, 0],
@@ -3731,10 +3732,10 @@
 		{
 			"name": "DrawingEffect",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5, 11.5, -14.5],
 			"to": [-3, 12.5, -14.5],
@@ -3773,10 +3774,10 @@
 		{
 			"name": "DrawingEffect",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.75, 12.75, -14.5],
 			"to": [-2.75, 13.75, -14.5],
@@ -3815,10 +3816,10 @@
 		{
 			"name": "DrawingEffect",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.1, 13.9, -14.5],
 			"to": [-2.1, 14.9, -14.5],
@@ -3857,10 +3858,10 @@
 		{
 			"name": "DrawingEffect",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.5, 11.75, -14.4],
 			"to": [4.5, 12.75, -14.4],
@@ -3899,10 +3900,10 @@
 		{
 			"name": "DrawingEffect",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3, 10.75, -14.4],
 			"to": [5, 11.75, -14.4],
@@ -3941,10 +3942,10 @@
 		{
 			"name": "SketchBookEffect1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -3983,10 +3984,10 @@
 		{
 			"name": "SketchBookEffect2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4026,10 +4027,10 @@
 		{
 			"name": "SketchBookEffect3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4069,10 +4070,10 @@
 		{
 			"name": "SketchBookEffect4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4112,10 +4113,10 @@
 		{
 			"name": "SketchBookEffect5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4155,10 +4156,10 @@
 		{
 			"name": "SketchBookEffect6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4198,10 +4199,10 @@
 		{
 			"name": "SketchBookEffect7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4241,10 +4242,10 @@
 		{
 			"name": "SketchBookEffect8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4284,10 +4285,10 @@
 		{
 			"name": "SketchBookEffect9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4327,10 +4328,10 @@
 		{
 			"name": "SketchBookEffect10",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4370,10 +4371,10 @@
 		{
 			"name": "SketchBookEffect11",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4413,10 +4414,10 @@
 		{
 			"name": "SketchBookEffect12",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4456,10 +4457,10 @@
 		{
 			"name": "SketchBookEffect13",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4499,10 +4500,10 @@
 		{
 			"name": "SketchBookEffect14",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4542,10 +4543,10 @@
 		{
 			"name": "SketchBookEffect15",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4585,10 +4586,10 @@
 		{
 			"name": "SketchBookEffect16",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4628,10 +4629,10 @@
 		{
 			"name": "SketchBookEffect17",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4671,10 +4672,10 @@
 		{
 			"name": "SketchBookEffect18",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4714,10 +4715,10 @@
 		{
 			"name": "SketchBookEffect19",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4757,10 +4758,10 @@
 		{
 			"name": "SketchBookEffect20",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4800,10 +4801,10 @@
 		{
 			"name": "SketchBookEffect21",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4843,10 +4844,10 @@
 		{
 			"name": "SketchBookEffect22",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4886,10 +4887,10 @@
 		{
 			"name": "SketchBookEffect23",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4929,10 +4930,10 @@
 		{
 			"name": "SketchBookEffect24",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 2.75, 0],
 			"to": [11.5, 3.25, 0],
@@ -4972,10 +4973,10 @@
 		{
 			"name": "SpinEffect1_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [10, 16, -12],
 			"to": [12, 18, 4],
@@ -5001,13 +5002,13 @@
 				},
 				"up": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -5016,10 +5017,10 @@
 		{
 			"name": "SpinEffect1_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 16, -12],
 			"to": [12, 18, -10],
@@ -5046,13 +5047,13 @@
 				},
 				"up": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -5061,10 +5062,10 @@
 		{
 			"name": "SpinEffect2_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [10.5, 19, -11.5],
 			"to": [11.5, 20, 4.5],
@@ -5090,13 +5091,13 @@
 				},
 				"up": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -5105,10 +5106,10 @@
 		{
 			"name": "SpinEffect2_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.5, 19, -11.5],
 			"to": [11.5, 20, -10.5],
@@ -5135,13 +5136,13 @@
 				},
 				"up": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -5150,10 +5151,10 @@
 		{
 			"name": "SpinEffect3_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [10, 22, -12],
 			"to": [12, 24, 4],
@@ -5179,13 +5180,13 @@
 				},
 				"up": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -5194,10 +5195,10 @@
 		{
 			"name": "SpinEffect4_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [10, 25, -12],
 			"to": [12, 27, 4],
@@ -5223,13 +5224,13 @@
 				},
 				"up": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [0, 9, 1, 10],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -5238,10 +5239,10 @@
 		{
 			"name": "Transition",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -1, 0],
 			"to": [0, 0, 0],
@@ -5280,10 +5281,10 @@
 		{
 			"name": "ScreenFrame",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -1, 0],
 			"to": [0, 0, 0],
@@ -5322,10 +5323,10 @@
 		{
 			"name": "NoticeEffect2_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8, 24, -6],
 			"to": [-4, 26, -6],
@@ -5364,10 +5365,10 @@
 		{
 			"name": "NoticeEffect2_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4, 27, -6],
 			"to": [8, 29, -6],
@@ -5406,10 +5407,10 @@
 		{
 			"name": "NoticeEffect2_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8, 29.75, -6],
 			"to": [-4, 31.75, -6],
@@ -5448,10 +5449,10 @@
 		{
 			"name": "NoticeEffect2_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3, 24, -6],
 			"to": [7, 26, -6],
@@ -5490,10 +5491,10 @@
 		{
 			"name": "NoticeEffect2_6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3, 29.75, -6],
 			"to": [7, 31.75, -6],
@@ -5530,19 +5531,1530 @@
 			"uuid": "c7392c7d-31ac-1a12-72d5-cac834578804"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "Table",
-			"origin": [-8, 7, 0],
-			"color": 0,
 			"uuid": "396e8436-66e2-949e-d5db-30ca0b220c92",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": true,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 7, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "DrawingEffects",
+			"uuid": "d37e0257-0e0d-3824-be2e-7080b48f56e9",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 7, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "DrawingEffects1",
+			"uuid": "fa4a7428-453b-599e-b8bc-3d1dbe38daa7",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1, 13, -14.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "DrawingEffect1",
+			"uuid": "408197dc-fb8a-f574-11ea-ce9e7e47c647",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-3, 12, -14.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "DrawingEffect2",
+			"uuid": "42136d2a-38b4-bc0d-4c74-dcaae04019a6",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-2.75, 13.25, -14.5],
+			"rotation": [0, 0, -20],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "DrawingEffect3",
+			"uuid": "41285ab9-0813-54ac-4b7b-c81186372b3e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-2.1, 14.4, -14.5],
+			"rotation": [0, 0, -40],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "DrawingEffects2",
+			"uuid": "e4b0e871-318d-b686-e33c-d699e64499e8",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [4, 11, -14.4],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "DrawingEffect4",
+			"uuid": "5b9c08f1-ab07-ab9f-c663-64b1181115d5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [4.5, 12.25, -14.4],
+			"rotation": [0, 0, -130],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "DrawingEffect5",
+			"uuid": "9f83cd7c-0c27-7491-ed9b-b98f7e436bdf",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5, 11.25, -14.4],
+			"rotation": [0, 0, -170],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBook",
+			"uuid": "5a300245-4df9-b3c7-0f75-5b8e37c7dd2f",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRings",
+			"uuid": "a0c36b62-edd6-932e-6e1d-72933616d1b6",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-4, 0, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing1",
+			"uuid": "3a4a2ead-9008-3e9f-90b1-c3d4231493b9",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-4, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing2",
+			"uuid": "b2a2a511-9f44-ed96-04ed-8800e4578638",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-3.5, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing3",
+			"uuid": "869e05b3-1ef1-f975-b138-6d1a5aa4c250",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-3, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing4",
+			"uuid": "eb62bb67-1497-3775-bf8c-a1740a868c26",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-2.5, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing5",
+			"uuid": "82a74db8-6aeb-a494-7ef4-26c2bb3bad19",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-2, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing6",
+			"uuid": "c840a9c2-3e44-8a1c-1b2d-e3e62d0ac3ce",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1.5, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing7",
+			"uuid": "6e3a29f8-66b0-0f8d-eb17-ae8fbde3bd08",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing8",
+			"uuid": "4cd35c8a-663f-c139-bc84-bc79dd09feb6",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-0.5, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing9",
+			"uuid": "ff0975f4-714d-3637-14df-6269c377ee0d",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-0.5, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing10",
+			"uuid": "765b8e08-31e4-8ffd-96d0-98d174528b9b",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing11",
+			"uuid": "3a6a67fc-21f2-cf94-d762-20ca30ba65d9",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0.5, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing12",
+			"uuid": "4612ac07-4556-75aa-b1a8-b8415ca2d954",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [1, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing13",
+			"uuid": "4cf4cb86-504d-b54a-9b7a-c625bdc66a12",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [1.5, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing14",
+			"uuid": "30d11bab-24aa-fa13-5211-f0d5860ac67d",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing15",
+			"uuid": "48d044e3-ae96-ebd6-c2f8-6408c697c926",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [2.5, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing16",
+			"uuid": "767798c6-461d-722f-b55f-85d6cd622768",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [3, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookRing17",
+			"uuid": "d6ef0dcb-fd69-c63b-dac7-9572d0c0bbc5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [3.5, -0.4, -0.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookEffects",
+			"uuid": "df969859-1950-3da6-d5dc-6d37a938a786",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SketchBookEffects2",
+			"uuid": "a96b05f0-dc30-28fe-31f7-aedaa3ec9147",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Crayon1",
+			"uuid": "e36149cf-4ba5-0d1a-fd74-bf5c8c2adaa8",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Crayon2",
+			"uuid": "44415678-9b77-1ce9-7651-dd5a0e9fd77c",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Crayon3",
+			"uuid": "5024ed51-1537-bbca-a22f-ec57e5b62148",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffects",
+			"uuid": "1a4343c4-1b69-f8b3-2e53-da9547283619",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 28, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffect1",
+			"uuid": "9ae8784f-4dfb-462c-c774-7b8bb3aa05fc",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 28, 0],
+			"rotation": [0, 0, -10],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffect2",
+			"uuid": "c417e9f0-bf79-56a3-9e38-4fc80b64d114",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-7, 31, 0],
+			"rotation": [0, 0, -30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffect3",
+			"uuid": "1aab1635-e342-26c6-900f-5fe6badd532c",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-5, 33.25, 0],
+			"rotation": [0, 0, -60],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffects",
+			"uuid": "a9159677-a2a0-5439-e415-09dd2349e95d",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 20, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect1",
+			"uuid": "2a208506-1823-fde5-4503-654332353012",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 16, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect1_1",
+			"uuid": "06952b5b-c072-852d-b13f-b79e9917126e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [12, 17, -12],
+			"rotation": [0, 30, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect1Anchor1",
+			"uuid": "a10658a3-ab1d-4d6c-d010-e404dac3f4d2",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11, 17, 4],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect1Anchor2",
+			"uuid": "70ed80cc-f8b6-bdb7-f44b-fc0d1ef453fd",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11, 17, 3],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect2",
+			"uuid": "66b03987-4b5f-4ce4-35a5-240d167616e5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 19, 0],
+			"rotation": [0, 22.5, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect2_1",
+			"uuid": "bba56097-6542-7ca9-76ec-b0b6d1ecec27",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11.5, 19.5, -11.5],
+			"rotation": [0, 30, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect2Anchor1",
+			"uuid": "56e1942a-0d9e-5b55-8a40-f092c2ec7aac",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11, 19.5, 4.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect2Anchor2",
+			"uuid": "a2846c8e-6a9a-8053-2478-20d2a473ddb6",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11, 19.5, 3.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect3",
+			"uuid": "63abc4d9-0d48-6787-a81d-995caad6394a",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 23, 0],
+			"rotation": [0, 15, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect3_1",
+			"uuid": "6ba9a8a6-e109-db9b-7dd6-c0d2db483049",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [12, 24, -12],
+			"rotation": [0, 30, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect3Anchor1",
+			"uuid": "8c55658c-5ba7-6481-e254-16ce2bf5b9c5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11, 23, 4],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect3Anchor2",
+			"uuid": "cb2e3c31-5d9d-67f7-74c1-e51c62cb7080",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11, 23, 3],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect4",
+			"uuid": "8c151ab8-c73c-a202-e4e3-d52690957a9c",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 26, 0],
+			"rotation": [0, 62.5, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect4_1",
+			"uuid": "cf14aada-fbed-9178-a8a0-e588f9da8752",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [12, 27, -12],
+			"rotation": [0, 30, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect4Anchor1",
+			"uuid": "c63ad130-e45e-314a-b996-1213fe9eb614",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11, 26, 4],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SpinEffect4Anchor2",
+			"uuid": "acfa56dc-e271-f8a5-5685-a9da3ea71dc6",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [11, 26, 3],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "FlowerEffectArea1",
+			"uuid": "378d7489-ecfb-acfe-399f-5d217e0d268a",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 28, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "FlowerEffectArea1Scale",
+			"uuid": "6f802a00-a178-6965-d743-91531e919260",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 28, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffects2",
+			"uuid": "182d9cad-bbd5-3a45-7325-1adf3231b9e5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 25, -6],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffect2_1",
+			"uuid": "5970fd28-3c7a-2e4e-c250-3e140e7f2ce5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-4, 25, -6],
+			"rotation": [0, 0, 30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffect2_2",
+			"uuid": "abbda2c1-f429-e163-d877-bbd929945115",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [4, 28, -6],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffect2_3",
+			"uuid": "556aed6a-e457-14d7-6f35-5abd4a1fd304",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-4, 30.75, -6],
+			"rotation": [0, 0, -30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffect2_4",
+			"uuid": "d5433877-607c-0517-16b9-84cabfa4e638",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [3, 25, -6],
+			"rotation": [0, 0, -30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "NoticeEffect2_6",
+			"uuid": "548d2ca0-55c0-e11a-8143-8aec71d93442",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [3, 30.75, -6],
+			"rotation": [0, 0, 30],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "FlowerEffectArea2",
+			"uuid": "afc75c6c-783c-7851-da45-07a79d19c4be",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "FlowerEffectArea3",
+			"uuid": "a8043bea-1413-583b-2c25-888e0b1de92e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "FlowerEffectArea3Scale",
+			"uuid": "2510ea60-7f40-2638-eac3-45c5ae6870dc",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "TransitionOpacity",
+			"uuid": "9e048ef9-de6e-77d2-f4bd-cf320a33c8ba",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, -5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "396e8436-66e2-949e-d5db-30ca0b220c92",
+			"isOpen": true,
 			"children": [
 				"10487b1e-6980-b35e-9ac6-b56998fc573c",
 				"d8b11f91-51fe-0535-b4d6-588927cf689f",
@@ -5554,118 +7066,42 @@
 				"9919ee5a-7d36-6042-a880-7188401b02c5",
 				"ffeef57b-ed72-db66-aedc-9bfb6932a8cd",
 				{
-					"name": "DrawingEffects",
-					"origin": [-8, 7, 0],
-					"color": 0,
 					"uuid": "d37e0257-0e0d-3824-be2e-7080b48f56e9",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "DrawingEffects1",
-							"origin": [-1, 13, -14.5],
-							"color": 0,
 							"uuid": "fa4a7428-453b-599e-b8bc-3d1dbe38daa7",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								{
-									"name": "DrawingEffect1",
-									"origin": [-3, 12, -14.5],
-									"color": 0,
 									"uuid": "408197dc-fb8a-f574-11ea-ce9e7e47c647",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["fa9fe2d7-7c77-dffa-7c35-d314fd1c767b"]
 								},
 								{
-									"name": "DrawingEffect2",
-									"origin": [-2.75, 13.25, -14.5],
-									"rotation": [0, 0, -20],
-									"color": 0,
 									"uuid": "42136d2a-38b4-bc0d-4c74-dcaae04019a6",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["123b61dc-b3c4-8b39-da8f-791c3cb509bb"]
 								},
 								{
-									"name": "DrawingEffect3",
-									"origin": [-2.1, 14.4, -14.5],
-									"rotation": [0, 0, -40],
-									"color": 0,
 									"uuid": "41285ab9-0813-54ac-4b7b-c81186372b3e",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["6a47191e-014c-4543-36b4-07f3f03ac639"]
 								}
 							]
 						},
 						{
-							"name": "DrawingEffects2",
-							"origin": [4, 11, -14.4],
-							"color": 0,
 							"uuid": "e4b0e871-318d-b686-e33c-d699e64499e8",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								{
-									"name": "DrawingEffect4",
-									"origin": [4.5, 12.25, -14.4],
-									"rotation": [0, 0, -130],
-									"color": 0,
 									"uuid": "5b9c08f1-ab07-ab9f-c663-64b1181115d5",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["20f29e99-21cf-185c-68d6-d28a8cf10a37"]
 								},
 								{
-									"name": "DrawingEffect5",
-									"origin": [5, 11.25, -14.4],
-									"rotation": [0, 0, -170],
-									"color": 0,
 									"uuid": "9f83cd7c-0c27-7491-ed9b-b98f7e436bdf",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["9f20668d-3931-57cf-f874-137f93674ffd"]
 								}
 							]
@@ -5675,45 +7111,18 @@
 			]
 		},
 		{
-			"name": "SketchBook",
-			"origin": [0, 3, 0],
-			"color": 0,
 			"uuid": "5a300245-4df9-b3c7-0f75-5b8e37c7dd2f",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				"fac76d13-59a8-5733-74f1-ed79e8daf178",
 				"5298d910-e43c-193f-d54b-efc78ee2101d",
 				{
-					"name": "SketchBookRings",
-					"origin": [-4, 0, -0.25],
-					"color": 0,
 					"uuid": "a0c36b62-edd6-932e-6e1d-72933616d1b6",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "SketchBookRing1",
-							"origin": [-4, -0.4, -0.25],
-							"color": 0,
 							"uuid": "3a4a2ead-9008-3e9f-90b1-c3d4231493b9",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"a55a1852-0955-7e6f-0ff9-9a33a7c540c4",
 								"a24cf1f0-d65a-c3ea-b6da-b95a8f896d8f",
@@ -5722,17 +7131,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing2",
-							"origin": [-3.5, -0.4, -0.25],
-							"color": 0,
 							"uuid": "b2a2a511-9f44-ed96-04ed-8800e4578638",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"b45ee2f3-d795-2ecd-2bdb-6be30e674861",
 								"b0e78794-5773-af76-223e-9b35a4fd7575",
@@ -5741,17 +7141,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing3",
-							"origin": [-3, -0.4, -0.25],
-							"color": 0,
 							"uuid": "869e05b3-1ef1-f975-b138-6d1a5aa4c250",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"a29a9b10-fc84-1798-9f4d-c388cb728442",
 								"657aa4f4-fe73-31ec-c80d-694ca38314e9",
@@ -5760,17 +7151,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing4",
-							"origin": [-2.5, -0.4, -0.25],
-							"color": 0,
 							"uuid": "eb62bb67-1497-3775-bf8c-a1740a868c26",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"b1ea605a-ae78-eb66-785d-816ee5fc5728",
 								"5d8b2648-c56c-c948-103b-a8ed3c154ab5",
@@ -5779,17 +7161,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing5",
-							"origin": [-2, -0.4, -0.25],
-							"color": 0,
 							"uuid": "82a74db8-6aeb-a494-7ef4-26c2bb3bad19",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"1addd99e-f181-7ebb-0bb4-b55a209f743f",
 								"e43e3315-2957-f7ec-26b0-095c13225650",
@@ -5798,17 +7171,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing6",
-							"origin": [-1.5, -0.4, -0.25],
-							"color": 0,
 							"uuid": "c840a9c2-3e44-8a1c-1b2d-e3e62d0ac3ce",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"af31e426-4a1c-cdcf-791b-d1dea0376381",
 								"9e6f1383-4489-541e-d341-aa5af5e6555e",
@@ -5817,17 +7181,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing7",
-							"origin": [-1, -0.4, -0.25],
-							"color": 0,
 							"uuid": "6e3a29f8-66b0-0f8d-eb17-ae8fbde3bd08",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"00f0ceb2-5f8f-277f-5717-3db9fabf0ff2",
 								"2a637ff1-bdf7-dafe-301b-766bc5bac7bd",
@@ -5836,17 +7191,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing8",
-							"origin": [-0.5, -0.4, -0.25],
-							"color": 0,
 							"uuid": "4cd35c8a-663f-c139-bc84-bc79dd09feb6",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"828d3df7-16ee-40d1-10fc-9cc6ed1afafe",
 								"eb235b90-4b5c-8c46-670e-d0660ddabeac",
@@ -5855,17 +7201,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing9",
-							"origin": [-0.5, -0.4, -0.25],
-							"color": 0,
 							"uuid": "ff0975f4-714d-3637-14df-6269c377ee0d",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"2b663abd-8999-d149-9188-0704b361fa5c",
 								"7c9413b3-0306-4590-1397-d5608b7a53b3",
@@ -5874,17 +7211,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing10",
-							"origin": [0, -0.4, -0.25],
-							"color": 0,
 							"uuid": "765b8e08-31e4-8ffd-96d0-98d174528b9b",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"6a3429e0-9bff-518a-9209-6e8d6f395bec",
 								"83479b17-a7d4-3e4f-32da-b3a045c2e92b",
@@ -5893,17 +7221,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing11",
-							"origin": [0.5, -0.4, -0.25],
-							"color": 0,
 							"uuid": "3a6a67fc-21f2-cf94-d762-20ca30ba65d9",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"cdd0511a-2cbd-3224-beff-542404c9bb30",
 								"6813631e-9b1d-dbad-7244-a4bfcd8fab54",
@@ -5912,17 +7231,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing12",
-							"origin": [1, -0.4, -0.25],
-							"color": 0,
 							"uuid": "4612ac07-4556-75aa-b1a8-b8415ca2d954",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"4e79e681-d19f-4c30-b335-6b74287022a3",
 								"0f97a5e6-1f67-57f6-9918-3dae868b4adc",
@@ -5931,17 +7241,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing13",
-							"origin": [1.5, -0.4, -0.25],
-							"color": 0,
 							"uuid": "4cf4cb86-504d-b54a-9b7a-c625bdc66a12",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"eea1bdbe-8cb9-95ce-0ad0-cc63da6e6172",
 								"e6fbcf56-17a2-e3e9-a075-984e98645723",
@@ -5950,17 +7251,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing14",
-							"origin": [2, -0.4, -0.25],
-							"color": 0,
 							"uuid": "30d11bab-24aa-fa13-5211-f0d5860ac67d",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"bc0dcd80-8044-fa5b-a876-9b2aa17117d3",
 								"f10da2d5-ada4-0434-7649-02d830a9db2b",
@@ -5969,17 +7261,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing15",
-							"origin": [2.5, -0.4, -0.25],
-							"color": 0,
 							"uuid": "48d044e3-ae96-ebd6-c2f8-6408c697c926",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"6dffc8ca-52bc-5cdb-26bd-2e7afd2ce913",
 								"a325669b-283d-3489-6d0a-c81b4f57dd40",
@@ -5988,17 +7271,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing16",
-							"origin": [3, -0.4, -0.25],
-							"color": 0,
 							"uuid": "767798c6-461d-722f-b55f-85d6cd622768",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"35c0bc7a-a020-237c-8306-9102dbe1e793",
 								"7b59164a-5948-797e-fa43-0811d7762956",
@@ -6007,17 +7281,8 @@
 							]
 						},
 						{
-							"name": "SketchBookRing17",
-							"origin": [3.5, -0.4, -0.25],
-							"color": 0,
 							"uuid": "d6ef0dcb-fd69-c63b-dac7-9572d0c0bbc5",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"a54d40d5-d460-6618-7f22-11203222cd16",
 								"0714a461-d9c5-1997-a227-191a0df77946",
@@ -6028,30 +7293,12 @@
 					]
 				},
 				{
-					"name": "SketchBookEffects",
-					"origin": [0, 3, 0],
-					"color": 0,
 					"uuid": "df969859-1950-3da6-d5dc-6d37a938a786",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "SketchBookEffects2",
-							"origin": [0, 3, 0],
-							"color": 0,
 							"uuid": "a96b05f0-dc30-28fe-31f7-aedaa3ec9147",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"ff3ed512-a3da-66df-e59f-f315ac91fd60",
 								"b9020d07-5079-02af-8e45-79f7cf46b8d5",
@@ -6084,174 +7331,62 @@
 			]
 		},
 		{
-			"name": "Crayon1",
-			"origin": [0, 0.5, 0],
-			"color": 0,
 			"uuid": "e36149cf-4ba5-0d1a-fd74-bf5c8c2adaa8",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": ["ecbfaf11-3393-59e9-9589-681b5e7c9723", "0c7d8be1-0a2e-d4a9-3412-59fc4c4789d9"]
 		},
 		{
-			"name": "Crayon2",
-			"origin": [0, 0.5, 0],
-			"color": 0,
 			"uuid": "44415678-9b77-1ce9-7651-dd5a0e9fd77c",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": ["d09ad422-2337-8ece-918e-377829caaa23", "6149959e-bc40-2bf8-c11c-8a835b4010fb"]
 		},
 		{
-			"name": "Crayon3",
-			"origin": [0, 0.5, 0],
-			"color": 0,
 			"uuid": "5024ed51-1537-bbca-a22f-ec57e5b62148",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": ["c93a6b3c-5e84-57ae-f17e-e3f88113d389", "52e35662-f5e0-c555-e694-d961aca526f6"]
 		},
 		{
-			"name": "NoticeEffects",
-			"origin": [0, 28, 0],
-			"color": 0,
 			"uuid": "1a4343c4-1b69-f8b3-2e53-da9547283619",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": false,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "NoticeEffect1",
-					"origin": [-8, 28, 0],
-					"rotation": [0, 0, -10],
-					"color": 0,
 					"uuid": "9ae8784f-4dfb-462c-c774-7b8bb3aa05fc",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": false,
-					"autouv": 0,
-					"selected": false,
 					"children": ["85f4f9c0-f2e6-ba3a-bbd9-263379c456d0"]
 				},
 				{
-					"name": "NoticeEffect2",
-					"origin": [-7, 31, 0],
-					"rotation": [0, 0, -30],
-					"color": 0,
 					"uuid": "c417e9f0-bf79-56a3-9e38-4fc80b64d114",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": false,
-					"autouv": 0,
-					"selected": false,
 					"children": ["526a8649-2326-ae65-02cc-095611db4953"]
 				},
 				{
-					"name": "NoticeEffect3",
-					"origin": [-5, 33.25, 0],
-					"rotation": [0, 0, -60],
-					"color": 0,
 					"uuid": "1aab1635-e342-26c6-900f-5fe6badd532c",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": false,
-					"autouv": 0,
-					"selected": false,
 					"children": ["05a5e5f2-7099-d604-6a25-cdec6ba11bb4"]
 				}
 			]
 		},
 		{
-			"name": "SpinEffects",
-			"origin": [0, 20, 0],
-			"color": 0,
 			"uuid": "a9159677-a2a0-5439-e415-09dd2349e95d",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "SpinEffect1",
-					"origin": [0, 16, 0],
-					"color": 0,
 					"uuid": "2a208506-1823-fde5-4503-654332353012",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "SpinEffect1_1",
-							"origin": [12, 17, -12],
-							"rotation": [0, 30, 0],
-							"color": 0,
 							"uuid": "06952b5b-c072-852d-b13f-b79e9917126e",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"38f75ebc-07a7-bcdb-1db0-3c72473e94a9",
 								{
-									"name": "SpinEffect1Anchor1",
-									"origin": [11, 17, 4],
-									"color": 0,
 									"uuid": "a10658a3-ab1d-4d6c-d010-e404dac3f4d2",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								},
 								{
-									"name": "SpinEffect1Anchor2",
-									"origin": [11, 17, 3],
-									"color": 0,
 									"uuid": "70ed80cc-f8b6-bdb7-f44b-fc0d1ef453fd",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								}
 							]
@@ -6260,60 +7395,22 @@
 					]
 				},
 				{
-					"name": "SpinEffect2",
-					"origin": [0, 19, 0],
-					"rotation": [0, 22.5, 0],
-					"color": 0,
 					"uuid": "66b03987-4b5f-4ce4-35a5-240d167616e5",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "SpinEffect2_1",
-							"origin": [11.5, 19.5, -11.5],
-							"rotation": [0, 30, 0],
-							"color": 0,
 							"uuid": "bba56097-6542-7ca9-76ec-b0b6d1ecec27",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"56877cec-ee18-27b1-7ebc-b68edd3b68bd",
 								{
-									"name": "SpinEffect2Anchor1",
-									"origin": [11, 19.5, 4.5],
-									"color": 0,
 									"uuid": "56e1942a-0d9e-5b55-8a40-f092c2ec7aac",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								},
 								{
-									"name": "SpinEffect2Anchor2",
-									"origin": [11, 19.5, 3.5],
-									"color": 0,
 									"uuid": "a2846c8e-6a9a-8053-2478-20d2a473ddb6",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								}
 							]
@@ -6322,60 +7419,22 @@
 					]
 				},
 				{
-					"name": "SpinEffect3",
-					"origin": [0, 23, 0],
-					"rotation": [0, 15, 0],
-					"color": 0,
 					"uuid": "63abc4d9-0d48-6787-a81d-995caad6394a",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "SpinEffect3_1",
-							"origin": [12, 24, -12],
-							"rotation": [0, 30, 0],
-							"color": 0,
 							"uuid": "6ba9a8a6-e109-db9b-7dd6-c0d2db483049",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"76408e51-8c23-417a-a260-4ce3c4c544b8",
 								{
-									"name": "SpinEffect3Anchor1",
-									"origin": [11, 23, 4],
-									"color": 0,
 									"uuid": "8c55658c-5ba7-6481-e254-16ce2bf5b9c5",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								},
 								{
-									"name": "SpinEffect3Anchor2",
-									"origin": [11, 23, 3],
-									"color": 0,
 									"uuid": "cb2e3c31-5d9d-67f7-74c1-e51c62cb7080",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								}
 							]
@@ -6383,60 +7442,22 @@
 					]
 				},
 				{
-					"name": "SpinEffect4",
-					"origin": [0, 26, 0],
-					"rotation": [0, 62.5, 0],
-					"color": 0,
 					"uuid": "8c151ab8-c73c-a202-e4e3-d52690957a9c",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "SpinEffect4_1",
-							"origin": [12, 27, -12],
-							"rotation": [0, 30, 0],
-							"color": 0,
 							"uuid": "cf14aada-fbed-9178-a8a0-e588f9da8752",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"9a4a8501-744f-63a5-1335-df63323d6d13",
 								{
-									"name": "SpinEffect4Anchor1",
-									"origin": [11, 26, 4],
-									"color": 0,
 									"uuid": "c63ad130-e45e-314a-b996-1213fe9eb614",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								},
 								{
-									"name": "SpinEffect4Anchor2",
-									"origin": [11, 26, 3],
-									"color": 0,
 									"uuid": "acfa56dc-e271-f8a5-5685-a9da3ea71dc6",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								}
 							]
@@ -6446,117 +7467,41 @@
 			]
 		},
 		{
-			"name": "FlowerEffectArea1",
-			"origin": [0, 28, 0],
-			"color": 0,
 			"uuid": "378d7489-ecfb-acfe-399f-5d217e0d268a",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "FlowerEffectArea1Scale",
-					"origin": [0, 28, 0],
-					"color": 0,
 					"uuid": "6f802a00-a178-6965-d743-91531e919260",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				{
-					"name": "NoticeEffects2",
-					"origin": [0, 25, -6],
-					"color": 0,
 					"uuid": "182d9cad-bbd5-3a45-7325-1adf3231b9e5",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "NoticeEffect2_1",
-							"origin": [-4, 25, -6],
-							"rotation": [0, 0, 30],
-							"color": 0,
 							"uuid": "5970fd28-3c7a-2e4e-c250-3e140e7f2ce5",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["b462c2a3-964b-1a43-f57d-9a2a778c2202"]
 						},
 						{
-							"name": "NoticeEffect2_2",
-							"origin": [4, 28, -6],
-							"color": 0,
 							"uuid": "abbda2c1-f429-e163-d877-bbd929945115",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["895a34f5-974d-d5fa-aab3-6e6d870eceb6"]
 						},
 						{
-							"name": "NoticeEffect2_3",
-							"origin": [-4, 30.75, -6],
-							"rotation": [0, 0, -30],
-							"color": 0,
 							"uuid": "556aed6a-e457-14d7-6f35-5abd4a1fd304",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["e73b44ea-fa02-b771-90c0-41cd26e20198"]
 						},
 						{
-							"name": "NoticeEffect2_4",
-							"origin": [3, 25, -6],
-							"rotation": [0, 0, -30],
-							"color": 0,
 							"uuid": "d5433877-607c-0517-16b9-84cabfa4e638",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["d27dd4c1-3f4c-395b-50c9-77255c1f6754"]
 						},
 						{
-							"name": "NoticeEffect2_6",
-							"origin": [3, 30.75, -6],
-							"rotation": [0, 0, 30],
-							"color": 0,
 							"uuid": "548d2ca0-55c0-e11a-8143-8aec71d93442",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["c7392c7d-31ac-1a12-72d5-cac834578804"]
 						}
 					]
@@ -6564,59 +7509,23 @@
 			]
 		},
 		{
-			"name": "FlowerEffectArea2",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "afc75c6c-783c-7851-da45-07a79d19c4be",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": []
 		},
 		{
-			"name": "FlowerEffectArea3",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "a8043bea-1413-583b-2c25-888e0b1de92e",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "FlowerEffectArea3Scale",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "2510ea60-7f40-2638-eac3-45c5ae6870dc",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				"1d5f412d-af76-b210-3ed8-ab1b4c9b3e9d",
 				{
-					"name": "TransitionOpacity",
-					"origin": [0, 0, -5],
-					"color": 0,
 					"uuid": "9e048ef9-de6e-77d2-f4bd-cf320a33c8ba",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				"09ad80eb-7406-5746-e5c2-33314f9d6232"
@@ -6625,12 +7534,13 @@
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/11a_Ibuki/textures/ex_skill_1.png",
 			"name": "ex_skill_1.png",
+			"relative_path": "../textures/ex_skill_1.png",
 			"folder": "",
 			"namespace": "",
 			"id": "1",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 70,
 			"uv_width": 16,
@@ -6639,9 +7549,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -6650,16 +7563,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "74118814-1e27-637e-cda2-172fae867ac5",
-			"relative_path": "../textures/ex_skill_1.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAABGCAYAAADFJBSLAAAAAXNSR0IArs4c6QAAA2ZJREFUWEfFl89LFGEYxz+zar9RKyuzNNMsykMURgcvlZ0jQjp17BDkpaBLEB26hd0s6lR06y9Yggg7hRR6cqNI+x32WyUrK/eN7/TOODs7s7uzazTwouA8n+f7fZ7vq65z59oZU3d/lq5zLQwMH+RE91EKPTVNT5zgz51MJmNmLl7NAVQ1Lo1kzE18Jw+QTqdNw610+YAoBYkshBX0NXwqOANnf0/hGbiAfQeiIYN3yQNEKkgCCM8gsYXtHS3mZvdhfwt9vTtxHCfHZ6GhOMYcMf2Hqjl2/BE9V3rJ3D5fcrHAeS9n504ar2Oq6nJRWM4LKnZSA75ik+2jGGRhAJ7sYHdPhlToiVPihGXHTTzOTiRAL4fVJAJEqYgF6OWKZhDs9v/WGFZRdhJV+GAq60d5T10qWZRV3FU7X/Nw2lAMktOhbIAnO9jdm4NU6IlT4oS7xkU5zk4kQC+H1SQCRKmIBQRXV9YMgt3K3oIHqRhQcRIFMMOjfpSd3Z3JouwW79oxP5aRDMUgOR3KBviyg909HSMZ97s4JU5e17gsx9iJBqhrWE0iQJSKOEDO6sqZQbBZ2Vvw/w5WmoOKk+grGas3Tvtk0Ri7+QgP3IzVG9r2wvgQpUAWFuB392SVoMJV4BbqkfTwMz709y7EzMTJ6xp3F2LUVK4gJ4neBpLOIBJSwgD/TQ68rZQSIleBMUYrfAy8A54BH4HvgaP39ClMZxnQAGwC1gNbBVDxmC3+AnwG9HXWHgEW27MS0FltIe0C3ANGgVfAJPAemAZ+2iPAIntqgbUWshHoFOA68Bp4a23oU9cM8A34ZTdUY+Uvt93XAU1AswD9wBvgBaBiqZACWfhtAVXAEkAK6gMWOgS4AIxbFfLuKZCFoALZ8BRoDs3AZgHOAs+tig92gNqCFAQBGqQ2oeI1wAagVYDTFjBhVygLmoEAWWshZbcgBZ4FrdEFnAJe2iEqA1NFAHU2Cz5AFhQgbaGYBQVJCrRKAdwZaIgCKAdJhqgctAlwyW5ANmShlDUqzi2Au8YbtrssKIWCBIOkXzrVgSCpWBb8IA0C+idAaZQFXaqvdgvKghdlrXEFoBTKvxS4W9BlempXqYukIxs/7F3QbVUKBdAAV9liKdkSvM7KgQKlO6A0elc6eJ1VpDC1Ao3Atj9mlSKvTVQypgAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAABGCAYAAADFJBSLAAAEGUlEQVR4AZyYy29VVRTG995FpZhQFDUWo8USO5CRpsaBMfExccbAf0DHGhMHTJw40CGO0BATBzLVxMQ4MjGmDg3PBCiUUKAESAmUN5RXe/h+6559u/c5595zL835da31rW9/ezsxQPjn553Fvs++Kor5XcXu3w8XDy9O9cVVfsKW9z+vSM6NvDzaSM0oISwsLKg8+RcmJiZqp1cWl10TNaOE2gvWze1x/dCZ7Gt8gfvgI9dIdrQz1F7QkQf/3fyCmX+da6IhN3y645Nc1vP9hx/7XuRm58LsyWk3s7ToFo/udXt++dN5/VRN/ebg/R9+51+/+fEdR/zs39/61ZUviki/g3EXYkPloA8/uggzej+ygH7GXjsL4Cbg5tTIjA6pnvaBJUZIF7FHB3xRS6u9IBXoi9UvKQPRGMCNA52WKYSRnzw3gubahw74aksJ9gKWgFFa92NGh65YaSygog01ZgHcxK0R5ra0LADzgdu7XYS5jSxg343VYnqjdxHmoQLazE17ewE3ATenJmZ0SPW0DywxQrqIPTrgi1pa7QWpQL//ZkEZiMYAbhzotEzhnbHguRE01z50wFdbSrAXsASM0rofMzp0xUpjARVtqDEL4CZujTC3pWUBmKfnj7sIcxtZQHHwWOHeetNFbG5JyAJavI1rC+AmsJtTm16DDqmc9sGWMtYOR1e5M1/UkmovSOZOe2i2Uwf43RzArQMcxhL829u940ZAqYIuzFfdabYXsAQLktj9yoO264p5YwG5NNyUBdhNutVeompzS14WgNcOjb3nrCK0UAso5jcVbvJdZ7XlMOtaAOIwZAF2q263AFWbbej9ywIwAk/PrGWI7bLF2hBsKWPtcPSUO/NFLanBb7vu3en/nZEsum25M19XXGvsP4El1EJ0GB3WjuSdBUTJjDpks6rNNvT+lQX0tvXe1ALs1gFvJzYUnZ8TKv+JX8UuN3nte9VvxNcl9N+p/0HsFTNiThS84KSSTouj4ry4KJjPqp4roUe7UM78L+uU+jkCFtVg4DAG/hoXe8IAHY0dc+wvEUDykkKui0viirgmLgt6oEejx0PPmTME0FyVmQU9QbHekA7xQNzh5cxdApZlYnFL9Y64Kah3y0qPhxp3eAleigH3ZX4gOHRPlR4tBY0dntgvE4AID3XwkVgR9LCqHuiBHZ4YcI8A/kDkZaSC2r5f5gmyjoqnS55SHRFU4AKgh3Xl7hlVWM+SACBkgxbrBT2GlKjhIQzfKAEIYzq0UTwrYkVnBi6gxh11k7ybCdis5nnxknhB2KKsBDM/pxkfPR68nNlAwNZyiYkFRpYvSsfMTI9Gj2dcu1fFVgIY+FeIVyRsEWnPzJ4dsEOjEjpOwJQObRPbBalvqE6K18VrAjOvRMOLB40zU48BAAD//+wKgOEAAAAGSURBVAMASG4Z8mI4x74AAAAASUVORK5CYII="
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/11a_Ibuki/textures/for_modeling/stripped_birch_log.png",
 			"name": "stripped_birch_log.png",
+			"relative_path": "../textures/for_modeling/stripped_birch_log.png",
 			"folder": "",
 			"namespace": "",
 			"id": "2",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 16,
 			"uv_width": 16,
@@ -6668,9 +7581,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -6679,16 +7595,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "87789493-101e-d836-d1bf-45fcf55aa08a",
-			"relative_path": "../textures/for_modeling/stripped_birch_log.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAjhJREFUOE9lk7uS00AQRa9mRk9Lltdr17K8Ar5sExJiPoaEKkJSAgj4GAIKal279tqW5NFoNJKobiHz2E4kTdec7r595X16dzNcrpYI4wgyDNA1Fk1t+FtFIYZh4LO/g/K77QPiJIY3AbSusXp6dQYkiznQD4DwoA/FowIE1E7A+/zhzZCnEQhAMZ9ncM6BAJ7nQUgJZxq0pkGQJlxgX1okqh8BXz++HXp4ELYCghknpO8jyTMGCiVhK/0IEKseta7HDgYAC+rCCQbE6YyrTTEBpK/4iLS5/7mBax28L+9fD7308ezFFU77I0PW64zf8ydrHDf3DKTou45H2h1qUAflsRwByTxDvsz5UrpcsPJt3cC1FmEcQ/gKfetQVyeGEQD2xCOzBmkkUBUlkiRmQGdbdK6DNYYvEMBUGuEshjEOSgw4bB/GESbA/eYO5AfuoO/RGgsVBRhcx+1TddqMVAqdczgdChSVGQEXWcCryeYJ4kjBkwJNqf8BUEfxIkPvOt7M7Y8d3Ok4biEOJO8+W60xSyPuoC5KrubaFkEY8kiHhz2uX73E7bfvPD8DyIlkSQpKDuQ+D9D7IwMaXZ+3sLvbIrvIUZ4c6sOW7/wBBOOqrp9fwhoLV9fwwxC6KPmcxCQdJq/QszV6XKOa5WdrLhcx7G9bz5Y5q082nrwwCVocRzCLSC+rVco/jRCCE0EUwU9C9F0PWxsopdhIFPQ3ngGswWLFCYI0lYaUkjfAFYRgUckb/18epI9fq35yChHK21oAAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACD0lEQVR4AVRSu5KUQBQ9dNMMMOPs6D6+z9TU0Ej/wtjYxMDE0szMKv0DA0vdtZipcRYYBmjAey4w1lLc1+m+t+/LvHv9dPj89vnw5f2L4evHlypn+9unV2eM5zPxnH4f3jwbDKZvv9tP2ijsIsLQ9WrU1UklMVWEXV49AaIlTBinYo7/9vcfdK0fDeGBNbBhiGS1fIAf/fldGCcBCm+hn0T03sM6Bzoaa2HC6Uwv/GcD1aaEaU9H+FOJNE0IKUWSPh1JCkysqxvVrq8foTpW8JKtCbpWweXjC6RhD6ZnXIjDXab4LF28UNtYiyzLkUwPGqKrZUyhdHOzVhnFMfJsp/UzIMG5mdSZQbi8kBKFRfJi9uuOuFIvqVHppylQbyT9dLNG7Qds1gtC8OUBmgEtRqQkzbXTgTYDdu1U6ipGGDktYbBuDOAkg2RzBZuueB9zympMjCXNfaCsZJTsn04hP+SAjIR3jcwdMqO+79A1LZq6Jqx0+/0HjIyVUgFhxnOMMnvRsVqPo+QC0SbNi2XFkXaxP4AbWP3dopWyzj0gePtzh8AEaOsWQRDoMkG+qiiFA9yVvPQ67kRK5hYbJ1tHZ+4Ab9XFEfV9Dr5soxCslziJK325GbPkBLQHnCUP2XEGaWTDaLNpKpP4HKTvOpCIz2RYC43ttgCDBMYglKyMs5oF5HOy2rMjl+meTRecY/wHAAD//xYFt4wAAAAGSURBVAMAbi7zfU5tP0sAAAAASUVORK5CYII="
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/11a_Ibuki/textures/for_modeling/stripped_birch_log_top.png",
 			"name": "stripped_birch_log_top.png",
+			"relative_path": "../textures/for_modeling/stripped_birch_log_top.png",
 			"folder": "",
 			"namespace": "",
 			"id": "3",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 16,
 			"uv_width": 16,
@@ -6697,9 +7613,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -6708,16 +7627,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "6a4ea4bf-3b5b-c1c0-e454-790bc7538c9b",
-			"relative_path": "../textures/for_modeling/stripped_birch_log_top.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAVpJREFUOE+Fk89Kw0AQxiegYLeHFCpUeylaLQQERQ++iWefyLNv0LPP4MmDUvEQUKvUQ1Ww0By6ESpEvolfs2mSOpdNZna//c2f9foXZ4kxRlyz1gp8WGHLce5F3Lu6PE96wX5OILIz8U1ddN1sSvQ10Th8rj2GT+KB4OjkUO4e3jRWq/vprbVEbOzpmqOLPf0NDloyuL7JCCBwfNpL99rvUiI6w5dIgl1flAAptDptGX/8qBPYqwxpjN6n0vDX5XM0zgjg7Gw3VABiTEOB/rDbW2taBxDgWwVQg51gTw/BCRsOJ9LtNnMgbpy0iyJCYBrNcwQQgw8GXHxjLaRAgioB4EOMBIUUWMQyATcHEsBHsUIN2AUWMZ5FOhecheUUXsPnrI0uwX9tLHQBk8g24jBHuSBkNnTIKgU4uuz7KpLFJPItcDMnkY8J/qoHNbi9T2vAw3zGVTeXPe9fJHsOKCj3ORcAAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABfElEQVR4AWySwUrDQBCGx6Bg00MKFaq9FK0WAh7ES0++hmefyLNv4NkHqSgVAmqUeqgtWGgO3QoKNd/IhGzawJeZ/WcyO7uZ4Pb6cnV3c+VhGhaqcVsTC8IwlF584nEYH+sae3bRl1anrVTz+DZwzgnP/fBDIHnLZDz5ldHn/N+mE5lnPwoacZBwV/hWO6AAnPd7Ep+2JD6KpHPQKGwj2tG1acLjvkU7wM/cQmr1SCQXs6+ZsC5jOWj4YW2lOfgBryisCyI+cASw1vGBGLjlFkbRO6AyIhZ1ucikvb8ttA746GA5bMpaO8ChAxP1OLloHeRu0SE55FqhogBJm6AzdLNV3/sLBMuU22dXYrYzPugd4JR3YM2lpelMZ4GjoIEdAd+bA9uBAJcG3W7Tu0xiYJvpHFCFqgTAfOwae01SPLxLZEQZV9rHX+NpKmhUoDi2KGBjahfHOHMMYLyxgA58TPf6F56TF4GHwaNMR2OFdeEPhqq9J69CDjHgDv4AAAD//9vornMAAAAGSURBVAMApiwWVnGl0yUAAAAASUVORK5CYII="
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/11a_Ibuki/textures/for_modeling/oak_planks.png",
 			"name": "oak_planks.png",
+			"relative_path": "../textures/for_modeling/oak_planks.png",
 			"folder": "",
 			"namespace": "",
 			"id": "4",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 16,
 			"uv_width": 16,
@@ -6726,9 +7645,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -6737,16 +7659,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "98293d1b-2952-19d8-58d9-61f1fe8723b8",
-			"relative_path": "../textures/for_modeling/oak_planks.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAVlJREFUOE91U8FKAzEUTJCC21ZZVkR7KcVe+xN+gODFs+ClP+An9O5FvImf4LVn/8MiQtmKsuTQdgWRLfPqlNm05pLk5WXyZt7Ej++vq/Jn6ZJG0zWTPRePZfn7b3zy9u48AHAJIBj59MsladulrX0D5eA5Y3ko7Mg/311VcSL2uBAW37WCAIrBfKvg4fa8mhXr10+z9YvYfxQLW59kLZuxx1rjWBsFcH/NP12/c1x7MY5BD1JBdZ00q1Ng2SgVCWWYb/TQ0lUX/zS6MBEpGl+goGe97paQqo0fXg4MgFyhg2rA2zynVszZaIAD5Xh0eLDlCQ0gF600ABpJE+I2UhfO5p0wd/7l8aaK1VUg9p4x8kcHrALVYJcPqA+1oScIaBWg30DkX0BF1oVQ1LxBX+j/MCtrj+lx5Qpw4/z36bTVBkBe6gUaiT7Y9TcAahqo35UzebLn+hd4tgJnUgM/K1gwfwAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABxElEQVR4AXzTPWtUURDG8eGI4EaLRUQIQnBTGdTCF0S0ECGFjYWFlYXgZ/B72IidpXUKmxQ2WiwiviAKsdBcCciC0bDkbQMhbO7vJAMhRRYe5pxnZi7zn3u3zD9/PJ579nAsvnv5ZHxYR/kvnt4dl2h/neMTMdrejP+ra/F9oYlfg+V63hzttNkIUY6caTBciU73VBSNqjyEJs+dicnuaVYoSg03tqqX9WpGw/Uogz//ov/5R9Xi76XI+/zbhXj/sYlm8W+V85dvS8Gfe/Op1n/9uRxl+vxUzN6+GL3ps3Fpplfl/uj+jbh5vVdzeb919ULcuzNTpf7B7LU9BExGwpj8ohFFPkX7g0nq4RRsOF0kuidPtGURGRXySQ2pJ70FG+Hrt7uwA2esGPGSHJ9M1rS70Vdw4MWJ0Vu4cnkqeAcln7IrtXZUvwN89mB2oxIPfyrvGSGYpEx0joUGbCRB+DzQLijP6dfd+JBevf4QGLHh99Tkw2gXmRMzp0e+4MSCCRs52w1fHjvfu3eW41PBlCPaA2YIcIztzid1opw+qkvElU3YFPLguHuQJp46MVUw4iJnbFg1a/T/6Lffh1yz/+6xp3YBAAD//0lO058AAAAGSURBVAMAl6zKjJOM5rgAAAAASUVORK5CYII="
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/11a_Ibuki/textures/ex_skill_1_sketch.png",
 			"name": "ex_skill_1_sketch.png",
+			"relative_path": "../textures/ex_skill_1_sketch.png",
 			"folder": "",
 			"namespace": "",
 			"id": "5",
 			"group": "",
+			"scope": 0,
 			"width": 32,
 			"height": 192,
 			"uv_width": 32,
@@ -6755,9 +7677,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -6766,8 +7691,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "c0de2eb3-62c7-ee35-ca06-7f37beee30b2",
-			"relative_path": "../textures/ex_skill_1_sketch.png",
-			"source": "data:image/png;base64,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"
+			"source": "data:image/png;base64,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"
 		}
 	],
 	"animations": [
@@ -6779,6 +7703,8 @@
 			"length": 9.75,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -6786,27 +7712,32 @@
 			"markers": [
 				{
 					"color": 0,
-					"time": 3.15
+					"time": 3.15,
+					"name": 0
 				},
 				{
 					"color": 0,
-					"time": 6.45
+					"time": 6.45,
+					"name": 0
 				},
 				{
 					"color": 3,
-					"time": 7.5
+					"time": 7.5,
+					"name": 0
 				}
 			],
 			"animators": {
 				"5a300245-4df9-b3c7-0f75-5b8e37c7dd2f": {
 					"name": "SketchBook",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "135",
+									"x": "-135",
 									"y": "0",
 									"z": "0"
 								}
@@ -6820,7 +7751,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "110",
+									"x": "-110",
 									"y": "0",
 									"z": "0"
 								}
@@ -6834,7 +7765,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "110",
+									"x": "-110",
 									"y": "0",
 									"z": "0"
 								}
@@ -6848,7 +7779,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "105",
+									"x": "-105",
 									"y": "0",
 									"z": "0"
 								}
@@ -6862,7 +7793,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "110",
+									"x": "-110",
 									"y": "0",
 									"z": "0"
 								}
@@ -6876,7 +7807,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "110",
+									"x": "-110",
 									"y": "0",
 									"z": "0"
 								}
@@ -6890,8 +7821,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "79.96258",
-									"y": "4.92385",
+									"x": "-79.96258",
+									"y": "-4.92385",
 									"z": "-0.87038"
 								}
 							],
@@ -6904,8 +7835,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "79.91547",
-									"y": "7.38542",
+									"x": "-79.91547",
+									"y": "-7.38542",
 									"z": "-1.30962"
 								}
 							],
@@ -6918,12 +7849,12 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "165",
-									"y": "87.5",
+									"x": "-165",
+									"y": "-87.5",
 									"z": "0"
 								},
 								{
-									"x": "90",
+									"x": "-90",
 									"y": "0",
 									"z": "0"
 								}
@@ -6937,8 +7868,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "42.76806",
-									"y": "-84.26703",
+									"x": "-42.76806",
+									"y": "84.26703",
 									"z": "124.45201"
 								}
 							],
@@ -6951,8 +7882,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "113.45485",
-									"y": "9.09167",
+									"x": "-113.45485",
+									"y": "-9.09167",
 									"z": "0.01821"
 								}
 							],
@@ -6965,8 +7896,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "186.71303",
-									"y": "-75.74628",
+									"x": "-186.71303",
+									"y": "75.74628",
 									"z": "-36.54234"
 								}
 							],
@@ -6979,8 +7910,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "143.04732",
-									"y": "-25.01625",
+									"x": "-143.04732",
+									"y": "25.01625",
 									"z": "-3.92758"
 								}
 							],
@@ -6993,8 +7924,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "90.65911",
-									"y": "0.10252",
+									"x": "-90.65911",
+									"y": "-0.10252",
 									"z": "-4.89668"
 								}
 							],
@@ -7007,8 +7938,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "90.66",
-									"y": "0.1",
+									"x": "-90.66",
+									"y": "-0.1",
 									"z": "-4.9"
 								}
 							],
@@ -7021,8 +7952,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "95.64884",
-									"y": "53.66361",
+									"x": "-95.64884",
+									"y": "-53.66361",
 									"z": "-16.14077"
 								}
 							],
@@ -7035,8 +7966,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "80.06326",
-									"y": "18.61766",
+									"x": "-80.06326",
+									"y": "-18.61766",
 									"z": "-145.19201"
 								}
 							],
@@ -7161,7 +8092,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-4.25",
+									"x": "4.25",
 									"y": "8.92",
 									"z": "-5"
 								},
@@ -7180,7 +8111,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "3.975",
+									"x": "-3.975",
 									"y": "10.9",
 									"z": "-5.85"
 								}
@@ -7194,7 +8125,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-0.02",
+									"x": "0.02",
 									"y": "9.9",
 									"z": "0.65"
 								}
@@ -7208,7 +8139,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "3.98",
+									"x": "-3.98",
 									"y": "8.9",
 									"z": "-5.35"
 								}
@@ -7222,7 +8153,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "0.98",
+									"x": "-0.98",
 									"y": "7.4",
 									"z": "-2.35"
 								}
@@ -7236,7 +8167,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-0.02",
+									"x": "0.02",
 									"y": "8.9",
 									"z": "-0.35"
 								}
@@ -7250,7 +8181,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-0.02",
+									"x": "0.02",
 									"y": "8.9",
 									"z": "-0.35"
 								}
@@ -7264,7 +8195,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "2.98",
+									"x": "-2.98",
 									"y": "7.9",
 									"z": "-3.35"
 								}
@@ -7278,7 +8209,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "5.98",
+									"x": "-5.98",
 									"y": "7.9",
 									"z": "-4.6"
 								}
@@ -7293,13 +8224,15 @@
 				"5024ed51-1537-bbca-a22f-ec57e5b62148": {
 					"name": "Crayon3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-20",
-									"y": "-35",
+									"x": "20",
+									"y": "35",
 									"z": "0"
 								}
 							],
@@ -7312,7 +8245,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-7",
+									"x": "7",
 									"y": "13.75",
 									"z": "-1.75"
 								}
@@ -7327,13 +8260,15 @@
 				"e36149cf-4ba5-0d1a-fd74-bf5c8c2adaa8": {
 					"name": "Crayon1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
 									"x": "0",
-									"y": "65",
+									"y": "-65",
 									"z": "0"
 								}
 							],
@@ -7346,7 +8281,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "7.5",
+									"x": "-7.5",
 									"y": "12",
 									"z": "-1.75"
 								}
@@ -7361,13 +8296,15 @@
 				"44415678-9b77-1ce9-7651-dd5a0e9fd77c": {
 					"name": "Crayon2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
 									"x": "0",
-									"y": "-50",
+									"y": "50",
 									"z": "0"
 								}
 							],
@@ -7380,7 +8317,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-7.5",
+									"x": "7.5",
 									"y": "12",
 									"z": "-2"
 								}
@@ -7395,6 +8332,8 @@
 				"9ae8784f-4dfb-462c-c774-7b8bb3aa05fc": {
 					"name": "NoticeEffect1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -7476,6 +8415,8 @@
 				"c417e9f0-bf79-56a3-9e38-4fc80b64d114": {
 					"name": "NoticeEffect2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -7572,6 +8513,8 @@
 				"1aab1635-e342-26c6-900f-5fe6badd532c": {
 					"name": "NoticeEffect3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -7653,6 +8596,8 @@
 				"408197dc-fb8a-f574-11ea-ce9e7e47c647": {
 					"name": "DrawingEffect1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -7809,6 +8754,8 @@
 				"42136d2a-38b4-bc0d-4c74-dcaae04019a6": {
 					"name": "DrawingEffect2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -7965,6 +8912,8 @@
 				"41285ab9-0813-54ac-4b7b-c81186372b3e": {
 					"name": "DrawingEffect3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -8121,6 +9070,8 @@
 				"5b9c08f1-ab07-ab9f-c663-64b1181115d5": {
 					"name": "DrawingEffect4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -8277,6 +9228,8 @@
 				"9f83cd7c-0c27-7491-ed9b-b98f7e436bdf": {
 					"name": "DrawingEffect5",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -8433,6 +9386,8 @@
 				"a96b05f0-dc30-28fe-31f7-aedaa3ec9147": {
 					"name": "SketchBookEffects2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -8504,6 +9459,8 @@
 				"a9159677-a2a0-5439-e415-09dd2349e95d": {
 					"name": "SpinEffects",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -8570,6 +9527,8 @@
 				"6f802a00-a178-6965-d743-91531e919260": {
 					"name": "FlowerEffectArea1Scale",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -8666,6 +9625,8 @@
 				"2510ea60-7f40-2638-eac3-45c5ae6870dc": {
 					"name": "FlowerEffectArea3Scale",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -8762,6 +9723,8 @@
 				"9e048ef9-de6e-77d2-f4bd-cf320a33c8ba": {
 					"name": "TransitionOpacity",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -8835,6 +9798,8 @@
 			"length": 8,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -8843,6 +9808,8 @@
 				"2510ea60-7f40-2638-eac3-45c5ae6870dc": {
 					"name": "FlowerEffectArea3Scale",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -8939,6 +9906,8 @@
 				"9e048ef9-de6e-77d2-f4bd-cf320a33c8ba": {
 					"name": "TransitionOpacity",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -9005,6 +9974,8 @@
 				"5970fd28-3c7a-2e4e-c250-3e140e7f2ce5": {
 					"name": "NoticeEffect2_1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -9086,6 +10057,8 @@
 				"abbda2c1-f429-e163-d877-bbd929945115": {
 					"name": "NoticeEffect2_2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -9167,6 +10140,8 @@
 				"556aed6a-e457-14d7-6f35-5abd4a1fd304": {
 					"name": "NoticeEffect2_3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -9248,6 +10223,8 @@
 				"d5433877-607c-0517-16b9-84cabfa4e638": {
 					"name": "NoticeEffect2_4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -9329,6 +10306,8 @@
 				"548d2ca0-55c0-e11a-8143-8aec71d93442": {
 					"name": "NoticeEffect2_6",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",

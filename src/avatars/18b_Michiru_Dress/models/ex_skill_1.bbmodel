@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "Smoke1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, 0, -1.5],
 			"to": [1.5, 7, 1.5],
@@ -33,8 +34,8 @@
 			"faces": {
 				"north": {
 					"uv": [0.5, 0, 12.5, 28],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"east": {
 					"uv": [0.5, 0, 12.5, 28],
@@ -42,8 +43,8 @@
 				},
 				"south": {
 					"uv": [0.5, 0, 12.5, 28],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"west": {
 					"uv": [0.5, 0, 12.5, 28],
@@ -64,10 +65,10 @@
 		{
 			"name": "Smoke1Top",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, 6.625, -1.5],
 			"to": [1, 7, 1.5],
@@ -108,10 +109,10 @@
 		{
 			"name": "Smoke2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, 0, -1.5],
 			"to": [1.5, 7, 1.5],
@@ -122,8 +123,8 @@
 			"faces": {
 				"north": {
 					"uv": [0.5, 0, 12.5, 28],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"east": {
 					"uv": [0.5, 0, 12.5, 28],
@@ -131,8 +132,8 @@
 				},
 				"south": {
 					"uv": [0.5, 0, 12.5, 28],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"west": {
 					"uv": [0.5, 0, 12.5, 28],
@@ -153,10 +154,10 @@
 		{
 			"name": "Smoke2Top",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, 6.625, -1.5],
 			"to": [1, 7, 1.5],
@@ -197,10 +198,10 @@
 		{
 			"name": "Smoke3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, 0, -1.5],
 			"to": [1.5, 7, 1.5],
@@ -211,8 +212,8 @@
 			"faces": {
 				"north": {
 					"uv": [0.5, 0, 12.5, 28],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"east": {
 					"uv": [0.5, 0, 12.5, 28],
@@ -220,8 +221,8 @@
 				},
 				"south": {
 					"uv": [0.5, 0, 12.5, 28],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"west": {
 					"uv": [0.5, 0, 12.5, 28],
@@ -242,10 +243,10 @@
 		{
 			"name": "Smoke3Top",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, 6.625, -1.5],
 			"to": [1, 7, 1.5],
@@ -286,10 +287,10 @@
 		{
 			"name": "Smoke4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, 0, -1.5],
 			"to": [1.5, 7, 1.5],
@@ -300,8 +301,8 @@
 			"faces": {
 				"north": {
 					"uv": [0.5, 0, 12.5, 28],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"east": {
 					"uv": [0.5, 0, 12.5, 28],
@@ -309,8 +310,8 @@
 				},
 				"south": {
 					"uv": [0.5, 0, 12.5, 28],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"west": {
 					"uv": [0.5, 0, 12.5, 28],
@@ -331,10 +332,10 @@
 		{
 			"name": "Smoke4Top",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, 6.625, -1.5],
 			"to": [1, 7, 1.5],
@@ -375,10 +376,10 @@
 		{
 			"name": "CameraHead",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 19, -70],
 			"to": [4, 27, -60],
@@ -404,13 +405,13 @@
 				},
 				"up": {
 					"uv": [23, 10, 31, 0],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [31, 10, 39, 0],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				}
 			},
 			"type": "cube",
@@ -419,10 +420,10 @@
 		{
 			"name": "CameraStand1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, -0.5, -65.5],
 			"to": [0.5, 19.5, -64.5],
@@ -449,13 +450,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 180,
-					"texture": null
+					"texture": null,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [51, 2, 52, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				}
 			},
 			"type": "cube",
@@ -464,10 +465,10 @@
 		{
 			"name": "CameraStand2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, -0.5, -65.5],
 			"to": [0.5, 19.5, -64.5],
@@ -494,13 +495,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 180,
-					"texture": null
+					"texture": null,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [51, 2, 52, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				}
 			},
 			"type": "cube",
@@ -509,10 +510,10 @@
 		{
 			"name": "CameraStand3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, -0.5, -65.5],
 			"to": [0.5, 19.5, -64.5],
@@ -539,13 +540,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 180,
-					"texture": null
+					"texture": null,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [51, 2, 52, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				}
 			},
 			"type": "cube",
@@ -554,10 +555,10 @@
 		{
 			"name": "CameraStand4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, -0.5, -65.5],
 			"to": [0.5, 19.5, -64.5],
@@ -584,13 +585,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 180,
-					"texture": null
+					"texture": null,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [51, 2, 52, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				}
 			},
 			"type": "cube",
@@ -599,10 +600,10 @@
 		{
 			"name": "Transition",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, -0.5, 0],
 			"to": [0.5, 0.5, 0],
@@ -642,10 +643,10 @@
 		{
 			"name": "Smoke1Shine1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.75, -2.5, 1.5],
 			"to": [-1.25, 2.5, 1.5],
@@ -685,10 +686,10 @@
 		{
 			"name": "Smoke1Shine2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, -0.25, 1.5],
 			"to": [1, 0.25, 1.5],
@@ -728,10 +729,10 @@
 		{
 			"name": "Smoke2Shine1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.75, 4.5, 1.5],
 			"to": [-1.25, 9.5, 1.5],
@@ -771,10 +772,10 @@
 		{
 			"name": "Smoke2Shine2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 6.75, 1.5],
 			"to": [1, 7.25, 1.5],
@@ -814,10 +815,10 @@
 		{
 			"name": "Smoke3Shine1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.25, -2.5, 1.5],
 			"to": [1.75, 2.5, 1.5],
@@ -857,10 +858,10 @@
 		{
 			"name": "Smoke3Shine2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -0.25, 1.5],
 			"to": [4, 0.25, 1.5],
@@ -900,10 +901,10 @@
 		{
 			"name": "Smoke4Shine1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.75, 4.5, 1.5],
 			"to": [-1.25, 9.5, 1.5],
@@ -943,10 +944,10 @@
 		{
 			"name": "Smoke4Shine2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 6.75, 1.5],
 			"to": [1, 7.25, 1.5],
@@ -986,10 +987,10 @@
 		{
 			"name": "Smoke1CylinderShine",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, -0.5, -1.5],
 			"to": [1.5, 0.5, 1.5],
@@ -1030,10 +1031,10 @@
 		{
 			"name": "Smoke2CylinderShine",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, -0.5, -1.5],
 			"to": [1.5, 0.5, 1.5],
@@ -1074,10 +1075,10 @@
 		{
 			"name": "Smoke3CylinderShine",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, -0.5, -1.5],
 			"to": [1.5, 0.5, 1.5],
@@ -1118,10 +1119,10 @@
 		{
 			"name": "Smoke4CylinderShine",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, -0.5, -1.5],
 			"to": [1.5, 0.5, 1.5],
@@ -1162,10 +1163,10 @@
 		{
 			"name": "Shine1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, 26.5, -6.5],
 			"to": [-2.25, 31.5, -6.5],
@@ -1204,10 +1205,10 @@
 		{
 			"name": "Shine2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5, 28.75, -6.5],
 			"to": [0, 29.25, -6.5],
@@ -1246,10 +1247,10 @@
 		{
 			"name": "HitEffect",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8, 25, -63],
 			"to": [8, 33, -63],
@@ -1288,10 +1289,10 @@
 		{
 			"name": "OuterTL",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-16, -16, 1],
 			"to": [0, 0, 1],
@@ -1330,10 +1331,10 @@
 		{
 			"name": "OuterTR",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0, -16, 1],
 			"to": [16, 0, 1],
@@ -1372,10 +1373,10 @@
 		{
 			"name": "OuterBL",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-16, 0, 1],
 			"to": [0, 16, 1],
@@ -1414,10 +1415,10 @@
 		{
 			"name": "OuterBR",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0, 0, 1],
 			"to": [16, 16, 1],
@@ -1456,10 +1457,10 @@
 		{
 			"name": "InnerTL",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6, -6, 1],
 			"to": [0, 0, 1],
@@ -1498,10 +1499,10 @@
 		{
 			"name": "InnerTR",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0, -6, 1],
 			"to": [6, 0, 1],
@@ -1540,10 +1541,10 @@
 		{
 			"name": "InnerBL",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6, 0, 1],
 			"to": [0, 6, 1],
@@ -1582,10 +1583,10 @@
 		{
 			"name": "InnerBR",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0, 0, 1],
 			"to": [6, 6, 1],
@@ -1624,10 +1625,10 @@
 		{
 			"name": "SplitHT",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, -0.5, 1],
 			"to": [0.5, 0.5, 1],
@@ -1666,10 +1667,10 @@
 		{
 			"name": "SplitHB",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.75, -0.5, 1],
 			"to": [0.25, 0.5, 1],
@@ -1708,10 +1709,10 @@
 		{
 			"name": "SplitVL",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.75, -0.5, 1],
 			"to": [0.25, 0.5, 1],
@@ -1750,10 +1751,10 @@
 		{
 			"name": "SplitVR",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.75, -0.5, 1],
 			"to": [0.25, 0.5, 1],
@@ -1792,10 +1793,10 @@
 		{
 			"name": "Battery",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 0, 1],
 			"to": [0, 4, 1],
@@ -1834,10 +1835,10 @@
 		{
 			"name": "Flash",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0, 0, 1],
 			"to": [4, 4, 1],
@@ -1874,256 +1875,703 @@
 			"uuid": "cc660df5-4d54-0775-8c3b-c53182ce66c5"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "Smokes",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "5aef31f2-fe3b-ebcc-b166-cf7de03c01eb",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": true,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": false,
 			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke1",
+			"uuid": "1b42e546-eb86-8282-7af3-f6baab9d1a44",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke1Camera",
+			"uuid": "670156b9-8ad2-f02c-777a-8a6c128e2d66",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1.5, 0, 1.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke1Shine",
+			"uuid": "d8adf8c3-3991-332d-5a67-56e1fbe7546e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1.5, 0, 1.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke1CylinderShine",
+			"uuid": "25272653-73c6-5f70-a764-11df58ebc3f3",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke2",
+			"uuid": "318d7ec4-4ac7-8cdc-bf51-8f5f1acf0dcf",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke2Camera",
+			"uuid": "015aecfc-d09e-476d-6441-7c84673b7a98",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1.5, 7, 1.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke2Shine",
+			"uuid": "311488c1-26dd-3725-1645-69ac71459ffe",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1.5, 7, 1.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke2CylinderShine",
+			"uuid": "9cd38627-8965-730b-aa1a-e95e4f6a7e22",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke3",
+			"uuid": "68c4e0f6-ca11-e1eb-43f1-490ba8ac5000",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke3Camera",
+			"uuid": "032b84e5-b31d-cd51-29f7-11ed9a6c8062",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [1.5, 0, 1.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke3Shine",
+			"uuid": "6f779c13-3489-5d9f-23c4-7a0bbba7c969",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [1.5, 0, 1.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke3CylinderShine",
+			"uuid": "8b4bd171-cadc-da24-3dd3-a48785a0b1a1",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke4",
+			"uuid": "21a4bd3f-1f2d-e4cb-edac-bca32e3b19cf",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 3.5, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke4Camera",
+			"uuid": "6fd82348-2e98-680c-6a93-d5a1e152b86d",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1.5, 7, 1.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke4Shine",
+			"uuid": "7936801a-b8fa-4cec-9775-16f44898e1f1",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1.5, 7, 1.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Smoke4CylinderShine",
+			"uuid": "ee67ade2-4589-c5a6-8e3b-995f302571bd",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "StandCamera",
+			"uuid": "3c33aa61-f876-8a32-e38c-ca3951bf2bab",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, -65],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "HitEffect",
+			"uuid": "63a3c9bc-5c47-5783-0973-7f3b1c825746",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 27, -63],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "HitEffectInner",
+			"uuid": "2e53f622-2636-d147-2eb1-203b43a05485",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 27, -63],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "HeadShine",
+			"uuid": "ac0f71c1-ea7e-bd1e-db5a-d0298b6ee2af",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-2.5, 29, -6.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "ShineInner",
+			"uuid": "d249ad44-27c0-fe47-0d7d-e0b2f4052891",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-2.5, 29, -6.5],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Gui",
+			"uuid": "36a21a4f-11e8-3123-f573-02ed06aa7929",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "CameraGui",
+			"uuid": "118f8e9a-539e-7290-1179-f5f04b7cdba3",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 1],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Transition",
+			"uuid": "8e4df777-5ba6-bb35-cb43-ef56e65e339b",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "TransitionAnchor",
+			"uuid": "823fcbef-7a1d-1c43-447f-847df0c7c103",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "5aef31f2-fe3b-ebcc-b166-cf7de03c01eb",
+			"isOpen": true,
 			"children": [
 				{
-					"name": "Smoke1",
-					"origin": [0, 3.5, 0],
-					"color": 0,
 					"uuid": "1b42e546-eb86-8282-7af3-f6baab9d1a44",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": false,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"040121c1-b420-7e22-eeee-26402dcb62a9",
 						"4aceee44-a1cb-3ad9-7425-22f70457d132",
 						{
-							"name": "Smoke1Camera",
-							"origin": [-1.5, 0, 1.5],
-							"color": 0,
 							"uuid": "670156b9-8ad2-f02c-777a-8a6c128e2d66",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": false,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								{
-									"name": "Smoke1Shine",
-									"origin": [-1.5, 0, 1.5],
-									"color": 0,
 									"uuid": "d8adf8c3-3991-332d-5a67-56e1fbe7546e",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": false,
-									"autouv": 0,
-									"selected": false,
 									"children": ["ca228c6e-fa81-8f29-570e-5c00b20b3779", "e472073d-fe51-6eea-8036-aabf031f84ed"]
 								}
 							]
 						},
 						{
-							"name": "Smoke1CylinderShine",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "25272653-73c6-5f70-a764-11df58ebc3f3",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": false,
-							"autouv": 0,
-							"selected": false,
 							"children": ["419e2d25-4f48-fd99-00f5-707fc30ec70d"]
 						}
 					]
 				},
 				{
-					"name": "Smoke2",
-					"origin": [0, 3.5, 0],
-					"color": 0,
 					"uuid": "318d7ec4-4ac7-8cdc-bf51-8f5f1acf0dcf",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": false,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"c6127d0b-f1db-5d1d-f757-701db35a2998",
 						"849e45c0-420e-cf8e-f58c-e46fbcdafcce",
 						{
-							"name": "Smoke2Camera",
-							"origin": [-1.5, 7, 1.5],
-							"color": 0,
 							"uuid": "015aecfc-d09e-476d-6441-7c84673b7a98",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": false,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								{
-									"name": "Smoke2Shine",
-									"origin": [-1.5, 7, 1.5],
-									"color": 0,
 									"uuid": "311488c1-26dd-3725-1645-69ac71459ffe",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": false,
-									"autouv": 0,
-									"selected": false,
 									"children": ["4db658ac-9c38-2ab2-b60d-210799ada39d", "fdbfeaac-a9fc-31b2-263d-2469e6e42478"]
 								}
 							]
 						},
 						{
-							"name": "Smoke2CylinderShine",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "9cd38627-8965-730b-aa1a-e95e4f6a7e22",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": false,
-							"autouv": 0,
-							"selected": false,
 							"children": ["a90672f9-5bbc-83dc-e6b0-990716d3e662"]
 						}
 					]
 				},
 				{
-					"name": "Smoke3",
-					"origin": [0, 3.5, 0],
-					"color": 0,
 					"uuid": "68c4e0f6-ca11-e1eb-43f1-490ba8ac5000",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": false,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"4e4165e8-2a08-0938-29cb-dd1e021abec5",
 						"9e377907-a901-a0ad-89ca-8b9b496ca292",
 						{
-							"name": "Smoke3Camera",
-							"origin": [1.5, 0, 1.5],
-							"color": 0,
 							"uuid": "032b84e5-b31d-cd51-29f7-11ed9a6c8062",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": false,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								{
-									"name": "Smoke3Shine",
-									"origin": [1.5, 0, 1.5],
-									"color": 0,
 									"uuid": "6f779c13-3489-5d9f-23c4-7a0bbba7c969",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": false,
-									"autouv": 0,
-									"selected": false,
 									"children": ["204ca504-52ea-ea1f-230e-5037688ff805", "b515f0e1-798a-965d-f2f3-bfa625e5e5c1"]
 								}
 							]
 						},
 						{
-							"name": "Smoke3CylinderShine",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "8b4bd171-cadc-da24-3dd3-a48785a0b1a1",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": false,
-							"autouv": 0,
-							"selected": false,
 							"children": ["6a41c2bf-87f6-45b7-25d8-3e11be5f867b"]
 						}
 					]
 				},
 				{
-					"name": "Smoke4",
-					"origin": [0, 3.5, 0],
-					"color": 0,
 					"uuid": "21a4bd3f-1f2d-e4cb-edac-bca32e3b19cf",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": false,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"421ad643-7501-efcb-daad-68ca628ee1b4",
 						"e6de7bdf-6ccb-3273-48a2-9d3c93025584",
 						{
-							"name": "Smoke4Camera",
-							"origin": [-1.5, 7, 1.5],
-							"color": 0,
 							"uuid": "6fd82348-2e98-680c-6a93-d5a1e152b86d",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": false,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								{
-									"name": "Smoke4Shine",
-									"origin": [-1.5, 7, 1.5],
-									"color": 0,
 									"uuid": "7936801a-b8fa-4cec-9775-16f44898e1f1",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": false,
-									"autouv": 0,
-									"selected": false,
 									"children": ["0c177d04-8f5f-a7b5-1fb1-bb080d98c560", "84930dd0-b2e9-53fa-39ea-ffb38795df7f"]
 								}
 							]
 						},
 						{
-							"name": "Smoke4CylinderShine",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "ee67ade2-4589-c5a6-8e3b-995f302571bd",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": false,
-							"autouv": 0,
-							"selected": false,
 							"children": ["511c053c-201c-7380-684a-d948d9a9a8b9"]
 						}
 					]
@@ -2131,43 +2579,16 @@
 			]
 		},
 		{
-			"name": "StandCamera",
-			"origin": [0, 0, -65],
-			"color": 0,
 			"uuid": "3c33aa61-f876-8a32-e38c-ca3951bf2bab",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "HitEffect",
-					"origin": [0, 27, -63],
-					"color": 0,
 					"uuid": "63a3c9bc-5c47-5783-0973-7f3b1c825746",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "HitEffectInner",
-							"origin": [0, 27, -63],
-							"color": 0,
 							"uuid": "2e53f622-2636-d147-2eb1-203b43a05485",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["cb66e3d6-5e8c-1141-8b31-fe05b22cabbf"]
 						}
 					]
@@ -2180,59 +2601,23 @@
 			]
 		},
 		{
-			"name": "HeadShine",
-			"origin": [-2.5, 29, -6.5],
-			"color": 0,
 			"uuid": "ac0f71c1-ea7e-bd1e-db5a-d0298b6ee2af",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "ShineInner",
-					"origin": [-2.5, 29, -6.5],
-					"color": 0,
 					"uuid": "d249ad44-27c0-fe47-0d7d-e0b2f4052891",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["f934b326-4a72-c26b-e54a-31fe50404809", "4c02c891-345a-51d9-0b0d-45b4e36828fd"]
 				}
 			]
 		},
 		{
-			"name": "Gui",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "36a21a4f-11e8-3123-f573-02ed06aa7929",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "CameraGui",
-					"origin": [0, 0, 1],
-					"color": 0,
 					"uuid": "118f8e9a-539e-7290-1179-f5f04b7cdba3",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"fe76a588-eeee-5f16-b70f-005784733188",
 						"0adce4fb-3f67-1890-6af4-41287341afd1",
@@ -2251,31 +2636,13 @@
 					]
 				},
 				{
-					"name": "Transition",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "8e4df777-5ba6-bb35-cb43-ef56e65e339b",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["0dab3602-9723-ae75-ffc7-05dea54bae47"]
 				},
 				{
-					"name": "TransitionAnchor",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "823fcbef-7a1d-1c43-447f-847df0c7c103",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
@@ -2283,12 +2650,13 @@
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/18b_Michiru_Dress/textures/ex_skill_1.png",
 			"name": "ex_skill_1.png",
+			"relative_path": "../textures/ex_skill_1.png",
 			"folder": "",
 			"namespace": "",
 			"id": "3",
 			"group": "",
+			"scope": 0,
 			"width": 56,
 			"height": 45,
 			"uv_width": 56,
@@ -2297,9 +2665,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -2308,8 +2679,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "ae06d2ca-1ee8-178c-f8c7-f2016ec6fb4f",
-			"relative_path": "../textures/ex_skill_1.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAtCAYAAAD7nag2AAAAAXNSR0IArs4c6QAABMFJREFUaEPdmU9oVEccx3+TFt00wd20JLEYg7qCGBOjbBBCmxxiRC9qToIaoiD2pgfpP5ASciioLT3UoxcPbRaCh6A9FIw5GMRcAob4h1z8kwTcBE12bWxSpU75Df29zs7Om3nv7dtn0ncZ9r15v5nPfOf3Z94y/hfn4PNiaxnz8srg9/v44sspbdfKT+rFfdPzrvM3fY2DNtFe90+TznvsfQL2DszB7OxswQLU1taKe+Pj454Afzm3jT/JLMPm9THA9rv+Z9EANjc3cxNAU1OTAFlYWICZmRkHtK6uDlpaWqCvr694wEsXfve9Rb/+9oCngbu7u4VtN4DBwUEB5bYIoSh4e/hP34DtHR95AvSioA6+qqoKkslkOAqWEhAVNAGggiX3QR1g22fljj+M3FkqCAJ+FDRtwUh8UAVEOIRqalwDE/ffAP2WKb0CevHBMBSkdKRNEzrAbO5vWF7iECtnkIh/IICDANp8sO9ITenzYCkVjCrR9/b2cvTnrq4uwFaOvkwGlH1PdTxZxfm7h8VjTNRkVG1JHUy8uguTMm4pmw2qdkx20pNbRR7F/ImtFtDN93S+OPXbbjHnH27FHKMYMIaGhiCVSolBvtq7LKqK4Qd6wI4dMVF5kI2xsTHo7OyEiYkJxybawMtm59qDhIjGWAFhm8lk/qtkSEEEVH3PzRcJ8Mv+nGMUwXCSNMiPx+LOxM52LMLBXa/FZG/cq4CfhyuBAG02ZMBHs/npd3stF3Y8A+qip0lBeXIEpgI+fr4EV07OQd036wXgzMUMnL5aA1s+LRcK2myEBoiG1Pznlg91CkYBuOnj/KLr6TwTCo7mGsXuoV2k3aLaSOByUwZUtyb9pi2KCh7a9Tpvi16/V5GnoMkGKUhBaTl5CgYGBqAn9YdIMeifk2Vtwv/Rh7ENFZCMUnChYCMD4kqT/6DfoBLyFpWDCwUbnCjaIEBa6zfJHkin03Biz1tn+REQgxOOja1rmqA3bKWanCbIqNr6SRMmG3KawN0wMr1OTLNt4ytnkaiC8VzJ2Eq1isVySB1iLJvN8kQikRfa+K+XhaOw42cKThz4THffj3vo+oZeqiFgsj0H8XgccrkcyJAIwY82AEs/zINU79NCuC2GH2jjiT5IqWZTEAHFxP+FJDi6h63axw+Q2tcXoC5dqAY/3xYDVjMK8GErvONfQFl6Z14XE6DcUVU5KKRvQNtAqGB96wuorq52/ExWSYUg4FLAoc2SAGKQURfCDVLth8rRFUbQMQIG+ei0t2G/iKI6pb1Cyv5YLGTonw35Cw5lG8pcPzzJEdK03YsFI9vGNBHkw68N0ObDUT4P9GV7VQEujE3xRONG7aJm709DVaq+MJhwzhnz9v9ElGrpxmKcm/98CRsk6vEEYNgQJtX+14BRw4lUFKWCKxLQNiljnpMCkc2OzU3U99X+bs+tCtomlldfKkDyJGx2VjVgsXDieKVE+xWhoHByxqypyMs2DwxoS8S21TdtUZtt23PTtrUBO6cV2yDFABajXrE+GRlgkAX0o1zBWVMpIa3/tftR0DaY9vxoCR4Fh2qfpaUV0KZAMc+9+pE8hm3BVfVXDKDN5why1QDKE/UKJ+dDtzy4YhQkQD9wQQD/AVUwHnnFXx51AAAAAElFTkSuQmCC"
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAtCAYAAAD7nag2AAAFpElEQVR4AcyZT2gcdRTH32yhTbCSjRJTJfUfiFQNUQMqaj2kkVJE3IOIVm8qHkTB0upBJYh4kIpCPXrwYGzAU8CTNlaiKCIJbZJGURNFDdgtSnahklhpp/sZ9i1vfzszOzO7mzTku+//+73v7zeT30Jy/n++nxaS8GfyrQf98QM3h4IYiIsnXEa0j0pbl7PGRutjn5yRg0fLDTj8RZcQSzrP2X/+kN9Or4tKW9dRggwZR2BwcFBGR0dleHhY+vv7axgYGJBCoWDnzKznDr/3maRF0tWaEVhYWBAwOzsrxWKxBuzJycmky8Tm5e656wFJi9iOJsjwU1NTwsCWwMrKikCADeC07Olxmpxq207QzNN2FQIM7BLADwE2wCWPjZ8NaMdAoe/g7vu6RdHKIgzKadnTgwCnCgGIclruJnCqbEAra2ttA0GIff3NmpTK5wWJrclpJQSASwC7UCgE7x9kIW03gU1hA5Kut/3Ka+WGHV2i0tY1ECQ4eNtWWV/zBYmdFZxgHIE3HrtK3tnf04BDe9aFWNZ1bV0owYVT56Sr2xOkTU6rM2SnCTDTiXP3CnenSnyKOoL6OCLzPVuC95BEbKSCbwxgaGjIHxsb88Mkcb14uYRdEKMfg/1y+ePBgFZyh9ID8G3nzf3X+WEgNjMzQytRGRjVjxpBSPDO6btH3NrE8QGGA+jadHl5ObjH1CYOqeOL6xIGYuRoD95BeqiNJA7IDeuBjxjvLPUqqVXUCOLgnbPvnmuTY2Gbrq6uBqGwRV4cOSvHDhQDoAeJ1Q/tgUkPtZH4LH4semJhY1F6HUHeOfvuuXZUE/wQQ7q4/gpfHr79Xxl4ZUcAdHxuHnZUD2JZUSPI47i7cv/puxdmZ12kXXX7dl0QC+3LvYmuEl1RI4gDUoowG58Lt6lrk//pyctk5e3TAdDxWbg1rk3u03vy8sjokOx97oiUe+8PdHzEent7EaIyMKofdQSrvlRCmzIUX8nUtk2OHN8ePJ48pug2hk4NtfRQG2nBH5OFxZ9lcXFR5ufnBR2f5lCPrhId5PhwwaOqcGPYfGMA2gzJkMQANnG+Xdx4dbeM3Nolz49sC4COjxg55FID6KE2kjggl/ivf63JxMQEqqCjEHt0V1H4cqASv6KBIMR4TPW6wNZkqSo7Bz+XwqvHvOnpaRkfH/fm5uY8lR/tu1tOvvxMEH/q3Z+814/+XsNrDx0UtYnRw9ZqD5XEAbnUffjlGW9paSkAOj5i1bFCRQNBsppdD+SUSiW/p6dHkNgW/hO3iP/x+36dr2JbP3GFzcui612p0vYIJZjkesjn8165XBakbah6A5kK6VpMyRqfxtotGwjyePJY2uvCXfSOYV/8/78NTvD8hWd9PQmkm+vaAfEqMW/iB/GefMFzc9ppNxCkOSQV2C5OzHryd+km8So/W3IfeDqkHZ6awK6eFrbFRpBjvVCCBJqhr6+vbuchydBuHSRdn+YlOXG3Nq2d++77ryQtohaJIunmQxrg7zTJ3KGX9kpa8A4yXBiUJKfUFJX3j/ywPml8eleqtLWZH1HbxNUZOgncuqy23pUqbZ+OELQLbLaeK536M3IGYt62yp9KF9fU/X2JrL8UArn8nTtFtlZGCUEQq4Tc3wrlzAwr/+qJ/XXXatUOHlEGjkKrC2x2fUBwo4bg6OLWYpPj4lliG0owy4Ct1jQlyK5nhR2OHtZ29WanR72FW29j6BpvSlATk0iGVCTJ34icthKMGtjuaFgOmxLmb4evkwSlGTElQF4UNCerzHVy9xiKwZFZYGdDt6CvhY2h63odPUG7kC6YVLZSa9foKEEWYtA4kOOCfNentp6a2iqj/G0lqIsgdeG0Mo5c2l7kNyXIglnBAnFwN4J14vKzxJoSzNI0S00nyDHHphG0p5eFHDUWkAnDphHUYRhS9U7IiwAAAP//J0SuUAAAAAZJREFUAwCzKtx/YUivkgAAAABJRU5ErkJggg=="
 		}
 	],
 	"animations": [
@@ -2320,7 +2690,9 @@
 			"override": true,
 			"length": 9.8,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -2329,13 +2701,15 @@
 				"1b42e546-eb86-8282-7af3-f6baab9d1a44": {
 					"name": "Smoke1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-114.7385774242",
-									"y": "-65.4837646126",
+									"x": "114.7385774242",
+									"y": "65.4837646126",
 									"z": "22.7445902504"
 								}
 							],
@@ -2348,8 +2722,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-150.4258954212",
-									"y": "-40.2181677868",
+									"x": "150.4258954212",
+									"y": "40.2181677868",
 									"z": "-294.238031696"
 								}
 							],
@@ -2362,7 +2736,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6.5",
+									"x": "-6.5",
 									"y": "29",
 									"z": "-2.75"
 								}
@@ -2381,7 +2755,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "11.5",
+									"x": "-11.5",
 									"y": "79",
 									"z": "-6.75"
 								}
@@ -2400,7 +2774,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "27.5",
+									"x": "-27.5",
 									"y": "0",
 									"z": "-24.75"
 								}
@@ -2465,13 +2839,15 @@
 				"318d7ec4-4ac7-8cdc-bf51-8f5f1acf0dcf": {
 					"name": "Smoke2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-302.8521284302",
-									"y": "-34.3927450996",
+									"x": "302.8521284302",
+									"y": "34.3927450996",
 									"z": "173.0674498631"
 								}
 							],
@@ -2484,8 +2860,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-310.1052527501",
-									"y": "24.9972888076",
+									"x": "310.1052527501",
+									"y": "-24.9972888076",
 									"z": "600.8894791577"
 								}
 							],
@@ -2498,7 +2874,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6.5",
+									"x": "-6.5",
 									"y": "29",
 									"z": "-2.75"
 								}
@@ -2517,7 +2893,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "5.5",
+									"x": "-5.5",
 									"y": "76",
 									"z": "-7.75"
 								}
@@ -2536,7 +2912,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "4",
+									"x": "-4",
 									"y": "0",
 									"z": "-28.75"
 								}
@@ -2601,13 +2977,15 @@
 				"68c4e0f6-ca11-e1eb-43f1-490ba8ac5000": {
 					"name": "Smoke3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-411.8270573609",
-									"y": "-18.5366622123",
+									"x": "411.8270573609",
+									"y": "18.5366622123",
 									"z": "323.3646187411"
 								}
 							],
@@ -2620,8 +2998,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-423.417241518",
-									"y": "-33.5430514711",
+									"x": "423.417241518",
+									"y": "33.5430514711",
 									"z": "709.1837621317"
 								}
 							],
@@ -2634,7 +3012,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6.5",
+									"x": "-6.5",
 									"y": "29",
 									"z": "-2.75"
 								}
@@ -2653,7 +3031,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "3.5",
+									"x": "-3.5",
 									"y": "76",
 									"z": "3.25"
 								}
@@ -2672,7 +3050,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-16.5",
+									"x": "16.5",
 									"y": "-2",
 									"z": "16.25"
 								}
@@ -2737,13 +3115,15 @@
 				"21a4bd3f-1f2d-e4cb-edac-bca32e3b19cf": {
 					"name": "Smoke4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-442.7146031117",
-									"y": "48.7508064219",
+									"x": "442.7146031117",
+									"y": "-48.7508064219",
 									"z": "461.8495844258"
 								}
 							],
@@ -2756,8 +3136,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-417.2094460153",
-									"y": "38.92413296",
+									"x": "417.2094460153",
+									"y": "-38.92413296",
 									"z": "1217.9166572063"
 								}
 							],
@@ -2770,7 +3150,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6.5",
+									"x": "-6.5",
 									"y": "29",
 									"z": "-2.75"
 								}
@@ -2789,7 +3169,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "13.5",
+									"x": "-13.5",
 									"y": "74",
 									"z": "0.25"
 								}
@@ -2808,7 +3188,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-0.5",
+									"x": "0.5",
 									"y": "23",
 									"z": "-62.75"
 								}
@@ -2873,6 +3253,8 @@
 				"3c33aa61-f876-8a32-e38c-ca3951bf2bab": {
 					"name": "StandCamera",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2892,8 +3274,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "14.877386585",
-									"y": "1.9359724558",
+									"x": "-14.877386585",
+									"y": "-1.9359724558",
 									"z": "-7.2472078555"
 								}
 							],
@@ -2906,7 +3288,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-10",
+									"x": "10",
 									"y": "0",
 									"z": "-17.5"
 								}
@@ -2925,8 +3307,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "31.8803377061",
-									"y": "6.6782042959",
+									"x": "-31.8803377061",
+									"y": "-6.6782042959",
 									"z": "-10.590614976"
 								}
 							],
@@ -2936,15 +3318,15 @@
 							"interpolation": "bezier",
 							"bezier_linked": true,
 							"bezier_left_time": [-0.06667, -0.1, -0.07667],
-							"bezier_left_value": [-6.18542, 0, -1.45539],
+							"bezier_left_value": [6.18542, 0, -1.45539],
 							"bezier_right_time": [0.06667, 0.1, 0.07667],
-							"bezier_right_value": [6.18542, 0, 1.45539]
+							"bezier_right_value": [-6.18542, 0, 1.45539]
 						},
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "78.1921524025",
+									"x": "-78.1921524025",
 									"y": "0",
 									"z": "0"
 								}
@@ -2964,12 +3346,14 @@
 				"823fcbef-7a1d-1c43-447f-847df0c7c103": {
 					"name": "TransitionAnchor",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-1.5",
+									"x": "1.5",
 									"y": "-1.5",
 									"z": "0"
 								}
@@ -2983,7 +3367,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "1.5",
+									"x": "-1.5",
 									"y": "1.5",
 									"z": "0"
 								}
@@ -2997,7 +3381,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "1.5",
+									"x": "-1.5",
 									"y": "1.5",
 									"z": "0"
 								}
@@ -3011,7 +3395,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-1.5",
+									"x": "1.5",
 									"y": "-1.5",
 									"z": "0"
 								}
@@ -3026,6 +3410,8 @@
 				"d8adf8c3-3991-332d-5a67-56e1fbe7546e": {
 					"name": "Smoke1Shine",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3121,6 +3507,8 @@
 				"311488c1-26dd-3725-1645-69ac71459ffe": {
 					"name": "Smoke2Shine",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3186,6 +3574,8 @@
 				"6f779c13-3489-5d9f-23c4-7a0bbba7c969": {
 					"name": "Smoke3Shine",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3251,6 +3641,8 @@
 				"7936801a-b8fa-4cec-9775-16f44898e1f1": {
 					"name": "Smoke4Shine",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3316,6 +3708,8 @@
 				"25272653-73c6-5f70-a764-11df58ebc3f3": {
 					"name": "Smoke1CylinderShine",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -3410,6 +3804,8 @@
 				"9cd38627-8965-730b-aa1a-e95e4f6a7e22": {
 					"name": "Smoke2CylinderShine",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -3504,6 +3900,8 @@
 				"8b4bd171-cadc-da24-3dd3-a48785a0b1a1": {
 					"name": "Smoke3CylinderShine",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -3598,6 +3996,8 @@
 				"ee67ade2-4589-c5a6-8e3b-995f302571bd": {
 					"name": "Smoke4CylinderShine",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -3692,6 +4092,8 @@
 				"d249ad44-27c0-fe47-0d7d-e0b2f4052891": {
 					"name": "ShineInner",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3810,6 +4212,8 @@
 				"2e53f622-2636-d147-2eb1-203b43a05485": {
 					"name": "HitEffectInner",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",

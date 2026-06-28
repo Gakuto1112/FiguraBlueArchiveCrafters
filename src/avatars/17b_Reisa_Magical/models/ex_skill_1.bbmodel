@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "RocketLauncherBody1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4, 20, -10],
 			"to": [7, 23, 4],
@@ -46,13 +47,13 @@
 				},
 				"up": {
 					"uv": [19, 0, 5, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [5, 2, 19, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -61,10 +62,10 @@
 		{
 			"name": "RocketLauncherBody2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.875, 19.875, -12],
 			"to": [7.125, 23.125, -10],
@@ -103,10 +104,10 @@
 		{
 			"name": "RocketLauncherTip1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4.25, 20.25, -13.5],
 			"to": [6.75, 22.75, -12],
@@ -145,10 +146,10 @@
 		{
 			"name": "RocketLauncherTip2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4, 20, -15],
 			"to": [7, 23, -13.5],
@@ -187,10 +188,10 @@
 		{
 			"name": "RocketLauncherTip3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.75, 19.75, -16],
 			"to": [7.25, 23.25, -15],
@@ -229,10 +230,10 @@
 		{
 			"name": "RocketLauncherTip4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4.25, 20.25, -18],
 			"to": [6.75, 22.75, -16],
@@ -242,8 +243,8 @@
 			"faces": {
 				"north": {
 					"uv": [0, 1, 5, 6],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [4, 1, 0, 6],
@@ -258,13 +259,13 @@
 				},
 				"up": {
 					"uv": [0, 6, 4, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [4, 6, 0, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -273,10 +274,10 @@
 		{
 			"name": "RocketLauncherTip5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4.75, 20.75, -19.5],
 			"to": [6.25, 22.25, -18],
@@ -314,10 +315,10 @@
 		{
 			"name": "RocketLauncherRear1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.75, 19.75, 4],
 			"to": [7.25, 23.25, 7],
@@ -327,33 +328,33 @@
 			"faces": {
 				"north": {
 					"uv": [10, 2, 11, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [10, 2, 11, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [10, 2, 11, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [10, 2, 11, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [10, 2, 11, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -362,10 +363,10 @@
 		{
 			"name": "RocketLauncherRear2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3.5, 19.5, 7],
 			"to": [7.5, 23.5, 8],
@@ -375,33 +376,33 @@
 			"faces": {
 				"north": {
 					"uv": [3, 0, 4, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [3, 0, 4, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 6, 6, 12],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [3, 0, 4, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [3, 0, 4, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [3, 0, 4, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -410,10 +411,10 @@
 		{
 			"name": "RocketLauncherHandle",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5, 16, -9],
 			"to": [6, 20, -7.5],
@@ -423,23 +424,23 @@
 			"faces": {
 				"north": {
 					"uv": [2, 0, 3, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [2, 0, 3, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [2, 0, 3, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [2, 0, 3, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
@@ -447,8 +448,8 @@
 				},
 				"down": {
 					"uv": [2, 0, 3, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -457,10 +458,10 @@
 		{
 			"name": "RocketLauncherRibbonCenter",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5, 19.375, -11.5],
 			"to": [6, 19.875, -10.5],
@@ -499,10 +500,10 @@
 		{
 			"name": "RocketLauncherRibbonLeft",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6, 19.45, -11.75],
 			"to": [8.5, 19.8, -10.25],
@@ -525,8 +526,8 @@
 				},
 				"west": {
 					"uv": [5, 3, 6, 6],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [5, 3, 10, 6],
@@ -543,10 +544,10 @@
 		{
 			"name": "RocketLauncherRibbonRight",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.5, 19.45, -11.75],
 			"to": [5, 19.8, -10.25],
@@ -561,8 +562,8 @@
 				},
 				"east": {
 					"uv": [5, 3, 6, 6],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [5, 3, 6, 4],
@@ -587,10 +588,10 @@
 		{
 			"name": "RocketLauncherRibbonBottomLeft1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.75, 19.55, -10.5],
 			"to": [6.5, 19.7, -7.75],
@@ -629,10 +630,10 @@
 		{
 			"name": "RocketLauncherRibbonBottomLeft2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.75, 19.55, -7.75],
 			"to": [6, 19.7, -7.25],
@@ -671,10 +672,10 @@
 		{
 			"name": "RocketLauncherRibbonBottomLeft3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.25, 19.55, -7.75],
 			"to": [6.5, 19.7, -7.25],
@@ -713,10 +714,10 @@
 		{
 			"name": "RocketLauncherRibbonBottomRight1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4.5, 19.55, -10.5],
 			"to": [5.25, 19.7, -7.75],
@@ -755,10 +756,10 @@
 		{
 			"name": "RocketLauncherRibbonBottomRight2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4.5, 19.55, -7.75],
 			"to": [4.75, 19.7, -7.25],
@@ -797,10 +798,10 @@
 		{
 			"name": "RocketLauncherRibbonBottomRight3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5, 19.55, -7.75],
 			"to": [5.25, 19.7, -7.25],
@@ -839,10 +840,10 @@
 		{
 			"name": "ChestBadgeShineEffect1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 21.875, -2.525],
 			"to": [0.25, 23.875, -2.525],
@@ -881,10 +882,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.5, 29.375, -2.525],
 			"to": [2.5, 30.375, -2.525],
@@ -923,10 +924,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.5, 28.375, -2.525],
 			"to": [-2.5, 29.375, -2.525],
@@ -965,10 +966,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5.5, 27.375, -2.525],
 			"to": [-4.5, 28.375, -2.525],
@@ -1007,10 +1008,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6.5, 25.375, -2.525],
 			"to": [-5.5, 27.375, -2.525],
@@ -1049,10 +1050,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.5, 20.375, -2.525],
 			"to": [-6.5, 25.375, -2.525],
@@ -1091,10 +1092,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6.5, 18.375, -2.525],
 			"to": [-5.5, 20.375, -2.525],
@@ -1133,10 +1134,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5.5, 17.375, -2.525],
 			"to": [-4.5, 18.375, -2.525],
@@ -1175,10 +1176,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.5, 16.375, -2.525],
 			"to": [-2.5, 17.375, -2.525],
@@ -1217,10 +1218,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.5, 15.375, -2.525],
 			"to": [2.5, 16.375, -2.525],
@@ -1259,10 +1260,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_10",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.5, 16.375, -2.525],
 			"to": [4.5, 17.375, -2.525],
@@ -1301,10 +1302,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_11",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4.5, 17.375, -2.525],
 			"to": [5.5, 18.375, -2.525],
@@ -1343,10 +1344,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_12",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.5, 18.375, -2.525],
 			"to": [6.5, 20.375, -2.525],
@@ -1385,10 +1386,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_13",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 20.375, -2.525],
 			"to": [7.5, 25.375, -2.525],
@@ -1427,10 +1428,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_14",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.5, 25.375, -2.525],
 			"to": [6.5, 27.375, -2.525],
@@ -1469,10 +1470,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_15",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4.5, 27.375, -2.525],
 			"to": [5.5, 28.375, -2.525],
@@ -1511,10 +1512,10 @@
 		{
 			"name": "ChestBadgeShineEffect2_16",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.5, 28.375, -2.525],
 			"to": [4.5, 29.375, -2.525],
@@ -1553,10 +1554,10 @@
 		{
 			"name": "ChestBadgeShineEffect5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.125, 22.875, -2.475],
 			"to": [0.125, 23.875, -2.475],
@@ -1595,10 +1596,10 @@
 		{
 			"name": "Star1Outer",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8, -8, 0],
 			"to": [8, 8, 0],
@@ -1637,10 +1638,10 @@
 		{
 			"name": "Star1Inner",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8, -8, 0],
 			"to": [8, 8, 0],
@@ -1679,10 +1680,10 @@
 		{
 			"name": "Background",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -1, 0],
 			"to": [0, 0, 0],
@@ -1721,10 +1722,10 @@
 		{
 			"name": "LauncherShineEffect1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.375, 21.5, -11.25],
 			"to": [5.625, 22.5, -11.25],
@@ -1763,10 +1764,10 @@
 		{
 			"name": "LauncherShineEffect2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.375, 21.5, -11.25],
 			"to": [5.625, 22.5, -11.25],
@@ -1805,10 +1806,10 @@
 		{
 			"name": "LauncherShineEffect3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.375, 21.5, -11.25],
 			"to": [5.625, 22.5, -11.25],
@@ -1847,10 +1848,10 @@
 		{
 			"name": "LauncherShineEffect4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.375, 21.5, -11.25],
 			"to": [5.625, 22.5, -11.25],
@@ -1889,10 +1890,10 @@
 		{
 			"name": "Background",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, -0.5, 0],
 			"to": [0.5, 0.5, 0],
@@ -1931,10 +1932,10 @@
 		{
 			"name": "RightEyeShine",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.125, 25.475, -4.02],
 			"to": [1.875, 26.525, -4.02],
@@ -1973,10 +1974,10 @@
 		{
 			"name": "LeftEyeShine",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.875, 25.475, -4.02],
 			"to": [-1.125, 26.525, -4.02],
@@ -2013,19 +2014,679 @@
 			"uuid": "34922882-0022-ee98-7f50-848f438c37cc"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "RocketLauncher",
-			"origin": [5.5, 19, -8.25],
-			"color": 0,
 			"uuid": "19a15c85-aeff-d123-5b63-2934c15a2429",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": false,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5.5, 19, -8.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RocketLauncherRibbon",
+			"uuid": "85dcc44e-8f2c-de43-de30-22991228a526",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5.5, 19.625, -11],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RocketLauncherRibbonBottomLeft",
+			"uuid": "6e5e6588-ead2-2ffa-f5b1-cb2e8443adb1",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5.75, 19.6, -10.5],
+			"rotation": [0, 15, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "RocketLauncherRibbonBottomRight",
+			"uuid": "1ede05c2-ee0c-a0ec-06c5-712e752875ff",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5.25, 19.6, -10.5],
+			"rotation": [0, -15, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Camera",
+			"uuid": "19077ccd-b1e5-9054-b215-98af41b9bd27",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5.5, 21.5, -11.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "LauncherShineEffect1",
+			"uuid": "21df6268-2318-95d2-af82-6a1733172d6e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5.5, 21.5, -11.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "LauncherShineEffect2",
+			"uuid": "812098da-3413-354b-2e40-d97341a5625c",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5.5, 21.5, -11.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "LauncherShineEffect3",
+			"uuid": "f5185f73-6fd4-1ab5-4b5d-d183e232d27c",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5.5, 21.5, -11.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "LauncherShineEffect4",
+			"uuid": "283b18f0-7a98-7ff5-d251-6addb6d998ad",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5.5, 21.5, -11.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ChestRibbonBadge",
+			"uuid": "b8352b5f-0830-12ab-daf6-2a616dd7dc6e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 22.875, -2.525],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "ChestBadgeShineEffect1",
+			"uuid": "d3e14f9e-c1b1-9c47-1e29-aa19b5f49c2f",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 22.875, -2.525],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ChestBadgeShineEffect2",
+			"uuid": "4c8e94aa-c97a-00e6-5a24-746000477a66",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 22.875, -2.525],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "ChestBadgeShineEffect3",
+			"uuid": "8dc2a0d4-9597-bbd7-d46a-1d995eb3e10e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 22.875, -2.525],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ChestBadgeShineEffect4",
+			"uuid": "92cde730-b6ea-a6c6-b9f2-1235291b2062",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 22.875, -2.525],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ChestBadgeShineEffect5",
+			"uuid": "a701fd4c-e55b-8e57-2cc4-ea18c5ed4c84",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 22.875, -2.475],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "ChestBadgeShineEffect6",
+			"uuid": "197cbe0c-ce29-8005-21f9-0d9d03fe19d2",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 22.875, -2.475],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ChestBadgeShineEffect7",
+			"uuid": "dc705d7b-ba7e-c80b-1c08-2e7cbb15dfec",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 22.875, -2.475],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ChestBadgeShineEffect8",
+			"uuid": "48bb9efc-264f-f6a4-bf34-a49ff24965b8",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 22.875, -2.475],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Gui",
+			"uuid": "8c843d64-26e1-ba2e-0195-8f691d5e72ec",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "StarTransitions",
+			"uuid": "ad8bd336-74b3-312f-f8a3-526fe2c54ba5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Star1",
+			"uuid": "72df74a9-77e7-d1e7-275b-ae0caffb4717",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Star2",
+			"uuid": "f6cbaa82-725e-db94-c25a-5550b305e76d",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Star1PosAnchor",
+			"uuid": "83ab49b1-be49-9e0e-bca2-b9f6435d229b",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Star2PosAnchor",
+			"uuid": "cde9cc17-4555-8bb3-1bcb-30eea6a19025",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "TransitionBackground",
+			"uuid": "b349ab93-53fb-883d-376d-0a0cb7cc46b7",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "BackgroundOpacity",
+			"uuid": "d3b44c76-19eb-1ce4-50c6-c3cb0b05f1e9",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "CameraBackground",
+			"uuid": "3072d889-98cf-b426-e2d6-af44c29dcac8",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "CameraStarEffect",
+			"uuid": "b68ed14f-9080-e168-390f-1804ccd5e402",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 23, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "EyeShines",
+			"uuid": "425c49a5-cd85-9a50-e730-f98c00d0eca7",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 25, -4],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "19a15c85-aeff-d123-5b63-2934c15a2429",
+			"isOpen": false,
 			"children": [
 				"30c70b90-5d1b-07e1-15af-11ee5a6339c0",
 				"c838875e-23d7-1f1e-0d0b-f200eaa4749e",
@@ -2038,120 +2699,46 @@
 				"dfe78866-4312-0426-561b-fb59393f2de5",
 				"32826869-a9c2-dacc-2bee-59b766cf9d5f",
 				{
-					"name": "RocketLauncherRibbon",
-					"origin": [5.5, 19.625, -11],
-					"color": 0,
 					"uuid": "85dcc44e-8f2c-de43-de30-22991228a526",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"251d614c-ed09-0ef7-4bce-fc2a52b60c60",
 						"4886a553-cc55-c861-5fbe-f0fbcf9f0722",
 						"68ee9790-b509-b1dd-74db-696b6544a91d",
 						{
-							"name": "RocketLauncherRibbonBottomLeft",
-							"origin": [5.75, 19.6, -10.5],
-							"rotation": [0, 15, 0],
-							"color": 0,
 							"uuid": "6e5e6588-ead2-2ffa-f5b1-cb2e8443adb1",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["b4e19b9c-46ee-c5f6-cc6a-d5ca79e9329c", "08b552d8-b7f4-9e62-672b-7445fa6617be", "924ca792-3987-ee7a-c75d-f04c52694c1f"]
 						},
 						{
-							"name": "RocketLauncherRibbonBottomRight",
-							"origin": [5.25, 19.6, -10.5],
-							"rotation": [0, -15, 0],
-							"color": 0,
 							"uuid": "1ede05c2-ee0c-a0ec-06c5-712e752875ff",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["b69584fd-e324-1723-8215-bcccc8de2c17", "71860253-28b8-6789-b4e8-724e54446835", "ca1d2293-9cb7-1c5c-597d-14eb4db1cc6a"]
 						}
 					]
 				},
 				{
-					"name": "Camera",
-					"origin": [5.5, 21.5, -11.25],
-					"color": 0,
 					"uuid": "19077ccd-b1e5-9054-b215-98af41b9bd27",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "LauncherShineEffect1",
-							"origin": [5.5, 21.5, -11.25],
-							"color": 0,
 							"uuid": "21df6268-2318-95d2-af82-6a1733172d6e",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["35cf1cf1-03d7-8102-5e26-206df7e0742e"]
 						},
 						{
-							"name": "LauncherShineEffect2",
-							"origin": [5.5, 21.5, -11.25],
-							"color": 0,
 							"uuid": "812098da-3413-354b-2e40-d97341a5625c",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["681b7323-3e66-d61e-599b-32a8101f77f5"]
 						},
 						{
-							"name": "LauncherShineEffect3",
-							"origin": [5.5, 21.5, -11.25],
-							"color": 0,
 							"uuid": "f5185f73-6fd4-1ab5-4b5d-d183e232d27c",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["18c88fb4-a635-bf63-526b-6b82eb7c230f"]
 						},
 						{
-							"name": "LauncherShineEffect4",
-							"origin": [5.5, 21.5, -11.25],
-							"color": 0,
 							"uuid": "283b18f0-7a98-7ff5-d251-6addb6d998ad",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["78359dc0-2b76-4e44-796b-50df5884f0ec"]
 						}
 					]
@@ -2159,44 +2746,17 @@
 			]
 		},
 		{
-			"name": "ChestRibbonBadge",
-			"origin": [0, 22.875, -2.525],
-			"color": 0,
 			"uuid": "b8352b5f-0830-12ab-daf6-2a616dd7dc6e",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "ChestBadgeShineEffect1",
-					"origin": [0, 22.875, -2.525],
-					"color": 0,
 					"uuid": "d3e14f9e-c1b1-9c47-1e29-aa19b5f49c2f",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["48523813-9015-44a9-bd36-928e530897ac"]
 				},
 				{
-					"name": "ChestBadgeShineEffect2",
-					"origin": [0, 22.875, -2.525],
-					"color": 0,
 					"uuid": "4c8e94aa-c97a-00e6-5a24-746000477a66",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"209d1b85-3ab7-10b9-4681-a9c230a2599c",
 						"081cc310-88cc-b61f-82ec-fa9b4e304a48",
@@ -2217,201 +2777,75 @@
 					]
 				},
 				{
-					"name": "ChestBadgeShineEffect3",
-					"origin": [0, 22.875, -2.525],
-					"color": 0,
 					"uuid": "8dc2a0d4-9597-bbd7-d46a-1d995eb3e10e",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				{
-					"name": "ChestBadgeShineEffect4",
-					"origin": [0, 22.875, -2.525],
-					"color": 0,
 					"uuid": "92cde730-b6ea-a6c6-b9f2-1235291b2062",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				{
-					"name": "ChestBadgeShineEffect5",
-					"origin": [0, 22.875, -2.475],
-					"color": 0,
 					"uuid": "a701fd4c-e55b-8e57-2cc4-ea18c5ed4c84",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["00c67092-cd7a-8b5a-2a70-5bbf63d9ac91"]
 				},
 				{
-					"name": "ChestBadgeShineEffect6",
-					"origin": [0, 22.875, -2.475],
-					"color": 0,
 					"uuid": "197cbe0c-ce29-8005-21f9-0d9d03fe19d2",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				{
-					"name": "ChestBadgeShineEffect7",
-					"origin": [0, 22.875, -2.475],
-					"color": 0,
 					"uuid": "dc705d7b-ba7e-c80b-1c08-2e7cbb15dfec",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				},
 				{
-					"name": "ChestBadgeShineEffect8",
-					"origin": [0, 22.875, -2.475],
-					"color": 0,
 					"uuid": "48bb9efc-264f-f6a4-bf34-a49ff24965b8",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
 		},
 		{
-			"name": "Gui",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "8c843d64-26e1-ba2e-0195-8f691d5e72ec",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "StarTransitions",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "ad8bd336-74b3-312f-f8a3-526fe2c54ba5",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "Star1",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "72df74a9-77e7-d1e7-275b-ae0caffb4717",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["65211ef0-bb4c-f5f9-c1db-6e646d5e0303", "87f0c72a-e1eb-6f77-d6b7-2cfde4eee063"]
 						},
 						{
-							"name": "Star2",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "f6cbaa82-725e-db94-c25a-5550b305e76d",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": []
 						},
 						{
-							"name": "Star1PosAnchor",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "83ab49b1-be49-9e0e-bca2-b9f6435d229b",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": []
 						},
 						{
-							"name": "Star2PosAnchor",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "cde9cc17-4555-8bb3-1bcb-30eea6a19025",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": []
 						}
 					]
 				},
 				{
-					"name": "TransitionBackground",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "b349ab93-53fb-883d-376d-0a0cb7cc46b7",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"7bbfdd3d-c76d-1c42-6b2d-4d76c601f7c5",
 						{
-							"name": "BackgroundOpacity",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "d3b44c76-19eb-1ce4-50c6-c3cb0b05f1e9",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": []
 						}
 					]
@@ -2419,56 +2853,30 @@
 			]
 		},
 		{
-			"name": "CameraBackground",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "3072d889-98cf-b426-e2d6-af44c29dcac8",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": ["f01ffd0a-a5f8-2115-ba6e-fb92eb6aba7a"]
 		},
 		{
-			"name": "CameraStarEffect",
-			"origin": [0, 23, 0],
-			"color": 0,
 			"uuid": "b68ed14f-9080-e168-390f-1804ccd5e402",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": []
 		},
 		{
-			"name": "EyeShines",
-			"origin": [0, 25, -4],
-			"color": 0,
 			"uuid": "425c49a5-cd85-9a50-e730-f98c00d0eca7",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": ["29e4019f-39ab-b88e-d88c-74c86e227e05", "34922882-0022-ee98-7f50-848f438c37cc"]
 		}
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/17b_Reisa_Magical/textures/ex_skill_1.png",
 			"name": "ex_skill_1.png",
+			"relative_path": "../textures/ex_skill_1.png",
 			"folder": "",
 			"namespace": "",
 			"id": "2",
 			"group": "",
+			"scope": 0,
 			"width": 30,
 			"height": 27,
 			"uv_width": 30,
@@ -2477,9 +2885,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -2488,16 +2899,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "0c1752fe-a74b-60a9-bd7f-6d9e082d72c5",
-			"relative_path": "../textures/ex_skill_1.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAbCAYAAABr/T8RAAAAAXNSR0IArs4c6QAAAYpJREFUSEtj/Lfs2///4n8YmPR5GW6ln2OQcjRi4NL8zAADTE68cDY2xv/l3xFqo7gY8SpGkmT8u/fTf5Cl/y5+BlsOorEBxpcsBM1kIsXi/2/+/0e2FGT5r/1vMSz5fP0bQYtF6uQo8/G365jBy5sDNhNM/Ps15T8TG0SAXMCIzcdPp3wCm8cvwgc3lzeHEW4RVSzGFsc4fAz3LTzhUeBrxpvBZ/9jCy71tcYYQQnyKbpacoMcbPHEA1NRzMt3yGbAZjEsfqnmY1IsplriItXHA2oxuVkIWR9JiYsaFsLMwFsI/P///z8jIyL/0sVimKXkWk5IH04fD4jF6K4l5Hr0KACph8cljqjC6mO6WYzsQnAVhMWVxKgB6UVXh8s8RlKDERaEyGmA1NQO8hg4qEm1HFtUEGs5zE54HBNrOS512IIY3THIUYiSuAhZTow8Lp+jp5uBt5iQb9ATFb68S4yvccYxrkKAmDhGDlZc5mCkaphCbJpx5QJsenCFCNZUjSuzIwczITXEZisA8vlJK3X4P1cAAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAbCAYAAABr/T8RAAAB8klEQVR4AbyUvUpDQRCF525hIaiggp2lYiXoC/gOPoSFAVsr30GIgi+glY29Py9gwFJNLQghYAIKIWbNtzBhsuz13psYLxxmzpyzc3YD6gaXn/77tuN9y/vn/UffrfvAmQFf8HFeIRU+59f64rYXZPDUlY2LHZnf6o4dH9x1BfirL0lhzFyBOA21td/uSYx2syVFqJArjpfaUHjvfUVirJ6syxAZWD6+GfVwRaXgOBT+0eoIiBZlEZ+KJl+8tLooILV50Kt75lrpJ4Frnr/Ky0FDbH27b8hCLcssWB6HxRxPWTiMpw9nYsEsBTdXG/u5Y546kzcLwXliaq5hWlOeMrPKwWWWlvFMFDzta7lYCD7aOxQLhFnDbV7vZikQzL9p6iwQXpxaTGg2/KgpvWhWdC43uGjxtHoymNsOHxv+ZqnwKkHq15o6mwxOGf96FoK5mQWvtEFwq9Nb3faxFnP1OgQWW6hoq9XpOYdOtWAWw+r06M4uYVAGHOYcXq30ZaD+8FNDWFbmID781htzq9ne+kIwIkOW0ucBHV9Kz5urN9ZHwWr4rzoK/u01ehlujU+5rXlz9cT6KFgNWjEqdFa2ckFF3pkQTABGTPQAroADdGbaw4FyNMBMAQdw9dGHYASGgB4gKuAAHdCrRoUD+jygA9V/AAAA//8jE6aDAAAABklEQVQDANdyxTYjo+DiAAAAAElFTkSuQmCC"
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/17b_Reisa_Magical/textures/ex_skill_1_stars.png",
 			"name": "ex_skill_1_stars.png",
+			"relative_path": "../textures/ex_skill_1_stars.png",
 			"folder": "",
 			"namespace": "",
 			"id": "1",
 			"group": "",
+			"scope": 0,
 			"width": 15,
 			"height": 30,
 			"uv_width": 15,
@@ -2506,9 +2917,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -2517,8 +2931,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "dd436725-ac02-42c5-56c8-fd3448301145",
-			"relative_path": "../textures/ex_skill_1_stars.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAeCAYAAADzXER0AAAAAXNSR0IArs4c6QAAAOpJREFUSEutk9sNxSAMQ8kADMAC7f7jwAIM0AG4ciVX4RFaessXErEPMUHcZJVSioiIVWIeQEiRZfC9WFNn9CF5STwqngWJM+Qgb4RXK9i8MTjJdFkxoK4K7ImBBn4jfkJt3/z/nu+GwjrvyLNfRJNh2u1UxRjLvu/rXxLCEILLOTvLwHSFeNs2l1JaE1OINo7jMOlDMsUQeu9N+ilGsQ4L16VQ03UNcpCWwmIQZ3tkcZFBWxGeZF6FT/OEyKerArtroX22TozBsOjtwHxz7dFgMA8dpqZ3aaMvLD3PnAOasPfq2q1o9Mt0zQ9OCvOlJp4FhQAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAeCAYAAADzXER0AAABSElEQVR4AZTT0Y3CMBCE4ZB3CqAB6L8caIACKOAu30pjraI4d0QaPN6dfx2MWJeT52d7TtrLFN64H2BWfq8pvA8e7Q/h/Wn7fQYdwmn+tRZsctcR1Pu8zBpj841w62V7voGS3bBLvTaT4n/W5AsGpMCfqecGfAbMegN2AbNQr/fcgHvgv77gPi2g7xalljX5goXS4Cl7qz3xFF9wCina0/P5rH8WT/rE04BtuoC3222x9nr3U1joer1apjqEnXa/3ws6O/0QLmr7+Hw+y9npBTupy6kdzOk9s81eVgVhASt1MF69Z3Dr4/G4vF6v8XoJmzzz8rh6bUZhFu51OXnDC2YU3u83u/Rw9x0UHLAN9fDe63cN2AW4kPw0e1DdpcllwIAVBKxAX8FrUq/rRwWbZqqiMNAdRGpkiJy8bMFCmsSTZmRP+sTr/QIAAP//apt4AgAAAAZJREFUAwCXggJ0ERqqOgAAAABJRU5ErkJggg=="
 		}
 	],
 	"animations": [
@@ -2529,7 +2942,9 @@
 			"override": true,
 			"length": 8.1,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -2538,13 +2953,15 @@
 				"19a15c85-aeff-d123-5b63-2934c15a2429": {
 					"name": "RocketLauncher",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
 									"x": "0",
-									"y": "7.5",
+									"y": "-7.5",
 									"z": "-90"
 								}
 							],
@@ -2557,8 +2974,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "153.35",
-									"y": "-6.09",
+									"x": "-153.35",
+									"y": "6.09",
 									"z": "85.37"
 								}
 							],
@@ -2571,8 +2988,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-24.049286666",
-									"y": "73.3130168452",
+									"x": "24.049286666",
+									"y": "-73.3130168452",
 									"z": "-83.4731186889"
 								}
 							],
@@ -2586,7 +3003,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "7.5",
+									"y": "-7.5",
 									"z": "-90"
 								}
 							],
@@ -2599,8 +3016,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "146.686214003",
-									"y": "35.7001387868",
+									"x": "-146.686214003",
+									"y": "-35.7001387868",
 									"z": "61.343915482"
 								}
 							],
@@ -2613,7 +3030,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "1",
+									"x": "-1",
 									"y": "-5.75",
 									"z": "8.25"
 								}
@@ -2641,7 +3058,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "1",
+									"x": "-1",
 									"y": "-5.75",
 									"z": "8.25"
 								}
@@ -2700,12 +3117,14 @@
 				"85dcc44e-8f2c-de43-de30-22991228a526": {
 					"name": "RocketLauncherRibbon",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-60",
+									"x": "60",
 									"y": "0",
 									"z": "0"
 								}
@@ -2719,7 +3138,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-60",
+									"x": "60",
 									"y": "0",
 									"z": "0"
 								}
@@ -2733,7 +3152,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-70",
+									"x": "70",
 									"y": "0",
 									"z": "0"
 								}
@@ -2747,7 +3166,7 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-70",
+									"x": "70",
 									"y": "0",
 									"z": "0"
 								}
@@ -2762,12 +3181,14 @@
 				"d3e14f9e-c1b1-9c47-1e29-aa19b5f49c2f": {
 					"name": "ChestBadgeShineEffect1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-1",
+									"x": "1",
 									"y": "0",
 									"z": "0"
 								}
@@ -2781,7 +3202,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "1",
+									"x": "-1",
 									"y": "0",
 									"z": "0"
 								}
@@ -2795,7 +3216,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-0.75",
+									"x": "0.75",
 									"y": "0",
 									"z": "0"
 								}
@@ -2809,7 +3230,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "0.735",
+									"x": "-0.735",
 									"y": "0",
 									"z": "0"
 								}
@@ -2884,6 +3305,8 @@
 				"4c8e94aa-c97a-00e6-5a24-746000477a66": {
 					"name": "ChestBadgeShineEffect2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -2925,6 +3348,8 @@
 				"8dc2a0d4-9597-bbd7-d46a-1d995eb3e10e": {
 					"name": "ChestBadgeShineEffect3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -2966,6 +3391,8 @@
 				"92cde730-b6ea-a6c6-b9f2-1235291b2062": {
 					"name": "ChestBadgeShineEffect4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -3007,6 +3434,8 @@
 				"a701fd4c-e55b-8e57-2cc4-ea18c5ed4c84": {
 					"name": "ChestBadgeShineEffect5",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3101,6 +3530,8 @@
 				"197cbe0c-ce29-8005-21f9-0d9d03fe19d2": {
 					"name": "ChestBadgeShineEffect6",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3195,6 +3626,8 @@
 				"dc705d7b-ba7e-c80b-1c08-2e7cbb15dfec": {
 					"name": "ChestBadgeShineEffect7",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3289,6 +3722,8 @@
 				"48bb9efc-264f-f6a4-bf34-a49ff24965b8": {
 					"name": "ChestBadgeShineEffect8",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3383,12 +3818,14 @@
 				"83ab49b1-be49-9e0e-bca2-b9f6435d229b": {
 					"name": "Star1PosAnchor",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "1.5",
+									"x": "-1.5",
 									"y": "-1",
 									"z": "0"
 								}
@@ -3402,7 +3839,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-0.5",
+									"x": "0.5",
 									"y": "0.5",
 									"z": "0"
 								}
@@ -3417,6 +3854,8 @@
 				"72df74a9-77e7-d1e7-275b-ae0caffb4717": {
 					"name": "Star1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3451,6 +3890,8 @@
 				"f6cbaa82-725e-db94-c25a-5550b305e76d": {
 					"name": "Star2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3485,12 +3926,14 @@
 				"cde9cc17-4555-8bb3-1bcb-30eea6a19025": {
 					"name": "Star2PosAnchor",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "1.5",
+									"x": "-1.5",
 									"y": "-0.5",
 									"z": "0"
 								}
@@ -3504,7 +3947,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-0.5",
+									"x": "0.5",
 									"y": "0.5",
 									"z": "0"
 								}
@@ -3519,6 +3962,8 @@
 				"d3b44c76-19eb-1ce4-50c6-c3cb0b05f1e9": {
 					"name": "BackgroundOpacity",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -3585,6 +4030,8 @@
 				"21df6268-2318-95d2-af82-6a1733172d6e": {
 					"name": "LauncherShineEffect1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3664,6 +4111,8 @@
 				"283b18f0-7a98-7ff5-d251-6addb6d998ad": {
 					"name": "LauncherShineEffect4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3743,6 +4192,8 @@
 				"812098da-3413-354b-2e40-d97341a5625c": {
 					"name": "LauncherShineEffect2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3822,6 +4273,8 @@
 				"f5185f73-6fd4-1ab5-4b5d-d183e232d27c": {
 					"name": "LauncherShineEffect3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",

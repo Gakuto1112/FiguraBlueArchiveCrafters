@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "LauncherBase",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4, 0, -8],
 			"to": [12, 8, 8],
@@ -44,18 +45,18 @@
 				},
 				"west": {
 					"uv": [0, 0, 8, 1],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"up": {
 					"uv": [0, 0, 8, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [0, 0, 8, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -64,10 +65,10 @@
 		{
 			"name": "Missile1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [8.5, 4.5, -9],
 			"to": [10.5, 6.5, -8],
@@ -106,10 +107,10 @@
 		{
 			"name": "Missile2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.5, 4.5, -9],
 			"to": [7.5, 6.5, -8],
@@ -148,10 +149,10 @@
 		{
 			"name": "Missile3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [8.5, 1.5, -9],
 			"to": [10.5, 3.5, -8],
@@ -190,10 +191,10 @@
 		{
 			"name": "Missile4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.5, 1.5, -9],
 			"to": [7.5, 3.5, -8],
@@ -232,10 +233,10 @@
 		{
 			"name": "RotorBase",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [7, 8, -1],
 			"to": [9, 8.5, 1],
@@ -274,10 +275,10 @@
 		{
 			"name": "RotorShaft",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [7.5, 8.5, -0.5],
 			"to": [8.5, 11, 0.5],
@@ -316,10 +317,10 @@
 		{
 			"name": "RotorCap",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [7, 10, -1],
 			"to": [9, 10.5, 1],
@@ -358,10 +359,10 @@
 		{
 			"name": "Rotor1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [7.25, 9.5, -7.5],
 			"to": [8.75, 9.75, -0.5],
@@ -401,10 +402,10 @@
 		{
 			"name": "Rotor2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [8.5, 9.5, -0.75],
 			"to": [15.5, 9.75, 0.75],
@@ -431,13 +432,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -446,10 +447,10 @@
 		{
 			"name": "Rotor3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [7.25, 9.5, 0.5],
 			"to": [8.75, 9.75, 7.5],
@@ -476,13 +477,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				}
 			},
 			"type": "cube",
@@ -491,10 +492,10 @@
 		{
 			"name": "Rotor4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5, 9.5, -0.75],
 			"to": [7.5, 9.75, 0.75],
@@ -521,13 +522,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -536,10 +537,10 @@
 		{
 			"name": "LauncherBase",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-12, 0, -8],
 			"to": [-4, 8, 8],
@@ -561,18 +562,18 @@
 				},
 				"west": {
 					"uv": [0, 0, 8, 1],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"up": {
 					"uv": [0, 0, 8, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [0, 0, 8, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -581,10 +582,10 @@
 		{
 			"name": "Missile1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.5, 4.5, -9],
 			"to": [-5.5, 6.5, -8],
@@ -623,10 +624,10 @@
 		{
 			"name": "Missile2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-10.5, 4.5, -9],
 			"to": [-8.5, 6.5, -8],
@@ -665,10 +666,10 @@
 		{
 			"name": "Missile3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.5, 1.5, -9],
 			"to": [-5.5, 3.5, -8],
@@ -707,10 +708,10 @@
 		{
 			"name": "Missile4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-10.5, 1.5, -9],
 			"to": [-8.5, 3.5, -8],
@@ -749,10 +750,10 @@
 		{
 			"name": "RotorBase",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-9, 8, -1],
 			"to": [-7, 8.5, 1],
@@ -791,10 +792,10 @@
 		{
 			"name": "RotorShaft",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8.5, 8.5, -0.5],
 			"to": [-7.5, 11, 0.5],
@@ -833,10 +834,10 @@
 		{
 			"name": "RotorCap",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-9, 10, -1],
 			"to": [-7, 10.5, 1],
@@ -875,10 +876,10 @@
 		{
 			"name": "Rotor1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8.75, 9.5, -7.5],
 			"to": [-7.25, 9.75, -0.5],
@@ -918,10 +919,10 @@
 		{
 			"name": "Rotor2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.5, 9.5, -0.75],
 			"to": [-0.5, 9.75, 0.75],
@@ -948,13 +949,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -963,10 +964,10 @@
 		{
 			"name": "Rotor3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8.75, 9.5, 0.5],
 			"to": [-7.25, 9.75, 7.5],
@@ -993,13 +994,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				}
 			},
 			"type": "cube",
@@ -1008,10 +1009,10 @@
 		{
 			"name": "Rotor4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-15.5, 9.5, -0.75],
 			"to": [-8.5, 9.75, 0.75],
@@ -1038,13 +1039,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
@@ -1053,10 +1054,10 @@
 		{
 			"name": "CoreBase1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.5, 2.5, -6],
 			"to": [3.5, 5.5, 6],
@@ -1095,10 +1096,10 @@
 		{
 			"name": "CoreEyeCenter",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, 3.5, -6.5],
 			"to": [1, 4.5, -6],
@@ -1137,10 +1138,10 @@
 		{
 			"name": "CoreEyeRightBase",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1, 3, -6.5],
 			"to": [3, 5, -6],
@@ -1179,10 +1180,10 @@
 		{
 			"name": "CoreEyeRight",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.25, 3.25, -6.75],
 			"to": [2.75, 4.75, -6.5],
@@ -1221,10 +1222,10 @@
 		{
 			"name": "CoreEyeLeftBase",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, 3, -6.5],
 			"to": [-1, 5, -6],
@@ -1263,10 +1264,10 @@
 		{
 			"name": "CoreEyeLeft",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, 3.25, -6.75],
 			"to": [-1.25, 4.75, -6.5],
@@ -1305,10 +1306,10 @@
 		{
 			"name": "CoreConnector1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 1.625, -3],
 			"to": [-2, 6.625, -2.5],
@@ -1334,13 +1335,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1349,10 +1350,10 @@
 		{
 			"name": "CoreConnector2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 1.625, 2.5],
 			"to": [-2, 6.625, 3],
@@ -1378,13 +1379,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1393,10 +1394,10 @@
 		{
 			"name": "CoreConnector3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 1.625, -3],
 			"to": [4, 6.625, -2.5],
@@ -1422,13 +1423,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1437,10 +1438,10 @@
 		{
 			"name": "CoreConnector4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 1.625, 2.5],
 			"to": [4, 6.625, 3],
@@ -1466,13 +1467,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -1481,10 +1482,10 @@
 		{
 			"name": "CoreBase2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, 5.5, -6],
 			"to": [1.5, 6, 6],
@@ -1524,10 +1525,10 @@
 		{
 			"name": "CoreBase3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, 5.5, -6],
 			"to": [1, 6.5, 4],
@@ -1566,10 +1567,10 @@
 		{
 			"name": "AbydosLogo",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-12.01, 1, -1.818],
 			"to": [-12.01, 7, 5.818],
@@ -1608,10 +1609,10 @@
 		{
 			"name": "AbydosLogo",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [12.01, 1, -1.818],
 			"to": [12.01, 7, 5.818],
@@ -1650,10 +1651,10 @@
 		{
 			"name": "CoreRear4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 3.5, 6],
 			"to": [0.5, 4.5, 7.75],
@@ -1692,10 +1693,10 @@
 		{
 			"name": "CoreRear5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 2.5, 7.75],
 			"to": [0.5, 5.5, 8.75],
@@ -1734,10 +1735,10 @@
 		{
 			"name": "CoreRear6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 5.5, 7.75],
 			"to": [0.5, 6.5, 8.75],
@@ -1777,10 +1778,10 @@
 		{
 			"name": "CoreRear7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 1.5, 7.75],
 			"to": [0.5, 2.5, 8.75],
@@ -1820,10 +1821,10 @@
 		{
 			"name": "CoreBase4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 5.5, 4],
 			"to": [0.25, 6.5, 4.5],
@@ -1862,10 +1863,10 @@
 		{
 			"name": "CoreRear1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, 3.25, 6],
 			"to": [-1.25, 4.75, 7],
@@ -1904,10 +1905,10 @@
 		{
 			"name": "CoreRear3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, 3, 6.5],
 			"to": [3, 5, 6.75],
@@ -1933,13 +1934,13 @@
 				},
 				"up": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				}
 			},
 			"type": "cube",
@@ -1948,10 +1949,10 @@
 		{
 			"name": "CoreRear2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.25, 3.25, 6],
 			"to": [2.75, 4.75, 7],
@@ -1990,10 +1991,10 @@
 		{
 			"name": "CoreHandle1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1, 2.5],
 			"to": [0.25, 6.5, 3.5],
@@ -2019,13 +2020,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2034,10 +2035,10 @@
 		{
 			"name": "CoreHandle2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1, -3.5],
 			"to": [0.25, 6.5, -2.5],
@@ -2063,13 +2064,13 @@
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2078,10 +2079,10 @@
 		{
 			"name": "CoreHandle3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1, -2.5],
 			"to": [0.25, 2, 2.5],
@@ -2111,8 +2112,8 @@
 				},
 				"down": {
 					"uv": [8, 2, 9, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				}
 			},
 			"type": "cube",
@@ -2121,10 +2122,10 @@
 		{
 			"name": "Missile",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -1, -4],
 			"to": [1, 1, 4],
@@ -2151,60 +2152,426 @@
 				},
 				"up": {
 					"uv": [16, 25, 24, 23],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [16, 22, 24, 24],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				}
 			},
 			"type": "cube",
 			"uuid": "1552004a-cfba-8960-bc91-4b7f63ced646"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "Drone",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "09dc82c1-3b16-20db-4375-0b9ea34661d0",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": true,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "LauncherRight",
+			"uuid": "f73d1706-d03e-4728-6ccc-cb5be6fbb0ce",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MissilesRight",
+			"uuid": "5fb0d753-a659-c0a5-1fa9-1eb6953f80a2",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RotorBaseRight",
+			"uuid": "aea975d3-bc1c-84ef-d769-f22f1a432c5e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RotorsRight",
+			"uuid": "9ff0e9df-bbb7-6fb7-e1ea-f9f628aa3ee0",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [8, 9.625, 0],
+			"rotation": [0, 45, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "LauncherLeft",
+			"uuid": "3ffa664b-6b32-c886-5977-575a240ad6de",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-16, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Core",
+			"uuid": "872f0820-ed56-ae53-809c-aa0509cfad23",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "CoreConnectors",
+			"uuid": "b2ba1519-8d32-d9ca-2f5e-b896f58b69c9",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "CoreEye",
+			"uuid": "0a61b872-0058-20e5-83de-e566f5655c05",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 0, -2],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "CoreEyeRight",
+			"uuid": "7239e475-30f1-c95d-3b38-765cb680204c",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 0, -2],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "CoreEyeLeft",
+			"uuid": "9a3ebe21-8d65-fd9a-c793-29dd2b5f1362",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-12, 0, -2],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "CoreRear",
+			"uuid": "a004021c-d8f7-d605-5931-2e67a22bb376",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "CoreHandle",
+			"uuid": "c009ea16-c45a-d501-a232-584ec57c86bb",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 1, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MissilesLeft",
+			"uuid": "8209464b-8299-15ec-c3f9-06f16dd6b5d7",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-16, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RotorBaseLeft",
+			"uuid": "3f06e71b-3fd9-61d6-435e-30ac485656b5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-16, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "RotorsLeft",
+			"uuid": "31727382-bf25-5d81-dfe9-ca0b6764d2d0",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-8, 9.625, 0],
+			"rotation": [0, 45, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Missile",
+			"uuid": "5f245713-1b2d-dac1-67e8-2a2fb5c42017",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "09dc82c1-3b16-20db-4375-0b9ea34661d0",
+			"isOpen": true,
 			"children": [
 				{
-					"name": "LauncherRight",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "f73d1706-d03e-4728-6ccc-cb5be6fbb0ce",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"1a86611d-4076-c20b-2acb-ef7af5d94681",
 						"3225394c-979d-e580-5511-eb43509de96c",
 						{
-							"name": "MissilesRight",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "5fb0d753-a659-c0a5-1fa9-1eb6953f80a2",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"843c0fa8-7e4d-4d3c-6dc5-31f13110969b",
 								"972beba8-4c1b-3b98-93bc-1059436f6521",
@@ -2213,34 +2580,15 @@
 							]
 						},
 						{
-							"name": "RotorBaseRight",
-							"origin": [0, 0, 0],
-							"color": 0,
 							"uuid": "aea975d3-bc1c-84ef-d769-f22f1a432c5e",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"b0fca2a0-f652-2cc3-5b6e-e7537220d249",
 								"6fd59bc8-116e-7993-2798-d3ca2370d47e",
 								"6aa27265-f1f0-d482-e2c3-42b42592ac1f",
 								{
-									"name": "RotorsRight",
-									"origin": [8, 9.625, 0],
-									"rotation": [0, 45, 0],
-									"color": 0,
 									"uuid": "9ff0e9df-bbb7-6fb7-e1ea-f9f628aa3ee0",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": [
 										"a85e8c76-0066-35e8-e7d6-bfe0327e8f94",
 										"ae650a66-c70b-f411-d437-db3715a4bdca",
@@ -2253,49 +2601,22 @@
 					]
 				},
 				{
-					"name": "LauncherLeft",
-					"origin": [-16, 0, 0],
-					"color": 0,
 					"uuid": "3ffa664b-6b32-c886-5977-575a240ad6de",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"d9ebb21a-aa0a-fd7e-def8-d1cac9262dbd",
 						"6954df18-a528-a2fb-b3c9-dd883e7b6bce",
 						{
-							"name": "Core",
-							"origin": [-8, 0, 0],
-							"color": 0,
 							"uuid": "872f0820-ed56-ae53-809c-aa0509cfad23",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"388bbd03-4580-5f3a-129a-66b19be29fa4",
 								"cd5fd103-e6eb-6357-f431-9eb2eab9d9c6",
 								"9730b960-33d1-3fc7-2cea-eca21fc0423c",
 								"87f80729-c44b-eea8-ea43-6c74509fe151",
 								{
-									"name": "CoreConnectors",
-									"origin": [-8, 0, 0],
-									"color": 0,
 									"uuid": "b2ba1519-8d32-d9ca-2f5e-b896f58b69c9",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": [
 										"09563e18-0e6a-105e-9fbb-9ea32a733094",
 										"9a0e2547-eed3-648b-cd19-7e0bd58a6aad",
@@ -2304,61 +2625,25 @@
 									]
 								},
 								{
-									"name": "CoreEye",
-									"origin": [-8, 0, -2],
-									"color": 0,
 									"uuid": "0a61b872-0058-20e5-83de-e566f5655c05",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": false,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": [
 										"1be06c5f-f175-ec5b-29fa-52203ae41787",
 										{
-											"name": "CoreEyeRight",
-											"origin": [-8, 0, -2],
-											"color": 0,
 											"uuid": "7239e475-30f1-c95d-3b38-765cb680204c",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": true,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": ["9e02ee7c-fed6-733b-cc8c-821a577ed31f", "c9d33f0c-31cb-41c3-5a95-42abe445910f"]
 										},
 										{
-											"name": "CoreEyeLeft",
-											"origin": [-12, 0, -2],
-											"color": 0,
 											"uuid": "9a3ebe21-8d65-fd9a-c793-29dd2b5f1362",
-											"export": true,
-											"mirror_uv": false,
 											"isOpen": true,
-											"locked": false,
-											"visibility": true,
-											"autouv": 0,
-											"selected": false,
 											"children": ["c305250c-3033-d3e0-95bd-86878e7ea5a0", "2f174546-d0e6-5b6c-4a4b-0a94b43f59d1"]
 										}
 									]
 								},
 								{
-									"name": "CoreRear",
-									"origin": [-8, 0, 0],
-									"color": 0,
 									"uuid": "a004021c-d8f7-d605-5931-2e67a22bb376",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": false,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": [
 										"258c283e-8153-d198-5b49-674bcf049512",
 										"75a90f88-0fe4-2087-f522-de40b2e09675",
@@ -2370,33 +2655,15 @@
 									]
 								},
 								{
-									"name": "CoreHandle",
-									"origin": [-8, 1, 0],
-									"color": 0,
 									"uuid": "c009ea16-c45a-d501-a232-584ec57c86bb",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["e75f2bae-378d-d092-fcff-40b883003cb0", "61a92d59-d15e-a736-d5fa-3d2f4a71b4e9", "1524fa04-63d0-ace4-93a3-59af50bf3bc6"]
 								}
 							]
 						},
 						{
-							"name": "MissilesLeft",
-							"origin": [-16, 0, 0],
-							"color": 0,
 							"uuid": "8209464b-8299-15ec-c3f9-06f16dd6b5d7",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"b657cec1-8b7a-c7f4-894e-8c3b692c7f1f",
 								"f6008c4f-c29f-a317-34f9-2d559bb5b5d5",
@@ -2405,34 +2672,15 @@
 							]
 						},
 						{
-							"name": "RotorBaseLeft",
-							"origin": [-16, 0, 0],
-							"color": 0,
 							"uuid": "3f06e71b-3fd9-61d6-435e-30ac485656b5",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"53b048c3-ed84-7001-9dc1-29b3e8f5b55a",
 								"eb0d6a1d-6f34-de14-1499-32d671219812",
 								"0cdbaf16-78cf-e204-52ef-e41091ce7bc3",
 								{
-									"name": "RotorsLeft",
-									"origin": [-8, 9.625, 0],
-									"rotation": [0, 45, 0],
-									"color": 0,
 									"uuid": "31727382-bf25-5d81-dfe9-ca0b6764d2d0",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": [
 										"e62c7211-5e86-01c2-90a1-6f39eeb21728",
 										"a1003941-0a74-1cdc-dc58-9b94422e9529",
@@ -2447,28 +2695,20 @@
 			]
 		},
 		{
-			"name": "Missile",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "5f245713-1b2d-dac1-67e8-2a2fb5c42017",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": ["1552004a-cfba-8960-bc91-4b7f63ced646"]
 		}
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/06b_Shiroko_Swimsuit/textures/drone.png",
 			"name": "drone.png",
+			"relative_path": "../textures/drone.png",
 			"folder": "",
 			"namespace": "",
 			"id": "0",
 			"group": "",
+			"scope": 0,
 			"width": 44,
 			"height": 26,
 			"uv_width": 44,
@@ -2477,9 +2717,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -2488,8 +2731,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "bfb8c124-f138-8d9e-a05a-ec39c87a4c21",
-			"relative_path": "../textures/drone.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAaCAYAAADMp76xAAAAAXNSR0IArs4c6QAAAfJJREFUWEfVlzFLAzEUx182oed1Vb+As4sg3ubmTXYRQTed3JwEwVGcHF3ESUFc6lQHwcnuboIfoDq3XMGtJbE5ktxL8nLNCXZpL30v98s/L/97x4aj4QSQz8k4havWCPj34RLA9/WZiOocXzAsPnCM37PWPGzwNUCBT8cLcNn6gXO2IljybjRgCVsLmvkUzjZzWH95g9tlVksRQ3kTMhgaBS6KAt3hJEkq4+20TV2ICmf77a0sAZzv7GmBj3c3aOLuwZE23nt6gABgNTdYWZmMAnuXOQsIAPaVAnkBGvDqfU9j/dzPxbVtPACYTxO/JDjYeycTkGvdPqjA2DgRGFO33GFFIZLKFYUjA7tga0E3WRKq31KPBXccp9JNHTrbTbGHFGaLVui/BpaHDysHku01URIudaWalAcHOk/sQ0eBNS0Ou5ZqV+aLCUyypRlJ7diYJYF2fYg9qE4QkiOmaurQUW0sOC5W8yOVUg+V6QRmH6yqq1qbOZfmLDHaS7FTRm1iLoABh+T9lkS2tW2to/7rM6XXNfNljfoeva5FYc2S4BXAZjfG/+GNTwAwRSlKx+bz50kJLDsz2U5GAKYobIsxy6yMmxuY7xBvM7EPf+OO9C5YTv9/gU2FqCXhUvhjMYUNFuVtW1fY5t7EQxds/vMkTAHExHso1duMCAAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAaCAYAAADMp76xAAACyElEQVR4AcyXMW/UQBCF11dQnYhEhcgPoKZEChUSBalIg5CgAir+ASUF/4AKOpBQmlAFQUEXCYmGmh+QQIUUdBWN42/idxmvZ8++k4tE9zwzb97OPm2cVW52+u+0jvD0d2088Xtd1wdvXhrSND/1pmNmi8UiRfi/+Gs8g9/94TkZMFs104hNWO8zm8/nKcKV+TXjf9y7YxP3XryugBWbPzCJWSYQqclHYxYpOfFX9Ymd8Jev+4n8+OTYXpH89YnWFzjMYZI2OZFaOfUgzPDug0fJo7TKa8hLugKPuahV4iNtMsN55+GT5ylCrlujHjrFof5yq47hmx8Ok4dUniMXv0bkFEum4OmPGtcxzIqfezsJkHvAAc+NzDGEVKZUK+Y82iJ6hovKzRqYkiEmUBMFX6PztTSd2DN86+AogY6qKeBAk479sLlMkINoLbwgfaQzrmP41+Pd5GGK5uE58oYa+mCAzdERBeoc6hHpEVlP3kPHcK87PYEZPzWvfS/MO4a5ATy0wnPk4guR04mMwLNEPUXx9AR6Ed+/h7kJgFYqwgHVhcgmbJa3Szw69PTJPUK+c8JevUHOpmwSLS3x0pb68MyVrn/C3ARgqWgTONCWpcDwIfi1Q1r6Xt81zA3gIaXnyMVnkdMYA5ahUyQfAlpD+Ersv3+bItiK+MFJAHXJBc+RwyuSA2qBGqgmUhvM8OGnj8kDRQSvIW81DNIJkbd0ijj1FHMN61dx1Yx/E3PoP7XtG9uVx9bVrSpHuzMbgba0QA0wAEH0NdwYaB1rz99h7tYcYyY5DUOBo0adsNevypkNanslUPLHJFBPAE4EsFFpHH0gDZEakLOOXKiWhulsgp2795P72qScmJpv3PlImYAnF6iFnFNNPH8lpPTxsubLE/bv8FRmn12fatLFHDOsd9fHC8nq7Ojb597NoZvkdlXZr3H1hPW6ZwAAAP///HXj+AAAAAZJREFUAwDfOHu87DEpEwAAAABJRU5ErkJggg=="
 		}
 	],
 	"animations": [
@@ -2501,6 +2743,8 @@
 			"length": 5,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -2509,6 +2753,8 @@
 				"e98e96cf-993b-878e-02b8-777c368bb888": {
 					"name": "Avatar",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2571,6 +2817,8 @@
 				"6101f8d5-b970-b28b-9e12-ecd9dcd9a6a9": {
 					"name": "Scarf2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2591,6 +2839,8 @@
 				"e36cdff1-4949-f823-2012-f9a108379e69": {
 					"name": "Scarf3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2611,6 +2861,8 @@
 				"ab590f32-a10c-babe-2b11-8934e7c058bd": {
 					"name": "Scarf4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2631,12 +2883,14 @@
 				"e7d3e5d8-00e4-587c-7bb6-6787db00054b": {
 					"name": "LeftArm",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-180",
+									"x": "180",
 									"y": "0",
 									"z": "5"
 								}
@@ -2665,6 +2919,8 @@
 				"2f61e368-1c06-648e-26d4-aee94647e4da": {
 					"name": "LowerBody",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2685,6 +2941,8 @@
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2705,6 +2963,8 @@
 				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
 					"name": "LeftLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2725,6 +2985,8 @@
 				"09dc82c1-3b16-20db-4375-0b9ea34661d0": {
 					"name": "Drone",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2744,7 +3006,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6.5",
+									"x": "-6.5",
 									"y": "35.25",
 									"z": "0"
 								}
@@ -2759,6 +3021,8 @@
 				"9ff0e9df-bbb7-6fb7-e1ea-f9f628aa3ee0": {
 					"name": "RotorsRight",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2779,7 +3043,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "14400",
+									"y": "-14400",
 									"z": "0"
 								}
 							],
@@ -2793,6 +3057,8 @@
 				"c009ea16-c45a-d501-a232-584ec57c86bb": {
 					"name": "CoreHandle",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -2813,6 +3079,8 @@
 				"31727382-bf25-5d81-dfe9-ca0b6764d2d0": {
 					"name": "RotorsLeft",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2833,7 +3101,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "14400",
+									"y": "-14400",
 									"z": "0"
 								}
 							],
@@ -2854,6 +3122,8 @@
 			"length": 5,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -2862,6 +3132,8 @@
 				"e98e96cf-993b-878e-02b8-777c368bb888": {
 					"name": "Avatar",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2924,6 +3196,8 @@
 				"6101f8d5-b970-b28b-9e12-ecd9dcd9a6a9": {
 					"name": "Scarf2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2944,6 +3218,8 @@
 				"e36cdff1-4949-f823-2012-f9a108379e69": {
 					"name": "Scarf3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2964,6 +3240,8 @@
 				"ab590f32-a10c-babe-2b11-8934e7c058bd": {
 					"name": "Scarf4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -2984,6 +3262,8 @@
 				"2f61e368-1c06-648e-26d4-aee94647e4da": {
 					"name": "LowerBody",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3004,6 +3284,8 @@
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3024,6 +3306,8 @@
 				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
 					"name": "LeftLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3044,6 +3328,8 @@
 				"09dc82c1-3b16-20db-4375-0b9ea34661d0": {
 					"name": "Drone",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3063,7 +3349,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.5",
+									"x": "6.5",
 									"y": "35.25",
 									"z": "0"
 								}
@@ -3078,6 +3364,8 @@
 				"9ff0e9df-bbb7-6fb7-e1ea-f9f628aa3ee0": {
 					"name": "RotorsRight",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3098,7 +3386,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "14400",
+									"y": "-14400",
 									"z": "0"
 								}
 							],
@@ -3112,6 +3400,8 @@
 				"c009ea16-c45a-d501-a232-584ec57c86bb": {
 					"name": "CoreHandle",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -3132,6 +3422,8 @@
 				"31727382-bf25-5d81-dfe9-ca0b6764d2d0": {
 					"name": "RotorsLeft",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3152,7 +3444,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "14400",
+									"y": "-14400",
 									"z": "0"
 								}
 							],
@@ -3166,12 +3458,14 @@
 				"3c1cb66d-8a31-d31f-ec9f-65a33e313a53": {
 					"name": "RightArm",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "180",
+									"x": "-180",
 									"y": "0",
 									"z": "-5"
 								}
@@ -3207,6 +3501,8 @@
 			"length": 0.25,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -3215,6 +3511,8 @@
 				"e98e96cf-993b-878e-02b8-777c368bb888": {
 					"name": "Avatar",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3277,6 +3575,8 @@
 				"6101f8d5-b970-b28b-9e12-ecd9dcd9a6a9": {
 					"name": "Scarf2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3311,6 +3611,8 @@
 				"e36cdff1-4949-f823-2012-f9a108379e69": {
 					"name": "Scarf3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3345,6 +3647,8 @@
 				"ab590f32-a10c-babe-2b11-8934e7c058bd": {
 					"name": "Scarf4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3379,12 +3683,14 @@
 				"e7d3e5d8-00e4-587c-7bb6-6787db00054b": {
 					"name": "LeftArm",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-180",
+									"x": "180",
 									"y": "0",
 									"z": "5"
 								}
@@ -3441,6 +3747,8 @@
 				"2f61e368-1c06-648e-26d4-aee94647e4da": {
 					"name": "LowerBody",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3475,6 +3783,8 @@
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3509,6 +3819,8 @@
 				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
 					"name": "LeftLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3543,6 +3855,8 @@
 				"09dc82c1-3b16-20db-4375-0b9ea34661d0": {
 					"name": "Drone",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3576,7 +3890,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6.5",
+									"x": "-6.5",
 									"y": "35.25",
 									"z": "0"
 								}
@@ -3595,7 +3909,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6.5",
+									"x": "-6.5",
 									"y": "80.25",
 									"z": "31"
 								}
@@ -3615,6 +3929,8 @@
 				"9ff0e9df-bbb7-6fb7-e1ea-f9f628aa3ee0": {
 					"name": "RotorsRight",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3635,7 +3951,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "720",
+									"y": "-720",
 									"z": "0"
 								}
 							],
@@ -3649,6 +3965,8 @@
 				"c009ea16-c45a-d501-a232-584ec57c86bb": {
 					"name": "CoreHandle",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -3683,6 +4001,8 @@
 				"31727382-bf25-5d81-dfe9-ca0b6764d2d0": {
 					"name": "RotorsLeft",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3703,7 +4023,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "720",
+									"y": "-720",
 									"z": "0"
 								}
 							],
@@ -3724,6 +4044,8 @@
 			"length": 0.25,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -3732,6 +4054,8 @@
 				"e98e96cf-993b-878e-02b8-777c368bb888": {
 					"name": "Avatar",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3794,6 +4118,8 @@
 				"6101f8d5-b970-b28b-9e12-ecd9dcd9a6a9": {
 					"name": "Scarf2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3828,6 +4154,8 @@
 				"e36cdff1-4949-f823-2012-f9a108379e69": {
 					"name": "Scarf3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3862,6 +4190,8 @@
 				"ab590f32-a10c-babe-2b11-8934e7c058bd": {
 					"name": "Scarf4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3896,6 +4226,8 @@
 				"2f61e368-1c06-648e-26d4-aee94647e4da": {
 					"name": "LowerBody",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3930,6 +4262,8 @@
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3964,6 +4298,8 @@
 				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
 					"name": "LeftLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -3998,6 +4334,8 @@
 				"09dc82c1-3b16-20db-4375-0b9ea34661d0": {
 					"name": "Drone",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4031,7 +4369,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.5",
+									"x": "6.5",
 									"y": "35.25",
 									"z": "0"
 								}
@@ -4050,7 +4388,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.5",
+									"x": "6.5",
 									"y": "80.25",
 									"z": "31"
 								}
@@ -4070,6 +4408,8 @@
 				"9ff0e9df-bbb7-6fb7-e1ea-f9f628aa3ee0": {
 					"name": "RotorsRight",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4090,7 +4430,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "720",
+									"y": "-720",
 									"z": "0"
 								}
 							],
@@ -4104,6 +4444,8 @@
 				"c009ea16-c45a-d501-a232-584ec57c86bb": {
 					"name": "CoreHandle",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -4138,6 +4480,8 @@
 				"31727382-bf25-5d81-dfe9-ca0b6764d2d0": {
 					"name": "RotorsLeft",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4158,7 +4502,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "720",
+									"y": "-720",
 									"z": "0"
 								}
 							],
@@ -4172,12 +4516,14 @@
 				"3c1cb66d-8a31-d31f-ec9f-65a33e313a53": {
 					"name": "RightArm",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-180",
+									"x": "180",
 									"y": "0",
 									"z": "-5"
 								}
@@ -4241,6 +4587,8 @@
 			"length": 0.25,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -4249,6 +4597,8 @@
 				"e98e96cf-993b-878e-02b8-777c368bb888": {
 					"name": "Avatar",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4311,6 +4661,8 @@
 				"6101f8d5-b970-b28b-9e12-ecd9dcd9a6a9": {
 					"name": "Scarf2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4345,6 +4697,8 @@
 				"e36cdff1-4949-f823-2012-f9a108379e69": {
 					"name": "Scarf3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4379,6 +4733,8 @@
 				"ab590f32-a10c-babe-2b11-8934e7c058bd": {
 					"name": "Scarf4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4413,12 +4769,14 @@
 				"e7d3e5d8-00e4-587c-7bb6-6787db00054b": {
 					"name": "LeftArm",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-180",
+									"x": "180",
 									"y": "0",
 									"z": "5"
 								}
@@ -4475,6 +4833,8 @@
 				"2f61e368-1c06-648e-26d4-aee94647e4da": {
 					"name": "LowerBody",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4509,6 +4869,8 @@
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4543,6 +4905,8 @@
 				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
 					"name": "LeftLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4577,6 +4941,8 @@
 				"09dc82c1-3b16-20db-4375-0b9ea34661d0": {
 					"name": "Drone",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4610,7 +4976,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6.5",
+									"x": "-6.5",
 									"y": "35.25",
 									"z": "0"
 								}
@@ -4629,7 +4995,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "6.5",
+									"x": "-6.5",
 									"y": "80.25",
 									"z": "-31"
 								}
@@ -4649,6 +5015,8 @@
 				"9ff0e9df-bbb7-6fb7-e1ea-f9f628aa3ee0": {
 					"name": "RotorsRight",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4669,7 +5037,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "720",
+									"y": "-720",
 									"z": "0"
 								}
 							],
@@ -4683,6 +5051,8 @@
 				"c009ea16-c45a-d501-a232-584ec57c86bb": {
 					"name": "CoreHandle",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -4717,6 +5087,8 @@
 				"31727382-bf25-5d81-dfe9-ca0b6764d2d0": {
 					"name": "RotorsLeft",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4737,7 +5109,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "720",
+									"y": "-720",
 									"z": "0"
 								}
 							],
@@ -4758,6 +5130,8 @@
 			"length": 0.25,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -4766,6 +5140,8 @@
 				"e98e96cf-993b-878e-02b8-777c368bb888": {
 					"name": "Avatar",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4828,6 +5204,8 @@
 				"6101f8d5-b970-b28b-9e12-ecd9dcd9a6a9": {
 					"name": "Scarf2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4862,6 +5240,8 @@
 				"e36cdff1-4949-f823-2012-f9a108379e69": {
 					"name": "Scarf3",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4896,6 +5276,8 @@
 				"ab590f32-a10c-babe-2b11-8934e7c058bd": {
 					"name": "Scarf4",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4930,6 +5312,8 @@
 				"2f61e368-1c06-648e-26d4-aee94647e4da": {
 					"name": "LowerBody",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4964,6 +5348,8 @@
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -4998,6 +5384,8 @@
 				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
 					"name": "LeftLeg",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -5032,6 +5420,8 @@
 				"09dc82c1-3b16-20db-4375-0b9ea34661d0": {
 					"name": "Drone",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -5065,7 +5455,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.5",
+									"x": "6.5",
 									"y": "35.25",
 									"z": "0"
 								}
@@ -5084,7 +5474,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-6.5",
+									"x": "6.5",
 									"y": "80.25",
 									"z": "-31"
 								}
@@ -5104,6 +5494,8 @@
 				"9ff0e9df-bbb7-6fb7-e1ea-f9f628aa3ee0": {
 					"name": "RotorsRight",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -5124,7 +5516,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "720",
+									"y": "-720",
 									"z": "0"
 								}
 							],
@@ -5138,6 +5530,8 @@
 				"c009ea16-c45a-d501-a232-584ec57c86bb": {
 					"name": "CoreHandle",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "position",
@@ -5172,6 +5566,8 @@
 				"31727382-bf25-5d81-dfe9-ca0b6764d2d0": {
 					"name": "RotorsLeft",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -5192,7 +5588,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "720",
+									"y": "-720",
 									"z": "0"
 								}
 							],
@@ -5206,12 +5602,14 @@
 				"3c1cb66d-8a31-d31f-ec9f-65a33e313a53": {
 					"name": "RightArm",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-180",
+									"x": "180",
 									"y": "0",
 									"z": "-5"
 								}

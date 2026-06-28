@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "ScreenFilter",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -1, 0],
 			"to": [0, 0, 0],
@@ -59,47 +60,91 @@
 			"uuid": "e4bf5561-1cd2-7e16-db25-0604437f15f0"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "ExSkill1ParticleAnchor1",
-			"origin": [-5.5, 12, -1],
-			"color": 0,
 			"uuid": "86113a9d-7b43-16f9-796d-a0fa7d12c42d",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": false,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-5.5, 12, -1],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
-			"selected": false,
-			"children": []
+			"isOpen": false,
+			"primary_selected": false
 		},
 		{
 			"name": "Gui",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "37d4f91d-829e-f765-2866-0705b98b089f",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": true,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "FilterOpacity",
+			"uuid": "ce0763d6-5e6c-f2a4-ebb3-75e5027cf779",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "86113a9d-7b43-16f9-796d-a0fa7d12c42d",
+			"isOpen": false,
+			"children": []
+		},
+		{
+			"uuid": "37d4f91d-829e-f765-2866-0705b98b089f",
+			"isOpen": true,
 			"children": [
 				"e4bf5561-1cd2-7e16-db25-0604437f15f0",
 				{
-					"name": "FilterOpacity",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "ce0763d6-5e6c-f2a4-ebb3-75e5027cf779",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
@@ -107,12 +152,13 @@
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/23b_Mika_Swimsuit/textures/ex_skill_1.png",
 			"name": "ex_skill_1.png",
+			"relative_path": "../textures/ex_skill_1.png",
 			"folder": "",
 			"namespace": "",
 			"id": "0",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 16,
 			"uv_width": 16,
@@ -121,9 +167,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -132,8 +181,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "e964b24d-16e0-eb18-6446-5779aef026e0",
-			"relative_path": "../textures/ex_skill_1.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAexJREFUOE+Vk9FOE1EQhr85u22xNbWlFUWBioJe+BK+kl56660+gz4KPoQmxK1FKQSwpYVYSunuGXNmt5EYE/Qkk72ab/+Z+X/JElVgV4VjUXrAAJiiTO2bv1uIVRWlrdARWAWeSpborkBXhR7KCOVUHSNgVlQAVEKJp4nQRGmJ0FF4ImlXP4rnE7CPY6xwosJ5nHEFVuGV04iyKHWBFQII1tTxPCh4D/QRDhWOI88QxwTPBY65tXtKOKp4apmjJXAP5QGwHgBvUQ7U8c2aI8ZccW7yY1IDxERcskSZOhkNg3g6wHYAvFHhqwr9OOxgzpCYCZFhcgV1SmSUSalRopUKTVHWRdmU7Iu+Vsde5DkAflCyRU6JmZEUgC1KpFTsEnOb/27meCieRwHwygDKEcIAZcyECafMeIE3BTs4lqlQo4bQwNPKHKsLwEt1fI88hzgDnN0AuIOnfR0QRugZ4KYRZlSJaKSwIrmCzcUSeyrs/+cS10R5LFlX3+HpF2MM/vGMbfFsLM74wVyYG+kk8gz+MJLgia8ZqW1uXBgpTXRHlM/mRscouFE9P+M8C7+tHLLguF24MARpQwlnzMOUqLAXglSEaQxcFoCQ1qUiTA2E5dAsWCq3AiCPMxwJBrlAGP41ztAO0bY/w33g2S9CnyITXpmL2wAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACI0lEQVR4AYST204TURSGv9nlUEqChYpJIVg8ceNL+ErecuutvoO+Cb6DMaIFkRQigXIy5Tid7beGxlvb/LP3/KdZe5qmcT9n8a3cyZ9dP4r34t34R94UbyfYrLmd/MH1U9nPW67bIifgewG74ov7AZnDXLCrsif2J9gLjooDPftF5qv+vvvtpPA7Z/YUBxQcGPglN2hoFocTHAQXmp5DYGAmfEfJtl3JIYnzDEcGTqYyZ5qO5U5qwHFwoYVH7iwyZn/GEYZkTkPQMKTBOfcMGbtmLtQumOas5tTCE17MiKsouHa0c0f8Y/OIOy6ZYsQsV15HNTLXNRdaYhReMxcUDJMt18Dt1NhoZajJjVPcGbjllAdMuTbUQ9NTe9FncUxwY8GNbfckSr9jLh24L95QEYh9cKUHCw+WYYGIAo9kPDsLNfjPJ/z/LFEw591MjYppR2+w4PpSbJEIxD64UlVPCbM8oJl8dhTMlQ1mtLccrOmgMx5lliWNgdJ1rB6hRMt3NA00IxsFraLikb/pAhXz2hYMz/vaWt7N1yiYq7kZak94zbTJdFJcbFoq4Mk48dintx2+41Pa8o9Em3sWa25MOzzhpXC+glbKsF6XVCyGoKFTVoqwTGVhRQf3wYUWHv1dubXIJoluUdAjsUpmxdF6hXvNKxN0XVeDCy08hnvmlkU3ebNh0wv/HK/dr4lXnvG55mfiqeiJ9eAo2FCPJ/ci437jLwAAAP//tV6c3wAAAAZJREFUAwAA2CwgN6dEgAAAAABJRU5ErkJggg=="
 		}
 	],
 	"animations": [
@@ -145,6 +193,8 @@
 			"length": 8.85,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -153,6 +203,8 @@
 				"ce0763d6-5e6c-f2a4-ebb3-75e5027cf779": {
 					"name": "FilterOpacity",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -255,7 +307,9 @@
 			"override": false,
 			"length": 4.75,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -264,6 +318,8 @@
 				"ce0763d6-5e6c-f2a4-ebb3-75e5027cf779": {
 					"name": "FilterOpacity",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",

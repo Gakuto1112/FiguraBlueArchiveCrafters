@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "Mask",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 24, -4],
 			"to": [4, 32, 4],
@@ -62,10 +63,10 @@
 		{
 			"name": "Number",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.07, 29, -4.55],
 			"to": [1.07, 32, -4.55],
@@ -102,30 +103,47 @@
 			"uuid": "9da77f2b-9ae5-1508-7197-7cd1652e0981"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "CMaskedH",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "8aa59adb-e386-5f5c-152e-db9887b01653",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": true,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
-			"selected": false,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "8aa59adb-e386-5f5c-152e-db9887b01653",
+			"isOpen": true,
 			"children": ["b747bd75-507f-7929-aeae-3c66cb26fac7", "9da77f2b-9ae5-1508-7197-7cd1652e0981"]
 		}
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/06a_Shiroko/textures/costume_masked.png",
 			"name": "costume_masked.png",
+			"relative_path": "../textures/costume_masked.png",
 			"folder": "",
 			"namespace": "",
 			"id": "1",
 			"group": "",
+			"scope": 0,
 			"width": 32,
 			"height": 16,
 			"uv_width": 32,
@@ -134,9 +152,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -145,8 +166,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "375bf4c3-b00b-7f4b-fdf5-83236cf51fe5",
-			"relative_path": "../textures/costume_masked.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAAAAXNSR0IArs4c6QAAAN5JREFUSEtjZGBgYPjy7ft/EA0CPFycjDA2iI7pPAOWExYTZXj76jUGTUhuSbkJinnIZoPYjCDLjY084eJnz21HcUT+/IdgB6BbDhMD0bgsAemdmCiP3wHIIQByCLoDQCEA8j2yI9DZuCwB6aVKCCD7HhZUsCihOARgUQDyOa40gGwZepyD+HQLAWzRQHEIEJML0NMALEpg0UFRCKBnC3Q+LBHiyoLoaQI9uxJMhPgswJX3qSnOOOqAIRECsIQEKlpBiRGdT0maICoNDBoHoGdRWIjQPARgFlAz6GHlCgAoxTOf52sbVgAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAQCAYAAAB3AH1ZAAABK0lEQVR4AeyVQc4BURCEZ2ZH7IStO+AS7mDjBJbOYOkENu7gEriDLbETlsw3Scl7nZ4xJhIbf/5KddXr7tfaIEvyv+vt/hByGf1Pl7sHmK+PLr87i5o5IuPi0XCSCOgwr9vvJeByOkcc5qxmg3SzGKeWqQvzvDjrtFvp/rBNgJfAxfg0I4bRiqXxLMixntXRBuwhmgvCRsRAPjF5Hsjx/NArngEMNgDYCFrgAhrB8qRhIN9yWGPPpF8DVD0DNOIioEJifCDPMjnWszp6Bqo2QCGX0RRGEwNiD8rzzuQVG2Dtgg4s04zLQiYGZR9F28PTWVmxfK9IHgMRwwzisfqUcbEBmvwK/wFqbUBfsXqbrJbfhGsN0KRx3ZqPBvjmK9eAtQbQT7GKrJbfhJ8AAAD//1iNI5YAAAAGSURBVAMADjkPckSUzp0AAAAASUVORK5CYII="
 		}
 	],
 	"reference_images": [

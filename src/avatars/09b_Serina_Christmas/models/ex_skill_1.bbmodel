@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "HandbellStick",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6, 11.5, -4.75],
 			"to": [-5, 12.5, 1.25],
@@ -61,10 +62,10 @@
 		{
 			"name": "Handbell1_Top",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7, 10.5, -8.25],
 			"to": [-4, 13.5, -4.75],
@@ -78,8 +79,8 @@
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				},
 				"south": {
 					"uv": [1, 1, 7, 7],
@@ -87,13 +88,13 @@
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 180,
-					"texture": null
+					"texture": null,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
@@ -106,10 +107,10 @@
 		{
 			"name": "Handbell2_Top",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.5, 10, -9.25],
 			"to": [-3.5, 14, -8.25],
@@ -123,8 +124,8 @@
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				},
 				"south": {
 					"uv": [0, 0, 8, 8],
@@ -132,13 +133,13 @@
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 180,
-					"texture": null
+					"texture": null,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
@@ -151,10 +152,10 @@
 		{
 			"name": "HandbellRibbon",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7, 11.5, -4.5],
 			"to": [-4, 11.5, -2.5],
@@ -194,10 +195,10 @@
 		{
 			"name": "HandbellRibbonLayer",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7, 11.5, -4.5],
 			"to": [-4, 11.5, -2.5],
@@ -237,10 +238,10 @@
 		{
 			"name": "HandbellRibbon2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6, 11.5, -4.5],
 			"to": [-5, 12.5, -3.5],
@@ -255,8 +256,8 @@
 				},
 				"east": {
 					"uv": [2, 1, 4, 3],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
@@ -264,8 +265,8 @@
 				},
 				"west": {
 					"uv": [2, 1, 4, 3],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"up": {
 					"uv": [2, 1, 4, 3],
@@ -273,8 +274,8 @@
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 180,
-					"texture": null
+					"texture": null,
+					"rotation": 180
 				}
 			},
 			"type": "cube",
@@ -283,10 +284,10 @@
 		{
 			"name": "Handbell1_Side",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7, 10.5, -8.25],
 			"to": [-4, 13.5, -4.75],
@@ -300,8 +301,8 @@
 				},
 				"east": {
 					"uv": [1, 0, 7, 7],
-					"rotation": 270,
-					"texture": 2
+					"texture": 2,
+					"rotation": 270
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
@@ -309,13 +310,13 @@
 				},
 				"west": {
 					"uv": [1, 0, 7, 7],
-					"rotation": 90,
-					"texture": 2
+					"texture": 2,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [1, 0, 7, 7],
-					"rotation": 180,
-					"texture": 2
+					"texture": 2,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [1, 0, 7, 7],
@@ -328,10 +329,10 @@
 		{
 			"name": "Handbell2_Side",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.5, 10, -9.25],
 			"to": [-3.5, 14, -8.25],
@@ -345,8 +346,8 @@
 				},
 				"east": {
 					"uv": [0, 7, 8, 9],
-					"rotation": 270,
-					"texture": 2
+					"texture": 2,
+					"rotation": 270
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
@@ -354,13 +355,13 @@
 				},
 				"west": {
 					"uv": [0, 7, 8, 9],
-					"rotation": 90,
-					"texture": 2
+					"texture": 2,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 7, 8, 9],
-					"rotation": 180,
-					"texture": 2
+					"texture": 2,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [0, 7, 8, 9],
@@ -373,10 +374,10 @@
 		{
 			"name": "Handbell2_Bottom",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.5, 10, -9.25],
 			"to": [-3.5, 14, -8.25],
@@ -390,8 +391,8 @@
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 270,
-					"texture": null
+					"texture": null,
+					"rotation": 270
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
@@ -399,13 +400,13 @@
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 180,
-					"texture": null
+					"texture": null,
+					"rotation": 180
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
@@ -418,10 +419,10 @@
 		{
 			"name": "MusicStandShaft",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 0.5, -0.5],
 			"to": [0.5, 20.5, 0.5],
@@ -460,10 +461,10 @@
 		{
 			"name": "MusicStandFoot1_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 4, -8.5],
 			"to": [0.5, 5, -0.5],
@@ -502,10 +503,10 @@
 		{
 			"name": "MusicStandFoot1_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 4, -8.5],
 			"to": [0.5, 5, -7.5],
@@ -545,10 +546,10 @@
 		{
 			"name": "MusicStandFoot1_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1, -4.75],
 			"to": [0.25, 4, -4.25],
@@ -587,10 +588,10 @@
 		{
 			"name": "MusicStandFoot2_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 4, -8.5],
 			"to": [0.5, 5, -0.5],
@@ -629,10 +630,10 @@
 		{
 			"name": "MusicStandFoot2_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 4, -8.5],
 			"to": [0.5, 5, -7.5],
@@ -672,10 +673,10 @@
 		{
 			"name": "MusicStandFoot2_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1, -4.75],
 			"to": [0.25, 4, -4.25],
@@ -714,10 +715,10 @@
 		{
 			"name": "MusicStandFoot3_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 4, -8.5],
 			"to": [0.5, 5, -0.5],
@@ -756,10 +757,10 @@
 		{
 			"name": "MusicStandFoot3_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 4, -8.5],
 			"to": [0.5, 5, -7.5],
@@ -799,10 +800,10 @@
 		{
 			"name": "MusicStandFoot3_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 1, -4.75],
 			"to": [0.25, 4, -4.25],
@@ -841,10 +842,10 @@
 		{
 			"name": "MusicStandFeetStopper",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, 4, -1],
 			"to": [1, 5, 1],
@@ -883,10 +884,10 @@
 		{
 			"name": "MusicStandBookHolderBack",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8, 16, -0.5],
 			"to": [8, 26, 0],
@@ -925,10 +926,10 @@
 		{
 			"name": "MusicStandBookHolderBottom",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8, 16, -1.5],
 			"to": [8, 16.5, -0.5],
@@ -967,10 +968,10 @@
 		{
 			"name": "MusicBook",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6, 16.5, -1],
 			"to": [6, 25.5, -0.5],
@@ -992,13 +993,13 @@
 				},
 				"west": {
 					"uv": [3, 0, 9, 1],
-					"rotation": 180,
-					"texture": 0
+					"texture": 0,
+					"rotation": 180
 				},
 				"up": {
 					"uv": [3, 0, 9, 1],
-					"rotation": 270,
-					"texture": 0
+					"texture": 0,
+					"rotation": 270
 				},
 				"down": {
 					"uv": [0, 0, 0, 0],
@@ -1011,10 +1012,10 @@
 		{
 			"name": "MusicBookStopperLeft",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.125, 16.5, -1.375],
 			"to": [6.375, 20.5, -1.125],
@@ -1054,10 +1055,10 @@
 		{
 			"name": "MusicBookStopperRight",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6.375, 16.5, -1.375],
 			"to": [-6.125, 20.5, -1.125],
@@ -1097,10 +1098,10 @@
 		{
 			"name": "Bag",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5, 0, -3.5],
 			"to": [5, 4, 3.5],
@@ -1110,23 +1111,23 @@
 			"faces": {
 				"north": {
 					"uv": [9, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [9, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [9, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [9, 0, 17, 1],
-					"rotation": 90,
-					"texture": 0
+					"texture": 0,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [9, 0, 10, 1],
@@ -1143,10 +1144,10 @@
 		{
 			"name": "BagLogo",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, 0, -2.5],
 			"to": [2.83, 4, 2.5],
@@ -1157,23 +1158,23 @@
 			"faces": {
 				"north": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"east": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"up": {
 					"uv": [16, 66, 30, 78],
@@ -1190,10 +1191,10 @@
 		{
 			"name": "BagHandle1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2, 1, -3.75],
 			"to": [-1.5, 1.5, -3.5],
@@ -1211,8 +1212,8 @@
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [12, 0, 13, 1],
@@ -1233,10 +1234,10 @@
 		{
 			"name": "BagHandle2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [1.5, 1, -3.75],
 			"to": [2, 1.5, -3.5],
@@ -1254,8 +1255,8 @@
 				},
 				"south": {
 					"uv": [0, 0, 0, 0],
-					"rotation": 90,
-					"texture": null
+					"texture": null,
+					"rotation": 90
 				},
 				"west": {
 					"uv": [13, 0, 12, 1],
@@ -1276,10 +1277,10 @@
 		{
 			"name": "BagHandle3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2, 1, -4],
 			"to": [2, 1.5, -3.75],
@@ -1318,10 +1319,10 @@
 		{
 			"name": "BagLock",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 1.875, -3.6],
 			"to": [0.5, 2.125, -3.475],
@@ -1360,10 +1361,10 @@
 		{
 			"name": "BagFoot1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3, 0.25, 3.5],
 			"to": [3.5, 1.25, 3.625],
@@ -1402,10 +1403,10 @@
 		{
 			"name": "BagFoot2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [3, 2.75, 3.5],
 			"to": [3.5, 3.75, 3.625],
@@ -1444,10 +1445,10 @@
 		{
 			"name": "BagFoot3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.5, 2.75, 3.5],
 			"to": [-3, 3.75, 3.625],
@@ -1486,10 +1487,10 @@
 		{
 			"name": "BagFoot4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.5, 0.25, 3.5],
 			"to": [-3, 1.25, 3.625],
@@ -1528,10 +1529,10 @@
 		{
 			"name": "PresentBag",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6, 0, -3],
 			"to": [6, 8, 3],
@@ -1570,10 +1571,10 @@
 		{
 			"name": "PresentBagLayer",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6, 0, -3],
 			"to": [6, 8, 3],
@@ -1613,10 +1614,10 @@
 		{
 			"name": "BagRibbon",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5, 4, 3.25],
 			"to": [-1, 7, 3.25],
@@ -1656,10 +1657,10 @@
 		{
 			"name": "BagRibbonTipLeft",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5, 3, 3],
 			"to": [-4, 4, 3.5],
@@ -1698,10 +1699,10 @@
 		{
 			"name": "BagRibbonTipRight",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2, 3, 3],
 			"to": [-1, 4, 3.5],
@@ -1740,10 +1741,10 @@
 		{
 			"name": "Present1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0, 0.05, -1.5],
 			"to": [5, 9.05, 0.5],
@@ -1782,10 +1783,10 @@
 		{
 			"name": "PresentBagLInner",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6, 0, -3],
 			"to": [6, 8, 3],
@@ -1825,10 +1826,10 @@
 		{
 			"name": "Present1Layer",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0, 0.05, -1.5],
 			"to": [5, 9.05, 0.5],
@@ -1868,10 +1869,10 @@
 		{
 			"name": "Present2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5.25, 0.05, -2.5],
 			"to": [-3.25, 9.05, 2.5],
@@ -1910,10 +1911,10 @@
 		{
 			"name": "Present2Layer",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5.25, 0.05, -2.5],
 			"to": [-3.25, 9.05, 2.5],
@@ -1953,10 +1954,10 @@
 		{
 			"name": "SWHead",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, 3.5, -4.25],
 			"to": [1.5, 6.5, -2.25],
@@ -1995,10 +1996,10 @@
 		{
 			"name": "SWNose",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.75, 3.51, -5.75],
 			"to": [0.75, 5.01, -3.75],
@@ -2037,10 +2038,10 @@
 		{
 			"name": "SWRightEar",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5, 6.5, -3.25],
 			"to": [1.5, 7.5, -2.75],
@@ -2079,10 +2080,10 @@
 		{
 			"name": "SWLeftEar",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, 6.5, -3.25],
 			"to": [-0.5, 7.5, -2.75],
@@ -2121,10 +2122,10 @@
 		{
 			"name": "SWUpperBody",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2, 2.75, -2],
 			"to": [2, 6.25, 1],
@@ -2163,10 +2164,10 @@
 		{
 			"name": "SWBody",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.5, 3, 1],
 			"to": [1.5, 6, 5.5],
@@ -2204,10 +2205,10 @@
 		{
 			"name": "SWLeg0",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.375, 0, -1.5],
 			"to": [-0.375, 3, -0.5],
@@ -2246,10 +2247,10 @@
 		{
 			"name": "SWLeg1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.375, 0, -1.5],
 			"to": [1.375, 3, -0.5],
@@ -2288,10 +2289,10 @@
 		{
 			"name": "SWLeg1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1.375, 0, 4],
 			"to": [-0.375, 3, 5],
@@ -2330,10 +2331,10 @@
 		{
 			"name": "SWLeg2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.375, 0, 4],
 			"to": [1.375, 3, 5],
@@ -2372,10 +2373,10 @@
 		{
 			"name": "SWTail",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 5, 5.5],
 			"to": [0.5, 6, 9.5],
@@ -2414,10 +2415,10 @@
 		{
 			"name": "SWHat1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, 6.5, -4.75],
 			"to": [2.5, 7, -1.75],
@@ -2456,10 +2457,10 @@
 		{
 			"name": "SWHat2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.25, 7, -4.5],
 			"to": [2.25, 7.5, -2],
@@ -2498,10 +2499,10 @@
 		{
 			"name": "SWHat3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0, 7.5, -4.25],
 			"to": [2, 8, -2.25],
@@ -2540,10 +2541,10 @@
 		{
 			"name": "SWHat4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.25, 7.375, -2.25],
 			"to": [1.75, 7.875, -1.625],
@@ -2582,10 +2583,10 @@
 		{
 			"name": "SWHat5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.5, 7.125, -1.875],
 			"to": [1.5, 7.625, -1.375],
@@ -2624,10 +2625,10 @@
 		{
 			"name": "SWHat6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0.75, 6.75, -1.5],
 			"to": [1.25, 7.25, -1],
@@ -2666,10 +2667,10 @@
 		{
 			"name": "HandbellEffect1_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.25, 10.75, -6.75],
 			"to": [-1.75, 13.25, -6.75],
@@ -2708,10 +2709,10 @@
 		{
 			"name": "HandbellEffect1_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, 9.75, -6.75],
 			"to": [-2.25, 14.25, -6.75],
@@ -2750,10 +2751,10 @@
 		{
 			"name": "HandbellEffect1_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.25, 9.25, -6.75],
 			"to": [-2.75, 14.75, -6.75],
@@ -2792,10 +2793,10 @@
 		{
 			"name": "HandbellEffect1_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.25, 8.75, -6.75],
 			"to": [-3.25, 15.25, -6.75],
@@ -2834,10 +2835,10 @@
 		{
 			"name": "HandbellEffect1_5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6.75, 8.25, -6.75],
 			"to": [-4.25, 15.75, -6.75],
@@ -2876,10 +2877,10 @@
 		{
 			"name": "HandbellEffect1_6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.75, 8.75, -6.75],
 			"to": [-6.75, 15.25, -6.75],
@@ -2918,10 +2919,10 @@
 		{
 			"name": "HandbellEffect1_7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8.25, 9.25, -6.75],
 			"to": [-7.75, 14.75, -6.75],
@@ -2960,10 +2961,10 @@
 		{
 			"name": "HandbellEffect1_8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8.75, 9.75, -6.75],
 			"to": [-8.25, 14.25, -6.75],
@@ -3002,10 +3003,10 @@
 		{
 			"name": "HandbellEffect1_9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-9.25, 10.75, -6.75],
 			"to": [-8.75, 13.25, -6.75],
@@ -3044,10 +3045,10 @@
 		{
 			"name": "HandbellEffect2_9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8.75, 9.75, -6.75],
 			"to": [-8.25, 14.25, -6.75],
@@ -3086,10 +3087,10 @@
 		{
 			"name": "HandbellEffect2_8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-8.25, 9.25, -6.75],
 			"to": [-7.75, 14.75, -6.75],
@@ -3128,10 +3129,10 @@
 		{
 			"name": "HandbellEffect2_7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.75, 8.75, -6.75],
 			"to": [-6.75, 15.25, -6.75],
@@ -3170,10 +3171,10 @@
 		{
 			"name": "HandbellEffect2_6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6.75, 8.25, -6.75],
 			"to": [-4.25, 15.75, -6.75],
@@ -3212,10 +3213,10 @@
 		{
 			"name": "HandbellEffect2_5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.25, 8.75, -6.75],
 			"to": [-3.25, 15.25, -6.75],
@@ -3254,10 +3255,10 @@
 		{
 			"name": "HandbellEffect2_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3.25, 9.25, -6.75],
 			"to": [-2.75, 14.75, -6.75],
@@ -3296,10 +3297,10 @@
 		{
 			"name": "HandbellEffect2_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.75, 9.75, -6.75],
 			"to": [-2.25, 14.25, -6.75],
@@ -3338,10 +3339,10 @@
 		{
 			"name": "HandbellEffect2_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.25, 10.75, -6.75],
 			"to": [-1.75, 13.25, -6.75],
@@ -3380,10 +3381,10 @@
 		{
 			"name": "HandbellEffect2_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-9.25, 10.75, -6.75],
 			"to": [-8.75, 13.25, -6.75],
@@ -3422,10 +3423,10 @@
 		{
 			"name": "GroundEffect1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-7.5, 0, -2.5],
 			"to": [-6.5, 0, 2.5],
@@ -3464,10 +3465,10 @@
 		{
 			"name": "GroundEffect2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-6.5, 0, -4.5],
 			"to": [-5.5, 0, 4.5],
@@ -3506,10 +3507,10 @@
 		{
 			"name": "GroundEffect3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-5.5, 0, -5.5],
 			"to": [-4.5, 0, 5.5],
@@ -3548,10 +3549,10 @@
 		{
 			"name": "GroundEffect4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4.5, 0, -6.5],
 			"to": [-2.5, 0, 6.5],
@@ -3590,10 +3591,10 @@
 		{
 			"name": "GroundEffect5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.5, 0, -7.5],
 			"to": [2.5, 0, 7.5],
@@ -3632,10 +3633,10 @@
 		{
 			"name": "GroundEffect6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2.5, 0, -6.5],
 			"to": [4.5, 0, 6.5],
@@ -3674,10 +3675,10 @@
 		{
 			"name": "GroundEffect7",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [4.5, 0, -5.5],
 			"to": [5.5, 0, 5.5],
@@ -3716,10 +3717,10 @@
 		{
 			"name": "GroundEffect8",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [5.5, 0, -4.5],
 			"to": [6.5, 0, 4.5],
@@ -3758,10 +3759,10 @@
 		{
 			"name": "GroundEffect9",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [6.5, 0, -2.5],
 			"to": [7.5, 0, 2.5],
@@ -3800,10 +3801,10 @@
 		{
 			"name": "Note1_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -4, 0],
 			"to": [2, -2, 0],
@@ -3842,10 +3843,10 @@
 		{
 			"name": "Note1_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -2, 0],
 			"to": [0, 4, 0],
@@ -3884,10 +3885,10 @@
 		{
 			"name": "Note1_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2, 2, 0],
 			"to": [-1, 4, 0],
@@ -3926,10 +3927,10 @@
 		{
 			"name": "Note1_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, 1, 0],
 			"to": [-2, 3, 0],
@@ -3968,10 +3969,10 @@
 		{
 			"name": "Note2_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -4, 0],
 			"to": [2, -2, 0],
@@ -4010,10 +4011,10 @@
 		{
 			"name": "Note2_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -2, 0],
 			"to": [0, 4, 0],
@@ -4052,10 +4053,10 @@
 		{
 			"name": "Note3_1",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, -4, 0],
 			"to": [5, -2, 0],
@@ -4094,10 +4095,10 @@
 		{
 			"name": "Note3_2",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, -2, 0],
 			"to": [3, 3, 0],
@@ -4136,10 +4137,10 @@
 		{
 			"name": "Note3_4",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, -1, 0],
 			"to": [-2, 4, 0],
@@ -4178,10 +4179,10 @@
 		{
 			"name": "Note3_3",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, -3, 0],
 			"to": [0, -1, 0],
@@ -4220,10 +4221,10 @@
 		{
 			"name": "Note3_5",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [0, 1, 0],
 			"to": [2, 3, 0],
@@ -4262,10 +4263,10 @@
 		{
 			"name": "Note3_6",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2, 2, 0],
 			"to": [0, 4, 0],
@@ -4304,10 +4305,10 @@
 		{
 			"name": "Frame",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-1, -1, 0],
 			"to": [0, 0, 0],
@@ -4344,19 +4345,909 @@
 			"uuid": "c15aae99-792d-c07f-2c82-9700a72c0f52"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "Handbell",
-			"origin": [-5.5, 12, -0.75],
-			"color": 0,
 			"uuid": "4393d41b-6cd4-cede-75bf-5c443bbc4a83",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": false,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-5.5, 12, -0.75],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Camera",
+			"uuid": "200ca86d-1277-5430-257e-0d1daf4764a3",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-5.5, 12, -6.75],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "HandbellEffect1",
+			"uuid": "9b6ebbdd-1da3-70fb-5732-8621f4e0b507",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-5.25, 12.25, -6.75],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "HandbellEffect1Opacity",
+			"uuid": "2d80e3e7-24e4-66bd-5eb9-953441ff4e23",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-5.25, 12.25, -6.75],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "HandbellEffect2",
+			"uuid": "9ca039c9-8edc-061d-687b-dd53324b19dc",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-5.25, 12.25, -6.75],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "HandbellEffect2Opacity",
+			"uuid": "069237fc-be0f-bfbe-ad28-11216c1afb6d",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-5.25, 12.25, -6.75],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MusicStand",
+			"uuid": "f790a7ef-1106-d449-2fcd-5df5d9fe3c79",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "MusicStandFeet",
+			"uuid": "b022f9ce-546c-b974-cf30-c0db4756a9e5",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "MusicStandFoot1",
+			"uuid": "91de16f4-27c6-0990-703f-5495932dea1b",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 5, 0],
+			"rotation": [-35, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MusicStandFoot1_3",
+			"uuid": "726c2b93-6a60-7929-bf2b-a8b36cff56a2",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 4, -4.75],
+			"rotation": [-40, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MusicStandFoot2",
+			"uuid": "9585568d-9e50-5f03-75f3-57971f4b5f98",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 5, 0],
+			"rotation": [-35, 120, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MusicStandFoot2_3",
+			"uuid": "9be7eeab-b04c-6858-96aa-10e5d26b42e4",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 4, -4.75],
+			"rotation": [-40, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MusicStandFoot3",
+			"uuid": "c3c553ee-7d59-4499-8090-67046f95673f",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 5, 0],
+			"rotation": [-35, -120, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MusicStandFoot3_3",
+			"uuid": "459fcb76-f0af-ef09-6a9d-0ce32958ee48",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 4, -4.75],
+			"rotation": [-40, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "MusicStandBookHolder",
+			"uuid": "e46ed66a-f1fa-16fe-f84f-3773aced9f23",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 20.5, 0],
+			"rotation": [15, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Bag",
+			"uuid": "45af3c8e-9f4f-3659-24dc-20f2a5c91775",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Presents",
+			"uuid": "1535313e-672f-b4e2-5acf-1b8084c6c4e0",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Present1",
+			"uuid": "30d5b674-d793-1589-0c77-094a48a59556",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [17.5, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Present2",
+			"uuid": "fcc3f304-30a2-5a27-3ce7-55e23cfb9acc",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-3.25, 0.05, 0],
+			"rotation": [0, 0, -21],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "StuffedWolf",
+			"uuid": "671dec31-a82a-fa28-c37e-11e8ddbeace0",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "SWHead",
+			"uuid": "fb10fb3c-edd3-cae2-9c0f-9338b2442fc3",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-1.5, 3.5, -4.25],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SWHat",
+			"uuid": "6be7ca2f-974e-a84c-03dd-da0a3bc30103",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-0.5, 6.5, -2.42708],
+			"rotation": [0, 0, -15],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SWUpperBody",
+			"uuid": "a393ba67-bc59-bdca-fb33-452eb91cc5cf",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 5.75, -2],
+			"rotation": [15, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SWLeg0",
+			"uuid": "4cc3306f-fac2-99d2-45be-3b43f2c293da",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-0.875, 3, -1],
+			"rotation": [-7.5, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SWLeg1",
+			"uuid": "31eb6573-064f-8b28-bd26-d657a9f334c1",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0.875, 3, -1],
+			"rotation": [-7.5, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SWBody",
+			"uuid": "39c3d2ae-2562-2a4b-400e-a1c42f602da6",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 6, 1],
+			"rotation": [32.5, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SWLeg2",
+			"uuid": "ce2d81ff-6cb5-bee2-c764-ef89f1c4a455",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-0.875, 3, 5],
+			"rotation": [42.5, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SWLeg3",
+			"uuid": "438123e2-2cd0-efbc-cf3d-64467f08654b",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0.875, 3, 5],
+			"rotation": [42.5, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "SWTail",
+			"uuid": "8719bdec-0501-fb63-0470-689fdad00ecc",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 5, 5.5],
+			"rotation": [-25, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "GroundEffect",
+			"uuid": "e82461e0-7c75-e344-e8cf-82175eca022e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "GroundEffectOpacity",
+			"uuid": "93eb6830-afc0-b714-988c-4c9f5cacfe08",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Notes",
+			"uuid": "95bdcf2b-d165-b0b0-3430-544358e69f4a",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "Note1",
+			"uuid": "f32393af-1cd4-a809-f32d-bbb4bf0fa7a7",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Note2",
+			"uuid": "5f1dc174-65c4-8c4c-0923-eefa7e7eaa32",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Note3",
+			"uuid": "4ae06e17-6555-0beb-df98-8f12fbe96369",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "ExSkill2ParticleAnchor1",
+			"uuid": "330a395b-f3d9-d02a-1fdc-d081d0d05249",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "ExSkill2ParticleAnchor2",
+			"uuid": "eada2c73-6225-e9a5-0ce7-15b17e9277f2",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 1, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "Gui",
+			"uuid": "39a1ae74-7b49-19ad-e95f-9f46142fb4bb",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "FrameOpacity",
+			"uuid": "3cbc29db-e6d6-165d-9ea5-d37a7a718706",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "4393d41b-6cd4-cede-75bf-5c443bbc4a83",
+			"isOpen": false,
 			"children": [
 				"397c2f06-ea7f-c814-a747-c7f6d5614001",
 				"061dcbac-0bc7-d378-c2f7-ef92f179a49b",
@@ -4368,30 +5259,12 @@
 				"1335ccd4-c4cd-5da3-a649-f036e13a6c23",
 				"8b5e1314-d01a-320e-9e8f-287637fb2a1d",
 				{
-					"name": "Camera",
-					"origin": [-5.5, 12, -6.75],
-					"color": 0,
 					"uuid": "200ca86d-1277-5430-257e-0d1daf4764a3",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "HandbellEffect1",
-							"origin": [-5.25, 12.25, -6.75],
-							"color": 0,
 							"uuid": "9b6ebbdd-1da3-70fb-5732-8621f4e0b507",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"ea83d244-1650-a266-ad58-1292118cb9ae",
 								"184f9843-b2f7-70a0-11a4-ffccbf62fdd2",
@@ -4403,46 +5276,19 @@
 								"04a3d940-4d78-a906-aba5-468e30cacb2d",
 								"e465fd23-dbe6-d83b-fcec-069badeb977f",
 								{
-									"name": "HandbellEffect1Opacity",
-									"origin": [-5.25, 12.25, -6.75],
-									"color": 0,
 									"uuid": "2d80e3e7-24e4-66bd-5eb9-953441ff4e23",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								}
 							]
 						},
 						{
-							"name": "HandbellEffect2",
-							"origin": [-5.25, 12.25, -6.75],
-							"color": 0,
 							"uuid": "9ca039c9-8edc-061d-687b-dd53324b19dc",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								{
-									"name": "HandbellEffect2Opacity",
-									"origin": [-5.25, 12.25, -6.75],
-									"color": 0,
 									"uuid": "069237fc-be0f-bfbe-ad28-11216c1afb6d",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": []
 								},
 								"17d7d1b3-ea55-f683-c937-9f5f58b654c1",
@@ -4461,127 +5307,49 @@
 			]
 		},
 		{
-			"name": "MusicStand",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "f790a7ef-1106-d449-2fcd-5df5d9fe3c79",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				"eed9aff8-36ed-a831-b8d9-0aba82d96169",
 				{
-					"name": "MusicStandFeet",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "b022f9ce-546c-b974-cf30-c0db4756a9e5",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": false,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "MusicStandFoot1",
-							"origin": [0, 5, 0],
-							"rotation": [-35, 0, 0],
-							"color": 0,
 							"uuid": "91de16f4-27c6-0990-703f-5495932dea1b",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"cf57c19c-6951-95ab-f2b1-e54f1438ba80",
 								"55f44267-f7b1-f981-062c-9c0052fa324e",
 								{
-									"name": "MusicStandFoot1_3",
-									"origin": [0, 4, -4.75],
-									"rotation": [-40, 0, 0],
-									"color": 0,
 									"uuid": "726c2b93-6a60-7929-bf2b-a8b36cff56a2",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["d2ac4a39-c8aa-1cbd-560f-4266ce8aa9ad"]
 								}
 							]
 						},
 						{
-							"name": "MusicStandFoot2",
-							"origin": [0, 5, 0],
-							"rotation": [-35, 120, 0],
-							"color": 0,
 							"uuid": "9585568d-9e50-5f03-75f3-57971f4b5f98",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"1e930652-9608-2fcd-a706-d0904ce43743",
 								"ee51aaf1-a053-8d36-2144-dc6650dd0f79",
 								{
-									"name": "MusicStandFoot2_3",
-									"origin": [0, 4, -4.75],
-									"rotation": [-40, 0, 0],
-									"color": 0,
 									"uuid": "9be7eeab-b04c-6858-96aa-10e5d26b42e4",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["787075f7-4b8b-f4b7-7299-f39b969f4fe9"]
 								}
 							]
 						},
 						{
-							"name": "MusicStandFoot3",
-							"origin": [0, 5, 0],
-							"rotation": [-35, -120, 0],
-							"color": 0,
 							"uuid": "c3c553ee-7d59-4499-8090-67046f95673f",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"8228a80a-e1e1-2cdf-3969-a57e5a7441fa",
 								"8b105112-2263-3965-0506-7bb1d84c9189",
 								{
-									"name": "MusicStandFoot3_3",
-									"origin": [0, 4, -4.75],
-									"rotation": [-40, 0, 0],
-									"color": 0,
 									"uuid": "459fcb76-f0af-ef09-6a9d-0ce32958ee48",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["b11c9637-38cf-02c9-cfb1-e50e48157100"]
 								}
 							]
@@ -4590,18 +5358,8 @@
 				},
 				"38d50851-790c-934c-085e-a66bade68cae",
 				{
-					"name": "MusicStandBookHolder",
-					"origin": [0, 20.5, 0],
-					"rotation": [15, 0, 0],
-					"color": 0,
 					"uuid": "e46ed66a-f1fa-16fe-f84f-3773aced9f23",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"b5f1c1e9-2b32-64b8-4791-8fe7003479da",
 						"207a72f8-5ac1-9607-0e78-844197d450cf",
@@ -4613,17 +5371,8 @@
 			]
 		},
 		{
-			"name": "Bag",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "45af3c8e-9f4f-3659-24dc-20f2a5c91775",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				"a2677f26-7160-6867-51a4-992fd5d6ff3f",
 				"27ec7573-d5d7-b12e-74cf-d13996ffba3d",
@@ -4638,17 +5387,8 @@
 			]
 		},
 		{
-			"name": "Presents",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "1535313e-672f-b4e2-5acf-1b8084c6c4e0",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				"13127a63-ae97-c083-e7ef-25084bd6626c",
 				"3edc7df6-24ce-f573-958d-ff02092cc5a8",
@@ -4657,80 +5397,32 @@
 				"fe3816c8-1b9b-d7e2-df68-d727af956380",
 				"5efef7fa-f387-b3e0-a9a5-d46a9a59f617",
 				{
-					"name": "Present1",
-					"origin": [0, 0, 0],
-					"rotation": [17.5, 0, 0],
-					"color": 0,
 					"uuid": "30d5b674-d793-1589-0c77-094a48a59556",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["5974921d-131a-6c8d-a024-8d0448fe965e", "ba162dfa-8be4-7260-4431-8e240182081f"]
 				},
 				{
-					"name": "Present2",
-					"origin": [-3.25, 0.05, 0],
-					"rotation": [0, 0, -21],
-					"color": 0,
 					"uuid": "fcc3f304-30a2-5a27-3ce7-55e23cfb9acc",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["fe3b114d-38f7-33ec-b381-489267b1929a", "e880df8f-b719-0948-52b7-a60fbe776d93"]
 				}
 			]
 		},
 		{
-			"name": "StuffedWolf",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "671dec31-a82a-fa28-c37e-11e8ddbeace0",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "SWHead",
-					"origin": [-1.5, 3.5, -4.25],
-					"color": 0,
 					"uuid": "fb10fb3c-edd3-cae2-9c0f-9338b2442fc3",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"903ff739-d614-6334-072d-e30a89568700",
 						"69fc11f8-9f04-e6e5-d06b-b933c3ad246b",
 						"6b0bf50f-b14a-1890-606c-de460769efda",
 						"397fb215-9101-28cf-01d8-2559b6c32729",
 						{
-							"name": "SWHat",
-							"origin": [-0.5, 6.5, -2.42708],
-							"rotation": [0, 0, -15],
-							"color": 0,
 							"uuid": "6be7ca2f-974e-a84c-03dd-da0a3bc30103",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"dec5a4d2-2933-0064-117b-679bb7e19739",
 								"e787f955-d65b-f0b3-e48f-0631b0a991af",
@@ -4743,108 +5435,38 @@
 					]
 				},
 				{
-					"name": "SWUpperBody",
-					"origin": [0, 5.75, -2],
-					"rotation": [15, 0, 0],
-					"color": 0,
 					"uuid": "a393ba67-bc59-bdca-fb33-452eb91cc5cf",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"2cfde4b2-aaee-d103-c2a0-ccf1e40ed2e7",
 						{
-							"name": "SWLeg0",
-							"origin": [-0.875, 3, -1],
-							"rotation": [-7.5, 0, 0],
-							"color": 0,
 							"uuid": "4cc3306f-fac2-99d2-45be-3b43f2c293da",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["e953cebb-c989-2a38-077b-7ca4ec520a65"]
 						},
 						{
-							"name": "SWLeg1",
-							"origin": [0.875, 3, -1],
-							"rotation": [-7.5, 0, 0],
-							"color": 0,
 							"uuid": "31eb6573-064f-8b28-bd26-d657a9f334c1",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["681f7feb-686e-e43c-ebb1-cf7abc120b4b"]
 						},
 						{
-							"name": "SWBody",
-							"origin": [0, 6, 1],
-							"rotation": [32.5, 0, 0],
-							"color": 0,
 							"uuid": "39c3d2ae-2562-2a4b-400e-a1c42f602da6",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"aefef1b1-27ad-3fb3-77d0-5454f19c36d4",
 								{
-									"name": "SWLeg2",
-									"origin": [-0.875, 3, 5],
-									"rotation": [42.5, 0, 0],
-									"color": 0,
 									"uuid": "ce2d81ff-6cb5-bee2-c764-ef89f1c4a455",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["2a3dcbac-8d2c-26a3-8d48-de0e4a52b1d2"]
 								},
 								{
-									"name": "SWLeg3",
-									"origin": [0.875, 3, 5],
-									"rotation": [42.5, 0, 0],
-									"color": 0,
 									"uuid": "438123e2-2cd0-efbc-cf3d-64467f08654b",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["72179c34-a1a3-0502-50f6-a3f9a2b73d72"]
 								},
 								{
-									"name": "SWTail",
-									"origin": [0, 5, 5.5],
-									"rotation": [-25, 0, 0],
-									"color": 0,
 									"uuid": "8719bdec-0501-fb63-0470-689fdad00ecc",
-									"export": true,
-									"mirror_uv": false,
 									"isOpen": true,
-									"locked": false,
-									"visibility": true,
-									"autouv": 0,
-									"selected": false,
 									"children": ["8a59d247-21f1-bcd5-d452-ca2942e55701"]
 								}
 							]
@@ -4854,17 +5476,8 @@
 			]
 		},
 		{
-			"name": "GroundEffect",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "e82461e0-7c75-e344-e8cf-82175eca022e",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				"3c7ca598-0c86-ab2b-3340-58f48e4004f5",
 				"c3c2799c-376e-4f94-46ee-30160bf23ca6",
@@ -4876,46 +5489,19 @@
 				"b68b5fbe-9478-3a7e-9928-5b79e64cf7a2",
 				"c3265146-ccc5-ed35-6186-f42e66f3723c",
 				{
-					"name": "GroundEffectOpacity",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "93eb6830-afc0-b714-988c-4c9f5cacfe08",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
 		},
 		{
-			"name": "Notes",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "95bdcf2b-d165-b0b0-3430-544358e69f4a",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "Note1",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "f32393af-1cd4-a809-f32d-bbb4bf0fa7a7",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"41ce5656-1a92-c473-a4a3-8e1508b1a467",
 						"64e66213-3196-13bd-10db-88c4662d68dc",
@@ -4924,31 +5510,13 @@
 					]
 				},
 				{
-					"name": "Note2",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "5f1dc174-65c4-8c4c-0923-eefa7e7eaa32",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": ["836510fc-f45c-1c8e-c6d3-269e667efb58", "101fad21-2856-e3f5-1ed4-cbb8cdfe303e"]
 				},
 				{
-					"name": "Note3",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "4ae06e17-6555-0beb-df98-8f12fbe96369",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						"ea0ca50f-de47-40ab-95a0-8818e631271b",
 						"6d2c3366-8c83-449b-3a64-3a3232c4a26f",
@@ -4961,60 +5529,24 @@
 			]
 		},
 		{
-			"name": "ExSkill2ParticleAnchor1",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "330a395b-f3d9-d02a-1fdc-d081d0d05249",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				{
-					"name": "ExSkill2ParticleAnchor2",
-					"origin": [0, 1, 0],
-					"color": 0,
 					"uuid": "eada2c73-6225-e9a5-0ce7-15b17e9277f2",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
 		},
 		{
-			"name": "Gui",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "39a1ae74-7b49-19ad-e95f-9f46142fb4bb",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": [
 				"c15aae99-792d-c07f-2c82-9700a72c0f52",
 				{
-					"name": "FrameOpacity",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "3cbc29db-e6d6-165d-9ea5-d37a7a718706",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": []
 				}
 			]
@@ -5022,12 +5554,13 @@
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/09b_Serina_Christmas/textures/ex_skill_1.png",
 			"name": "ex_skill_1.png",
+			"relative_path": "../textures/ex_skill_1.png",
 			"folder": "",
 			"namespace": "",
 			"id": "3",
 			"group": "",
+			"scope": 0,
 			"width": 48,
 			"height": 89,
 			"uv_width": 48,
@@ -5036,9 +5569,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -5047,16 +5583,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "b6ad603f-e363-fc62-8f95-c10d8068d80a",
-			"relative_path": "../textures/ex_skill_1.png",
-			"source": "data:image/png;base64,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"
+			"source": "data:image/png;base64,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"
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/09b_Serina_Christmas/textures/for_modeling/bell_bottom.png",
 			"name": "bell_bottom.png",
+			"relative_path": "../textures/for_modeling/bell_bottom.png",
 			"folder": "",
 			"namespace": "",
 			"id": "4",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 16,
 			"uv_width": 16,
@@ -5065,9 +5601,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -5076,16 +5615,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "e5ea02e7-fe49-b977-a7de-3a7749f0478a",
-			"relative_path": "../textures/for_modeling/bell_bottom.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKJJREFUOE9jfLlR9D8nlykDCPAqCYDpz/c+gOnv304ziPu/ZgRzcADGT7u9/u84fZPh0dNXDO8/Q1QJ8jIwyEmLMXiYqjPwuW4jbMCsDYfhmmEWgQxJC7AlbMD/u1H/axo3g/W11PsyvLqym2HS2h9wPqPyMvwuQDYgL5iDARQenYsPE28AKAwo8gLFgUhxNOKLY2Lk8IbwqAHEhAADw8AHIgCSS1URlmbu3QAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA7ElEQVR4AexTIQvCYBC9fUkFRYMaBIMGf8GiURBBFGz+AKO/QBDBYjVaBZugCCIsLq5aDBoEgzMoDtQ2eTe2+J0/wMG7vXfv7jgOPnVdZ/2n1WD4x64PhBoeCZ+KJ0zaOQearWwajDYMcOTgCf2kUHC+uHT3wAKAIxcofVTJUjpqHg+b1O/EuAND4LHQBN4g9N29Rb+sHdbjr7zTgzJJUKLp8kOTuc0COXgsNIE3KBZy0RDUohk5cAnq/XKoblao164SbgCAIwdPHJBv3YxUbcswygsDCDU8cYBUIPl8A6lI5/8HUPCYdEeSvC8AAAD//0YxEu0AAAAGSURBVAMA8GpVIf7hinAAAAAASUVORK5CYII="
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/09b_Serina_Christmas/textures/for_modeling/bell_side.png",
 			"name": "bell_side.png",
+			"relative_path": "../textures/for_modeling/bell_side.png",
 			"folder": "",
 			"namespace": "",
 			"id": "5",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 16,
 			"uv_width": 16,
@@ -5094,9 +5633,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -5105,16 +5647,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "76abde3d-6eb0-4fd1-6741-e00bcf0ede59",
-			"relative_path": "../textures/for_modeling/bell_side.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAJdJREFUOE9jZGBgYPh6Rv0/J5cQA6OYGIjL8P/VK4bv394xcJvcZAQL4AFgBf+uWf4Ha+ayY2D4dghuCJPWcRIMUAiB2DM0Dfj/rff/f04DsA8Yv1+ABxkjVzFxYXB5mtF/bQd2lLC+euAng27WOcIGINsOM4EUVzDCohAU93ADkNIDoagk6ESiEhIhRQRT4qgBlIQAAwMA49RNEaOrQLkAAAAASUVORK5CYII="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA0ElEQVR4AexQqw7CQBCcO9dKQqpxhIfAYvgFDA6D5R+QOILhCzA4DL+AwSAJWD4AJJUstxMKJ64pDUiaznV2dnf2uhbuue3rcj92RS59QrlqLlX40iCKKzBJAsQ9NihXjUHBQQPWPJvJSxxvgxJNfulvDExtAIk6BPfgfsc4zZ+Ux3mDw3IFnCaEnNdQUMvr8nQr6Vxa4xnQmL6g09ujITTn1Qap1WnmuuD07BZIt1BoLtjlidY2d8ZUN0a/GTRWaOzVBil3EMx8KP4NgK938AAAAP//N+tqXAAAAAZJREFUAwCbAkQhB9tD+gAAAABJRU5ErkJggg=="
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/09b_Serina_Christmas/textures/for_modeling/bell_top.png",
 			"name": "bell_top.png",
+			"relative_path": "../textures/for_modeling/bell_top.png",
 			"folder": "",
 			"namespace": "",
 			"id": "6",
 			"group": "",
+			"scope": 0,
 			"width": 16,
 			"height": 16,
 			"uv_width": 16,
@@ -5123,9 +5665,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -5134,8 +5679,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "49e636e0-59e8-e016-fb9d-bcf658b8e8e5",
-			"relative_path": "../textures/for_modeling/bell_top.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAJ5JREFUOE9j/P+t9z8DEvjPaQDmMX6/AKG5ihmR5dHZjHADvh1CleOyI86Af//3/md8Owms+P+rVxBNYmIQw7jsCLsAZgBI89UDPxnU1D8ysEqKQQwhxgCwF74dAtv++/krhls3+Rm0HdjBBvwXzmNgYnQmIgyg/kf3AvEGgPxLbiDCYgE9+mBRQjAa8cUxMXJ4A2jUAGJCgIFh4AMRACJUSRGU8o8FAAAAAElFTkSuQmCC"
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAxUlEQVR4AeyQMQrCQBBF/yyImMZCCHgBLWw8gQjex8Zz2HgfQTyBjYVeQAhY2EREcNw/wWUFzdrZJOTNTv7s/wxxWi415qFrJS8NiceFebkFPHJegQQ90TjtjM3Ie1oUIOwZZmeihA1o3G9uuJ+ikISZYyfXHU9jMLzgeOhaz2LbsakhbCB5jlY/x2jaBvsaz9uoCsgmJtJI7MNr8XamfShVgB9obw4CbzS89svrJFsIcTITwj4mFRI2SF38Nm8CgP//gycAAAD//+J5uEYAAAAGSURBVAMAEXxJIW7+LrIAAAAASUVORK5CYII="
 		}
 	],
 	"animations": [
@@ -5146,7 +5690,9 @@
 			"override": true,
 			"length": 6,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -5154,20 +5700,23 @@
 			"markers": [
 				{
 					"color": 0,
-					"time": 2.3
+					"time": 2.3,
+					"name": 0
 				}
 			],
 			"animators": {
 				"4393d41b-6cd4-cede-75bf-5c443bbc4a83": {
 					"name": "Handbell",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
 									"x": "0",
-									"y": "32.5",
+									"y": "-32.5",
 									"z": "0"
 								}
 							],
@@ -5195,7 +5744,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "-27.56",
+									"y": "27.56",
 									"z": "0"
 								}
 							],
@@ -5209,7 +5758,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "32.5",
+									"y": "-32.5",
 									"z": "0"
 								}
 							],
@@ -5223,7 +5772,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "15",
+									"y": "-15",
 									"z": "0"
 								}
 							],
@@ -5237,7 +5786,7 @@
 							"data_points": [
 								{
 									"x": "0",
-									"y": "15",
+									"y": "-15",
 									"z": "0"
 								}
 							],
@@ -5250,8 +5799,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-15",
-									"y": "32.5",
+									"x": "15",
+									"y": "-32.5",
 									"z": "0"
 								}
 							],
@@ -5264,8 +5813,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-14.5857",
-									"y": "5.11276",
+									"x": "14.5857",
+									"y": "-5.11276",
 									"z": "7.73787"
 								}
 							],
@@ -5278,8 +5827,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-12.68961",
-									"y": "-6.43373",
+									"x": "12.68961",
+									"y": "6.43373",
 									"z": "9.63785"
 								}
 							],
@@ -5292,8 +5841,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "-14.54281",
-									"y": "2.69307",
+									"x": "14.54281",
+									"y": "-2.69307",
 									"z": "8.36794"
 								}
 							],
@@ -5307,13 +5856,15 @@
 				"f790a7ef-1106-d449-2fcd-5df5d9fe3c79": {
 					"name": "MusicStand",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
 									"x": "0",
-									"y": "162.5",
+									"y": "-162.5",
 									"z": "0"
 								}
 							],
@@ -5326,7 +5877,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "5",
+									"x": "-5",
 									"y": "0",
 									"z": "-19"
 								}
@@ -5341,13 +5892,15 @@
 				"45af3c8e-9f4f-3659-24dc-20f2a5c91775": {
 					"name": "Bag",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
 									"x": "0",
-									"y": "-167.5",
+									"y": "167.5",
 									"z": "0"
 								}
 							],
@@ -5360,7 +5913,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-13",
+									"x": "13",
 									"y": "0",
 									"z": "-8"
 								}
@@ -5375,13 +5928,15 @@
 				"1535313e-672f-b4e2-5acf-1b8084c6c4e0": {
 					"name": "Presents",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
 									"x": "0",
-									"y": "-67.5",
+									"y": "67.5",
 									"z": "0"
 								}
 							],
@@ -5394,7 +5949,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-4",
+									"x": "4",
 									"y": "0",
 									"z": "-17"
 								}
@@ -5409,13 +5964,15 @@
 				"671dec31-a82a-fa28-c37e-11e8ddbeace0": {
 					"name": "StuffedWolf",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
 									"x": "0",
-									"y": "107.5",
+									"y": "-107.5",
 									"z": "0"
 								}
 							],
@@ -5428,7 +5985,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-15",
+									"x": "15",
 									"y": "0",
 									"z": "-17"
 								}
@@ -5443,6 +6000,8 @@
 				"e82461e0-7c75-e344-e8cf-82175eca022e": {
 					"name": "GroundEffect",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -5479,6 +6038,8 @@
 				"93eb6830-afc0-b714-988c-4c9f5cacfe08": {
 					"name": "GroundEffectOpacity",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -5515,6 +6076,8 @@
 				"9ca039c9-8edc-061d-687b-dd53324b19dc": {
 					"name": "HandbellEffect2",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -5556,6 +6119,8 @@
 				"9b6ebbdd-1da3-70fb-5732-8621f4e0b507": {
 					"name": "HandbellEffect1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -5632,6 +6197,8 @@
 				"069237fc-be0f-bfbe-ad28-11216c1afb6d": {
 					"name": "HandbellEffect2Opacity",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -5688,6 +6255,8 @@
 				"2d80e3e7-24e4-66bd-5eb9-953441ff4e23": {
 					"name": "HandbellEffect1Opacity",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",
@@ -5794,13 +6363,15 @@
 				"330a395b-f3d9-d02a-1fdc-d081d0d05249": {
 					"name": "ExSkill2ParticleAnchor1",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "17.5",
-									"y": "30",
+									"x": "-17.5",
+									"y": "-30",
 									"z": "0"
 								}
 							],
@@ -5813,8 +6384,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "49.18974",
-									"y": "-32.61647",
+									"x": "-49.18974",
+									"y": "32.61647",
 									"z": "-45.34145"
 								}
 							],
@@ -5827,8 +6398,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "180.63447",
-									"y": "-41.53643",
+									"x": "-180.63447",
+									"y": "41.53643",
 									"z": "-160.78509"
 								}
 							],
@@ -5841,8 +6412,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "222.3442",
-									"y": "-74.31568",
+									"x": "-222.3442",
+									"y": "74.31568",
 									"z": "-288.27293"
 								}
 							],
@@ -5855,8 +6426,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "328.77482",
-									"y": "37.40033",
+									"x": "-328.77482",
+									"y": "-37.40033",
 									"z": "-325.12843"
 								}
 							],
@@ -5869,8 +6440,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "470.09443",
-									"y": "66.99926",
+									"x": "-470.09443",
+									"y": "-66.99926",
 									"z": "-186.24727"
 								}
 							],
@@ -5883,8 +6454,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "491.49598",
-									"y": "-5.15828",
+									"x": "-491.49598",
+									"y": "5.15828",
 									"z": "-177.69985"
 								}
 							],
@@ -5897,8 +6468,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "479.64486",
-									"y": "-68.43873",
+									"x": "-479.64486",
+									"y": "68.43873",
 									"z": "-164.31783"
 								}
 							],
@@ -5911,8 +6482,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "323.97702",
-									"y": "-7.73768",
+									"x": "-323.97702",
+									"y": "7.73768",
 									"z": "-9.47752"
 								}
 							],
@@ -5925,8 +6496,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "314.03834",
-									"y": "68.99009",
+									"x": "-314.03834",
+									"y": "-68.99009",
 									"z": "-27.08329"
 								}
 							],
@@ -5939,8 +6510,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "143.53371",
-									"y": "7.57094",
+									"x": "-143.53371",
+									"y": "-7.57094",
 									"z": "-213.75376"
 								}
 							],
@@ -5953,8 +6524,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "150.38817",
-									"y": "1.57118",
+									"x": "-150.38817",
+									"y": "-1.57118",
 									"z": "-221.78019"
 								}
 							],
@@ -5967,8 +6538,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "304.53182",
-									"y": "-85.16242",
+									"x": "-304.53182",
+									"y": "85.16242",
 									"z": "-319.44748"
 								}
 							],
@@ -5981,8 +6552,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "370.69325",
-									"y": "-28.30327",
+									"x": "-370.69325",
+									"y": "28.30327",
 									"z": "-409.518"
 								}
 							],
@@ -5995,8 +6566,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "422.25466",
-									"y": "-38.30809",
+									"x": "-422.25466",
+									"y": "38.30809",
 									"z": "-418.04021"
 								}
 							],
@@ -6009,8 +6580,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "386.6342",
-									"y": "-42.83194",
+									"x": "-386.6342",
+									"y": "42.83194",
 									"z": "-418.88754"
 								}
 							],
@@ -6023,8 +6594,8 @@
 							"channel": "rotation",
 							"data_points": [
 								{
-									"x": "187.68176",
-									"y": "-24.80948",
+									"x": "-187.68176",
+									"y": "24.80948",
 									"z": "-237.02505"
 								}
 							],
@@ -6037,7 +6608,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-16",
+									"x": "16",
 									"y": "13",
 									"z": "-6"
 								}
@@ -6051,7 +6622,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "11",
+									"x": "-11",
 									"y": "33",
 									"z": "-21"
 								}
@@ -6065,7 +6636,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "12",
+									"x": "-12",
 									"y": "46",
 									"z": "2"
 								}
@@ -6079,7 +6650,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-17",
+									"x": "17",
 									"y": "23",
 									"z": "15"
 								}
@@ -6093,7 +6664,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "17",
+									"x": "-17",
 									"y": "20",
 									"z": "15"
 								}
@@ -6107,7 +6678,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "16",
+									"x": "-16",
 									"y": "5",
 									"z": "-8"
 								}
@@ -6121,7 +6692,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-5",
+									"x": "5",
 									"y": "10",
 									"z": "-8"
 								}
@@ -6135,7 +6706,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-21",
+									"x": "21",
 									"y": "9",
 									"z": "2"
 								}
@@ -6149,7 +6720,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-15",
+									"x": "15",
 									"y": "15",
 									"z": "16"
 								}
@@ -6163,7 +6734,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "11",
+									"x": "-11",
 									"y": "21",
 									"z": "5"
 								}
@@ -6177,7 +6748,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "7",
+									"x": "-7",
 									"y": "36",
 									"z": "-23"
 								}
@@ -6191,7 +6762,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-26",
+									"x": "26",
 									"y": "21",
 									"z": "-23"
 								}
@@ -6205,7 +6776,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-31",
+									"x": "31",
 									"y": "6",
 									"z": "-1"
 								}
@@ -6219,7 +6790,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "-8",
+									"x": "8",
 									"y": "18",
 									"z": "48"
 								}
@@ -6233,7 +6804,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "80",
+									"x": "-80",
 									"y": "151",
 									"z": "186"
 								}
@@ -6247,7 +6818,7 @@
 							"channel": "position",
 							"data_points": [
 								{
-									"x": "31",
+									"x": "-31",
 									"y": "62",
 									"z": "107"
 								}
@@ -6262,6 +6833,8 @@
 				"3cbc29db-e6d6-165d-9ea5-d37a7a718706": {
 					"name": "FrameOpacity",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "scale",

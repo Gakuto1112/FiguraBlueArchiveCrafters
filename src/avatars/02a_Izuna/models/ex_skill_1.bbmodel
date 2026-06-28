@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"format_version": "4.10",
+		"format_version": "5.0",
 		"model_format": "free",
 		"box_uv": false
 	},
@@ -8,6 +8,7 @@
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
+	"multi_file_ruleset": "",
 	"variable_placeholder_buttons": [],
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
@@ -19,10 +20,10 @@
 		{
 			"name": "body",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-3, 0, -3],
 			"to": [3, 11, 3],
@@ -62,10 +63,10 @@
 		{
 			"name": "head",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 11, -3],
 			"to": [4, 17, 3],
@@ -105,10 +106,10 @@
 		{
 			"name": "head",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 17, -2],
 			"to": [4, 19, -1],
@@ -148,10 +149,10 @@
 		{
 			"name": "head",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-4, 17, -2],
 			"to": [-2, 19, -1],
@@ -191,10 +192,10 @@
 		{
 			"name": "head",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2, 11, -6],
 			"to": [2, 13, -3],
@@ -234,10 +235,10 @@
 		{
 			"name": "tail",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2, -7.75, 3],
 			"to": [2, 1.25, 8],
@@ -277,10 +278,10 @@
 		{
 			"name": "Background",
 			"box_uv": false,
-			"rescale": false,
-			"locked": false,
-			"light_emission": 0,
 			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-0.5, -0.5, 0],
 			"to": [0.5, 0.5, 0],
@@ -318,45 +319,181 @@
 			"uuid": "05d700e6-b760-1815-6cc7-a770f8f1d2f3"
 		}
 	],
-	"outliner": [
+	"groups": [
 		{
 			"name": "PlacementObject",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "e855db6e-9742-0132-bfae-88690817d43c",
 			"export": true,
-			"mirror_uv": false,
-			"isOpen": true,
 			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
 			"visibility": true,
 			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "KitsunePuppet",
+			"uuid": "5502e485-3537-d08b-0b4c-8e3a5eef2542",
+			"export": true,
+			"locked": false,
+			"scope": 0,
 			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "H",
+			"uuid": "93386a0c-1ce2-5d04-fe8a-d35661206a67",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 15, 3],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "B",
+			"uuid": "f36c0e11-0d8e-2ffb-c6a7-424929db40e9",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 8, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		},
+		{
+			"name": "T",
+			"uuid": "6af381aa-ac5a-3e70-e19f-df37f71b6350",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 1.25, 3],
+			"rotation": [-140, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "ExSkillAnchor1",
+			"uuid": "950c6e34-8a8f-38c2-e6ed-dfeaf8c45e77",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [-32, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "CameraBackground",
+			"uuid": "26d117cc-a557-011d-caa7-44a17dd2311e",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": false
+		}
+	],
+	"outliner": [
+		{
+			"uuid": "e855db6e-9742-0132-bfae-88690817d43c",
+			"isOpen": true,
 			"children": [
 				{
-					"name": "KitsunePuppet",
-					"origin": [0, 0, 0],
-					"color": 0,
 					"uuid": "5502e485-3537-d08b-0b4c-8e3a5eef2542",
-					"export": true,
-					"mirror_uv": false,
 					"isOpen": true,
-					"locked": false,
-					"visibility": true,
-					"autouv": 0,
-					"selected": false,
 					"children": [
 						{
-							"name": "H",
-							"origin": [0, 15, 3],
-							"color": 0,
 							"uuid": "93386a0c-1ce2-5d04-fe8a-d35661206a67",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": [
 								"c981440f-3512-e26d-aa65-02a620a0f2d2",
 								"4101b475-5134-7ba9-ed4a-c76abf037aa4",
@@ -365,32 +502,13 @@
 							]
 						},
 						{
-							"name": "B",
-							"origin": [0, 8, 0],
-							"color": 0,
 							"uuid": "f36c0e11-0d8e-2ffb-c6a7-424929db40e9",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": true,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["16f00bd9-7d6d-79ee-eba0-4d64e705964c"]
 						},
 						{
-							"name": "T",
-							"origin": [0, 1.25, 3],
-							"rotation": [-140, 0, 0],
-							"color": 0,
 							"uuid": "6af381aa-ac5a-3e70-e19f-df37f71b6350",
-							"export": true,
-							"mirror_uv": false,
 							"isOpen": false,
-							"locked": false,
-							"visibility": true,
-							"autouv": 0,
-							"selected": false,
 							"children": ["44c477f6-85bf-4647-df66-901b70c15b1d"]
 						}
 					]
@@ -398,42 +516,25 @@
 			]
 		},
 		{
-			"name": "ExSkillAnchor1",
-			"origin": [-32, 0, 0],
-			"color": 0,
 			"uuid": "950c6e34-8a8f-38c2-e6ed-dfeaf8c45e77",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": false,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": []
 		},
 		{
-			"name": "CameraBackground",
-			"origin": [0, 0, 0],
-			"color": 0,
 			"uuid": "26d117cc-a557-011d-caa7-44a17dd2311e",
-			"export": true,
-			"mirror_uv": false,
 			"isOpen": true,
-			"locked": false,
-			"visibility": true,
-			"autouv": 0,
-			"selected": false,
 			"children": ["05d700e6-b760-1815-6cc7-a770f8f1d2f3"]
 		}
 	],
 	"textures": [
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/02a_Izuna/textures/ex_skill_1.png",
 			"name": "ex_skill_1.png",
+			"relative_path": "../textures/ex_skill_1.png",
 			"folder": "",
 			"namespace": "",
 			"id": "0",
 			"group": "",
+			"scope": 0,
 			"width": 48,
 			"height": 32,
 			"uv_width": 48,
@@ -442,9 +543,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -453,16 +557,16 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "a1e7fbfa-df77-7a95-d294-03c72bb8582d",
-			"relative_path": "../textures/ex_skill_1.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAAAXNSR0IArs4c6QAAAYJJREFUWEftWF1qwzAMtsklAnkrlBYGg772Fr1EYSca9BK9xV4Hg8HGoG+BXCJ4qMzFVSxZtuPSFeelJfrx90myJUcbY4zWWqs7eMZxNC6Mj+7lCtVmOExwioBjx03TXOw4WWxMihDATi0oIMHJYsGDfjECNpXP/esFlyVAye6GQAqQVJvZM0CViAU4fJ1Uu1548YKse1qSeyzkWxoEdhOHFqkEpGFm9GoG6h7ILKNzCYU2a+YaE3PoIe/t3kBfgT6S8ysiYBcBJO7/VGKWQKq9a0cS8HVY36DldmcpoJsQADC71faM6fj9doWNeh9DQKob0hOVUMhJrJwbBKE5+h6qqz8GgdgIzqFPnXxJGQgBwovhRbihjfJdCfxFRnyldE+ef5EBnGLp0enelyFI0HFDJZojn/3CgQn4ah1/bcAEqObomwhEJZQTIW7OwkRSuro4AziyviFQopMTDJ/t4xEIjdbcGGAjxH34Kp6BSkApVTMQUWeTTVxLCJVQ//lTtBP/AoBypgiY53zpAAAAAElFTkSuQmCC"
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAB20lEQVR4AeyXQUrDQBSGp+3WAxTcudGV4NatJ/ASgqfwAB5A8BLewq0oCIrgrlC8Q6n9Wh75ncxkpiaTZpHAn/fnvTdv3p9JMu10vTncQI7VarVWvMxv1opQm9PJ5ggF1KdF4bkxzSvFp6nCfsPkm88sPkPIZ7ESNimASd+Obx1wgQM/CIR6cSUFzGazycXycQu4ge7gsRjxPtAogMehCYv3rz8vneYSaxKgucb9/PPFg1NYntpGAX7BIV6PAg69KuMKDGIF9K1WnmpufnYSTSGmtZQzyPaOtjbrEbJJdGJ4W1jdNjYqgKKAJvkWY4FxYgDfIREVQKN3R6/u+vSy1h8+YuTUgpkO28Hb2qgA+nj6fHYArsAH1Lcv13dCOTt4CLH6jQJig4bk3wrgR1mf6PIGbAWkCuoSw/0lTo0vGc8SULKBtrWzBfDlAW0n7Hp8VACPimE3aXVml1VYHrbK2jH9U66cPSSEn6t7F4KOVR4VsJu+OvPZBJUnj7FX+EiN9PPtmnE+jwr471eJSVLQJjQ35rcc4j6PCuBxUNhAtRqHayyH05AiZ4yfExXgJw71uiaAOwn8hvEB/FgAV+AD6ivNawJKT9h1/VFA13d033rjCqTu2PLj25XELwAAAP//c2GPOAAAAAZJREFUAwDQJomfJgdFcgAAAABJRU5ErkJggg=="
 		},
 		{
-			"path": "/Users/gakuto/Documents/FiguraBlueArchiveCharacters/src/avatars/02a_Izuna/textures/for_modeling/snow_fox.png",
 			"name": "snow_fox.png",
+			"relative_path": "../textures/for_modeling/snow_fox.png",
 			"folder": "",
 			"namespace": "",
 			"id": "1",
 			"group": "",
+			"scope": 0,
 			"width": 48,
 			"height": 32,
 			"uv_width": 48,
@@ -471,9 +575,12 @@
 			"use_as_default": false,
 			"layers_enabled": false,
 			"sync_to_project": "",
+			"file_format": "png",
 			"render_mode": "default",
 			"render_sides": "auto",
+			"wrap_mode": "limited",
 			"pbr_channel": "color",
+			"fps": 7,
 			"frame_time": 1,
 			"frame_order_type": "loop",
 			"frame_order": "",
@@ -482,8 +589,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "04c56411-6c71-d407-7a6c-599f9e2d1cc1",
-			"relative_path": "../textures/for_modeling/snow_fox.png",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAAAXNSR0IArs4c6QAAA/5JREFUWEfVWD1rVEEUnUVIUpioxBVFIgp+Egj4UQQjiApBBWtLwc7CWvBH2NgLESysBRVBRVBJoQYCwU9QDKK4BjWx2AT0yZlwHufdzMx72XVDnGbfvpm575z7NfdOza2i0Zj9kimcW+MvCujOj56uWbhLXoT4NJuNguCennq+LzW3XN10hAAAdnf1eizzC3M5JpBIzS0XPNZ3hMCr6TfZnq3b3N2JJ27HpoEc196B3TXMvf867U7uH3GvP30szK0aAq0AaXXPP7cABfZ2rSlgmlv47f8/ezuVv4d1YA0MPp86eCIaYwpW5YTIH9o16F8rDrj1t18/XDKI8RFuwgbEAH9BAh+G8Jmfs65/XZ//CJ8xlyKA+KEisIfkLQEog7ItCeyvRIBBrMJB5kPje0G4zgMU4iTmTtmfZgYZIWvqHijIeoAqM0lAs4wFzw+n/L3etzkqn7JJIuZGtPD2+obc+iSAb7dlgTISZQSwny6nbsQYovtwDSyBPfrbEgE1fasWQAqGb0PzTM+Ig88z8+7wvp0FsXjPNYwHxp8nYNOX7tYgxnseZmXaLyN25/n9DKCevnzntvR355kLBPCfREhK10A25s8MH1h0IWgDv2BHwARosxCBKQGuQVBzpLIKgvvavdsZgeKXoJS4vrfPJJoTUPAAojkdAaQjNG9TIj4QGgCC9AoCKStVnfMEaE48AyzAbFy73g0fGXLjjyfz/E8XQhbgHA4TWIDap8lTAEJVZVXAdl1OABNa69ClUoKRHXTQajHtcy0IIO6gJB6OmIMyMEInfyyjeQL0RzyjMNMTN0VADxQUeyE/Du0HAVuGc10sOSQJtGq+dvZpmVIGHvNtEdCP8SB5ODXpv3tscMhpg1OV1IpawDYu1sypEzdG6L8nEDs8YzVRrLJN1uuaDY4eH/HKfPRgMVgxYInRC5cKSp64MVaQaQtCTbv24ERW0zROwTz9NWlgDu8rNRxIdzqY7vCujADKZguERZwekFrY2fIlRaTSrUTVwAytIwFbQ7EYUysjMdjuS3sRPTP4HCWA0xmALl+57nFZ18C7KmtCFmApomDZ4eEwpWVCjRRdh3MrQkC1z1qeZbS2i2oVpmsA1msdGwdLCFCr2EgN4Zm3ZCwD6C6aNVhCaK1jLWALQe2lbQFp3UfJRIM4RYCVZOpGASRCBNgEqQWoJNZUIMAemBaw2lcXCmahEAFt95CP2U1BWChva86OHYJ6owE57M40LkI3gvZ2pJILKUiAA0l+qIwAbx/0OoYKYe+rstgHw1IWLF1Irzg7TiBUMjDjMI5486AuZFOyBrU29kEC8OOrYze9jIvnzvoelYMWKFvD9aFC0BLQWz0bA5CT6r//AsYFvO2atOzlAAAAAElFTkSuQmCC"
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAgCAYAAABU1PscAAAEfElEQVR4AczYu4tdVRQG8H0jJFOYqMQRRSJa+IDAQNRiwDQiBBX8CwQFuxQ2NoKVlWBjayco+BcoGgI2opJCDQjiExSDKI5BTSwmAb3mt8k3LO6cc+5F4mDIN+vb33rstfZ5zGH2tf/Rv60LP88rXjv9zrxiqNWVBtje3ppX1EJVx6tvL/jSATR1YP/BBmmIhrN0sAYau1dYOsD3W7/1Xk6d/bDhARGnh1uD9V5h6QD3HblnNtu3NnvsgUdmeKBBnM6PB3x7hckB8kC5LSqiv/vJe/Pgy3Nf7+JTQ6QGmxoff/N5q7jt8IEGT2ze36D2MP97uz/wkwNo4OD+65idZ8D9Ho3jwbuPtrtuOdIO33CoVc43hVpD/lhs9V28/NdO2KXLFztfOoAoTS9aDaS45vkhPD7aENRUgy85+CL4xAX8ctmbr7+xTQ4gKcESAtM7DcWjLdopn1g11LaH9RTyYhBf49SYHECTgmoSrtAqG4udwq9//t7fbGLqFQuP5U8v1dInBxAwBEMpNORbVcupfvfLuXb+jws7aT+dv9R5mudLTHLs7WFn+wDeBEPola780PAV0/9X3oWJH0M1aVLSlIZxWmD90Rff9iVeYzQONAF9AFMCwa0B+CLGmhcPagQ2GQK/uhrQHA44DY+lWQfW8dHU7wNYeOg0gbtUnIDTavM0PkhDLqcaYrORzRbBJwb4YsOtAxpYsxAe2wdQVCMa49DIo8ceai8+e7Lde/sdpP57wMNrQeMTI5YmH9TKRvRFxPfMicdn1wJ9AJvYmDWERr768Yf29qn3mzeF02UhnE+MWDlyUwNfBs+C36Z+u7JAA1oFbaxeHyCnogGne+f6Tf3k3VJTqLFybZJa+BTUzW3JAk2OQ6qgjWEfh0vpowx8mK2trfcPOHYKNVYuqLUM9tQgWzGkVf8Q7wMMOarmEuaShucDjF5jV+U57Ro/pFX/EF9pAIU9wIA7KR9ugA8V3ittpQH+i2YMPgSv5iGM9TA6QG6V3CKbxzfa5vGNXsdVAIsTJ59vx558eh7QKuR7wwSp6+0lTh3AaQ8f3eif5V7RAS11YtXDRwdQMCfk1jnzwWcN8OhilkF8YvKmkU9L43jARxcbTQ2oGk4bHWD90K2zwNumIjp79s3XZxXZdNHakKZB1ms33FrTNDx6cmiBpsPZ0QHylhm7NSSvEiMOsrFG3So0SLOxfGL4koND1gYLHx1AwrWCDSFN1s8Pe0TH46PJATpUbg27BsipcnpNnn715Qb5Cxndgwj81i8991SDGkMPnBY4WZ8d3jLxxTp5nE+MWDlAr81XbdcAgsfgLwRjPvqUXwNO1WdKBs89n+bV4BMjVg4tqI1HW2kAG9TmrFNg0dY4vjRhc6eqMTpoNrVy69DFiJVjnRqxtGClAXJSSVpcRx+ymljcOE2zatXmabWOXDWqhtPZlQYQ+G+RjWKdbBrWfOqmcT4x9OSwrkq0cHZwAJ/EL7zyRvNb9q0zn8rbBTq/OPG7Aq4KNrlKW+XRWM3XYWg1NpyF6v8HAAD//4HHsLsAAAAGSURBVAMAmYKXeYNC3+sAAAAASUVORK5CYII="
 		}
 	],
 	"animations": [
@@ -495,6 +601,8 @@
 			"length": 1.9,
 			"snapping": 20,
 			"selected": false,
+			"group_name": "",
+			"scope": 0,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -503,6 +611,8 @@
 				"6af381aa-ac5a-3e70-e19f-df37f71b6350": {
 					"name": "T",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
@@ -579,6 +689,8 @@
 				"5502e485-3537-d08b-0b4c-8e3a5eef2542": {
 					"name": "KitsunePuppet",
 					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
 					"keyframes": [
 						{
 							"channel": "rotation",
