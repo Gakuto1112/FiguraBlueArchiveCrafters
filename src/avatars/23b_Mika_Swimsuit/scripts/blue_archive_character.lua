@@ -356,9 +356,9 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.CameraBackground};
+			models = {models.models.ex_skill_1.Gui};
 
-			animations = {"main"};
+			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -374,6 +374,13 @@ local BlueArchiveCharacter = {
 
 			callbacks = {
 				onPreAnimation = function ()
+					if host:isHost() then
+						models.models.ex_skill_1.Gui.ScreenFilter:setScale(client:getScaledWindowSize():copy():augmented(1))
+						events.RENDER:register(function ()
+							models.models.ex_skill_1.Gui.ScreenFilter:setOpacity(models.models.ex_skill_1.Gui.FilterOpacity:getAnimScale().x)
+						end, "ex_skill_1_render")
+					end
+
 					FaceParts:setEmotion("NARROW", "NARROW_CENTER", "TEETH", 31, true)
 				end;
 
@@ -402,6 +409,22 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("NARROW", "NARROW_CENTER", "OPENED3", 21, true)
 					elseif tick == 171 then
 						FaceParts:setEmotion("CLOSED", "NARROW_CENTER", "TEETH", 62, true)
+
+						local bodyYaw = player:getBodyYaw()
+						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root)
+							:copy()
+							:add(vectors.rotateAroundAxis(bodyYaw * -1 + 90, 0, 0, -1, 0, 1, 0))
+							:add(0, 1, 0)
+						for i = 0, 35 do
+							particles:newParticle("minecraft:firework", anchorPos)
+								:setScale(0.5)
+								:setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 + 90, vectors.rotateAroundAxis(i * 10, 0, 0.1 + math.random() * 0.15, 0, 0, 0, 1), 0, 1, 0))
+								:setColor(0.991, 0.783, 0.999)
+								:setGravity(0)
+								:setLifetime(57 + math.random(0, 5))
+						end
+
+						sounds:playSound("minecraft:entity.experience_orb.pickup", anchorPos, 1, 2)
 					end
 
 					if tick >= 42 and tick < 55 then
@@ -418,6 +441,12 @@ local BlueArchiveCharacter = {
 					if tick % 4 == 0 then
 						local bodyYaw = player:getBodyYaw()
 						ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(bodyYaw * -1 - 90, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(bodyYaw * -1 - 90, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+					end
+				end;
+
+				onPostAnimation = function ()
+					if host:isHost() then
+						events.RENDER:remove("ex_skill_1_render")
 					end
 				end;
 			};
