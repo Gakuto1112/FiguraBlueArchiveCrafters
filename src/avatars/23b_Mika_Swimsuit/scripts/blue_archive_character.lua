@@ -474,9 +474,9 @@ local BlueArchiveCharacter = {
 		secondary = {
 			formationType = "STRIKER";
 
-			models = {};
+			models = {models.models.ex_skill_1.Gui};
 
-			animations = {"main"};
+			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -493,6 +493,13 @@ local BlueArchiveCharacter = {
 			callbacks = {
 				onPreAnimation = function ()
 					events.TICK:remove("shooting_star_tick")
+
+					if host:isHost() then
+						models.models.ex_skill_1.Gui.ScreenFilter:setScale(client:getScaledWindowSize():copy():augmented(1))
+						events.RENDER:register(function ()
+							models.models.ex_skill_1.Gui.ScreenFilter:setOpacity(models.models.ex_skill_1.Gui.FilterOpacity:getAnimScale().x)
+						end, "ex_skill_2_render")
+					end
 
 					FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMILE", 50, true)
 				end;
@@ -529,6 +536,12 @@ local BlueArchiveCharacter = {
 					if tick % 4 == 0 then
 						local bodyYaw = player:getBodyYaw()
 						ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+					end
+				end;
+
+				onPostAnimation = function ()
+					if host:isHost() then
+						events.RENDER:remove("ex_skill_2_render")
 					end
 				end;
 			};

@@ -144,7 +144,7 @@
 			"override": false,
 			"length": 8.85,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
 			"anim_time_update": "",
 			"blend_weight": "",
 			"start_delay": "",
@@ -240,6 +240,87 @@
 							],
 							"uuid": "ac28465b-f2cf-6bee-44ef-a8cd080864ec",
 							"time": 8.85,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "linear"
+						}
+					]
+				}
+			}
+		},
+		{
+			"uuid": "0226dc38-d988-e322-316d-f6a31ac2cdca",
+			"name": "ex_skill_2",
+			"loop": "hold",
+			"override": false,
+			"length": 4.75,
+			"snapping": 20,
+			"selected": true,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "",
+			"animators": {
+				"ce0763d6-5e6c-f2a4-ebb3-75e5027cf779": {
+					"name": "FilterOpacity",
+					"type": "bone",
+					"keyframes": [
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "2e90189b-00d3-d17a-e8c3-dde5d48c96ca",
+							"time": 2.5,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "0.5",
+									"y": "0.5",
+									"z": "0.5"
+								}
+							],
+							"uuid": "4eb90fdc-b3af-fa12-7d6f-859556554af6",
+							"time": 2.8,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "0.5",
+									"y": "0.5",
+									"z": "0.5"
+								}
+							],
+							"uuid": "f96ba4ea-0c2a-1638-c185-095cb6b8ae61",
+							"time": 4.3,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "91a8c4e4-c571-50f7-e996-028382f95378",
+							"time": 4.75,
 							"color": -1,
 							"uniform": true,
 							"interpolation": "linear"
