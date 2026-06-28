@@ -141,7 +141,7 @@ Please understand this.
   | Hina (Swimsuit) | - Equips a swim ring when wearing a Turtle Shell (helmet). Not applied while armor is visible. |
   | Hanae (Normal) | - Regeneration potions are replaced with a medical box. |
   | Kei | - Leaves an amplifier in place after playing the Ex Skill. It seems that she leaves a beacon occasionally. |
-  | Mika (Swimsuit) | - Unleashes a show of shooting stars after playing the Ex Skill. |
+  | Mika (Swimsuit) | - Gets wet when submerged in water. Its appearance is like stars floating in the night sky...<br> - Unleashes a show of shooting stars after playing the Ex Skill. |
 
 ## Ex Skill
 
