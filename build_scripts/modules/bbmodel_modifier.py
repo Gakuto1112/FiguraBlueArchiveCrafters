@@ -4,6 +4,7 @@ import json
 import base64
 from pathlib import Path
 import re
+from uuid import UUID
 
 from modules.logger import Logger
 from modules.paths import paths
@@ -150,6 +151,104 @@ class BBModelModifier:
 		return bbmodel_data
 
 	@staticmethod
+	def _get_camera_anchor_uuid(bbmodel_data: dict) -> UUID | None:
+		"""
+		BBModelデータから`CameraAnchor`のモデルグループを探し、そのUUIDを返す。
+		`CameraAnchor`が存在しない場合は`None`を返す。
+
+		Args:
+			bbmodel_data (dict): `CameraAnchor`を探し出す対象のBBModelデータ
+
+		Returns:
+			UUID | None: カメラアンカーのUUID。存在しない場合はNoneを返す。
+		"""
+
+		if "groups" in bbmodel_data:
+			result = [element for element in bbmodel_data["groups"] if element.get("name") == "CameraAnchor"]
+			if len(result) > 0:
+				return UUID(result[0].get("uuid"))
+
+	@staticmethod
+	def _get_camera_model_uuids(bbmodel_data: dict, camera_anchor_uuid: UUID) -> list[UUID]:
+		"""
+		BBModelデータから指定したUUIDのアウトライナーを探し、その子要素のUUIDを全て返す。
+
+		Args:
+			bbmodel_data (dict): `CameraAnchor`の子要素のUUIDを探し出す対象のBBModelデータ
+			camera_anchor_uuid (UUID): `CameraAnchor`のUUID
+
+		Returns:
+			list[UUID]: `CameraAnchor`の子要素のUUIDのリスト。存在しない場合は空のリストを返す。
+		"""
+
+		if "outliner" in bbmodel_data:
+			result = [element for element in bbmodel_data["outliner"] if element.get("uuid") == str(camera_anchor_uuid)]
+			if len(result) > 0:
+				return [UUID(uuid) for uuid in result[0].get("children", [])]
+
+		return []
+
+	@staticmethod
+	def _remove_camera_anchor_children(bbmodel_data: dict, camera_anchor_uuid: UUID) -> dict:
+		"""
+		BBModelデータから指定したUUIDのアウトライナーから子要素のUUIDを削除し、変更後のBBModelデータを返す。
+
+		Args:
+			bbmodel_data (dict): `CameraAnchor`のアウトライナーの子要素のUUIDを削除する対象のBBModelデータ
+			camera_anchor_uuid (UUID): 子要素を削除する`CameraAnchor`のUUID
+
+		Returns:
+			dict: `CameraAnchor`のアウトライナーから子要素のUUIDが削除されたBBModelデータ
+		"""
+
+		if "outliner" in bbmodel_data:
+			camera_anchor_outliner = [element for element in bbmodel_data["outliner"] if element.get("uuid") == str(camera_anchor_uuid)]
+			if len(camera_anchor_outliner) > 0 and "children" in camera_anchor_outliner[0]:
+				camera_anchor_outliner[0]["children"] = []
+
+		return bbmodel_data
+
+	@staticmethod
+	def _remove_camera_model_parts(bbmodel_data: dict, camera_model_uuids: list[UUID]) -> dict:
+		"""
+		BBModelデータから指定したUUIDのモデルパーツを削除し、変更後のBBModelデータを返す。
+
+		Args:
+			bbmodel_data (dict): `CameraAnchor`のモデルパーツを削除する対象のBBModelデータ
+			camera_model_uuids (list[UUID]): 削除する`CameraAnchor`のモデルパーツのUUIDリスト
+
+		Returns:
+			dict: `CameraAnchor`のモデルパーツが削除されたBBModelデータ
+		"""
+
+		if "elements" in bbmodel_data:
+			bbmodel_data["elements"] = [element for element in bbmodel_data["elements"] if UUID(element.get("uuid")) not in camera_model_uuids]
+
+		return bbmodel_data
+
+	@staticmethod
+	def _remove_camera_model(bbmodel_data: dict) -> dict:
+		"""
+		BBModelデータ内のカメラモデル（`CameraAnchor`内のモデルパーツ）を削除し、変更後のBBModelデータを返す。
+
+		Args:
+			bbmodel_data (dict): カメラモデルを削除するBBModelデータ
+
+		Returns:
+			dict: カメラモデルが削除されたBBModelデータ
+		"""
+
+		target_uuid = BBModelModifier._get_camera_anchor_uuid(bbmodel_data)
+		if not target_uuid:
+			return bbmodel_data
+
+		camera_model_uuids = BBModelModifier._get_camera_model_uuids(bbmodel_data, target_uuid)
+		bbmodel_data = BBModelModifier._remove_camera_model_parts(bbmodel_data, camera_model_uuids)
+		bbmodel_data = BBModelModifier._remove_camera_anchor_children(bbmodel_data, target_uuid)
+
+		return bbmodel_data
+
+	@staticmethod
 	def _modify_bbmodel(bbmodel_path: Path) -> None:
 		"""
 		指定されたパスのBBModelファイルを変更する。
@@ -171,6 +270,7 @@ class BBModelModifier:
 		bbmodel_data: dict = BBModelModifier._read_bbmodel_data(bbmodel_path)
 		bbmodel_data = BBModelModifier._remove_reference_images(bbmodel_data)
 		bbmodel_data = BBModelModifier._update_embedded_texture_data(bbmodel_path, bbmodel_data)
+		bbmodel_data = BBModelModifier._remove_camera_model(bbmodel_data)
 		BBModelModifier._write_bbmodel_data(bbmodel_path, bbmodel_data)
 
 	@staticmethod
