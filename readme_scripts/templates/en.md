@@ -7,7 +7,7 @@ Language: 　**English**　|　[日本語](./README_jp.md)
 <!-- DESCRIPTION_START -->
 Avatar data for [Figura](https://modrinth.com/mod/figura), a skin mod for [Minecraft](https://www.minecraft.net/en-us) Java Edition, recreating characters from the mobile game "[Blue Archive](https://bluearchive.jp/)".
 
-Target Figura version: [0.1.5](https://modrinth.com/mod/figura/version/0.1.5b+1.21.4)
+Target Figura version: [0.1.6](https://modrinth.com/mod/figura/version/0.1.6+1.21.4)
 
 <!-- DESCRIPTION_END -->
 
