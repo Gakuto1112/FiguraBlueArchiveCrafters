@@ -3,6 +3,7 @@ import errno
 import json
 import base64
 from pathlib import Path
+import re
 
 from modules.logger import Logger
 from modules.paths import paths
@@ -63,8 +64,27 @@ class BBModelModifier:
 			IOError: その他の入出力エラーが発生した場合
 		"""
 
+		def flatten_array(match: re.Match) -> str:
+			"""
+			文字数が118字以下の配列の改行を取り除き、1行にまとめるリプレイサー関数。
+			BlockBenchのBBモデルのJSONフォーマットに合致させるための処理。
+
+			Args:
+				match (re.Match): 正規表現のマッチオブジェクト
+
+			Returns:
+				str: 処理されたJSON形式の文字列
+			"""
+
+			substring = match.group(0)
+			flattened = re.sub(r"\n\s*", "", substring)
+
+			if len(flattened) <= 118:
+				return flattened.replace(",", ", ")
+			return substring
+
 		with bbmodel_path.open("w", encoding="utf-8") as f:
-			json.dump(bbmodel_data, f, ensure_ascii=False, indent=4)
+			f.write(re.sub(r"\[[^\[\]{}]+\]", flatten_array, json.dumps(bbmodel_data, indent="\t", ensure_ascii=False)))
 
 	@staticmethod
 	def _remove_reference_images(bbmodel_data: dict) -> dict:
