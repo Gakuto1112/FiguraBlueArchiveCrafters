@@ -6,7 +6,8 @@
 
 スマートフォンゲーム「[ブルーアーカイブ](https://bluearchive.jp/)」に登場するキャラクターを再現した、[Minecraft](https://www.minecraft.net/ja-jp) Java EditionのスキンMod「[Figura](https://modrinth.com/mod/figura)」で使用できるアバターデータです。
 
-ターゲットFiguraバージョン：[0.1.5](https://modrinth.com/mod/figura/version/0.1.5b+1.21.4)
+ターゲットFiguraバージョン：[0.1.6](https://modrinth.com/mod/figura/version/0.1.6+1.21.4)\
+ターゲットMinecraftバージョン：1.21.4（1.16.5〜1.21.3でも利用可能です）
 
 
 ![サムネイル](./readme_scripts/images/thumbnail.jpg)
