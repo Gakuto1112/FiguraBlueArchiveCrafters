@@ -85,26 +85,6 @@ class BBModelModifier:
 		return bbmodel_data
 
 	@staticmethod
-	def _remove_texture_absolute_paths(bbmodel_data: dict) -> dict:
-		"""
-		BBModelデータ内のテクスチャの絶対パスを削除し、変更後のBBModelデータを返す。
-		BBModelデータ内のテクスチャには相対パスもあるため、絶対パスは不要である。
-
-		Args:
-			bbmodel_data (dict): テクスチャの絶対パスを削除するBBModelデータ
-
-		Returns:
-			dict: テクスチャの絶対パスが削除されたBBModelデータ
-		"""
-
-		if "textures" in bbmodel_data:
-			for texture in bbmodel_data["textures"]:
-				if "path" in texture:
-					del texture["path"]
-
-		return bbmodel_data
-
-	@staticmethod
 	def _get_texture_base64_string(texture_path: Path) -> str:
 		"""
 		指定されたテクスチャ画像をbase64エンコードし、その文字列を返す。
@@ -155,7 +135,6 @@ class BBModelModifier:
 		指定されたパスのBBModelファイルを変更する。
 		変更内容は以下の通り。
 		- 参考画像の削除
-		- テクスチャの絶対パスの削除
 		- テクスチャのbase64エンコードされたデータの更新
 
 		Args:
@@ -171,7 +150,6 @@ class BBModelModifier:
 
 		bbmodel_data: dict = BBModelModifier._read_bbmodel_data(bbmodel_path)
 		bbmodel_data = BBModelModifier._remove_reference_images(bbmodel_data)
-		bbmodel_data = BBModelModifier._remove_texture_absolute_paths(bbmodel_data)
 		bbmodel_data = BBModelModifier._update_embedded_texture_data(bbmodel_path, bbmodel_data)
 		BBModelModifier._write_bbmodel_data(bbmodel_path, bbmodel_data)
 
