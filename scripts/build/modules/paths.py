@@ -55,6 +55,14 @@ class AvatarPaths:
 		return self._source_dir / "avatars"
 
 	@property
+	def thumbnail_template_dir(self) -> Path:
+		"""
+		サムネイル生成用のテンプレート素材が格納されるディレクトリ
+		"""
+
+		return base_path.root / "thumbnail_templates"
+
+	@property
 	def distribution_dir(self) -> Path:
 		"""
 		ビルド済みアバターの出力先ディレクトリ

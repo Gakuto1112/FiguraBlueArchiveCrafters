@@ -8,8 +8,6 @@ from common_modules.logger import Logger
 from build.modules.paths import paths
 from PIL import Image, ImageChops
 
-from common_modules.base_path import base_path
-
 
 class ThumbnailColorType(IntEnum):
 	"""
@@ -137,19 +135,19 @@ class ThumbnailGenerator:
 		canvas: Image.Image = Image.new("RGBA", (256, 256), (0, 0, 0, 0))
 
 		# 背景とキャラクターのマスク画像
-		mask_image: Image.Image = ThumbnailGenerator._open_image(base_path.root / "thumbnail_templates" / "trimming_mask.png").convert("L")
+		mask_image: Image.Image = ThumbnailGenerator._open_image(paths.thumbnail_template_dir / "trimming_mask.png").convert("L")
 
 		# レイヤー1: 影
-		layer1: Image.Image = ThumbnailGenerator._open_image(base_path.root / "thumbnail_templates" / "L1_shadow.png").convert("RGBA")
+		layer1: Image.Image = ThumbnailGenerator._open_image(paths.thumbnail_template_dir / "L1_shadow.png").convert("RGBA")
 		canvas.alpha_composite(layer1)
 
 		# レイヤー2: 背景
-		layer2: Image.Image = ThumbnailGenerator._open_image(base_path.root / "thumbnail_templates" / "L2_background.png").convert("RGBA")
+		layer2: Image.Image = ThumbnailGenerator._open_image(paths.thumbnail_template_dir / "L2_background.png").convert("RGBA")
 		layer2.putalpha(mask_image)
 		canvas.alpha_composite(layer2)
 
 		# レイヤー3: 白枠
-		canvas.alpha_composite(ThumbnailGenerator._open_image(base_path.root / "thumbnail_templates" / "L3_frame.png").convert("RGBA"))
+		canvas.alpha_composite(ThumbnailGenerator._open_image(paths.thumbnail_template_dir / "L3_frame.png").convert("RGBA"))
 
 		# レイヤー4: キャラクター
 		if (layer4_path := paths.character_dir / avatar_name / "thumbnail.png").exists():
@@ -167,16 +165,16 @@ class ThumbnailGenerator:
 			Logger.print_warning(f"Character thumbnail not found ({avatar_name}). Character layer will be skipped.")
 
 		# レイヤー5: 色付き枠
-		palette: Image.Image = ThumbnailGenerator._open_image(base_path.root / "thumbnail_templates" / "frame_colors.png").convert("RGBA")
+		palette: Image.Image = ThumbnailGenerator._open_image(paths.thumbnail_template_dir / "frame_colors.png").convert("RGBA")
 		layer5: Image.Image = Image.new("RGBA", (256, 256), cast(tuple[int, int, int, int], palette.getpixel((ThumbnailColorType[thumbnail_config["colorType"]].value, 0)))) # pyright: ignore[reportUnknownMemberType]
-		layer5.putalpha(ThumbnailGenerator._open_image(base_path.root / "thumbnail_templates" / "L5_colored_frame.png").convert("L"))
+		layer5.putalpha(ThumbnailGenerator._open_image(paths.thumbnail_template_dir / "L5_colored_frame.png").convert("L"))
 		canvas.alpha_composite(layer5)
 
 		# レイヤー6: ウィジェット
-		canvas.alpha_composite(ThumbnailGenerator._open_image(base_path.root / "thumbnail_templates" / "L6_widgets.png").convert("RGBA"))
+		canvas.alpha_composite(ThumbnailGenerator._open_image(paths.thumbnail_template_dir / "L6_widgets.png").convert("RGBA"))
 
 		# レイヤー7: アバターID
-		sprite_sheet: Image.Image = ThumbnailGenerator._open_image(base_path.root / "thumbnail_templates" / "char_sprites.png").convert("RGBA")
+		sprite_sheet: Image.Image = ThumbnailGenerator._open_image(paths.thumbnail_template_dir / "char_sprites.png").convert("RGBA")
 
 		SPRITE_SIZE: tuple[int, int] = (7, 9) # スプライトシート内のスプライト1つのサイズ（x, y）
 		SPRITE_MAP: dict[str, tuple[int, int]] = { # スプライトシート内の文字とスプライトの位置の対応表
