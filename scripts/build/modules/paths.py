@@ -70,6 +70,14 @@ class AvatarPaths:
 
 		return self._distribution_dir
 
+	@property
+	def temporary_distribution_dir(self) -> Path:
+		"""
+		転送のためにビルド済みアバターを出力する一時的なディレクトリ
+		"""
+
+		return self._distribution_dir / ".fbac_build_tmp"
+
 	@distribution_dir.setter
 	def distribution_dir(self, path: Path) -> None:
 		"""

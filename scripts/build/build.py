@@ -79,18 +79,17 @@ def build(target_avatars: tuple[str, ...], tag_name: str|None = None, as_release
 	true_dist_dir: Path|None = None
 	if paths.distribution_dir != (base_path.root / "dist"):
 		true_dist_dir = paths.distribution_dir
-		tmp_dir = base_path.root / ".fbac_build_tmp"
-		if tmp_dir.exists():
+		if paths.temporary_distribution_dir.exists():
 			try:
-				shutil.rmtree(tmp_dir)
+				shutil.rmtree(paths.temporary_distribution_dir)
 			except PermissionError:
 				Logger.print_error("No permission to clear the temporary directory.")
 				exit(errno.EACCES)
 			except IOError:
 				Logger.print_error("An unexpected error occurred while clearing the temporary directory.")
 				exit(errno.EIO)
-		(base_path.root / ".fbac_build_tmp").mkdir(parents=True, exist_ok=True)
-		paths.distribution_dir = tmp_dir
+		paths.temporary_distribution_dir.mkdir(parents=True, exist_ok=True)
+		paths.distribution_dir = paths.temporary_distribution_dir
 
 	# アバターアセットのコピー
 	Logger.print_info("Copying avatar assets...")
