@@ -88,6 +88,14 @@ class AvatarPaths:
 		"""
 
 		self._distribution_dir = path
+	
+	@property
+	def shittim_logo_path(self) -> Path:
+		"""
+		「シッテムの箱」のロゴアスキーアートのテキストファイルのパス
+		"""
+
+		return base_path.root / "scripts" / "build" / "shittim.txt"
 
 	def check_directories(self) -> tuple[Path, ...]:
 		"""

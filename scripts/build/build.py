@@ -26,7 +26,7 @@ def print_shittim_logo() -> None:
 		IOError: ロゴアスキーアートのテキストファイルの読み取り中に予期しないエラーが発生した場合
 	"""
 
-	with open(base_path.root / "scripts" / "build" / "shittim.txt", "r", encoding="utf-8") as f:
+	with open(paths.shittim_logo_path, "r", encoding="utf-8") as f:
 		logo = f.read()
 		Logger.print_spacer(1)
 		if Logger.is_colored:
