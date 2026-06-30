@@ -117,7 +117,7 @@ The command examples in the steps are based on Mac/Linux.
    By default, the built avatars will be output in `../../dist/`.
 
    ```sh
-   uv run build.py
+   uv run python -m build.build
    ```
 
 ## Build Tool Optional Arguments
