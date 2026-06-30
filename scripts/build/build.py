@@ -13,6 +13,7 @@ from build.modules.paths import paths
 from build.modules.thumbnail_generator import ThumbnailGenerator
 from build.modules.texture_compressor import TextureCompressor
 from build.modules.bbmodel_modifier import BBModelModifier
+from common_modules import base_path
 
 
 def print_shittim_logo() -> None:
@@ -25,7 +26,7 @@ def print_shittim_logo() -> None:
 		IOError: ロゴアスキーアートのテキストファイルの読み取り中に予期しないエラーが発生した場合
 	"""
 
-	with open(Path(__file__).parent.resolve() / "shittim.txt", "r", encoding="utf-8") as f:
+	with open(base_path.root / "scripts" / "build" / "shittim.txt", "r", encoding="utf-8") as f:
 		logo = f.read()
 		Logger.print_spacer(1)
 		if Logger.is_colored:
@@ -76,9 +77,9 @@ def build(target_avatars: tuple[str, ...], tag_name: str|None = None, as_release
 
 	# tmpディレクトリの準備
 	true_dist_dir: Path|None = None
-	if paths.distribution_dir != (paths.root / "dist"):
+	if paths.distribution_dir != (base_path.root / "dist"):
 		true_dist_dir = paths.distribution_dir
-		tmp_dir = paths.root / ".fbac_build_tmp"
+		tmp_dir = base_path.root / ".fbac_build_tmp"
 		if tmp_dir.exists():
 			try:
 				shutil.rmtree(tmp_dir)
@@ -88,7 +89,7 @@ def build(target_avatars: tuple[str, ...], tag_name: str|None = None, as_release
 			except IOError:
 				Logger.print_error("An unexpected error occurred while clearing the temporary directory.")
 				exit(errno.EIO)
-		(paths.root / ".fbac_build_tmp").mkdir(parents=True, exist_ok=True)
+		(base_path.root / ".fbac_build_tmp").mkdir(parents=True, exist_ok=True)
 		paths.distribution_dir = tmp_dir
 
 	# アバターアセットのコピー
@@ -183,25 +184,26 @@ def build(target_avatars: tuple[str, ...], tag_name: str|None = None, as_release
 	# BBモデルファイルの編集
 	Logger.print_info("Modifying BBModel files...")
 
-	try:
-		for target_avatar in target_avatars:
-			Logger.print_info(f"Modifying BBModel files for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+	for target_avatar in target_avatars:
+		Logger.print_info(f"Modifying BBModel files for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
+		
+		try:
 			BBModelModifier.modify_avatar_bbmodels(target_avatar)
-	except FileNotFoundError as e:
-		Logger.print_error(f"A BBModel file is not found for avatar \"{target_avatar}\".")
-		exit(errno.ENOENT)
-	except IsADirectoryError:
-		Logger.print_error(f"A BBModel file for avatar \"{target_avatar}\" is a directory.")
-		exit(errno.EISDIR)
-	except PermissionError:
-		Logger.print_error(f"No permission to read/write a BBModel file for avatar \"{target_avatar}\".")
-		exit(errno.EACCES)
-	except JSONDecodeError:
-		Logger.print_error(f"Failed to parse a BBModel file for avatar \"{target_avatar}\".")
-		exit(errno.EINVAL)
-	except IOError:
-		Logger.print_error(f"An unexpected error occurred while modifying BBModel files for avatar \"{target_avatar}\".")
-		exit(errno.EIO)
+		except FileNotFoundError:
+			Logger.print_error(f"A BBModel file is not found for avatar \"{target_avatar}\".")
+			exit(errno.ENOENT)
+		except IsADirectoryError:
+			Logger.print_error(f"A BBModel file for avatar \"{target_avatar}\" is a directory.")
+			exit(errno.EISDIR)
+		except PermissionError:
+			Logger.print_error(f"No permission to read/write a BBModel file for avatar \"{target_avatar}\".")
+			exit(errno.EACCES)
+		except JSONDecodeError:
+			Logger.print_error(f"Failed to parse a BBModel file for avatar \"{target_avatar}\".")
+			exit(errno.EINVAL)
+		except IOError:
+			Logger.print_error(f"An unexpected error occurred while modifying BBModel files for avatar \"{target_avatar}\".")
+			exit(errno.EIO)
 
 	Logger.print_info("Completed modifying BBModel files.")
 	Logger.print_spacer(1)

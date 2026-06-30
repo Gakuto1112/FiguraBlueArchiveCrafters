@@ -5,6 +5,7 @@ from typing import NotRequired, TypedDict
 from readme_generate.modules.paths import paths
 from common_modules.logger import Logger
 from readme_generate.modules.enums.template_locale import TemplateLocale
+from common_modules import base_path
 
 
 class CreationStatusData(TypedDict):
@@ -89,7 +90,7 @@ class CreationStatusWriter:
 	アバターの作成状況をjsonファイルから読み出し、マークダウン形式に整えて出力するクラス
 	"""
 
-	CREATION_STATUS_JSON_PATH: Path = paths.root / "scripts" / "readme_generate" / "creation_status.json"
+	CREATION_STATUS_JSON_PATH: Path = base_path.root / "scripts" / "readme_generate" / "creation_status.json"
 	"""
 	作成状況のjsonファイルまでのパス
 	"""
@@ -150,6 +151,7 @@ class CreationStatusWriter:
 
 		return result
 
+	@staticmethod
 	def debug() -> None:
 		"""
 		作成状況ライターのデバッグ動作を実行する。

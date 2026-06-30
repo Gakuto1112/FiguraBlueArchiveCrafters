@@ -8,6 +8,7 @@ from build.modules.enums.avatar_data_subdirectory import AvatarDataSubdirectory
 from build.modules.errors.operation_cancelled_error import OperationCancelledError
 from common_modules.logger import Logger
 from build.modules.paths import paths
+from common_modules import base_path
 
 
 class FileOperator:
@@ -130,7 +131,7 @@ class FileOperator:
 			# 出力先ディレクトリ内のファイルを削除
 			if any(dir_path.iterdir()):
 				Logger.print_info(f"Distribution directory already exists and is not empty. Cleaning up directory...")
-				if not dir_path.is_relative_to(paths.root):
+				if not dir_path.is_relative_to(base_path.root):
 					Logger.print_warning(f"You specified distribution directory ({dir_path}) is outside of the root directory! All items in the distribution directory will be deleted!")
 					answer = input("Are you sure you want to proceed? [y/N]: ")
 					if not answer.lower() in ("y", "yes"):

@@ -4,21 +4,17 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from common_modules.logger import Logger
+from common_modules import base_path
 
 
 @dataclass
 class AvatarPaths:
-	root: Path = Path(__file__).parent.parent.parent.parent.resolve()
-	"""
-	レポジトリのルートディレクトリ
-	"""
-
-	_source_dir: Path = root / "src"
+	_source_dir: Path = base_path.root / "src"
 	"""
 	ソースファイルが格納されるディレクトリ
 	"""
 
-	_distribution_dir: Path = root / "dist"
+	_distribution_dir: Path = base_path.root / "dist"
 	"""
 	ビルド済みアバターの出力先ディレクトリ
 	"""
@@ -148,7 +144,7 @@ class AvatarPaths:
 		# ファイルパスの出力
 		Logger.print_info("Path manager for FBAC avatar build tool")
 		Logger.print_spacer(1)
-		Logger.print_debug(f"ROOT_DIR:\t{self.root}")
+		Logger.print_debug(f"ROOT_DIR:\t{base_path.root}")
 		Logger.print_debug(f"SOURCE_DIR:\t{self.source_dir}")
 		Logger.print_debug(f"CORE_DIR:\t{self.core_dir}")
 		Logger.print_debug(f"CHARACTER_DIR:\t{self.character_dir}")
