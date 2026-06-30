@@ -2,9 +2,9 @@ import json
 from pathlib import Path
 from typing import NotRequired, TypedDict
 
-from modules.paths import paths
-from modules.logger import Logger
-from modules.enums.template_locale import TemplateLocale
+from scripts.readme_generate.modules.paths import paths
+from scripts.readme_generate.modules.logger import Logger
+from scripts.readme_generate.modules.enums.template_locale import TemplateLocale
 
 
 class CreationStatusData(TypedDict):

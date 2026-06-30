@@ -2,7 +2,7 @@ import argparse
 from dataclasses import dataclass
 from pathlib import Path
 
-from modules.logger import Logger
+from scripts.readme_generate.modules.logger import Logger
 
 
 @dataclass
