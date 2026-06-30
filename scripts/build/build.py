@@ -7,7 +7,7 @@ import shutil
 from build.modules.avatar_json_generator import AvatarJsonGenerator
 from build.modules.errors.operation_cancelled_error import OperationCancelledError
 from build.modules.file_ops import FileOperator
-from build.modules.logger import Logger
+from common_modules.logger import Logger
 from build.modules.observer import AvatarFileObserver
 from build.modules.paths import paths
 from build.modules.thumbnail_generator import ThumbnailGenerator

@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import NotRequired, TypedDict
 
 from readme_generate.modules.paths import paths
-from readme_generate.modules.logger import Logger
+from common_modules.logger import Logger
 from readme_generate.modules.enums.template_locale import TemplateLocale
 
 

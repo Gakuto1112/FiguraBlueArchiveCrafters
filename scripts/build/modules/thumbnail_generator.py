@@ -4,7 +4,7 @@ from enum import IntEnum
 from pathlib import Path
 from typing import TypedDict, cast
 
-from build.modules.logger import Logger
+from common_modules.logger import Logger
 from build.modules.paths import paths
 from PIL import Image, ImageChops
 

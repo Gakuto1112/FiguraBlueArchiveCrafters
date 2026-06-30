@@ -1,6 +1,6 @@
 from readme_generate.modules.enums.template_locale import TemplateLocale
 from readme_generate.modules.paths import paths
-from readme_generate.modules.logger import Logger
+from common_modules.logger import Logger
 
 
 class TemplateReader:

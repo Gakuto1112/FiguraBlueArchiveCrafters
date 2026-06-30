@@ -4,7 +4,7 @@ import subprocess
 import re
 
 from build.modules.paths import paths
-from build.modules.logger import Logger
+from common_modules.logger import Logger
 
 class TextureCompressor:
 	"""

@@ -6,7 +6,7 @@ from pathlib import Path
 import re
 from uuid import UUID
 
-from build.modules.logger import Logger
+from common_modules.logger import Logger
 from build.modules.paths import paths
 
 class BBModelModifier:

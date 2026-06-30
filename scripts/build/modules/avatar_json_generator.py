@@ -3,7 +3,7 @@ import json
 from typing import NotRequired, TypedDict
 import re
 
-from build.modules.logger import Logger
+from common_modules.logger import Logger
 from build.modules.paths import paths
 
 

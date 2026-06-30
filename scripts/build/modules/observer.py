@@ -5,7 +5,7 @@ from pathlib import Path
 
 from build.modules.avatar_json_generator import AvatarJsonGenerator
 from build.modules.file_ops import FileOperator
-from build.modules.logger import Logger
+from common_modules.logger import Logger
 from build.modules.paths import paths
 from build.modules.thumbnail_generator import ThumbnailGenerator
 from watchdog.events import (DirCreatedEvent, DirDeletedEvent,

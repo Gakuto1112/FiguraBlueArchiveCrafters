@@ -5,7 +5,7 @@ import re
 from pathlib import Path
 
 from readme_generate.modules.paths import paths
-from readme_generate.modules.logger import Logger
+from common_modules.logger import Logger
 from readme_generate.modules.enums.template_locale import TemplateLocale
 from readme_generate.modules.template_reader import TemplateReader
 from readme_generate.modules.creation_status_writer import CreationStatusWriter

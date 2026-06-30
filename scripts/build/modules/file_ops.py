@@ -6,7 +6,7 @@ from pathlib import Path
 
 from build.modules.enums.avatar_data_subdirectory import AvatarDataSubdirectory
 from build.modules.errors.operation_cancelled_error import OperationCancelledError
-from build.modules.logger import Logger
+from common_modules.logger import Logger
 from build.modules.paths import paths
 
 
