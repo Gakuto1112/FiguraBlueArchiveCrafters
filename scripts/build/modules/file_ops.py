@@ -4,10 +4,10 @@ import shutil
 import re
 from pathlib import Path
 
-from modules.enums.avatar_data_subdirectory import AvatarDataSubdirectory
-from modules.errors.operation_cancelled_error import OperationCancelledError
-from modules.logger import Logger
-from modules.paths import paths
+from scripts.build.modules.enums.avatar_data_subdirectory import AvatarDataSubdirectory
+from scripts.build.modules.errors.operation_cancelled_error import OperationCancelledError
+from scripts.build.modules.logger import Logger
+from scripts.build.modules.paths import paths
 
 
 class FileOperator:

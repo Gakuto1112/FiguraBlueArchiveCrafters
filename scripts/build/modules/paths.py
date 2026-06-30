@@ -3,7 +3,7 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from modules.logger import Logger
+from scripts.build.modules.logger import Logger
 
 
 @dataclass

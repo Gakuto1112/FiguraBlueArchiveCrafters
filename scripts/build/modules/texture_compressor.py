@@ -3,8 +3,8 @@ from pathlib import Path
 import subprocess
 import re
 
-from modules.paths import paths
-from modules.logger import Logger
+from scripts.build.modules.paths import paths
+from scripts.build.modules.logger import Logger
 
 class TextureCompressor:
 	"""

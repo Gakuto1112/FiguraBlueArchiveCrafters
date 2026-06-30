@@ -4,8 +4,8 @@ from enum import IntEnum
 from pathlib import Path
 from typing import TypedDict, cast
 
-from modules.logger import Logger
-from modules.paths import paths
+from scripts.build.modules.logger import Logger
+from scripts.build.modules.paths import paths
 from PIL import Image, ImageChops
 
 
