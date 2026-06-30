@@ -1,10 +1,9 @@
 import json
-from pathlib import Path
 from typing import NotRequired, TypedDict
 
 from common_modules.logger import Logger
 from readme_generate.modules.enums.template_locale import TemplateLocale
-from common_modules.base_path import base_path
+from readme_generate.modules.paths import paths
 
 
 class CreationStatusData(TypedDict):
@@ -89,11 +88,6 @@ class CreationStatusWriter:
 	アバターの作成状況をjsonファイルから読み出し、マークダウン形式に整えて出力するクラス
 	"""
 
-	CREATION_STATUS_JSON_PATH: Path = base_path.root / "scripts" / "readme_generate" / "creation_status.json"
-	"""
-	作成状況のjsonファイルまでのパス
-	"""
-
 	@staticmethod
 	def read_creation_status() -> CreationStatusData:
 		"""
@@ -112,7 +106,7 @@ class CreationStatusWriter:
 			IOError: その他の入出力エラーが発生した場合
 		"""
 
-		with open(CreationStatusWriter.CREATION_STATUS_JSON_PATH, "r") as f:
+		with open(paths.creation_status_json_path(), "r") as f:
 			return CreationStatusData(**json.load(f))
 
 	@staticmethod
@@ -160,7 +154,7 @@ class CreationStatusWriter:
 		Logger.print_info("Creation status writer for FBAC readme generation tool")
 		Logger.print_spacer(1)
 
-		Logger.print_info(f"Reading creation status from {CreationStatusWriter.CREATION_STATUS_JSON_PATH}...")
+		Logger.print_info(f"Reading creation status from {paths.creation_status_json_path()}...")
 		Logger.print_spacer(1)
 
 		try:

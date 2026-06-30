@@ -37,6 +37,13 @@ class AvatarPaths:
 
 		self._template_dir = path
 
+	def creation_status_json_path(self) -> Path:
+		"""
+		作成状況のjsonファイルまでのパス
+		"""
+
+		return base_path.root / "scripts" / "readme_generate" / "creation_status.json"
+
 	@property
 	def distribution_dir(self) -> Path:
 		"""
@@ -55,8 +62,6 @@ class AvatarPaths:
 		"""
 
 		self._distribution_dir = path
-
-
 
 	def _set_debug_args(self) -> None:
 		"""
