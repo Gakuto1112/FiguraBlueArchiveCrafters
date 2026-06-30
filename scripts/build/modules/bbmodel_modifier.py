@@ -6,8 +6,8 @@ from pathlib import Path
 import re
 from uuid import UUID
 
-from scripts.build.modules.logger import Logger
-from scripts.build.modules.paths import paths
+from build.modules.logger import Logger
+from build.modules.paths import paths
 
 class BBModelModifier:
 	"""

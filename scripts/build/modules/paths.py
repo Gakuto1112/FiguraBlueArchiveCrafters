@@ -3,12 +3,12 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-from scripts.build.modules.logger import Logger
+from build.modules.logger import Logger
 
 
 @dataclass
 class AvatarPaths:
-	root: Path = Path(__file__).parent.parent.parent.resolve()
+	root: Path = Path(__file__).parent.parent.parent.parent.resolve()
 	"""
 	レポジトリのルートディレクトリ
 	"""

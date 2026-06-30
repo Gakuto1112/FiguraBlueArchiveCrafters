@@ -3,11 +3,11 @@ import time
 from json import JSONDecodeError
 from pathlib import Path
 
-from scripts.build.modules.avatar_json_generator import AvatarJsonGenerator
-from scripts.build.modules.file_ops import FileOperator
-from scripts.build.modules.logger import Logger
-from scripts.build.modules.paths import paths
-from scripts.build.modules.thumbnail_generator import ThumbnailGenerator
+from build.modules.avatar_json_generator import AvatarJsonGenerator
+from build.modules.file_ops import FileOperator
+from build.modules.logger import Logger
+from build.modules.paths import paths
+from build.modules.thumbnail_generator import ThumbnailGenerator
 from watchdog.events import (DirCreatedEvent, DirDeletedEvent,
                              DirModifiedEvent, DirMovedEvent, FileCreatedEvent,
                              FileDeletedEvent, FileModifiedEvent,

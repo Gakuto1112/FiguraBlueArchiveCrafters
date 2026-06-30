@@ -3,8 +3,8 @@ import json
 from typing import NotRequired, TypedDict
 import re
 
-from scripts.build.modules.logger import Logger
-from scripts.build.modules.paths import paths
+from build.modules.logger import Logger
+from build.modules.paths import paths
 
 
 class AvatarJsonData(TypedDict):

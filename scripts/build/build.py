@@ -4,15 +4,15 @@ from json import JSONDecodeError
 from pathlib import Path
 import shutil
 
-from modules.avatar_json_generator import AvatarJsonGenerator
-from modules.errors.operation_cancelled_error import OperationCancelledError
-from modules.file_ops import FileOperator
-from modules.logger import Logger
-from modules.observer import AvatarFileObserver
-from modules.paths import paths
-from modules.thumbnail_generator import ThumbnailGenerator
-from modules.texture_compressor import TextureCompressor
-from modules.bbmodel_modifier import BBModelModifier
+from build.modules.avatar_json_generator import AvatarJsonGenerator
+from build.modules.errors.operation_cancelled_error import OperationCancelledError
+from build.modules.file_ops import FileOperator
+from build.modules.logger import Logger
+from build.modules.observer import AvatarFileObserver
+from build.modules.paths import paths
+from build.modules.thumbnail_generator import ThumbnailGenerator
+from build.modules.texture_compressor import TextureCompressor
+from build.modules.bbmodel_modifier import BBModelModifier
 
 
 def print_shittim_logo() -> None:
@@ -234,8 +234,8 @@ def main() -> None:
 	parser = argparse.ArgumentParser(description="Builds avatars for Figura Blue Archive Crafters (FBAC).")
 
 	parser.add_argument("--character", "-c", type=str, choices=paths.get_valid_avatar_names(), help="Specifies the character avatar to build. If not specified, all avatars will be built. This option is ignored in observe mode.")
-	parser.add_argument("--src-dir", "-i", type=str, default=paths.source_dir, help="Overrides default source directory path. Default: ../src/")
-	parser.add_argument("--dist-dir", "-o", type=str, default=paths.distribution_dir, help="Overrides default distribution directory path. Default: ../dist/")
+	parser.add_argument("--src-dir", "-i", type=str, default=paths.source_dir, help="Overrides default source directory path. Default: ../../src/")
+	parser.add_argument("--dist-dir", "-o", type=str, default=paths.distribution_dir, help="Overrides default distribution directory path. Default: ../../dist/")
 	parser.add_argument("--observe", "-w", action="store_true", help="Executes the tool in observation mode. In this mode, the tool will observe the source directory for changes and automatically rebuild the affected avatars.")
 	parser.add_argument("--colored", "-l", action="store_true", help="Enables colored output in the terminal.")
 	parser.add_argument("--debug-output", "-d", action="store_true", help="Enables debug outputs.")
