@@ -2,9 +2,9 @@ import json
 from pathlib import Path
 from typing import NotRequired, TypedDict
 
-from scripts.readme_generate.modules.paths import paths
-from scripts.readme_generate.modules.logger import Logger
-from scripts.readme_generate.modules.enums.template_locale import TemplateLocale
+from readme_generate.modules.paths import paths
+from readme_generate.modules.logger import Logger
+from readme_generate.modules.enums.template_locale import TemplateLocale
 
 
 class CreationStatusData(TypedDict):
@@ -89,7 +89,7 @@ class CreationStatusWriter:
 	アバターの作成状況をjsonファイルから読み出し、マークダウン形式に整えて出力するクラス
 	"""
 
-	CREATION_STATUS_JSON_PATH: Path = paths.root / "readme_scripts" / "creation_status.json"
+	CREATION_STATUS_JSON_PATH: Path = paths.root / "scripts" / "readme_generate" / "creation_status.json"
 	"""
 	作成状況のjsonファイルまでのパス
 	"""

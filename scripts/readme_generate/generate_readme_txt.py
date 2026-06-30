@@ -1,14 +1,13 @@
 import argparse
 from datetime import datetime
 import errno
-import json
 import re
 from pathlib import Path
 
-from modules.paths import paths
-from modules.logger import Logger
-from modules.enums.template_locale import TemplateLocale
-from modules.template_reader import TemplateReader
+from readme_generate.modules.paths import paths
+from readme_generate.modules.logger import Logger
+from readme_generate.modules.enums.template_locale import TemplateLocale
+from readme_generate.modules.template_reader import TemplateReader
 
 
 def read_template(locale: TemplateLocale) -> str:
@@ -131,7 +130,7 @@ def main() -> None:
 	parser.add_argument("tag_name", type=str, help="Tag name to be added to the generated readme document.")
 	parser.add_argument("release_date", type=str, help="Release date to be added to the generated readme document.")
 	parser.add_argument("--template-dir", "-t", type=str, default=paths.template_dir, help="Overrides default template directory path. Default: ./template/")
-	parser.add_argument("--dist-dir", "-o", type=str, default=paths.distribution_dir, help="Overrides default distribution directory path. Default: ../")
+	parser.add_argument("--dist-dir", "-o", type=str, default=paths.distribution_dir, help="Overrides default distribution directory path. Default: ../../")
 	parser.add_argument("--colored", "-l", action="store_true", help="Enables colored output in the terminal.")
 
 	args = parser.parse_args()

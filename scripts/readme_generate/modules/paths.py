@@ -2,17 +2,17 @@ import argparse
 from dataclasses import dataclass
 from pathlib import Path
 
-from scripts.readme_generate.modules.logger import Logger
+from readme_generate.modules.logger import Logger
 
 
 @dataclass
 class AvatarPaths:
-	root: Path = Path(__file__).parent.parent.parent.resolve()
+	root: Path = Path(__file__).parent.parent.parent.parent.resolve()
 	"""
 	レポジトリのルートディレクトリ
 	"""
 
-	_template_dir: Path = root / "readme_scripts" / "templates"
+	_template_dir: Path = root / "scripts" / "readme_generate" / "templates"
 	"""
 	テンプレートファイルが格納されるディレクトリ
 	"""

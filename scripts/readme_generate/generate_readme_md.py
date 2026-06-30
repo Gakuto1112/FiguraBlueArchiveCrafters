@@ -4,11 +4,11 @@ import json
 import re
 from pathlib import Path
 
-from modules.paths import paths
-from modules.logger import Logger
-from modules.enums.template_locale import TemplateLocale
-from modules.template_reader import TemplateReader
-from modules.creation_status_writer import CreationStatusWriter
+from readme_generate.modules.paths import paths
+from readme_generate.modules.logger import Logger
+from readme_generate.modules.enums.template_locale import TemplateLocale
+from readme_generate.modules.template_reader import TemplateReader
+from readme_generate.modules.creation_status_writer import CreationStatusWriter
 
 
 def generate_readme_md(locale: TemplateLocale) -> None:
@@ -84,7 +84,7 @@ def generate_readme_md(locale: TemplateLocale) -> None:
 	Logger.print_spacer(1)
 
 	# 画像URLの修正
-	result = result.replace("../images/", "./readme_scripts/images/")
+	result = result.replace("../images/", "./scripts/readme_generate/images/")
 
 	# 不要なアンカータグの削除
 	result = re.sub(r" *<!--.+--> *\n", "", result)
