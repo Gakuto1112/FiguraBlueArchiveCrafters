@@ -8,7 +8,7 @@ from common_modules.logger import Logger
 from build.modules.paths import paths
 from PIL import Image, ImageChops
 
-from common_modules import base_path
+from common_modules.base_path import base_path
 
 
 class ThumbnailColorType(IntEnum):

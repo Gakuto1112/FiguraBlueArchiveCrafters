@@ -8,7 +8,7 @@ from build.modules.enums.avatar_data_subdirectory import AvatarDataSubdirectory
 from build.modules.errors.operation_cancelled_error import OperationCancelledError
 from common_modules.logger import Logger
 from build.modules.paths import paths
-from common_modules import base_path
+from common_modules.base_path import base_path
 
 
 class FileOperator:

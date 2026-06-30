@@ -2,10 +2,9 @@ import json
 from pathlib import Path
 from typing import NotRequired, TypedDict
 
-from readme_generate.modules.paths import paths
 from common_modules.logger import Logger
 from readme_generate.modules.enums.template_locale import TemplateLocale
-from common_modules import base_path
+from common_modules.base_path import base_path
 
 
 class CreationStatusData(TypedDict):

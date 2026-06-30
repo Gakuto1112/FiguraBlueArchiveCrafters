@@ -13,7 +13,7 @@ from build.modules.paths import paths
 from build.modules.thumbnail_generator import ThumbnailGenerator
 from build.modules.texture_compressor import TextureCompressor
 from build.modules.bbmodel_modifier import BBModelModifier
-from common_modules import base_path
+from common_modules.base_path import base_path
 
 
 def print_shittim_logo() -> None:
