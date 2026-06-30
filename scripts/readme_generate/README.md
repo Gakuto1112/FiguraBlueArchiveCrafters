@@ -6,13 +6,13 @@ This tool creates the Markdown README document for this repository (Figura Blue 
 
 ## Template Files
 
-The files that serve as templates for the README are located in the "[templates/](./templates/)" directory.
-"en" is the English template, and "jp" is the Japanese template.
+The files that serve as templates for the README are located in the [`templates/`](./templates/) directory.
+`en` is the English template, and `jp` is the Japanese template.
 Also, `.md` is the Markdown file for the repository's README, and `.txt` is the text file for the distribution data.
 
 ### Anchor Tags in Template Markdown
 
-The template Markdown files ("[en.md](./templates/en.md)" and "[jp.md](./templates/jp.md)") contain anchor tags written in the Markdown comment format (`<!-- -->`).
+The template Markdown files ([`en.md`](./templates/en.md) and [`jp.md`](./templates/jp.md)) contain anchor tags written in the Markdown comment format (`<!-- -->`).
 These anchor tags are used as markers in the README generation tool.
 
 Anchor tags are written in the following format:
@@ -41,7 +41,7 @@ Below is a list of anchor tags and their roles:
 
 ### Anchor Tags in Template Text
 
-The template text files ("[en.txt](./templates/en.txt)" and "[jp.txt](./templates/jp.txt)") contain anchor tags written in the format `${AnchorName}`.
+The template text files ([`en.txt`](./templates/en.txt) and [`jp.txt`](./templates/jp.txt)) contain anchor tags written in the format `${AnchorName}`.
 These anchor tags are used as markers in the README generation tool.
 
 Below is a list of anchor tags and their roles:
@@ -58,7 +58,7 @@ When replacing tags with portions of the template Markdown file, Markdown syntax
 
 ## Creation Status
 
-The creation status replacement content included in the template Markdown files is generated based on "[creation_status.json](./creation_status.json)".
+The creation status replacement content included in the template Markdown files is generated based on [`creation_status.json`](./creation_status.json).
 The structure of this json file is as follows:
 
 ```
@@ -118,10 +118,10 @@ If there is an array with 0 entries, a text message stating that fact will be in
 Running this generation tool requires [uv](https://docs.astral.sh/uv/), which is a Python version management tool.
 Also, the command examples in the steps are based on Mac/Linux.
 
-1. Set the working directory to "/src/readme_scripts".
+1. Set the working directory to `/src/scripts`.
 
    ```sh
-   cd <path_to_repository_root_directory>/readme_scripts/
+   cd <path_to_repository_root_directory>/scripts/
    ```
 
 2. Install Python and dependencies.
@@ -133,11 +133,11 @@ Also, the command examples in the steps are based on Mac/Linux.
 
 3. Execute the build scripts.
    When generating a text file, you need to pass the tag name and release date as arguments.
-   With the default paths, the generated documents will be output to `../`.
+   With the default paths, the generated documents will be output to `../../`.
 
    ```sh
-   uv run generate_readme_md.py # For Markdown file generation
-   uv run generate_readme_txt.py ${TAG_NAME} ${RELEASE_DATE} # For text file generation
+   uv run python -m readme_generate.generate_readme_md # For Markdown file generation
+   uv run python -m readme_generate.generate_readme_txt ${TAG_NAME} ${RELEASE_DATE} # For text file generation
    ```
 
 ## Arguments
