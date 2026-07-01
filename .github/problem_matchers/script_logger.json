@@ -1,0 +1,14 @@
+{
+	"problemMatcher": [
+		{
+			"owner": "script_logger",
+			"pattern": [
+				{
+					"regexp": "^\\[(WARNING|ERROR)\\]\\s+(.+)$",
+                    "severity": 1,
+                    "message": 2
+				}
+			]
+		}
+	]
+}
