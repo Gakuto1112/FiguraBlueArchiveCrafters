@@ -214,15 +214,29 @@ class AvatarJsonGenerator:
 		# avatar.jsonデータの取得
 		template = AvatarJsonGenerator._get_template_avatar_json()
 		meta = AvatarJsonGenerator._get_avatar_json_config(avatar_name)
-		meta["placeholders"]["avatar_id"] = re.match(r'(\d{2}\w)', avatar_name).group(1)
-		meta["placeholders"]["costume_name"] = f"({value})" if (value := meta["placeholders"].get("costume_name")) is not None else value
+
+		match = re.match(r'(\d{2}\w)', avatar_name)
+		if match is None:
+			raise ValueError(f"The specified avatar name \"{avatar_name}\" is not valid.")
+
+		meta["placeholders"]["avatar_id"] = match.group(1)
+		meta["placeholders"]["costume_name"] = f"({value})" if (value := meta["placeholders"].get("costume_name")) is not None else ""
 
 		# プレイスホルダーの置換
 		for template_key in ("name", "description"):
+			template_value = template.get(template_key)
+			if not isinstance(template_value, str):
+				raise ValueError(f"The field named \"{template_key}\" does not exist in the template.")
+
 			for meta_key, meta_value in meta["placeholders"].items():
-				template[template_key] = template[template_key].replace(f"{{{{{meta_key.upper()}}}}}", meta_value or "")
-				template[template_key] = template[template_key].strip()
-				template[template_key] = re.sub(r"\s+", " ", template[template_key])
+				if type(meta_value) is not str:
+					raise ValueError(f"The type of the placeholder value \"{meta_key}\" is not str.")
+
+				template_value = template_value.replace(f"{{{{{meta_key.upper()}}}}}", meta_value or "")
+
+			template_value = template_value.strip()
+			template_value = re.sub(r"\s+", " ", template_value)
+			template[template_key] = template_value
 
 		# リスト・辞書型の結合
 		if (template_auto_anims := template.get("autoAnims")) is not None and (meta_auto_anims := meta.get("autoAnims")) is not None:
