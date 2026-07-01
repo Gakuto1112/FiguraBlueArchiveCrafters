@@ -31,20 +31,28 @@ jobs:
       - name: Install dependencies
         run: uv sync
         working-directory: ./scripts/
+      - name: Enable problem matcher
+        run: echo "::add-matcher::.github/problem_matchers/script_logger.json"
       - name: Build avatars
         run: uv run python -m build.build -r -t ${TAG_NAME} ${{ matrix.extra_args }}
         env:
           TAG_NAME: ${{ github.ref_name }}
         working-directory: ./scripts/
+      - name: Disable problem matcher
+        run: echo "::remove-matcher owner=script_logger"
       - name: Move license files
         run: |
           mv ./LICENSE ./dist/LICENSE
+      - name: Enable problem matcher
+        run: echo "::add-matcher::.github/problem_matchers/script_logger.json"
       - name: Generate readmes
         run: uv run python -m readme_generate.generate_readme_txt ${TAG_NAME} ${RELEASE_DATE}
         env:
           TAG_NAME: ${{ github.ref_name }}
           RELEASE_DATE: ${{ github.event.release.created_at }}
         working-directory: ./scripts/
+      - name: Disable problem matcher
+        run: echo "::remove-matcher owner=script_logger"
       - name: Move readme
         run: |
           mv ./README.txt ./dist/README.txt

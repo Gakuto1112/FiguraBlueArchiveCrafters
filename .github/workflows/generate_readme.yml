@@ -24,9 +24,13 @@ jobs:
       - name: Install dependencies
         run: uv sync
         working-directory: ./scripts/
+      - name: Enable problem matcher
+        run: echo "::add-matcher::.github/problem_matchers/script_logger.json"
       - name: Generate readmes
         run: uv run python -m readme_generate.generate_readme_md
         working-directory: ./scripts/
+      - name: Disable problem matcher
+        run: echo "::remove-matcher owner=script_logger"
       - id: check_diff
         name: Check diff
         continue-on-error: true
