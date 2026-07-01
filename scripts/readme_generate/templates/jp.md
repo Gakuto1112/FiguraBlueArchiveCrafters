@@ -355,7 +355,7 @@ Figuraは[Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)、[
 ## ローカルでのアバタービルド
 
 本レポジトリをクローンして使用する場合には、ビルドツールによるアバターのビルドが必要です。
-詳しくは[ビルドツールの説明](./build_scripts/README_jp.md)をご覧ください。
+詳しくは[ビルドツールの説明](./scripts/build/README_jp.md)をご覧ください。
 
 ---
 

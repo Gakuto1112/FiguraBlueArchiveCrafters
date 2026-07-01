@@ -356,7 +356,7 @@ Figura is available in [Forge](https://files.minecraftforge.net/net/minecraftfor
 ## Building avatars in local environment
 
 Avatar builds by FBAC build tool is required to use avatars in the game if you want to use them by cloning this repository.
-For more information please refer to [the instruction of the FBAC build tool](./build_scripts/README.md).
+For more information please refer to [the instruction of the FBAC build tool](./scripts/build/README.md).
 
 ---
 
