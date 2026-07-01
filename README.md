@@ -10,7 +10,7 @@ Target Figura version: [0.1.6](https://modrinth.com/mod/figura/version/0.1.6+1.2
 Target Minecraft version: 1.21.4 (Also available for 1.16.5-1.21.3)
 
 
-![Thumbnail](./readme_scripts/images/thumbnail.jpg)
+![Thumbnail](./scripts/readme_generate/images/thumbnail.jpg)
 
 <https://youtu.be/JrPhLR34mLA>
 
@@ -102,51 +102,51 @@ Please understand this.
 
 - Ex Skill cut-ins are recreated.
 
-  ![Ex skill](./readme_scripts/images/ex_skill.jpg)
+  ![Ex skill](./scripts/readme_generate/images/ex_skill.jpg)
 
 - For Ex Skills that "leave something in place", an object remains after the Ex Skill animation.
   - It does not affect gameplay at all.
   - The object disappears when its collision overlaps with a block.
   - Hold the Ex Skill play key (default: V) to remove all placed objects.
 
-  ![Placement object](./readme_scripts/images/placement_object.jpg)
+  ![Placement object](./scripts/readme_generate/images/placement_object.jpg)
 
 - Student-specific weapons are held instead of bows and crossbows.
   Bullets are fired instead of arrows.
   - This is visual only. In actual gameplay, you are still firing arrows.
 
-  ![Gun](./readme_scripts/images/gun.jpg)
+  ![Gun](./scripts/readme_generate/images/gun.jpg)
 
 - Speech bubbles can be shown with the arrow keys (up/right/down/left).
   - While loading a crossbow, a reload bubble appears automatically.
 
-  ![Speech bubble 1](./readme_scripts/images/bubble_good.jpg)
+  ![Speech bubble 1](./scripts/readme_generate/images/bubble_good.jpg)
 
-  ![Speech bubble 2](./readme_scripts/images/bubble_reload.jpg)
+  ![Speech bubble 2](./scripts/readme_generate/images/bubble_reload.jpg)
 
 - A barrier appears when the player has Absorption hearts (yellow hearts).
 
-  ![Barrier](./readme_scripts/images/barrier.jpg)
+  ![Barrier](./scripts/readme_generate/images/barrier.jpg)
 
 - When the player dies, they are recovered by helicopter.
   - Due to Minecraft and Figura behavior, this animation is not shown if the player is not rendered.
 
-  ![Rescued by helicopter](./readme_scripts/images/death_animation.jpg)
+  ![Rescued by helicopter](./scripts/readme_generate/images/death_animation.jpg)
 
 - Some students have unique models for in-game vehicles.
 
-  ![Vehicle models](./readme_scripts/images/vehicle_model.jpg)
+  ![Vehicle models](./scripts/readme_generate/images/vehicle_model.jpg)
 
 - The player's displayed name can be changed to a student's name.
   - Club names can also be displayed.
   - For other players to see this name, **they also need Figura and must grant you sufficient trust settings on their side**.
 
-  ![Display name](./readme_scripts/images/display_name.jpg)
+  ![Display name](./scripts/readme_generate/images/display_name.jpg)
 
 - On each student's birthday, a small cake mark is added to the name.
   - It is not shown when the displayed name is the player name.
 
-  ![Birth day](./readme_scripts/images/birth_day.svg)
+  ![Birth day](./scripts/readme_generate/images/birth_day.svg)
 
 - In addition to the above, there are features available only for specific students.
 
@@ -188,7 +188,7 @@ To play an Ex Skill, press the Ex Skill key (default: "G") in **third-person vie
 > [!IMPORTANT]
 > From v1.9.4, the Ex Skill action key was changed from "V" to "G".
 
-![Ex skill](./readme_scripts/images/ex_skill.jpg)
+![Ex skill](./scripts/readme_generate/images/ex_skill.jpg)
 
 Some students have two Ex Skills.
 The secondary Ex Skill can be played with the "H" key.
@@ -212,13 +212,13 @@ This repository's avatars include shared actions.
 > [!IMPORTANT]
 > From v1.8.4, the Ex Skill action was changed to key-based playback.
 
-![Action wheel](./readme_scripts/images/action_wheel.jpg)
+![Action wheel](./scripts/readme_generate/images/action_wheel.jpg)
 
 ### Action 1. Change variation costume
 
 If variation costumes are available (costume changes that do not change Ex Skills), you can switch costumes.
 
-![Variation costume](./readme_scripts/images/alt_costume.jpg)
+![Variation costume](./scripts/readme_generate/images/alt_costume.jpg)
 
 ### Action 2. Change display name
 
@@ -227,14 +227,14 @@ Scroll to choose a name, then close the action wheel to confirm.
 Left-click resets to the current value during selection, and right-click resets to the default.
 However, for other players to see the changed name, **they also need Figura and must grant you sufficient trust settings on their side**.
 
-![Display name](./readme_scripts/images/display_name.jpg)
+![Display name](./scripts/readme_generate/images/display_name.jpg)
 
 ### Action 3. Toggle armor visibility
 
 Toggles whether armor is visible.
 Since armor can hide the avatar, I recommend hiding armor.
 
-![Armor](./readme_scripts/images/armor.jpg)
+![Armor](./scripts/readme_generate/images/armor.jpg)
 
 ### Action 4. Open avatar settings
 
@@ -244,14 +244,14 @@ Moves to the [avatar settings page](#avatar-settings-action-wheel).
 
 You can move to this page from [Action 4](#action-4-open-avatar-settings) in [The action wheel](#the-action-wheel).
 
-![Avatar settings action wheel](./readme_scripts/images/action_config.jpg)
+![Avatar settings action wheel](./scripts/readme_generate/images/action_config.jpg)
 
 ### Action 1. Toggle student-specific vehicle models
 
 Toggles whether student-specific vehicle model replacement is enabled.
 This option is disabled for students without vehicle replacements.
 
-![Vehicle models](./readme_scripts/images/vehicle_model_2.jpg)
+![Vehicle models](./scripts/readme_generate/images/vehicle_model_2.jpg)
 
 ### Action 2. Toggle halo force rendering mode
 
@@ -316,7 +316,7 @@ Please note that if you have never checked updates, or have not checked for a lo
 From v2.0.0, while the action wheel is open, the current FBAC version and update status are shown in the top-left corner of the screen.
 From v3.0.0, the language-data version is also shown.
 
-![FBAC version display](./readme_scripts/images/fbac_version.jpg)
+![FBAC version display](./scripts/readme_generate/images/fbac_version.jpg)
 
 FBAC and language-data updates are checked automatically once a day, and can also be checked manually from the [Avatar settings action wheel](#avatar-settings-action-wheel).
 
@@ -391,4 +391,4 @@ For more information please refer to [the instruction of the FBAC build tool](./
 
 ---
 
-![ID card](./readme_scripts/images/id_card.jpg)
+![ID card](./scripts/readme_generate/images/id_card.jpg)

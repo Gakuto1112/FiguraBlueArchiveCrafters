@@ -10,7 +10,7 @@
 ターゲットMinecraftバージョン：1.21.4（1.16.5〜1.21.3でも利用可能です）
 
 
-![サムネイル](./readme_scripts/images/thumbnail.jpg)
+![サムネイル](./scripts/readme_generate/images/thumbnail.jpg)
 
 <https://youtu.be/JrPhLR34mLA>
 
@@ -102,51 +102,51 @@
 
 - Exスキルのカットインを再現しています。
 
-  ![Exスキル](./readme_scripts/images/ex_skill.jpg)
+  ![Exスキル](./scripts/readme_generate/images/ex_skill.jpg)
 
 - 「場に何かを残す」タイプのスキルの場合、Exスキルアニメーション後にオブジェクトが残り続けます。
   - ゲームには一切影響を与えません。
   - オブジェクトとブロックの当たり判定が重なった時に、そのオブジェクトは消えます。
   - Exスキルの再生キー（デフォルト：V）を長押しすると設置物を全削除できます。
 
-  ![設置物](./readme_scripts/images/placement_object.jpg)
+  ![設置物](./scripts/readme_generate/images/placement_object.jpg)
 
 - 弓やクロスボウの代わりに生徒固有の武器を構えます。
 矢の代わりに銃弾が発射されます。
   - 変化するのは見た目だけであり、実際はただ矢を撃っているだけなのでご注意下さい。
 
-  ![銃](./readme_scripts/images/gun.jpg)
+  ![銃](./scripts/readme_generate/images/gun.jpg)
 
 - カーソルキー（↑→↓←）で吹き出しを表示できます。
   - クロスボウに装填中は自動で装填の吹き出しが表示されます。
 
-  ![吹き出し1](./readme_scripts/images/bubble_good.jpg)
+  ![吹き出し1](./scripts/readme_generate/images/bubble_good.jpg)
 
-  ![吹き出し2](./readme_scripts/images/bubble_reload.jpg)
+  ![吹き出し2](./scripts/readme_generate/images/bubble_reload.jpg)
 
 - 衝撃吸収のハート（黄色のハート）を持っている場合は、バリアが付きます。
 
-  ![バリア](./readme_scripts/images/barrier.jpg)
+  ![バリア](./scripts/readme_generate/images/barrier.jpg)
 
 - プレイヤーが死ぬとヘリコプターで回収されます。
   - MinecraftやFiguraの仕様上、プレイヤーが表示されていないとこのアニメーションが表示されません。
 
-  ![ヘリコプターで回収](./readme_scripts/images/death_animation.jpg)
+  ![ヘリコプターで回収](./scripts/readme_generate/images/death_animation.jpg)
 
 - 一部の生徒には、ゲーム内の乗り物向けの固有モデルがあります。
 
-  ![乗り物モデル](./readme_scripts/images/vehicle_model.jpg)
+  ![乗り物モデル](./scripts/readme_generate/images/vehicle_model.jpg)
 
 - プレイヤーの名前を生徒の名前にすることができます。
   - 部活名を表示することもできます。
   - 他のプレイヤーがこの名前を見えるようにするには、**他のプレイヤーもFiguraを導入し、他のプレイヤー側であなたに対する信頼設定を十分上げる必要があります。**
 
-  ![プレイヤーの名前](./readme_scripts/images/display_name.jpg)
+  ![プレイヤーの名前](./scripts/readme_generate/images/display_name.jpg)
 
 - 生徒の誕生日には（ささやかながら）名前にケーキマークが付きます。
   - 表示名がプレイヤー名である場合は表示されません。
 
-  ![誕生日](./readme_scripts/images/birth_day.svg)
+  ![誕生日](./scripts/readme_generate/images/birth_day.svg)
 
 - 上記以外にも、特定の生徒のみで利用可能な機能があります。
 
@@ -188,7 +188,7 @@ Exスキルを再生するには、**三人称視点で**Exスキルのキー（
 > [!IMPORTANT]
 > v1.9.4より、Exスキルのアクションの再生キーが「V」キーから「G」キーに変更されました。
 
-![Exスキル](./readme_scripts/images/ex_skill.jpg)
+![Exスキル](./scripts/readme_generate/images/ex_skill.jpg)
 
 一部の生徒さんは、Exスキルを2つ持っています。
 2つ目のExスキルは「H」キーで再生できます。
@@ -212,13 +212,13 @@ Figuraには、アクションホイールキー（デフォルトは「B」キ�
 > [!IMPORTANT]
 > v1.8.4より、Exスキルのアクションはキー押下で再生されるように変更されました。
 
-![アクションホイール](./readme_scripts/images/action_wheel.jpg)
+![アクションホイール](./scripts/readme_generate/images/action_wheel.jpg)
 
 ### アクション1. バリエーションへの変更
 
 バリエーション衣装(Exスキルの変更を伴わない衣装変更)があれば衣装を変更できます。
 
-![バリエーションコスチューム](./readme_scripts/images/alt_costume.jpg)
+![バリエーションコスチューム](./scripts/readme_generate/images/alt_costume.jpg)
 
 ### アクション2. 名前変更
 
@@ -226,14 +226,14 @@ Figuraには、アクションホイールキー（デフォルトは「B」キ�
 選択中に左クリックをすると現在の設定値に、右クリックすると初期値にリセットされます。
 ただし、他のプレイヤーが変更された名前を見るには、**そのプレイヤーもFiguraを導入し、他のプレイヤー側であなたに対する信頼設定を十分上げる必要があります。**
 
-![プレイヤーの名前](./readme_scripts/images/display_name.jpg)
+![プレイヤーの名前](./scripts/readme_generate/images/display_name.jpg)
 
 ### アクション3. 防具の表示の切り替え
 
 防具を表示するかどうかを設定できます。
 ただし、折角のアバターが隠れてしまうので、防具を非表示にすることをお勧めします。
 
-![防具](./readme_scripts/images/armor.jpg)
+![防具](./scripts/readme_generate/images/armor.jpg)
 
 ### アクション4. アバター設定に移動
 
@@ -243,14 +243,14 @@ Figuraには、アクションホイールキー（デフォルトは「B」キ�
 
 [アクションホイールのアクション4](#アクション4-アバター設定に移動)からアバター設定ページに移動できます。
 
-![アバター設定アクションホイール](./readme_scripts/images/action_config.jpg)
+![アバター設定アクションホイール](./scripts/readme_generate/images/action_config.jpg)
 
 ### アクション1.　生徒固有の乗り物モデルに置き換え
 
 一部生徒の「ゲーム内の乗り物に乗った時にそのモデルを置き換える」機能の有効/無効を切り替えます。
 乗り物モデルの置き換えがない生徒ではこのオプションが無効化されています。
 
-![乗り物モデル](./readme_scripts/images/vehicle_model_2.jpg)
+![乗り物モデル](./scripts/readme_generate/images/vehicle_model_2.jpg)
 
 ### アクション2. ヘイロー強制描画モードの切り替え
 
@@ -315,7 +315,7 @@ Figuraには、アクションホイールキー（デフォルトは「B」キ�
 v2.0.0より、アクションホイールを開けている際に、画面左上に現在使用中のFBACのバージョンとアップデートの有無が表示されます。
 更にv3.0.0より、言語データのバージョンも表示されます。
 
-![FBACバージョン表示](./readme_scripts/images/fbac_version.jpg)
+![FBACバージョン表示](./scripts/readme_generate/images/fbac_version.jpg)
 
 FBAC及び言語データのアップデートの確認は、1日1回自動で行われますが、[アクションホイール](#アバター設定アクションホイール)より手動で行うこともできます。
 
@@ -390,4 +390,4 @@ Figuraは[Forge](https://files.minecraftforge.net/net/minecraftforge/forge/)、[
 
 ---
 
-![IDカード](./readme_scripts/images/id_card.jpg)
+![IDカード](./scripts/readme_generate/images/id_card.jpg)
