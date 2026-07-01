@@ -324,7 +324,7 @@ class BBModelModifier:
 		Logger.print_info(f"Modifying BBModel ({BBModelModifier._debug_input_path})...")
 
 		try:
-			BBModelModifier.modify_bbmodel(BBModelModifier._debug_input_path)
+			BBModelModifier._modify_bbmodel(BBModelModifier._debug_input_path)
 		except FileNotFoundError:
 			Logger.print_error(f"The specified BBModel file was not found ({BBModelModifier._debug_input_path})")
 			exit(errno.ENOENT)
