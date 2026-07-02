@@ -100,7 +100,8 @@ def generate_readme_txt(locale: TemplateLocale, tag_name: str, release_date: dat
 			block_contents_str = block_contents.group(1).strip()
 			block_contents_str = re.sub(r"\[(.+?)\]\(.+?\)", r"\1", block_contents_str)
 			block_contents_str = re.sub(r"\*{2}", "", block_contents_str)
-			block_contents_str = re.sub(r"#{2}", "#", block_contents_str)
+			block_contents_str = re.sub(r"#{2,}", "#", block_contents_str)
+			block_contents_str = re.sub(r"(?<!\\)\\\s*$", "", block_contents_str, flags=re.MULTILINE)
 			result = re.sub(rf" *\${{{tag}}} *", block_contents_str, result, flags=re.DOTALL)
 		else:
 			Logger.print_warning(f"Failed to find content for block tag {tag} in markdown template for locale {locale.name}. The tag will be left unreplaced.")
