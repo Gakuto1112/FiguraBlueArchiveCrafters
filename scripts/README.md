@@ -16,3 +16,9 @@ For more information, please refer to the [README](./build/README.md) of the Bui
 This script creates the Markdown README document for this repository (FBAC) and the README text files to be included in the distribution data from templates.
 
 For more information, please refer to the [README](./readme_generate/README.md) of the README Generate Script.
+
+## Test Script
+
+These scripts check whether builds for FBAC avatars succeed and whether source files contain correct configuration values.
+
+For more information, please refer to the [README](./test/README.md) of the Test Script.
