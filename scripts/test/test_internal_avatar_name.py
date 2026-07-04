@@ -5,7 +5,7 @@ from common_modules.base_path import base_path
 
 
 class TestInternalAvatarName(unittest.TestCase):
-    def test_internal_avatar_name(self):
+    def test_internal_avatar_name(self) -> None:
         """
         各キャラクターの`blue_archive_character.lua`内の`BlueArchiveCharacter.basic.avatarName`フィールドが、キャラクターのディレクトリ名と一致することを確認する。
         大文字小文字も区別してテストする。

@@ -4,7 +4,7 @@ import unittest
 from common_modules.base_path import base_path
 
 class TestBuild(unittest.TestCase):
-	def test_build(self):
+	def test_build(self) -> None:
 		"""
 		アバターのビルドが成功するかテストする。
 		"""
