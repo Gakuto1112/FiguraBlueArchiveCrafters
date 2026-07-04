@@ -1,15 +1,14 @@
-name: Test
+name: Test on push/pull-request
 
 on:
   push:
     branches:
       - main
-    tags:
-      - v*.*.*
     paths:
       - src/**
       - scripts/**
       - .github/workflows/test.yml
+      - .github/workflows/test_core.yml
   pull_request:
     branches:
       - main
@@ -17,44 +16,9 @@ on:
       - src/**
       - scripts/**
       - .github/workflows/test.yml
+      - .github/workflows/test_core.yml
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      checks: write
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7.0.0
-      - name: Set up uv
-        uses: astral-sh/setup-uv@v8.2.0
-        with:
-          enable-cache: auto
-      - name: Install pngquant
-        run: sudo apt install -y pngquant
-      - name: Install dependencies
-        run: uv sync
-        working-directory: ./scripts/
-      - name: Enable problem matcher
-        run: echo "::add-matcher::.github/problem_matchers/script_logger.json"
-      - name: Run tests
-        run: uv run python -m xmlrunner discover -s ./test -p "test_*.py" -o ./test/reports
-        env:
-          AVATAR_TAG_NAME: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || '' }}
-        working-directory: ./scripts/
-      - name: Disable problem matcher
-        if: always()
-        run: echo "::remove-matcher owner=script_logger"
-      - name: Publish Test Report
-        if: always()
-        uses: mikepenz/action-junit-report@v6.4.2
-        with:
-          report_paths: scripts/test/reports/TEST-*.xml
-      - name: Upload artifact
-        if: always()
-        uses: actions/upload-artifact@v7.0.1
-        with:
-          name: avatars
-          path: ./dist/
+  call-reusable:
+    uses: ./.github/workflows/test_core.yml
+    secrets: inherit

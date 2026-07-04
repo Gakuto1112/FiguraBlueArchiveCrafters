@@ -1,0 +1,11 @@
+name: Test on tag push
+
+on:
+  push:
+    tags:
+      - v*.*.*
+
+jobs:
+  call-reusable:
+    uses: ./.github/workflows/test_core.yml
+    secrets: inherit
