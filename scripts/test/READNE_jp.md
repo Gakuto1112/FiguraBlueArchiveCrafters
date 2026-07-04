@@ -36,3 +36,43 @@
 
 - [`src/core/scripts/action_wheel/update_checker.lua`](../../src/core/scripts/action_wheel/update_checker.lua)が存在しない。
 - `UpdateChecker.AVATAR_VERSION`フィールドが定義されていない。
+
+## 環境構築及び実行手順
+
+本レポジトリをクローンし、実際にアバターをビルドするまでの手順を示します。
+なお、本ビルドツールの実行にはPythonのバージョン管理ツールである[uv](https://docs.astral.sh/uv/)が必要です。
+また、手順内にあるコマンド例はMac/Linux準拠になります。
+
+1. 本レポジトリをクローン（ダウンロード）し、お使いのデバイス上にファイルを展開します。
+2. ワーキングディレクトリを`/src/scripts`に設定します。
+
+   ```sh
+   cd <path_to_repository_root_directory>/scripts/
+   ```
+
+3. Python及び依存パッケージのインストールをします。
+   以下のコマンドを実行するだけでインストールできます。
+
+   ```sh
+   uv sync
+   ```
+
+4. テストスクリプトを実行します。
+
+   - ビルドテストの場合
+
+     ```bash
+     uv run python -m test.test_build
+     ```
+
+   - アバター内部名称テストの場合
+
+     ```bash
+     uv run python -m test.test_internal_avatar_name
+     ```
+
+   - アバターのバージョンテストの場合
+
+     ```bash
+     uv run python -m test.test_avatar_version ${release_tag_name}
+     ```
