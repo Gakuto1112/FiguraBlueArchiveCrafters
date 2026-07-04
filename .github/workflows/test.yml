@@ -6,9 +6,17 @@ on:
       - main
     tags:
       - v*.*.*
+    paths:
+      - src/**
+      - scripts/**
+      - .github/workflows/test.yml
   pull_request:
     branches:
       - main
+    paths:
+      - src/**
+      - scripts/**
+      - .github/workflows/test.yml
 
 jobs:
   test:
