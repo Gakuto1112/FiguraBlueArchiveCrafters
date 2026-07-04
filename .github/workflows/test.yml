@@ -25,6 +25,8 @@ jobs:
         uses: astral-sh/setup-uv@v8.2.0
         with:
           enable-cache: auto
+      - name: Install pngquant
+        run: sudo apt install -y pngquant
       - name: Install dependencies
         run: uv sync
         working-directory: ./scripts/
