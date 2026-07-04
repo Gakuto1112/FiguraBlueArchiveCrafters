@@ -31,8 +31,7 @@ class TestInternalAvatarName(unittest.TestCase):
                     self.assertTrue(False, f"\"blue_archive_character.lua\" does not exist in {character_name}.")
                     continue
 
-                content = character_script.read_text(encoding="utf-8")
-                match = regex.search(content)
+                match = regex.search(character_script.read_text(encoding="utf-8"))
 
                 if match is None:
                     self.assertTrue(False, f"Field \"basic.avatarName\" does not exist in \"blue_archive_character.lua\" for character {character_name}.")
