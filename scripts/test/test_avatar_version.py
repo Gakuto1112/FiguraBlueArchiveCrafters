@@ -1,13 +1,12 @@
-import argparse
+import os
 import re
-import sys
 import unittest
 
 from common_modules.base_path import base_path
 
 
 class TestAvatarVersion(unittest.TestCase):
-    tag_name: str = ""
+    tag_name: str|None = os.getenv("AVATAR_TAG_NAME")
     """
     比較を行うタグ（バージョン）の名前
     """
@@ -17,7 +16,9 @@ class TestAvatarVersion(unittest.TestCase):
         "core/scripts/action_wheel/update_checker.lua"内の`AVATAR_VERSION`フィールドが、指定されたタグ名と一致することを確認する。
         """
 
-        if len(self.tag_name) == 0:
+        print(f"Target tag name: {self.tag_name}")
+
+        if self.tag_name is None or len(self.tag_name) == 0:
             self.skipTest("Target tag name is not provided. Skipping avatar version test.")
 
         updater_path = base_path.root / "src" / "core" / "scripts" / "action_wheel" / "update_checker.lua"
@@ -33,11 +34,4 @@ class TestAvatarVersion(unittest.TestCase):
         self.assertEqual(match.group(1), self.tag_name, f"Avatar version mismatch detected.")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-
-    parser.add_argument("tag_name", type=str, help="The tag name to compare with the avatar version.")
-
-    args, other_args = parser.parse_known_args()
-
-    TestAvatarVersion.tag_name = args.tag_name
-    unittest.main(argv=[sys.argv[0]] + other_args)
+	unittest.main()
