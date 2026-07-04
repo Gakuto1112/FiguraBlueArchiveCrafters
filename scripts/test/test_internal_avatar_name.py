@@ -28,17 +28,17 @@ class TestInternalAvatarName(unittest.TestCase):
                 character_script = character_dir / "scripts" / "blue_archive_character.lua"
 
                 if not character_script.exists():
-                    self.assertTrue(False, f"\"blue_archive_character.lua\" does not exist in {character_name}")
+                    self.assertTrue(False, f"\"blue_archive_character.lua\" does not exist in {character_name}.")
                     continue
 
                 content = character_script.read_text(encoding="utf-8")
                 match = regex.search(content)
 
                 if match is None:
-                    self.assertTrue(False, f"Field \"basic.avatarName\" does not exist in \"blue_archive_character.lua\" for character {character_name}")
+                    self.assertTrue(False, f"Field \"basic.avatarName\" does not exist in \"blue_archive_character.lua\" for character {character_name}.")
                     continue
 
-                self.assertEqual(match.group(1), character_name, f"The internal avatar name does not match the character name for character {character_name}")
+                self.assertEqual(match.group(1), character_name, f"The internal avatar name does not match the character name for character {character_name}.")
 
 if __name__ == "__main__":
 	unittest.main()
