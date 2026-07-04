@@ -76,3 +76,8 @@
      ```bash
      uv run python -m test.test_avatar_version ${release_tag_name}
      ```
+
+また、[Visual Studio Code](https://code.visualstudio.com)を使用する場合は、画面左のテストタブからテストを容易に実行できます。\
+（アバターのバージョンテストはタグプッシュ時にテストされることを想定しているため、ここで実行してもスキップされます。）
+
+![テストタブ](./docs/images/vscode_test_tab.jpg)
