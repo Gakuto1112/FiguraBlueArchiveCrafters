@@ -19,6 +19,8 @@ on:
       - .github/workflows/test_core.yml
 
 jobs:
-  call-reusable:
+  call_test_core:
+    permissions:
+      contents: read
+      checks: write
     uses: ./.github/workflows/test_core.yml
-    secrets: inherit
