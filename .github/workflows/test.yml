@@ -1,0 +1,47 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*.*.*
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.0
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v8.2.0
+        with:
+          enable-cache: auto
+      - name: Install dependencies
+        run: uv sync
+        working-directory: ./scripts/
+      - name: Enable problem matcher
+        run: echo "::add-matcher::.github/problem_matchers/script_logger.json"
+      - name: Run tests
+        run: uv run python -m xmlrunner discover -s ./test -p "test_*.py" -o ./test/reports
+        env:
+          AVATAR_TAG_NAME: ${{ startsWith(github.ref, 'refs/tags/') && github.ref_name || '' }}
+        working-directory: ./scripts/
+        continue-on-error: true
+      - name: Disable problem matcher
+        run: echo "::remove-matcher owner=script_logger"
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v6.4.2
+        with:
+          report_paths: scripts/test/reports/TEST-*.xml
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: avatars
+          path: ./dist/
