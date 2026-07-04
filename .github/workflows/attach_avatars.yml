@@ -14,9 +14,9 @@ jobs:
       matrix:
         include:
           - extra_args: ""
-            artifact_name: FiguraBlueArchiveCrafters-figura0.1.5+1.16.5-1.21.4
+            artifact_name: FiguraBlueArchiveCrafters-figura0.1.6+1.16.5-1.21.4
           - extra_args: "-n"
-            artifact_name: FiguraBlueArchiveCrafters-figura0.1.5+1.21.5-1.21.11
+            artifact_name: FiguraBlueArchiveCrafters-figura0.1.6+1.21.5-1.21.11
     steps:
       - name: Checkout
         uses: actions/checkout@v6.0.2
