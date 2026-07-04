@@ -243,10 +243,10 @@ class ThumbnailGenerator:
 		Logger.print_info("Thumbnail generator for FBAC avatar build tool")
 		Logger.print_spacer(1)
 
-		Logger.print_info(f"Generating thumbnail image (00a_base)...")
+		Logger.print_info(f"Generating thumbnail image (00a_Base)...")
 
 		try:
-			ThumbnailGenerator.generate_thumbnail("00a_base").show()
+			ThumbnailGenerator.generate_thumbnail("00a_Base").show()
 		except FileNotFoundError:
 			Logger.print_error(f"Thumbnail config file not found.")
 			exit(errno.ENOENT)
@@ -263,7 +263,7 @@ class ThumbnailGenerator:
 			Logger.print_error(f"An unexpected error occurred while generating thumbnail image.")
 			exit(errno.EIO)
 
-		Logger.print_info(f"Completed generating thumbnail image (00a_base)")
+		Logger.print_info(f"Completed generating thumbnail image (00a_Base)")
 		Logger.print_spacer(1)
 		Logger.print_info(f"Hint: Generated thumbnail image is being displayed using the default image viewer of your operating system.")
 

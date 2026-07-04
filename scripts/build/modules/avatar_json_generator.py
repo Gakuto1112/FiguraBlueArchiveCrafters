@@ -289,10 +289,10 @@ class AvatarJsonGenerator:
 		Logger.print_info("avatar.json generator for FBAC avatar build tool")
 		Logger.print_spacer(1)
 
-		Logger.print_info(f"Generating merged avatar.json (00a_base)...")
+		Logger.print_info(f"Generating merged avatar.json (00a_Base)...")
 
 		try:
-			AvatarJsonGenerator.write_merged_avatar_json("00a_base")
+			AvatarJsonGenerator.write_merged_avatar_json("00a_Base")
 		except FileNotFoundError:
 			Logger.print_error(f"Avatar JSON template file or avatar JSON config file not found.")
 			exit(0)
@@ -309,7 +309,7 @@ class AvatarJsonGenerator:
 			Logger.print_error(f"An unexpected error occurred while processing avatar JSON files.")
 			exit(errno.EIO)
 
-		Logger.print_info(f"Completed generating merged avatar.json (00a_base)")
+		Logger.print_info(f"Completed generating merged avatar.json (00a_Base)")
 
 if __name__ == "__main__":
 	AvatarJsonGenerator.debug()

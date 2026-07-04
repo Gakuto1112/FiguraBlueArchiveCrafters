@@ -376,10 +376,10 @@ class FileOperator:
 
 		Logger.print_info("Completed preparing distribution directory.")
 		Logger.print_spacer(1)
-		Logger.print_info(f"Copying avatar assets (00a_base)...")
+		Logger.print_info(f"Copying avatar assets (00a_Base)...")
 
 		try:
-			FileOperator.copy_assets("00a_base")
+			FileOperator.copy_assets("00a_Base")
 		except NotADirectoryError:
 			Logger.print_error(f"The output directory, core asset subdirectory, or character-specific asset subdirectory is not a directory.")
 			exit(errno.ENOTDIR)

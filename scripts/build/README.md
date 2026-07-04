@@ -29,7 +29,7 @@ The structure of the template file is almost identical to that of `avatar.json`,
 
 The character-specific part refers to the resources specifically implemented for a particular character based on the core.
 The character-specific part is stored under [`/src/avatars`](../../src/avatars/), and the respective resources are further stored in each character's subdirectory.
-However, [`00a_base`](../../src/avatars/00a_base/) acts as a boilerplate avatar when creating a new character.
+However, [`00a_Base`](../../src/avatars/00a_Base/) acts as a boilerplate avatar when creating a new character.
 In other words, it is the "base body" avatar for the characters.
 
 The naming conventions for character subdirectories are as follows.
@@ -41,7 +41,7 @@ Also, the first letter should be capitalized, with subsequent letters in lowerca
 
 #### avatar_json_config.json
 
-[`avatar_json_config.json`](../../src/avatars/00a_base/avatar_json_config.json) is a file used to insert and merge concrete values into the core's [`avatar_template.json`](#avatar_templatejson).
+[`avatar_json_config.json`](../../src/avatars/00a_Base/avatar_json_config.json) is a file used to insert and merge concrete values into the core's [`avatar_template.json`](#avatar_templatejson).
 The structure of this json file is as follows:
 
 ```
@@ -73,7 +73,7 @@ If there are duplicate keys, they will be overwritten with the values from `avat
 
 #### thumbnail_config.json
 
-[`thumbnail_config.json`](../../src/avatars/00a_base/thumbnail_config.json) is a file storing the configuration values used when generating avatar thumbnails.
+[`thumbnail_config.json`](../../src/avatars/00a_Base/thumbnail_config.json) is a file storing the configuration values used when generating avatar thumbnails.
 The structure of this json file is as follows:
 
 ```

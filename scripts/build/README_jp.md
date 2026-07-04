@@ -29,7 +29,7 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 
 キャラクター固有部分はコアをベースに、特定のキャラクター向けに具体的な実装がされたリソース群を指します。
 キャラクター固有部分は[`/src/avatars`](../../src/avatars/)配下に格納されており、更にそれぞれのキャラクターのサブディレクトリにそれぞれのリソースが格納されています。
-ただし、[`00a_base`](../../src/avatars/00a_base/)はキャラクターを作成する際のテンプレートとなるアバターとなります。
+ただし、[`00a_Base`](../../src/avatars/00a_Base/)はキャラクターを作成する際のテンプレートとなるアバターとなります。
 つまり、キャラクターの「素体」になるアバターになります。
 
 キャラクターのサブディレクトリの命名規則は以下の通りです。
@@ -41,7 +41,7 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 
 #### avatar_json_config.json
 
-[`avatar_json_config.json`](../../src/avatars/00a_base/avatar_json_config.json)はコアの[`avatar_template.json`](#avatar_templatejson)に具体的な値を挿入・統合するためのファイルです。
+[`avatar_json_config.json`](../../src/avatars/00a_Base/avatar_json_config.json)はコアの[`avatar_template.json`](#avatar_templatejson)に具体的な値を挿入・統合するためのファイルです。
 このjsonファイルの構造は次の通りです：
 
 ```
@@ -73,7 +73,7 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 
 #### thumbnail_config.json
 
-[`thumbnail_config.json`](../../src/avatars/00a_base/thumbnail_config.json)はアバターサムネイルを生成する際に使用する設定値を格納したファイルです。
+[`thumbnail_config.json`](../../src/avatars/00a_Base/thumbnail_config.json)はアバターサムネイルを生成する際に使用する設定値を格納したファイルです。
 このjsonファイルの構造は次の通りです：
 
 ```

@@ -185,7 +185,7 @@ def build(target_avatars: tuple[str, ...], tag_name: str|None = None, as_release
 
 	for target_avatar in target_avatars:
 		Logger.print_info(f"Modifying BBModel files for avatar \"{target_avatar}\" ({target_avatars.index(target_avatar) + 1}/{len(target_avatars)}) ...")
-		
+
 		try:
 			BBModelModifier.modify_avatar_bbmodels(target_avatar)
 		except FileNotFoundError:
@@ -322,7 +322,7 @@ def main() -> None:
 			target_avatars = list(paths.get_avatar_names())
 
 		if args.release:
-			target_avatars.remove("00a_base")
+			target_avatars.remove("00a_Base")
 
 		Logger.print_debug(f"Target avatars: {", ".join(target_avatars)}")
 		Logger.print_debug(f"Build mode: {'Release' if args.release else 'Debug'}")
