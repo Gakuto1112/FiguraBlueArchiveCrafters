@@ -86,8 +86,11 @@ def generate_readme_md(locale: TemplateLocale) -> None:
 	# 画像URLの修正
 	result = result.replace("../../../docs/images/readme/", "./docs/images/readme/")
 
-	# 不要なアンカータグの削除
+	# 不要なコメント/アンカータグの削除
 	result = re.sub(r" *<!--.+--> *\n", "", result)
+
+	# リンター抑制タグの追加
+	result = "<!-- markdownlint-disable -->\n" + result
 
 	# 生成済みドキュメントの出力
 	Logger.print_info("Writing document...")
