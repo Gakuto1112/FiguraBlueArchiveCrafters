@@ -102,18 +102,22 @@ local WhaleFloat = {
                         end
 
                         events.TICK:register(function ()
-                            if world.getBlockState(player:getPos()).id == "minecraft:water" then
-                                animations["models.main"]["whale_float"]:setPlaying(true)
-                                if Physics.velocityAverage[5][2] >= 0.35 then
-                                    FaceParts:setEmotion("CLOSED", "CLOSED", "W", 1)
-                                end
-                                if Physics.velocityAverage[5][2] >= 0.1 then
-                                    local bodyYaw = player:getBodyYaw()
-                                    local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.lowerBody.WhaleFloat.WhaleParticleAnchor1):add(vectors.rotateAroundAxis(bodyYaw * -1, 0.1875, 0, 0, 0, 1, 0))
-                                    for _ = 1, 5 do
-                                        local particleDirection = math.random() * 60 - 30
-                                        particleDirection = particleDirection > 0 and particleDirection + 30 or particleDirection - 30
-                                        particles:newParticle("minecraft:dust 1 1 1 1", anchorPos):setScale(3):setColor(1, 1, 1):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 + particleDirection + 150, vectors.vec3(1, 1, 1), 0, 1, 0):scale(math.random()):normalize():scale(Physics.velocityAverage[5][2])):setGravity(0.5):setLifetime(10)
+                            local playerPos = player:getPos()
+                            if not ModelUtils.getIsAreaOverlappedByCollisions(playerPos:copy():add(-0.65, 0.4, -0.65), playerPos:copy():add(0.65, 0.5, 0.65)) then
+                                local block = world.getBlockState(playerPos)
+                                if block.properties["waterlogged"] == "true" or block.id == "minecraft:water" or block.id == "minecraft:seagrass" or block.id == "minecraft:tall_seagrass" or block.id == "minecraft:kelp" or block.id == "minecraft:kelp_plant" then
+                                    animations["models.main"]["whale_float"]:setPlaying(true)
+                                    if Physics.velocityAverage[5][2] >= 0.35 then
+                                        FaceParts:setEmotion("CLOSED", "CLOSED", "W", 1)
+                                    end
+                                    if Physics.velocityAverage[5][2] >= 0.1 then
+                                        local bodyYaw = player:getBodyYaw()
+                                        local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.lowerBody.WhaleFloat.WhaleParticleAnchor1):add(vectors.rotateAroundAxis(bodyYaw * -1, 0.1875, 0, 0, 0, 1, 0))
+                                        for _ = 1, 5 do
+                                            local particleDirection = math.random() * 60 - 30
+                                            particleDirection = particleDirection > 0 and particleDirection + 30 or particleDirection - 30
+                                            particles:newParticle("minecraft:dust 1 1 1 1", anchorPos):setScale(3):setColor(1, 1, 1):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 + particleDirection + 150, vectors.vec3(1, 1, 1), 0, 1, 0):scale(math.random()):normalize():scale(Physics.velocityAverage[5][2])):setGravity(0.5):setLifetime(10)
+                                        end
                                     end
                                 end
 
