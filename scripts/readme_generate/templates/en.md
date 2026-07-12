@@ -128,11 +128,11 @@ Please understand this.
   | Hoshino (Battle) | - Holds a shotgun and handgun when using bows/crossbows in both hands. |
   | Umika | - Leaves a fireworks launcher in place after playing the Ex Skill. <br> - Fireworks launchers can launch fireworks (visual only). |
   | Serina (Normal) | - Leaves a medical box in place after playing the Ex Skill. <br> - Medical boxes play a healing-like effect when touched by players (including other players). <br> - Healing potions are replaced with a medical box. |
-  | Serina (Christmas) | - Bells are replaced with her handbell. <br> - After Ex Skill playback, she can perform random Christmas songs with her handbell (7 songs). |
+  | Serina (Christmas) | - Bells are replaced with her hand bell. <br> - After Ex Skill playback, she can perform random Christmas songs with her hand bell (7 songs). |
   | Iroha | - If she rides a saddled camel alone, the camel is replaced with Toramaru (a tank). Only Ibuki can ride with Iroha on Toramaru. <br> - Toramaru can fire shells (visual only). |
   | Ibuki | - Can patrol with Iroha-senpai! |
   | Seia | - Has an [allay](https://minecraft.wiki/w/Allay) as a companion (as a substitute for a long-tailed tit). <br> - Saddled horse-type mobs are replaced with her convertible. |
-  | Aris | - After playing the Ex Skill animation, her railgun enters an overcharged state and can fire a stronger shot (visual only). |
+  | Aris | - After playing the Ex Skill animation, her rail gun enters an overcharged state and can fire a stronger shot (visual only). |
   | Aris (Battle) | - Has a dedicated animation during creative flight. |
   | Yuzu (Maid) | - Can equip the Yuzu Chest by wearing a pumpkin on the head. Sneaking hides her inside the chest. |
   | Hikari | - Can dance with Nozomi. |
