@@ -68,9 +68,9 @@ local Gun = {
                     local quickChargeLevel = 0
                     local activeItem = player:getActiveItem()
                     local gameVersion = client:getVersion()
-                    if StringUtils.compareVersions(gameVersion, "1.21.5") == gameVersion then
+                    if StringUtils.isNewerOrEqualVersion(gameVersion, "1.21.5") then
                         quickChargeLevel = activeItem.tag["minecraft:enchantments"]["minecraft:quick_charge"] ~= nil and activeItem.tag["minecraft:enchantments"]["minecraft:quick_charge"] or 0
-                    elseif StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion then
+                    elseif StringUtils.isNewerOrEqualVersion(gameVersion, "1.20.5") then
                         quickChargeLevel = activeItem.tag["minecraft:enchantments"].levels["minecraft:quick_charge"] ~= nil and activeItem.tag["minecraft:enchantments"].levels["minecraft:quick_charge"] or 0
                     elseif activeItem.tag.Enchantments ~= nil then
                         for _, enchant in ipairs(activeItem.tag.Enchantments) do
@@ -93,6 +93,7 @@ local Gun = {
         events.ITEM_RENDER:register(function (item, mode, _, _, _, leftHanded)
             self = this
             if mode ~= "HEAD" and self.currentGunPosition == (leftHanded and "LEFT" or "RIGHT") then
+                local gameVersion = client:getVersion()
                 for _, gunItem in ipairs(self.GUN_ITEMS) do
                     if item.id == gunItem then
                         if leftHanded then
@@ -106,8 +107,7 @@ local Gun = {
                                     offsetRot = BlueArchiveCharacter.gun.gunPosition.hold.firstPersonRot.left
                                 end
                                 local activeItemId = player:getActiveItem().id
-                                local gameVersion = client:getVersion()
-                                local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
+                                local isNewerNbt = StringUtils.isNewerOrEqualVersion(gameVersion, "1.20.5")
                                 if activeItemId == "minecraft:bow" then
                                     ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, -2.25, 4.25):add(offsetPos))
                                     ModelAlias.alias.avatar.gun:setRot(vectors.vec3(20, -7.5, -5):add(offsetRot))
@@ -149,8 +149,7 @@ local Gun = {
                                     offsetRot = BlueArchiveCharacter.gun.gunPosition.hold.firstPersonRot.right
                                 end
                                 local activeItemId = player:getActiveItem().id
-                                local gameVersion = client:getVersion()
-                                local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
+                                local isNewerNbt = StringUtils.isNewerOrEqualVersion(gameVersion, "1.20.5")
                                 if activeItemId == "minecraft:bow" then
                                     ModelAlias.alias.avatar.gun:setPos(vectors.vec3(0, -2.25, 4.25):add(offsetPos))
                                     ModelAlias.alias.avatar.gun:setRot(vectors.vec3(20, 7.5, 5):add(offsetRot))

@@ -617,7 +617,7 @@ local BlueArchiveCharacter = {
 								:setBlock("minecraft:iron_block")
 								:setPos(i * 16 - 48, 16, 16)
 							models.models.ex_skill_1.Desk:newEntity("ex_skill_1_entity_" .. (i + 1))
-								:setNbt("minecraft:painting", "{variant: \"" .. (paintings[math.random(StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion and 7 or #paintings)]) .. "\"}")
+								:setNbt("minecraft:painting", "{variant: \"" .. (paintings[math.random(StringUtils.isNewerOrEqualVersion(gameVersion, "1.21") and 7 or #paintings)]) .. "\"}")
 								:setPos(i * -16 - 24, 24, 16)
 								:setRot(0, 180, 0)
 						end
@@ -650,7 +650,7 @@ local BlueArchiveCharacter = {
 						end
 
 						local gameVersion = client:getVersion()
-						local shouldAdjustBackgroundRot = StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion
+						local shouldAdjustBackgroundRot = StringUtils.isNewerOrEqualVersion(gameVersion, "1.21")
 						models.models.ex_skill_1.Gui.ScreenFilter:setScale(client:getScaledWindowSize():copy():augmented(1))
 						events.RENDER:register(function ()
 							if shouldAdjustBackgroundRot then

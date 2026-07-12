@@ -420,8 +420,7 @@ local BlueArchiveCharacter = {
 						if host:isHost() then
 							models.models.ex_skill_1.CameraBackground:setVisible(true)
 							local windowSize = client:getWindowSize()
-							local gameVersion = client:getVersion()
-							local shouldAdjustBackgroundRot = StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion
+							local shouldAdjustBackgroundRot = StringUtils.isNewerOrEqualVersion(gameVersion, "1.21")
 							events.RENDER:register(function (delta, ctx, matrix)
 								local backgroundPos = vectors.rotateAroundAxis(player:getBodyYaw(delta) + 180, renderer:getCameraOffsetPivot():copy():add(0, 1.62, 0):add(client:getCameraDir():copy():scale(2.15)), 0, 1, 0):scale(16 / 0.9375)
 								models.models.ex_skill_1.CameraBackground:setOffsetPivot(backgroundPos)
@@ -710,8 +709,7 @@ local BlueArchiveCharacter = {
 				local healingPotionPos = 0
 				for i = 1, 2 do
 					local heldItem = player:getHeldItem(i == 2)
-					local gameVersion = client:getVersion()
-					local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
+					local isNewerNbt = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.20.5")
 					if (heldItem.id == "minecraft:potion" or heldItem.id == "minecraft:splash_potion" or heldItem.id == "minecraft:lingering_potion") and ((isNewerNbt and heldItem.tag["minecraft:potion_contents"].potion ~= nil and heldItem.tag["minecraft:potion_contents"].potion:match("minecraft:.*regeneration") ~= nil) or (not isNewerNbt and heldItem.tag.Potion ~= nil and heldItem.tag.Potion:match("minecraft:.*regeneration") ~= nil)) then
 						healingPotionPos = i
 						break

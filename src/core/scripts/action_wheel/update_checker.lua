@@ -43,8 +43,7 @@ local UpdateChecker = {
             if client:getSystemTime() >= self.lastCheckTime + 86400000 then
                 self:checkUpdate()
             else
-                local newerVersion = StringUtils.compareVersions(self.latestVersion, self.AVATAR_VERSION)
-                if newerVersion ~= nil and newerVersion ~= self.AVATAR_VERSION then
+                if StringUtils.isNewerVersion(self.latestVersion, self.AVATAR_VERSION) then
                     self:showNewUpdateMessage()
                     self.checkerStatus = "UPDATE_AVAILABLE"
                 else
@@ -95,9 +94,10 @@ local UpdateChecker = {
 					local jsonData = NetUtils.toJson(data)
 					if type(jsonData) == "table" then
 						if jsonData[1] ~= nil and jsonData[1].name ~= nil then
-							local newerVersion = StringUtils.compareVersions(jsonData[1].name, self.AVATAR_VERSION)
-							if newerVersion ~= nil then
-								if newerVersion ~= self.AVATAR_VERSION then
+							local isNewer, isIncomparable = StringUtils.isNewerVersion(jsonData[1].name, self.AVATAR_VERSION)
+							print(isNewer)
+							if not isIncomparable then
+								if isNewer then
 									--新しいバージョンがある
 									self.latestVersion = jsonData[1].name
 									self.checkerStatus = "UPDATE_AVAILABLE"

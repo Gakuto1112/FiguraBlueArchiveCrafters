@@ -342,7 +342,7 @@ local Locale = {
 				if status == "SUCCESS" then
 					local indexVersion = data["localeVersion"]
 					---@cast cacheVersion string
-					if cacheVersion == nil or StringUtils.compareVersions(cacheVersion, indexVersion) ~= cacheVersion then
+					if cacheVersion == nil or StringUtils.isNewerVersion(indexVersion, cacheVersion) then
 						self:flushCache()
 						file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data), "utf8")
 						self.localeVersion = indexVersion

@@ -348,8 +348,7 @@ local BlueArchiveCharacter = {
 					events.TICK:register(function ()
 						Arms:processArmSwingCount()
 						local heldItem = player:getHeldItem(not player:isLeftHanded())
-						local gameVersion = client:getVersion()
-						local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
+						local isNewerNbt = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.20.5")
 						isHolding = player:getActiveItem().id == "minecraft:bow" or (heldItem.id == "minecraft:crossbow" and ((isNewerNbt and #heldItem.tag["minecraft:charged_projectiles"] >= 1) or (not isNewerNbt and heldItem.tag.Charged == 1)))
 						ModelAlias.alias.avatar.rightArm:setParentType((isHolding or self.costume.shootTick >= 0) and "Body" or "RightArm")
 					end, "right_arm_tick")
@@ -387,8 +386,7 @@ local BlueArchiveCharacter = {
 					events.TICK:register(function ()
 						Arms:processArmSwingCount()
 						local heldItem = player:getHeldItem(player:isLeftHanded())
-						local gameVersion = client:getVersion()
-						local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
+						local isNewerNbt = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.20.5")
 						isHolding = player:getActiveItem().id == "minecraft:bow" or (heldItem.id == "minecraft:crossbow" and ((isNewerNbt and #heldItem.tag["minecraft:charged_projectiles"] >= 1) or (not isNewerNbt and heldItem.tag.Charged == 1)))
 						ModelAlias.alias.avatar.leftArm:setParentType((isHolding or self.costume.shootTick >= 0) and "Body" or "LeftArm")
 					end, "left_arm_tick")

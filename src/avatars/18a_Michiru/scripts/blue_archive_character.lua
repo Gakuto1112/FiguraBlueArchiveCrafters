@@ -417,8 +417,7 @@ local BlueArchiveCharacter = {
 					end
 					if host:isHost() then
 						models.models.ex_skill_1.CameraBackground:setOpacity(0)
-						local gameVersion = client:getVersion()
-						local shouldAdjustBackgroundRot = StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion
+						local shouldAdjustBackgroundRot = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21")
 						events.RENDER:register(function (delta)
 							local opacity = models.models.ex_skill_1.CameraBackground.BackgroundOpacity:getAnimScale().x
 							models.models.ex_skill_1.CameraBackground:setOpacity(opacity)

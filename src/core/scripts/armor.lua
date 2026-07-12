@@ -75,8 +75,7 @@ local Armor = {
 		for _, vanillaModel in ipairs({vanilla_model.HELMET, vanilla_model.CHESTPLATE, vanilla_model.LEGGINGS}) do
 			vanillaModel:setVisible(false)
 		end
-		local gameVersion = client:getVersion()
-		local isNewerPath = StringUtils.compareVersions(gameVersion, "1.21.2") == gameVersion
+		local isNewerPath = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.2")
 		for _, overlayPart in ipairs({ModelAlias.alias.avatar.head.ArmorH.Helmet.HelmetOverlay, ModelAlias.alias.avatar.body.ArmorB.Chestplate.ChestplateOverlay, ModelAlias.alias.avatar.rightArm.ArmorRA.RightChestplate.RightChestplateOverlay, ModelAlias.alias.avatar.leftArm.ArmorLA.LeftChestplate.LeftChestplateOverlay, ModelAlias.alias.avatar.rightArm.ArmorRA.RightChestplate.RightChestplateOverlay, ModelAlias.alias.avatar.rightArmBottom.ArmorRAB.RightChestplateBottom.RightChestplateBottomOverlay, ModelAlias.alias.avatar.leftArm.ArmorLA.LeftChestplate.LeftChestplateOverlay, ModelAlias.alias.avatar.leftArmBottom.ArmorLAB.LeftChestplateBottom.LeftChestplateBottomOverlay, ModelAlias.alias.avatar.rightLeg.ArmorRL.RightBoots.RightBootsOverlay, ModelAlias.alias.avatar.rightLegBottom.ArmorRLB.RightBootsBottom.RightBootsBottomOverlay, ModelAlias.alias.avatar.leftLeg.ArmorLL.LeftBoots.LeftBootsOverlay, ModelAlias.alias.avatar.leftLegBottom.ArmorLLB.LeftBootsBottom.LeftBootsBottomOverlay}) do
 			overlayPart:setPrimaryTexture("RESOURCE", isNewerPath and "minecraft:textures/entity/equipment/humanoid/leather_overlay.png" or "minecraft:textures/models/armor/leather_layer_1_overlay.png")
 		end
@@ -309,8 +308,7 @@ local Armor = {
 			if textures[textureName] then
 				return textures[textureName]
 			else
-				local gameVersion = client:getVersion()
-				local texture = textures:fromVanilla(textureName, (StringUtils.compareVersions(gameVersion, "1.21.2") == gameVersion) and "minecraft:textures/trims/entity/humanoid"..(armorId:find("^minecraft:.+_leggings$") ~= nil and "_leggings" or "").."/"..normalizedPatternName..".png" or "minecraft:textures/trims/models/armor/"..normalizedPatternName..(armorId:find("^minecraft:.+_leggings$") ~= nil and "_leggings" or "")..".png")
+				local texture = textures:fromVanilla(textureName, (StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.2")) and "minecraft:textures/trims/entity/humanoid"..(armorId:find("^minecraft:.+_leggings$") ~= nil and "_leggings" or "").."/"..normalizedPatternName..".png" or "minecraft:textures/trims/models/armor/"..normalizedPatternName..(armorId:find("^minecraft:.+_leggings$") ~= nil and "_leggings" or "")..".png")
 				self:addTextureQueue(texture, normalizedMaterialName)
 				return texture
 			end
@@ -327,8 +325,7 @@ local Armor = {
 		ModelAlias.alias.avatar.head.ArmorH:setVisible(helmetFound)
 		if helmetFound then
 			local material = helmetItem.id:match("^minecraft:(%a+)_helmet$")
-			local gameVersion = client:getVersion()
-			ModelAlias.alias.avatar.head.ArmorH.Helmet.Helmet:setPrimaryTexture("RESOURCE", (StringUtils.compareVersions(gameVersion, "1.21.2") == gameVersion) and "minecraft:textures/entity/equipment/humanoid/"..(material == "golden" and "gold" or (material == "turtle" and "turtle_scute" or material))..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
+			ModelAlias.alias.avatar.head.ArmorH.Helmet.Helmet:setPrimaryTexture("RESOURCE", (StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.2")) and "minecraft:textures/entity/equipment/humanoid/"..(material == "golden" and "gold" or (material == "turtle" and "turtle_scute" or material))..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
 		end
 		ModelAlias.alias.avatar.head.ArmorH.Helmet.HelmetOverlay:setVisible(helmetItem.id == "minecraft:leather_helmet")
 		self.isArmorVisible.helmet = helmetFound or hatFound
@@ -360,8 +357,7 @@ local Armor = {
 		self.isArmorVisible.chestplate = chestplateFound
 		if self.isArmorVisible.chestplate then
 			local material = chestplateItem.id:match("^minecraft:(%a+)_chestplate$")
-			local gameVersion = client:getVersion()
-			local isNewerPath = StringUtils.compareVersions(gameVersion, "1.21.2") == gameVersion
+			local isNewerPath = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.2")
 			for _, armorPart in ipairs({ModelAlias.alias.avatar.body.ArmorB.Chestplate.Chestplate, ModelAlias.alias.avatar.rightArm.ArmorRA.RightChestplate.RightChestplate, ModelAlias.alias.avatar.rightArmBottom.ArmorRAB.RightChestplateBottom.RightChestplateBottom, ModelAlias.alias.avatar.leftArm.ArmorLA.LeftChestplate.LeftChestplate, ModelAlias.alias.avatar.leftArmBottom.ArmorLAB.LeftChestplateBottom.LeftChestplateBottom}) do
 				armorPart:setPrimaryTexture("RESOURCE", isNewerPath and "minecraft:textures/entity/equipment/humanoid/"..(material == "golden" and "gold" or material)..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
 			end
@@ -386,8 +382,7 @@ local Armor = {
 		self.isArmorVisible.leggings = leggingsFound
 		if self.isArmorVisible.leggings then
 			local material = leggingsItem.id:match("^minecraft:(%a+)_leggings$")
-			local gameVersion = client:getVersion()
-			local isNewerPath = StringUtils.compareVersions(gameVersion, "1.21.2") == gameVersion
+			local isNewerPath = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.2")
 			for _, armorPart in ipairs({ModelAlias.alias.avatar.body.ArmorB.Leggings.Leggings, ModelAlias.alias.avatar.rightLeg.ArmorRL.RightLeggings.RightLeggings, ModelAlias.alias.avatar.rightLegBottom.ArmorRLB.RightLeggingsBottom.RightLeggingsBottom, ModelAlias.alias.avatar.leftLeg.ArmorLL.LeftLeggings.LeftLeggings, ModelAlias.alias.avatar.leftLegBottom.ArmorLLB.LeftLeggingsBottom.LeftLeggingsBottom}) do
 				armorPart:setPrimaryTexture("RESOURCE", isNewerPath and "minecraft:textures/entity/equipment/humanoid_leggings/"..(material == "golden" and "gold" or material)..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_2.png")
 			end
@@ -412,8 +407,7 @@ local Armor = {
 		self.isArmorVisible.boots = bootsFound
 		if self.isArmorVisible.boots then
 			local material = bootsItem.id:match("^minecraft:(%a+)_boots$")
-			local gameVersion = client:getVersion()
-			local isNewerPath = StringUtils.compareVersions(gameVersion, "1.21.2") == gameVersion
+			local isNewerPath = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.2")
 			for _, armorPart in ipairs({ModelAlias.alias.avatar.rightLeg.ArmorRL.RightBoots.RightBoots, ModelAlias.alias.avatar.rightLegBottom.ArmorRLB.RightBootsBottom.RightBootsBottom, ModelAlias.alias.avatar.leftLeg.ArmorLL.LeftBoots.LeftBoots, ModelAlias.alias.avatar.leftLegBottom.ArmorLLB.LeftBootsBottom.LeftBootsBottom}) do
 				armorPart:setPrimaryTexture("RESOURCE", isNewerPath and "minecraft:textures/entity/equipment/humanoid/"..(material == "golden" and "gold" or material)..".png" or "minecraft:textures/models/armor/"..(material == "golden" and "gold" or material).."_layer_1.png")
 			end

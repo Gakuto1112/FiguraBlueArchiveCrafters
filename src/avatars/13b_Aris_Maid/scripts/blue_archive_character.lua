@@ -497,8 +497,7 @@ local BlueArchiveCharacter = {
 					if not self.exSkill.primary.isInitialized then
 						ModelAlias.alias.avatar.rightArmBottom.Broom.BroomBase:setPrimaryTexture("RESOURCE", "minecraft:textures/block/oak_planks.png")
 						if host:isHost() then
-							local gameVersion = client:getVersion()
-							if StringUtils.compareVersions(gameVersion, "1.20.2") == gameVersion then
+							if StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.20.2") then
 								textures:fromVanilla("heart_base", "minecraft:textures/gui/sprites/hud/heart/container.png")
 								textures:fromVanilla("heart", "minecraft:textures/gui/sprites/hud/heart/full.png")
 							else

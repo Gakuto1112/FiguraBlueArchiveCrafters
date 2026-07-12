@@ -100,8 +100,7 @@ local ActionWheelConfig = {
 
 			--　アクション3. First-person Model互換モード
 			local fpmModeAction = ActionWheel.getToggleAction()
-			local gameVersion = client:getVersion()
-          	if StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion then
+          	if StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.20.5") then
                 fpmModeAction:setItem("minecraft:player_head[profile={name:\""..player:getName().."\"}]")
             else
                 fpmModeAction:setItem("minecraft:player_head{SkullOwner: \""..player:getName().."\"}")

@@ -416,8 +416,7 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "FRUST", 6, true)
 					elseif tick == 53 then
 						FaceParts:setEmotion("SURPRISED", "SURPRISED", "TRIANGLE", 14, true)
-						local gameVersion = client:getVersion()
-						local shouldAdjustBackgroundRot = StringUtils.compareVersions(gameVersion, "1.21.0") == gameVersion
+						local shouldAdjustBackgroundRot = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21")
 						if host:isHost() then
 							models.models.ex_skill_1.CameraBackground:setVisible(true)
 							local windowSize = client:getWindowSize()

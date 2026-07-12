@@ -52,9 +52,7 @@ local CompatibilityUtils = {
         end
 
         -- 非推奨ゲームバージョンに対する警告
-        local clientVersion = client:getVersion()
-        local compareResult = StringUtils.compareVersions(clientVersion, self.TARGET_MC_VERSION)
-        if host:isHost() and compareResult ~= nil and compareResult == self.TARGET_MC_VERSION and compareResult ~= clientVersion then
+        if host:isHost() and StringUtils.isNewerVersion(self.TARGET_MC_VERSION, client:getVersion()) then
             EventManager.events["ON_LOCALE_READY"]:register(function ()
                 EventManager.events["ON_LOCALE_READY"]:remove("compatibility_utils_old_version_warning")
                 print(Locale:getLocalizedText("message.compatibility_utils.old_version_warning"):format(self.TARGET_MC_VERSION))
@@ -243,8 +241,7 @@ local CompatibilityUtils = {
                     local bracketMatch = trueParticleId:match("{(.-)}")
                     if bracketMatch ~= nil then
                         local bracketIndex = trueParticleId:find("{")
-                        local gameVersion = client:getVersion()
-                        if StringUtils.compareVersions(gameVersion, "1.21.9") == gameVersion then
+                        if StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.9") then
                             arg = "{" .. bracketMatch .. "}"
                         end
                         trueParticleId = trueParticleId:sub(1, bracketIndex - 1)
@@ -335,7 +332,7 @@ local CompatibilityUtils = {
             if key == "setPostEffect" then
                 return function (self3, effect)
                     -- ゲームバージョン1.20.5以降、ゲーム内レンダープロファイルが削除され、以降アクセスを試みるとエラーになる。
-                    if StringUtils.compareVersions(client:getVersion(), "1.20.5") == "1.20.5" then
+                    if StringUtils.isNewerOrEqualVersion("1.20.5", client:getVersion()) then
                         return originalRendererIndexFunc(self2, "setPostEffect")(self3, effect)
                     else
                         return originalRendererIndexFunc(self2, "setPostEffect")

@@ -119,8 +119,7 @@ local WhaleFloat = {
 
                                 local vehicle2 = player:getVehicle()
                                 if vehicle2 ~= nil then
-                                    local gameVersion = client:getVersion()
-                                    local isNewerID = StringUtils.compareVersions(gameVersion, "1.21.2")
+                                    local isNewerID = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.2")
                                     if (isNewerID and vehicle2:getType():match("^minecraft:bamboo_[%l_]*raft$")) or (not isNewerID and vehicle2:getNbt().Type == "bamboo") then
                                         ModelAlias.alias.avatar.root:setPos(0, -6, 0)
                                         if host:isHost() then
@@ -137,8 +136,7 @@ local WhaleFloat = {
                                 animations["models.main"]["whale_float"]:setPlaying(false)
                                 local vehicle2 = player:getVehicle()
                                 if vehicle2 ~= nil then
-                                    local gameVersion = client:getVersion()
-                                    local isNewerID = StringUtils.compareVersions(gameVersion, "1.21.2")
+                                    local isNewerID = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.2")
                                     if (isNewerID and vehicle2:getType():match("^minecraft:bamboo_[%l_]*raft$")) or (not isNewerID and vehicle2:getNbt().Type == "bamboo") then
                                         ModelAlias.alias.avatar.root:setPos(0, -9, 0)
                                         if host:isHost() then

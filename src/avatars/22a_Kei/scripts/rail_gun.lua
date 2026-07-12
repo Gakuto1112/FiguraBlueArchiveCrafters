@@ -41,7 +41,7 @@ local RailGun = {
                     local isLeftHanded = player:isLeftHanded()
                     local heldItems = {player:getHeldItem(isLeftHanded), player:getHeldItem(not isLeftHanded)}
                     local gameVersion = client:getVersion()
-                    local isNewerNbt = StringUtils.compareVersions(gameVersion, "1.20.5") == gameVersion
+                    local isNewerNbt = StringUtils.isNewerOrEqualVersion(gameVersion, "1.20.5")
                     local hasChargedCrossbow = (heldItems[1].id == "minecraft:crossbow" and ((isNewerNbt and #heldItems[1].tag["minecraft:charged_projectiles"] >= 1) or (not isNewerNbt and heldItems[1].tag.Charged == 1)) and Gun.currentGunPosition == "RIGHT") or (heldItems[2].id == "minecraft:crossbow" and ((gameVersion >= "1.20.5" and #heldItems[2].tag["minecraft:charged_projectiles"] >= 1) or (gameVersion < "1.20.5" and heldItems[2].tag.Charged == 1)) and Gun.currentGunPosition == "LEFT")
                     if (activeItem.id == "minecraft:bow" or activeItem.id == "minecraft:crossbow") and not self.isCharging then
                         --チャージ開始
@@ -49,9 +49,9 @@ local RailGun = {
                             self.animationLength = 20
                         else
                             local quickChargeLevel = 0
-                            if gameVersion >= "1.21.5" then
+                            if StringUtils.isNewerOrEqualVersion(gameVersion, "1.21.5") then
                                 quickChargeLevel = activeItem.tag["minecraft:enchantments"]["minecraft:quick_charge"] ~= nil and activeItem.tag["minecraft:enchantments"]["minecraft:quick_charge"] or 0
-                            elseif gameVersion >= "1.20.5" then
+                            elseif isNewerNbt then
                                 quickChargeLevel = activeItem.tag["minecraft:enchantments"].levels["minecraft:quick_charge"] ~= nil and activeItem.tag["minecraft:enchantments"].levels["minecraft:quick_charge"] or 0
                             elseif activeItem.tag.Enchantments ~= nil then
                                 for _, enchant in ipairs(activeItem.tag.Enchantments) do

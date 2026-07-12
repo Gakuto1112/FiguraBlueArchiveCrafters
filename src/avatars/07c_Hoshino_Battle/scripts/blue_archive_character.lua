@@ -656,8 +656,7 @@ local BlueArchiveCharacter = {
 				onPreAnimation = function (self)
 					if not self.exSkill.secondary.isInitialized then
 						models.models.ex_skill_2.Zombie:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/zombie/zombie.png")
-						local gameVersion = client:getVersion()
-						local isNewerPath = StringUtils.compareVersions(gameVersion, "1.21.2") == gameVersion
+						local isNewerPath = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21.2")
 						for _, modelPart in ipairs({models.models.ex_skill_2.Zombie.ZHead.ZHelmet, models.models.ex_skill_2.Zombie.ZUpperBody.ZBody.ZChestPlateB, models.models.ex_skill_2.Zombie.ZUpperBody.ZArms.ZRightArm.ZChestPlateRA, models.models.ex_skill_2.Zombie.ZUpperBody.ZArms.ZLeftArm.ZChestPlateLA, models.models.ex_skill_2.Zombie.ZLowerBody.ZLegs.ZRightLeg.ZBootsRL, models.models.ex_skill_2.Zombie.ZLowerBody.ZLegs.ZLeftLeg.ZBootsLL}) do
 							modelPart:setPrimaryTexture("RESOURCE", isNewerPath and "minecraft:textures/entity/equipment/humanoid/iron.png" or "minecraft:textures/models/armor/iron_layer_1.png")
 						end
