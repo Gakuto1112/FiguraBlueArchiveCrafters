@@ -84,6 +84,30 @@ local ModelUtils = {
         --非表示にしたモデルを元に戻す。
         Physics:enable()
     end;
+
+    ---指定したエリアがブロックの当たり判定と重なっているかどうかを取得する。
+    ---@param areaStart Vector3 エリアの開始ワールド座標
+    ---@param areaEnd Vector3 エリアの終了ワールド座標
+    ---@return boolean isOverlapped 指定したエリアがブロックの当たり判定と重なっているかどうか
+    getIsAreaOverlappedByCollisions = function (areaStart, areaEnd)
+        local boundingBoxCenter = areaEnd:copy():sub(areaStart):scale(0.5):add(areaStart)
+        for z = math.floor(areaStart.z), math.floor(areaEnd.z) do
+            for y = math.floor(areaStart.y), math.floor(areaEnd.y) do
+                for x = math.floor(areaStart.x), math.floor(areaEnd.x) do
+                    for _, collisionBox in ipairs( world.getBlockState(x, y, z):getCollisionShape()) do
+                        local collisionStartPos = collisionBox[1]:copy():add(x, y, z)
+                        local collisionEndPos = collisionBox[2]:copy():add(x, y, z)
+                        local collisionBoxCenter = collisionStartPos:copy():add(collisionEndPos:copy():sub(collisionStartPos):scale(0.5))
+                        if math.abs(collisionBoxCenter.x - boundingBoxCenter.x) < ((collisionEndPos.x - collisionStartPos.x) + (areaEnd.x - areaStart.x)) / 2 and math.abs(collisionBoxCenter.y - boundingBoxCenter.y) < ((collisionEndPos.y - collisionStartPos.y) + (areaEnd.y - areaStart.y)) / 2 and math.abs(collisionBoxCenter.z - boundingBoxCenter.z) < ((collisionEndPos.z - collisionStartPos.z) + (areaEnd.z - areaStart.z)) / 2 then
+                            return true
+                        end
+                    end
+                end
+            end
+        end
+
+        return false
+    end;
 }
 
 return ModelUtils
