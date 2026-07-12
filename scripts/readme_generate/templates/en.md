@@ -1,4 +1,6 @@
+<!-- markdownlint-disable MD041 -->
 Language: 　**English**　|　[日本語](./README_jp.md)
+<!-- markdownlint-enable MD041 -->
 
 # FiguraBlueArchiveCrafters
 
@@ -115,6 +117,7 @@ Please understand this.
 
 - In addition to the above, there are features available only for specific students.
 
+  <!-- markdownlint-disable MD033 -->
   | Student | Features |
   | - | - |
   | Shizuko (Normal) | - Leaves a stall in place after playing the Ex Skill. |
@@ -144,6 +147,7 @@ Please understand this.
   | Kei | - Leaves an amplifier in place after playing the Ex Skill. It seems that she leaves a beacon occasionally. |
   | Mika (Normal) | - A meteorite drops in front of the her after playing the Ex Skill (visual effect only). |
   | Mika (Swimsuit) | - Gets wet when submerged in water. Its appearance is like stars floating in the night sky...<br> - Unleashes a show of shooting stars after playing the Ex Skill. |
+  <!-- markdownlint-enable MD033 -->
 
 ## Ex Skill
 
@@ -247,6 +251,7 @@ Click to clear the FBAC avatar language-data cache and reload it from remote.
 Use this when language data has issues or when you want to refresh manually.
 In addition to manual refresh, update checks run automatically once a day, and if new data is found, it is updated automatically.
 
+<!-- markdownlint-disable MD028 -->
 > [!IMPORTANT]
 > To check updates, you must enable "Allow Networking" in Figura settings and add `raw.githubusercontent.com` to the network whitelist.
 
@@ -254,6 +259,7 @@ In addition to manual refresh, update checks run automatically once a day, and i
 > It is dangerous to operate Figura's Networking feature with a network filter mode other than "Whitelist".
 > This avatar uses safe links, but there is no guarantee that links used by other players' avatars are safe.
 > I am not responsible for any damage caused by using this feature.
+<!-- markdownlint-enable MD028 -->
 
 ### Action 5. Check for FBAC updates
 
@@ -261,6 +267,7 @@ Left-click checks whether FBAC updates are available.
 Even if the update check fails, you can retry from this action.
 In addition to manual checks here, update checks are also run automatically once a day.
 
+<!-- markdownlint-disable MD028 -->
 > [!IMPORTANT]
 > To check updates, you must enable "Allow Networking" in Figura settings and add `api.github.com` to the network whitelist.
 
@@ -271,6 +278,7 @@ In addition to manual checks here, update checks are also run automatically once
 
 > [!WARNING]
 > Repeating update checks in a short period may trigger temporary limits from GitHub, and update checks may become unavailable for a while.
+<!-- markdownlint-enable MD028 -->
 
 Right-click copies the latest FBAC download link to your clipboard.
 Open the download page from your browser.
@@ -291,6 +299,7 @@ You can get the latest download link from the [Avatar settings action wheel](#av
 When a new language-data version is available, it is downloaded automatically.
 No special operation is needed.
 
+<!-- markdownlint-disable MD028 -->
 > [!IMPORTANT]
 > To check updates, you must enable "Allow Networking" in Figura settings and add both `api.github.com` and `raw.githubusercontent.com` to the network whitelist.
 
@@ -301,6 +310,7 @@ No special operation is needed.
 
 > [!WARNING]
 > Repeating update checks in a short period may trigger temporary limits from GitHub, and update checks may become unavailable for a while.
+<!-- markdownlint-enable MD028 -->
 
 ## Locale Data
 

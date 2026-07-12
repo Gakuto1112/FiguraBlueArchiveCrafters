@@ -1,4 +1,6 @@
+<!-- markdownlint-disable MD041 -->
 Language: 　**English**　|　[日本語](./README_jp.md)
+<!-- markdownlint-enable MD041 -->
 
 # README Generation Tool
 
@@ -26,6 +28,7 @@ If there is text on the same line as the anchor tag, that text may be ignored.
 
 Below is a list of anchor tags and their roles:
 
+<!-- markdownlint-disable MD033 -->
 | Anchor Tag Name | Description |
 | --- | --- |
 | DESCRIPTION_START | The start tag for the repository description. <br> Used as a pair with `DESCRIPTION_END`. This block is used when creating the README text file. |
@@ -38,6 +41,7 @@ Below is a list of anchor tags and their roles:
 | CREATION_STATUS_IN_PROGRESS | The line with this tag is replaced with the "list of currently in-progress characters". |
 | CREATION_STATUS_PLANNED | The line with this tag is replaced with the "list of planned characters". |
 | CREATION_STATUS_REQUESTED | The line with this tag is replaced with the "list of requested characters". |
+<!-- markdownlint-enable MD033 -->
 
 ### Anchor Tags in Template Text
 
@@ -61,7 +65,7 @@ When replacing tags with portions of the template Markdown file, Markdown syntax
 The creation status replacement content included in the template Markdown files is generated based on [`creation_status.json`](./creation_status.json).
 The structure of this json file is as follows:
 
-```
+```text
 📃 creation_status.json
 ├ 📁 done[]
 │ └ 📁 character_entry{}
@@ -80,7 +84,7 @@ The order of the output Markdown list items is identical to the order in these a
 
 The structure of each character entry is as follows:
 
-```
+```text
 📁 character_entry{}
 ├ 📁 character_name{}
 │ ├ 📁 first_name{}
@@ -97,6 +101,7 @@ The structure of each character entry is as follows:
 
 (🔢: Number, 🔠: String, ▶️: Boolean, 📁[]: Array, 📁{}: Dictionary, (): Optional field)
 
+<!-- markdownlint-disable MD033 -->
 | Item | Type | Description |
 | --- | --- | --- |
 | character_name | Object | Character's full name |
@@ -110,6 +115,7 @@ The structure of each character entry is as follows:
 | costume_name.en | String | English name of the character's costume |
 | costume_name.jp | String | Japanese name of the character's costume |
 | issue_number | Number or null | The issue number related to this entry <br> Set to `null` if none. |
+<!-- markdownlint-enable MD033 -->
 
 If there is an array with 0 entries, a text message stating that fact will be inserted instead of a Markdown list.
 
@@ -156,6 +162,7 @@ Required arguments are listed in the order they must be specified.
 
 ### generate_readme_txt.py
 
+<!-- markdownlint-disable MD033 -->
 | Argument Name | Additional Argument | Description | Is Required? |
 | --- | --- | --- | --- |
 | tag_name | Release tag name <br> (e.g., `v3.0.0`) | Inputs the release tag name. | Yes |
@@ -164,3 +171,4 @@ Required arguments are listed in the order they must be specified.
 | -t, --template-dir | Path to the template directory | Specifies the directory to load templates from. Defaults to `./templates/` if not specified. | No |
 | -o, --dist-dir | Path to the output directory | Specifies the output destination directory. Defaults to `../` if not specified. | No |
 | -l, --colored | None | Adds color to standard output. Turn this off if control characters like log outputs are output as-is. | No |
+<!-- markdownlint-enable MD033 -->

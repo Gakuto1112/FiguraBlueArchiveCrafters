@@ -1,4 +1,6 @@
+<!-- markdownlint-disable MD041 -->
 言語: 　[English](./README.md)　|　**日本語**
+<!-- markdownlint-enable MD041 -->
 
 # README生成ツール
 
@@ -26,6 +28,7 @@
 
 以下に、アンカータグとその役割を示します：
 
+<!-- markdownlint-disable MD033 -->
 | アンカータグ名 | 説明 |
 | --- | --- |
 | DESCRIPTION_START | レポジトリの説明文の開始タグ <br> `DESCRIPTION_END`とセットで使用する。このブロックはREADMEのテキストファイルを作成する際に利用される。 |
@@ -38,6 +41,7 @@
 | CREATION_STATUS_IN_PROGRESS | このタグの行が「作成中のキャラクターのリスト」で置換されます。 |
 | CREATION_STATUS_PLANNED | このタグの行が「作成予定のキャラクターのリスト」で置換されます。 |
 | CREATION_STATUS_REQUESTED | このタグの行が「作成リクエストを受けたキャラクターのリスト」で置換されます。 |
+<!-- markdownlint-enable MD033 -->
 
 ### テンプレートテキスト内のアンカータグ
 
@@ -61,7 +65,7 @@
 テンプレートマークダウンファイルに含まれる作成状況の置換内容は、[`creation_status.json`](./creation_status.json)を基に作成されます。
 このjsonファイルの構造は次の通りです：
 
-```
+```text
 📃 creation_status.json
 ├ 📁 done[]
 │ └ 📁 character_entry{}
@@ -80,7 +84,7 @@
 
 各キャラクターエントリーの構造は次の通りです：
 
-```
+```text
 📁 character_entry{}
 ├ 📁 character_name{}
 │ ├ 📁 first_name{}
@@ -97,6 +101,7 @@
 
 （🔢: 数字型、🔠: 文字列型、▶️: ブーリアン型、📁[]: 配列型、📁{}: 辞書型、(): 任意のフィールド）
 
+<!-- markdownlint-disable MD033 -->
 | 項目 | 型 | 説明 |
 | --- | --- | --- |
 | character_name | オブジェクト | キャラクターの氏名 |
@@ -110,6 +115,7 @@
 | costume_name.en | 文字列 | キャラクターの衣装の英名 |
 | costume_name.jp | 文字列 | キャラクターの衣装の日本語名 |
 | issue_number | 数値 or null | このエントリーに関するissue番号 <br> ない場合は`null`にする。 |
+<!-- markdownlint-enable MD033 -->
 
 もしエントリーが0の項目がある場合は、マークダウンリストの代わりにその旨のメッセージのテキストが挿入されます。
 
@@ -156,6 +162,7 @@
 
 ### generate_readme_txt.py
 
+<!-- markdownlint-disable MD033 -->
 | 引数名 | 追加引数 | 説明 | 必須引数か？ |
 | --- | --- | --- | --- |
 | tag_name | リリースタグの名前 <br> （`v3.0.0`など） | リリースタグの名前を入力します。 | はい |
@@ -164,3 +171,4 @@
 | -t, --template-dir | テンプレートディレクトリまでのパス | テンプレートを読み込むディレクトリを指定します。この引数を指定しない場合は`./templates/`になります。 | いいえ |
 | -o, --dist-dir | 出力先ディレクトリまでのパス | 出力先のディレクトリを指定します。この引数を指定しない場合は`../../`になります。 | いいえ |
 | -l, --colored | なし | 標準出力に色を付けます。ログ出力などの制御文字がそのまま出力される場合はオフにしてください。 | いいえ |
+<!-- markdownlint-enable MD033 -->

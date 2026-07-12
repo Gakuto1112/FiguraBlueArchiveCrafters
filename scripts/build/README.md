@@ -1,4 +1,6 @@
+<!-- markdownlint-disable MD041 -->
 Language: 　**English**　|　[日本語](./README_jp.md)
+<!-- markdownlint-enable MD041 -->
 
 # FBAC Build Tool
 
@@ -18,12 +20,14 @@ The core is stored under [`/src/core`](../../src/core/).
 [`avatar_template.json`](../../src/core/avatar_template.json) is a template file for building [`avatar.json`](https://figura-wiki.pages.dev/start_here/Avatar%20File%20Format) to let Figura recognize it as an avatar.
 The structure of the template file is almost identical to that of `avatar.json`, but placeholders are enabled on some fields where specific values will be inserted during the build process.
 
+<!-- markdownlint-disable MD033 -->
 | Placeholder Name | Description | Examples of Specific Values | Supported Fields |
 | --- | --- | --- | --- |
 | AVATAR_ID | Character ID | `01a`, `01b`, ... | name |
 | FIRST_NAME | Character's given name | `Shizuko`, `Izuna`, ... | name, description |
 | LAST_NAME | Character's surname | `Kawawa`, `Kuda`, ... | description |
 | COSTUME_NAME | Character's costume name <br> Including parentheses ("()"). It will be an empty string for the default costume. | `(Swimsuit)`, `(Tracksuit)`, ... | name, description |
+<!-- markdownlint-enable MD033 -->
 
 ### Character-Specific Part
 
@@ -44,7 +48,7 @@ Also, the first letter should be capitalized, with subsequent letters in lowerca
 [`avatar_json_config.json`](../../src/avatars/00a_Base/avatar_json_config.json) is a file used to insert and merge concrete values into the core's [`avatar_template.json`](#avatar_templatejson).
 The structure of this json file is as follows:
 
-```
+```text
 📃 avatar_json_config.json
 ├ 📁 placeholders{}
 │ ├ 🔠 first_name
@@ -62,11 +66,13 @@ The structure of this json file is as follows:
 
 `placeholders` holds the concrete values to be inserted into the placeholders in `avatar_template.json`.
 
+<!-- markdownlint-disable MD033 -->
 | Placeholder Name | Description | Examples of Specific Values | Is Required Field? |
 | --- | --- | --- | --- |
 | first_name | Character's given name | `Shizuko`, `Izuna`, ... | Yes |
 | last_name | Character's surname | `Kawawa`, `Kuda`, ... | Yes |
 | costume_name | Character's costume name <br> Do not include parentheses ("()"). | `Swimsuit`, `Tracksuit`, ... | No |
+<!-- markdownlint-enable MD033 -->
 
 `ignoredTextures`, `autoAnims`, and `customizations` will be merged with the fields of the same names in `avatar_template.json` during the build.
 If there are duplicate keys, they will be overwritten with the values from `avatar_json_config.json`.
@@ -76,7 +82,7 @@ If there are duplicate keys, they will be overwritten with the values from `avat
 [`thumbnail_config.json`](../../src/avatars/00a_Base/thumbnail_config.json) is a file storing the configuration values used when generating avatar thumbnails.
 The structure of this json file is as follows:
 
-```
+```text
 📃 thumbnail_config.json
 └ 🔠 colorType
 ```
@@ -124,6 +130,7 @@ The command examples in the steps are based on Mac/Linux.
 
 This build tool provides optional arguments.
 
+<!-- markdownlint-disable MD033 -->
 | Argument Name | Additional Argument | Description |
 | --- | --- | --- |
 | -h, --help | None | Outputs the build tool's description. |
@@ -134,6 +141,7 @@ This build tool provides optional arguments.
 | -l, --colored | None | Adds color to standard output. Turn this off if control characters like log outputs are output as-is. |
 | -d, --debug_output | None | Enables finer debug output. |
 | -r, --release | None | Builds as release mode. It performs the build while removing feature implementations meant for debugging and changing endpoints to release versions. This has no effect in observation mode. |
+<!-- markdownlint-enable MD033 -->
 
 ## Build Tool Operations
 

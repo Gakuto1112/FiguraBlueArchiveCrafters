@@ -1,4 +1,6 @@
+<!-- markdownlint-disable MD041 -->
 Language: 　**English**　|　[日本語](./README_jp.md)
+<!-- markdownlint-enable MD041 -->
 
 # FBAC Scripts
 

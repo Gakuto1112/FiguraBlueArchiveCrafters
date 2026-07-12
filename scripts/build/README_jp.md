@@ -1,4 +1,6 @@
+<!-- markdownlint-disable MD041 -->
 言語: 　[English](./README.md)　|　**日本語**
+<!-- markdownlint-enable MD041 -->
 
 # FBACビルドツール
 
@@ -18,12 +20,14 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 [`avatar_template.json`](../../src/core/avatar_template.json)はFiguraにアバターとして認識させるための[`avatar.json`](https://figura-wiki.pages.dev/start_here/Avatar%20File%20Format)にビルドするテンプレートとなるファイルです。
 テンプレートファイルの構造は、`avatar.json`の構造とほとんど同じですが、ビルドの過程で具体的な値が入れられるプレースホルダーが一部のフィールド上で有効になっています。
 
+<!-- markdownlint-disable MD033 -->
 | プレースホルダー名 | 説明 | 具体的な値の例 | サポートされているフィールド |
 | --- | --- | --- | --- |
 | AVATAR_ID | キャラクターのID | `01a`, `01b`, ... | name |
 | FIRST_NAME | キャラクターの下の名前（名） | `Shizuko`, `Izuna`, ... | name, description |
 | LAST_NAME | キャラクターの上の名前（姓） | `Kawawa`, `Kuda`, ... | description |
 | COSTUME_NAME | キャラクターの衣装名 <br> 括弧（"()"）も含む。デフォルト衣装では空文字になる。 | `(Swimsuit)`, `(Tracksuit)`, ... | name, description |
+<!-- markdownlint-enable MD033 -->
 
 ### キャラクター固有部分
 
@@ -44,7 +48,7 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 [`avatar_json_config.json`](../../src/avatars/00a_Base/avatar_json_config.json)はコアの[`avatar_template.json`](#avatar_templatejson)に具体的な値を挿入・統合するためのファイルです。
 このjsonファイルの構造は次の通りです：
 
-```
+```text
 📃 avatar_json_config.json
 ├ 📁 placeholders{}
 │ ├ 🔠 first_name
@@ -62,11 +66,13 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 
 `placeholders`には`avatar_template.json`にあるプレースホルダーに入れる具体的な値を保持します。
 
+<!-- markdownlint-disable MD033 -->
 | プレースホルダー名 | 説明 | 具体的な値の例 | 必須フィールドか？ |
 | --- | --- | --- | --- |
 | first_name | キャラクターの下の名前（名） | "Shizuko", "Izuna", ... | はい |
 | last_name | キャラクターの上の名前（姓） | "Kawawa", "Kuda", ... | はい |
 | costume_name | キャラクターの衣装名 <br> 括弧（"()"）は含めない。 | "Swimsuit", "Tracksuit", ... | いいえ |
+<!-- markdownlint-enable MD033 -->
 
 `ignoredTextures`、`autoAnims`、`customizations`はビルドの際に`avatar_template.json`内にある同名のフィールドと統合されます。
 キーが重複する場合は、`avatar_json_config.json`の値で上書きされます。
@@ -76,7 +82,7 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 [`thumbnail_config.json`](../../src/avatars/00a_Base/thumbnail_config.json)はアバターサムネイルを生成する際に使用する設定値を格納したファイルです。
 このjsonファイルの構造は次の通りです：
 
-```
+```text
 📃 thumbnail_config.json
 └ 🔠 colorType
 ```
@@ -124,6 +130,7 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 
 本ビルドツールにはオプション引数を用意しています。
 
+<!-- markdownlint-disable MD033 -->
 | 引数名 | 追加引数 | 説明 |
 | --- | --- | --- |
 | -h, --help | なし | ビルドツールの説明を出力します。 |
@@ -134,6 +141,7 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 | -l, --colored | なし | 標準出力に色を付けます。ログ出力などの制御文字がそのまま出力される場合はオフにしてください。 |
 | -d, --debug_output | なし | より細かいデバッグ出力を有効にします。 |
 | -r, --release | なし | リリースモードとしてビルドします。デバッグ用に組み込まれた機能の削除やエンドポイントをリリース用への変更を行いながらビルドします。監視モードでは効果がありません。 |
+<!-- markdownlint-enable MD033 -->
 
 ## ビルドツールの動作
 
