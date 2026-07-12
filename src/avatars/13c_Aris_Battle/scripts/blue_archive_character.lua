@@ -1000,7 +1000,7 @@ local BlueArchiveCharacter = {
 			events.RENDER:remove("costume_battle_creative_flight_render")
 			ModelAlias.alias.avatar.root:setPos()
 			ModelAlias.alias.avatar.root:setRot()
-			ModelAlias.alias.avatar.head:setRot()
+			ModelAlias.alias.avatar.root.HeadPivot:setRot()
 			self.costume.bodyRot = vectors.vec3()
 			self.costume.bodyRotPrev = vectors.vec3()
 			self.costume.shouldPlayFlyingAnimation = false
@@ -1375,6 +1375,13 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		vanilla_model.ELYTRA:setVisible(false)
 
+		---頭パーツに親の回転パーツを追加
+		---@diagnostic disable-next-line: discard-returns
+		ModelAlias.alias.avatar.root:newPart("HeadPivot", "None")
+		ModelAlias.alias.avatar.root.HeadPivot:setPivot(ModelAlias.alias.avatar.head:getPivot())
+		ModelUtils.moveTo(ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.root.HeadPivot, ModelAlias.alias.avatar.root)
+		ModelAlias.alias.avatar.head = ModelAlias.alias.avatar.root.HeadPivot.Head
+
 		self.costume.setBoosterExhaustLight(0)
 
 		events.TICK:register(function ()
@@ -1459,7 +1466,8 @@ local BlueArchiveCharacter = {
 							local trueBodyRot = self.costume.bodyRotPrev:copy():add(self.costume.bodyRot:copy():sub(self.costume.bodyRotPrev):scale(delta)):scale(math.clamp(self.costume.flyingAnimationTransitionPercentage + (self.costume.isFlying and self.costume.FLYING_ANIMATION_TRANSITION_SPEED * delta or self.costume.FLYING_ANIMATION_TRANSITION_SPEED * (1 - delta)), 0, 1))
 							ModelAlias.alias.avatar.root:setPos(math.sin(math.rad(trueBodyRot.z)) * 16, math.abs(math.sin(math.rad(trueBodyRot.x)) * -12) + math.sin(math.rad((self.costume.idleAnimationCount + delta) * 7.2)) * math.max(1 - self.costume.playerVelocity:length() * 2, 0), math.sin(math.rad(trueBodyRot.x)) * -16)
 							ModelAlias.alias.avatar.root:setRot(trueBodyRot)
-							ModelAlias.alias.avatar.head:setRot(trueBodyRot:copy():scale(-1))
+							local headRot = trueBodyRot:copy():scale(-1)
+							ModelAlias.alias.avatar.root.HeadPivot:setRot(headRot:copy():add(math.min(90 - vanilla_model.HEAD:getOriginRot().x - headRot.x, 0), 0, 0))
 							ModelAlias.alias.avatar.rightLeg:setRot(trueBodyRot:copy():scale(0.5))
 							ModelAlias.alias.avatar.leftLeg:setRot(trueBodyRot:copy():scale(0.5))
 						end
