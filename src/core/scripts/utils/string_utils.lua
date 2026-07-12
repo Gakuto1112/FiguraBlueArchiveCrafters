@@ -37,6 +37,26 @@ local StringUtils = {
             return (major1 > major2 or (major1 == major2 and minor1 > minor2) or (major1 == major2 and minor1 == minor2 and patch1 > patch2)) and version1 or version2
         end
     end;
+
+    ---指定されたバージョン文字列が、比較対象のバージョン文字列より新しいものか比較する。
+    ---@param targetVersion string 比較対象のバージョン文字列
+    ---@param comparedVersion string 比較するバージョン文字列
+    ---@return boolean isNewerVersion 指定されたバージョン文字列が比較対象のバージョン文字列より新しいか、同じ場合はtrue、そうでない場合はfalseを返す。比較不可能だった場合は常にfalseを返す。
+    isNewerVersion = function (targetVersion, comparedVersion)
+        local major1, minor1, patch1 = targetVersion:match("^v?(%d+)%.(%d+)%.?(%d*)")
+        local major2, minor2, patch2 = comparedVersion:match("^v?(%d+)%.(%d+)%.?(%d*)")
+        major1 = tonumber(major1)
+        minor1 = tonumber(minor1)
+        patch1 = patch1 ~= nil and tonumber(patch1) or 0
+        major2 = tonumber(major2)
+        minor2 = tonumber(minor2)
+        patch2 = patch2 ~= nil and tonumber(patch2) or 0
+        print("Comparing versions: " .. tostring(major1) .. "." .. tostring(minor1) .. "." .. tostring(patch1) .. " vs " .. tostring(major2) .. "." .. tostring(minor2) .. "." .. tostring(patch2))
+        if major1 == nil or minor1 == nil or patch1 == nil or major2 == nil or minor2 == nil or patch2 == nil then
+            return false
+        end
+        return major1 > major2 or (major1 == major2 and minor1 > minor2) or (major1 == major2 and minor1 == minor2 and patch1 >= patch2)
+    end;
 }
 
 return StringUtils
