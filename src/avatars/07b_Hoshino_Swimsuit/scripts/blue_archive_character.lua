@@ -922,6 +922,13 @@ local BlueArchiveCharacter = {
 		ExSkill1WaveParticleManager = require("scripts.ex_skill_1_wave_particle_manager")
 		ExSkill1WaveParticleManager = ExSkill1WaveParticleManager.new()
 
+		---頭パーツに親の回転パーツを追加
+		---@diagnostic disable-next-line: discard-returns
+		ModelAlias.alias.avatar.root:newPart("HeadPivot", "None")
+		ModelAlias.alias.avatar.root.HeadPivot:setPivot(ModelAlias.alias.avatar.head:getPivot())
+		ModelUtils.moveTo(ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.root.HeadPivot, ModelAlias.alias.avatar.root)
+		ModelAlias.alias.avatar.head = ModelAlias.alias.avatar.root.HeadPivot.Head
+
 		HoshinoShield:init()
 		WhaleFloat:enable()
 	end;
