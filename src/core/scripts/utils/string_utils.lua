@@ -41,7 +41,8 @@ local StringUtils = {
     ---指定されたバージョン文字列が、比較対象のバージョン文字列より新しいものか比較する。
     ---@param targetVersion string 比較対象のバージョン文字列
     ---@param comparedVersion string 比較するバージョン文字列
-    ---@return boolean isNewerVersion 指定されたバージョン文字列が比較対象のバージョン文字列より新しいか、同じ場合はtrue、そうでない場合はfalseを返す。比較不可能だった場合は常にfalseを返す。
+    ---@return boolean isNewerVersion 指定されたバージョン文字列が比較対象のバージョン文字列より新しいかどうか。
+    ---@return boolean isIncomparable 指定されたバージョン文字列が比較不可能だったかどうか。
     isNewerVersion = function (targetVersion, comparedVersion)
         local major1, minor1, patch1 = targetVersion:match("^v?(%d+)%.(%d+)%.?(%d*)")
         local major2, minor2, patch2 = comparedVersion:match("^v?(%d+)%.(%d+)%.?(%d*)")
@@ -51,11 +52,22 @@ local StringUtils = {
         major2 = tonumber(major2)
         minor2 = tonumber(minor2)
         patch2 = patch2 ~= nil and tonumber(patch2) or 0
-        print("Comparing versions: " .. tostring(major1) .. "." .. tostring(minor1) .. "." .. tostring(patch1) .. " vs " .. tostring(major2) .. "." .. tostring(minor2) .. "." .. tostring(patch2))
         if major1 == nil or minor1 == nil or patch1 == nil or major2 == nil or minor2 == nil or patch2 == nil then
-            return false
+            return false, true
         end
-        return major1 > major2 or (major1 == major2 and minor1 > minor2) or (major1 == major2 and minor1 == minor2 and patch1 >= patch2)
+        return major1 > major2 or (major1 == major2 and minor1 > minor2) or (major1 == major2 and minor1 == minor2 and patch1 > patch2), false
+    end;
+
+    ---指定されたバージョン文字列が、比較対象のバージョン文字列以上かどうかを比較する。
+    ---@param targetVersion string 比較対象のバージョン文字列
+    ---@param comparedVersion string 比較するバージョン文字列
+    ---@return boolean isNewerOrEqualVersion 指定されたバージョン文字列が比較対象のバージョン文字列以上かどうかを返す。比較不可能だった場合は常にfalseを返す。
+    ---@return boolean isIncomparable 指定されたバージョン文字列が比較不可能だったかどうか。
+    isNewerOrEqualVersion = function (targetVersion, comparedVersion)
+        if targetVersion == comparedVersion then
+            return true, false
+        end
+        return StringUtils.isNewerVersion(targetVersion, comparedVersion)
     end;
 }
 
