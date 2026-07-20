@@ -2805,7 +2805,7 @@
 				"properties": {},
 				"temp_data": {}
 			},
-			"origin": [4.5, 28, 0],
+			"origin": [5, 30, 2],
 			"rotation": [0, 0, 0],
 			"color": 0,
 			"children": [],
@@ -2862,6 +2862,29 @@
 			"autouv": 0,
 			"isOpen": true,
 			"primary_selected": false
+		},
+		{
+			"name": "SideTailZPivot",
+			"uuid": "eaca9bdc-2348-34de-7041-a35820619528",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [5, 30, 2],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": true,
+			"autouv": 0,
+			"isOpen": true,
+			"primary_selected": true
 		}
 	],
 	"outliner": [
@@ -2964,7 +2987,13 @@
 						{
 							"uuid": "628c3369-d688-2a82-45d7-e3f4e0da38e7",
 							"isOpen": true,
-							"children": ["100bc1fb-fb7c-109f-7bae-0931a8493f6d", "f734f5c0-a0a9-b68a-43a9-c51666be3562", "8d50ab0b-d1ef-781c-a05e-5d2f3087ba0b"]
+							"children": [
+								{
+									"uuid": "eaca9bdc-2348-34de-7041-a35820619528",
+									"isOpen": true,
+									"children": ["100bc1fb-fb7c-109f-7bae-0931a8493f6d", "f734f5c0-a0a9-b68a-43a9-c51666be3562", "8d50ab0b-d1ef-781c-a05e-5d2f3087ba0b"]
+								}
+							]
 						},
 						{
 							"uuid": "ea08bacb-53c8-4866-3b74-b0564c89e6fa",
@@ -3323,7 +3352,7 @@
 			"override": true,
 			"length": 1.55,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
 			"group_name": "",
 			"scope": 0,
 			"anim_time_update": "",
