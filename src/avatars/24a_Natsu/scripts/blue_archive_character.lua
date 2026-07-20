@@ -536,6 +536,9 @@ local BlueArchiveCharacter = {
 	---初期化関数
 	---この関数は消しても構わない。
 	init = function ()
+		ModelAlias.alias.avatar.gun.Cake:newItem("gun_cake_strap")
+			:setItem("minecraft:cake")
+			:setScale(0.19)
 	end;
 }
 
