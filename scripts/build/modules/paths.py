@@ -76,7 +76,7 @@ class AvatarPaths:
 		転送のためにビルド済みアバターを出力する一時的なディレクトリ
 		"""
 
-		return self._distribution_dir / ".fbac_build_tmp"
+		return base_path.root / ".fbac_build_tmp"
 
 	@distribution_dir.setter
 	def distribution_dir(self, path: Path) -> None:
@@ -88,7 +88,7 @@ class AvatarPaths:
 		"""
 
 		self._distribution_dir = path
-	
+
 	@property
 	def shittim_logo_path(self) -> Path:
 		"""
