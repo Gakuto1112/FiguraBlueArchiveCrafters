@@ -365,7 +365,7 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		includeModels = {ModelAlias.alias.avatar.body.FrontHair};
 	};
 
 	portrait = {
