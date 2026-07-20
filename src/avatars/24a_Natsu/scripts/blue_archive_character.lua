@@ -539,6 +539,58 @@ local BlueArchiveCharacter = {
 		ModelAlias.alias.avatar.gun.Cake:newItem("gun_cake_strap")
 			:setItem("minecraft:cake")
 			:setScale(0.19)
+
+		models.models.shield_item.Item.ASSCLogo:newText("shield_logo")
+			:setText("§f§lSUGAR!")
+			:setPos(0, -2, 0)
+			:setScale(0.12)
+			:setAlignment("CENTER")
+			:setOutline(true)
+			:setOutlineColor(0.521, 0.250, 0.324)
+
+		events.ITEM_RENDER:register(function (item, mode)
+			if item.id == "minecraft:shield" then
+                if mode == "FIRST_PERSON_LEFT_HAND" then
+                    local leftHanded = player:isLeftHanded()
+                    if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "OFF_HAND" and not leftHanded) or (player:getActiveHand() == "MAIN_HAND" and leftHanded)) then
+                        models.models.shield_item.Item:setPos(4, -12, -1)
+                        models.models.shield_item.Item:setRot(0, 0, -5)
+                    else
+                        models.models.shield_item.Item:setPos(4, -16, 1)
+                        models.models.shield_item.Item:setRot(0, 0, 5)
+                    end
+                elseif mode == "FIRST_PERSON_RIGHT_HAND" then
+                    local leftHanded = player:isLeftHanded()
+                    if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "MAIN_HAND" and not leftHanded) or (player:getActiveHand() == "OFF_HAND" and leftHanded)) then
+                        models.models.shield_item.Item:setPos(-4, -12, -1)
+                        models.models.shield_item.Item:setRot(0, 0, 5)
+                    else
+                        models.models.shield_item.Item:setPos(-4, -16, 1)
+                        models.models.shield_item.Item:setRot(0, 0, -5)
+                    end
+				elseif mode == "THIRD_PERSON_LEFT_HAND" then
+					local leftHanded = player:isLeftHanded()
+					if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "OFF_HAND" and not leftHanded) or (player:getActiveHand() == "MAIN_HAND" and leftHanded)) then
+						models.models.shield_item.Item:setPos(-1, -9, -7)
+						models.models.shield_item.Item:setRot(40, 20, 15)
+					else
+						models.models.shield_item.Item:setPos(-2, -13, 2)
+						models.models.shield_item.Item:setRot(0, 80, 0)
+					end
+				elseif mode == "THIRD_PERSON_RIGHT_HAND" then
+					local leftHanded = player:isLeftHanded()
+					if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "MAIN_HAND" and not leftHanded) or (player:getActiveHand() == "OFF_HAND" and leftHanded)) then
+						models.models.shield_item.Item:setPos(1, -9, -7)
+						models.models.shield_item.Item:setRot(40, -20, -15)
+					else
+						models.models.shield_item.Item:setPos(2, -13, 2)
+						models.models.shield_item.Item:setRot(0, -80, 0)
+					end
+				end
+
+				return models.models.shield_item.Item
+			end
+		end)
 	end;
 }
 
