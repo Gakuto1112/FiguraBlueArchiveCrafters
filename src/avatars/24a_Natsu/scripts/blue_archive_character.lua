@@ -553,7 +553,7 @@ local BlueArchiveCharacter = {
                 if mode == "FIRST_PERSON_LEFT_HAND" then
                     local leftHanded = player:isLeftHanded()
                     if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "OFF_HAND" and not leftHanded) or (player:getActiveHand() == "MAIN_HAND" and leftHanded)) then
-                        models.models.shield_item.Item:setPos(4, -12, -1)
+                        models.models.shield_item.Item:setPos(5, -14, -1)
                         models.models.shield_item.Item:setRot(0, 0, -5)
                     else
                         models.models.shield_item.Item:setPos(4, -16, 1)
@@ -562,7 +562,7 @@ local BlueArchiveCharacter = {
                 elseif mode == "FIRST_PERSON_RIGHT_HAND" then
                     local leftHanded = player:isLeftHanded()
                     if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "MAIN_HAND" and not leftHanded) or (player:getActiveHand() == "OFF_HAND" and leftHanded)) then
-                        models.models.shield_item.Item:setPos(-4, -12, -1)
+                        models.models.shield_item.Item:setPos(-5, -12.5, -1)
                         models.models.shield_item.Item:setRot(0, 0, 5)
                     else
                         models.models.shield_item.Item:setPos(-4, -16, 1)
@@ -571,19 +571,19 @@ local BlueArchiveCharacter = {
 				elseif mode == "THIRD_PERSON_LEFT_HAND" then
 					local leftHanded = player:isLeftHanded()
 					if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "OFF_HAND" and not leftHanded) or (player:getActiveHand() == "MAIN_HAND" and leftHanded)) then
-						models.models.shield_item.Item:setPos(-1, -9, -7)
+						models.models.shield_item.Item:setPos(0, -13, -1)
 						models.models.shield_item.Item:setRot(40, 20, 15)
 					else
-						models.models.shield_item.Item:setPos(-2, -13, 2)
+						models.models.shield_item.Item:setPos(-1, -13, 2)
 						models.models.shield_item.Item:setRot(0, 80, 0)
 					end
 				elseif mode == "THIRD_PERSON_RIGHT_HAND" then
 					local leftHanded = player:isLeftHanded()
 					if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "MAIN_HAND" and not leftHanded) or (player:getActiveHand() == "OFF_HAND" and leftHanded)) then
-						models.models.shield_item.Item:setPos(1, -9, -7)
+						models.models.shield_item.Item:setPos(0, -13, -1)
 						models.models.shield_item.Item:setRot(40, -20, -15)
 					else
-						models.models.shield_item.Item:setPos(2, -13, 2)
+						models.models.shield_item.Item:setPos(1, -13, 2)
 						models.models.shield_item.Item:setRot(0, -80, 0)
 					end
 				end
