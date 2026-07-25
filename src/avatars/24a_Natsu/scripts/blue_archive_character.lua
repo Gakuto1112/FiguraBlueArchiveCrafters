@@ -540,14 +540,6 @@ local BlueArchiveCharacter = {
 			:setItem("minecraft:cake")
 			:setScale(0.19)
 
-		models.models.shield_item.Item.ASSCLogo:newText("shield_logo")
-			:setText("§f§lSUGAR!")
-			:setPos(0, -2, 0)
-			:setScale(0.12)
-			:setAlignment("CENTER")
-			:setOutline(true)
-			:setOutlineColor(0.521, 0.250, 0.324)
-
 		events.ITEM_RENDER:register(function (item, mode)
 			if item.id == "minecraft:shield" then
                 if mode == "FIRST_PERSON_LEFT_HAND" then
