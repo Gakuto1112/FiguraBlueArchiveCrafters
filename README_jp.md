@@ -74,6 +74,8 @@
 上から順に作成予定です。
 これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
+- 丹花 イブキ（水着）（[#189](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/189)）
+- 棗 イロハ（水着）（[#190](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/190)）
 - 白洲 アズサ（[#155](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/155)）
 - 早瀬 ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102)）
 - 黒見 セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37)）
