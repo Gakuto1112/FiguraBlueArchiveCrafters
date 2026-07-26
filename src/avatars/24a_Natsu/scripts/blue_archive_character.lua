@@ -284,7 +284,73 @@ local BlueArchiveCharacter = {
 	};
 
 	arms = {
+		callbacks = {
+			onArmStateChanged = function (_, right, left)
+				if right == "GUN_MAIN_HAND" and left == "GUN_OFF_HAND" then
+					local isLeftHanded = player:isLeftHanded()
+					if (player:getHeldItem(true).id == "minecraft:shield" and not isLeftHanded) or (player:getHeldItem().id == "minecraft:shield" and isLeftHanded) then
+						return {right = "GUN_MAIN_HAND", left = "SHIELD_HAND"}
+					end
+				elseif right == "GUN_OFF_HAND" and left == "GUN_MAIN_HAND" then
+					local isLeftHanded = player:isLeftHanded()
+					if (player:getHeldItem().id == "minecraft:shield" and not isLeftHanded) or (player:getHeldItem(true).id == "minecraft:shield" and isLeftHanded) then
+						return {right = "SHIELD_HAND", left = "GUN_MAIN_HAND"}
+					end
+				end
+			end;
 
+			onAdditionalRightArmProcess = function (_, state)
+				if state == "GUN_OFF_HAND" then
+					events.TICK:register(function ()
+						local isLeftHanded = player:isLeftHanded()
+						if ((player:getHeldItem().id == "minecraft:shield" and not isLeftHanded) or (player:getHeldItem(true).id == "minecraft:shield" and isLeftHanded)) and Arms.armState.right == "GUN_OFF_HAND" then
+							Arms:setArmState("SHIELD_HAND", nil)
+						end
+					end, "right_arm_tick")
+					Arms:registerRightArmRenderEvent("GUN_OFF_HAND")
+					return true
+				elseif state == "SHIELD_HAND" then
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+						local isLeftHanded = player:isLeftHanded()
+						if ((player:getHeldItem().id ~= "minecraft:shield" and not isLeftHanded) or (player:getHeldItem(true).id ~= "minecraft:shield" and isLeftHanded)) and Arms.armState.right == "SHIELD_HAND" then
+							Arms:setArmState("GUN_OFF_HAND", nil)
+						end
+					end, "right_arm_tick")
+					events.RENDER:register(function (delta, context)
+						local isSwingingArm = player:isSwingingArm() and not player:isLeftHanded()
+						ModelAlias.alias.avatar.rightArm:setParentType((isSwingingArm or context == "FIRST_PERSON") and "RightArm" or "Body")
+						ModelAlias.alias.avatar.rightArm:setRot(isSwingingArm and vectors.vec3() or vectors.vec3(math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 40, 30, 0))
+					end, "right_arm_render")
+				end
+			end;
+
+			onAdditionalLeftArmProcess = function (_, state)
+				if state == "GUN_OFF_HAND" then
+					events.TICK:register(function ()
+						local isLeftHanded = player:isLeftHanded()
+						if ((player:getHeldItem().id == "minecraft:shield" and isLeftHanded) or (player:getHeldItem(true).id == "minecraft:shield" and not isLeftHanded)) and Arms.armState.left == "GUN_OFF_HAND" then
+							Arms:setArmState(nil, "SHIELD_HAND")
+						end
+					end, "left_arm_tick")
+					Arms:registerLeftArmRenderEvent("GUN_OFF_HAND")
+					return true
+				elseif state == "SHIELD_HAND" then
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+						local isLeftHanded = player:isLeftHanded()
+						if ((player:getHeldItem().id ~= "minecraft:shield" and isLeftHanded) or (player:getHeldItem(true).id ~= "minecraft:shield" and not isLeftHanded)) and Arms.armState.left == "SHIELD_HAND" then
+							Arms:setArmState(nil, "GUN_OFF_HAND")
+						end
+					end, "left_arm_tick")
+					events.RENDER:register(function (delta, context)
+						local isSwingingArm = player:isSwingingArm() and player:isLeftHanded()
+						ModelAlias.alias.avatar.leftArm:setParentType((isSwingingArm or context == "FIRST_PERSON") and "LeftArm" or "Body")
+						ModelAlias.alias.avatar.leftArm:setRot(isSwingingArm and vectors.vec3() or vectors.vec3(math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * -2.5 + 40, -30, 0))
+					end, "left_arm_render")
+				end;
+			end;
+		};
 	};
 
 	skirt = {
@@ -561,23 +627,43 @@ local BlueArchiveCharacter = {
                         models.models.shield_item.Item:setRot(0, 0, -5)
                     end
 				elseif mode == "THIRD_PERSON_LEFT_HAND" then
-					local leftHanded = player:isLeftHanded()
-					if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "OFF_HAND" and not leftHanded) or (player:getActiveHand() == "MAIN_HAND" and leftHanded)) then
-						models.models.shield_item.Item:setPos(0, -13, -1)
-						models.models.shield_item.Item:setRot(40, 20, 15)
-					else
-						models.models.shield_item.Item:setPos(-1, -13, 2)
-						models.models.shield_item.Item:setRot(0, 80, 0)
+                    if Arms.armState.left == "SHIELD_HAND" then
+                        if player:isCrouching() then
+                            models.models.shield_item.Item:setPos(0, -11, 0)
+                            models.models.shield_item.Item:setRot(80, 5, 30)
+                        else
+                            models.models.shield_item.Item:setPos(0, -12, -2)
+                            models.models.shield_item.Item:setRot(55, 20, 25)
+                        end
+                    else
+						local leftHanded = player:isLeftHanded()
+						if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "OFF_HAND" and not leftHanded) or (player:getActiveHand() == "MAIN_HAND" and leftHanded)) then
+							models.models.shield_item.Item:setPos(0, -13, -1)
+							models.models.shield_item.Item:setRot(40, 20, 15)
+						else
+							models.models.shield_item.Item:setPos(-1, -13, 2)
+							models.models.shield_item.Item:setRot(0, 80, 0)
+						end
 					end
 				elseif mode == "THIRD_PERSON_RIGHT_HAND" then
-					local leftHanded = player:isLeftHanded()
-					if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "MAIN_HAND" and not leftHanded) or (player:getActiveHand() == "OFF_HAND" and leftHanded)) then
-						models.models.shield_item.Item:setPos(0, -13, -1)
-						models.models.shield_item.Item:setRot(40, -20, -15)
-					else
-						models.models.shield_item.Item:setPos(1, -13, 2)
-						models.models.shield_item.Item:setRot(0, -80, 0)
-					end
+                    if Arms.armState.right == "SHIELD_HAND" then
+                        if player:isCrouching() then
+                            models.models.shield_item.Item:setPos(0, -11, 0)
+                            models.models.shield_item.Item:setRot(80, -5, -30)
+                        else
+                            models.models.shield_item.Item:setPos(0, -12, -2)
+                            models.models.shield_item.Item:setRot(55, -20, -25)
+                        end
+                    else
+						local leftHanded = player:isLeftHanded()
+						if player:getActiveItemTime() > 0 and ((player:getActiveHand() == "MAIN_HAND" and not leftHanded) or (player:getActiveHand() == "OFF_HAND" and leftHanded)) then
+							models.models.shield_item.Item:setPos(0, -13, -1)
+							models.models.shield_item.Item:setRot(40, -20, -15)
+						else
+							models.models.shield_item.Item:setPos(1, -13, 2)
+							models.models.shield_item.Item:setRot(0, -80, 0)
+						end
+                    end
 				end
 
 				return models.models.shield_item.Item
