@@ -617,6 +617,14 @@ local BlueArchiveCharacter = {
 								ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
 								FaceParts:setEmotion("NORMAL", "NORMAL", "W", 40, true)
 							end
+
+							if not ExSkill:getCanPlayAnimation() then
+								events.TICK:remove("ex_skill_1_waving_tick")
+								ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
+								animations["models.main"]["waving"]:stop()
+								FaceParts:resetEmotion()
+							end
+
 							wavingCount = wavingCount + 1
 						end, "ex_skill_1_waving_tick")
 
@@ -946,6 +954,8 @@ local BlueArchiveCharacter = {
 
 		HoshinoShield:init()
 		WhaleFloat:enable()
+
+		BlueArchiveCharacter.exSkill.primary.callbacks.onPostTransition(BlueArchiveCharacter, false)
 	end;
 }
 
