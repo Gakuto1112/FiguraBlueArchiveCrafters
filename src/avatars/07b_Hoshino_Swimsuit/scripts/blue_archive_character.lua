@@ -16,7 +16,7 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
----| "ANGRY" # 怒った目
+---| "CENTER" # 少し反対側を見る目
 ---| "CLOSED2" # 閉じた目2
 ---| "INVERTED" # 反対側を見る目
 ---| "ANGRY_INVERTED" # 怒りつつ反対側を見る目
@@ -29,7 +29,7 @@
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
 ---| "INVERTED" # 反対側を見る目
----| "ANGRY" # 怒った目
+---| "CENTER" # 少し反対側を見る目
 ---| "ANGRY_CENTER" # 怒りつつ少し反対側を見る目
 ---| "ANGRY_INVERTED" # 怒りつつ反対側を見る目
 ---| "CLOSED2" # 閉じた目2
@@ -288,7 +288,7 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(2, 0); --必須
 			TIRED = vectors.vec2(4, 0); --必須
 			CLOSED = vectors.vec2(6, 0); --必須
-			ANGRY = vectors.vec2(7, 0);
+			CENTER = vectors.vec2(7, 0);
 			CLOSED2 = vectors.vec2(10, 0);
 			INVERTED = vectors.vec2(11, 0);
 			ANGRY_INVERTED = vectors.vec2(12, 0);
@@ -300,7 +300,7 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(2, 0); --必須
 			TIRED = vectors.vec2(4, 0); --必須
 			CLOSED = vectors.vec2(5, 0); --必須
-			ANGRY = vectors.vec2(7, 0);
+			CENTER = vectors.vec2(7, 0);
 			ANGRY_CENTER = vectors.vec2(8, 0);
 			ANGRY_INVERTED = vectors.vec2(12, 0);
 			CLOSED2 = vectors.vec2(9, 0);
@@ -604,12 +604,27 @@ local BlueArchiveCharacter = {
 								particles:newParticle("minecraft:dust 1 1 1 1", playerPos):setScale(2):setColor(1, 1, 1):setVelocity(vectors.rotateAroundAxis(j * 12, 0, -0.25, i * 0.05, 0, 1, 0)):setPower(0.25):setColor((i - 1) * 0.2, 1, 1)
 							end
 						end
+
+						animations["models.main"]["waving"]:play()
+						FaceParts:setEmotion("CENTER", "NORMAL", "OPENED", 31, true)
+
+						local wavingCount = 0
+						events.TICK:register(function ()
+							if wavingCount == 31 then
+								FaceParts:setEmotion("NORMAL", "CENTER", "W", 9, true)
+							elseif wavingCount == 40 then
+								events.TICK:remove("ex_skill_1_waving_tick")
+								ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
+								FaceParts:setEmotion("NORMAL", "NORMAL", "W", 40, true)
+							end
+							wavingCount = wavingCount + 1
+						end, "ex_skill_1_waving_tick")
+
 						ExSkill1WaveParticleManager:play()
 						sounds:playSound("minecraft:item.bucket.empty", playerPos, 1, 0.5)
 						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.RashGuardB, ModelAlias.alias.avatar.rightArm.RashGuardRA, ModelAlias.alias.avatar.rightArmBottom.RashGuardRAB, ModelAlias.alias.avatar.leftArm.RashGuardLA, ModelAlias.alias.avatar.leftArmBottom.RashGuardLAB, ModelAlias.alias.avatar.rightLeg.RashGuardRL, ModelAlias.alias.avatar.leftLeg.RashGuardLL}) do
 							modelPart:setVisible(false)
 						end
-						ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
 						self.exSkill.primary.costumeChangeTimer = 1000
 						events.TICK:register(function ()
 							if not client:isPaused() then
