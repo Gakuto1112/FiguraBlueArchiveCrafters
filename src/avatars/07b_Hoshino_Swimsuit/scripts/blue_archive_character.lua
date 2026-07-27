@@ -607,25 +607,38 @@ local BlueArchiveCharacter = {
 
 						animations["models.main"]["waving"]:play()
 						FaceParts:setEmotion("CENTER", "NORMAL", "OPENED", 31, true)
+						Arms:setArmState("DEFAULT", "DEFAULT")
 
 						local wavingCount = 0
 						events.TICK:register(function ()
-							if wavingCount == 31 then
-								FaceParts:setEmotion("NORMAL", "CENTER", "W", 9, true)
-							elseif wavingCount == 40 then
-								events.TICK:remove("ex_skill_1_waving_tick")
-								ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
-								FaceParts:setEmotion("NORMAL", "NORMAL", "W", 40, true)
-							end
+							if not client:isPaused() then
+								if wavingCount == 31 then
+									FaceParts:setEmotion("NORMAL", "CENTER", "W", 9, true)
+								elseif wavingCount == 40 then
+									events.TICK:remove("ex_skill_1_waving_tick")
+									ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
+									FaceParts:setEmotion("NORMAL", "NORMAL", "W", 40, true)
+									if Gun.currentGunPosition == "RIGHT" then
+										Arms:setArmState("GUN_MAIN_HAND", "GUN_OFF_HAND")
+									elseif Gun.currentGunPosition == "LEFT" then
+										Arms:setArmState("GUN_OFF_HAND", "GUN_MAIN_HAND")
+									end
+								end
 
-							if not ExSkill:getCanPlayAnimation() then
-								events.TICK:remove("ex_skill_1_waving_tick")
-								ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
-								animations["models.main"]["waving"]:stop()
-								FaceParts:resetEmotion()
-							end
+								if not ExSkill:getCanPlayAnimation() then
+									events.TICK:remove("ex_skill_1_waving_tick")
+									ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
+									animations["models.main"]["waving"]:stop()
+									FaceParts:resetEmotion()
+									if Gun.currentGunPosition == "RIGHT" then
+										Arms:setArmState("GUN_MAIN_HAND", "GUN_OFF_HAND")
+									elseif Gun.currentGunPosition == "LEFT" then
+										Arms:setArmState("GUN_OFF_HAND", "GUN_MAIN_HAND")
+									end
+								end
 
-							wavingCount = wavingCount + 1
+								wavingCount = wavingCount + 1
+							end
 						end, "ex_skill_1_waving_tick")
 
 						ExSkill1WaveParticleManager:play()
@@ -954,8 +967,6 @@ local BlueArchiveCharacter = {
 
 		HoshinoShield:init()
 		WhaleFloat:enable()
-
-		BlueArchiveCharacter.exSkill.primary.callbacks.onPostTransition(BlueArchiveCharacter, false)
 	end;
 }
 
