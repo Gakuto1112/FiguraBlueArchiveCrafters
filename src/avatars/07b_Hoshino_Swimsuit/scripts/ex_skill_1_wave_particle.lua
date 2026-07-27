@@ -26,7 +26,7 @@ local ExSkill1WaveParticle = {
                 for i = -0.5, 0.5, 0.5 do
                     for _ = 1, 3 do
                         local colorFactor = math.random()
-                        table.insert(instance.object, particles:newParticle("minecraft:dust 1 1 1 1", particlePos:copy():add(particleOffset:copy():scale(i))):setScale(1):setVelocity(vectors.rotateAroundAxis(self.rot * -1 + 120, math.random() * 0.1 - 0.05, 0, 0.3, 0, 1, 0)):setColor(colorFactor, 1, 1):setLifetime(colorFactor * 25 + 5))
+                        table.insert(instance.object, particles:newParticle("minecraft:dust 1 1 1 1", particlePos:copy():add(particleOffset:copy():scale(i))):setScale(2):setVelocity(vectors.rotateAroundAxis(self.rot * -1 + 120, math.random() * 0.1 - 0.05, 0, 0.3, 0, 1, 0)):setColor(colorFactor, 1, 1):setLifetime(colorFactor * 25 + 5))
                     end
                 end
             end;
