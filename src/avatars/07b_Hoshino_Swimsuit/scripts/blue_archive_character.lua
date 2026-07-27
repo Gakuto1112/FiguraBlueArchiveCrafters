@@ -617,6 +617,7 @@ local BlueArchiveCharacter = {
 								elseif wavingCount == 40 then
 									events.TICK:remove("ex_skill_1_waving_tick")
 									ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
+									animations["models.main"]["waving"]:stop()
 									FaceParts:setEmotion("NORMAL", "NORMAL", "W", 40, true)
 									if Gun.currentGunPosition == "RIGHT" then
 										Arms:setArmState("GUN_MAIN_HAND", "GUN_OFF_HAND")
