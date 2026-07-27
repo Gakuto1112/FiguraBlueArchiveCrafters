@@ -527,6 +527,7 @@ local BlueArchiveCharacter = {
 						self.exSkill.primary.isInitialized = true
 					end
 					self.exSkill.primary.resetExSkill2Feature()
+					self.exSkill.primary.stopExSkillWavingAnimation()
 					models.models.ex_skill_1.Waves:setColor(world.getBiome(player:getPos()):getWaterColor())
 					FaceParts:setEmotion("NORMAL", "NORMAL", "W", 13, true)
 				end;
@@ -615,27 +616,14 @@ local BlueArchiveCharacter = {
 								if wavingCount == 31 then
 									FaceParts:setEmotion("NORMAL", "CENTER", "W", 9, true)
 								elseif wavingCount == 40 then
-									events.TICK:remove("ex_skill_1_waving_tick")
+									self.exSkill.primary.stopExSkillWavingAnimation()
 									ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
-									animations["models.main"]["waving"]:stop()
 									FaceParts:setEmotion("NORMAL", "NORMAL", "W", 40, true)
-									if Gun.currentGunPosition == "RIGHT" then
-										Arms:setArmState("GUN_MAIN_HAND", "GUN_OFF_HAND")
-									elseif Gun.currentGunPosition == "LEFT" then
-										Arms:setArmState("GUN_OFF_HAND", "GUN_MAIN_HAND")
-									end
 								end
 
 								if not ExSkill:getCanPlayAnimation() then
-									events.TICK:remove("ex_skill_1_waving_tick")
+									self.exSkill.primary.stopExSkillWavingAnimation()
 									ModelAlias.alias.avatar.head.Glasses:setPos(0, -4, 0)
-									animations["models.main"]["waving"]:stop()
-									FaceParts:resetEmotion()
-									if Gun.currentGunPosition == "RIGHT" then
-										Arms:setArmState("GUN_MAIN_HAND", "GUN_OFF_HAND")
-									elseif Gun.currentGunPosition == "LEFT" then
-										Arms:setArmState("GUN_OFF_HAND", "GUN_MAIN_HAND")
-									end
 								end
 
 								wavingCount = wavingCount + 1
@@ -675,6 +663,18 @@ local BlueArchiveCharacter = {
 				end
 				ModelAlias.alias.avatar.head.Glasses:setPos()
 				events.TICK:remove("ex_skill_1_post_tick")
+			end;
+
+			---Exスキル1再生後の波演出のアニメーションを停止する。
+			stopExSkillWavingAnimation = function ()
+				events.TICK:remove("ex_skill_1_waving_tick")
+				animations["models.main"]["waving"]:stop()
+				FaceParts:resetEmotion()
+				if Gun.currentGunPosition == "RIGHT" then
+					Arms:setArmState("GUN_MAIN_HAND", "GUN_OFF_HAND")
+				elseif Gun.currentGunPosition == "LEFT" then
+					Arms:setArmState("GUN_OFF_HAND", "GUN_MAIN_HAND")
+				end
 			end;
 		};
 	};
