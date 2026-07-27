@@ -1303,7 +1303,6 @@ local BlueArchiveCharacter = {
                         end
                         CameraManager.setCameraPivot()
                         renderer:setEyeOffset()
-						print("A")
                         if Gun.currentGunPosition == "RIGHT" then
                             Arms:setArmState("GUN_MAIN_HAND", "GUN_OFF_HAND")
                         elseif Gun.currentGunPosition == "LEFT" then
