@@ -330,7 +330,9 @@ local BlueArchiveCharacter = {
 	arms = {
 		callbacks = {
 			onArmStateChanged = function (_, right, left)
-				if WhaleFloat ~= nil and right == "DEFAULT" and left == "DEFAULT" then
+				if events.TICK:getRegisteredCount("ex_skill_1_waving_tick") > 0 then
+					return {right = "DEFAULT", left = "DEFAULT"}
+				elseif WhaleFloat ~= nil and right == "DEFAULT" and left == "DEFAULT" then
 					return {right = "WHALE_FLOAT", left = "WHALE_FLOAT"}
 				elseif right == "GUN_MAIN_HAND" and left == "GUN_OFF_HAND" then
 					local isLeftHanded = player:isLeftHanded()
