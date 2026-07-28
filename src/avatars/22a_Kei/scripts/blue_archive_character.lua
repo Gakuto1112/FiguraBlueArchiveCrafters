@@ -29,6 +29,7 @@
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
 ---| "CLOSED2" # 閉じた目2
 ---| "ANGRY" # 怒った目
+---| "CENTER" # 少し反対側を見る目
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
@@ -38,6 +39,8 @@
 ---| "TEETH" # 歯を見せてにっこり
 ---| "ANXIOUS" # への口
 ---| "ANGRY" # あんぐり口（アングリーだけにっつってな）
+---| "ANGRY_TEETH" # 葉を食いしばる
+---| "ANGRY2" # 大きめに開いているO型の口
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -294,6 +297,7 @@ local BlueArchiveCharacter = {
 			CLOSED = vectors.vec2(3, 0); --必須
 			CLOSED2 = vectors.vec2(4, 0);
 			ANGRY = vectors.vec2(7, 0);
+			CENTER = vectors.vec2(8, 0);
 		};
 
 		mouth = {
@@ -302,6 +306,8 @@ local BlueArchiveCharacter = {
 			TEETH = vectors.vec2(2, 0);
 			ANXIOUS = vectors.vec2(3, 0);
 			ANGRY = vectors.vec2(4, 0);
+			ANGRY_TEETH = vectors.vec2(5, 0);
+			ANGRY2 = vectors.vec2(6, 0);
 		};
 	};
 
@@ -780,8 +786,28 @@ local BlueArchiveCharacter = {
 						end
 					end
 					if not forcedStop then
-						local bodyYaw = player:getBodyYaw()
-						PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 5, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
+						ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:addChild(models.script_placement_object.FieldGenerator:copy("FieldGenerator2"))
+						ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(true)
+						animations["models.main"]["generator_throwing"]:play()
+
+						local animTick = 0
+						events.TICK:register(function ()
+							if animTick == 15 then
+								FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 14, true)
+							elseif animTick == 29 then
+								FaceParts:setEmotion("NORMAL", "CENTER", "ANGRY_TEETH", 19, true)
+							elseif animTick == 48 then
+								FaceParts:setEmotion("CENTER", "NORMAL", "ANGRY2", 23, true)
+							elseif animTick == 51 then
+								ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:moveTo(models.models.main)
+							elseif animTick == 64 then
+								local bodyYaw = player:getBodyYaw()
+								PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, -1, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
+							elseif animTick == 71 then
+								self.exSkill.primary.stopGeneratorThrowingAnimation()
+							end
+							animTick = animTick + 1
+						end, "ex_skill_1_after_animation_tick")
 					end
 				end;
 			};
@@ -789,6 +815,17 @@ local BlueArchiveCharacter = {
 			---このExスキルが初期化されたかどうか
 			---@type boolean
 			isInitialized = false;
+
+			---増幅装置の投擲アニメーションを停止し、リセットする。
+			stopGeneratorThrowingAnimation = function ()
+				events.TICK:remove("ex_skill_1_after_animation_tick")
+				animations["models.main"]["generator_throwing"]:stop()
+				if models.models.main.GeneratorAnchor ~= nil then
+					models.models.main.GeneratorAnchor:moveTo(ModelAlias.alias.avatar.rightArmBottom)
+				end
+				local modelToRemove = ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:removeChild(ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor)
+				modelToRemove:remove()
+			end;
 		};
 	};
 
@@ -1279,6 +1316,8 @@ local BlueArchiveCharacter = {
 		PlacementObjectCubeManager = PlacementObjectCubeManager.new()
 
 		RailGun:enable()
+
+		BlueArchiveCharacter.exSkill.primary.callbacks.onPostAnimation(BlueArchiveCharacter, false)
 	end;
 }
 
