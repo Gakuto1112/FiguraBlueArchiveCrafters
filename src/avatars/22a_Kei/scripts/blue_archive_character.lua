@@ -473,8 +473,6 @@ local BlueArchiveCharacter = {
 						self.placementObjects[1].isInitialized = true
 					end
 
-					self.placementObjects[1].isBeacon = math.random() >= 0.95
-
 					placementObject.object.Generator:setVisible(not self.placementObjects[1].isBeacon)
 					placementObject.object:getTask("placement_object_beacon"):setVisible(self.placementObjects[1].isBeacon)
 					self.placementObjects[1].baseColor = self.placementObjects[1].isBeacon and vectors.vec3(0.765, 0.996, 0.992) or vectors.vec3(0.983, 0.645, 0.816)
@@ -786,8 +784,24 @@ local BlueArchiveCharacter = {
 						end
 					end
 					if not forcedStop then
-						ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:addChild(models.script_placement_object.FieldGenerator:copy("FieldGenerator2"))
-						ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(true)
+						if not self.exSkill.primary.isThrowAnimationInitialized then
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:addChild(models.script_placement_object.FieldGenerator:copy("FieldGenerator2"))
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(false)
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:newBlock("placement_object_beacon")
+								:setBlock("minecraft:beacon")
+								:setPos(-4, -4, -4)
+								:setScale(0.5, 0.5, 0.5)
+								:setLight(15, 15)
+								:setVisible(false)
+							self.exSkill.primary.isThrowAnimationInitialized = true
+						end
+						self.placementObjects[1].isBeacon = math.random() >= (Costume.isAltCostume and 0.25 or 0.95)
+
+						if self.placementObjects[1].isBeacon then
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:getTask("placement_object_beacon"):setVisible(true)
+						else
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(true)
+						end
 						animations["models.main"]["generator_throwing"]:play()
 
 						local animTick = 0
@@ -816,6 +830,10 @@ local BlueArchiveCharacter = {
 			---@type boolean
 			isInitialized = false;
 
+			---増幅装置の投擲アニメーションが初期化されたかどうか
+			---@type boolean
+			isThrowAnimationInitialized = false;
+
 			---増幅装置の投擲アニメーションを停止し、リセットする。
 			stopGeneratorThrowingAnimation = function ()
 				events.TICK:remove("ex_skill_1_after_animation_tick")
@@ -823,8 +841,8 @@ local BlueArchiveCharacter = {
 				if models.models.main.GeneratorAnchor ~= nil then
 					models.models.main.GeneratorAnchor:moveTo(ModelAlias.alias.avatar.rightArmBottom)
 				end
-				local modelToRemove = ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:removeChild(ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor)
-				modelToRemove:remove()
+				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(false)
+				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:getTask("placement_object_beacon"):setVisible(false)
 			end;
 		};
 	};
