@@ -1381,8 +1381,6 @@ local BlueArchiveCharacter = {
 		PlacementObjectCubeManager = PlacementObjectCubeManager.new()
 
 		RailGun:enable()
-
-		BlueArchiveCharacter.exSkill.primary.callbacks.onPostAnimation(BlueArchiveCharacter, false)
 	end;
 }
 
