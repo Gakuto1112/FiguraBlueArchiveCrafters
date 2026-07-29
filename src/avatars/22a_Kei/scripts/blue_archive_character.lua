@@ -808,6 +808,7 @@ local BlueArchiveCharacter = {
 						end
 						animations["models.main"]["generator_throwing"]:play()
 						Arms:setArmState("DEFAULT", "DEFAULT")
+						Arms:setHeldItemVisible(false)
 
 						local animTick = 0
 						events.TICK:register(function ()
@@ -865,6 +866,7 @@ local BlueArchiveCharacter = {
 				elseif Gun.currentGunPosition == "LEFT" then
 					Arms:setArmState("RAIL_GUN_OFF_HAND", "RAIL_GUN_MAIN_HAND")
 				end
+				Arms:setHeldItemVisible(true)
 			end;
 		};
 	};

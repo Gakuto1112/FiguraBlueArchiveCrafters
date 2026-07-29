@@ -14,6 +14,7 @@
 ---@field package armStatePrev Arms.ArmStateSet 前ティックの腕の状態
 ---@field public swingCount integer 腕をプラプラさせるカウンター
 ---@field package isSwingCountProcessed boolean 腕プラプラカウンターを処理したかどうか
+---@field public isHeldItemVisible boolean 手に持っているアイテムを表示するかどうか
 local Arms = {
     armState = {
 		right = "DEFAULT";
@@ -25,6 +26,7 @@ local Arms = {
 	};
     swingCount = 0;
     isSwingCountProcessed = false;
+    isHeldItemVisible = true;
 
     ---初期化関数
     ---@param self Arms
@@ -110,6 +112,17 @@ local Arms = {
                 self:registerLeftArmRenderEvent(self.armState.left)
             end
             self.armStatePrev.left = self.armState.left
+        end
+    end;
+
+    ---手に持つアイテムの表示/非表示を設定する。
+    ---銃も非表示にでき、構えも解除できる。
+    ---@param self Arms
+    ---@param isVisible boolean 手に持つアイテムを表示するかどうか
+    setHeldItemVisible = function (self, isVisible)
+        self.isHeldItemVisible = isVisible
+        for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
+            itemModel:setVisible(isVisible)
         end
     end;
 
