@@ -788,7 +788,9 @@ local BlueArchiveCharacter = {
 					end
 					if not forcedStop then
 						if not self.exSkill.primary.isThrowAnimationInitialized then
-							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:addChild(models.script_placement_object.FieldGenerator:copy("FieldGenerator2"))
+							models.script_placement_object.FieldGenerator:setVisible(true)
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:addChild(ModelUtils:copyModel(models.script_placement_object.FieldGenerator, "FieldGenerator2"))
+							models.script_placement_object.FieldGenerator:setVisible(false)
 							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(false)
 							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:newBlock("placement_object_beacon")
 								:setBlock("minecraft:beacon")
