@@ -816,7 +816,7 @@ local BlueArchiveCharacter = {
 								ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:moveTo(models.models.main)
 							elseif animTick == 64 then
 								local bodyYaw = player:getBodyYaw()
-								PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, -1, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
+								PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
 							elseif animTick == 71 then
 								self.exSkill.primary.stopGeneratorThrowingAnimation()
 							end
