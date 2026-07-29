@@ -821,6 +821,15 @@ local BlueArchiveCharacter = {
 								elseif animTick == 71 then
 									self.exSkill.primary.stopGeneratorThrowingAnimation()
 								end
+
+								if not ExSkill:getCanPlayAnimation() then
+									self.exSkill.primary.stopGeneratorThrowingAnimation()
+									if animTick < 64 then
+										local bodyYaw = player:getBodyYaw()
+										PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
+									end
+								end
+
 								animTick = animTick + 1
 							end
 						end, "ex_skill_1_after_animation_tick")
@@ -845,6 +854,7 @@ local BlueArchiveCharacter = {
 				end
 				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(false)
 				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:getTask("placement_object_beacon"):setVisible(false)
+				FaceParts:resetEmotion()
 			end;
 		};
 	};
