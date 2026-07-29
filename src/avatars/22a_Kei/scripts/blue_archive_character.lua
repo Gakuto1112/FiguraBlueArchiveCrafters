@@ -806,21 +806,23 @@ local BlueArchiveCharacter = {
 
 						local animTick = 0
 						events.TICK:register(function ()
-							if animTick == 15 then
-								FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 14, true)
-							elseif animTick == 29 then
-								FaceParts:setEmotion("NORMAL", "CENTER", "ANGRY_TEETH", 19, true)
-							elseif animTick == 48 then
-								FaceParts:setEmotion("CENTER", "NORMAL", "ANGRY2", 23, true)
-							elseif animTick == 51 then
-								ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:moveTo(models.models.main)
-							elseif animTick == 64 then
-								local bodyYaw = player:getBodyYaw()
-								PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
-							elseif animTick == 71 then
-								self.exSkill.primary.stopGeneratorThrowingAnimation()
+							if not client:isPaused() then
+								if animTick == 15 then
+									FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 14, true)
+								elseif animTick == 29 then
+									FaceParts:setEmotion("NORMAL", "CENTER", "ANGRY_TEETH", 19, true)
+								elseif animTick == 48 then
+									FaceParts:setEmotion("CENTER", "NORMAL", "ANGRY2", 23, true)
+								elseif animTick == 51 then
+									ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:moveTo(models.models.main)
+								elseif animTick == 64 then
+									local bodyYaw = player:getBodyYaw()
+									PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
+								elseif animTick == 71 then
+									self.exSkill.primary.stopGeneratorThrowingAnimation()
+								end
+								animTick = animTick + 1
 							end
-							animTick = animTick + 1
 						end, "ex_skill_1_after_animation_tick")
 					end
 				end;
