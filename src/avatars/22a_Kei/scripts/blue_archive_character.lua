@@ -315,6 +315,10 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmStateChanged = function (_, right, left)
 				local result = {right = right, left = left}
+				if animations["models.main"]["generator_throwing"]:isPlaying() then
+					return {right = "DEFAULT", left = "DEFAULT"}
+				end
+
 				if right == "GUN_MAIN_HAND" then
 					result.right = "RAIL_GUN_MAIN_HAND"
 				elseif right == "GUN_OFF_HAND" then
@@ -803,6 +807,7 @@ local BlueArchiveCharacter = {
 							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(true)
 						end
 						animations["models.main"]["generator_throwing"]:play()
+						Arms:setArmState("DEFAULT", "DEFAULT")
 
 						local animTick = 0
 						events.TICK:register(function ()
@@ -855,6 +860,11 @@ local BlueArchiveCharacter = {
 				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(false)
 				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:getTask("placement_object_beacon"):setVisible(false)
 				FaceParts:resetEmotion()
+				if Gun.currentGunPosition == "RIGHT" then
+					Arms:setArmState("RAIL_GUN_MAIN_HAND", "RAIL_GUN_OFF_HAND")
+				elseif Gun.currentGunPosition == "LEFT" then
+					Arms:setArmState("RAIL_GUN_OFF_HAND", "RAIL_GUN_MAIN_HAND")
+				end
 			end;
 		};
 	};
