@@ -479,7 +479,6 @@ local BlueArchiveCharacter = {
 
 					placementObject.object.Generator:setVisible(not self.placementObjects[1].isBeacon)
 					placementObject.object:getTask("placement_object_beacon"):setVisible(self.placementObjects[1].isBeacon)
-					self.placementObjects[1].baseColor = self.placementObjects[1].isBeacon and vectors.vec3(0.765, 0.996, 0.992) or vectors.vec3(0.983, 0.645, 0.816)
 				end;
 
 				onGround = function (self, placementObject)
@@ -800,6 +799,7 @@ local BlueArchiveCharacter = {
 							self.exSkill.primary.isThrowAnimationInitialized = true
 						end
 						self.placementObjects[1].isBeacon = math.random() >= (Costume.isAltCostume and 0.25 or 0.95)
+						self.placementObjects[1].baseColor = self.placementObjects[1].isBeacon and vectors.vec3(0.765, 0.996, 0.992) or vectors.vec3(0.983, 0.645, 0.816)
 
 						if self.placementObjects[1].isBeacon then
 							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:getTask("placement_object_beacon"):setVisible(true)
@@ -815,6 +815,9 @@ local BlueArchiveCharacter = {
 							if not client:isPaused() then
 								if animTick == 15 then
 									FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 14, true)
+									for i = 0, 5 do
+										PlacementObjectCubeManager:spawn(models.models.main, vectors.rotateAroundAxis(i * 60, 0, 0, math.random() * 16 + 16, 0, 1, 0), self.placementObjects[1].baseColor)
+									end
 								elseif animTick == 29 then
 									FaceParts:setEmotion("NORMAL", "CENTER", "ANGRY_TEETH", 19, true)
 								elseif animTick == 48 then
@@ -826,6 +829,24 @@ local BlueArchiveCharacter = {
 									PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
 								elseif animTick == 71 then
 									self.exSkill.primary.stopGeneratorThrowingAnimation()
+								end
+
+								if animTick >= 15 and animTick < 25 then
+									local playerPos = player:getPos()
+									for i = 0, 23 do
+										particles:newParticle("minecraft:end_rod", playerPos:copy():add(vectors.rotateAroundAxis(i * 15, 0, 0, (animTick - 15) * 0.2, 0, 1, 0))):setScale(math.random() * 0.25 + 0.75):setVelocity(0, 0.2, 0):setGravity(2):setColor(self.placementObjects[1].baseColor):setLifetime(3)
+									end
+								end
+								if animTick >= 15 and animTick < 64 then
+									local anchorPos = nil
+									if animTick < 51 then
+										anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor)
+									else
+										anchorPos = ModelUtils.getModelWorldPos(models.models.main.GeneratorAnchor)
+									end
+									for _ = 1, 2 do
+										particles:newParticle("minecraft:end_rod", anchorPos:copy():add(math.random() * 0.5 - 0.25, math.random() * 0.5 - 0.25, math.random() * 0.5 - 0.25)):setScale(0.25):setVelocity(0, 0.1, 0):setGravity(0):setColor(self.placementObjects[1].baseColor):setLifetime(16)
+									end
 								end
 
 								if not ExSkill:getCanPlayAnimation() then
