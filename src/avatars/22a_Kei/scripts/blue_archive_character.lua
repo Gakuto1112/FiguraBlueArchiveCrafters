@@ -547,6 +547,12 @@ local BlueArchiveCharacter = {
 						self.placementObjects[1].tickCount = self.placementObjects[1].tickCount + 1
 					end
 				end;
+
+				onRender = function (self, placementObject, delta)
+					if self.placementObjects[1].onGroundFlag then
+						placementObject.object.BeaconBeam:setUVPixels(0, ((self.placementObjects[1].tickCount + delta) % 4) * 4)
+					end
+				end;
 			};
 
 			---この設置物が初期化されかどうか
