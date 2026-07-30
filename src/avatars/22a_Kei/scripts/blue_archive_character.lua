@@ -820,10 +820,12 @@ local BlueArchiveCharacter = {
 									for i = 0, 5 do
 										PlacementObjectCubeManager:spawn(models.models.main, vectors.rotateAroundAxis(i * 60, 0, 0, math.random() * 16 + 16, 0, 1, 0), self.placementObjects[1].baseColor)
 									end
+									sounds:playSound("minecraft:entity.item.pickup", player:getPos(), 1, 0.5)
 								elseif animTick == 29 then
 									FaceParts:setEmotion("NORMAL", "CENTER", "ANGRY_TEETH", 19, true)
 								elseif animTick == 48 then
 									FaceParts:setEmotion("CENTER", "NORMAL", "ANGRY2", 23, true)
+									sounds:playSound("minecraft:entity.player.attack.sweep", player:getPos(), 1, 0.75)
 								elseif animTick == 51 then
 									ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:moveTo(models.models.main)
 								elseif animTick == 64 then
