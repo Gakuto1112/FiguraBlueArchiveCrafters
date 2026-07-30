@@ -95,7 +95,6 @@ local UpdateChecker = {
 					if type(jsonData) == "table" then
 						if jsonData[1] ~= nil and jsonData[1].name ~= nil then
 							local isNewer, isIncomparable = StringUtils.isNewerVersion(jsonData[1].name, self.AVATAR_VERSION)
-							print(isNewer)
 							if not isIncomparable then
 								if isNewer then
 									--新しいバージョンがある
