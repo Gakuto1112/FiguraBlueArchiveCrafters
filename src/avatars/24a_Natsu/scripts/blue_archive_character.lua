@@ -469,8 +469,12 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 2, true)
 					elseif tick == 36 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "TRIANGLE", 12, true)
+						local playerPos = player:getPos()
+						sounds:playSound("minecraft:item.shield.block", playerPos, 1, 1)
+						sounds:playSound("minecraft:entity.arrow.hit", playerPos, 1, 1)
 					elseif tick == 48 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 2, true)
+						sounds:playSound("minecraft:entity.player.attack.sweep", player:getPos(), 0.25, 2)
 					elseif tick == 50 then
 						FaceParts:setEmotion("NORMAL", "INVERTED", "HAT", 4, true)
 					elseif tick == 54 then
@@ -489,6 +493,10 @@ local BlueArchiveCharacter = {
 							FaceParts:setEmotion("ANGRY", "ANGRY", "TRIANGLE", 31, true)
 							ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos()
 						end
+
+						local playerPos = player:getPos()
+						sounds:playSound("minecraft:entity.player.levelup", playerPos, 1, 1)
+						sounds:playSound("minecraft:entity.item.pickup", playerPos, 1, 1.5)
 					elseif tick == 86 then
 						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.rightArmBottom.ExSkillItemAnchor1)
 						local bodyYaw = player:getBodyYaw()
@@ -513,8 +521,14 @@ local BlueArchiveCharacter = {
 									local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Pillagers["Pillager"..i]["Pillager"..i.."RightArm"]["Pillager"..i.."ArrowAnchor"])
 									local offsetRot = math.random() * 360
 									ExSkillArrowManager:spawn(anchorPos, playerAnchorPos:copy():sub(anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(offsetRot, 0, 1, 0, 0, 0, 1), 0, 1, 0))):normalize())
+
+									sounds:playSound("minecraft:item.crossbow.shoot", anchorPos, 0.5, 1)
 								end
 							end
+						end
+
+						if math.random() < 0.04 then
+							sounds:playSound("minecraft:entity.pillager.ambient", ModelUtils.getModelWorldPos(models.models.ex_skill_1.Pillagers.Pillager1.Pillager1RightArm.Pillager1ArrowAnchor), 0.5, 1)
 						end
 					end
 				end;
