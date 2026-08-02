@@ -16,6 +16,8 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "CLOSED2" # 閉じた目2
+---| "ANGRY" # 怒った目
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -23,10 +25,18 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "CENTER" # 少し反対側を見る目
+---| "CLOSED2" # 閉じた目2
+---| "INVERTED" # 反対側を見る目
+---| "ANGRY_INVERTED" # 怒りつつ反対側を見る目
+---| "ANGRY" # 怒った目
+---| "ANGRY_CENTER" # 怒りつつ少し反対側を見る目
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
 ---| "NORMAL" # 通常
+---| "TRIANGLE" # 三角口
+---| "HAT" # への口
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -269,6 +279,8 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(2, 0); --必須
 			TIRED = vectors.vec2(3, 0); --必須
 			CLOSED = vectors.vec2(4, 0); --必須
+			CLOSED2 = vectors.vec2(6, 0);
+			ANGRY = vectors.vec2(8, 0);
 		};
 
 		leftEye = {
@@ -276,10 +288,17 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(1, 0); --必須
 			TIRED = vectors.vec2(2, 0); --必須
 			CLOSED = vectors.vec2(3, 0); --必須
+			CENTER = vectors.vec2(4, 0);
+			CLOSED2 = vectors.vec2(5, 0);
+			INVERTED = vectors.vec2(6, 0);
+			ANGRY_INVERTED = vectors.vec2(8, 0);
+			ANGRY = vectors.vec2(9, 0);
+			ANGRY_CENTER = vectors.vec2(10, 0);
 		};
 
 		mouth = {
-
+			TRIANGLE = vectors.vec2(0, 0);
+			HAT = vectors.vec2(1, 0);
 		};
 	};
 
@@ -420,9 +439,12 @@ local BlueArchiveCharacter = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
 						models.models.ex_skill_1.Pillagers:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/illager/pillager.png")
+						--models.models.ex_skill_1.AnimationArrow:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/projectiles/arrow.png")
 						self.exSkill.primary.isInitialized = true
 					end
 					models.models.shield_item.Item:setParentType("None")
+
+					FaceParts:setEmotion("NORMAL", "CENTER", "HAT", 34, true)
 				end;
 
 				onAnimationTick = function (_, tick)
@@ -432,14 +454,40 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setPos()
 						ModelAlias.alias.avatar.gun:setRot()
 						ModelAlias.alias.avatar.gun:setVisible(true)
+					elseif tick == 34 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 2, true)
+					elseif tick == 36 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "TRIANGLE", 12, true)
+					elseif tick == 48 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 2, true)
+					elseif tick == 50 then
+						FaceParts:setEmotion("NORMAL", "INVERTED", "HAT", 4, true)
+					elseif tick == 54 then
+						FaceParts:setEmotion("ANGRY", "ANGRY_INVERTED", "HAT", 20, true)
+					elseif tick == 74 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 3, true)
+					elseif tick == 77 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "TRIANGLE", 5, true)
+					elseif tick == 82 then
+						local shouldLookCamera = math.random() < 0.1
+						ModelAlias.alias.avatar.faceParts.Eyes.EyeShines:setVisible(true)
+						if shouldLookCamera then
+							FaceParts:setEmotion("ANGRY", "ANGRY_CENTER", "TRIANGLE", 31, true)
+							ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos(-0.5, 0, 0)
+						else
+							FaceParts:setEmotion("ANGRY", "ANGRY", "TRIANGLE", 31, true)
+							ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos()
+						end
 					end
 				end;
 
 				onPostAnimation = function (self, forcedStop)
 					ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
 					ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
-					ModelAlias.alias.avatar.gun:setVisible(false)
 					models.models.shield_item.Item:setParentType("Item")
+					for _, modelPart in ipairs({ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.faceParts.Eyes.EyeShines}) do
+						modelPart:setVisible(false)
+					end
 				end;
 			};
 		};
