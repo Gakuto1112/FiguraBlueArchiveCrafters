@@ -400,9 +400,9 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {};
+			models = {models.models.ex_skill_1.Pillagers, models.models.ex_skill_1.AnimationArrow};
 
-			animations = {"main", "gun", "shield_item"};
+			animations = {"main", "gun", "shield_item", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -418,10 +418,14 @@ local BlueArchiveCharacter = {
 
 			callbacks = {
 				onPreAnimation = function (self)
+					if not self.exSkill.primary.isInitialized then
+						models.models.ex_skill_1.Pillagers:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/illager/pillager.png")
+						self.exSkill.primary.isInitialized = true
+					end
 					models.models.shield_item.Item:setParentType("None")
 				end;
 
-				onAnimationTick = function (self, tick)
+				onAnimationTick = function (_, tick)
 					if tick == 0 then
 						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.body)
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.rightArmBottom.Gun
@@ -439,6 +443,10 @@ local BlueArchiveCharacter = {
 				end;
 			};
 		};
+
+		---このExスキルが初期化されたかどうか。
+		---@type boolean
+		isInitialized = false;
 	};
 
 	costume = {
