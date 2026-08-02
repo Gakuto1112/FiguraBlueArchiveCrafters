@@ -402,7 +402,7 @@ local BlueArchiveCharacter = {
 
 			models = {};
 
-			animations = {"main"};
+			animations = {"main", "gun", "shield_item"};
 
 			camera = {
 				start = {
@@ -414,6 +414,29 @@ local BlueArchiveCharacter = {
 					rot = vectors.vec3(0, 180, 0);
 					pos = vectors.vec3(0, 28, -64);
 				};
+			};
+
+			callbacks = {
+				onPreAnimation = function (self)
+					models.models.shield_item.Item:setParentType("None")
+				end;
+
+				onAnimationTick = function (self, tick)
+					if tick == 0 then
+						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.body)
+						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.rightArmBottom.Gun
+						ModelAlias.alias.avatar.gun:setPos()
+						ModelAlias.alias.avatar.gun:setRot()
+						ModelAlias.alias.avatar.gun:setVisible(true)
+					end;
+				end;
+
+				onPostAnimation = function (self, forcedStop)
+					ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
+					ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
+					ModelAlias.alias.avatar.gun:setVisible(false)
+					models.models.shield_item.Item:setParentType("Item")
+				end;
 			};
 		};
 	};
