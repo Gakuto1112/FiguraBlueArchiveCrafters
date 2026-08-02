@@ -419,7 +419,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.Pillagers, models.models.ex_skill_1.AnimationArrow};
+			models = {models.models.ex_skill_1.Pillagers, models.models.ex_skill_1.AnimationArrow, ModelAlias.alias.avatar.rightArmBottom.ExSkillItemAnchor1};
 
 			animations = {"main", "gun", "shield_item", "ex_skill_1"};
 
@@ -440,6 +440,8 @@ local BlueArchiveCharacter = {
 					if not self.exSkill.primary.isInitialized then
 						models.models.ex_skill_1.Pillagers:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/illager/pillager.png")
 						--models.models.ex_skill_1.AnimationArrow:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/projectiles/arrow.png")
+						ModelAlias.alias.avatar.rightArmBottom.ExSkillItemAnchor1:newItem("ex_skill_1_item_1")
+							:setItem("minecraft:milk_bucket")
 						self.exSkill.primary.isInitialized = true
 					end
 					models.models.shield_item.Item:setParentType("None")
