@@ -489,6 +489,18 @@ local BlueArchiveCharacter = {
 							FaceParts:setEmotion("ANGRY", "ANGRY", "TRIANGLE", 31, true)
 							ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos()
 						end
+					elseif tick == 86 then
+						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.rightArmBottom.ExSkillItemAnchor1)
+						local bodyYaw = player:getBodyYaw()
+						local hasShader = client:hasShaderPack()
+						for i = 1, 17 do
+							particles:newParticle("minecraft:end_rod", anchorPos)
+								:setScale(0.1)
+								:setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 + 30, vectors.rotateAroundAxis(20, vectors.rotateAroundAxis(i * 20, 0, 0.01 + math.random() * 0.02, 0, 0, 0, 1), 1, 0, 0), 0, 1, 0))
+								:setGravity(0)
+								:setColor((math.random() < 0.5 and vectors.vec3(0.993, 0.819, 0.99) or vectors.vec3(0.994, 0.988, 0.721)):scale(hasShader and 0.5 or 1))
+								:setLifetime(40)
+						end
 					end
 
 					if tick <= 76 then
