@@ -406,13 +406,13 @@ local BlueArchiveCharacter = {
 
 			camera = {
 				start = {
-					rot = vectors.vec3(0, 180, 0);
-					pos = vectors.vec3(0, 28, -64);
+					rot = vectors.vec3(15, -35, 0);
+					pos = vectors.vec3(25, 26, -39);
 				};
 
 				fin = {
-					rot = vectors.vec3(0, 180, 0);
-					pos = vectors.vec3(0, 28, -64);
+					rot = vectors.vec3(30, -25, 0);
+					pos = vectors.vec3(4, 32, 8);
 				};
 			};
 
@@ -432,7 +432,7 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setPos()
 						ModelAlias.alias.avatar.gun:setRot()
 						ModelAlias.alias.avatar.gun:setVisible(true)
-					end;
+					end
 				end;
 
 				onPostAnimation = function (self, forcedStop)
