@@ -442,8 +442,17 @@ local BlueArchiveCharacter = {
 						--models.models.ex_skill_1.AnimationArrow:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/projectiles/arrow.png")
 						ModelAlias.alias.avatar.rightArmBottom.ExSkillItemAnchor1:newItem("ex_skill_1_item_1")
 							:setItem("minecraft:milk_bucket")
+
+						for i = 1, 2 do
+							models.models.ex_skill_1.Pillagers["Pillager"..i]["Pillager"..i.."RightArm"]:newItem("ex_skill_1_pillager_"..i.."_crossbow")
+								:setItem("minecraft:crossbow")
+								:setPos(0, -12, -2)
+								:setRot(0, 0, -135)
+						end
+
 						self.exSkill.primary.isInitialized = true
 					end
+
 					models.models.shield_item.Item:setParentType("None")
 
 					FaceParts:setEmotion("NORMAL", "CENTER", "HAT", 34, true)
@@ -481,14 +490,33 @@ local BlueArchiveCharacter = {
 							ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos()
 						end
 					end
+
+					if tick <= 76 then
+						local shotChances = {math.random() < 0.05, math.random() < 0.05}
+						if shotChances[1] or shotChances[2] then
+							local bodyYaw = player:getBodyYaw()
+							local playerAnchorPos = player:getPos():copy():add(vectors.rotateAroundAxis(bodyYaw * -1, -0.25, 1, 0, 0, 1, 0))
+							for i = 1, 2 do
+								if shotChances[i] then
+									local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Pillagers["Pillager"..i]["Pillager"..i.."RightArm"]["Pillager"..i.."ArrowAnchor"])
+									local offsetRot = math.random() * 360
+									ExSkillArrowManager:spawn(anchorPos, playerAnchorPos:copy():sub(anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(offsetRot, 0, 1, 0, 0, 0, 1), 0, 1, 0))):normalize())
+								end
+							end
+						end
+					end
 				end;
 
-				onPostAnimation = function (self, forcedStop)
+				onPostAnimation = function (_, forcedStop)
 					ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
 					ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
 					models.models.shield_item.Item:setParentType("Item")
 					for _, modelPart in ipairs({ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.faceParts.Eyes.EyeShines}) do
 						modelPart:setVisible(false)
+					end
+
+					if forcedStop then
+						ExSkillArrowManager:removeAll()
 					end
 				end;
 			};
@@ -683,6 +711,16 @@ local BlueArchiveCharacter = {
 	---初期化関数
 	---この関数は消しても構わない。
 	init = function ()
+		---Exスキルで使用する矢のインスタンスクラス
+		---@type ExSkillArrow
+		ExSkillArrow = require("scripts.ex_skill_arrow")
+
+		---Exスキルで使用する矢のマネージャークラス
+		---@type ExSkillArrowManager
+		ExSkillArrowManager = require("scripts.ex_skill_arrow_manager")
+		ExSkillArrowManager = ExSkillArrowManager.new()
+		ExSkillArrowManager.init()
+
 		ModelAlias.alias.avatar.gun.Cake:newItem("gun_cake_strap")
 			:setItem("minecraft:cake")
 			:setScale(0.19)
