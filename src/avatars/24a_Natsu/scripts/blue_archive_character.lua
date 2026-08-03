@@ -37,6 +37,7 @@
 ---| "NORMAL" # 通常
 ---| "TRIANGLE" # 三角口
 ---| "HAT" # への口
+---| "HAPPY" # 幸せのぐじゅぐじゅ口
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -299,6 +300,7 @@ local BlueArchiveCharacter = {
 		mouth = {
 			TRIANGLE = vectors.vec2(0, 0);
 			HAT = vectors.vec2(1, 0);
+			HAPPY = vectors.vec2(2, 0);
 		};
 	};
 
@@ -491,7 +493,6 @@ local BlueArchiveCharacter = {
 							ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos(-0.5, 0, 0)
 						else
 							FaceParts:setEmotion("ANGRY", "ANGRY", "TRIANGLE", 31, true)
-							ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos()
 						end
 
 						local playerPos = player:getPos()
@@ -540,6 +541,7 @@ local BlueArchiveCharacter = {
 					for _, modelPart in ipairs({ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.faceParts.Eyes.EyeShines}) do
 						modelPart:setVisible(false)
 					end
+					ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos()
 
 					if forcedStop then
 						ExSkillArrowManager:removeAll()
