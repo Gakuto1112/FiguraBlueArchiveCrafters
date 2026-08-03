@@ -27,6 +27,8 @@ local PieThrowing = {
 				ModelAlias.alias.avatar.faceParts.Eyes.EyeShines:setVisible(false)
 				ModelAlias.alias.avatar.rightEye:setRot(0, 0, -5)
 				ModelAlias.alias.avatar.leftEye:setRot(0, 0, 5)
+			elseif self.animationTick == 27 then
+				PieManager:spawn(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 1.5, 0.5, 0, 1, 0):add(player:getPos()))
 			elseif self.animationTick == 42 then
 				self:stop()
 			end

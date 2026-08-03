@@ -753,6 +753,16 @@ local BlueArchiveCharacter = {
 		---@type PieThrowing
 		PieThrowing = require("scripts.pie_throwing")
 
+		---投げるパイオブジェクトのインスタンスクラス
+		---@type Pie
+		Pie = require("scripts.pie")
+
+		---投げるパイオブジェクトのマネージャークラス
+		---@type PieManager
+		PieManager = require("scripts.pie_manager")
+		PieManager = PieManager.new()
+		PieManager.init()
+
 		ModelAlias.alias.avatar.gun.Cake:newItem("gun_cake_strap")
 			:setItem("minecraft:cake")
 			:setScale(0.19)

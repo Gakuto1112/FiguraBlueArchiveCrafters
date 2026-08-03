@@ -34,7 +34,7 @@ local ExSkillArrow = {
 			---@param self ExSkillArrow
 			onDeinit = function (self)
 				models.script_ex_skill_arrow:removeChild(self.object)
-				self.object:setVisible(false)
+				self.object:remove()
 			end;
 
 			---@param self ExSkillArrow
