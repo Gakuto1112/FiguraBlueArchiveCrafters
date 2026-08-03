@@ -747,6 +747,10 @@ local BlueArchiveCharacter = {
 		ExSkillArrowManager = ExSkillArrowManager.new()
 		ExSkillArrowManager.init()
 
+		---パイ投げのアニメーションを制御するクラス
+		---@type PieThrowing
+		PieThrowing = require("scripts.pie_throwing")
+
 		ModelAlias.alias.avatar.gun.Cake:newItem("gun_cake_strap")
 			:setItem("minecraft:cake")
 			:setScale(0.19)
