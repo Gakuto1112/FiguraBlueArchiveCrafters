@@ -23,11 +23,14 @@ local PieThrowing = {
 				elseif self.animationTick == 7 then
 					FaceParts:setEmotion("NORMAL", "NORMAL", "TRIANGLE", 16, true)
 					ModelAlias.alias.avatar.faceParts.Eyes.EyeShines:setVisible(true)
+					sounds:playSound("minecraft:entity.item.pickup", player:getPos(), 1, 2)
 				elseif self.animationTick == 23 then
 					FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAPPY", 19, true)
 					ModelAlias.alias.avatar.faceParts.Eyes.EyeShines:setVisible(false)
 					ModelAlias.alias.avatar.rightEye:setRot(0, 0, -5)
 					ModelAlias.alias.avatar.leftEye:setRot(0, 0, 5)
+				elseif self.animationTick == 25 then
+					sounds:playSound("minecraft:entity.egg.throw", player:getPos(), 1, 1.5)
 				elseif self.animationTick == 27 then
 					PieManager:spawn(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 1.5, 0.5, 0, 1, 0):add(player:getPos()))
 				elseif self.animationTick == 42 then

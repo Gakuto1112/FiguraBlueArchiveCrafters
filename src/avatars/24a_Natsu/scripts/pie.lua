@@ -59,7 +59,7 @@ local Pie = {
 				-- 跳ね飛ぶ時間の計算
 				if self.boundingTick == 0 then
 					-- パイの跳ね回数の更新
-					if self.pieRemains > 0 then
+					if self.pieRemains >= 0 then
 						if self.pieRemains + 1 <= self.PIE_BOUNCE_COUNT then
 							self.object["Pie" .. (self.pieRemains + 1)]:setVisible(false)
 						end
@@ -75,11 +75,25 @@ local Pie = {
 						-- 次の跳ね飛び先の探索
 						self.targetPlayer = self:getTargetPlayer()
 						if self.targetPlayer ~= nil then
-							self.nextTargetPos = self.targetPlayer:getPos():copy():add(0, 1.5, 0)
+							self.nextTargetPos = self.targetPlayer:getPos():copy():add(0, 1, 0)
 							self.targetHistory[self.targetPlayer:getName()] = true
 						else
 							self.velocity = self.nextPos:copy():sub(self.currentPos)
 							self.velocity.y = self.velocity.y * -1
+						end
+
+						--食べる演出を再生
+						if self.pieRemains < self.PIE_BOUNCE_COUNT - 1 then
+							for _ = 1, 10 do
+								local offsetPos = vectors.vec3(math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125)
+								particles:newParticle("minecraft:item{item:{id:\"minecraft:pumpkin_pie\"}}", self.currentPos)
+									:setVelocity(offsetPos)
+							end
+							if self.pieRemains >= 0 then
+								sounds:playSound("minecraft:entity.generic.eat", self.currentPos, 1, 1)
+							else
+								sounds:playSound("minecraft:entity.player.burp", self.currentPos, 1, 1)
+							end
 						end
 
 						self.boundingTick = self.BOUNDING_LENGTH
