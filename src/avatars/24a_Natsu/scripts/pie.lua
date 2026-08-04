@@ -11,6 +11,7 @@
 ---@field package boundingTick integer パイが跳ね飛ぶ時間のカウンター
 ---@field package targetPlayer Player|nil パイ投げのターゲットとなっているプレイヤーのインスタンス。ターゲットになるプレイヤーがいない場合は`nil`になる。
 ---@field package targetHistory table<string, boolean> パイ投げのターゲットになったことがあるプレイヤーの名前を記録するテーブル。キーがプレイヤー名、値が`true`になる。
+---@field package velocity Vector3|nil ターゲットのロスト時にパイを飛ばす速度
 local Pie = {
 	---コンストラクタ
 	---@param startPos Vector3 スポーンさせるパイの初期ワールド位置
@@ -32,6 +33,7 @@ local Pie = {
 		instance.boundingTick = 0
 		instance.targetPlayer = nil
 		instance.targetHistory = {}
+		instance.velocity = nil
 
 		instance.callbacks = {
 			---@param self Pie
@@ -52,17 +54,22 @@ local Pie = {
 			onTick = function (self)
 				-- 跳ね飛ぶ時間の計算
 				if self.boundingTick == 0 then
-					-- 跳ね飛び座標の更新
-					self.currentTargetPos = self.nextTargetPos:copy()
+					if self.velocity == nil then
+						-- 跳ね飛び座標の更新
+						self.currentTargetPos = self.nextTargetPos:copy()
 
-					-- 次の跳ね飛び先の探索
-					self.targetPlayer = self:getTargetPlayer()
-					if self.targetPlayer ~= nil then
-						self.nextTargetPos = self.targetPlayer:getPos():copy():add(0, 1.5, 0)
-						self.targetHistory[self.targetPlayer:getName()] = true
+						-- 次の跳ね飛び先の探索
+						self.targetPlayer = self:getTargetPlayer()
+						if self.targetPlayer ~= nil then
+							self.nextTargetPos = self.targetPlayer:getPos():copy():add(0, 1.5, 0)
+							self.targetHistory[self.targetPlayer:getName()] = true
+						else
+							self.velocity = self.nextPos:copy():sub(self.currentPos)
+							self.velocity.y = self.velocity.y * -1
+						end
+
+						self.boundingTick = self.BOUNDING_LENGTH
 					end
-
-					self.boundingTick = self.BOUNDING_LENGTH
 				end
 				self.boundingTick = self.boundingTick - 1
 
@@ -71,7 +78,12 @@ local Pie = {
 				self.currentPos = self.nextPos:copy()
 
 				-- 次のオブジェクトの位置を計算
-				self.nextPos = self:getPiePos(self.currentTargetPos, self.nextTargetPos, 1 - (self.boundingTick / self.BOUNDING_LENGTH))
+				if self.velocity == nil then
+					self.nextPos = self:getPiePos(self.currentTargetPos, self.nextTargetPos, 1 - (self.boundingTick / self.BOUNDING_LENGTH))
+				else
+					self.nextPos = self.currentPos:copy():add(self.velocity)
+					self.velocity.y = math.max(self.velocity.y - 0.15, -0.49)
+				end
 
 				-- ブロックの当たり判定のチェック
 				local block = raycast:block(self.currentPos, self.nextPos, "COLLIDER", "ANY")
