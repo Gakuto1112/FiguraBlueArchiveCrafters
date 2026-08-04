@@ -2,6 +2,7 @@
 ---@field package BULGE number パイオブジェクトが飛んでいく放物線の膨らみ具合
 ---@field package BOUNDING_LENGTH integer パイが跳ね飛ぶ時間の長さ（ティック）
 ---@field package MAX_PIE_DISTANCE number パイがターゲットとするプレイヤーの最大距離（ブロック）
+---@field package PIE_BOUNCE_COUNT integer パイが跳ねる回数
 ---@field package object ModelPart インスタンスで制御するモデルパーツ
 ---@field package currentPos Vector3 パイオブジェクトの現ティックのワールド位置
 ---@field package nextPos Vector3 パイオブジェクトの次ティックのワールド位置
@@ -12,6 +13,7 @@
 ---@field package targetPlayer Player|nil パイ投げのターゲットとなっているプレイヤーのインスタンス。ターゲットになるプレイヤーがいない場合は`nil`になる。
 ---@field package targetHistory table<string, boolean> パイ投げのターゲットになったことがあるプレイヤーの名前を記録するテーブル。キーがプレイヤー名、値が`true`になる。
 ---@field package velocity Vector3|nil ターゲットのロスト時にパイを飛ばす速度
+---@field package pieRemains integer パイが跳ねる残りの回数
 local Pie = {
 	---コンストラクタ
 	---@param startPos Vector3 スポーンさせるパイの初期ワールド位置
@@ -22,6 +24,7 @@ local Pie = {
 		instance.BULGE = 2
 		instance.BOUNDING_LENGTH = 10
 		instance.MAX_PIE_DISTANCE = 5
+		instance.PIE_BOUNCE_COUNT = 4
 
 		instance.object = ModelUtils:copyModel(ModelAlias.alias.avatar.rightArmBottom.Pie, instance.uuid)
 		instance.currentPos = startPos:copy()
@@ -34,6 +37,7 @@ local Pie = {
 		instance.targetPlayer = nil
 		instance.targetHistory = {}
 		instance.velocity = nil
+		instance.pieRemains = instance.PIE_BOUNCE_COUNT
 
 		instance.callbacks = {
 			---@param self Pie
@@ -54,6 +58,12 @@ local Pie = {
 			onTick = function (self)
 				-- 跳ね飛ぶ時間の計算
 				if self.boundingTick == 0 then
+					-- パイの跳ね回数の更新
+					if self.pieRemains == 0 then
+						self.shouldDeinit = true
+					end
+					self.pieRemains = self.pieRemains - 1
+
 					if self.velocity == nil then
 						-- 跳ね飛び座標の更新
 						self.currentTargetPos = self.nextTargetPos:copy()
