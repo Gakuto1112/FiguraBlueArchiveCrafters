@@ -59,10 +59,14 @@ local Pie = {
 				-- 跳ね飛ぶ時間の計算
 				if self.boundingTick == 0 then
 					-- パイの跳ね回数の更新
-					if self.pieRemains == 0 then
+					if self.pieRemains > 0 then
+						if self.pieRemains + 1 <= self.PIE_BOUNCE_COUNT then
+							self.object["Pie" .. (self.pieRemains + 1)]:setVisible(false)
+						end
+						self.pieRemains = self.pieRemains - 1
+					else
 						self.shouldDeinit = true
 					end
-					self.pieRemains = self.pieRemains - 1
 
 					if self.velocity == nil then
 						-- 跳ね飛び座標の更新
