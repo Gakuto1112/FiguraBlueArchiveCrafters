@@ -94,8 +94,12 @@ local Pie = {
 							self.nextTargetPos = self.targetPlayer:getPos():copy():add(0, 1, 0)
 							self.targetHistory[self.targetPlayer:getName()] = true
 						else
-							self.velocity = self.nextPos:copy():sub(self.currentPos)
-							self.velocity.y = self.velocity.y * -1
+							if self.pieRemains == self.PIE_BOUNCE_COUNT then
+								self.velocity = vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 0.75, -0.2, 0, 1, 0)
+							else
+								self.velocity = self.nextPos:copy():sub(self.currentPos)
+								self.velocity.y = self.velocity.y * -1
+							end
 						end
 
 						self.boundingTick = self.BOUNDING_LENGTH
