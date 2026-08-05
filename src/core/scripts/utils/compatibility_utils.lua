@@ -248,14 +248,14 @@ local CompatibilityUtils = {
                     end
                     local spaceIndex = trueParticleId:find(" ")
                     if spaceIndex ~= nil then
-                        arg = trueParticleId:sub(spaceIndex)
+                        arg = trueParticleId:sub(spaceIndex + 1)
                         trueParticleId = trueParticleId:sub(1, spaceIndex - 1)
                     end
                     trueParticleId = self:checkParticle(trueParticleId)
                     if trueParticleId == self.ALTERNATIVE_ENTRIES.particle then
                         arg = ""
                     end
-                    return originalParticleIndexFunc(self2, "newParticle")(self3, self:checkParticle(trueParticleId) .. arg, ...)
+                    return originalParticleIndexFunc(self2, "newParticle")(self3, trueParticleId .. " " .. arg, ...)
                 end
             else
                 return originalParticleIndexFunc(self2, key)
