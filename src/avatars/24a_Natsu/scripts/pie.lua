@@ -64,7 +64,7 @@ local Pie = {
 
 						if self.targetPlayer ~= nil then
 							-- パイの跳ね回数の更新
-							if self.pieRemains >= 0 then
+							if self.pieRemains > 0 then
 								if self.pieRemains <= self.PIE_BOUNCE_COUNT then
 									self.object["Pie" .. self.pieRemains]:setVisible(false)
 								end
@@ -89,7 +89,7 @@ local Pie = {
 						end
 
 						-- 次の跳ね飛び先の探索
-						self.targetPlayer = self:getTargetPlayer()
+						self.targetPlayer = self.pieRemains > 0 and self:getTargetPlayer() or nil
 						if self.targetPlayer ~= nil then
 							self.nextTargetPos = self.targetPlayer:getPos():copy():add(0, 1, 0)
 							self.targetHistory[self.targetPlayer:getName()] = true
@@ -104,7 +104,7 @@ local Pie = {
 					-- 飛び跳ね先の座標を更新
 					self.nextTargetPos = self.targetPlayer:getPos():copy():add(0, 1, 0)
 
-					if not self.targetPlayer:isAlive() or self.targetPlayer:getPos():copy():sub(self.currentPos):length() > self.MAX_PIE_DISTANCE then
+					if not self.targetPlayer:isAlive() or self.targetPlayer:getPos():copy():sub(self.currentPos):length() > self.MAX_PIE_DISTANCE + self.BULGE then
 						self.targetPlayer = nil
 					end
 				end
