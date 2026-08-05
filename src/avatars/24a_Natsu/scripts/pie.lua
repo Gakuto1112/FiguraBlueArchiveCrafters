@@ -86,7 +86,7 @@ local Pie = {
 						if self.pieRemains < self.PIE_BOUNCE_COUNT - 1 then
 							for _ = 1, 10 do
 								local offsetPos = vectors.vec3(math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125)
-								particles:newParticle("minecraft:item{item:{id:\"minecraft:pumpkin_pie\"}}", self.currentPos)
+								particles:newParticle("minecraft:item minecraft:pumpkin_pie", self.currentPos)
 									:setVelocity(offsetPos)
 							end
 							if self.pieRemains >= 0 then

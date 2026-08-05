@@ -255,7 +255,12 @@ local CompatibilityUtils = {
                     if trueParticleId == self.ALTERNATIVE_ENTRIES.particle then
                         arg = ""
                     end
-                    return originalParticleIndexFunc(self2, "newParticle")(self3, trueParticleId .. " " .. arg, ...)
+                    if trueParticleId == "minecraft:item" then
+                        ---＠todo 旧バージョンでのitemパーティクルの扱いを確認する。
+                        return originalParticleIndexFunc(self2, "newParticle")(self3, "minecraft:item{item:{id:\"" .. arg .. "\"}}", ...)
+                    else
+                        return originalParticleIndexFunc(self2, "newParticle")(self3, trueParticleId .. " " .. arg, ...)
+                    end
                 end
             else
                 return originalParticleIndexFunc(self2, key)
