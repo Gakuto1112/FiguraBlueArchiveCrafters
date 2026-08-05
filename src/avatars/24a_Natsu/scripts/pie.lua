@@ -58,19 +58,35 @@ local Pie = {
 			onTick = function (self)
 				-- 跳ね飛ぶ時間の計算
 				if self.boundingTick == 0 then
-					-- パイの跳ね回数の更新
-					if self.pieRemains >= 0 then
-						if self.pieRemains + 1 <= self.PIE_BOUNCE_COUNT then
-							self.object["Pie" .. (self.pieRemains + 1)]:setVisible(false)
-						end
-						self.pieRemains = self.pieRemains - 1
-					else
-						self.shouldDeinit = true
-					end
-
 					if self.velocity == nil then
 						-- 跳ね飛び座標の更新
 						self.currentTargetPos = self.nextTargetPos:copy()
+
+						if self.targetPlayer ~= nil then
+							-- パイの跳ね回数の更新
+							if self.pieRemains >= 0 then
+								if self.pieRemains <= self.PIE_BOUNCE_COUNT then
+									self.object["Pie" .. self.pieRemains]:setVisible(false)
+								end
+								self.pieRemains = self.pieRemains - 1
+							else
+								self.shouldDeinit = true
+							end
+
+							--食べる演出を再生
+							if self.pieRemains < self.PIE_BOUNCE_COUNT then
+								for _ = 1, 10 do
+									local offsetPos = vectors.vec3(math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125)
+									particles:newParticle("minecraft:item minecraft:pumpkin_pie", self.currentPos)
+										:setVelocity(offsetPos)
+								end
+								if self.pieRemains > 0 then
+									sounds:playSound("minecraft:entity.generic.eat", self.currentPos, 1, 1)
+								else
+									sounds:playSound("minecraft:entity.player.burp", self.currentPos, 1, 1)
+								end
+							end
+						end
 
 						-- 次の跳ね飛び先の探索
 						self.targetPlayer = self:getTargetPlayer()
@@ -82,21 +98,14 @@ local Pie = {
 							self.velocity.y = self.velocity.y * -1
 						end
 
-						--食べる演出を再生
-						if self.pieRemains < self.PIE_BOUNCE_COUNT - 1 then
-							for _ = 1, 10 do
-								local offsetPos = vectors.vec3(math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125)
-								particles:newParticle("minecraft:item minecraft:pumpkin_pie", self.currentPos)
-									:setVelocity(offsetPos)
-							end
-							if self.pieRemains >= 0 then
-								sounds:playSound("minecraft:entity.generic.eat", self.currentPos, 1, 1)
-							else
-								sounds:playSound("minecraft:entity.player.burp", self.currentPos, 1, 1)
-							end
-						end
-
 						self.boundingTick = self.BOUNDING_LENGTH
+					end
+				elseif self.targetPlayer ~= nil then
+					-- 飛び跳ね先の座標を更新
+					self.nextTargetPos = self.targetPlayer:getPos():copy():add(0, 1, 0)
+
+					if not self.targetPlayer:isAlive() or self.targetPlayer:getPos():copy():sub(self.currentPos):length() > self.MAX_PIE_DISTANCE then
+						self.targetPlayer = nil
 					end
 				end
 				self.boundingTick = self.boundingTick - 1
@@ -139,7 +148,7 @@ local Pie = {
 	---@param block BlockState チェックするブロックステート
 	---@return boolean isAir 指定したブロックステートが空気ブロックに属するものかどうか。
 	getIsAir = function (block)
-		return block ~= nil and (block.id == "minecraft:air" or block.id == "minecraft:cave_air" or block.id == "minecraft:void_air")
+		return block ~= nil and block:isAir()
 	end;
 
 	---地点Aから地点Bまでパイを投げ、放物線を描きながら飛んでいくときの、指定した進行度での速度を返す。
@@ -204,17 +213,19 @@ local Pie = {
 				goto continue
 			end
 
-			if instance:getPos():copy():sub(self.currentPos):length() > self.MAX_PIE_DISTANCE then
+			local playerPos = instance:getPos():copy():add(0, 1.5, 0)
+
+			if playerPos:copy():sub(self.currentPos):length() > self.MAX_PIE_DISTANCE then
 				goto continue
 			end
 
-			if self:getIsBlockingPieArc(self.currentPos, instance:getPos()) then
+			if self:getIsBlockingPieArc(self.currentPos, playerPos) then
 				goto continue
 			end
 
-			if nearestPlayer == nil or instance:getPos():copy():sub(self.currentPos):length() < nearestDistance then
+			if nearestPlayer == nil or playerPos:copy():sub(self.currentPos):length() < nearestDistance then
 				nearestPlayer = instance
-				nearestDistance = instance:getPos():copy():sub(self.currentPos):length()
+				nearestDistance = playerPos:copy():sub(self.currentPos):length()
 			end
 
 			::continue::
