@@ -255,8 +255,7 @@ local CompatibilityUtils = {
                     if trueParticleId == self.ALTERNATIVE_ENTRIES.particle then
                         arg = ""
                     end
-                    if trueParticleId == "minecraft:item" then
-                        ---＠todo 旧バージョンでのitemパーティクルの扱いを確認する。
+                    if trueParticleId == "minecraft:item" and StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.20.5") then
                         return originalParticleIndexFunc(self2, "newParticle")(self3, "minecraft:item{item:{id:\"" .. arg .. "\"}}", ...)
                     else
                         return originalParticleIndexFunc(self2, "newParticle")(self3, trueParticleId .. " " .. arg, ...)
