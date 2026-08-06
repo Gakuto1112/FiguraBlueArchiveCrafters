@@ -779,7 +779,7 @@ local BlueArchiveCharacter = {
 			:setItem("minecraft:cake")
 			:setScale(0.19)
 
-		KeyManager:register("firework_launch", "Eat this and cheer up", "key.keyboard.v"):onPress(function ()
+		KeyManager:register("pie_throwing", "Eat this and cheer up", "key.keyboard.v"):onPress(function ()
 			if not PieThrowing:getIsAnimationPlaying() then
 				pings.throwPie()
 			end
