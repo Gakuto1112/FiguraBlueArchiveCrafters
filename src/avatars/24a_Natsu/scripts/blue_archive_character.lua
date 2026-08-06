@@ -767,6 +767,12 @@ local BlueArchiveCharacter = {
 			:setItem("minecraft:cake")
 			:setScale(0.19)
 
+		KeyManager:register("firework_launch", "Eat this and cheer up", "key.keyboard.v"):onPress(function ()
+			if not PieThrowing:getIsAnimationPlaying() then
+				pings.throwPie()
+			end
+		end)
+
 		events.ITEM_RENDER:register(function (item, mode)
 			if item.id == "minecraft:shield" then
                 if mode == "FIRST_PERSON_LEFT_HAND" then
@@ -832,5 +838,10 @@ local BlueArchiveCharacter = {
 		end)
 	end;
 }
+
+---パイ投げのpingメソッド
+function pings.throwPie()
+	PieThrowing:play()
+end
 
 return BlueArchiveCharacter

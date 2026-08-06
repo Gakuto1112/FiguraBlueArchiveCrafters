@@ -36,7 +36,10 @@ local PieThrowing = {
 				elseif self.animationTick == 42 then
 					self:stop()
 				end
-				self.animationTick = self.animationTick + 1
+
+				if self.animationTick >= 0 then
+					self.animationTick = self.animationTick + 1
+				end
 			end
 		end, "pie_throwing_tick")
 	end;
@@ -58,6 +61,13 @@ local PieThrowing = {
 		Physics:enable()
 		Arms:setHeldItemVisible(true)
 		self.animationTick = -1
+	end;
+
+	---パイ投げのアニメーションが再生中かどうかを返す。
+	---@param self PieThrowing
+	---@return boolean isPlaying パイ投げのアニメーションが再生中かどうか
+	getIsAnimationPlaying = function (self)
+		return self.animationTick ~= -1
 	end;
 }
 
