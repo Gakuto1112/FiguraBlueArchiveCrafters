@@ -780,7 +780,7 @@ local BlueArchiveCharacter = {
 			:setScale(0.19)
 
 		KeyManager:register("pie_throwing", "Eat this and cheer up", "key.keyboard.v"):onPress(function ()
-			if not PieThrowing:getIsAnimationPlaying() then
+			if ExSkill:getCanPlayAnimation() and not PieThrowing:getIsAnimationPlaying() then
 				pings.throwPie()
 			end
 		end)
