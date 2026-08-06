@@ -129,6 +129,14 @@ local Pie = {
 				-- ブロックの当たり判定のチェック
 				local block = raycast:block(self.currentPos, self.nextPos, "COLLIDER", "ANY")
 				if not self.getIsAir(block) then
+					for _ = 1, 10 do
+						local offsetPos = vectors.vec3(math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125)
+						particles:newParticle("minecraft:item minecraft:pumpkin_pie", self.currentPos)
+							:setVelocity(offsetPos)
+					end
+
+					sounds:playSound("minecraft:block.wool.break", self.currentPos, 1, 1)
+
 					self.shouldDeinit = true
 				end
 
