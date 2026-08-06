@@ -40,6 +40,10 @@ local PieThrowing = {
 				if self.animationTick >= 0 then
 					self.animationTick = self.animationTick + 1
 				end
+
+				if not ExSkill:getCanPlayAnimation() then
+					  self:stop()
+				end
 			end
 		end, "pie_throwing_tick")
 	end;
@@ -60,6 +64,7 @@ local PieThrowing = {
 		end
 		Physics:enable()
 		Arms:setHeldItemVisible(true)
+		FaceParts:resetEmotion()
 		self.animationTick = -1
 	end;
 
