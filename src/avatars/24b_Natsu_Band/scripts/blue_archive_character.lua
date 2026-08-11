@@ -628,15 +628,77 @@ local BlueArchiveCharacter = {
 
 				y = {
 					vertical = {
-						min = 30;
-						neutral = 30;
-						max = 30;
+						min = -30;
+						neutral = -30;
+						max = -30;
 					};
 
 					horizontal = {
-						min = 30;
-						neutral = 30;
-						max = 30;
+						min = -30;
+						neutral = -30;
+						max = -30;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairBun.HairBunBottom};
+
+				x = {
+					vertical = {
+						min = -90;
+						neutral = 0;
+						max = 90;
+
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -80;
+							min = -90;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = -45;
+						neutral = 45;
+						max = 90;
+
+						headX = {
+							multiplayer = -80;
+							min = -45;
+							max = 90;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairBun.HairBunBottom.HairBunBottomZPivot};
+
+				z = {
+					vertical = {
+						min = -170;
+						neutral = 0;
+						max = 12.5;
+
+						headZ = {
+							multiplayer = -80;
+							min = -170;
+							max = 12.5;
+						};
+
+						headRot = {
+							multiplayer = 0.05;
+							min = -170;
+							max = 0;
+						};
+
+						bodyY = {
+							multiplayer = 40;
+							min = -170;
+							max = 0;
+						};
 					};
 				};
 			};
