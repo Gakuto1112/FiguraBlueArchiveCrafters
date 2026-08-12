@@ -442,6 +442,9 @@ local BlueArchiveCharacter = {
 								:setPos(0, -12, -2)
 								:setRot(0, 0, -135)
 						end
+						for _, part in ipairs({"Head", "Body", "RightArm", "LeftArm", "RightLeg", "LeftLeg"}) do
+							models.models.ex_skill_1.Pillagers["Pillager2"]["Pillager2" .. part]:addChild(ModelUtils:copyModel(models.models.ex_skill_1.Pillagers.Pillager1["Pillager1" .. part]))
+						end
 
 						self.exSkill.primary.isInitialized = true
 					end
