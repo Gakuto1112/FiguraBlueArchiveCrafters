@@ -207,7 +207,7 @@ local Nameplate = {
 		end
 		nameplate.ALL:setText(displayName)
 		if displayNameData.displayType >= 2 and displayNameData.shouldShowClubName then
-			nameplate.ENTITY:setText(displayName .. "\n§7" .. ((lang ~= displayNameData.locale or lang == "en_us") and displayNameData.globalClubName or displayNameData.localClubName))
+			nameplate.ENTITY:setText(displayName .. "\n§7" .. (lang ~= displayNameData.locale and displayNameData.globalClubName or displayNameData.localClubName))
 		end
 	end;
 }
