@@ -4,7 +4,7 @@
 ---@field public localName? Nameplate.CharacterNameSet ローカル言語での姓名
 ---@field public shouldShowClubName boolean 部活名を表示するかどうか
 ---@field public globalClubName? string 英語での部活名
----@field public locale? string ロケール名
+---@field public locale? string ロケール名。`nil`の場合はグローバル言語で取り扱う。
 ---@field public localClubName? string ローカル言語での部活名
 ---@field public isBirthday boolean 誕生日かどうか
 
@@ -160,7 +160,7 @@ local Nameplate = {
 				firstName = Locale:getLocalizedText("character.first_name", true);
 				lastName = Locale:getLocalizedText("character.last_name", true);
 			}
-			if (displayNameType >= 5 and activeLang ~= "en_us") or shouldShowClubName then
+			if (displayNameType >= 5 or shouldShowClubName) and activeLang ~= "en_us" then
 				displayNameData.locale = activeLang
 				if displayNameType >= 5 and activeLang ~= "en_us" then
 					displayNameData.localName = {
@@ -168,11 +168,11 @@ local Nameplate = {
 						lastName = Locale:getLocalizedText("character.last_name");
 					}
 				end
-				if shouldShowClubName then
-					displayNameData.globalClubName = Locale:getLocalizedText("character.club_name", true)
-					if activeLang ~= "en_us" then
-						displayNameData.localClubName = Locale:getLocalizedText("character.club_name")
-					end
+			end
+			if shouldShowClubName then
+				displayNameData.globalClubName = Locale:getLocalizedText("character.club_name", true)
+				if activeLang ~= "en_us" then
+					displayNameData.localClubName = Locale:getLocalizedText("character.club_name")
 				end
 			end
 		end
