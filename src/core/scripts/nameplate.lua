@@ -189,9 +189,9 @@ local Nameplate = {
 			displayName = player:getName()
 		elseif displayNameData.displayType <= 4 or lang ~= displayNameData.locale then
 			displayName = displayNameData.globalName.firstName
-			if displayNameData.displayType == 3 then
+			if displayNameData.displayType == 3 or displayNameData.displayType == 6 then
 				displayName = displayName .. " " .. displayNameData.globalName.lastName
-			elseif displayNameData.displayType == 4 then
+			elseif displayNameData.displayType == 4 or displayNameData.displayType == 7 then
 				displayName = displayNameData.globalName.lastName .. " " .. displayName
 			end
 		else
@@ -207,7 +207,7 @@ local Nameplate = {
 		end
 		nameplate.ALL:setText(displayName)
 		if displayNameData.displayType >= 2 and displayNameData.shouldShowClubName then
-			nameplate.ENTITY:setText(displayName .. "\n§7" .. ((lang ~= displayNameData.locale) and displayNameData.globalClubName or displayNameData.localClubName))
+			nameplate.ENTITY:setText(displayName .. "\n§7" .. ((lang ~= displayNameData.locale or lang == "en_us") and displayNameData.globalClubName or displayNameData.localClubName))
 		end
 	end;
 }
