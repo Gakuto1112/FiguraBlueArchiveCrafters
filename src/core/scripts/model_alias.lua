@@ -104,6 +104,25 @@ local ModelAlias = {
 			end
 		end
 	end;
+
+	---パステーブルからモデルパーツを取得する。
+	---@param self ModelAlias
+	---@param aliasType ModelAlias.AliasType モデル取得対象エイリアスの種類
+	---@return ModelPart|nil modelPart 取得したモデルパーツ。存在しない場合はnilを返す。
+	pathToModelPart = function (self, aliasType, rootModel)
+		if self.aliasPath[aliasType] == nil then
+			return nil
+		end
+
+		local currentModel = rootModel
+		for _, pathName in ipairs(self.aliasPath[aliasType]) do
+			currentModel = currentModel[pathName]
+			if currentModel == nil then
+				return nil
+			end
+		end
+		return currentModel
+	end;
 }
 
 return ModelAlias
