@@ -442,7 +442,7 @@ local BlueArchiveCharacter = {
 							ModelAlias.alias.avatar.mouth:setVisible(false)
 
 							--ポーズの作成
-							local pose1 = ModelAlias.getAliasTable(models.models.ex_skill_1.Gui.Scrollable.Characters.Pose1.Avatar)
+							local pose1 = ModelAlias:getAliasTable(models.models.ex_skill_1.Gui.Scrollable.Characters.Pose1.Avatar)
 							pose1.root:setRot(-2.7199, 19.8217, -7.9753)
 							pose1.head:setRot(2.664, -14.7669, -10.3453)
 							pose1.head.Ears.RightEarPivot:setRot(0, 0, -15)
@@ -457,7 +457,7 @@ local BlueArchiveCharacter = {
 							pose1.rightEye:setUVPixels(self.faceParts.rightEye.CLOSED:copy():scale(6))
 							pose1.mouth:setUVPixels(self.faceParts.mouth.OPENED2:copy():mul(16, 8))
 
-							local pose2 = ModelAlias.getAliasTable(models.models.ex_skill_1.Gui.Scrollable.Characters.Pose2.Avatar)
+							local pose2 = ModelAlias:getAliasTable(models.models.ex_skill_1.Gui.Scrollable.Characters.Pose2.Avatar)
 							pose2.root:setRot(-0.9096, -19.9801, 2.6602)
 							pose2.head:setRot(-2.7199, 19.8217, -7.9753)
 							pose2.head.Ears.RightEarPivot:setRot(0, 0, 5)
@@ -470,7 +470,7 @@ local BlueArchiveCharacter = {
 							pose2.leftLeg:setRot(0, 0, -10)
 							pose2.mouth:setUVPixels(self.faceParts.mouth.SMILE:copy():mul(16, 8))
 
-							local pose3 = ModelAlias.getAliasTable(models.models.ex_skill_1.Gui.Scrollable.Characters.Pose3.Avatar)
+							local pose3 = ModelAlias:getAliasTable(models.models.ex_skill_1.Gui.Scrollable.Characters.Pose3.Avatar)
 							pose3.root:setRot(-98.9287, -27.6048, -13.6459)
 							pose3.head:setRot(85, 0, 0)
 							pose3.head.Ears.RightEarPivot:setRot(-30, 0, -10)
@@ -488,7 +488,7 @@ local BlueArchiveCharacter = {
 							pose3.leftEye:setUVPixels(self.faceParts.leftEye.UNEQUAL:copy():scale(6))
 							pose3.mouth:setUVPixels(self.faceParts.mouth.TRIANGLE:copy():mul(16, 8))
 
-							local pose4 = ModelAlias.getAliasTable(models.models.ex_skill_1.Gui.Scrollable.Characters.Pose4.Avatar)
+							local pose4 = ModelAlias:getAliasTable(models.models.ex_skill_1.Gui.Scrollable.Characters.Pose4.Avatar)
 							pose4.root:setRot(-30, 30, 0)
 							pose4.head:setRot(9.8511, 1.7279, -9.8511)
 							pose4.head.Ears.RightEarPivot:setRot(-40, 0, -10)
@@ -521,7 +521,7 @@ local BlueArchiveCharacter = {
 							outlineTexture:fill(0, 0, 1, 1, 1, 1, 1)
 							for i = 1, 4 do
 								local outlineAvatar = ModelUtils:copyModel(models.models.ex_skill_1.Gui.Scrollable.Characters["Pose"..i].Avatar, "OutlineAvatar")
-								local outlineAlias = ModelAlias.getAliasTable(outlineAvatar)
+								local outlineAlias = ModelAlias:getAliasTable(outlineAvatar)
 								for _, modelPart in ipairs({outlineAlias.head.Head, outlineAlias.head.HatLayer, outlineAlias.body.Body, outlineAlias.body.BodyLayer, outlineAlias.rightArm.RightArm, outlineAlias.rightArm.RightArmLayer, outlineAlias.rightArmBottom.RightArmBottom, outlineAlias.rightArmBottom.RightArmBottomLayer, outlineAlias.leftArm.LeftArm, outlineAlias.leftArm.LeftArmLayer, outlineAlias.leftArmBottom.LeftArmBottom, outlineAlias.leftArmBottom.LeftArmBottomLayer, outlineAlias.rightLeg.RightLeg, outlineAlias.rightLeg.RightLegLayer, outlineAlias.rightLegBottom.RightLegBottom, outlineAlias.rightLegBottom.RightLegBottomLayer, outlineAlias.leftLeg.LeftLeg, outlineAlias.leftLeg.LeftLegLayer, outlineAlias.leftLegBottom.LeftLegBottom, outlineAlias.leftLegBottom.LeftLegBottomLayer}) do
 									modelPart:setPrimaryTexture("CUSTOM", outlineTexture)
 								end

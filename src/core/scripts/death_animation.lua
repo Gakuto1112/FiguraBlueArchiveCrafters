@@ -99,7 +99,7 @@ local DeathAnimation = {
         end
 
         parent:addChild(ModelUtils:copyModel(ModelAlias.alias.avatar.root))
-		ModelAlias.alias.dummy_avatar = ModelAlias.getAliasTable(parent.Avatar)
+		ModelAlias.alias.dummy_avatar = ModelAlias:getAliasTable(parent.Avatar)
         ModelAlias.alias.dummy_avatar.rightEye:setUVPixels(BlueArchiveCharacter.faceParts.rightEye.TIRED:copy():scale(6))
         ModelAlias.alias.dummy_avatar.leftEye:setUVPixels(BlueArchiveCharacter.faceParts.leftEye.TIRED:copy():scale(6))
         ModelAlias.alias.dummy_avatar.halo:setRot(Halo.initialHaloRot, 0, 0)

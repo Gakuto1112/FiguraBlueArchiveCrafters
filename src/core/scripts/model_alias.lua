@@ -42,46 +42,51 @@ local ModelAlias = {
 	---初期化関数
 	---@param self ModelAlias
 	init = function (self)
-		self:generateAvatarAlias()
+		self.alias.avatar = self:getAliasTable(models.models.main.Avatar)
 	end;
 
-	---アバターのルートモデルパーツからエイリアステーブルを生成する。
+	---アバターのルートモデルパーツからエイリアステーブルを生成し返す。
 	---@param self ModelAlias
-	generateAvatarAlias = function (self)
-		self.alias.avatar = {}
+	---@param rootModel ModelPart アバターのルートモデルパーツ（例: models.models.main.Avatar）
+	---@return table<ModelAlias.AliasType, ModelPart> aliasTable 生成されたエイリアステーブル
+	getAliasTable = function (self, rootModel)
+		---@type table<ModelAlias.AliasType, ModelPart>
+		local aliasTable = {}
 
-		self.alias.avatar.root = models.models.main.Avatar
-		self.alias.avatar.head = self.alias.avatar.root.Head
-		self.alias.avatar.faceParts = self.alias.avatar.head.FaceParts
-		self.alias.avatar.rightEye = self.alias.avatar.faceParts.Eyes.RightEye
-		self.alias.avatar.rightSpyglassPivot = self.alias.avatar.faceParts.Eyes.RightSpyglassPivot
-		self.alias.avatar.leftEye = self.alias.avatar.faceParts.Eyes.LeftEye
-		self.alias.avatar.leftSpyglassPivot = self.alias.avatar.faceParts.Eyes.LeftSpyglassPivot
-		self.alias.avatar.mouth = self.alias.avatar.faceParts.Mouth
-		self.alias.avatar.halo = self.alias.avatar.head.Halo
-		self.alias.avatar.helmetItemPivot = self.alias.avatar.head.HelmetItemPivot
-		self.alias.avatar.upperBody = self.alias.avatar.root.UpperBody
-		self.alias.avatar.body = self.alias.avatar.upperBody.Body
-		self.alias.avatar.arms = self.alias.avatar.upperBody.Arms
-		self.alias.avatar.rightArm = self.alias.avatar.arms.RightArm
-		self.alias.avatar.rightArmBottom = self.alias.avatar.rightArm.RightArmBottom
-		self.alias.avatar.rightItemPivot = self.alias.avatar.rightArmBottom.RightItemPivot
-		self.alias.avatar.leftArm = self.alias.avatar.arms.LeftArm
-		self.alias.avatar.leftArmBottom = self.alias.avatar.leftArm.LeftArmBottom
-		self.alias.avatar.leftItemPivot = self.alias.avatar.leftArmBottom.LeftItemPivot
-		self.alias.avatar.rightElytraPivot = self.alias.avatar.upperBody.RightElytraPivot
-		self.alias.avatar.leftElytraPivot = self.alias.avatar.upperBody.LeftElytraPivot
-		self.alias.avatar.gun = self.alias.avatar.body.Gun
-		if self.alias.avatar.gun ~= nil then
-			self.alias.avatar.muzzleAnchor = self.alias.avatar.gun.MuzzleAnchor
+		aliasTable.root = rootModel
+		aliasTable.head = self:pathToModelPart("head", aliasTable.root) or aliasTable.root.Head
+		aliasTable.faceParts = self:pathToModelPart("faceParts", aliasTable.root) or aliasTable.head.FaceParts
+		aliasTable.rightEye = self:pathToModelPart("rightEye", aliasTable.root) or aliasTable.faceParts.Eyes.RightEye
+		aliasTable.rightSpyglassPivot = self:pathToModelPart("rightSpyglassPivot", aliasTable.root) or aliasTable.faceParts.Eyes.RightSpyglassPivot
+		aliasTable.leftEye = self:pathToModelPart("leftEye", aliasTable.root) or aliasTable.faceParts.Eyes.LeftEye
+		aliasTable.leftSpyglassPivot = self:pathToModelPart("leftSpyglassPivot", aliasTable.root) or aliasTable.faceParts.Eyes.LeftSpyglassPivot
+		aliasTable.mouth = self:pathToModelPart("mouth", aliasTable.root) or aliasTable.faceParts.Mouth
+		aliasTable.halo = self:pathToModelPart("halo", aliasTable.root) or aliasTable.head.Halo
+		aliasTable.helmetItemPivot = self:pathToModelPart("helmetItemPivot", aliasTable.root) or aliasTable.head.HelmetItemPivot
+		aliasTable.upperBody = self:pathToModelPart("upperBody", aliasTable.root) or aliasTable.root.UpperBody
+		aliasTable.body = self:pathToModelPart("body", aliasTable.root) or aliasTable.upperBody.Body
+		aliasTable.arms = self:pathToModelPart("arms", aliasTable.root) or aliasTable.upperBody.Arms
+		aliasTable.rightArm = self:pathToModelPart("rightArm", aliasTable.root) or aliasTable.arms.RightArm
+		aliasTable.rightArmBottom = self:pathToModelPart("rightArmBottom", aliasTable.root) or aliasTable.rightArm.RightArmBottom
+		aliasTable.rightItemPivot = self:pathToModelPart("rightItemPivot", aliasTable.root) or aliasTable.rightArmBottom.RightItemPivot
+		aliasTable.leftArm = self:pathToModelPart("leftArm", aliasTable.root) or aliasTable.arms.LeftArm
+		aliasTable.leftArmBottom = self:pathToModelPart("leftArmBottom", aliasTable.root) or aliasTable.leftArm.LeftArmBottom
+		aliasTable.leftItemPivot = self:pathToModelPart("leftItemPivot", aliasTable.root) or aliasTable.leftArmBottom.LeftItemPivot
+		aliasTable.rightElytraPivot = self:pathToModelPart("rightElytraPivot", aliasTable.root) or aliasTable.upperBody.RightElytraPivot
+		aliasTable.leftElytraPivot = self:pathToModelPart("leftElytraPivot", aliasTable.root) or aliasTable.upperBody.LeftElytraPivot
+		aliasTable.gun = self:pathToModelPart("gun", aliasTable.root) or aliasTable.body.Gun
+		if aliasTable.gun ~= nil then
+			aliasTable.muzzleAnchor = self:pathToModelPart("muzzleAnchor", aliasTable.root) or aliasTable.gun.MuzzleAnchor
 		end
-		self.alias.avatar.lowerBody = self.alias.avatar.root.LowerBody
-		self.alias.avatar.legs = self.alias.avatar.lowerBody.Legs
-		self.alias.avatar.rightLeg = self.alias.avatar.legs.RightLeg
-		self.alias.avatar.rightLegBottom = self.alias.avatar.rightLeg.RightLegBottom
-		self.alias.avatar.leftLeg = self.alias.avatar.legs.LeftLeg
-		self.alias.avatar.leftLegBottom = self.alias.avatar.leftLeg.LeftLegBottom
-		self.alias.avatar.nameplate = self.alias.avatar.root.NameplateAnchor
+		aliasTable.lowerBody = self:pathToModelPart("lowerBody", aliasTable.root) or aliasTable.root.LowerBody
+		aliasTable.legs = self:pathToModelPart("legs", aliasTable.root) or aliasTable.lowerBody.Legs
+		aliasTable.rightLeg = self:pathToModelPart("rightLeg", aliasTable.root) or aliasTable.legs.RightLeg
+		aliasTable.rightLegBottom = self:pathToModelPart("rightLegBottom", aliasTable.root) or aliasTable.rightLeg.RightLegBottom
+		aliasTable.leftLeg = self:pathToModelPart("leftLeg", aliasTable.root) or aliasTable.legs.LeftLeg
+		aliasTable.leftLegBottom = self:pathToModelPart("leftLegBottom", aliasTable.root) or aliasTable.leftLeg.LeftLegBottom
+		aliasTable.nameplate = self:pathToModelPart("nameplate", aliasTable.root) or aliasTable.root.NameplateAnchor
+
+		return aliasTable
 	end;
 
 	---アバターのエイリアステーブルに登録するモデルパーツを変更する。
