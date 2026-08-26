@@ -73,6 +73,7 @@ local Locale = {
 		if host:isHost() then
 			EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
 				models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(Locale:getLocalizedText("action_wheel.gui.update_check.locale_version"):format(self.localeVersion or "v?.?.?"))
+				self.localeDataCheckLeft = 0
 			end)
 
 			EventManager.events["ON_LOCALE_READY"]:register(function ()
@@ -339,10 +340,15 @@ local Locale = {
 			self:fetchLocaleIndex(function (status, data)
 				local cacheVersion = Config:loadConfig("PUBLIC", "locale.version", "v0.0.0")
 				self.localeVersion = cacheVersion
-				if status == "SUCCESS" then
+				if status ~= "SUCCESS" then
+					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_index"):format(status))
+					ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
+				end
+
+				if type(data) == "table" then
 					local indexVersion = data["localeVersion"]
 					---@cast cacheVersion string
-					if cacheVersion == nil or StringUtils.isNewerVersion(indexVersion, cacheVersion) then
+					if cacheVersion == nil and indexVersion ~= nil or StringUtils.isNewerVersion(indexVersion, cacheVersion) then
 						self:flushCache()
 						file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data), "utf8")
 						self.localeVersion = indexVersion
@@ -365,19 +371,19 @@ local Locale = {
 					else
 						self.localeDataCheckLeft = self.localeDataCheckLeft - 2
 						if self.localeDataCheckLeft == 0 then
+							ActionWheelConfig.isLocaleReloadedByAction = false
 							EventManager.events["ON_LOCALE_READY"]:fire()
 						end
 					end
 				else
-					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_index"):format(status))
+					-- フェッチ失敗。キャッシュもなし。
 					ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
 					ActionWheelConfig.isLocaleReloadedByAction = false
 					EventManager.events["ON_LOCALE_READY"]:fire()
 				end
+				-- en_usロケールの取得
+				self:fetchLocaleDataSet("en_us")
 			end)
-
-			-- en_usロケールの取得
-			self:fetchLocaleDataSet("en_us")
 		else
 			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
 			ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
