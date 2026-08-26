@@ -966,7 +966,7 @@ local BlueArchiveCharacter = {
 		ModelAlias.alias.avatar.root:newPart("HeadPivot", "None")
 		ModelAlias.alias.avatar.root.HeadPivot:setPivot(ModelAlias.alias.avatar.head:getPivot())
 		ModelUtils.moveTo(ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.root.HeadPivot, ModelAlias.alias.avatar.root)
-		ModelAlias.alias.avatar.head = ModelAlias.alias.avatar.root.HeadPivot.Head
+		ModelAlias:modifyAvatarAlias("head", ModelAlias.alias.avatar.root.HeadPivot.Head)
 
 		HoshinoShield:init()
 		WhaleFloat:enable()

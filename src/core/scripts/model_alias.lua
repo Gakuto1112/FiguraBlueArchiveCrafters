@@ -1,39 +1,43 @@
----@class (exact) ModelAliasTable モデルパーツのエイリアスを格納するテーブル
----@field root ModelPart アバターのルートパーツ
----@field head ModelPart 頭
----@field faceParts ModelPart 目や口のグループ
----@field rightEye ModelPart 右目
----@field rightSpyglassPivot ModelPart 右目で望遠鏡を覗くときの望遠鏡の接点
----@field leftEye ModelPart 左目
----@field leftSpyglassPivot ModelPart 左目で望遠鏡を覗くときの望遠鏡の接点
----@field mouth ModelPart 口
----@field halo ModelPart ヘイロー（頭の輪っか）
----@field helmetItemPivot ModelPart 頭にかぶったアイテム（ヘルメットではない）の接点
----@field upperBody ModelPart 上半身
----@field body ModelPart 体
----@field arms ModelPart 両腕のグループ
----@field rightArm ModelPart 右腕の上部
----@field rightArmBottom ModelPart 右腕の下部
----@field rightItemPivot ModelPart 右手に持ったアイテムの接点
----@field leftArm ModelPart 左腕の上部
----@field leftArmBottom ModelPart 左腕の下部
----@field leftItemPivot ModelPart 左手に持ったアイテムの接点
----@field rightElytraPivot ModelPart エリトラの右翼の接点
----@field leftElytraPivot ModelPart エリトラの左翼の接点
----@field gun ModelPart 固有武器
----@field muzzleAnchor ModelPart 固有武器のマズル部分
----@field lowerBody ModelPart 下半身
----@field legs ModelPart 両脚のグループ
----@field rightLeg ModelPart 右脚の上部
----@field rightLegBottom ModelPart 右脚の下部
----@field leftLeg ModelPart 左脚の上部
----@field leftLegBottom ModelPart 左脚の下部
----@field nameplate ModelPart ネームプレートのアンカー
+---@alias ModelAlias.AliasType
+---| "root" # アバターのルートパーツ
+---| "head" # 頭
+---| "faceParts" # 目や口のグループ
+---| "rightEye" # 右目
+---| "rightSpyglassPivot" # 右目で望遠鏡を覗くときの望遠鏡の接点
+---| "leftEye" # 左目
+---| "leftSpyglassPivot" # 左目で望遠鏡を覗くときの望遠鏡の接点
+---| "mouth" # 口
+---| "halo" # ヘイロー（頭の輪っか）
+---| "helmetItemPivot" # 頭にかぶったアイテム（ヘルメットではない）の接点
+---| "upperBody" # 上半身
+---| "body" # 体
+---| "arms" # 両腕のグループ
+---| "rightArm" # 右腕の上部
+---| "rightArmBottom" # 右腕の下部
+---| "rightItemPivot" # 右手に持ったアイテムの接点
+---| "leftArm" # 左腕の上部
+---| "leftArmBottom" # 左腕の下部
+---| "leftItemPivot" # 左手に持ったアイテムの接点
+---| "rightElytraPivot" # エリトラの右翼の接点
+---| "leftElytraPivot" # エリトラの左翼の接点
+---| "gun" # 固有武器
+---| "muzzleAnchor" # 固有武器のマズル部分
+---| "lowerBody" # 下半身
+---| "legs" # 両脚のグループ
+---| "rightLeg" # 右脚の上部
+---| "rightLegBottom" # 右脚の下部
+---| "leftLeg" # 左脚の上部
+---| "leftLegBottom" # 左脚の下部
+---| "nameplate" # ネームプレートのアンカー
 
 ---@class (exact) ModelAlias モデルパーツのエイリアスを管理するクラス
----@field package alias { avatar: ModelAliasTable, dummy_avatar: ModelAliasTable } モデルのエイリアスを格納するテーブル
+---@field alias { avatar: table<ModelAlias.AliasType, ModelPart>, dummy_avatar: table<ModelAlias.AliasType, ModelPart> } モデルのエイリアスを格納するテーブル
+---@field package defaultAvatarAlias table<ModelAlias.AliasType, ModelPart> アバターのデフォルトのエイリアスを格納するテーブル
+---@field package aliasPath table<ModelAlias.AliasType, string[]> 変更されたエイリアスのパスを格納するテーブル
 local ModelAlias = {
 	alias = {};
+	defaultAvatarAlias = {};
+	aliasPath = {};
 
 	---初期化関数
 	---@param self ModelAlias
@@ -44,7 +48,6 @@ local ModelAlias = {
 	---アバターのルートモデルパーツからエイリアステーブルを生成する。
 	---@param self ModelAlias
 	generateAvatarAlias = function (self)
-		---@diagnostic disable-next-line: missing-fields
 		self.alias.avatar = {}
 
 		self.alias.avatar.root = models.models.main.Avatar
@@ -79,6 +82,27 @@ local ModelAlias = {
 		self.alias.avatar.leftLeg = self.alias.avatar.legs.LeftLeg
 		self.alias.avatar.leftLegBottom = self.alias.avatar.leftLeg.LeftLegBottom
 		self.alias.avatar.nameplate = self.alias.avatar.root.NameplateAnchor
+	end;
+
+	---アバターのエイリアステーブルに登録するモデルパーツを変更する。
+	---@param self ModelAlias
+	---@param aliasType ModelAlias.AliasType 変更対象エイリアスの種類
+	---@param modelPart ModelPart 変更先のモデルパーツ。必ず先祖にアバタールートが含まれる必要がある。
+	modifyAvatarAlias = function (self, aliasType, modelPart)
+		self.defaultAvatarAlias[aliasType] = self.alias.avatar[aliasType]
+		self.alias.avatar[aliasType] = modelPart
+
+		self.aliasPath[aliasType] = {}
+		local currentModel = modelPart
+		while true do
+			table.insert(self.aliasPath[aliasType], 1, currentModel:getName())
+			currentModel = currentModel:getParent()
+			if currentModel == self.alias.avatar.root then
+				break
+			elseif currentModel == nil then
+				error("The model part must be a descendant of the avatar root.")
+			end
+		end
 	end;
 }
 
