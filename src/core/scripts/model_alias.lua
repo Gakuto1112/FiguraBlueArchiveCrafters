@@ -31,58 +31,54 @@
 ---@field nameplate ModelPart ネームプレートのアンカー
 
 ---@class (exact) ModelAlias モデルパーツのエイリアスを管理するクラス
----@field alias { avatar: ModelAliasTable, dummy_avatar: ModelAliasTable } モデルのエイリアスを格納するテーブル
+---@field package alias { avatar: ModelAliasTable, dummy_avatar: ModelAliasTable } モデルのエイリアスを格納するテーブル
 local ModelAlias = {
 	alias = {};
 
 	---初期化関数
 	---@param self ModelAlias
 	init = function (self)
-		self.alias.avatar = self.getAliasTable(models.models.main.Avatar)
+		self:generateAvatarAlias()
 	end;
 
-	---アバターのルートモデルパーツからエイリアステーブルを生成し返す
-	---@param rootModel ModelPart アバターのルートモデルパーツ（例: models.models.main.Avatar）
-	---@return ModelAliasTable aliasTable 生成されたエイリアステーブル
-	getAliasTable = function (rootModel)
-		---@type ModelAliasTable
+	---アバターのルートモデルパーツからエイリアステーブルを生成する。
+	---@param self ModelAlias
+	generateAvatarAlias = function (self)
 		---@diagnostic disable-next-line: missing-fields
-		local aliasTable = {}
+		self.alias.avatar = {}
 
-		aliasTable.root = rootModel
-		aliasTable.head = aliasTable.root.Head
-		aliasTable.faceParts = aliasTable.head.FaceParts
-		aliasTable.rightEye = aliasTable.faceParts.Eyes.RightEye
-		aliasTable.rightSpyglassPivot = aliasTable.faceParts.Eyes.RightSpyglassPivot
-		aliasTable.leftEye = aliasTable.faceParts.Eyes.LeftEye
-		aliasTable.leftSpyglassPivot = aliasTable.faceParts.Eyes.LeftSpyglassPivot
-		aliasTable.mouth = aliasTable.faceParts.Mouth
-		aliasTable.halo = aliasTable.head.Halo
-		aliasTable.helmetItemPivot = aliasTable.head.HelmetItemPivot
-		aliasTable.upperBody = aliasTable.root.UpperBody
-		aliasTable.body = aliasTable.upperBody.Body
-		aliasTable.arms = aliasTable.upperBody.Arms
-		aliasTable.rightArm = aliasTable.arms.RightArm
-		aliasTable.rightArmBottom = aliasTable.rightArm.RightArmBottom
-		aliasTable.rightItemPivot = aliasTable.rightArmBottom.RightItemPivot
-		aliasTable.leftArm = aliasTable.arms.LeftArm
-		aliasTable.leftArmBottom = aliasTable.leftArm.LeftArmBottom
-		aliasTable.leftItemPivot = aliasTable.leftArmBottom.LeftItemPivot
-		aliasTable.rightElytraPivot = aliasTable.upperBody.RightElytraPivot
-		aliasTable.leftElytraPivot = aliasTable.upperBody.LeftElytraPivot
-		aliasTable.gun = aliasTable.body.Gun
-		if aliasTable.gun ~= nil then
-			aliasTable.muzzleAnchor = aliasTable.gun.MuzzleAnchor
+		self.alias.avatar.root = models.models.main.Avatar
+		self.alias.avatar.head = self.alias.avatar.root.Head
+		self.alias.avatar.faceParts = self.alias.avatar.head.FaceParts
+		self.alias.avatar.rightEye = self.alias.avatar.faceParts.Eyes.RightEye
+		self.alias.avatar.rightSpyglassPivot = self.alias.avatar.faceParts.Eyes.RightSpyglassPivot
+		self.alias.avatar.leftEye = self.alias.avatar.faceParts.Eyes.LeftEye
+		self.alias.avatar.leftSpyglassPivot = self.alias.avatar.faceParts.Eyes.LeftSpyglassPivot
+		self.alias.avatar.mouth = self.alias.avatar.faceParts.Mouth
+		self.alias.avatar.halo = self.alias.avatar.head.Halo
+		self.alias.avatar.helmetItemPivot = self.alias.avatar.head.HelmetItemPivot
+		self.alias.avatar.upperBody = self.alias.avatar.root.UpperBody
+		self.alias.avatar.body = self.alias.avatar.upperBody.Body
+		self.alias.avatar.arms = self.alias.avatar.upperBody.Arms
+		self.alias.avatar.rightArm = self.alias.avatar.arms.RightArm
+		self.alias.avatar.rightArmBottom = self.alias.avatar.rightArm.RightArmBottom
+		self.alias.avatar.rightItemPivot = self.alias.avatar.rightArmBottom.RightItemPivot
+		self.alias.avatar.leftArm = self.alias.avatar.arms.LeftArm
+		self.alias.avatar.leftArmBottom = self.alias.avatar.leftArm.LeftArmBottom
+		self.alias.avatar.leftItemPivot = self.alias.avatar.leftArmBottom.LeftItemPivot
+		self.alias.avatar.rightElytraPivot = self.alias.avatar.upperBody.RightElytraPivot
+		self.alias.avatar.leftElytraPivot = self.alias.avatar.upperBody.LeftElytraPivot
+		self.alias.avatar.gun = self.alias.avatar.body.Gun
+		if self.alias.avatar.gun ~= nil then
+			self.alias.avatar.muzzleAnchor = self.alias.avatar.gun.MuzzleAnchor
 		end
-		aliasTable.lowerBody = aliasTable.root.LowerBody
-		aliasTable.legs = aliasTable.lowerBody.Legs
-		aliasTable.rightLeg = aliasTable.legs.RightLeg
-		aliasTable.rightLegBottom = aliasTable.rightLeg.RightLegBottom
-		aliasTable.leftLeg = aliasTable.legs.LeftLeg
-		aliasTable.leftLegBottom = aliasTable.leftLeg.LeftLegBottom
-		aliasTable.nameplate = aliasTable.root.NameplateAnchor
-
-		return aliasTable
+		self.alias.avatar.lowerBody = self.alias.avatar.root.LowerBody
+		self.alias.avatar.legs = self.alias.avatar.lowerBody.Legs
+		self.alias.avatar.rightLeg = self.alias.avatar.legs.RightLeg
+		self.alias.avatar.rightLegBottom = self.alias.avatar.rightLeg.RightLegBottom
+		self.alias.avatar.leftLeg = self.alias.avatar.legs.LeftLeg
+		self.alias.avatar.leftLegBottom = self.alias.avatar.leftLeg.LeftLegBottom
+		self.alias.avatar.nameplate = self.alias.avatar.root.NameplateAnchor
 	end;
 }
 
