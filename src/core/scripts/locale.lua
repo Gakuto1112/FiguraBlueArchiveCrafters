@@ -76,10 +76,6 @@ local Locale = {
 				self.localeDataCheckLeft = 0
 			end)
 
-			EventManager.events["ON_LOCALE_READY"]:register(function ()
-				self.localeDataCheckLeft = 0
-			end)
-
 			EventManager.events["ON_LOCALE_READY"]:fire()
 			self:initializeLocale()
 		end
