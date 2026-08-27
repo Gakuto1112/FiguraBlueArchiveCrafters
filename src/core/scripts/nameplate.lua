@@ -92,7 +92,7 @@ local Nameplate = {
             end
         end)
 
-		EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
+		EventManager.events["ON_LOCALE_READY"]:register(function ()
 			self:setChangeDisplayNameActionTitle()
 			self.setName(self.getDisplayNameData(self.nameDisplayType, self.shouldShowClubName))
 		end)

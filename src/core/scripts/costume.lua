@@ -58,7 +58,7 @@ local Costume = {
 			Portrait:generatePortraitModel()
 		end
 
-		EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
+		EventManager.events["ON_LOCALE_READY"]:register(function ()
 			if BlueArchiveCharacter.costume.isAltCostumeEnabled then
 				self.changeAltCostumeAction
 					:setTitle(Locale:getLocalizedText("action_wheel.main_page.change_alt_costume.title") .. "§c" .. Locale:getLocalizedText("action_wheel.action.toggle_off"))

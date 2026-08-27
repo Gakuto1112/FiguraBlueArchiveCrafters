@@ -184,7 +184,7 @@ local ActionWheelConfig = {
 				end
 			end)
 
-			EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
+			EventManager.events["ON_LOCALE_READY"]:register(function ()
 				self.openAvatarConfigAction:setTitle(Locale:getLocalizedText("action_wheel.main_page.open_avatar_config.title"))
 
 				if BlueArchiveCharacter.actionWheelConfig.isVehicleReplacementEnabled then

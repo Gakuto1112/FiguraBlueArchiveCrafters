@@ -88,7 +88,7 @@ local ActionWheelGui = {
 				models.models.action_wheel_gui.Gui:setVisible(false)
 			end)
 
-			EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
+			EventManager.events["ON_LOCALE_READY"]:register(function ()
 				models.models.action_wheel_gui.Gui.BubbleGuide:getTask("action_wheel.gui.bubble_guide.title"):setText(Locale:getLocalizedText("action_wheel.gui.bubble_guide.title"))
 				models.models.action_wheel_gui.Gui.ExSkillGuide:getTask("action_wheel.gui.ex_skill_guide.title"):setText(Locale:getLocalizedText("action_wheel.gui.ex_skill_guide.title"))
 				self.setGuiText()

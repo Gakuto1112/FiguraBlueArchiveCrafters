@@ -220,7 +220,7 @@ local Armor = {
 			self.armorSlotItemsPrev = self.armorSlotItems
 		end)
 
-		EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
+		EventManager.events["ON_LOCALE_READY"]:register(function ()
 			self.toggleArmorVisibilityAction
 				:setTitle(Locale:getLocalizedText("action_wheel.main_page.toggle_armor_visibility.title") .. "§c" .. Locale:getLocalizedText("action_wheel.action.toggle_off"))
 				:setToggleTitle(Locale:getLocalizedText("action_wheel.main_page.toggle_armor_visibility.title") .. "§a" .. Locale:getLocalizedText("action_wheel.action.toggle_on"))

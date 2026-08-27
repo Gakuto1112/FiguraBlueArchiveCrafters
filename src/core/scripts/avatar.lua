@@ -52,10 +52,6 @@ AbstractEvent = require("scripts.events.abstract_event")
 ---@type EventManager
 EventManager = require("scripts.events.event_manager")
 
----ロケールデータ更新イベント
----@type LocaleRefreshEvent
-LocaleRefreshEvent = require("scripts.events.locale_refresh_event")
-
 ---ロケールデータ準備完了イベント
 ---@type LocaleReadyEvent
 LocaleReadyEvent = require("scripts.events.locale_ready_event")
@@ -203,7 +199,6 @@ HeadBlock:init()
 Halo:init()
 
 events.ENTITY_INIT:register(function ()
-	LocaleRefreshEvent:init()
 	LocaleReadyEvent:init()
 	ConfigSyncEvent:init()
 	ActionWheelOpenEvent:init()

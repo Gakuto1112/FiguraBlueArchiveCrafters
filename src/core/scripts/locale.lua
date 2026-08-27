@@ -71,7 +71,7 @@ local Locale = {
 	---@param self Locale
 	init = function (self)
 		if host:isHost() then
-			EventManager.events["ON_LOCALE_REFRESH"]:register(function ()
+			EventManager.events["ON_LOCALE_READY"]:register(function ()
 				models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(Locale:getLocalizedText("action_wheel.gui.update_check.locale_version"):format(self.localeVersion or "v?.?.?"))
 				self.localeDataCheckLeft = 0
 			end)
@@ -80,7 +80,7 @@ local Locale = {
 				self.localeDataCheckLeft = 0
 			end)
 
-			EventManager.events["ON_LOCALE_REFRESH"]:fire()
+			EventManager.events["ON_LOCALE_READY"]:fire()
 			self:initializeLocale()
 		end
 
@@ -92,7 +92,7 @@ local Locale = {
 					self.locales[locale] = {}
 					self:fetchLocaleDataSet(locale)
 				end
-				EventManager.events["ON_LOCALE_REFRESH"]:fire()
+				EventManager.events["ON_LOCALE_READY"]:fire()
 				self.localePrev = locale
 			end
 		end)
@@ -287,7 +287,7 @@ local Locale = {
 				for key, value in pairs(data) do
 					self.locales[locale][key] = value
 				end
-				EventManager.events["ON_LOCALE_REFRESH"]:fire()
+				EventManager.events["ON_LOCALE_READY"]:fire()
 			elseif locale == "en_us" then
 				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
 				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
@@ -306,7 +306,7 @@ local Locale = {
 				for key, value in pairs(data) do
 					self.locales[locale][key] = value
 				end
-				EventManager.events["ON_LOCALE_REFRESH"]:fire()
+				EventManager.events["ON_LOCALE_READY"]:fire()
 			elseif locale == "en_us" then
 				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
 				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
@@ -419,7 +419,7 @@ local Locale = {
 	flushCache = function (self)
 		if self.checkAvailability() then
 			self:initializeLocaleDirectory()
-			EventManager.events["ON_LOCALE_REFRESH"]:fire()
+			EventManager.events["ON_LOCALE_READY"]:fire()
 		else
 			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
 			ActionWheelConfig.isLocaleDataFetchErrorOccurred = true

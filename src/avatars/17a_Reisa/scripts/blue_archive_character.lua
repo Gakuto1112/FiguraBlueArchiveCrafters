@@ -397,13 +397,13 @@ local BlueArchiveCharacter = {
 					local wordIndex = math.random(1, 6)
 					placementObject.textTask:setText(Locale:getLocalizedText("placement_object.message_" .. wordIndex) .. Locale:getLocalizedText("placement_object.message_suffix"))
 
-					EventManager.events["ON_LOCALE_REFRESH"]:register(function (...)
+					EventManager.events["ON_LOCALE_READY"]:register(function (...)
 						placementObject.textTask:setText(Locale:getLocalizedText("placement_object.message_" .. wordIndex) .. Locale:getLocalizedText("placement_object.message_suffix"))
 					end, placementObject.uuid)
 				end;
 
 				onDeinit = function (_, placementObject)
-					EventManager.events["ON_LOCALE_REFRESH"]:remove(placementObject.uuid)
+					EventManager.events["ON_LOCALE_READY"]:remove(placementObject.uuid)
 					---@diagnostic disable-next-line: invisible
 					placementObject.object.TextArea:removeTask()
 				end;
