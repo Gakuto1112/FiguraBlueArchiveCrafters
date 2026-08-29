@@ -425,7 +425,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Mic, models.models.ex_skill_1.Stage, ModelAlias.alias.avatar.rightArmBottom.RightStickPivot, ModelAlias.alias.avatar.leftArmBottom.LeftStickPivot};
+			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Mic, models.models.ex_skill_1.Stage, ModelAlias.alias.avatar.head.Sweats, ModelAlias.alias.avatar.rightArmBottom.RightStickPivot, ModelAlias.alias.avatar.leftArmBottom.LeftStickPivot};
 
 			animations = {"main", "ex_skill_1"};
 
