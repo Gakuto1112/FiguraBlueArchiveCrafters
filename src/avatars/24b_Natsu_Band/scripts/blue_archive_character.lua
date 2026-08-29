@@ -18,6 +18,7 @@
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
 ---| "CLOSED2" # 閉じた目2
 ---| "ANGRY" # 怒った目
+---| "CENTER" # 少し反対側を見る目
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -38,6 +39,7 @@
 ---| "TRIANGLE" # 三角口
 ---| "HAT" # への口
 ---| "HAPPY" # 幸せのぐじゅぐじゅ口
+---| "SMALL" # 小さく開いた口
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -282,6 +284,7 @@ local BlueArchiveCharacter = {
 			CLOSED = vectors.vec2(4, 0); --必須
 			CLOSED2 = vectors.vec2(6, 0);
 			ANGRY = vectors.vec2(8, 0);
+			CENTER = vectors.vec2(12, 0);
 		};
 
 		leftEye = {
@@ -301,6 +304,7 @@ local BlueArchiveCharacter = {
 			TRIANGLE = vectors.vec2(0, 0);
 			HAT = vectors.vec2(1, 0);
 			HAPPY = vectors.vec2(2, 0);
+			SMALL = vectors.vec2(3, 0);
 		};
 	};
 
@@ -462,18 +466,142 @@ local BlueArchiveCharacter = {
 							modelPart:getTask("ex_skill_item_" .. i):setVisible(true)
 						end
 					end
+
+					self.exSkill.primary.KazusaMouthChangeCount = math.random(2, 6)
+					FaceParts:setEmotion("CENTER", "NORMAL", "SMALL", 11, true)
 				end;
 
-				onPostAnimation = function ()
+				onAnimationTick = function (self, tick)
+					if tick == 4 then
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye:setUVPixels(12, 0)
+					elseif tick == 9 then
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.LeftEye:setUVPixels(6, 0)
+					elseif tick == 11 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "SMALL", 8, true)
+					elseif tick == 12 then
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye:setUVPixels()
+					elseif tick == 19 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "SMALL", 11, true)
+					elseif tick == 22 then
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye:setUVPixels(12, 0)
+					elseif tick == 24 then
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye:setUVPixels(18, 0)
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.LeftEye:setUVPixels()
+					elseif tick == 30 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 5, true)
+					elseif tick == 35 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "SMALL", 8, true)
+					elseif tick == 42 then
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye:setUVPixels()
+					elseif tick == 43 then
+						FaceParts:setEmotion("CENTER", "NORMAL", "SMALL", 10, true)
+					elseif tick == 44 then
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye:setUVPixels(12, 0)
+					elseif tick == 51 then
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye:setUVPixels()
+					elseif tick == 52 then
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye:setUVPixels()
+					elseif tick == 53 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMALL", 22, true)
+					elseif tick == 72 then
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye:setUVPixels(18, 0)
+					elseif tick == 75 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "SMALL", 6, true)
+					elseif tick == 81 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMALL", 2, true)
+					elseif tick == 83 then
+						FaceParts:setEmotion("CENTER", "NORMAL", "SMALL", 2, true)
+					elseif tick == 85 then
+						FaceParts:setEmotion("CENTER", "NORMAL", "TRIANGLE", 7, true)
+					elseif tick == 89 then
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye:setUVPixels(24, 0)
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye:setUVPixels(18, 0)
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.Mouth:setUVPixels(16, 0)
+					elseif tick == 91 then
+						for _, modelPart in ipairs({models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye}) do
+							modelPart:setUVPixels()
+						end
+					elseif tick == 92 then
+						FaceParts:setEmotion("ANGRY", "ANGRY", "TRIANGLE", 8, true)
+					elseif tick == 93 then
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye:setUVPixels()
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.LeftEye:setUVPixels(6, 0)
+					elseif tick == 100 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "TRIANGLE", 7, true)
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye:setUVPixels(24, 0)
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye:setUVPixels(18, 0)
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.Mouth:setUVPixels()
+						models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.RightEye:setUVPixels(12, 0)
+						models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.LeftEye:setUVPixels(6, 0)
+						models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.Mouth:setUVPixels(16, 0)
+					elseif tick == 105 then
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye:setUVPixels(24, 0)
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.LeftEye:setUVPixels(18, 0)
+					elseif tick == 107 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "TRIANGLE", 11, true)
+					elseif tick == 118 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 47, true)
+					elseif tick == 120 then
+						for _, modelPart in ipairs({models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye}) do
+							modelPart:setUVPixels()
+						end
+					elseif tick == 134 then
+						models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.LeftEye:setUVPixels(12, 0)
+						for _, modelPart in ipairs({models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.RightEye, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.Mouth}) do
+							modelPart:setUVPixels()
+						end
+					elseif tick == 152 then
+						models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.LeftEye:setUVPixels()
+					elseif tick == 165 then
+						FaceParts:setEmotion("ANGRY", "ANGRY", "TRIANGLE", 46, true)
+					elseif tick == 166 then
+						for _, modelPart in ipairs({models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.LeftEye}) do
+							modelPart:setUVPixels()
+						end
+						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.Mouth:setUVPixels(16, 0)
+						models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.Mouth:setUVPixels(32, 0)
+					elseif tick == 168 then
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye:setUVPixels(24, 0)
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye:setUVPixels(18, 0)
+						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.Mouth:setUVPixels(32, 0)
+					end
+
+					if tick < 100 then
+						if self.exSkill.primary.KazusaMouthChangeCount == 0 then
+							self.exSkill.primary.KazusaMouthSate = (self.exSkill.primary.KazusaMouthSate + 1) % 2
+							models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.Mouth:setUVPixels(16 * self.exSkill.primary.KazusaMouthSate, 0)
+
+							self.exSkill.primary.KazusaMouthChangeCount = math.random(2, 6)
+						else
+							self.exSkill.primary.KazusaMouthChangeCount = self.exSkill.primary.KazusaMouthChangeCount - 1
+						end
+					end
+				end;
+
+				onPostAnimation = function (self)
 					for i, modelPart in ipairs({ModelAlias.alias.avatar.rightItemPivot, ModelAlias.alias.avatar.leftItemPivot}) do
 						modelPart:getTask("ex_skill_item_" .. i):setVisible(false)
 					end
+					for _, modelPart in ipairs({models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.Mouth, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.LeftEye, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.Mouth, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.RightEye, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.LeftEye, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.Mouth}) do
+						modelPart:setUVPixels()
+					end
+
+					self.exSkill.primary.KazusaMouthChangeCount = 0
+					self.exSkill.primary.KazusaMouthSate = 0
 				end;
 			};
 
 			---このExスキルが初期化されたかどうか。
 			---@type boolean
 			isInitialized = false;
+
+			---カズサの口を変化させるまでのカウンター
+			---@type integer
+			KazusaMouthChangeCount = 0;
+
+			---カズサの口の状態
+			---@type integer
+			KazusaMouthSate = 0;
 		};
 	};
 
