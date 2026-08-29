@@ -421,7 +421,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa};
+			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Stage};
 
 			animations = {"main", "ex_skill_1"};
 
@@ -441,6 +441,7 @@ local BlueArchiveCharacter = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
 						models.models.ex_skill_1.Drum.DrumChair.ChairTop:setPrimaryTexture("RESOURCE", "textures/block/black_wool.png")
+						models.models.ex_skill_1.Stage:setPrimaryTexture("RESOURCE", "textures/block/gray_concrete.png")
 
 						for i, modelPart in ipairs({ModelAlias.alias.avatar.rightItemPivot, ModelAlias.alias.avatar.leftItemPivot}) do
 							modelPart:newItem("ex_skill_item_" .. i)
