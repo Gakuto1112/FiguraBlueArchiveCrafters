@@ -569,6 +569,16 @@ local BlueArchiveCharacter = {
 							self.exSkill.primary.KazusaMouthChangeCount = self.exSkill.primary.KazusaMouthChangeCount - 1
 						end
 					end
+
+					if (tick >= 13 and tick <= 19 and (tick - 13) % 3 == 0) or (tick >= 27 and tick <= 48 and (tick - 27) % 3 == 0) or tick == 65 or tick == 68 or tick == 70 or tick == 71 or tick == 76 or tick == 103 then
+						models.models.ex_skill_1.Drum.BaseDrum.Tam.SmallTam.SmallTamCore.SmallTamEffects["SmallTamEffect" .. ((tick == 13 or tick == 19 or (tick >= 30 and tick <= 48 and (tick - 30) % 3 == 0) or tick == 68 or tick == 71 or tick == 103) and 1 or 2)]:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE)])
+					end
+					if (tick <= 10 and tick % 3 <= 1) or (tick >= 14 and tick <= 23 and (tick - 14) % 3 == 0) or (tick >= 37 and tick <= 46 and (tick - 37) % 3 == 0) or tick == 52 or tick == 55 or tick == 58 or tick == 60 or tick == 61 or tick == 63 or tick == 66 or tick == 103 then
+						models.models.ex_skill_1.Drum.BaseDrum.Tam.BigTam.BigTamCore.BigTamEffects["BigTamEffect" .. (((tick <= 9 and tick % 3 == 0) or tick == 14 or tick == 20 or tick == 37 or tick == 43 or tick == 52 or tick == 58 or tick == 61 or tick == 66) and 1 or 2)]:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE)])
+					end
+					if tick == 26 or tick == 29 or tick == 32 then
+						models.models.ex_skill_1.Drum.SnareDrum.SnareDrumCore.SnareDrumEffect:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE)])
+					end
 				end;
 
 				onPostAnimation = function (self)
@@ -580,6 +590,10 @@ local BlueArchiveCharacter = {
 					self.exSkill.primary.KazusaMouthSate = 0
 				end;
 			};
+
+			---Exスキル内のエフェクトで使用するカラーパレット
+			---@type Vector3[]
+			EFFECT_COLOR_PALETTE = {vectors.vec3(0.94, 1, 1), vectors.vec3(1, 0.54, 1), vectors.vec3(1, 1, 0.51)};
 
 			---このExスキルが初期化されたかどうか。
 			---@type boolean
