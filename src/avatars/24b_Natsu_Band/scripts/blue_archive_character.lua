@@ -421,19 +421,19 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Stage};
+			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Mic, models.models.ex_skill_1.Stage};
 
 			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
-					rot = vectors.vec3(15, -35, 0);
-					pos = vectors.vec3(25, 26, -39);
+					rot = vectors.vec3(30, 180, 0);
+					pos = vectors.vec3(0, 81.2, -129);
 				};
 
 				fin = {
-					rot = vectors.vec3(30, -25, 0);
-					pos = vectors.vec3(4, 32, 8);
+					rot = vectors.vec3(-10, 180, 0);
+					pos = vectors.vec3(0, 51.7, -8);
 				};
 			};
 
@@ -464,7 +464,7 @@ local BlueArchiveCharacter = {
 					end
 				end;
 
-				onPostAnimation = function (self)
+				onPostAnimation = function ()
 					for i, modelPart in ipairs({ModelAlias.alias.avatar.rightItemPivot, ModelAlias.alias.avatar.leftItemPivot}) do
 						modelPart:getTask("ex_skill_item_" .. i):setVisible(false)
 					end
