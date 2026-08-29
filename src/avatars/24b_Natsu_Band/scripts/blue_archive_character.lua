@@ -441,7 +441,31 @@ local BlueArchiveCharacter = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
 						models.models.ex_skill_1.Drum.DrumChair.ChairTop:setPrimaryTexture("RESOURCE", "textures/block/black_wool.png")
+
+						for i, modelPart in ipairs({ModelAlias.alias.avatar.rightItemPivot, ModelAlias.alias.avatar.leftItemPivot}) do
+							modelPart:newItem("ex_skill_item_" .. i)
+								:setItem("minecraft:stick")
+								:setPos(0, -2, 0)
+								:setRot(-90, 70, -90)
+								:setScale(0.5, 0.5, 0.5)
+						end
+						models.models.ex_skill_1.KeyBoard:newBlock("ex_skill_block_1")
+							:setBlock("minecraft:note_block")
+							:setPos(-28, 0, -8)
+							:setRot(0, 0, 0)
+							:setScale(0.75, 0.75, 0.75)
+
 						self.exSkill.primary.isInitialized = true
+					else
+						for i, modelPart in ipairs({ModelAlias.alias.avatar.rightItemPivot, ModelAlias.alias.avatar.leftItemPivot}) do
+							modelPart:getTask("ex_skill_item_" .. i):setVisible(true)
+						end
+					end
+				end;
+
+				onPostAnimation = function (self)
+					for i, modelPart in ipairs({ModelAlias.alias.avatar.rightItemPivot, ModelAlias.alias.avatar.leftItemPivot}) do
+						modelPart:getTask("ex_skill_item_" .. i):setVisible(false)
 					end
 				end;
 			};
