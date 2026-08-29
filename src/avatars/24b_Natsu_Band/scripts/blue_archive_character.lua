@@ -425,7 +425,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Mic, models.models.ex_skill_1.Stage};
+			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Mic, models.models.ex_skill_1.Stage, ModelAlias.alias.avatar.rightArmBottom.RightStickPivot, ModelAlias.alias.avatar.leftArmBottom.LeftStickPivot};
 
 			animations = {"main", "ex_skill_1"};
 
@@ -447,12 +447,9 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.Drum.DrumChair.ChairTop:setPrimaryTexture("RESOURCE", "textures/block/black_wool.png")
 						models.models.ex_skill_1.Stage:setPrimaryTexture("RESOURCE", "textures/block/gray_concrete.png")
 
-						for i, modelPart in ipairs({ModelAlias.alias.avatar.rightItemPivot, ModelAlias.alias.avatar.leftItemPivot}) do
+						for i, modelPart in ipairs({ModelAlias.alias.avatar.rightArmBottom.RightStickPivot, ModelAlias.alias.avatar.leftArmBottom.LeftStickPivot}) do
 							modelPart:newItem("ex_skill_item_" .. i)
 								:setItem("minecraft:stick")
-								:setPos(0, -2, 0)
-								:setRot(-90, 70, -90)
-								:setScale(0.5, 0.5, 0.5)
 						end
 						models.models.ex_skill_1.KeyBoard:newBlock("ex_skill_block_1")
 							:setBlock("minecraft:note_block")
@@ -461,10 +458,6 @@ local BlueArchiveCharacter = {
 							:setScale(0.75, 0.75, 0.75)
 
 						self.exSkill.primary.isInitialized = true
-					else
-						for i, modelPart in ipairs({ModelAlias.alias.avatar.rightItemPivot, ModelAlias.alias.avatar.leftItemPivot}) do
-							modelPart:getTask("ex_skill_item_" .. i):setVisible(true)
-						end
 					end
 
 					self.exSkill.primary.KazusaMouthChangeCount = math.random(2, 6)
@@ -579,9 +572,6 @@ local BlueArchiveCharacter = {
 				end;
 
 				onPostAnimation = function (self)
-					for i, modelPart in ipairs({ModelAlias.alias.avatar.rightItemPivot, ModelAlias.alias.avatar.leftItemPivot}) do
-						modelPart:getTask("ex_skill_item_" .. i):setVisible(false)
-					end
 					for _, modelPart in ipairs({models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.Mouth, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.LeftEye, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.Mouth, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.RightEye, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.LeftEye, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.Mouth}) do
 						modelPart:setUVPixels()
 					end
