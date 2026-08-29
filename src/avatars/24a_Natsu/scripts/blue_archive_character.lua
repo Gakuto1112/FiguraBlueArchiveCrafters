@@ -542,11 +542,11 @@ local BlueArchiveCharacter = {
 					end
 				end;
 			};
-		};
 
-		---このExスキルが初期化されたかどうか。
-		---@type boolean
-		isInitialized = false;
+			---このExスキルが初期化されたかどうか。
+			---@type boolean
+			isInitialized = false;
+		};
 	};
 
 	costume = {

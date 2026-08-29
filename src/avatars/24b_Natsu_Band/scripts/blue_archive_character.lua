@@ -436,6 +436,19 @@ local BlueArchiveCharacter = {
 					pos = vectors.vec3(4, 32, 8);
 				};
 			};
+
+			callbacks = {
+				onPreAnimation = function (self)
+					if not self.exSkill.primary.isInitialized then
+						models.models.ex_skill_1.Drum.DrumChair.ChairTop:setPrimaryTexture("RESOURCE", "textures/block/black_wool.png")
+						self.exSkill.primary.isInitialized = true
+					end
+				end;
+			};
+
+			---このExスキルが初期化されたかどうか。
+			---@type boolean
+			isInitialized = false;
 		};
 	};
 
