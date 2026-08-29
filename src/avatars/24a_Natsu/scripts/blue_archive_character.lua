@@ -432,7 +432,7 @@ local BlueArchiveCharacter = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
 						models.models.ex_skill_1.Pillagers:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/illager/pillager.png")
-						--models.models.ex_skill_1.AnimationArrow:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/projectiles/arrow.png")
+						models.models.ex_skill_1.AnimationArrow:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/projectiles/arrow.png")
 						ModelAlias.alias.avatar.rightArmBottom.ExSkillItemAnchor1:newItem("ex_skill_1_item_1")
 							:setItem("minecraft:milk_bucket")
 
