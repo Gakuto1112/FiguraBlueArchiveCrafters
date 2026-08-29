@@ -421,9 +421,9 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.Pillagers, models.models.ex_skill_1.AnimationArrow, ModelAlias.alias.avatar.rightArmBottom.ExSkillItemAnchor1};
+			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa};
 
-			animations = {"main", "gun", "shield_item", "ex_skill_1"};
+			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -436,123 +436,7 @@ local BlueArchiveCharacter = {
 					pos = vectors.vec3(4, 32, 8);
 				};
 			};
-
-			callbacks = {
-				onPreAnimation = function (self)
-					if not self.exSkill.primary.isInitialized then
-						models.models.ex_skill_1.Pillagers:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/illager/pillager.png")
-						--models.models.ex_skill_1.AnimationArrow:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/projectiles/arrow.png")
-						ModelAlias.alias.avatar.rightArmBottom.ExSkillItemAnchor1:newItem("ex_skill_1_item_1")
-							:setItem("minecraft:milk_bucket")
-
-						for i = 1, 2 do
-							models.models.ex_skill_1.Pillagers["Pillager"..i]["Pillager"..i.."RightArm"]:newItem("ex_skill_1_pillager_"..i.."_crossbow")
-								:setItem("minecraft:crossbow")
-								:setPos(0, -12, -2)
-								:setRot(0, 0, -135)
-						end
-
-						self.exSkill.primary.isInitialized = true
-					end
-
-					models.models.shield_item.Item:setParentType("None")
-
-					FaceParts:setEmotion("NORMAL", "CENTER", "HAT", 34, true)
-				end;
-
-				onAnimationTick = function (_, tick)
-					if tick == 0 then
-						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.body)
-						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.rightArmBottom.Gun
-						ModelAlias.alias.avatar.gun:setPos()
-						ModelAlias.alias.avatar.gun:setRot()
-						ModelAlias.alias.avatar.gun:setVisible(true)
-					elseif tick == 34 then
-						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 2, true)
-					elseif tick == 36 then
-						FaceParts:setEmotion("NORMAL", "CENTER", "TRIANGLE", 12, true)
-						local playerPos = player:getPos()
-						sounds:playSound("minecraft:item.shield.block", playerPos, 1, 1)
-						sounds:playSound("minecraft:entity.arrow.hit", playerPos, 1, 1)
-					elseif tick == 48 then
-						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 2, true)
-						sounds:playSound("minecraft:entity.player.attack.sweep", player:getPos(), 0.25, 2)
-					elseif tick == 50 then
-						FaceParts:setEmotion("NORMAL", "INVERTED", "HAT", 4, true)
-					elseif tick == 54 then
-						FaceParts:setEmotion("ANGRY", "ANGRY_INVERTED", "HAT", 20, true)
-					elseif tick == 74 then
-						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 3, true)
-					elseif tick == 77 then
-						FaceParts:setEmotion("CLOSED2", "CLOSED2", "TRIANGLE", 5, true)
-					elseif tick == 82 then
-						local shouldLookCamera = math.random() < 0.1
-						ModelAlias.alias.avatar.faceParts.Eyes.EyeShines:setVisible(true)
-						if shouldLookCamera then
-							FaceParts:setEmotion("ANGRY", "ANGRY_CENTER", "TRIANGLE", 31, true)
-							ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos(-0.5, 0, 0)
-						else
-							FaceParts:setEmotion("ANGRY", "ANGRY", "TRIANGLE", 31, true)
-						end
-
-						local playerPos = player:getPos()
-						sounds:playSound("minecraft:entity.player.levelup", playerPos, 1, 1)
-						sounds:playSound("minecraft:entity.item.pickup", playerPos, 1, 1.5)
-					elseif tick == 86 then
-						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.rightArmBottom.ExSkillItemAnchor1)
-						local bodyYaw = player:getBodyYaw()
-						local hasShader = client:hasShaderPack()
-						for i = 1, 17 do
-							particles:newParticle("minecraft:end_rod", anchorPos)
-								:setScale(0.1)
-								:setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 + 30, vectors.rotateAroundAxis(20, vectors.rotateAroundAxis(i * 20, 0, 0.01 + math.random() * 0.02, 0, 0, 0, 1), 1, 0, 0), 0, 1, 0))
-								:setGravity(0)
-								:setColor((math.random() < 0.5 and vectors.vec3(0.993, 0.819, 0.99) or vectors.vec3(0.994, 0.988, 0.721)):scale(hasShader and 0.5 or 1))
-								:setLifetime(40)
-						end
-					end
-
-					if tick <= 76 then
-						local shotChances = {math.random() < 0.05, math.random() < 0.05}
-						if shotChances[1] or shotChances[2] then
-							local bodyYaw = player:getBodyYaw()
-							local playerAnchorPos = player:getPos():copy():add(vectors.rotateAroundAxis(bodyYaw * -1, -0.25, 1, 0, 0, 1, 0))
-							for i = 1, 2 do
-								if shotChances[i] then
-									local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Pillagers["Pillager"..i]["Pillager"..i.."RightArm"]["Pillager"..i.."ArrowAnchor"])
-									local offsetRot = math.random() * 360
-									ExSkillArrowManager:spawn(anchorPos, playerAnchorPos:copy():sub(anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(offsetRot, 0, 1, 0, 0, 0, 1), 0, 1, 0))):normalize())
-
-									sounds:playSound("minecraft:item.crossbow.shoot", anchorPos, 0.5, 1)
-								end
-							end
-						end
-
-						if math.random() < 0.04 then
-							sounds:playSound("minecraft:entity.pillager.ambient", ModelUtils.getModelWorldPos(models.models.ex_skill_1.Pillagers.Pillager1.Pillager1RightArm.Pillager1ArrowAnchor), 0.5, 1)
-						end
-					end
-				end;
-
-				onPostAnimation = function (_, forcedStop)
-					ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
-					ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
-					models.models.shield_item.Item:setParentType("Item")
-					for _, modelPart in ipairs({ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.faceParts.Eyes.EyeShines}) do
-						modelPart:setVisible(false)
-					end
-					ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos()
-
-					if forcedStop then
-						ExSkillArrowManager:removeAll()
-					end
-				end;
-			};
 		};
-
-		---このExスキルが初期化されたかどうか。
-		---@type boolean
-		isInitialized = false;
 	};
 
 	costume = {
