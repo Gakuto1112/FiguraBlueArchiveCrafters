@@ -152,7 +152,7 @@ local ActionWheelConfig = {
 				:setItem("minecraft:compass")
 				:setOnLeftClick(function ()
 					if not net:isNetworkingAllowed() or not net:isLinkAllowed(UpdateChecker.UPDATE_CHECK_ENDPOINT_URI:match("(https?://[^:/]+)")) then
-						print(Locale:getLocalizedText("message.action_wheel_config.update_check.no_permission"):format(UpdateChecker.UPDATE_CHECK_ENDPOINT_URI:match("://([^:/]+)")))
+						print(Locale:getLocalizedText("message.net_utils.not_allowed"):format(UpdateChecker.UPDATE_CHECK_ENDPOINT_URI:match("://([^:/]+)")))
 					elseif UpdateChecker.checkerStatus ~= "CHECKING" then
 						UpdateChecker:checkUpdate()
 					else

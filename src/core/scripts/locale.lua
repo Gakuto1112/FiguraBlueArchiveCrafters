@@ -49,18 +49,9 @@ local Locale = {
 		["action_wheel.gui.update_check.error_invalid_json_syntax"] = "Failed to check for updates - Json parsing failure";
 		["action_wheel.gui.update_check.error_invalid_json"] = "Failed to check for updates - Unexpected Response";
 		["action_wheel.gui.update_check.locale_version"] = "Locale version: %s";
-		["message.label.warn"] = "§e§l[WARN]§r ";
-		["message.label.error"] = "§c§l[ERROR]§r ";
-		["message.net_utils.err_not_allowed"] = "There is no permission to use Figura Networking API or access to the remote endpoint! Please allow Figura Networking API and add the remote domain \"%s\" to the Network Filter in Figura settings!";
-		["message.net_utils.err_network"] = "Failed to send a request to the remote server.";
-		["message.net_utils.err_response"] = "An error code (%d) was responded from the remote server (%s)";
-		["message.locale.err_not_allowed"] = "There is no permission to use Figura File API";
-		["message.locale.err_not_a_file"] = "Expected a file but a directory was specified (%s)";
-		["message.locale.err_invalid_data"] = "Expected %s but fetched %s (%s)";
-		["message.locale.err_io"] = "Failed to operate locale cache file";
-		["message.locale.err_fetch_index"] = "Failed to fetch locale index data! Cannot proceed to localize! Error code: %s";
-		["message.locale.err_fetch_en_us"] = "Failed to fetch default locale data! Cannot proceed to localize! Error code: %s";
-		["message.locale.err_fetch_locale"] = "Failed to fetch current locale data! (%s) Using cached locale or redirecting to \"en_us\" locale! Error code: %s";
+
+		["message.net_utils.not_allowed"] = "§9§l[TIP]§r There is no permission to use Figura Networking API or access to the remote endpoint. Please allow using Figura Networking API and add the remote domain \"§b%s§r\" to the Network Filter in Figura settings.";
+		["message.locale.fail"] = "Failed to fetch locale data. Error code: %s";
 	};
 
 	localeVersion = nil;
@@ -80,7 +71,12 @@ local Locale = {
 				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
 				ActionWheelConfig.isLocaleReloadedByAction = false
 
-				--TODO: エラーコードを元にエラ〜メッセージを表示する。
+				if self.errorCode ~= "SUCCESS" then
+					print(Locale:getLocalizedText("message.locale.fail"):format(self.errorCode))
+					if self.errorCode == "ERR_NOT_ALLOWED" then
+						print(Locale:getLocalizedText("message.net_utils.not_allowed"):format(self.REMOTE_LOCALE_ENDPOINT:match("://([^:/]+)")))
+					end
+				end
 			end)
 
 			EventManager.events["ON_LOCALE_READY"]:fire()
