@@ -438,6 +438,7 @@ local Locale = {
 				self.locales = self.localeDataPrev["locales"]
 				---@diagnostic disable-next-line: assign-type-mismatch
 				self.availableLocales = self.localeDataPrev["availableLocales"]
+				self.localeDataPrev = nil
 			end
 
 			print(Locale:getLocalizedText("message.locale.fail"):format(self.errorCode))
