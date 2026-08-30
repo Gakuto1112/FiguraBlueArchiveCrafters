@@ -14,7 +14,6 @@ local ExSkill1MelodyParticleManager = {
     end;
 
     ---初期化関数
-    ---@param self ExSkill1MelodyParticleManager
     init = function ()
         ---@diagnostic disable-next-line: discard-returns
         models:newPart("script_ex_skill_1_melody_particle", "World")

@@ -420,7 +420,7 @@ local BlueArchiveCharacter = {
 						if host:isHost() then
 							models.models.ex_skill_1.CameraBackground:setVisible(true)
 							local windowSize = client:getWindowSize()
-							local shouldAdjustBackgroundRot = StringUtils.isNewerOrEqualVersion(gameVersion, "1.21")
+							local shouldAdjustBackgroundRot = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.21")
 							events.RENDER:register(function (delta, ctx, matrix)
 								local backgroundPos = vectors.rotateAroundAxis(player:getBodyYaw(delta) + 180, renderer:getCameraOffsetPivot():copy():add(0, 1.62, 0):add(client:getCameraDir():copy():scale(2.15)), 0, 1, 0):scale(16 / 0.9375)
 								models.models.ex_skill_1.CameraBackground:setOffsetPivot(backgroundPos)

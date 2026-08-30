@@ -16,7 +16,6 @@
 ---@field package particleColor integer トレイルのパーティクルの色
 local ExSkillSprite = {
     ---コンストラクタ
-    ---@param self ExSkillSprite
     ---@param objectModel ModelPart スプライトとしてコピーする元のモデルパーツ
     ---@param targetParent ModelPart インスタンスオブジェクトをアタッチする親モデル
     ---@param size number スプライトの大きさ
@@ -30,6 +29,7 @@ local ExSkillSprite = {
     ---@param lifetime integer このインスタンスを破棄するまでの時間
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
     ---@return ExSkillSprite
+    ---@diagnostic disable-next-line: redundant-parameter
     new = function (objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
         local instance = MiscUtils.instantiate(ExSkillSprite, SpawnObject)
 

@@ -32,7 +32,9 @@ local ExSkillSpriteManager = {
     ---@param lifetime integer このインスタンスを破棄するまでの時間
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
     ---@return ExSkillSprite
+    ---@diagnostic disable-next-line: redundant-parameter
     getObject = function (_, objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
+        ---@diagnostic disable-next-line: redundant-parameter
         return ExSkillSprite.new(objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
     end;
 
@@ -50,6 +52,7 @@ local ExSkillSpriteManager = {
     ---@param scaleTracker? ModelPart スプライトの大きさの参照元のモデルパーツ
     ---@param lifetime integer このインスタンスを破棄するまでの時間
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
+    ---@diagnostic disable-next-line: redundant-parameter
     spawn = function (self, objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
         SpawnObjectManager.spawn(self, objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
     end

@@ -486,7 +486,6 @@ local BlueArchiveCharacter = {
 			noteParticleSpawnCount = 0;
 
 			---ハンドベルの音符パーティクルを表示する。
-			---@param self BlueArchiveCharacter
 			spawnHandbellParticles = function ()
 				local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.leftArmBottom.Handbell.Camera.HandbellEffect1)
 				for _ = 1, 5 do

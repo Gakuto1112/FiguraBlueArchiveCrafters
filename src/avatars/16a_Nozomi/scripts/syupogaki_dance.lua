@@ -3,7 +3,7 @@
 ---| "STANDBY" # スタンバイ状態
 ---| "PLAYING" # ダンス再生中
 
----@class (exact) SyupogakiDance : AvatarModule シュポガキダンスを制御するクラス
+---@class (exact) SyupogakiDance シュポガキダンスを制御するクラス
 ---@field public danceState SyupogakiDance.DanceState シュポガキダンスの状態
 ---@field package isHost boolean このアバターが親かどうか
 ---@field package offsetPos Vector3 ダンスを行う位置のオフセット

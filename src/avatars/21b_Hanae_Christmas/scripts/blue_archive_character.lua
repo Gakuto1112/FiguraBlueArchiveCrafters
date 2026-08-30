@@ -390,6 +390,7 @@ local BlueArchiveCharacter = {
 						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.rightItemPivot)
 						local bodyYaw = player:getBodyYaw()
 						for _ = 1, 6 do
+							---@diagnostic disable-next-line: redundant-parameter
 							ExSkillSpriteManager:spawn(models.models.ex_skill_1["Gift" .. math.random(1, 5)], models.script_ex_skill_sprites, 1, nil, anchorPos, vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 10 - 5, 3, 0, 0, 1, 0), vectors.vec3(math.random() * 360, math.random() * 360, math.random() * 360), vectors.vec3(math.random() * 360 - 180, math.random() * 360 - 180, math.random() * 360 - 180), 1, nil, 24, false)
 						end
 						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 3)
@@ -419,6 +420,7 @@ local BlueArchiveCharacter = {
 						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.body.ChristmasBag)
 						local bodyYaw = player:getBodyYaw()
 						for _ = 1, 8 do
+							---@diagnostic disable-next-line: redundant-parameter
 							ExSkillSpriteManager:spawn(models.models.ex_skill_1["Gift" .. math.random(1, 5)], models.script_ex_skill_sprites, 1, nil, anchorPos, vectors.rotateAroundAxis(bodyYaw * -1 - 30, math.random() * 10 - 5, math.random() * 2 + 5, 0, 0, 1, 0), vectors.vec3(math.random() * 360, math.random() * 360, math.random() * 360), vectors.vec3(math.random() * 360 - 180, math.random() * 360 - 180, math.random() * 360 - 180), 1, nil, 33, false)
 						end
 						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 1.5)

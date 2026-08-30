@@ -1,6 +1,6 @@
 ---@class ExSkill1WaveParticleManager : SpawnObjectManager 水着のExスキルアニメーション後の波を表現するパーティクルを管理するクラス
 ---@field package animationCount integer パーティクルの再生タイミングを計るカウンター
----@field public getObject fun(self: ExSkill1WaveParticleManager, pos: Vector3, rot: number): ExSkill1WaveParticleManager パーティクルのインスタンスを生成して返す
+---@field public getObject fun(self: ExSkill1WaveParticleManager, pos: Vector3, rot: number): ExSkill1WaveParticle パーティクルのインスタンスを生成して返す
 ---@field public spawn fun(self: ExSkill1WaveParticleManager, pos: Vector3, rot: number) パーティクルを生成する
 ---@field public play fun(self: ExSkill1WaveParticleManager) 波のパーティクルを再生する
 local ExSkill1WaveParticleManager = {
@@ -21,6 +21,7 @@ local ExSkill1WaveParticleManager = {
     ---@param rot number パーティクルの向き（度数法）
     ---@return ExSkill1WaveParticle instance 生成したインスタンス
     getObject = function (_,  pos, rot)
+        ---@diagnostic disable-next-line: return-type-mismatch, redundant-parameter
         return ExSkill1WaveParticle.new(pos, rot)
     end;
 
