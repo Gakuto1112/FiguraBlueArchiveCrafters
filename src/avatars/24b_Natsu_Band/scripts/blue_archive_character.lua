@@ -494,12 +494,15 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye:setUVPixels()
 					elseif tick == 52 then
 						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye:setUVPixels()
+						self.exSkill.primary.emitDrumHitParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.Drum.Cymbal2.Cymbal2Shaft2.Cymbal2Axis.Cymbal2Core))
 					elseif tick == 53 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMALL", 22, true)
 					elseif tick == 72 then
 						models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye:setUVPixels(18, 0)
 					elseif tick == 75 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "SMALL", 6, true)
+					elseif tick == 77 then
+						self.exSkill.primary.emitDrumHitParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.Drum.Cymbal1.Cymbal1Shaft2.Cymbal1Axis.Cymbal1Core))
 					elseif tick == 81 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMALL", 2, true)
 					elseif tick == 83 then
@@ -572,12 +575,15 @@ local BlueArchiveCharacter = {
 
 					if (tick >= 13 and tick <= 19 and (tick - 13) % 3 == 0) or (tick >= 27 and tick <= 48 and (tick - 27) % 3 == 0) or tick == 65 or tick == 68 or tick == 70 or tick == 71 or tick == 76 or tick == 103 then
 						models.models.ex_skill_1.Drum.BaseDrum.Tam.SmallTam.SmallTamCore.SmallTamEffects["SmallTamEffect" .. ((tick == 13 or tick == 19 or (tick >= 30 and tick <= 48 and (tick - 30) % 3 == 0) or tick == 68 or tick == 71 or tick == 103) and 1 or 2)]:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE)])
+						self.exSkill.primary.emitDrumHitParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.Drum.BaseDrum.Tam.SmallTam.SmallTamCore.SmallTamEffects))
 					end
 					if (tick <= 10 and tick % 3 <= 1) or (tick >= 14 and tick <= 23 and (tick - 14) % 3 == 0) or (tick >= 37 and tick <= 46 and (tick - 37) % 3 == 0) or tick == 52 or tick == 55 or tick == 58 or tick == 60 or tick == 61 or tick == 63 or tick == 66 or tick == 103 then
 						models.models.ex_skill_1.Drum.BaseDrum.Tam.BigTam.BigTamCore.BigTamEffects["BigTamEffect" .. (((tick <= 9 and tick % 3 == 0) or tick == 14 or tick == 20 or tick == 37 or tick == 43 or tick == 52 or tick == 58 or tick == 61 or tick == 66) and 1 or 2)]:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE)])
+						self.exSkill.primary.emitDrumHitParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.Drum.BaseDrum.Tam.BigTam.BigTamCore.BigTamEffects))
 					end
 					if tick == 26 or tick == 29 or tick == 32 then
 						models.models.ex_skill_1.Drum.SnareDrum.SnareDrumCore.SnareDrumEffect:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE)])
+						self.exSkill.primary.emitDrumHitParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.Drum.SnareDrum.SnareDrumCore.SnareDrumEffect))
 					end
 				end;
 
@@ -606,6 +612,17 @@ local BlueArchiveCharacter = {
 			---カズサの口の状態
 			---@type integer
 			KazusaMouthSate = 0;
+
+			---ドラムをスティックでヒットさせた時のパーティクルを再生する。
+			emitDrumHitParticles = function (pos)
+				for _ = 1, 5 do
+					particles:newParticle("minecraft:electric_spark", pos:copy():add(math.random() * 0.4 - 0.2, 0, math.random() * 0.4 - 0.2))
+						:setScale(0.25)
+						:setVelocity(math.random() * 0.2 - 0.1, 0.1 + math.random() * 0.1, math.random() * 0.2 - 0.1)
+						:setColor(0.984, 0.840, 0.435)
+						:setLifetime(2)
+				end
+			end;
 		};
 	};
 
