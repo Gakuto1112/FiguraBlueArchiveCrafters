@@ -269,7 +269,7 @@
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
-		avatarName = "24a_Natsu";
+		avatarName = "24b_Natsu_Band";
 
 		birth = {
 			month = 12;
