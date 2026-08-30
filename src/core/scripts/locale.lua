@@ -403,12 +403,18 @@ local Locale = {
 			return
 		end
 
+		self:makeLocaleBackup()
+
+		self:initializeLocaleDirectory()
+	end;
+
+	---メモリ上にあるロケールデータを、同じくメモリ上にバックアップする。
+	---@param self Locale
+	makeLocaleBackup = function (self)
 		self.localeDataPrev = {}
 		self.localeDataPrev["localeVersion"] = self.localeVersion
 		self.localeDataPrev["locales"] = self.locales
 		self.localeDataPrev["availableLocales"] = self.availableLocales
-
-		self:initializeLocaleDirectory()
 	end;
 
 	---翻訳キーに対応するローカライズされたテキストを返す。
