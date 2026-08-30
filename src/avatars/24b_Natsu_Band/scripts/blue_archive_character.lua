@@ -445,7 +445,9 @@ local BlueArchiveCharacter = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
 						models.models.ex_skill_1.Drum.DrumChair.ChairTop:setPrimaryTexture("RESOURCE", "textures/block/black_wool.png")
-						models.models.ex_skill_1.Stage:setPrimaryTexture("RESOURCE", "textures/block/gray_concrete.png")
+						for _, modelPart in ipairs({models.models.ex_skill_1.Stage.StageTop, models.models.ex_skill_1.Stage.StageBottom}) do
+							modelPart:setPrimaryTexture("RESOURCE", "textures/block/gray_concrete.png")
+						end
 
 						for i, modelPart in ipairs({ModelAlias.alias.avatar.rightArmBottom.RightStickPivot, ModelAlias.alias.avatar.leftArmBottom.LeftStickPivot}) do
 							modelPart:newItem("ex_skill_item_" .. i)
@@ -488,6 +490,10 @@ local BlueArchiveCharacter = {
 								models.models.ex_skill_1.Gui.ScreenCircle["ScreenCircle" .. corner]["ScreenCircle" .. corner .. i]:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.floor(math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE))])
 							end
 						end
+					end
+
+					for _, modelPart in ipairs(models.models.ex_skill_1.Stage.StageEmissives:getChildren()) do
+						modelPart:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.floor(math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE))])
 					end
 
 					self.exSkill.primary.KazusaMouthChangeCount = math.random(2, 6)
@@ -641,6 +647,15 @@ local BlueArchiveCharacter = {
 
 					if tick % 8 == 0 then
 						sounds:playSound("minecraft:weather.rain", player:getPos():add(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 1, 8, 0, 1, 0)), 0.5, 1.5)
+					end
+
+					for _, modelPart in ipairs(models.models.ex_skill_1.Stage.StageEmissives:getChildren()) do
+						particles:newParticle("minecraft:firework", ModelUtils.getModelWorldPos(modelPart))
+							:setScale(1.2)
+							:setVelocity(math.random() * 0.5 - 0.25, 1, math.random() * 0.5 - 0.25)
+							:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE)])
+							:setGravity(0.25)
+							:setLifetime(80 + math.random() * 40)
 					end
 				end;
 
