@@ -469,6 +469,20 @@ local BlueArchiveCharacter = {
 							model.PenLightEmissive:setColor(penLightColors[math.floor(math.random() * 3) + 1])
 						end
 
+						self.exSkill.primary.copyDrumHitCircle(models.models.ex_skill_1.Drum.BaseDrum.Tam.SmallTam.SmallTamCore.SmallTamEffects.SmallTamEffect1, models.models.ex_skill_1.Drum.BaseDrum.Tam.SmallTam.SmallTamCore.SmallTamEffects.SmallTamEffect2)
+						self.exSkill.primary.copyDrumHitCircle(models.models.ex_skill_1.Drum.BaseDrum.Tam.BigTam.BigTamCore.BigTamEffects.BigTamEffect1, models.models.ex_skill_1.Drum.BaseDrum.Tam.BigTam.BigTamCore.BigTamEffects.BigTamEffect2)
+
+						if host:isHost() then
+							local baseModel = models.models.ex_skill_1.Gui.ScreenCircleBase
+							for _, corner in ipairs({"TL", "TR", "BL", "BR"}) do
+								for i = 1, 2 do
+									models.models.ex_skill_1.Gui.ScreenCircle["ScreenCircle" .. corner]:addChild(baseModel:copy("ScreenCircle" .. corner .. i))
+								end
+							end
+							models.models.ex_skill_1.Gui:removeChild(baseModel)
+							baseModel:remove()
+						end
+
 						self.exSkill.primary.isInitialized = true
 					end
 
@@ -700,7 +714,16 @@ local BlueArchiveCharacter = {
 			---@type number[]
 			penLightSwingOffsets = {};
 
-			---ドラムをスティックでヒットさせた時のパーティクルを再生する。
+			---ドラムをスティックでヒットさせたときのサークルエフェクトをコピーする。
+			---@param srcGroup ModelPart コピー元のモデルグループ
+			---@param destGroup ModelPart コピー先のモデルグループ
+			copyDrumHitCircle = function (srcGroup, destGroup)
+				for _, modelPart in ipairs(srcGroup:getChildren()) do
+					destGroup:addChild(modelPart:copy(modelPart:getName()))
+				end
+			end;
+
+			---ドラムをスティックでヒットさせたときのパーティクルを再生する。
 			emitDrumHitParticles = function (pos)
 				for _ = 1, 5 do
 					particles:newParticle("minecraft:electric_spark", pos:copy():add(math.random() * 0.4 - 0.2, 0, math.random() * 0.4 - 0.2))
