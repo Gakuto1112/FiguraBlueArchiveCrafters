@@ -425,7 +425,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Mic, models.models.ex_skill_1.Stage, ModelAlias.alias.avatar.head.Sweats, ModelAlias.alias.avatar.rightArmBottom.RightStickPivot, ModelAlias.alias.avatar.leftArmBottom.LeftStickPivot};
+			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Mic, models.models.ex_skill_1.Stage, models.models.ex_skill_1.PenLights, ModelAlias.alias.avatar.head.Sweats, ModelAlias.alias.avatar.rightArmBottom.RightStickPivot, ModelAlias.alias.avatar.leftArmBottom.LeftStickPivot};
 
 			animations = {"main", "ex_skill_1"};
 
@@ -457,11 +457,32 @@ local BlueArchiveCharacter = {
 							:setRot(0, 0, 0)
 							:setScale(0.75, 0.75, 0.75)
 
+						local penLightColors = {vectors.vec3(1, 0.855, 0.584), vectors.vec3(0.698, 1, 0.97), vectors.vec3(0.81, 1, 0.698)}
+						for i = 1, 100 do
+							local model = models.models.ex_skill_1.PenLights["PenLight"..i]
+							if model == nil then
+								model = ModelUtils:copyModel(models.models.ex_skill_1.PenLights.PenLight1, "PenLight" .. i, true)
+								models.models.ex_skill_1.PenLights:addChild(model)
+							end
+							model.PenLightEmissive:setColor(penLightColors[math.floor(math.random() * 3) + 1])
+						end
+
 						self.exSkill.primary.isInitialized = true
+					end
+
+					for i = 1, 100 do
+						models.models.ex_skill_1.PenLights["PenLight"..i]:setPos(math.map(math.random(), 0, 1, -320, 320), 32, math.map(math.random(), 0, 1, -400, -125))
+						self.exSkill.primary.penLightSwingOffsets[i] = math.random()
 					end
 
 					self.exSkill.primary.KazusaMouthChangeCount = math.random(2, 6)
 					FaceParts:setEmotion("CENTER", "NORMAL", "SMALL", 11, true)
+
+					events.RENDER:register(function (delta)
+						for i = 1, 100 do
+							models.models.ex_skill_1.PenLights["PenLight"..i]:setRot(0, 0, math.sin((self.exSkill.primary.penLightSwingOffsets[i] + delta * 0.1) * 2 * math.pi) * 40)
+						end
+					end, "ex_skill_1_pen_light_render")
 				end;
 
 				onAnimationTick = function (self, tick)
@@ -585,15 +606,26 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.Drum.SnareDrum.SnareDrumCore.SnareDrumEffect:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE)])
 						self.exSkill.primary.emitDrumHitParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.Drum.SnareDrum.SnareDrumCore.SnareDrumEffect))
 					end
+
+					for i = 1, 100 do
+						self.exSkill.primary.penLightSwingOffsets[i] = self.exSkill.primary.penLightSwingOffsets[i] + 0.1
+						self.exSkill.primary.penLightSwingOffsets[i] = self.exSkill.primary.penLightSwingOffsets[i] > 1 and self.exSkill.primary.penLightSwingOffsets[i] - 1 or self.exSkill.primary.penLightSwingOffsets[i]
+					end
+
+					if tick % 8 == 0 then
+						sounds:playSound("minecraft:weather.rain", player:getPos():add(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 1, 8, 0, 1, 0)), 0.5, 1.5)
+					end
 				end;
 
 				onPostAnimation = function (self)
+					events.RENDER:remove("ex_skill_1_pen_light_render")
 					for _, modelPart in ipairs({models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.Mouth, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.LeftEye, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.Mouth, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.RightEye, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.LeftEye, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.Mouth}) do
 						modelPart:setUVPixels()
 					end
 
 					self.exSkill.primary.KazusaMouthChangeCount = 0
 					self.exSkill.primary.KazusaMouthSate = 0
+					self.exSkill.primary.penLightSwingOffsets = {}
 				end;
 			};
 
@@ -612,6 +644,10 @@ local BlueArchiveCharacter = {
 			---カズサの口の状態
 			---@type integer
 			KazusaMouthSate = 0;
+
+			---ペンライトの振り時間のオフセット値
+			---@type number[]
+			penLightSwingOffsets = {};
 
 			---ドラムをスティックでヒットさせた時のパーティクルを再生する。
 			emitDrumHitParticles = function (pos)
