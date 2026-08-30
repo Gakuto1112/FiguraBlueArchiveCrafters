@@ -256,9 +256,7 @@ local ExSkill = {
 
         self:transition("PRE", function ()
             Physics:disable()
-            for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
-                itemModel:setVisible(false)
-            end
+            Arms:setHeldItemVisible(false)
             for _, modelPart in ipairs(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].models) do
                 modelPart:setVisible(true)
             end
@@ -317,9 +315,7 @@ local ExSkill = {
             events.RENDER:remove("ex_skill_animation_render")
             sounds:playSound("minecraft:entity.player.levelup", player:getPos(), 5, 2):setAttenuation(100)
         end
-        for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
-            itemModel:setVisible(true)
-        end
+        Arms:setHeldItemVisible(true)
         for _, modelPart in ipairs(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].models) do
             modelPart:setVisible(false)
         end
@@ -369,9 +365,7 @@ local ExSkill = {
             renderer:setRenderHUD(true)
             renderer:setFOV()
         end
-        for _, itemModel in ipairs({vanilla_model.RIGHT_ITEM, vanilla_model.LEFT_ITEM}) do
-            itemModel:setVisible(true)
-        end
+        Arms:setHeldItemVisible(true)
         for _, modelPart in ipairs(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].models) do
             modelPart:setVisible(false)
         end
