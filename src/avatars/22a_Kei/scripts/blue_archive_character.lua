@@ -29,6 +29,7 @@
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
 ---| "CLOSED2" # 閉じた目2
 ---| "ANGRY" # 怒った目
+---| "CENTER" # 少し反対側を見る目
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
@@ -38,6 +39,8 @@
 ---| "TEETH" # 歯を見せてにっこり
 ---| "ANXIOUS" # への口
 ---| "ANGRY" # あんぐり口（アングリーだけにっつってな）
+---| "ANGRY_TEETH" # 葉を食いしばる
+---| "ANGRY2" # 大きめに開いているO型の口
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -294,6 +297,7 @@ local BlueArchiveCharacter = {
 			CLOSED = vectors.vec2(3, 0); --必須
 			CLOSED2 = vectors.vec2(4, 0);
 			ANGRY = vectors.vec2(7, 0);
+			CENTER = vectors.vec2(8, 0);
 		};
 
 		mouth = {
@@ -302,6 +306,8 @@ local BlueArchiveCharacter = {
 			TEETH = vectors.vec2(2, 0);
 			ANXIOUS = vectors.vec2(3, 0);
 			ANGRY = vectors.vec2(4, 0);
+			ANGRY_TEETH = vectors.vec2(5, 0);
+			ANGRY2 = vectors.vec2(6, 0);
 		};
 	};
 
@@ -309,6 +315,10 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmStateChanged = function (_, right, left)
 				local result = {right = right, left = left}
+				if animations["models.main"]["generator_throwing"]:isPlaying() then
+					return {right = "DEFAULT", left = "DEFAULT"}
+				end
+
 				if right == "GUN_MAIN_HAND" then
 					result.right = "RAIL_GUN_MAIN_HAND"
 				elseif right == "GUN_OFF_HAND" then
@@ -467,11 +477,8 @@ local BlueArchiveCharacter = {
 						self.placementObjects[1].isInitialized = true
 					end
 
-					self.placementObjects[1].isBeacon = math.random() >= 0.95
-
 					placementObject.object.Generator:setVisible(not self.placementObjects[1].isBeacon)
 					placementObject.object:getTask("placement_object_beacon"):setVisible(self.placementObjects[1].isBeacon)
-					self.placementObjects[1].baseColor = self.placementObjects[1].isBeacon and vectors.vec3(0.765, 0.996, 0.992) or vectors.vec3(0.983, 0.645, 0.816)
 				end;
 
 				onGround = function (self, placementObject)
@@ -538,6 +545,12 @@ local BlueArchiveCharacter = {
 
 						self.placementObjects[1].beaconSound:setPos(placementObject.currentPos)
 						self.placementObjects[1].tickCount = self.placementObjects[1].tickCount + 1
+					end
+				end;
+
+				onRender = function (self, placementObject, delta)
+					if self.placementObjects[1].onGroundFlag then
+						placementObject.object.BeaconBeam:setUVPixels(0, ((self.placementObjects[1].tickCount + delta) % 4) * 4)
 					end
 				end;
 			};
@@ -780,8 +793,83 @@ local BlueArchiveCharacter = {
 						end
 					end
 					if not forcedStop then
-						local bodyYaw = player:getBodyYaw()
-						PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 5, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
+						if not self.exSkill.primary.isThrowAnimationInitialized then
+							models.script_placement_object.FieldGenerator:setVisible(true)
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:addChild(ModelUtils:copyModel(models.script_placement_object.FieldGenerator, "FieldGenerator2"))
+							models.script_placement_object.FieldGenerator:setVisible(false)
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(false)
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:newBlock("placement_object_beacon")
+								:setBlock("minecraft:beacon")
+								:setPos(-4, -4, -4)
+								:setScale(0.5, 0.5, 0.5)
+								:setLight(15, 15)
+								:setVisible(false)
+							self.exSkill.primary.isThrowAnimationInitialized = true
+						end
+						self.placementObjects[1].isBeacon = math.random() >= (Costume.isAltCostume and 0.25 or 0.95)
+						self.placementObjects[1].baseColor = self.placementObjects[1].isBeacon and vectors.vec3(0.765, 0.996, 0.992) or vectors.vec3(0.983, 0.645, 0.816)
+
+						if self.placementObjects[1].isBeacon then
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:getTask("placement_object_beacon"):setVisible(true)
+						else
+							ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(true)
+						end
+						animations["models.main"]["generator_throwing"]:play()
+						Arms:setArmState("DEFAULT", "DEFAULT")
+						Arms:setHeldItemVisible(false)
+
+						local animTick = 0
+						events.TICK:register(function ()
+							if not client:isPaused() then
+								if animTick == 15 then
+									FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 14, true)
+									for i = 0, 5 do
+										PlacementObjectCubeManager:spawn(models.models.main, vectors.rotateAroundAxis(i * 60, 0, 0, math.random() * 16 + 16, 0, 1, 0), self.placementObjects[1].baseColor)
+									end
+									sounds:playSound("minecraft:entity.item.pickup", player:getPos(), 1, 0.5)
+								elseif animTick == 29 then
+									FaceParts:setEmotion("NORMAL", "CENTER", "ANGRY_TEETH", 19, true)
+								elseif animTick == 48 then
+									FaceParts:setEmotion("CENTER", "NORMAL", "ANGRY2", 23, true)
+									sounds:playSound("minecraft:entity.player.attack.sweep", player:getPos(), 1, 0.75)
+								elseif animTick == 51 then
+									ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:moveTo(models.models.main)
+								elseif animTick == 64 then
+									local bodyYaw = player:getBodyYaw()
+									PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
+								elseif animTick == 71 then
+									self.exSkill.primary.stopGeneratorThrowingAnimation()
+								end
+
+								if animTick >= 15 and animTick < 25 then
+									local playerPos = player:getPos()
+									for i = 0, 23 do
+										particles:newParticle("minecraft:end_rod", playerPos:copy():add(vectors.rotateAroundAxis(i * 15, 0, 0, (animTick - 15) * 0.2, 0, 1, 0))):setScale(math.random() * 0.25 + 0.75):setVelocity(0, 0.2, 0):setGravity(2):setColor(self.placementObjects[1].baseColor):setLifetime(3)
+									end
+								end
+								if animTick >= 15 and animTick < 64 then
+									local anchorPos = nil
+									if animTick < 51 then
+										anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor)
+									else
+										anchorPos = ModelUtils.getModelWorldPos(models.models.main.GeneratorAnchor)
+									end
+									for _ = 1, 2 do
+										particles:newParticle("minecraft:end_rod", anchorPos:copy():add(math.random() * 0.5 - 0.25, math.random() * 0.5 - 0.25, math.random() * 0.5 - 0.25)):setScale(0.25):setVelocity(0, 0.1, 0):setGravity(0):setColor(self.placementObjects[1].baseColor):setLifetime(16)
+									end
+								end
+
+								if not ExSkill:getCanPlayAnimation() then
+									self.exSkill.primary.stopGeneratorThrowingAnimation()
+									if animTick < 64 then
+										local bodyYaw = player:getBodyYaw()
+										PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
+									end
+								end
+
+								animTick = animTick + 1
+							end
+						end, "ex_skill_1_after_animation_tick")
 					end
 				end;
 			};
@@ -789,6 +877,28 @@ local BlueArchiveCharacter = {
 			---このExスキルが初期化されたかどうか
 			---@type boolean
 			isInitialized = false;
+
+			---増幅装置の投擲アニメーションが初期化されたかどうか
+			---@type boolean
+			isThrowAnimationInitialized = false;
+
+			---増幅装置の投擲アニメーションを停止し、リセットする。
+			stopGeneratorThrowingAnimation = function ()
+				events.TICK:remove("ex_skill_1_after_animation_tick")
+				animations["models.main"]["generator_throwing"]:stop()
+				if models.models.main.GeneratorAnchor ~= nil then
+					models.models.main.GeneratorAnchor:moveTo(ModelAlias.alias.avatar.rightArmBottom)
+				end
+				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(false)
+				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:getTask("placement_object_beacon"):setVisible(false)
+				FaceParts:resetEmotion()
+				if Gun.currentGunPosition == "RIGHT" then
+					Arms:setArmState("RAIL_GUN_MAIN_HAND", "RAIL_GUN_OFF_HAND")
+				elseif Gun.currentGunPosition == "LEFT" then
+					Arms:setArmState("RAIL_GUN_OFF_HAND", "RAIL_GUN_MAIN_HAND")
+				end
+				Arms:setHeldItemVisible(true)
+			end;
 		};
 	};
 
