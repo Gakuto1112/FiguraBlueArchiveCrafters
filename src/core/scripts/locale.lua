@@ -31,7 +31,8 @@
 ---@field package localeVersion string? ロケールデータのバージョン
 ---@field public availableLocales {[string]: string} 利用可能なロケールのリスト
 ---@field package locales {[string]: {[string]: string}} ローカライズされたテキストを格納するテーブル
----@field public localeDataCheckLeft integer ロケールデータの取得試行残り回数
+---@field public isFetching boolean ロケールデータの取得中かどうか
+---@field package localeDataChecks integer ロケールデータの取得試行回数
 ---@field package localePrev string 前ティックのゲームのロケール
 ---@field package errorCode Locale.FetchResult ロケールデータの取得結果コード
 local Locale = {
@@ -51,13 +52,14 @@ local Locale = {
 		["action_wheel.gui.update_check.locale_version"] = "Locale version: %s";
 
 		["message.net_utils.not_allowed"] = "§9§l[TIP]§r There is no permission to use Figura Networking API or access to the remote endpoint. Please allow using Figura Networking API and add the remote domain \"§b%s§r\" to the Network Filter in Figura settings.";
-		["message.locale.fail"] = "Failed to fetch locale data. Error code: %s";
+		["message.locale.fail"] = "Failed to fetch locale data. Error code: §b%s";
 	};
 
 	localeVersion = nil;
 	availableLocales = {};
 	locales = {};
-	localeDataCheckLeft = 0;
+	isFetching = false;
+	localeDataChecks = 0;
 	localePrev = "en_us";
 	errorCode = "SUCCESS";
 
@@ -67,7 +69,8 @@ local Locale = {
 		if host:isHost() then
 			EventManager.events["ON_LOCALE_READY"]:register(function ()
 				models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(Locale:getLocalizedText("action_wheel.gui.update_check.locale_version"):format(self.localeVersion or "v?.?.?"))
-				self.localeDataCheckLeft = 0
+				self.isFetching = false
+				self.localeDataChecks = 0
 				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
 				ActionWheelConfig.isLocaleReloadedByAction = false
 
@@ -79,7 +82,6 @@ local Locale = {
 				end
 			end)
 
-			EventManager.events["ON_LOCALE_READY"]:fire()
 			self:initializeLocale()
 		end
 
@@ -265,13 +267,11 @@ local Locale = {
 				for key, value in pairs(data) do
 					self.locales[locale][key] = value
 				end
-				EventManager.events["ON_LOCALE_READY"]:fire()
 			else
 				self.errorCode = status
 			end
-			self.localeDataCheckLeft = self.localeDataCheckLeft - 1
-
-			if self.localeDataCheckLeft == 0 then
+			self.localeDataChecks = self.localeDataChecks + 1
+			if self.localeDataChecks == 4 then
 				EventManager.events["ON_LOCALE_READY"]:fire()
 			end
 		end)
@@ -281,13 +281,12 @@ local Locale = {
 				for key, value in pairs(data) do
 					self.locales[locale][key] = value
 				end
-				EventManager.events["ON_LOCALE_READY"]:fire()
 			else
 				self.errorCode = status
 			end
-			self.localeDataCheckLeft = self.localeDataCheckLeft - 1
 
-			if self.localeDataCheckLeft == 0 then
+			self.localeDataChecks = self.localeDataChecks + 1
+			if self.localeDataChecks == 4 then
 				EventManager.events["ON_LOCALE_READY"]:fire()
 			end
 		end)
@@ -297,6 +296,7 @@ local Locale = {
 	---ロケールインデックスから必要なロケールの取得まで行う。
 	---@param self Locale
 	initializeLocale = function (self)
+		self.isFetching = true
 		self.errorCode = "SUCCESS"
 
 		-- ロケールデータの初期化
@@ -310,7 +310,6 @@ local Locale = {
 
 			-- インデックスの取得
 			local locale = client:getActiveLang()
-			self.localeDataCheckLeft = 4
 			self:fetchLocaleIndex(function (status, data)
 				local cacheVersion = Config:loadConfig("PUBLIC", "locale.version", "v0.0.0")
 				self.localeVersion = cacheVersion
@@ -342,8 +341,8 @@ local Locale = {
 							self:fetchLocaleDataSet(locale)
 						end
 					else
-						self.localeDataCheckLeft = self.localeDataCheckLeft - 2
-						if self.localeDataCheckLeft == 0 then
+						self.localeDataChecks = self.localeDataChecks + 2
+						if self.localeDataChecks == 4 then
 							EventManager.events["ON_LOCALE_READY"]:fire()
 						end
 					end

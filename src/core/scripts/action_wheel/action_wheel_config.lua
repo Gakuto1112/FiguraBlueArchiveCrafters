@@ -138,7 +138,7 @@ local ActionWheelConfig = {
 			self.localeCacheResetAction = ActionWheel.getAction()
 				:setItem("minecraft:bucket")
 				:setOnLeftClick(function ()
-					if Locale.localeDataCheckLeft <= 0 then
+					if not Locale.isFetching then
 						self.isLocaleDataFetchErrorOccurred = false
 						Locale:flushCache()
 						Locale:initializeLocale()
@@ -178,9 +178,8 @@ local ActionWheelConfig = {
 					end
 					self.isConfigPageOpenedPrev = isConfigPageOpened
 				end
-				if Locale.localeDataCheckLeft ~= self.localeDataCheckLeftPrev then
+				if Locale.isFetching then
 					self:setLocaleCacheResetActionState()
-					self.localeDataCheckLeftPrev = Locale.localeDataCheckLeft
 				end
 			end)
 
@@ -207,7 +206,7 @@ local ActionWheelConfig = {
 
 				updateCheckAction:setTitle(Locale:getLocalizedText("action_wheel.config_page.update_check.title_1") .. "\n" .. Locale:getLocalizedText("action_wheel.config_page.update_check.title_2"))
 
-				if Locale.localeDataCheckLeft <= 0 and not self.isLocaleDataFetchErrorOccurred and self.isLocaleReloadedByAction then
+				if not Locale.isFetching and not self.isLocaleDataFetchErrorOccurred and self.isLocaleReloadedByAction then
 					sounds:playSound("minecraft:item.bucket.empty", player:getPos())
 					events.TICK:register(function ()
 						events.TICK:remove("locale_cache_reset_message_delay")
@@ -253,7 +252,7 @@ local ActionWheelConfig = {
 	---ロケールデータのリセットアクションの状態を設定する。
 	---@param self ActionWheelConfig
 	setLocaleCacheResetActionState = function (self)
-		if Locale.localeDataCheckLeft > 0 then
+		if Locale.isFetching then
 			self.localeCacheResetAction
 				:setTitle("§8" .. Locale:getLocalizedText("action_wheel.config_page.locale_cache_reset.title"))
 				:setColor(0.16, 0.16, 0.16)
