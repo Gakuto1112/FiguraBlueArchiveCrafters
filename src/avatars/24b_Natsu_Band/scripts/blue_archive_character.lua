@@ -614,6 +614,15 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye:setUVPixels(24, 0)
 						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye:setUVPixels(18, 0)
 						models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.Mouth:setUVPixels(32, 0)
+					elseif tick == 169 then
+						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.head):copy():add(0, 0.25, 0)
+						local bodyYaw = player:getBodyYaw()
+						for i = 0, 11 do
+							particles:newParticle("minecraft:end_rod", anchorPos)
+								:setVelocity(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(i * 30, 0, 0.075, 0, 0, 0, 1), 0, 1, 0))
+								:setColor(0.988, 1.000, 0.667)
+						end
+						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 1)
 					end
 
 					if tick < 100 then
