@@ -349,6 +349,7 @@ local Locale = {
 					end
 				else
 					-- フェッチ失敗。キャッシュもなし。
+					self.localeVersion = nil
 					self.errorCode = status
 					EventManager.events["ON_LOCALE_READY"]:fire()
 				end
