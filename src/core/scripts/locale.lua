@@ -35,6 +35,7 @@
 ---@field package localeDataChecks integer ロケールデータの取得試行回数
 ---@field package localePrev string 前ティックのゲームのロケール
 ---@field package errorCode Locale.FetchResult ロケールデータの取得結果コード
+---@field package localeDataPrev {[string]: table|string|nil}|nil ロケールデータの際フェッチ前のロケールデータのコピー
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locales/";
 	REMOTE_LOCALE_ENDPOINT = "https://raw.githubusercontent.com/Gakuto1112/FBAC_Locales/refs/heads/main/src/";
@@ -62,6 +63,7 @@ local Locale = {
 	localeDataChecks = 0;
 	localePrev = "en_us";
 	errorCode = "SUCCESS";
+	localeDataPrev = nil;
 
 	---初期化関数
 	---@param self Locale
@@ -75,6 +77,16 @@ local Locale = {
 				ActionWheelConfig.isLocaleReloadedByAction = false
 
 				if self.errorCode ~= "SUCCESS" then
+					if self.localeDataPrev ~= nil then
+						---@diagnostic disable-next-line: assign-type-mismatch
+						self.localeVersion = self.localeDataPrev["localeVersion"]
+						---@diagnostic disable-next-line: assign-type-mismatch
+						self.locales = self.localeDataPrev["locales"]
+						---@diagnostic disable-next-line: assign-type-mismatch
+						self.availableLocales = self.localeDataPrev["availableLocales"]
+						self.localeDataPrev = nil
+					end
+
 					print(Locale:getLocalizedText("message.locale.fail"):format(self.errorCode))
 					if self.errorCode == "ERR_NOT_ALLOWED" then
 						print(Locale:getLocalizedText("message.net_utils.not_allowed"):format(self.REMOTE_LOCALE_ENDPOINT:match("://([^:/]+)")))
@@ -390,6 +402,11 @@ local Locale = {
 			EventManager.events["ON_LOCALE_READY"]:fire()
 			return
 		end
+
+		self.localeDataPrev = {}
+		self.localeDataPrev["localeVersion"] = self.localeVersion
+		self.localeDataPrev["locales"] = self.locales
+		self.localeDataPrev["availableLocales"] = self.availableLocales
 
 		self:initializeLocaleDirectory()
 	end;
