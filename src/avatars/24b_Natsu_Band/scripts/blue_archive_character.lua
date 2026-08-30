@@ -928,39 +928,9 @@ local BlueArchiveCharacter = {
 	---初期化関数
 	---この関数は消しても構わない。
 	init = function ()
-		---Exスキルで使用する矢のインスタンスクラス
-		---@type ExSkillArrow
-		ExSkillArrow = require("scripts.ex_skill_arrow")
-
-		---Exスキルで使用する矢のマネージャークラス
-		---@type ExSkillArrowManager
-		ExSkillArrowManager = require("scripts.ex_skill_arrow_manager")
-		ExSkillArrowManager = ExSkillArrowManager.new()
-		ExSkillArrowManager.init()
-
-		---パイ投げのアニメーションを制御するクラス
-		---@type PieThrowing
-		PieThrowing = require("scripts.pie_throwing")
-
-		---投げるパイオブジェクトのインスタンスクラス
-		---@type Pie
-		Pie = require("scripts.pie")
-
-		---投げるパイオブジェクトのマネージャークラス
-		---@type PieManager
-		PieManager = require("scripts.pie_manager")
-		PieManager = PieManager.new()
-		PieManager.init()
-
 		ModelAlias.alias.avatar.gun.Cake:newItem("gun_cake_strap")
 			:setItem("minecraft:cake")
 			:setScale(0.19)
-
-		KeyManager:register("pie_throwing", "Eat this and cheer up", "key.keyboard.v"):onPress(function ()
-			if ExSkill:getCanPlayAnimation() and not PieThrowing:getIsAnimationPlaying() then
-				pings.throwPie()
-			end
-		end)
 
 		events.ITEM_RENDER:register(function (item, mode)
 			if item.id == "minecraft:shield" then
@@ -1027,10 +997,5 @@ local BlueArchiveCharacter = {
 		end)
 	end;
 }
-
----パイ投げのpingメソッド
-function pings.throwPie()
-	PieThrowing:play()
-end
 
 return BlueArchiveCharacter
