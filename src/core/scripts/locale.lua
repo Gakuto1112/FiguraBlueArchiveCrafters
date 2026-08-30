@@ -21,6 +21,7 @@
 ---| "ERR_NETWORK"       # 通信エラー
 ---| "ERR_RESPONSE_CODE" # レスポンスコードが200番台以外の場合（httpリクエストエラー）
 ---| "ERR_INVALID_DATA"  # 予期したデータと異なるデータが取得された
+---| "ERR_IO"            # キャッシュファイルの読み書きに失敗した
 
 ---@class (exact) Locale メッセージのローカライズを管理するクラス
 ---@field package CACHE_DIR_ROOT string ロケールキャッシュディレクトリのルートパス
@@ -32,6 +33,7 @@
 ---@field package locales {[string]: {[string]: string}} ローカライズされたテキストを格納するテーブル
 ---@field public localeDataCheckLeft integer ロケールデータの取得試行残り回数
 ---@field package localePrev string 前ティックのゲームのロケール
+---@field package errorCode Locale.FetchResult ロケールデータの取得結果コード
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locales/";
 	REMOTE_LOCALE_ENDPOINT = "https://raw.githubusercontent.com/Gakuto1112/FBAC_Locales/refs/heads/main/src/";
@@ -66,6 +68,7 @@ local Locale = {
 	locales = {};
 	localeDataCheckLeft = 0;
 	localePrev = "en_us";
+	errorCode = "SUCCESS";
 
 	---初期化関数
 	---@param self Locale
@@ -74,6 +77,10 @@ local Locale = {
 			EventManager.events["ON_LOCALE_READY"]:register(function ()
 				models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(Locale:getLocalizedText("action_wheel.gui.update_check.locale_version"):format(self.localeVersion or "v?.?.?"))
 				self.localeDataCheckLeft = 0
+				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
+				ActionWheelConfig.isLocaleReloadedByAction = false
+
+				--TODO: エラーコードを元にエラ〜メッセージを表示する。
 			end)
 
 			EventManager.events["ON_LOCALE_READY"]:fire()
@@ -113,16 +120,16 @@ local Locale = {
 	---ロケールのキャッシュディレクトリを初期化する。
 	---@param self Locale
 	initializeLocaleDirectory = function (self)
-		if self.checkAvailability() then
-			if file:exists(self.CACHE_DIR_ROOT) then
-				self:deleteDirectory(self.CACHE_DIR_ROOT:sub(1, -2))
-			end
-			if not file:mkdirs(self.CACHE_DIR_ROOT) or not file:mkdirs(self.CACHE_DIR_ROOT .. "core") or not file:mkdirs(self.CACHE_DIR_ROOT .. "avatars/" .. BlueArchiveCharacter.basic.avatarName) then
-				print(self:getLocalizedText("message.locale.err_io"))
-			end
-		else
-			print(self:getLocalizedText("message.locale.err_not_allowed"))
+		if not self.checkAvailability() then
+			return
 		end
+
+		if file:exists(self.CACHE_DIR_ROOT) then
+			self:deleteDirectory(self.CACHE_DIR_ROOT:sub(1, -2))
+		end
+		file:mkdirs(self.CACHE_DIR_ROOT)
+		file:mkdirs(self.CACHE_DIR_ROOT .. "core")
+		file:mkdirs(self.CACHE_DIR_ROOT .. "avatars/" .. BlueArchiveCharacter.basic.avatarName)
 	end;
 
 	---キャッシュディレクトリからファイルを取得する。
@@ -182,15 +189,8 @@ local Locale = {
 	fetchLocaleIndex = function (self, callback)
 		-- ローカルキャッシュから取得
 		local result, data = self:fetchFileFromCache("index.json")
-		if result == "SUCCESS" then
-			if type(data) ~= "table" then
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data), self.CACHE_DIR_ROOT .. "index.json"))
-				data = nil
-			end
-		elseif result == "ERR_NOT_ALLOWED" then
-			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
-		elseif result == "ERR_NOT_A_FILE" then
-			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_a_file"):format(self.CACHE_DIR_ROOT .. "index.json"))
+		if result == "SUCCESS" and type(data) ~= "table" then
+			data = nil
 		end
 
 		-- ローカルキャッシュが有効か判断
@@ -210,18 +210,14 @@ local Locale = {
 					file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data2), "utf8")
 					callback("SUCCESS", data2)
 				else
-					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data2), self.REMOTE_LOCALE_ENDPOINT .. "index.json"))
 					callback("ERR_INVALID_DATA", data)
 				end
 			elseif status2 == "ERR_NOT_ALLOWED" then
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_not_allowed"):format(self.REMOTE_LOCALE_ENDPOINT:match("://([^:/]+)")))
 				callback("ERR_NOT_ALLOWED", data)
 			elseif status2 == "ERR_NETWORK" then
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_network"))
 				callback("ERR_NETWORK", data)
 			elseif status2 == "ERR_RESPONSE_CODE" then
 				---@cast data2 integer
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_response"):format(data2, self.REMOTE_LOCALE_ENDPOINT .. "index.json"))
 				callback("ERR_RESPONSE_CODE", data2)
 			end
 		end)
@@ -239,14 +235,9 @@ local Locale = {
 				callback("SUCCESS", data)
 				return
 			else
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data), self.CACHE_DIR_ROOT .. path))
 				file:delete(self.CACHE_DIR_ROOT .. path)
 				data = nil
 			end
-		elseif result == "ERR_NOT_ALLOWED" then
-			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
-		elseif result == "ERR_NOT_A_FILE" then
-			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_a_file"):format(self.CACHE_DIR_ROOT .. "index.json"))
 		end
 
 		-- リモートから取得
@@ -256,18 +247,13 @@ local Locale = {
 					file:writeString(self.CACHE_DIR_ROOT .. path, toJson(data2), "utf8")
 					callback("SUCCESS", data2)
 				else
-					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_invalid_data"):format("table", type(data2), self.REMOTE_LOCALE_ENDPOINT .. "index.json"))
 					callback("ERR_INVALID_DATA", nil)
 				end
 			elseif status2 == "ERR_NOT_ALLOWED" then
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_not_allowed"):format(self.REMOTE_LOCALE_ENDPOINT:match("://([^:/]+)")))
 				callback("ERR_NOT_ALLOWED", nil)
 			elseif status2 == "ERR_NETWORK" then
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_network"))
 				callback("ERR_NETWORK", nil)
 			elseif status2 == "ERR_RESPONSE_CODE" then
-				---@cast data2 integer
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.net_utils.err_response"):format(data2, self.REMOTE_LOCALE_ENDPOINT .. path))
 				callback("ERR_RESPONSE_CODE", data2)
 			end
 		end)
@@ -284,14 +270,11 @@ local Locale = {
 					self.locales[locale][key] = value
 				end
 				EventManager.events["ON_LOCALE_READY"]:fire()
-			elseif locale == "en_us" then
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
-				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
-				ActionWheelConfig.isLocaleReloadedByAction = false
 			else
-				print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(locale, status))
+				self.errorCode = status
 			end
 			self.localeDataCheckLeft = self.localeDataCheckLeft - 1
+
 			if self.localeDataCheckLeft == 0 then
 				EventManager.events["ON_LOCALE_READY"]:fire()
 			end
@@ -303,14 +286,11 @@ local Locale = {
 					self.locales[locale][key] = value
 				end
 				EventManager.events["ON_LOCALE_READY"]:fire()
-			elseif locale == "en_us" then
-				print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_en_us"):format(status))
-				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
-				ActionWheelConfig.isLocaleReloadedByAction = false
 			else
-				print(self:getLocalizedText("message.label.warn") .. self:getLocalizedText("message.locale.err_fetch_locale"):format(locale, status))
+				self.errorCode = status
 			end
 			self.localeDataCheckLeft = self.localeDataCheckLeft - 1
+
 			if self.localeDataCheckLeft == 0 then
 				EventManager.events["ON_LOCALE_READY"]:fire()
 			end
@@ -321,6 +301,8 @@ local Locale = {
 	---ロケールインデックスから必要なロケールの取得まで行う。
 	---@param self Locale
 	initializeLocale = function (self)
+		self.errorCode = "SUCCESS"
+
 		-- ロケールデータの初期化
 		self:initializeLocaleData()
 
@@ -337,8 +319,7 @@ local Locale = {
 				local cacheVersion = Config:loadConfig("PUBLIC", "locale.version", "v0.0.0")
 				self.localeVersion = cacheVersion
 				if status ~= "SUCCESS" then
-					print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_fetch_index"):format(status))
-					ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
+					self.errorCode = status
 				end
 
 				if type(data) == "table" then
@@ -367,23 +348,19 @@ local Locale = {
 					else
 						self.localeDataCheckLeft = self.localeDataCheckLeft - 2
 						if self.localeDataCheckLeft == 0 then
-							ActionWheelConfig.isLocaleReloadedByAction = false
 							EventManager.events["ON_LOCALE_READY"]:fire()
 						end
 					end
 				else
 					-- フェッチ失敗。キャッシュもなし。
-					ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
-					ActionWheelConfig.isLocaleReloadedByAction = false
+					self.errorCode = status
 					EventManager.events["ON_LOCALE_READY"]:fire()
 				end
 				-- en_usロケールの取得
 				self:fetchLocaleDataSet("en_us")
 			end)
 		else
-			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
-			ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
-			ActionWheelConfig.isLocaleReloadedByAction = false
+			self.errorCode = "ERR_NOT_ALLOWED"
 			EventManager.events["ON_LOCALE_READY"]:fire()
 		end
 	end;
@@ -399,28 +376,26 @@ local Locale = {
 				if file:isDirectory(path .. "/" .. childPath) then
 					self:deleteDirectory(path .. "/" .. childPath)
 				else
-					if not file:delete(path .. "/" .. childPath) then
-						print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_io"))
-						ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
-						return
-					end
+					file:delete(path .. "/" .. childPath)
 				end
 			end
 		end
+
 		file:delete(path)
 	end;
 
 	---ロケールデータのキャッシュを削除する。
 	---@param self Locale
 	flushCache = function (self)
-		if self.checkAvailability() then
-			self:initializeLocaleDirectory()
-			EventManager.events["ON_LOCALE_READY"]:fire()
-		else
-			print(self:getLocalizedText("message.label.error") .. self:getLocalizedText("message.locale.err_not_allowed"))
+		if not self.checkAvailability() then
+			self.errorCode = "ERR_NOT_ALLOWED"
 			ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
 			ActionWheelConfig.isLocaleReloadedByAction = false
+			EventManager.events["ON_LOCALE_READY"]:fire()
+			return
 		end
+
+		self:initializeLocaleDirectory()
 	end;
 
 	---翻訳キーに対応するローカライズされたテキストを返す。
