@@ -767,16 +767,12 @@ local BlueArchiveCharacter = {
 
 	deathAnimation = {
 		callbacks = {
-			onBeforeModelCopy = function ()
-				ModelAlias.alias.avatar.faceParts.Eyes.EyeShines:setVisible(false)
-			end;
-
 			onPhase1 = function ()
-				ModelAlias.alias.dummy_avatar.head.SideTail:setRot(30, 0, 20)
+				ModelAlias.alias.dummy_avatar.head.HairBun.HairBunBottom:setRot(30, 0, 0)
 			end;
 
 			onPhase2 = function ()
-				ModelAlias.alias.dummy_avatar.head.SideTail:setRot(-17.5, 0, -2.5)
+				ModelAlias.alias.dummy_avatar.head.HairBun.HairBunBottom:setRot(-20, 0, -5)
 			end;
 		};
 	};
