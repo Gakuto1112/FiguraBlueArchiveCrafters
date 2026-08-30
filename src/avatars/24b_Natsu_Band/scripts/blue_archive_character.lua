@@ -425,7 +425,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Mic, models.models.ex_skill_1.Stage, models.models.ex_skill_1.PenLights, ModelAlias.alias.avatar.head.Sweats, ModelAlias.alias.avatar.rightArmBottom.RightStickPivot, ModelAlias.alias.avatar.leftArmBottom.LeftStickPivot};
+			models = {models.models.ex_skill_1.Drum, models.models.ex_skill_1.KeyBoard, models.models.ex_skill_1.Airi, models.models.ex_skill_1.Yoshimi, models.models.ex_skill_1.Kazusa, models.models.ex_skill_1.Mic, models.models.ex_skill_1.Stage, models.models.ex_skill_1.PenLights, models.models.ex_skill_1.Gui, ModelAlias.alias.avatar.head.Sweats, ModelAlias.alias.avatar.rightArmBottom.RightStickPivot, ModelAlias.alias.avatar.leftArmBottom.LeftStickPivot};
 
 			animations = {"main", "ex_skill_1"};
 
@@ -475,6 +475,21 @@ local BlueArchiveCharacter = {
 						self.exSkill.primary.penLightSwingOffsets[i] = math.random()
 					end
 
+					if host:isHost() then
+						local windowSize = client:getScaledWindowSize()
+						models.models.ex_skill_1.Gui.ScreenFilter:setScale(windowSize:copy():augmented(1))
+						models.models.ex_skill_1.Gui.ScreenCircle.ScreenCircleTL:setPos(-20, -20, 0)
+						models.models.ex_skill_1.Gui.ScreenCircle.ScreenCircleTR:setPos(windowSize.x * -1 + 20, -20, 0)
+						models.models.ex_skill_1.Gui.ScreenCircle.ScreenCircleBL:setPos(-20, windowSize.y * -1 + 20, 0)
+						models.models.ex_skill_1.Gui.ScreenCircle.ScreenCircleBR:setPos(windowSize.x * -1 + 20, windowSize.y * -1 + 20, 0)
+
+						for _, corner in ipairs({"TL", "TR", "BL", "BR"}) do
+							for i = 1, 2 do
+								models.models.ex_skill_1.Gui.ScreenCircle["ScreenCircle" .. corner]["ScreenCircle" .. corner .. i]:setColor(self.exSkill.primary.EFFECT_COLOR_PALETTE[math.floor(math.random(1, #self.exSkill.primary.EFFECT_COLOR_PALETTE))])
+							end
+						end
+					end
+
 					self.exSkill.primary.KazusaMouthChangeCount = math.random(2, 6)
 					FaceParts:setEmotion("CENTER", "NORMAL", "SMALL", 11, true)
 
@@ -482,7 +497,19 @@ local BlueArchiveCharacter = {
 						for i = 1, 100 do
 							models.models.ex_skill_1.PenLights["PenLight"..i]:setRot(0, 0, math.sin((self.exSkill.primary.penLightSwingOffsets[i] + delta * 0.1) * 2 * math.pi) * 40)
 						end
-					end, "ex_skill_1_pen_light_render")
+
+						if host:isHost() then
+							models.models.ex_skill_1.Gui.ScreenFilter:setOpacity(models.models.ex_skill_1.Gui.FilterOpacity:getAnimScale().x)
+
+							local windowSize = client:getScaledWindowSize()
+							local circleScale = math.sqrt(math.pow(windowSize.x, 2) + math.pow(windowSize.y, 2)) * 2
+							for _, corner in ipairs({"TL", "TR", "BL", "BR"}) do
+								for i = 1, 2 do
+									models.models.ex_skill_1.Gui.ScreenCircle["ScreenCircle" .. corner]["ScreenCircle" .. corner .. i]:setScale(vectors.vec3(1, 1, 1):scale(models.models.ex_skill_1.Gui.ScreenCircle["ScreenCircle" .. corner]["ScreenCircle" .. corner .. i .. "Scale"]:getAnimScale().x * circleScale))
+								end
+							end
+						end
+					end, "ex_skill_1_render")
 				end;
 
 				onAnimationTick = function (self, tick)
@@ -618,7 +645,7 @@ local BlueArchiveCharacter = {
 				end;
 
 				onPostAnimation = function (self)
-					events.RENDER:remove("ex_skill_1_pen_light_render")
+					events.RENDER:remove("ex_skill_1_render")
 					for _, modelPart in ipairs({models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.RightEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.AiriEyes.LeftEye, models.models.ex_skill_1.Airi.AiriHead.AiriFaceParts.Mouth, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.RightEye, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.YoshimiEyes.LeftEye, models.models.ex_skill_1.Yoshimi.YoshimiHead.YoshimiFaceParts.Mouth, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.RightEye, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.KazusaEyes.LeftEye, models.models.ex_skill_1.Kazusa.KazusaHead.KazusaFaceParts.Mouth}) do
 						modelPart:setUVPixels()
 					end
