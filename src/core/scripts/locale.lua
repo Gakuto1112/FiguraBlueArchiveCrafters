@@ -36,6 +36,7 @@
 ---@field package localePrev string 前ティックのゲームのロケール
 ---@field package errorCode Locale.FetchResult ロケールデータの取得結果コード
 ---@field package localeDataPrev {[string]: table|string|nil}|nil ロケールデータの際フェッチ前のロケールデータのコピー
+---@field package isForcedRemoteFetch boolean ローカルキャッシュを無視して、リモートからのフェッチを強制するかどうか。
 local Locale = {
 	CACHE_DIR_ROOT = "Gakuto1112/FiguraBlueArchiveCrafters/locales/";
 	REMOTE_LOCALE_ENDPOINT = "https://raw.githubusercontent.com/Gakuto1112/FBAC_Locales/refs/heads/main/src/";
@@ -64,36 +65,12 @@ local Locale = {
 	localePrev = "en_us";
 	errorCode = "SUCCESS";
 	localeDataPrev = nil;
+	isForcedRemoteFetch = false;
 
 	---初期化関数
 	---@param self Locale
 	init = function (self)
 		if host:isHost() then
-			EventManager.events["ON_LOCALE_READY"]:register(function ()
-				models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(Locale:getLocalizedText("action_wheel.gui.update_check.locale_version"):format(self.localeVersion or "v?.?.?"))
-				self.isFetching = false
-				self.localeDataChecks = 0
-				ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
-				ActionWheelConfig.isLocaleReloadedByAction = false
-
-				if self.errorCode ~= "SUCCESS" then
-					if self.localeDataPrev ~= nil then
-						---@diagnostic disable-next-line: assign-type-mismatch
-						self.localeVersion = self.localeDataPrev["localeVersion"]
-						---@diagnostic disable-next-line: assign-type-mismatch
-						self.locales = self.localeDataPrev["locales"]
-						---@diagnostic disable-next-line: assign-type-mismatch
-						self.availableLocales = self.localeDataPrev["availableLocales"]
-						self.localeDataPrev = nil
-					end
-
-					print(Locale:getLocalizedText("message.locale.fail"):format(self.errorCode))
-					if self.errorCode == "ERR_NOT_ALLOWED" then
-						print(Locale:getLocalizedText("message.net_utils.not_allowed"):format(self.REMOTE_LOCALE_ENDPOINT:match("://([^:/]+)")))
-					end
-				end
-			end)
-
 			self:initializeLocale()
 		end
 
@@ -105,7 +82,7 @@ local Locale = {
 					self.locales[locale] = {}
 					self:fetchLocaleDataSet(locale)
 				end
-				EventManager.events["ON_LOCALE_READY"]:fire()
+				self:onLocaleRefresh()
 				self.localePrev = locale
 			end
 		end)
@@ -197,18 +174,20 @@ local Locale = {
 	---@param self Locale
 	---@param callback fun(status: Locale.FetchResult, data: (boolean|string|number|table)?) ロケールインデックスの取得が完了した際に呼び出されるコールバック関数
 	fetchLocaleIndex = function (self, callback)
-		-- ローカルキャッシュから取得
-		local result, data = self:fetchFileFromCache("index.json")
-		if result == "SUCCESS" and type(data) ~= "table" then
-			data = nil
-		end
+		if not self.isForcedRemoteFetch then
+			-- ローカルキャッシュから取得
+			local result, data = self:fetchFileFromCache("index.json")
+			if result == "SUCCESS" and type(data) ~= "table" then
+				data = nil
+			end
 
-		-- ローカルキャッシュが有効か判断
-		if result == "SUCCESS" then
-			local lastFetchTime = Config:loadConfig("PUBLIC", "locale.last_fetch_time", 0)
-			if client:getSystemTime() - lastFetchTime <= self.CACHE_LIFETIME then
-				callback("SUCCESS", data)
-				return
+			-- ローカルキャッシュが有効か判断
+			if result == "SUCCESS" then
+				local lastFetchTime = Config:loadConfig("PUBLIC", "locale.last_fetch_time", 0)
+				if client:getSystemTime() - lastFetchTime <= self.CACHE_LIFETIME then
+					callback("SUCCESS", data)
+					return
+				end
 			end
 		end
 
@@ -238,15 +217,17 @@ local Locale = {
 	---@param path string 取得するロケールデータのパス
 	---@param callback fun(status: Locale.FetchResult, data: (boolean|string|number|table)?) ロケールデータの取得が完了した際に呼び出されるコールバック関数
 	fetchLocaleData = function (self, path, callback)
-		-- ローカルキャッシュから取得
-		local result, data = self:fetchFileFromCache(path)
-		if result == "SUCCESS" then
-			if type(data) == "table" then
-				callback("SUCCESS", data)
-				return
-			else
-				file:delete(self.CACHE_DIR_ROOT .. path)
-				data = nil
+		if not self.isForcedRemoteFetch then
+			-- ローカルキャッシュから取得
+			local result, data = self:fetchFileFromCache(path)
+			if result == "SUCCESS" then
+				if type(data) == "table" then
+					callback("SUCCESS", data)
+					return
+				else
+					file:delete(self.CACHE_DIR_ROOT .. path)
+					data = nil
+				end
 			end
 		end
 
@@ -284,7 +265,7 @@ local Locale = {
 			end
 			self.localeDataChecks = self.localeDataChecks + 1
 			if self.localeDataChecks == 4 then
-				EventManager.events["ON_LOCALE_READY"]:fire()
+				self:onLocaleRefresh()
 			end
 		end)
 		self:fetchLocaleData("avatars/" .. BlueArchiveCharacter.basic.avatarName .. "/" .. locale .. ".json", function (status, data)
@@ -299,7 +280,7 @@ local Locale = {
 
 			self.localeDataChecks = self.localeDataChecks + 1
 			if self.localeDataChecks == 4 then
-				EventManager.events["ON_LOCALE_READY"]:fire()
+				self:onLocaleRefresh()
 			end
 		end)
 	end;
@@ -334,6 +315,7 @@ local Locale = {
 					---@cast cacheVersion string
 					if cacheVersion == nil and indexVersion ~= nil or StringUtils.isNewerVersion(indexVersion, cacheVersion) then
 						self:flushCache()
+						self:initializeLocaleDirectory()
 						file:writeString(self.CACHE_DIR_ROOT .. "index.json", toJson(data), "utf8")
 						self.localeVersion = indexVersion
 						Config:saveConfig("PUBLIC", "locale.version", indexVersion)
@@ -355,21 +337,21 @@ local Locale = {
 					else
 						self.localeDataChecks = self.localeDataChecks + 2
 						if self.localeDataChecks == 4 then
-							EventManager.events["ON_LOCALE_READY"]:fire()
+							self:onLocaleRefresh()
 						end
 					end
 				else
 					-- フェッチ失敗。キャッシュもなし。
 					self.localeVersion = nil
 					self.errorCode = status
-					EventManager.events["ON_LOCALE_READY"]:fire()
+					self:onLocaleRefresh()
 				end
 				-- en_usロケールの取得
 				self:fetchLocaleDataSet("en_us")
 			end)
 		else
 			self.errorCode = "ERR_NOT_ALLOWED"
-			EventManager.events["ON_LOCALE_READY"]:fire()
+			self:onLocaleRefresh()
 		end
 	end;
 
@@ -399,13 +381,13 @@ local Locale = {
 			self.errorCode = "ERR_NOT_ALLOWED"
 			ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
 			ActionWheelConfig.isLocaleReloadedByAction = false
-			EventManager.events["ON_LOCALE_READY"]:fire()
+			self:onLocaleRefresh()
 			return
 		end
 
 		self:makeLocaleBackup()
 
-		self:initializeLocaleDirectory()
+		self.isForcedRemoteFetch = true
 	end;
 
 	---メモリ上にあるロケールデータを、同じくメモリ上にバックアップする。
@@ -434,6 +416,38 @@ local Locale = {
 			return key
 		end
 	end;
+
+	---ロケールの（再）読み込みが完了した際に呼び出すイベント関数。
+	---ロケールの読み込みの成否問わず、処理完了時に呼び出す。
+	---@param self Locale
+	onLocaleRefresh = function (self)
+		events.TICK:register(function ()
+			models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(Locale:getLocalizedText("action_wheel.gui.update_check.locale_version"):format(self.localeVersion or "v?.?.?"))
+			events.TICK:remove("locale_set_locale_version_delay_tick")
+		end, "locale_set_locale_version_delay_tick")
+		self.isFetching = false
+		self.localeDataChecks = 0
+		ActionWheelConfig.isLocaleDataFetchErrorOccurred = true
+		ActionWheelConfig.isLocaleReloadedByAction = false
+
+		if self.errorCode ~= "SUCCESS" then
+			if self.localeDataPrev ~= nil then
+				---@diagnostic disable-next-line: assign-type-mismatch
+				self.localeVersion = self.localeDataPrev["localeVersion"]
+				---@diagnostic disable-next-line: assign-type-mismatch
+				self.locales = self.localeDataPrev["locales"]
+				---@diagnostic disable-next-line: assign-type-mismatch
+				self.availableLocales = self.localeDataPrev["availableLocales"]
+			end
+
+			print(Locale:getLocalizedText("message.locale.fail"):format(self.errorCode))
+			if self.errorCode == "ERR_NOT_ALLOWED" then
+				print(Locale:getLocalizedText("message.net_utils.not_allowed"):format(self.REMOTE_LOCALE_ENDPOINT:match("://([^:/]+)")))
+			end
+		end
+
+		EventManager.events["ON_LOCALE_READY"]:fire()
+	end
 }
 
 return Locale
