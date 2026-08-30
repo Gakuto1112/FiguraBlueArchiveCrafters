@@ -71,6 +71,10 @@ local Locale = {
 	---@param self Locale
 	init = function (self)
 		if host:isHost() then
+			events.TICK:register(function ()
+				models.models.action_wheel_gui.Gui.VersionDisplay:getTask("action_wheel.gui.version_display.l3"):setText(Locale:getLocalizedText("action_wheel.gui.update_check.locale_version"):format("v?.?.?"))
+				events.TICK:remove("locale_init_delay_tick")
+			end, "locale_init_delay_tick")
 			self:initializeLocale()
 		end
 
