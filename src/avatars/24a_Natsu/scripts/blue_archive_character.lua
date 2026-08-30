@@ -38,6 +38,7 @@
 ---| "TRIANGLE" # 三角口
 ---| "HAT" # への口
 ---| "HAPPY" # 幸せのぐじゅぐじゅ口
+---| "OPENED" # 開いた口
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -301,6 +302,7 @@ local BlueArchiveCharacter = {
 			TRIANGLE = vectors.vec2(0, 0);
 			HAT = vectors.vec2(1, 0);
 			HAPPY = vectors.vec2(2, 0);
+			OPENED = vectors.vec2(3, 0);
 		};
 	};
 
@@ -554,7 +556,34 @@ local BlueArchiveCharacter = {
 	};
 
 	bubble = {
+		callbacks = {
+			onPlay = function(_, type, duration)
+				if type == "GOOD" then
+					FaceParts:setEmotion("NORMAL", "NORMAL", "TRIANGLE", duration, true)
+				elseif type == "HEART" then
+					FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", duration, true)
+				elseif type == "NOTE" then
+					FaceParts:setEmotion("NORMAL", "NORMAL", "TRIANGLE", duration, true)
+					ModelAlias.alias.avatar.faceParts.Eyes.EyeShines:setVisible(true)
+				elseif type == "QUESTION" then
+					FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAPPY", duration, true)
+					ModelAlias.alias.avatar.rightEye:setRot(0, 0, -5)
+					ModelAlias.alias.avatar.leftEye:setRot(0, 0, 5)
+				elseif type == "SWEAT" then
+					FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", duration, true)
+				end
+			end;
 
+			onStop = function(_, _, forcedStop)
+				ModelAlias.alias.avatar.faceParts.Eyes.EyeShines:setVisible(false)
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.rightEye, ModelAlias.alias.avatar.leftEye}) do
+					modelPart:setRot()
+				end
+				if forcedStop then
+					FaceParts:resetEmotion()
+				end
+			end;
+		};
 	};
 
 	headModel = {

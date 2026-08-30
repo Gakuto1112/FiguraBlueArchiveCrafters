@@ -13,8 +13,8 @@
 	"timeline_setups": [],
 	"unhandled_root_fields": {},
 	"resolution": {
-		"width": 78,
-		"height": 6
+		"width": 80,
+		"height": 8
 	},
 	"elements": [
 		{
@@ -2810,6 +2810,92 @@
 			},
 			"type": "cube",
 			"uuid": "3c8a474e-3510-f927-1376-b764fb72b65f"
+		},
+		{
+			"name": "RightEyeShine",
+			"box_uv": false,
+			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
+			"allow_mirror_modeling": true,
+			"from": [1.125, 25.225, -4.02],
+			"to": [1.875, 26.275, -4.02],
+			"autouv": 0,
+			"color": 0,
+			"visibility": false,
+			"origin": [1, 25.15, -4],
+			"faces": {
+				"north": {
+					"uv": [0, 21, 5, 28],
+					"texture": 4
+				},
+				"east": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"south": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"west": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"up": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"down": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				}
+			},
+			"type": "cube",
+			"uuid": "497692d5-68de-707e-8530-0be058cfb58e"
+		},
+		{
+			"name": "LeftEyeShine",
+			"box_uv": false,
+			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
+			"allow_mirror_modeling": true,
+			"from": [-1.875, 25.225, -4.02],
+			"to": [-1.125, 26.275, -4.02],
+			"autouv": 0,
+			"color": 0,
+			"visibility": false,
+			"origin": [-1, 25.15, -4],
+			"faces": {
+				"north": {
+					"uv": [5, 21, 0, 28],
+					"texture": 4
+				},
+				"east": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"south": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"west": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"up": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"down": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				}
+			},
+			"type": "cube",
+			"uuid": "9fbbc691-2a5f-a0d6-185c-8d0a2007abc6"
 		}
 	],
 	"groups": [
@@ -3778,6 +3864,29 @@
 			"autouv": 0,
 			"isOpen": true,
 			"primary_selected": false
+		},
+		{
+			"name": "EyeShines",
+			"uuid": "780c093e-8e55-0dc0-65ed-3f947faa6346",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 24.65, -4],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"visibility": false,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
 		}
 	],
 	"outliner": [
@@ -3801,6 +3910,11 @@
 									"children": [
 										"7853e9a2-b429-5a00-5e0e-70449c3a71ee",
 										"328a2de5-64bc-807b-5906-227bfceedf26",
+										{
+											"uuid": "780c093e-8e55-0dc0-65ed-3f947faa6346",
+											"isOpen": false,
+											"children": ["497692d5-68de-707e-8530-0be058cfb58e", "9fbbc691-2a5f-a0d6-185c-8d0a2007abc6"]
+										},
 										{
 											"uuid": "d775a8e4-818b-b21e-93df-fdb4456fefc8",
 											"isOpen": true,
@@ -4218,9 +4332,9 @@
 			"id": "3",
 			"group": "",
 			"scope": 0,
-			"width": 64,
+			"width": 80,
 			"height": 8,
-			"uv_width": 64,
+			"uv_width": 80,
 			"uv_height": 8,
 			"particle": false,
 			"use_as_default": false,
@@ -4240,7 +4354,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "94007dbe-5540-4027-04a9-8608282ae7e1",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAICAYAAABJYvnfAAAAtUlEQVR4AeSRPQqDQBCF3XSBFOnTpE+KnCFHEY8lHsVTaOFJLJWveDDI7iq4yoLCx7yZnf2Z5624+JeVAWPfTcA/IQIa0II8FVED9l7YNvUEWx7LXepbapvTs8yp+aAPfGuqBQ2wG63WxrXI4P+ycoBe6z9i/f75OoidHTSAjZbYIb41BlfdatVyiUEDzn4gZutONCgnKh9e7wKopSAbAxiGIQENaKH893w4dCqyMmDrUClNmAEAAP//PInw1AAAAAZJREFUAwA9gVoRfjCviQAAAABJRU5ErkJggg=="
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAICAYAAABuzHg3AAAA1klEQVR4AeyQMQ7CMBAEYzokCnoaeih4A09BPAvxFF4BBS+hDJripNNpTYwSRy4SaeW9u433vKtu+UYl0FSAn9ezB7yIE8AB3EBdC+aRO6PvzwDtkvhTaf2433pQosfLdJH7Gk2s6SmgA2qmeiXaqMkG6IWeK2PVI7jz5ZoAXGlq99aHYwI1fbIBYuzx7xIEZ/94br0WT947tFfUZAMcumjquV8MDryH1e/dvgN+NiU3H3WnmjUTIAuzIIADuMHq03aT4DVhnvFUnk0FqBZUvTlCVL6q9wUAAP//dQo+eQAAAAZJREFUAwBH4YIRe4RrRgAAAABJRU5ErkJggg=="
 		},
 		{
 			"name": "accessories.png",
@@ -4272,7 +4386,7 @@
 			"internal": true,
 			"saved": true,
 			"uuid": "c8fd457b-b271-5b5c-7fcf-71f3439f77f2",
-			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAACoElEQVR4AczWT2tTQRQF8Jd5tBZFcOnfihTBr+DCT+/CvStBRK1/cCOIogRDU99v6kkmaRKrTaUlp+fec++bM28yM22ZHr48Hn95VTH5/m7G4m74WeZBqp/okjaWQ6u1sdoqlLL/cNTv7Hawc+3eaO/GwUij2AA4Ob4oFAMfTX52IAZxOwmaHP8NPANneaZOxGqAh3xNYishNwiWi4M2b+O2Tg+ir+Py49nT4/7zuJs8f9Ph3a/TGts7tNQxbd1A59XrirSDjD986vbu3KxSuCbDL7WBNn7G394ubHj5xgeGohUvzBiEB33hEx3DQnFF0pf5ux1Np11f5vmK9plU2kkwAhrowrTEeBOYb6qvq9UVcYSZYRBfffykHmMxzQDRxOuwd/1+vQJsUjHWa/kDB8JXJlfTc2rdbMgYhzWDGt4EgzPCgX4rBeJl6KsXGgOmeLkpOobl+p/ymPfl1DvPHtVTr3gGJoFBDDoxLTHeBIOmLu7LfAJ9KR1NvS9zXV4zZhIMYptUHHaP0GnB0esXx7RViGFq9gHYN/6MiEG9L6Wrp0YSME6MbVZamLYJMao8bNyYbXpGTz01jNIYw3B0PdHE9P7Bo3qyxOdFXREG9gEYMLnjGlOaGOtJr3gbKMzaQcVgHzBgrEeM1bB8m6inph0wE4jGmBaOvm2e3SMZOIbh6O1kxNHPyi6twIXX3qzGqCvCVBIkxzFNjNP3L7x8rDNGmdw66O7e3l97HzAGDywzbRnetH1jeXpMoi/16lr4q6ynXNkpo/cfD7d2DPsyN2qN3RXulsrD/8UYTLIvw4UmuAw4mf4WZ+Itc4VnBQw/26i//4PzdYCaZ7Y+EQOvgq8J+nJi2ZcTTu9iFvUC2OqAt29XLFb/bSIxXMeXZiK/AAAA//9pDnrdAAAABklEQVQDAEReIleWiyXJAAAAAElFTkSuQmCC"
+			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAACuklEQVR4AczWzWoUQRQF4J5qEoMiuPQ3IkHwFVz4Rj6Ob+TCvStBRI0/uBFEUYYMmdhf4Znp6cy00YzBMCfn3nNv3VtdXVUzZX748mT65VXF7Pu7BbOb7m/InVQ/0Tl9mw99rW+LrUMp+/cn7c5uAztX7kz2rh1MJLIVwPHxv0JR+Hh21AAb2P1J0Pj4T2AMnGVMnYjVAIO8JraV4CuC+eyg7/ftfpweRN/E5cezpyft52kze/6mwbtf59W2d2iJY9qmQufV64r0i0w/fGr2bl2vUrg63T+xjkY/029vVzY8f3RAF7TiRTMNwp2+8omOYSW4xmnL8tmO5/OmLUt/TfpCKv1JaAQ0kIVpsfEYNB+Lb4rVFXGENcPAvvzwUT3GbJoC0dibsHf1br0CbFI2lmv5AwfCK+OLyTm1bjZkGoclgxgeg+Ia4UC+lQL2EPLqhaaBpniYFB3DMP47P83bcuqZF0Pl1CteA5PAwAaZmBYbj0HRxNltWU6gLaWhibdlqfOrpxkHA9smZYfdI3RacPz6xQltHdIwMfsA7BtfI2wQb0tp6qnhBBrHxjYrLUwbQxpV7jZumo2NkVNPjUZJTMNwdDnR2PT23oN6stjnRV0RDewDUDC+45qmNDaWk1z2NlA06xdlg32ggcZy2FgM87eJemr6BTOBaBrTwtG3zYt7JIXTMBy9Pxl29LOySytw4fVvVjXqimjKCeLjNI2Nk/c3PDzWqVFmNw6a2zf3N94HGoMBQ6YN4Un7T8xPjkm0pV5dK9/KcsqlnTJ5//FwMj96snEyKXQWbsuyUb+xu8LdUrn7XYxBzbZ0Fxrjf0CdflYjfJ6Jecpc4VkB9RYb9dcvOK8DxIwpw+ZDX+I24DVBW+qzr+wR9UvZfbxyTQ99SduA1QFP31+x1K7TS/NwghfJdSIX2XBTr58AAAD//6yEwSEAAAAGSURBVAMAUwg14o3823gAAAAASUVORK5CYII="
 		},
 		{
 			"name": "sugar_rush_symbols.png",
@@ -13252,6 +13366,12 @@
 				},
 				"fac06cb0-b6f7-72c1-d826-cc10f69ea6d0": {
 					"name": "SugarRushLogo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"780c093e-8e55-0dc0-65ed-3f947faa6346": {
+					"name": "EyeShines",
 					"type": "bone",
 					"rotation_global": false,
 					"quaternion_interpolation": false
