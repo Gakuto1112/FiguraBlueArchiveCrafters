@@ -69,8 +69,10 @@ local Pie = {
 									self.object["Pie" .. self.pieRemains]:setVisible(false)
 								end
 								self.pieRemains = self.pieRemains - 1
-							else
-								self.shouldDeinit = true
+
+								if self.pieRemains == 0 then
+									self.shouldDeinit = true
+								end
 							end
 
 							--食べる演出を再生
