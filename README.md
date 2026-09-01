@@ -182,6 +182,7 @@ Please understand this.
   | Kei | - Leaves an amplifier in place after playing the Ex Skill. It seems that she leaves a beacon occasionally. |
   | Mika (Normal) | - A meteorite drops in front of the her after playing the Ex Skill (visual effect only). |
   | Mika (Swimsuit) | - Gets wet when submerged in water. Its appearance is like stars floating in the night sky...<br> - Unleashes a show of shooting stars after playing the Ex Skill. |
+  | Natsu | - Throws pies. The pie flies toward nearby players, and if there are other players nearby who have not yet received a pie, centered on the thrown pie, the pie also flies in that direction as well. (Up to 4 times) <br> It does not increase attack power. It is simply delicious. |
 
 ## Ex Skill
 
