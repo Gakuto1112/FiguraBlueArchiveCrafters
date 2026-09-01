@@ -1,87 +1,11 @@
 import json
-from typing import NotRequired, TypedDict
 
 from common_modules.logger import Logger
 from readme_generate.modules.enums.template_locale import TemplateLocale
 from readme_generate.modules.paths import paths
+from .models.creation_status.creation_status_data import CreationStatusData
+from .models.creation_status.creation_status_entry import CreationStatusEntry
 
-
-class CreationStatusData(TypedDict):
-	"""
-	アバターの作成状況のjsonデータの構造体
-	"""
-
-	done: list[CreationStatusEntry]
-	"""
-	作成済みのエントリーのリスト
-	"""
-
-	in_progress: list[CreationStatusEntry]
-	"""
-	作成中のエントリーのリスト
-	"""
-
-	planned: list[CreationStatusEntry]
-	"""
-	作成予定のエントリーのリスト
-	"""
-
-	requested: list[CreationStatusEntry]
-	"""
-	様々なところで作成をお願いされたエントリーのリスト
-	"""
-
-class CreationStatusEntry(TypedDict):
-	"""
-	作成状況のエントリー単体を格納する構造体
-	"""
-
-	character_name: CharacterNameData
-	"""
-	エントリー対象のキャラクターの名前
-	"""
-
-	costume_name: NotRequired[DisplayNameData]
-	"""
-	エントリーされたキャラクターの衣装名
-	衣装違いの場合のみ値が入る。そうでない場合はNoneになる。
-	"""
-
-	issue_number: NotRequired[int]
-	"""
-	エントリーに関連するissueの番号
-	該当のissueがない場合はNoneになる。
-	"""
-
-class CharacterNameData(TypedDict):
-	"""
-	キャラクターの名前を格納する構造体
-	"""
-
-	first_name: DisplayNameData
-	"""
-	下の名前（名）
-	"""
-
-	last_name: DisplayNameData
-	"""
-	上の名前（姓）
-	"""
-
-class DisplayNameData(TypedDict):
-	"""
-	表示名を格納する構造体
-	"""
-
-	en: str
-	"""
-	英語での表示名
-	"""
-
-	jp: str
-	"""
-	日本語での表示名
-	"""
 
 class CreationStatusWriter:
 	"""

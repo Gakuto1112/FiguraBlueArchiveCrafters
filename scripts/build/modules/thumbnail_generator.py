@@ -1,55 +1,15 @@
 import errno
 import json
-from enum import IntEnum
 from pathlib import Path
-from typing import TypedDict, cast
+from typing import cast
 
-from common_modules.logger import Logger
-from build.modules.paths import paths
 from PIL import Image, ImageChops
 
+from common_modules.logger import Logger
+from .enums.thumbnail_color_type import ThumbnailColorType
+from .models.thumbnail_config import ThumbnailConfig
+from build.modules.paths import paths
 
-class ThumbnailColorType(IntEnum):
-	"""
-	サムネイルの色付き枠で使用する色の種類を表す列挙型
-	タイプ名は本家ブルーアーカイブの属性名と対応する。
-	"""
-
-	EXPLOSIVE = 0
-	"""
-	爆発（赤）
-	"""
-
-	PENETRATION = 1
-	"""
-	貫通（黄）
-	"""
-
-	CHEMICAL = 2
-	"""
-	分解（緑）
-	"""
-
-	MYSTIC = 3
-	"""
-	神秘（青）
-	"""
-
-	SONIC = 4
-	"""
-	振動（紫）
-	"""
-
-class ThumbnailConfig(TypedDict):
-	"""
-	サムネイル設定ファイルの構造体
-	"""
-
-	colorType: str
-	"""
-	サムネイルの色付き枠で使用する色の種類
-	`ThumbnailColorType`のいずれかを指定する。
-	"""
 
 class ThumbnailGenerator:
 	"""
