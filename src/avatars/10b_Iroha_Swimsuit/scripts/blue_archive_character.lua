@@ -292,25 +292,23 @@ local BlueArchiveCharacter = {
 	};
 
 	gun = {
-		scale = 1.2;
+		scale = 0.4;
 
 		gunPosition = {
 			hold = {
+				firstPersonPos = {
+					right = vectors.vec3(-0.5, -3.75, -3);
+					left = vectors.vec3(0.5, -3.75, -3);
+				};
 
+				thirdPersonPos = {
+					right = vectors.vec3(0, -3.75, -3);
+					left = vectors.vec3(0, -3.75, -3);
+				};
 			};
 
 			put = {
-				type = "BODY";
-
-				pos = {
-					right = vectors.vec3(4.5, -3, 4);
-					left = vectors.vec3(-4.5, -3, 4);
-				};
-
-				rot = {
-					right = vectors.vec3(-90, 0, 0);
-					left = vectors.vec3(-90, 0, 0);
-				};
+				type = "HIDDEN";
 			};
 		};
 
