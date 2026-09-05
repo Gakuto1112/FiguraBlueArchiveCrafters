@@ -67,7 +67,7 @@ The avatars for these characters are worked in progress.
 It usually takes about 2~3 weeks, but works have been delayed because of my recently busy schedule.
 Click on the link in brackets to go to the issue about the character, where you can check the progress.
 
-(There is no avatar currently being created.)
+- Iroha Natsume (Swimsuit) ([#190](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/190))
 
 ### Planned
 
@@ -76,7 +76,6 @@ They will be created in order from top to bottom.
 This is just a plan and the order may change or creation may be discontinued.
 
 - Ibuki Tanga (Swimsuit) ([#189](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/189))
-- Iroha Natsume (Swimsuit) ([#190](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/190))
 - Azusa Shirasu ([#155](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/155))
 - Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102))
 - Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37))

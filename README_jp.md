@@ -67,7 +67,7 @@
 通常は2~3週間程を製作に要しますが、最近は多忙により更新が遅れています。
 括弧内のリンクをクリックすると対象のissueに移動でき、そこで進捗を確認できます。
 
-（現在作成中のアバターはありません。）
+- 棗 イロハ（水着）（[#190](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/190)）
 
 ### 作成予定
 
@@ -76,7 +76,6 @@
 これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
 - 丹花 イブキ（水着）（[#189](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/189)）
-- 棗 イロハ（水着）（[#190](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/190)）
 - 白洲 アズサ（[#155](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/155)）
 - 早瀬 ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102)）
 - 黒見 セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37)）
