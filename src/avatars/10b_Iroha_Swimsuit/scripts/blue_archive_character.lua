@@ -384,7 +384,237 @@ local BlueArchiveCharacter = {
 
 	physics = {
 		physicData = {
+			{
+				models = {ModelAlias.alias.avatar.head.BackHair};
 
+				x = {
+					vertical = {
+						min = -120;
+						neutral = 0;
+						max = 0;
+						sneakOffset = -30;
+
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -80;
+							min = -90;
+							max = 0;
+						};
+
+						headRot = {
+							multiplayer = 0.05;
+							min = -90;
+							max = 0;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -120;
+							max = 0;
+						};
+					};
+
+					horizontal = {
+						min = -135;
+						neutral = -30;
+						max = 0;
+
+						headX = {
+							multiplayer = -80;
+							min = -45;
+							max = 0;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.RightSideRibbon.RibbonRight, ModelAlias.alias.avatar.body.LeftSideRibbon.RibbonRight};
+
+				x = {
+					vertical = {
+						min = -10;
+						neutral = 0;
+						max = 10;
+
+						bodyY = {
+							multiplayer = -80;
+							min = -10;
+							max = 10;
+						};
+					};
+
+					horizontal = {
+						min = -10;
+						neutral = 0;
+						max = 10;
+
+						bodyX = {
+							multiplayer = -160;
+							min = -10;
+							max = 10;
+						};
+					};
+				}
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.RightSideRibbon.RibbonLeft, ModelAlias.alias.avatar.body.LeftSideRibbon.RibbonLeft};
+
+				x = {
+					vertical = {
+						min = -10;
+						neutral = 0;
+						max = 10;
+
+						bodyY = {
+							multiplayer = 80;
+							min = -10;
+							max = 10;
+						};
+					};
+
+					horizontal = {
+						min = -10;
+						neutral = 0;
+						max = 10;
+
+						bodyX = {
+							multiplayer = 160;
+							min = -10;
+							max = 10;
+						};
+					};
+				}
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.RightSideRibbon.RightSideRibbonRightBottom, ModelAlias.alias.avatar.body.RightSideRibbon.RightSideRibbonLeftBottom};
+
+				z = {
+					vertical = {
+						min = -5;
+						neutral = 0;
+						max = 175;
+
+						bodyY = {
+							multiplayer = -80;
+							min = 0;
+							max = 175;
+						};
+
+						bodyZ = {
+							multiplayer = -80;
+							min = -5;
+							max = 90;
+						};
+
+						bodyRot = {
+							multiplayer = -0.05;
+							min = 0;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = -5;
+						neutral = 0;
+						max = 175;
+
+						bodyX = {
+							multiplayer = -80;
+							min = -5;
+							max = 175;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.LeftSideRibbon.LeftSideRibbonRightBottom, ModelAlias.alias.avatar.body.LeftSideRibbon.LeftSideRibbonLeftBottom};
+
+				z = {
+					vertical = {
+						min = -175;
+						neutral = 0;
+						max = 5;
+
+						bodyY = {
+							multiplayer = 80;
+							min = -175;
+							max = 0;
+						};
+
+						bodyZ = {
+							multiplayer = -80;
+							min = -90;
+							max = 5;
+						};
+
+						bodyRot = {
+							multiplayer = 0.05;
+							min = -90;
+							max = 0;
+						};
+					};
+
+					horizontal = {
+						min = -175;
+						neutral = 0;
+						max = 5;
+
+						bodyX = {
+							multiplayer = 80;
+							min = -175;
+							max = 5;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.RightSideRibbon.RightSideRibbonRightBottom.RightSideRibbonRightBottomZPivot, ModelAlias.alias.avatar.body.RightSideRibbon.RightSideRibbonLeftBottom.RightSideRibbonLeftBottomZPivot, ModelAlias.alias.avatar.body.LeftSideRibbon.LeftSideRibbonRightBottom.LeftSideRibbonRightBottomZPivot, ModelAlias.alias.avatar.body.LeftSideRibbon.LeftSideRibbonLeftBottom.LeftSideRibbonLeftBottomZPivot};
+
+				x = {
+					vertical = {
+						min = -80;
+						neutral = 0;
+						max = 80;
+
+						bodyX = {
+							multiplayer = -80;
+							min = -80;
+							max = 80;
+						};
+					};
+
+					horizontal = {
+						min = -80;
+						neutral = 0;
+						max = 80;
+
+						bodyY = {
+							multiplayer = 80;
+							min = -80;
+							max = 80;
+						};
+					};
+				};
+			};
+		};
+
+		callbacks = {
+			onPhysicPerformed = function (_, model)
+				if model == ModelAlias.alias.avatar.head.BackHair then
+					local rot = math.deg(math.asin(player:getLookDir().y)) - model:getRot().x
+					if rot < 0 then
+						ModelAlias.alias.avatar.head.BackHair:setOffsetPivot(0, 0, 2)
+					else
+						ModelAlias.alias.avatar.head.BackHair:setOffsetPivot()
+					end
+				end
+			end
 		};
 	};
 
