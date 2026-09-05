@@ -255,11 +255,11 @@
 ---@field public physics BlueArchiveCharacter.PhysicsStruct 物理演算
 local BlueArchiveCharacter = {
 	basic = {
-		avatarName = "00a_Base";
+		avatarName = "10b_Iroha_Swimsuit";
 
 		birth = {
-			month = 1;
-			day = 1;
+			month = 11;
+			day = 16;
 		};
 	};
 
