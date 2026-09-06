@@ -453,6 +453,98 @@ local BlueArchiveCharacter = {
 			};
 
 			{
+				models = {ModelAlias.alias.avatar.head.StrawHat.StrawHatKnotRightTip, ModelAlias.alias.avatar.head.StrawHat.StrawHatKnotLeftTip};
+
+				x = {
+					vertical = {
+						min = -25;
+						neutral = 0;
+						max = 90;
+
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -120;
+							min = -25;
+							max = 90;
+						};
+
+						bodyY = {
+							multiplayer = -120;
+							min = 0;
+							max = 90;
+						};
+
+						headRot = {
+							multiplayer = -0.075;
+							min = 0;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = -25;
+						neutral = 45;
+						max = 90;
+
+						headX = {
+							multiplayer = -160;
+							min = -25;
+							max = 90;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.StrawHat.StrawHatKnotRightTip.StrawHatKnotRightTipZPivot};
+
+				z = {
+					vertical = {
+						min = -70;
+						neutral = 0;
+						max = 55;
+
+						headZ = {
+							multiplayer = -120;
+							min = -75;
+							max = 55;
+						};
+					};
+
+					horizontal = {
+						min = 0;
+						neutral = 0;
+						max = 0;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.StrawHat.StrawHatKnotLeftTip.StrawHatKnotLeftTipZPivot};
+
+				z = {
+					vertical = {
+						min = -55;
+						neutral = 0;
+						max = 70;
+
+						headZ = {
+							multiplayer = -120;
+							min = -55;
+							max = 70;
+						};
+					};
+
+					horizontal = {
+						min = 0;
+						neutral = 0;
+						max = 0;
+					};
+				};
+			};
+
+			{
 				models = {ModelAlias.alias.avatar.body.RightSideRibbon.RibbonRight, ModelAlias.alias.avatar.body.LeftSideRibbon.RibbonRight};
 
 				x = {
