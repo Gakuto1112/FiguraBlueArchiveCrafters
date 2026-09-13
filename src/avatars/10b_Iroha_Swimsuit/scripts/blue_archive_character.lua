@@ -562,6 +562,14 @@ local BlueArchiveCharacter = {
 
 	costume = {
 		isAltCostumeEnabled = false;
+
+		callbacks = {
+			onArmorChange = function (self, parts, isVisible)
+				if parts == "HELMET" then
+					ModelAlias.alias.avatar.head.StrawHat:setVisible(not isVisible)
+				end
+			end;
+		};
 	};
 
 	bubble = {
