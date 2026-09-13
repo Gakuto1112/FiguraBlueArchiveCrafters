@@ -315,7 +315,93 @@ local BlueArchiveCharacter = {
 	};
 
 	arms = {
+		callbacks = {
+			onArmStateChanged = function (self, right, left)
+				if self.costume.isRidingTank then
+					if self.costume.tankTick <= 35 then
+						return {right = "DEFAULT", left = "DEFAULT"}
+					else
+						return {right = right == "GUN_MAIN_HAND" and "TANK_GUN_MAIN_HAND" or (right == "GUN_OFF_HAND" and "TANK_GUN_OFF_HAND" or right), left = left == "GUN_MAIN_HAND" and "TANK_GUN_MAIN_HAND" or (left == "GUN_OFF_HAND" and "TANK_GUN_OFFHAND" or left)}
+					end
+				end
+			end;
 
+			onAdditionalRightArmProcess = function (self, state)
+				if state == "TANK_GUN_MAIN_HAND" then
+					--虎丸搭乗中の武器の構え
+					events.TICK:register(function ()
+						if Arms.armState.right == "TANK_GUN_MAIN_HAND" then
+							Arms:processArmSwingCount()
+							if player:isSwingingArm() and not player:isLeftHanded() and self.costume.shootTick == -1 then
+								ModelAlias.alias.avatar.rightArm:setParentType("RightArm")
+							else
+								ModelAlias.alias.avatar.rightArm:setParentType("Body")
+							end
+							if player:getActiveItem().id == "minecraft:crossbow" then
+								Arms:setArmState("CROSSBOW", "CROSSBOW")
+							end
+						end
+					end, "right_arm_tick")
+					events.RENDER:register(function (delta)
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						ModelAlias.alias.avatar.rightArm:setRot(((player:isSwingingArm() and not player:isLeftHanded()) or self.costume.shootTick >= 0) and vectors.vec3() or vectors.vec3(headRot.x + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 90, 70, 0))
+					end, "right_arm_render")
+				elseif state == "TANK_GUN_OFF_HAND" then
+					--虎丸搭乗中の武器を持っていない手
+					local isHolding = false
+					events.TICK:remove("right_arm_tick")
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+						local heldItem = player:getHeldItem(not player:isLeftHanded())
+						local isNewerNbt = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.20.5")
+						isHolding = player:getActiveItem().id == "minecraft:bow" or (heldItem.id == "minecraft:crossbow" and ((isNewerNbt and #heldItem.tag["minecraft:charged_projectiles"] >= 1) or (not isNewerNbt and heldItem.tag.Charged == 1)))
+						ModelAlias.alias.avatar.rightArm:setParentType((isHolding or self.costume.shootTick >= 0) and "Body" or "RightArm")
+					end, "right_arm_tick")
+					events.RENDER:remove("right_arm_render")
+					events.RENDER:register(function (delta)
+						ModelAlias.alias.avatar.rightArm:setRot(isHolding and vectors.vec3(math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 35, 0, 0) or vectors.vec3())
+					end, "right_arm_render")
+				end
+			end;
+
+			onAdditionalLeftArmProcess = function (self, state)
+				if state == "TANK_GUN_MAIN_HAND" then
+					--虎丸搭乗中の武器の構え
+					events.TICK:register(function ()
+						if Arms.armState.left == "TANK_GUN_MAIN_HAND" then
+							Arms:processArmSwingCount()
+							if player:isSwingingArm() and player:isLeftHanded() and self.costume.shootTick == -1 then
+								ModelAlias.alias.avatar.leftArm:setParentType("LeftArm")
+							else
+								ModelAlias.alias.avatar.leftArm:setParentType("Body")
+							end
+							if player:getActiveItem().id == "minecraft:crossbow" then
+								Arms:setArmState("CROSSBOW", "CROSSBOW")
+							end
+						end
+					end, "left_arm_tick")
+					events.RENDER:register(function (delta)
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						ModelAlias.alias.avatar.leftArm:setRot(((player:isSwingingArm() and player:isLeftHanded()) or self.costume.shootTick >= 0) and vectors.vec3() or vectors.vec3(headRot.x + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 90, 90, 0))
+					end, "left_arm_render")
+				elseif state == "TANK_GUN_OFF_HAND" then
+					--虎丸搭乗中の武器を持っていない手
+					local isHolding = false
+					events.TICK:remove("left_arm_tick")
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+						local heldItem = player:getHeldItem(player:isLeftHanded())
+						local isNewerNbt = StringUtils.isNewerOrEqualVersion(client:getVersion(), "1.20.5")
+						isHolding = player:getActiveItem().id == "minecraft:bow" or (heldItem.id == "minecraft:crossbow" and ((isNewerNbt and #heldItem.tag["minecraft:charged_projectiles"] >= 1) or (not isNewerNbt and heldItem.tag.Charged == 1)))
+						ModelAlias.alias.avatar.leftArm:setParentType((isHolding or self.costume.shootTick >= 0) and "Body" or "LeftArm")
+					end, "left_arm_tick")
+					events.RENDER:remove("left_arm_render")
+					events.RENDER:register(function (delta)
+						ModelAlias.alias.avatar.leftArm:setRot(isHolding and vectors.vec3(math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 35, 0, 0) or vectors.vec3())
+					end, "left_arm_render")
+				end
+			end
+		};
 	};
 
 	skirt = {
@@ -570,6 +656,58 @@ local BlueArchiveCharacter = {
 				end
 			end;
 		};
+
+		---戦車に乗っているかどうか
+		---@type boolean
+		isRidingTank = false;
+
+		---前ティックに戦車に乗っていたかどうか
+		---@type boolean
+		isRidingTankPrev = false;
+
+		---前ティックに戦車のエンジンが起動していたかどうか
+		---@type boolean
+		isEngineActivePrev = false;
+
+		---戦車に乗っているときのティックカウンター
+		---@type integer
+		tankTick = 0;
+
+		---ラクダが座っているかどうか
+		---@type boolean
+		isCamelSitting = true;
+
+		---ラクダのY軸の向き
+		---@type number
+		camelRot = 0;
+
+		---前ティックの体の向き
+		---@type number
+		bodyYawPrev = 0;
+
+		---戦車の車体の向きを更新すべきかどうか
+		---@type boolean
+		shouldUpdateBaseRot = true;
+
+		---砲弾を撃つ際のティックカウンター
+		---@type integer
+		shootTick = -1;
+
+		---次の砲弾を撃つまでのクールダウン
+		---@type integer
+		shootCoolDown = 0;
+
+		---ヒント表示をしたかどうか。
+		---@type boolean
+		isTipShowed = false;
+
+		---イブキを搭乗させているかどうか。
+		---@type boolean
+		hasIbuki = false;
+
+		---前ティックにイブキを搭乗させていたかどうか。
+		---@type boolean
+		hadIbukiPrev = false;
 	};
 
 	bubble = {
@@ -608,7 +746,7 @@ local BlueArchiveCharacter = {
 	};
 
 	actionWheelConfig = {
-		isVehicleReplacementEnabled = false;
+		isVehicleReplacementEnabled = true;
 	};
 
 	physics = {
@@ -941,8 +1079,310 @@ local BlueArchiveCharacter = {
 
 	---初期化関数
 	---この関数は消しても構わない。
-	init = function ()
-	end;
+    ---@param self BlueArchiveCharacter
+    init = function (self)
+		---戦車の砲弾オブジェクトのインスタンスクラス
+		---@type TankShell
+		TankShell = require("scripts.tank_shell")
+
+		---戦車の砲弾オブジェクトのマネージャークラス
+		---@type TankShellManager
+		TankShellManager = require("scripts.tank_shell_manager")
+		TankShellManager = TankShellManager.new()
+
+		TankShellManager.init()
+
+        models.models.tank.Tank:setColor(1, 1, 1)
+        for _, modelPart in ipairs({models.models.tank.Tank.TankBody.PSLogo1, models.models.tank.Tank.TankBody.Turret.PSLogo2, models.models.tank.Tank.TankBody.Turret.PSLogo3}) do
+            modelPart:newText("toramaru_logo_text"):setText("§e万魔殿"):setPos(0, 2.25, 0):setScale(0.2):setAlignment("CENTER"):setOutline(true):setOutlineColor(0.404, 0.306, 0.051)
+        end
+        models.models.tank.Tank.TankBody.Turret.Cannon.HangingSign:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/signs/hanging/oak.png")
+        models.models.tank.Tank.TankBody.Turret.Cannon.HangingSign:newText("toramaru_sign_text_1"):setText("§0§l巡回中"):setPos(-1, -9, 0.5):setRot(0, 90, 0):setScale(0.5):setAlignment("CENTER")
+        models.models.tank.Tank.TankBody.Turret.Cannon.HangingSign:newText("toramaru_sign_text_2"):setText("§0§l巡回中"):setPos(1, -9, -0.5):setRot(0, -90, 0):setScale(0.5):setAlignment("CENTER")
+
+		for i = 0, 1 do
+			for j = 0, 9 do
+				models.models.tank.Tank.TankBody.BaseBase1:newBlock("toramaru_log_"..(i * 10 + j)):setBlock("minecraft:oak_log[axis=z]"):setPos(36 + i * -80, -2, j * 8 - 41):setScale(0.5)
+			end
+		end
+		avatar:store("shouldReplaceVehicleModels", ActionWheelConfig.shouldReplaceVehicleModel)
+
+		KeyManager:register("tank_shoot", "Main gun aim, fire", "key.keyboard.v"):setOnPress(function ()
+			if self.costume.isRidingTank and self.costume.tankTick >= 36 and models.models.tank.Tank:getColor() == vectors.vec3(1, 1, 1) then
+				if self.costume.shootCoolDown == 0 then
+					pings.tankShoot()
+				else
+					MiscUtils.playErrorSound()
+					print(Locale:getLocalizedText("message.tank_shot.in_cool_down"):format(math.ceil(self.costume.shootCoolDown / 20)))
+				end
+			end
+		end)
+
+        events.TICK:register(function ()
+            if not client:isPaused() then
+                local vehicle = player:getVehicle()
+                self.costume.isRidingTank = false
+                self.costume.hasIbuki = false
+                if vehicle ~= nil then
+                    local passengers = vehicle:getPassengers()
+                    local controlledPassenger = vehicle:getControllingPassenger()
+                    local avatarVars = world.avatarVars()
+                    self.costume.hasIbuki = passengers[2] ~= nil and passengers[2]:hasAvatar() and avatarVars[passengers[2]:getUUID()].FBAC_Ibuki
+                    self.costume.isRidingTank = vehicle:getType() == "minecraft:camel" and controlledPassenger ~= nil and controlledPassenger:getName() == player:getName() and (#passengers == 1 or self.costume.hasIbuki) and ActionWheelConfig.shouldReplaceVehicleModel and player:getHealth() > 0
+                end
+                if self.costume.isRidingTank ~= self.costume.isRidingTankPrev then
+                    if self.costume.isRidingTank then
+                        renderer:setRenderVehicle(false)
+                        models.models.tank.Tank:setVisible(true)
+                        ModelAlias.alias.avatar.root:setPos(-13, 16, 4)
+                        models.models.tank.Tank:setOffsetPivot(0, 0, 8)
+                        CameraManager:setThirdPersonCameraDistance(8)
+                        Arms:setArmState("DEFAULT", "DEFAULT")
+                        animations["models.main"]["tank_start"]:play()
+                        animations["models.main"]["tank_idle"]:play()
+                        for _, animationName in ipairs({"tank_start", "tank_move"}) do
+                            animations["models.tank"][animationName]:play()
+                        end
+                        FaceParts:setEmotion("NORMAL", "NORMAL", "CLOSED", 35, true)
+                        sounds:playSound("minecraft:block.iron_trapdoor.open", player:getPos(), 1, 0.5)
+                        avatar:store("isEngineActive", false)
+                        avatar:store("engineAnimTime", 0)
+                        avatar:store("shootingStart", false)
+                        avatar:store("isTankDied", false)
+                        events.TICK:register(function ()
+                            if not client:isPaused() then
+                                local camelRot = vehicle:getRot().y
+                                self.costume.isCamelSitting = (player:getPos():sub(vehicle:getPos()):length() - 1.51017) * -1.35 >= 0.04
+                                if vehicle:isMoving(true) then
+                                    self.costume.camelRot = camelRot
+                                end
+                                local bodyYaw = player:getBodyYaw()
+                                self.costume.shouldUpdateBaseRot = math.abs(bodyYaw - self.costume.bodyYawPrev) < 330
+                                local isEngineActive = self.costume.isRidingTank and (player:getPos():sub(vehicle:getPos()):length() - 1.51017) * -1.35 < 1 and models.models.tank.Tank:getColor() == vectors.vec3(1, 1, 1)
+                                if isEngineActive and not self.costume.isEngineActivePrev then
+                                    animations["models.main"]["tank_idle_powered"]:play()
+                                    animations["models.tank"]["tank_idle"]:play()
+                                    avatar:store("isEngineActive", true)
+                                elseif not isEngineActive and self.costume.isEngineActivePrev then
+                                    animations["models.main"]["tank_idle_powered"]:stop()
+                                    animations["models.tank"]["tank_idle"]:stop()
+                                    avatar:store("isEngineActive", false)
+                                end
+                                if isEngineActive then
+                                    avatar:store("engineAnimTime", animations["models.main"]["tank_idle_powered"]:getTime())
+                                end
+                                animations["models.tank"]["tank_move"]:setSpeed(Physics.velocityAverage[5][2] * 2.5)
+                                local beltOffset = math.floor(models.models.tank.Tank.RightCrawler.RightCrawlerWheel1:getTrueRot().x / 20) % 2
+                                for _, modelPart in ipairs({models.models.tank.Tank.RightCrawler.RightCrawlerBelt, models.models.tank.Tank.LeftCrawler.LeftCrawlerBelt}) do
+                                    modelPart:setUVPixels(0, beltOffset)
+                                end
+                                if FaceParts.blinkCount == 0 and FaceParts.emotionCount == 0 then
+                                    FaceParts:setEmotion("CLOSED", "CLOSED", "CLOSED", 2, true)
+                                else
+                                    FaceParts:setEmotion("NORMAL", "INVERTED", "CLOSED", 1)
+                                end
+                                if self.costume.tankTick == 36 then
+                                    if Gun.currentGunPosition == "RIGHT" then
+                                        Arms:setArmState("TANK_GUN_MAIN_HAND", "TANK_GUN_OFF_HAND")
+                                    elseif Gun.currentGunPosition == "LEFT" then
+                                        Arms:setArmState("TANK_GUN_OFF_HAND", "TANK_GUN_MAIN_HAND")
+                                    end
+                                    if host:isHost() and not self.costume.isTipShowed then
+                                        print(Locale:getLocalizedText("message.tank_shot.tip_1"):format(KeyManager.keyMappings["tank_shoot"].keybind:getKeyName()))
+                                        self.costume.isTipShowed = true
+                                    end
+                                end
+                                if self.costume.tankTick % 2 == 0 and isEngineActive then
+                                    sounds:playSound(self.costume.tankTick % 4 == 0 and "minecraft:block.piston.extend" or "minecraft:block.piston.contract", vehicle:getPos(), 0.02, 0.5)
+                                end
+                                if self.costume.tankTick % 2 == 0 and isEngineActive then
+                                    local anchorPos = vehicle:getPos()
+                                    sounds:playSound(self.costume.tankTick % 4 == 0 and "minecraft:block.piston.extend" or "minecraft:block.piston.contract", vehicle:getPos(), 0.02, 0.5)
+                                    local velocity = vehicle:getVelocity():mul(1, 0, 1):length()
+                                    if velocity >= 0.1 then
+                                        local volume = math.min(0.67 * velocity - 0.06, 0.2)
+                                        local pitch = 0.25 * velocity + 0.175 + math.random() * 0.02 - 0.01
+                                        sounds:playSound("minecraft:block.piston.extend", anchorPos, volume, pitch)
+                                        sounds:playSound("minecraft:block.piston.contract", anchorPos, volume, pitch)
+                                    end
+                                end
+                                local health = vehicle:getNbt().Health
+                                if health < 16 then
+                                    local playerPos = player:getPos()
+                                    if health < 8 then
+                                        particles:newParticle("minecraft:flame", playerPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1 , math.random() * 5 - 2.5, math.random() * 3 - 1.5, math.random() * 7 - 3.5, 0, 1, 0)))
+                                    end
+                                    particles:newParticle("minecraft:large_smoke", playerPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1 , math.random() * 5 - 2.5, math.random() * 3 - 1.5, math.random() * 7 - 3.5, 0, 1, 0)))
+                                end
+                                if self.costume.hasIbuki ~= self.costume.hadIbukiPrev then
+                                    if self.costume.hasIbuki then
+                                        animations["models.tank"]["tank_ibuki_start"]:setSpeed(1)
+                                        animations["models.tank"]["tank_ibuki_start"]:play()
+                                        sounds:playSound("minecraft:block.iron_trapdoor.open", player:getPos(), 1, 1.5)
+                                    else
+                                        animations["models.tank"]["tank_ibuki_start"]:setSpeed(-1)
+                                        sounds:playSound("minecraft:block.iron_trapdoor.close", player:getPos(), 1, 1.5)
+                                    end
+                                end
+
+                                if self.costume.shootTick >= 0 then
+                                    self.costume.shootTick = self.costume.shootTick + 1
+                                    if self.costume.shootTick == 2 then
+                                        avatar:store("shootingStart", false)
+                                    elseif self.costume.shootTick == 13 then
+                                        local anchorPos = ModelUtils.getModelWorldPos(models.models.tank.Tank.TankBody.Turret.Cannon.MuzzleAnchor1)
+                                        TankShellManager:spawn(anchorPos, vectors.vec3(models.models.tank.Tank.TankBody.Turret.Cannon:getRot().x * -1, player:getBodyYaw() * -1, 0))
+                                        for _ = 1, 10 do
+                                            particles:newParticle("minecraft:large_smoke", anchorPos:copy():add(math.random() - 0.5, math.random() - 0.5, math.random() - 0.5)):setScale(2)
+                                        end
+                                        sounds:playSound("minecraft:entity.firework_rocket.large_blast", player:getPos(), 1, 1)
+                                    elseif self.costume.shootTick == 38 then
+                                        self.costume.shootTick = -1
+                                    end
+                                end
+
+                                self.costume.tankTick = self.costume.isRidingTank and self.costume.tankTick + 1 or 0
+                                self.costume.isEngineActivePrev = isEngineActive
+                                self.costume.bodyYawPrev = bodyYaw
+                                self.costume.hadIbukiPrev = self.costume.hasIbuki
+                            end
+                        end, "tank_tick")
+                        events.RENDER:register(function (delta)
+                            if not client:isPaused() then
+                                local bodyYaw = player:getBodyYaw(delta)
+                                local baseRot = bodyYaw - self.costume.camelRot
+                                local lookDir = player:getLookDir()
+                                local turretRot = math.clamp(math.deg(math.asin(lookDir.y)), -15, 25)
+                                local heightOffset = (player:getPos(delta):sub(vehicle:getPos(delta)):length() - 1.51017) * -1.35
+                                ModelAlias.alias.avatar.root:setPos(-13, 16 + heightOffset * 16, 4)
+                                models.models.tank.Tank:setPos(0, -24.5 + heightOffset * 16, models.models.tank.ShootAnimAnchor:getAnimPos().z)
+                                models.models.tank.Tank.TankBody.Turret.Cannon:setRot(turretRot, 0, 0)
+                                models.models.tank.Tank.TankBody.Turret.Cannon.HangingSign:setRot(turretRot * -1, 0, 0)
+                                if vehicle:isMoving(true) then
+                                    for _, modelPart in ipairs({models.models.tank.Tank, models.models.tank.Tank.TankBody.Turret}) do
+                                        modelPart:setRot()
+                                    end
+                                elseif self.costume.isCamelSitting then
+                                    models.models.tank.Tank:setRot()
+                                    models.models.tank.Tank.TankBody.Turret:setRot()
+                                elseif self.costume.shouldUpdateBaseRot then
+                                    models.models.tank.Tank:setRot(0, baseRot, 0)
+                                    models.models.tank.Tank.TankBody.Turret:setRot(0, baseRot * -1, 0)
+                                end
+
+                                if renderer:isFirstPerson() then
+                                    renderer:setCameraPos(0.75, 0, 0)
+                                    local animOffset = vectors.rotateAroundAxis(bodyYaw * -1, 0, models.models.tank.IdleAnimAnchor:getAnimPos().y, models.models.tank.ShootAnimAnchor:getAnimPos().z * -1, 0, 1, 0):scale(0.0625)
+                                    CameraManager.setCameraPivot(vectors.rotateAroundAxis(bodyYaw * -1, 0, heightOffset + 1, -0.45, 0, 1, 0):add(animOffset))
+                                    renderer:setEyeOffset(vectors.rotateAroundAxis(bodyYaw * -1, 0.75, heightOffset + 1, -0.45, 0, 1, 0):add(animOffset))
+                                else
+                                    CameraManager.setCameraPivot(vectors.vec3(0, heightOffset * 0.75, 0))
+                                    renderer:setEyeOffset(0, heightOffset * 0.75, 0)
+                                end
+                            end
+                        end, "tank_render")
+
+                        events.ON_PLAY_SOUND:register(function (id, pos, _, _, _, _, path)
+                            if pos:copy():sub(vehicle:getPos()):length() < 2 and path ~= nil then
+                                if id:match("^minecraft:entity.camel") ~= nil or id == "minecraft:entity.horse.land" then
+                                    if id == "minecraft:entity.camel.step" then
+                                        sounds:playSound("minecraft:block.wool.step", pos, 0.25, 1)
+                                    elseif id == "minecraft:entity.horse.land" then
+                                        sounds:playSound("minecraft:block.wool.step", pos, 1, 1)
+                                    elseif id == "minecraft:entity.camel.dash" then
+                                        sounds:playSound("minecraft:entity.blaze.hurt", pos, 1, 1.5)
+                                    elseif id == "minecraft:entity.camel.dash_ready" then
+                                        sounds:playSound("minecraft:block.dispenser.fail", pos, 1, 2)
+                                    elseif id == "minecraft:entity.camel.hurt" then
+                                        sounds:playSound("minecraft:block.anvil.place", pos, 1, 2)
+                                    elseif id == "minecraft:entity.camel.death" then
+                                        models.models.tank.Tank:setColor(0.2, 0.2, 0.2)
+                                        for _, modelPart in ipairs({models.models.tank.Tank.TankBody.PSLogo1, models.models.tank.Tank.TankBody.Turret.PSLogo2, models.models.tank.Tank.TankBody.Turret.PSLogo3}) do
+                                            modelPart:getTask("toramaru_logo_text"):setText("§0万魔殿"):setOutlineColor(0, 0, 0)
+                                        end
+                                        for i = 0, 1 do
+                                            for j = 0, 9 do
+                                                models.models.tank.Tank.TankBody.BaseBase1:getTask("toramaru_log_"..(i * 10 + j)):setLight(0)
+                                            end
+                                        end
+                                        local playerPos = player:getPos()
+                                        local bodyYaw = player:getBodyYaw()
+                                        particles:newParticle("minecraft:explosion_emitter", playerPos)
+                                        for _ = 0, 50 do
+                                            local offsetPos = vectors.rotateAroundAxis(bodyYaw * -1 , math.random() * 5 - 2.5, math.random() * 3 - 1.5, math.random() * 7 - 3.5, 0, 1, 0)
+                                            particles:newParticle("minecraft:poof", playerPos:copy():add(offsetPos)):setColor(vectors.vec3(1, 1, 1):scale(math.random() * 0.1 + 0.2)):setScale(5):setVelocity(offsetPos:copy():scale(0.05))
+                                        end
+                                        sounds:playSound("minecraft:entity.generic.explode", pos, 1, 1)
+                                        Bubble:play("SWEAT", 40, false)
+                                        avatar:store("isTankDied", true)
+                                    end
+                                    return true
+                                end
+                            end
+                        end, "tank_on_play_sound")
+                    else
+                        events.TICK:remove("tank_tick")
+                        events.RENDER:remove("tank_render")
+                        events.ON_PLAY_SOUND:remove("tank_on_play_sound")
+                        renderer:setRenderVehicle(true)
+                        models.models.tank.Tank:setVisible(false)
+                        for _, modelPart in ipairs({models.models.tank.Tank, models.models.tank.Tank.TankBody.Turret, models.models.tank.Tank.TankBody.Turret.Cannon}) do
+                            modelPart:setPos()
+                            modelPart:setRot()
+                        end
+                        models.models.tank.Tank.TankBody.Turret.Cannon.HangingSign:setRot()
+                        models.models.tank.Tank:setColor(1, 1, 1)
+                        for _, modelPart in ipairs({models.models.tank.Tank.TankBody.PSLogo1, models.models.tank.Tank.TankBody.Turret.PSLogo2, models.models.tank.Tank.TankBody.Turret.PSLogo3}) do
+                            modelPart:getTask("toramaru_logo_text"):setText("§e万魔殿"):setOutlineColor(0.404, 0.306, 0.051)
+                        end
+                        for i = 0, 1 do
+                            for j = 0, 9 do
+                                models.models.tank.Tank.TankBody.BaseBase1:getTask("toramaru_log_"..(i * 10 + j)):setLight()
+                            end
+                        end
+                        ModelAlias.alias.avatar.root:setPos()
+                        CameraManager:setThirdPersonCameraDistance(4)
+                        CameraManager.setCameraPivot()
+                        renderer:setEyeOffset()
+                        for _, animationName in ipairs({"tank_start", "tank_idle", "tank_idle_powered", "tank_shoot_right", "tank_shoot_left"}) do
+                            animations["models.main"][animationName]:stop()
+                        end
+                        for _, animationName in ipairs({"tank_start", "tank_idle", "tank_move", "tank_shoot"}) do
+                            animations["models.tank"][animationName]:stop()
+                        end
+                        if Gun.currentGunPosition == "RIGHT" then
+                            Arms:setArmState("GUN_MAIN_HAND", "GUN_OFF_HAND")
+                        elseif Gun.currentGunPosition == "LEFT" then
+                            Arms:setArmState("GUN_OFF_HAND", "GUN_MAIN_HAND")
+                        end
+                        avatar:store("isEngineActive", false)
+                        avatar:store("engineAnimTime", 0)
+                        avatar:store("isTankDied", false)
+                        self.costume.tankTick = 0
+                        self.costume.shootTick = -1
+                        self.costume.isEngineActivePrev = false
+                        self.costume.hadIbukiPrev = false
+                    end
+                end
+
+                self.costume.isRidingTankPrev = self.costume.isRidingTank
+                self.costume.shootCoolDown = math.max(self.costume.shootCoolDown - 1, 0)
+            end
+        end)
+
+        avatar:store("FBAC_Iroha", true)
+    end;
 }
+
+---虎丸の弾を発射する。
+function pings.tankShoot()
+    animations["models.main"]["tank_shoot"]:play()
+    animations["models.main"]["tank_shoot_"..(player:isLeftHanded() and "left" or "right")]:play()
+    animations["models.tank"]["tank_shoot"]:play()
+    FaceParts:setEmotion("ANGRY", "ANGRY_INVERTED", "CLOSED", 38, true)
+    avatar:store("shootingStart", true)
+    BlueArchiveCharacter.costume.shootTick = 0
+    BlueArchiveCharacter.costume.shootCoolDown = 100
+end
 
 return BlueArchiveCharacter
