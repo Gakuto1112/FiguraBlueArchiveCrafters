@@ -412,14 +412,27 @@ local BlueArchiveCharacter = {
 				end;
 
 				onAnimationTick = function (self, tick)
-					if tick == 20 then
+					if tick == 11 or tick == 14 then
+						sounds:playSound("minecraft:entity.item.pickup", player:getPos(), 1, 1)
+					elseif tick == 20 then
 						FaceParts:setEmotion("NORMAL", "INVERTED", "CLOSED", 14, true)
+					elseif tick == 27 then
+						sounds:playSound("minecraft:entity.egg.throw", player:getPos(), 1, 0.75)
 					elseif tick == 34 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "CLOSED", 27, true)
+					elseif tick == 42 then
+						sounds:playSound("minecraft:block.wool.step", player:getPos(), 1, 1)
 					elseif tick == 61 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "CLOSED", 24, true)
+					elseif tick == 70 then
+						sounds:playSound("minecraft:entity.shulker.close", player:getPos(), 1, 1)
+						self.exSkill.primary.emitShulkerBoxCloseParticle()
+					elseif tick == 83 then
+						sounds:playSound("minecraft:block.shulker_box.close", player:getPos(), 0.75, 1)
 					elseif tick == 85 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "SMALL", 7, true)
+					elseif tick == 90 then
+						self.exSkill.primary.emitShulkerBoxCloseParticle()
 					elseif tick == 92 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMALL", 10, true)
 
@@ -450,6 +463,16 @@ local BlueArchiveCharacter = {
 					events.RENDER:remove("ex_skill_1_render")
 				end;
 			};
+
+			---シュルカーボックスを閉じるパーティクルを再生する。
+			emitShulkerBoxCloseParticle = function ()
+				local anchorPos = player:getPos():copy():add(0, 0.5, 0)
+				local bodyYaw = player:getBodyYaw()
+
+				for _ = 1, 10 do
+					particles:newParticle("minecraft:campfire_cosy_smoke", anchorPos):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 + math.random() * 180 - 90, 0, 0, 0.05, 0, 1, 0)):setLifetime(30)
+				end
+			end;
 
 			---このExスキルの初期化処理が行われたかどうか
 			---@type boolean
