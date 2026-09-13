@@ -426,13 +426,13 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("NORMAL", "CENTER", "CLOSED", 24, true)
 					elseif tick == 70 then
 						sounds:playSound("minecraft:entity.shulker.close", player:getPos(), 1, 1)
-						self.exSkill.primary.emitShulkerBoxCloseParticle()
+						self.exSkill.primary.emitShulkerBoxCloseParticles()
 					elseif tick == 83 then
 						sounds:playSound("minecraft:block.shulker_box.close", player:getPos(), 0.75, 1)
 					elseif tick == 85 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "SMALL", 7, true)
 					elseif tick == 90 then
-						self.exSkill.primary.emitShulkerBoxCloseParticle()
+						self.exSkill.primary.emitShulkerBoxCloseParticles()
 					elseif tick == 92 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMALL", 10, true)
 
@@ -440,6 +440,10 @@ local BlueArchiveCharacter = {
 						particles:newParticle("minecraft:snowflake",ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.mouth):add(vectors.rotateAroundAxis(bodyYaw, 0, -0.2, -0.4, 0, 1, 0))):setScale(0.5):setVelocity(vectors.rotateAroundAxis(bodyYaw, -0.025, -0.01, -0.05, 0, 1, 0)):setGravity(0):setLifetime(8)
 					elseif tick == 102 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "FRUST", 15, true)
+					elseif tick == 113 then
+						local playerPos = player:getPos()
+						sounds:playSound("minecraft:item.bucket.empty", playerPos, 1, 0.25)
+						sounds:playSound("minecraft:item.bucket.empty", playerPos, 1, 0.5)
 					elseif tick == 117 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "FRUST", 5, true)
 					elseif tick == 121 then
@@ -452,10 +456,57 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("NORMAL", "NORMAL", "FRUST", 13, true)
 					elseif tick == 160 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "FRUST2", 2, true)
+
+						local anchorPos = player:getPos():copy():add(0, 0.75, 0)
+						for _ = 1, 50 do
+							local offset = vectors.vec3(math.random() * 1.5 - 0.75, 0, math.random() * 1.5 - 0.75)
+							particles:newParticle("minecraft:dust 1 1 1 1", anchorPos:copy():add(offset)):setScale(1):setColor(1, 1, 1):setVelocity(offset:copy():scale(0.1):add(0, 0.4 + math.random() * 0.1, 0)):setGravity(1):setLifetime(40)
+						end
+
+						sounds:playSound("minecraft:item.bucket.empty", anchorPos, 1, 0.25)
+						sounds:playSound("minecraft:item.bucket.empty", anchorPos, 1, 0.5)
 					elseif tick == 162 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "FRUST2", 4, true)
 					elseif tick == 166 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "SHOCK", 37, true)
+					end
+
+					if tick >= 113 and tick < 125 then
+						self.exSkill.primary.emitWaveStartParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.Waves.Wave1.ParticleAnchor1))
+					elseif tick >= 125 and tick < 141 then
+						self.exSkill.primary.emitWaveStartParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.Waves.Wave2.ParticleAnchor2))
+					end
+
+					if tick >= 114 and tick < 160 then
+						self.exSkill.primary.emitItemWaveParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.ExSkillItems.ExSkillItem1))
+					end
+					if tick >= 119 and tick < 160 then
+						self.exSkill.primary.emitItemWaveParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.ExSkillItems.ExSkillItem2))
+					end
+					if tick >= 125 and tick < 160 then
+						self.exSkill.primary.emitItemWaveParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.ExSkillItems.ExSkillItem3))
+					end
+					if tick >= 132 and tick < 160 then
+						self.exSkill.primary.emitItemWaveParticles(ModelUtils.getModelWorldPos(models.models.ex_skill_1.ExSkillItems.ExSkillItem4))
+					end
+
+					if tick >= 112 and tick < 160 then
+						for i = 1, 4 do
+							local modelPart = models.models.ex_skill_1.Waves.Wave1["Wave1_" .. i]
+							if modelPart:getAnimScale().y >= 1.1 then
+								self.exSkill.primary.emitHighWaveParticles(modelPart, vectors.vec3(4, 0.75, 1), vectors.vec3(1, 0, 0.5), models.models.ex_skill_1.Waves.Wave1, i * 90)
+							end
+						end
+						for i = 1, 4 do
+							local modelPart = models.models.ex_skill_1.Waves.Wave2["Wave2_" .. i]
+							if modelPart:getAnimScale().y >= 0.9 then
+								self.exSkill.primary.emitHighWaveParticles(modelPart, vectors.vec3(2, 0.5, 1), vectors.vec3(0, 0, 0.5), models.models.ex_skill_1.Waves.Wave2, i * 90)
+							end
+						end
+
+						if tick % 2 == 0 then
+							sounds:playSound("minecraft:item.bucket.empty", player:getPos():copy():add(math.random() * 1.5 - 0.75, 0, math.random() * 1.5 - 0.75), 0.25, 0.5)
+						end
 					end
 				end;
 
@@ -465,12 +516,41 @@ local BlueArchiveCharacter = {
 			};
 
 			---シュルカーボックスを閉じるパーティクルを再生する。
-			emitShulkerBoxCloseParticle = function ()
+			emitShulkerBoxCloseParticles = function ()
 				local anchorPos = player:getPos():copy():add(0, 0.5, 0)
 				local bodyYaw = player:getBodyYaw()
 
 				for _ = 1, 10 do
 					particles:newParticle("minecraft:campfire_cosy_smoke", anchorPos):setVelocity(vectors.rotateAroundAxis(bodyYaw * -1 + math.random() * 180 - 90, 0, 0, 0.05, 0, 1, 0)):setLifetime(30)
+				end
+			end;
+
+			---波の出現時のパーティクルを再生する。
+			---@param targetPos Vector3 パーティクルの基準ワールド座標
+			emitWaveStartParticles = function (targetPos)
+				for _ = 1, 10 do
+					particles:newParticle("minecraft:dust 1 1 1 1", targetPos:copy():add(math.random() - 0.5, math.random() - 0.5, math.random() - 0.5)):setScale(1):setColor(1, 1, 1):setVelocity(0, 0.25, 0):setGravity(1):setLifetime(40)
+				end
+			end;
+
+			---アイテムが波に攫われている際のパーティクルを再生する。
+			---@param targetPos Vector3 パーティクルの基準ワールド座標
+			emitItemWaveParticles = function (targetPos)
+				particles:newParticle("minecraft:dust 1 1 1 1", targetPos:copy():add(math.random() * 0.5 - 0.25, math.random() * 0.5 - 0.25, math.random() * 0.5 - 0.25)):setScale(1):setColor(1, 1, 1):setVelocity(0, 0.25, 0):setGravity(1):setLifetime(40)
+			end;
+
+			---波が高いときのパーティクルを再生する。
+			---@param waveModel ModelPart 波のモデルパーツ
+			---@param waveSize Vector3 波のモデルパーツの大きさ
+			---@param pivotOffset Vector3 モデルパーツに対する各軸の位置（0 = 負の端、0.5 = 中央、1 = 正の端）
+			---@param parentModel ModelPart 波の親モデルパーツ
+			---@param offsetRot number パーティクルの出現範囲計算時のオフセット角度（親のモデルパーツからの相対角度）
+			emitHighWaveParticles = function (waveModel, waveSize, pivotOffset, parentModel, offsetRot)
+				local anchorPos = ModelUtils.getModelWorldPos(waveModel):copy():add(0, waveSize.y, 0)
+				local parentRot = parentModel:getAnimRot().y
+
+				for _ = 1, 2 do
+					particles:newParticle("minecraft:dust 1 1 1 1", anchorPos:copy():add(vectors.rotateAroundAxis(parentRot + offsetRot, math.random() * waveSize.x - pivotOffset.x * waveSize.x, 0, math.random() * waveSize.z - pivotOffset.z * waveSize.z, 0, 1, 0))):setScale(0.25):setColor(1, 1, 1):setVelocity(0, 0.25, 0):setGravity(1):setLifetime(40)
 				end
 			end;
 
