@@ -1133,7 +1133,9 @@ local BlueArchiveCharacter = {
                 if self.costume.isRidingTank ~= self.costume.isRidingTankPrev then
                     if self.costume.isRidingTank then
                         renderer:setRenderVehicle(false)
-                        models.models.tank.Tank:setVisible(true)
+                        for _, modelPart in ipairs({models.models.tank.Tank, ModelAlias.alias.avatar.head.Glasses}) do
+                            modelPart:setVisible(true)
+                        end
                         ModelAlias.alias.avatar.root:setPos(-13, 16, 4)
                         models.models.tank.Tank:setOffsetPivot(0, 0, 8)
                         CameraManager:setThirdPersonCameraDistance(8)
@@ -1325,7 +1327,9 @@ local BlueArchiveCharacter = {
                         events.RENDER:remove("tank_render")
                         events.ON_PLAY_SOUND:remove("tank_on_play_sound")
                         renderer:setRenderVehicle(true)
-                        models.models.tank.Tank:setVisible(false)
+                        for _, modelPart in ipairs({models.models.tank.Tank, ModelAlias.alias.avatar.head.Glasses}) do
+                            modelPart:setVisible(true)
+                        end
                         for _, modelPart in ipairs({models.models.tank.Tank, models.models.tank.Tank.TankBody.Turret, models.models.tank.Tank.TankBody.Turret.Cannon}) do
                             modelPart:setPos()
                             modelPart:setRot()
