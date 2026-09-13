@@ -436,15 +436,6 @@ local BlueArchiveCharacter = {
 	};
 
 	placementObjects = {
-		{
-			model = models.models.placement_object.PlacementObject;
-
-			boundingBox = {
-				size = vectors.vec3(8, 8, 8)
-			};
-
-			placementMode = "COPY";
-		};
 	};
 
 	exSkill = {
