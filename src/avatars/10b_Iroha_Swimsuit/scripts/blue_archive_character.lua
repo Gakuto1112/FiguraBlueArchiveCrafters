@@ -40,6 +40,9 @@
 ---| "SIGH" # ため息口
 ---| "ANXIOUS" # への口
 ---| "SMILE" # にっこり
+---| "FRUST" # グジュグジュ口
+---| "FRUST2" # グジュグジュ口2
+---| "SHOCK" # 驚いた口
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -305,6 +308,9 @@ local BlueArchiveCharacter = {
 			SIGH = vectors.vec2(2, 0);
 			ANXIOUS = vectors.vec2(3, 0);
 			SMILE = vectors.vec2(4, 0);
+			FRUST = vectors.vec2(5, 0);
+			FRUST2 = vectors.vec2(6, 0);
+			SHOCK = vectors.vec2(7, 0);
 		};
 	};
 
@@ -400,6 +406,40 @@ local BlueArchiveCharacter = {
 					for i, modelPart in ipairs(models.models.ex_skill_1.ExSkillItems:getChildren()) do
 						modelPart:getTask("ex_skill_1_item_" .. i)
 							:setItem("minecraft:" .. itemTable[math.random(#itemTable)])
+					end
+
+					FaceParts:setEmotion("NORMAL", "NORMAL", "CLOSED", 20, true)
+				end;
+
+				onAnimationTick = function (self, tick)
+					if tick == 20 then
+						FaceParts:setEmotion("NORMAL", "INVERTED", "CLOSED", 14, true)
+					elseif tick == 34 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "CLOSED", 27, true)
+					elseif tick == 61 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "CLOSED", 24, true)
+					elseif tick == 85 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "SMALL", 7, true)
+					elseif tick == 92 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMALL", 10, true)
+					elseif tick == 102 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "FRUST", 15, true)
+					elseif tick == 117 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "FRUST", 5, true)
+					elseif tick == 121 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "SMALL", 9, true)
+					elseif tick == 130 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "SMALL", 5, true)
+					elseif tick == 135 then
+						FaceParts:setEmotion("CENTER", "NORMAL", "SMALL", 12, true)
+					elseif tick == 147 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "FRUST", 13, true)
+					elseif tick == 160 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "FRUST2", 2, true)
+					elseif tick == 162 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "FRUST2", 4, true)
+					elseif tick == 166 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "SHOCK", 37, true)
 					end
 				end;
 
