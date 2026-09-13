@@ -422,6 +422,9 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("NORMAL", "CENTER", "SMALL", 7, true)
 					elseif tick == 92 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMALL", 10, true)
+
+						local bodyYaw = player:getBodyYaw() * -1 - 60
+						particles:newParticle("minecraft:snowflake",ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.mouth):add(vectors.rotateAroundAxis(bodyYaw, 0, -0.2, -0.4, 0, 1, 0))):setScale(0.5):setVelocity(vectors.rotateAroundAxis(bodyYaw, -0.025, -0.01, -0.05, 0, 1, 0)):setGravity(0):setLifetime(8)
 					elseif tick == 102 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "FRUST", 15, true)
 					elseif tick == 117 then
