@@ -711,7 +711,25 @@ local BlueArchiveCharacter = {
 	};
 
 	bubble = {
-
+		callbacks = {
+			onPlay = function (self, type, duration, showInGui)
+				if type == "GOOD" then
+					FaceParts:setEmotion("NORMAL", self.costume.isRidingTank and "INVERTED" or "NORMAL", "CLOSED", duration, true)
+				elseif type == "HEART" then
+					FaceParts:setEmotion("NORMAL", self.costume.isRidingTank and "INVERTED" or "NORMAL", "SMILE", duration, true)
+				elseif type == "NOTE" then
+					FaceParts:setEmotion("ANGRY", self.costume.isRidingTank and "ANGRY_INVERTED" or "ANGRY", "SMILE", duration, true)
+				elseif type == "QUESTION" then
+					FaceParts:setEmotion("NORMAL", self.costume.isRidingTank and "INVERTED" or "NORMAL", "SMALL", duration, true)
+				elseif type == "SWEAT" then
+					if showInGui then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SIGH", duration, true)
+					else
+						FaceParts:setEmotion("SURPRISED", "SURPRISED", "CLOSED", 60, true)
+					end
+				end
+			end
+		};
 	};
 
 	headModel = {
@@ -1328,7 +1346,7 @@ local BlueArchiveCharacter = {
                         events.ON_PLAY_SOUND:remove("tank_on_play_sound")
                         renderer:setRenderVehicle(true)
                         for _, modelPart in ipairs({models.models.tank.Tank, ModelAlias.alias.avatar.head.Glasses}) do
-                            modelPart:setVisible(true)
+                            modelPart:setVisible(false)
                         end
                         for _, modelPart in ipairs({models.models.tank.Tank, models.models.tank.Tank.TankBody.Turret, models.models.tank.Tank.TankBody.Turret.Cannon}) do
                             modelPart:setPos()
