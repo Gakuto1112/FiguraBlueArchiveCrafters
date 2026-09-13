@@ -589,7 +589,22 @@ local BlueArchiveCharacter = {
 	};
 
 	deathAnimation = {
+		callbacks = {
+			onPhase1 = function ()
+				ModelAlias.alias.dummy_avatar.head.BackHair:setRot(20, 0, 0)
+				ModelAlias.alias.dummy_avatar.head.BackHair:setOffsetPivot(0, 0, 4)
+				for _, modelPart in ipairs({ModelAlias.alias.dummy_avatar.head.StrawHat.StrawHatKnotRightTip, ModelAlias.alias.dummy_avatar.head.StrawHat.StrawHatKnotLeftTip}) do
+					modelPart:setRot(30, 0, 0)
+				end
+			end;
 
+			onPhase2 = function ()
+				ModelAlias.alias.dummy_avatar.head.BackHair:setRot(-20, 0, 0)
+				ModelAlias.alias.dummy_avatar.head.BackHair:setOffsetPivot()
+				ModelAlias.alias.dummy_avatar.head.StrawHat.StrawHatKnotRightTip:setRot(-20, 0, -70)
+				ModelAlias.alias.dummy_avatar.head.StrawHat.StrawHatKnotLeftTip:setRot(-20, 0, -30)
+			end;
+		};
 	};
 
 	actionWheelConfig = {
