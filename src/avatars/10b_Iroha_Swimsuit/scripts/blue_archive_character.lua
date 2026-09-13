@@ -392,11 +392,19 @@ local BlueArchiveCharacter = {
 						self.exSkill.primary.isInitialized = true;
 					end;
 
+					events.RENDER:register(function ()
+						ModelAlias.alias.avatar.head.BackHair:setOffsetPivot(0, 0, ModelAlias.alias.avatar.head.BackHair:getAnimRot().x > 0 and 2 or 0)
+					end, "ex_skill_1_render")
+
 					local itemTable = {"melon", "potion", "melon_slice", "apple", "milk_bucket", "tube_coral_block", "brain_coral_block", "bubble_coral_block", "fire_coral_block", "horn_coral_block", "tube_coral", "brain_coral", "fire_coral", "horn_coral", "bubble_coral", "tube_coral_fan", "brain_coral_fan", "bubble_coral_fan", "fire_coral_fan", "horn_coral_fan", "cod", "cod_bucket", "salmon", "salmon_bucket", "tropical_fish", "tropical_fish_bucket", "seagrass", "sea_pickle", "kelp", "ink_sac", "turtle_scute", "sand", "heart_of_the_sea"}
 					for i, modelPart in ipairs(models.models.ex_skill_1.ExSkillItems:getChildren()) do
 						modelPart:getTask("ex_skill_1_item_" .. i)
 							:setItem("minecraft:" .. itemTable[math.random(#itemTable)])
 					end
+				end;
+
+				onPostAnimation = function ()
+					events.RENDER:remove("ex_skill_1_render")
 				end;
 			};
 
