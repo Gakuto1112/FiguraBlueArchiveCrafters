@@ -634,7 +634,6 @@
 			"to": [1, 25, -4.01],
 			"autouv": 0,
 			"color": 0,
-			"visibility": false,
 			"origin": [0, 24, 0],
 			"faces": {
 				"north": {
@@ -2727,7 +2726,7 @@
 			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [-2.25, 24.01, -2],
-			"to": [-2, 24.01, 0],
+			"to": [-2, 24.01, 1.75],
 			"autouv": 0,
 			"color": 8,
 			"origin": [-2.25, 24, -2],
@@ -2769,7 +2768,7 @@
 			"scope": 0,
 			"allow_mirror_modeling": true,
 			"from": [2, 24.01, -2],
-			"to": [2.25, 24.01, 0],
+			"to": [2.25, 24.01, 1.75],
 			"autouv": 0,
 			"color": 8,
 			"origin": [2, 24, -2],
@@ -2810,11 +2809,11 @@
 			"export": true,
 			"scope": 0,
 			"allow_mirror_modeling": true,
-			"from": [-2, 24.01, 0],
-			"to": [2, 24.01, 0.25],
+			"from": [-2, 24.01, 1.75],
+			"to": [2, 24.01, 2],
 			"autouv": 0,
 			"color": 8,
-			"origin": [-2, 24, 0],
+			"origin": [-2, 24, 1.75],
 			"faces": {
 				"north": {
 					"uv": [0, 0, 0, 0],
@@ -2843,6 +2842,49 @@
 			},
 			"type": "cube",
 			"uuid": "1bd2fd6b-2d1b-7af6-0b2d-e29459f69896"
+		},
+		{
+			"name": "PendantLine3",
+			"box_uv": false,
+			"render_order": "default",
+			"locked": false,
+			"export": true,
+			"scope": 0,
+			"allow_mirror_modeling": true,
+			"from": [-0.125, 15.75, -2.5],
+			"to": [0.125, 18.25, -2.5],
+			"autouv": 0,
+			"color": 6,
+			"inflate": 0.001,
+			"origin": [0, 18, -2.5],
+			"faces": {
+				"north": {
+					"uv": [15, 7, 16, 8],
+					"texture": 1
+				},
+				"east": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"south": {
+					"uv": [15, 7, 16, 8],
+					"texture": 1
+				},
+				"west": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"up": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				},
+				"down": {
+					"uv": [0, 0, 0, 0],
+					"texture": null
+				}
+			},
+			"type": "cube",
+			"uuid": "6a4e5705-608b-8f9d-68f2-0a12eaa771cb"
 		}
 	],
 	"groups": [
@@ -4188,7 +4230,8 @@
 												"36192541-3ce5-1766-2db8-69ddb678e29d",
 												"f7fc04de-4695-b60f-c0e0-de9ac93b6b1b",
 												"13701342-f276-ec7d-fd27-69d1f20b7da8",
-												"c8b30233-5179-32b7-2777-a6e97b16b2a7"
+												"c8b30233-5179-32b7-2777-a6e97b16b2a7",
+												"6a4e5705-608b-8f9d-68f2-0a12eaa771cb"
 											]
 										}
 									]
@@ -4678,7 +4721,7 @@
 			"override": true,
 			"length": 9.75,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
 			"group_name": "",
 			"scope": 0,
 			"anim_time_update": "",
