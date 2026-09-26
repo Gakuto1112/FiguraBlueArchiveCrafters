@@ -238,6 +238,7 @@ def main() -> None:
 	parser.add_argument("--src-dir", "-i", type=str, default=paths.source_dir, help="Overrides default source directory path. Default: ../../src/")
 	parser.add_argument("--dist-dir", "-o", type=str, default=paths.distribution_dir, help="Overrides default distribution directory path. Default: ../../dist/")
 	parser.add_argument("--observe", "-w", action="store_true", help="Executes the tool in observation mode. In this mode, the tool will observe the source directory for changes and automatically rebuild the affected avatars.")
+	parser.add_argument("--skip-pre-build", "-s", action="store_true", help="Skips the pre-build step before starting the watch mode.")
 	parser.add_argument("--colored", "-l", action="store_true", help="Enables colored output in the terminal.")
 	parser.add_argument("--debug-output", "-d", action="store_true", help="Enables debug outputs.")
 	parser.add_argument("--tag-name", "-t", type=str, help="Overrides the avatar version name. This option is ignored in observe mode.")
@@ -284,10 +285,14 @@ def main() -> None:
 		Logger.print_debug(f"Distribution directory: {paths.distribution_dir}")
 		Logger.print_spacer(1)
 
-		Logger.print_info("Initializing the distribution directory...")
-		Logger.print_spacer(1)
+		if not args.skip_pre_build:
+			Logger.print_info("Initializing the distribution directory...")
+			Logger.print_spacer(1)
 
-		build(tuple(paths.get_avatar_names()))
+			build(tuple(paths.get_avatar_names()))
+		else:
+			Logger.print_info("The --skip-pre-build / -s option is specified. The pre-build step will be skipped.")
+			Logger.print_spacer(1)
 
 		if args.character:
 			Logger.print_warning("The --character / -c option is ignored in observe mode. All characters will be observed for changes.")
@@ -310,6 +315,9 @@ def main() -> None:
 
 	else:
 		# 通常のビルドモード
+		if args.skip_pre_build:
+			Logger.print_warning("The --skip-pre-build / -s option is ignored in normal build mode. This option only applies in observe mode.")
+
 		target_avatars: list[str] = []
 		if args.character:
 			target = next((avatar for avatar in paths.get_avatar_names() if args.character in avatar), None)
