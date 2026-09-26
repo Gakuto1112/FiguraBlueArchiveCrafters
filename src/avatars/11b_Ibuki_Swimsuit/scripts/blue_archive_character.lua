@@ -384,13 +384,229 @@ local BlueArchiveCharacter = {
 
 	physics = {
 		physicData = {
+			{
+				models = {ModelAlias.alias.avatar.head.Cowlick};
 
+				x = {
+					vertical = {
+						min = 10;
+						neutral = 50;
+						max = 90;
+
+						headX = {
+							multiplayer = 40;
+							min = 10;
+							max = 90;
+						};
+
+						bodyY = {
+							multiplayer = -40;
+							min = 10;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = 10;
+						neutral = 50;
+						max = 90;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 10;
+							max = 90;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.FrontHair};
+
+				x = {
+					vertical = {
+						min = 5;
+						neutral = 5;
+						max = 150;
+						sneakOffset = 30;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 5;
+							max = 90;
+						};
+
+						bodyY = {
+							multiplayer = -80;
+							min = 5;
+							max = 150;
+						};
+
+						bodyRot = {
+							multiplayer = -0.05;
+							min = 5;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = 5;
+						neutral = 90;
+						max = 150;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 5;
+							max = 150;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.Pendant.PendantRotatable};
+
+				x = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 110;
+						sneakOffset = 30;
+
+						bodyX = {
+							multiplayer = -40;
+							min = 0;
+							max = 90;
+						};
+
+						bodyY = {
+							multiplayer = -40;
+							min = 0;
+							max = 110;
+						};
+
+						bodyRot = {
+							multiplayer = -0.025;
+							min = 0;
+							max = 110;
+						};
+					};
+
+					horizontal = {
+						min = 0;
+						neutral = 90;
+						max = 110;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 0;
+							max = 110;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.Pendant.PendantRotatable.PendantLine3};
+
+				x = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 90;
+						sneakOffset = 0;
+
+						bodyX = {
+							multiplayer = -20;
+							min = 0;
+							max = 90;
+						};
+
+						bodyY = {
+							multiplayer = -20;
+							min = 0;
+							max = 90;
+						};
+
+						bodyRot = {
+							multiplayer = -0.0125;
+							min = 0;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = -90;
+						neutral = 0;
+						max = 90;
+
+						bodyX = {
+							multiplayer = -80;
+							min = -90;
+							max = 90;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.TailXPivot};
+				x = {
+					vertical = {
+						min = -40;
+						neutral = 0;
+						max = 40;
+						sneakOffset = 15;
+
+						bodyY = {
+							multiplayer = 40;
+							min = -40;
+							max = 40;
+						};
+					};
+
+					horizontal = {
+						min = -40;
+						neutral = 0;
+						max = 40;
+
+						bodyX = {
+							multiplayer = 40;
+							min = -40;
+							max = 40;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.TailXPivot.TailYPivot};
+
+				y = {
+					vertical = {
+						min = -40;
+						neutral = 0;
+						max = 40;
+
+						bodyZ = {
+							multiplayer = -80;
+							min = -40;
+							max = 40;
+						};
+					};
+				};
+			};
 		};
 	};
 
 	---初期化関数
 	---この関数は消しても構わない。
 	init = function ()
+        events.RENDER:register(function (_, context)
+            local wingRotOffset = math.map(vanilla_model.RIGHT_LEG:getOriginRot().x, -90, 90, 20, 0)
+            ModelAlias.alias.avatar.body.Wings.RightWing:setRot(0, -20 - wingRotOffset, 0)
+            ModelAlias.alias.avatar.body.Wings.LeftWing:setRot(0, 20 + wingRotOffset, 0)
+        end)
 	end;
 }
 
