@@ -16,6 +16,9 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "CENTER" # 少し反対側を見る目
+---| "ANGRY" # 怒った目
+---| "UNEQUAL" # 不等号目
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -23,10 +26,23 @@
 ---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
 ---| "TIRED" # 疲れた目（死亡アニメーションなど）
 ---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "CENTER" # 少し反対側を見る目
+---| "ANGRY_CENTER" # 怒りつつ少し反対側を見る目
+---| "UNEQUAL" # 不等号目
+---| "ANGRY" # 怒った目
+---| "INVERTED" # 反対側を見る目
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
 ---| "NORMAL" # 通常
+---| "ANXIOUS" # 小さく空いている口
+---| "OPENED" # 全力の開け口
+---| "OPENED_SMALL" # 小さく開いている口
+---| "YUMMY" # 舌をペロッとしている口
+---| "SMILE" # にっこり
+---| "W" # W
+---| "SHOCK" # あんぐり口
+---| "O" # 丸い口
 
 ---キャラクター固有の腕の状態
 ---@alias BlueArchiveCharacter.AdditionalArmState
@@ -266,9 +282,12 @@ local BlueArchiveCharacter = {
 	faceParts = {
 		rightEye = {
 			NORMAL = vectors.vec2(0, 0); --必須
-			SURPRISED = vectors.vec2(1, 0); --必須
-			TIRED = vectors.vec2(2, 0); --必須
-			CLOSED = vectors.vec2(3, 0); --必須
+			SURPRISED = vectors.vec2(2, 0); --必須
+			TIRED = vectors.vec2(3, 0); --必須
+			CLOSED = vectors.vec2(4, 0); --必須
+			CENTER = vectors.vec2(5, 0);
+			ANGRY = vectors.vec2(7, 0);
+			UNEQUAL = vectors.vec2(9, 0);
 		};
 
 		leftEye = {
@@ -276,10 +295,30 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(1, 0); --必須
 			TIRED = vectors.vec2(2, 0); --必須
 			CLOSED = vectors.vec2(3, 0); --必須
+			CENTER = vectors.vec2(5, 0);
+			ANGRY_CENTER = vectors.vec2(7, 0);
+			UNEQUAL = vectors.vec2(8, 0);
+			ANGRY = vectors.vec2(9, 0);
+			INVERTED = vectors.vec2(10, 0);
 		};
 
 		mouth = {
+			ANXIOUS = vectors.vec2(0, 0);
+			OPENED = vectors.vec2(1, 0);
+			OPENED_SMALL = vectors.vec2(2, 0);
+			YUMMY = vectors.vec2(3, 0);
+			SMILE = vectors.vec2(4, 0);
+			W = vectors.vec2(5, 0);
+			SHOCK = vectors.vec2(6, 0);
+			O = vectors.vec2(7, 0);
+		};
 
+		emotionSet = {
+			onDamage = {
+				rightEye = "UNEQUAL";
+				leftEye = "UNEQUAL";
+				mouth = "SHOCK";
+			};
 		};
 	};
 
