@@ -398,7 +398,25 @@ local BlueArchiveCharacter = {
 	};
 
 	bubble = {
-
+		callbacks = {
+			onPlay = function (self, type, duration, showInGui)
+				if type == "GOOD" then
+					FaceParts:setEmotion("NORMAL", self.costume.isRidingTank and "INVERTED" or "NORMAL", "OPENED", duration, true)
+				elseif type == "HEART" then
+					FaceParts:setEmotion("CLOSED", "CLOSED", "W", duration, true)
+				elseif type == "NOTE" then
+					FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "OPENED", duration, true)
+				elseif type == "QUESTION" then
+					FaceParts:setEmotion("NORMAL", self.costume.isRidingTank and "INVERTED" or "NORMAL", "ANXIOUS", duration, true)
+				elseif type == "SWEAT" then
+					if showInGui then
+						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "SHOCK", duration, true)
+					else
+						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "SHOCK", 60, true)
+					end
+				end
+			end;
+		};
 	};
 
 	headModel = {
