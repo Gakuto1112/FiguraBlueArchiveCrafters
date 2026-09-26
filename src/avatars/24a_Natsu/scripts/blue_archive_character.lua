@@ -463,6 +463,8 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setPos()
 						ModelAlias.alias.avatar.gun:setRot()
 						ModelAlias.alias.avatar.gun:setVisible(true)
+						models.models.shield_item.Item:setPos()
+						models.models.shield_item.Item:setRot()
 					elseif tick == 34 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "HAT", 2, true)
 					elseif tick == 36 then
