@@ -137,7 +137,8 @@ This build tool provides optional arguments.
 | -c, --character | Valid avatar name <br> (e.g., `01a`, `Shizuko`, `01a_Shizuko`) | Builds only one specific character. If this argument is not specified, all avatars including the base character will be built. This has no effect in observation mode. |
 | -i, --src-dir | Path to the directory of avatar sources | Specifies the directory of avatar sources. If this argument is not specified, it will be `../../src/`. |
 | -o, --dist-dir | Path to the output destination directory | Specifies the output destination directory. If this argument is not specified, it will be `../../dist/`. |
-| -w, --observe | None | Launches the build tool in watch mode. In watch mode, after a normal build, if changes in source files are detected, it will automatically rebuild only the relevant parts. |
+| -w, --observe | None | Launches the build tool in watch mode. In watch mode, after a pre-build, if changes in source files are detected, it will automatically rebuild only the relevant parts. |
+| -s, --skip-pre-build | None | Skips the pre-build avatar build that runs before watch mode starts. This has no effect in normal build mode. |
 | -l, --colored | None | Adds color to standard output. Turn this off if control characters like log outputs are output as-is. |
 | -d, --debug_output | None | Enables finer debug output. |
 | -r, --release | None | Builds as release mode. It performs the build while removing feature implementations meant for debugging and changing endpoints to release versions. This has no effect in observation mode. |
