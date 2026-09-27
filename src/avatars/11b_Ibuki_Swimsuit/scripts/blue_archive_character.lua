@@ -377,9 +377,9 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "SPECIAL";
 
-			models = {};
+			models = {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, models.models.ex_skill_1.ShellItemsArea};
 
-			animations = {"main"};
+			animations = {"main", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -394,11 +394,67 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
-				onPreAnimation = function ()
+				onPreAnimation = function (self)
+					if not self.exSkill.primary.isInitialized then
+						ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor:newItem("ex_skill_1_right_shell")
+						ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:newItem("ex_skill_1_left_shell")
+
+						for i = 1, 13 do
+							local task = models.models.ex_skill_1.ShellItemsArea:newItem("ex_skill_1_shell_" .. i)
+							task:setPos(-8, 0, -8)
+							task:setScale(0.25, 0.25, 0.25)
+						end
+
+						self.exSkill.primary.isInitialized = true;
+					end
+
+					ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:getTask("ex_skill_1_left_shell"):setItem("minecraft:nautilus_shell")
+
+					local shellItems = {}
+					---@cast shellItems ItemTask[]
+					local isHost = host:isHost()
+					for i = 1, 13 do
+						local shellItem = self.exSkill.primary.getShellItem()
+
+						if i == 1 then
+							self.exSkill.primary.shell1Item = shellItem
+						end
+
+						local task = models.models.ex_skill_1.ShellItemsArea:getTask("ex_skill_1_shell_" .. i)
+						---@cast task ItemTask
+						task:setItem(shellItem)
+						if i == 1 then
+							task:setVisible(true)
+						elseif isHost then
+							task:setVisible(false)
+						end
+						task:setRot(90, math.random() * 360, 0)
+
+						shellItems[i] = task
+					end
+
+					shellItems[1]:setPos(52, 0, 16)
+					shellItems[1]:setRot(90, 90, 0)
+					shellItems[2]:setPos(40, 0, -8)
+					shellItems[3]:setPos(36, 0, -18)
+					shellItems[4]:setPos(40, 0, -32)
+					shellItems[4]:setScale(0.4, 0.4, 0.4)
+					shellItems[5]:setPos(32, 0, -50)
+					shellItems[5]:setScale(0.4, 0.4, 0.4)
+					shellItems[6]:setPos(38, 0, -58)
+					shellItems[6]:setScale(0.4, 0.4, 0.4)
+					shellItems[7]:setPos(32, 0, -38)
+					shellItems[8]:setPos(30, 0, -43)
+					shellItems[9]:setPos(34, 0, -45)
+					shellItems[10]:setPos(46, 0, -46)
+					shellItems[11]:setPos(44, 0, -54)
+					shellItems[12]:setPos(40, 0, -39)
+					shellItems[13]:setPos(40, 0, -48)
+
 					FaceParts:setEmotion("NORMAL", "CENTER", "YUMMY", 10, true)
 				end;
 
-				onAnimationTick = function (_, tick)
+				onAnimationTick = function (self, tick)
 					if tick == 10 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "YUMMY", 13, true)
 					elseif tick == 23 then
@@ -406,7 +462,12 @@ local BlueArchiveCharacter = {
 					elseif tick == 25 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "OPENED", 8, true)
 					elseif tick == 33 then
+						ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:setVisible(false)
+
 						FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED_SMALL", 17, true)
+					elseif tick == 49 then
+						ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor:setVisible(true)
+						ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor:getTask("ex_skill_1_right_shell"):setItem(self.exSkill.primary.shell1Item)
 					elseif tick == 50 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMILE", 17, true)
 					elseif tick == 61 then
@@ -419,17 +480,67 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("CLOSED", "CLOSED", "O", 2, true)
 					elseif tick == 84 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "O", 18, true)
+					elseif tick == 101 and host:isHost() then
+						for i = 2, 13 do
+							models.models.ex_skill_1.ShellItemsArea:getTask("ex_skill_1_shell_" .. i):setVisible(true)
+						end
 					elseif tick == 102 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "O", 2, true)
 					elseif tick == 104 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "OPENED", 64, true)
+					elseif tick == 167 then
+						ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:setVisible(true)
+						for _, shellItemData in ipairs({{ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor, "ex_skill_1_right_shell"}, {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, "ex_skill_1_left_shell"}}) do
+							shellItemData[1]:getTask(shellItemData[2]):setItem(self.exSkill.primary.getShellItem())
+						end
+
+						if host:isHost() then
+							for i = 1, 13 do
+								models.models.ex_skill_1.ShellItemsArea:getTask("ex_skill_1_shell_" .. i):setVisible(false)
+							end
+						end
 					elseif tick == 168 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "W", 11, true)
 					elseif tick == 179 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 32, true)
 					end
 				end;
-			}
+
+				onPostAnimation = function ()
+					ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor:setVisible(false)
+				end;
+			};
+
+			---貝殻としてのアイテムのIDをランダムで返す。
+			---@return Minecraft.itemID 貝殻としてのアイテムのID
+			getShellItem = function()
+				local itemTable = {"minecraft:tube_coral", "minecraft:brain_coral", "minecraft:bubble_coral", "minecraft:fire_coral", "minecraft:horn_coral", "minecraft:prismarine_shard", "minecraft:prismarine_crystals", "minecraft:heart_of_the_sea"}
+				local weightTable = {10, 10, 10, 10, 10, 5, 5, 1}
+
+				local totalWeight = 0
+				for _, weight in ipairs(weightTable) do
+					totalWeight = totalWeight + weight
+				end
+
+				local randomWeight = math.random() * totalWeight
+				local cumulativeWeight = 0
+				for i, weight in ipairs(weightTable) do
+					cumulativeWeight = cumulativeWeight + weight
+					if randomWeight <= cumulativeWeight then
+						return itemTable[i]
+					end
+				end
+
+				return itemTable[#itemTable]
+			end;
+
+			---このExスキルの初期化処理が行われたかどうか。
+			---@type boolean
+			isInitialized = false;
+
+			---Exスキルアニメーション中にイブキが拾うアイテムのID
+			---@type Minecraft.itemID
+			shell1Item = "minecraft:nautilus_shell";
 		};
 	};
 
