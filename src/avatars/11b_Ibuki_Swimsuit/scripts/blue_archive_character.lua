@@ -19,6 +19,7 @@
 ---| "CENTER" # 少し反対側を見る目
 ---| "ANGRY" # 怒った目
 ---| "UNEQUAL" # 不等号目
+---| "CLOSED2" # 閉じた目2
 
 ---左目のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.LeftEyeTextures
@@ -31,6 +32,7 @@
 ---| "UNEQUAL" # 不等号目
 ---| "ANGRY" # 怒った目
 ---| "INVERTED" # 反対側を見る目
+---| "CLOSED2" # 閉じた目2
 
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
@@ -288,6 +290,7 @@ local BlueArchiveCharacter = {
 			CENTER = vectors.vec2(5, 0);
 			ANGRY = vectors.vec2(7, 0);
 			UNEQUAL = vectors.vec2(9, 0);
+			CLOSED2 = vectors.vec2(12, 0);
 		};
 
 		leftEye = {
@@ -300,6 +303,7 @@ local BlueArchiveCharacter = {
 			UNEQUAL = vectors.vec2(8, 0);
 			ANGRY = vectors.vec2(9, 0);
 			INVERTED = vectors.vec2(10, 0);
+			CLOSED2 = vectors.vec2(11, 0);
 		};
 
 		mouth = {
@@ -388,6 +392,44 @@ local BlueArchiveCharacter = {
 					pos = vectors.vec3(-45.25, 24.75, 6.5);
 				};
 			};
+
+			callbacks = {
+				onPreAnimation = function ()
+					FaceParts:setEmotion("NORMAL", "CENTER", "YUMMY", 10, true)
+				end;
+
+				onAnimationTick = function (_, tick)
+					if tick == 10 then
+						FaceParts:setEmotion("CENTER", "NORMAL", "YUMMY", 13, true)
+					elseif tick == 23 then
+						FaceParts:setEmotion("CLOSED", "CLOSED", "YUMMY", 2, true)
+					elseif tick == 25 then
+						FaceParts:setEmotion("CENTER", "NORMAL", "OPENED", 8, true)
+					elseif tick == 33 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED_SMALL", 17, true)
+					elseif tick == 50 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMILE", 17, true)
+					elseif tick == 61 then
+						FaceParts:setEmotion("CENTER", "NORMAL", "OPENED", 15, true)
+					elseif tick == 76 then
+						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 2, true)
+					elseif tick == 78 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "O", 4, true)
+					elseif tick == 82 then
+						FaceParts:setEmotion("CLOSED", "CLOSED", "O", 2, true)
+					elseif tick == 84 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "O", 18, true)
+					elseif tick == 102 then
+						FaceParts:setEmotion("CLOSED", "CLOSED", "O", 2, true)
+					elseif tick == 104 then
+						FaceParts:setEmotion("NORMAL", "CENTER", "OPENED", 64, true)
+					elseif tick == 168 then
+						FaceParts:setEmotion("CLOSED", "CLOSED", "W", 11, true)
+					elseif tick == 179 then
+						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 32, true)
+					end
+				end;
+			}
 		};
 	};
 
