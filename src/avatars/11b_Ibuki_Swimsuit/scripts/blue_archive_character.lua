@@ -377,7 +377,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "SPECIAL";
 
-			models = {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, models.models.ex_skill_1.ShellItemsArea};
+			models = {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, models.models.ex_skill_1.ShellItemsArea, models.models.ex_skill_1.ShineEffect};
 
 			animations = {"main", "ex_skill_1"};
 
@@ -488,6 +488,12 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("CLOSED", "CLOSED", "O", 2, true)
 					elseif tick == 104 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "OPENED", 64, true)
+					elseif tick == 118 then
+						self.exSkill.primary.emitShellShineParticles(models.models.ex_skill_1.ShellItemsArea:getTask("ex_skill_1_shell_4"))
+					elseif tick == 137 then
+						self.exSkill.primary.emitShellShineParticles(models.models.ex_skill_1.ShellItemsArea:getTask("ex_skill_1_shell_5"))
+					elseif tick == 151 then
+						self.exSkill.primary.emitShellShineParticles(models.models.ex_skill_1.ShellItemsArea:getTask("ex_skill_1_shell_6"))
 					elseif tick == 167 then
 						ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:setVisible(true)
 						for _, shellItemData in ipairs({{ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor, "ex_skill_1_right_shell"}, {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, "ex_skill_1_left_shell"}}) do
@@ -513,7 +519,7 @@ local BlueArchiveCharacter = {
 
 			---貝殻としてのアイテムのIDをランダムで返す。
 			---@return Minecraft.itemID 貝殻としてのアイテムのID
-			getShellItem = function()
+			getShellItem = function ()
 				local itemTable = {"minecraft:tube_coral", "minecraft:brain_coral", "minecraft:bubble_coral", "minecraft:fire_coral", "minecraft:horn_coral", "minecraft:prismarine_shard", "minecraft:prismarine_crystals", "minecraft:heart_of_the_sea"}
 				local weightTable = {10, 10, 10, 10, 10, 5, 5, 1}
 
@@ -532,6 +538,21 @@ local BlueArchiveCharacter = {
 				end
 
 				return itemTable[#itemTable]
+			end;
+
+			---貝殻のキラリパーティクルを再生する。
+			---@param task ItemTask 貝殻アイテムのタスク
+			emitShellShineParticles = function (task)
+				local taskPos = task:getPos()
+				local anchorPos = player:getPos():copy():add(vectors.rotateAroundAxis(player:getBodyYaw() * -1, taskPos:copy():scale(-0.0625 * 0.9375), 0, 1, 0))
+
+				for i = 0, 17 do
+					particles:newParticle("minecraft:end_rod", anchorPos):setScale(0.5):setVelocity(vectors.rotateAroundAxis(i * 20, 0, 0, 0.05, 0, 1, 0)):setGravity(0):setColor(0.990, 0.946, 0.571):setLifetime(8)
+				end
+
+				for i = 0, 7 do
+					ExSkillSpriteManager:spawn(models.models.ex_skill_1.ShellItemsArea, taskPos:copy():add(0, 0.25, 0), vectors.rotateAroundAxis(i * 45, 30, 0, 0, 0, 1, 0), 0, 2, nil, 40, true, 0.7)
+				end
 			end;
 
 			---このExスキルの初期化処理が行われたかどうか。
@@ -810,6 +831,15 @@ local BlueArchiveCharacter = {
 	---初期化関数
 	---この関数は消しても構わない。
 	init = function ()
+		---Exスキルで使用するスプライトオブジェクトのインスタンスクラス
+		---@type ExSkillSprite
+		ExSkillSprite = require("scripts.ex_skill_sprite")
+
+		---Exスキルで使用するスプライトオブジェクトのマネージャークラス
+		---@type ExSkillSpriteManager
+		ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
+		ExSkillSpriteManager = ExSkillSpriteManager.new()
+
         events.RENDER:register(function (_, context)
             local wingRotOffset = math.map(vanilla_model.RIGHT_LEG:getOriginRot().x, -90, 90, 20, 0)
             ModelAlias.alias.avatar.body.Wings.RightWing:setRot(0, -20 - wingRotOffset, 0)
