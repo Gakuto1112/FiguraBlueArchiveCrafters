@@ -534,6 +534,14 @@ local BlueArchiveCharacter = {
 					elseif tick == 179 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 32, true)
 					end
+
+					if tick >= 101 and tick < 167 then
+						local anchorPos = player:getPos()
+						local bodyYaw = player:getBodyYaw()
+						for _ = 1, 5 do
+							particles:newParticle("minecraft:firework", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, vectors.vec3(math.random() * 25 - 50, 0.5, math.random() * 75):scale(0.0625 * 0.9375), 0, 1, 0))):setScale(0.1):setGravity(0)
+						end
+					end
 				end;
 
 				onPostAnimation = function ()
