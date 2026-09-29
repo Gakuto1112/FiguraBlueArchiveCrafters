@@ -458,11 +458,35 @@ local BlueArchiveCharacter = {
 					if tick == 10 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "YUMMY", 13, true)
 					elseif tick == 23 then
+						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.head)
+						local bodyYaw = player:getBodyYaw()
+						for _, offset in ipairs({vectors.vec3(-0.6, 0.5, 0), vectors.vec3(-0.5, 0.6, 0)}) do
+							particles:newParticle("minecraft:electric_spark", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1 - 100, offset, 0, 1, 0))):setScale(0.5):setVelocity(offset:copy():scale(0.25)):setColor(0.991, 0.952, 0.797):setLifetime(1)
+						end
+
 						FaceParts:setEmotion("CLOSED", "CLOSED", "YUMMY", 2, true)
 					elseif tick == 25 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "OPENED", 8, true)
+					elseif tick == 32 then
+						local bodyYaw = player:getBodyYaw()
+						local anchorPos = player:getPos():copy():add(vectors.rotateAroundAxis(bodyYaw * -1 - 100, 0, 0, 2, 0, 1, 0))
+						local velocity = vectors.rotateAroundAxis(bodyYaw * -1 - 100, 0, 0, 0.5, 0, 1, 0)
+						for _ = 1, 20 do
+							particles:newParticle("minecraft:cloud", anchorPos:copy():add(math.random() * 2 - 1, math.random() * 3, math.random() * 2 - 1)):setScale(1.2):setVelocity(velocity):setLifetime(4)
+						end
 					elseif tick == 33 then
 						ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:setVisible(false)
+
+						local bodyYaw = player:getBodyYaw()
+						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root):copy():add(vectors.rotateAroundAxis(bodyYaw * -1 - 100, 0, 0, 0.75, 0, 1, 0))
+						local particleBlock = world.getBlockState(anchorPos:copy():add(0, -1, 0))
+						if not particleBlock:isAir() then
+							local velocity = vectors.rotateAroundAxis(bodyYaw * -1 - 100, 0, 0, 0.15, 0, 1, 0)
+							for i = 0, 35 do
+								local offset = vectors.rotateAroundAxis(i * 10, 0, 0, 0.3 + math.random() * 0.2, 0, 1, 0)
+								particles:newParticle("minecraft:block " .. particleBlock.id, anchorPos:copy():add(offset)):setVelocity(velocity:copy():add(offset:copy():scale(0.1)))
+							end
+						end
 
 						FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED_SMALL", 17, true)
 					elseif tick == 49 then
