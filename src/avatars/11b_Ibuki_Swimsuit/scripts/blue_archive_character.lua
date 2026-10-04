@@ -470,6 +470,8 @@ local BlueArchiveCharacter = {
 				onAnimationTick = function (self, tick)
 					if tick == 10 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "YUMMY", 13, true)
+					elseif tick == 12 then
+						sounds:playSound("minecraft:entity.player.levelup", player:getPos():copy():add(vectors.rotateAroundAxis(player:getBodyYaw() * -1 - 100, 3.25, 0, 1, 0, 1, 0)), 1, 3)
 					elseif tick == 23 then
 						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.head)
 						local bodyYaw = player:getBodyYaw()
@@ -477,9 +479,15 @@ local BlueArchiveCharacter = {
 							particles:newParticle("minecraft:electric_spark", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1 - 100, offset, 0, 1, 0))):setScale(0.5):setVelocity(offset:copy():scale(0.25)):setColor(0.991, 0.952, 0.797):setLifetime(1)
 						end
 
+						sounds:playSound("minecraft:entity.item.pickup", player:getPos(), 1, 2)
+
 						FaceParts:setEmotion("CLOSED", "CLOSED", "YUMMY", 2, true)
 					elseif tick == 25 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "OPENED", 8, true)
+					elseif tick == 31 then
+						local playerPos = player:getPos()
+						sounds:playSound("minecraft:entity.egg.throw", playerPos, 1, 2)
+						sounds:playSound("minecraft:block.sand.step", playerPos, 1, 0.75)
 					elseif tick == 32 then
 						local bodyYaw = player:getBodyYaw()
 						local anchorPos = player:getPos():copy():add(vectors.rotateAroundAxis(bodyYaw * -1 - 100, 0, 0, 2, 0, 1, 0))
@@ -506,9 +514,13 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor:setVisible(true)
 						ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor:getTask("ex_skill_1_right_shell"):setItem(self.exSkill.primary.shell1Item)
 					elseif tick == 50 then
+						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.head), 1, 1)
+
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "SMILE", 17, true)
 					elseif tick == 61 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "OPENED", 15, true)
+					elseif tick == 62 then
+						sounds:playSound("minecraft:entity.player.levelup", player:getPos():copy():add(vectors.rotateAroundAxis(player:getBodyYaw() * -1, vectors.vec3(-50, 0, 0):scale(0.0625), 0, 1, 0)), 1, 3)
 					elseif tick == 76 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 2, true)
 					elseif tick == 78 then
@@ -556,6 +568,8 @@ local BlueArchiveCharacter = {
 							ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.ExSkill1ParticleAnchor1, vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(i * 60, 0, 50, 0, 0, 0, 1), math.random() * 60 + 60, 8, nil, 32, true, 0.85)
 						end
 
+						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 1)
+
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 32, true)
 					end
 
@@ -574,6 +588,15 @@ local BlueArchiveCharacter = {
 						end
 					end
 
+					if tick >= 62 and tick < 167 then
+						if self.exSkill.primary.nextShineSound == 0 then
+							sounds:playSound("minecraft:block.amethyst_block.resonate", ModelUtils.getModelWorldPos(models.models.main.CameraAnchor), 1, 2)
+							self.exSkill.primary.nextShineSound = math.random(4, 8)
+						else
+							self.exSkill.primary.nextShineSound = self.exSkill.primary.nextShineSound - 1
+						end
+					end
+
 					if host:isHost() then
 						if tick >= 148 and tick < 164 then
 							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():add(0.5, 0.5, 0):scale(32):floor()
@@ -585,6 +608,10 @@ local BlueArchiveCharacter = {
 							self.exSkill.primary.fillCircle(textures["ex_skill_1_transition"], brushPos.x, brushPos.y, 7, vectors.vec4(0, 0, 0, 0))
 							textures["ex_skill_1_transition"]:update()
 						end
+					end
+
+					if tick >= 148 and tick < 164 and (tick - 148) % 2 == 0 then
+						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(models.models.main.CameraAnchor), 1, 0.0625 * tick - 8.25)
 					end
 				end;
 
@@ -616,7 +643,7 @@ local BlueArchiveCharacter = {
 				return itemTable[#itemTable]
 			end;
 
-			---貝殻のキラリパーティクルを再生する。
+			---貝殻のキラリパーティクルとサウンドを再生する。
 			---@param task ItemTask 貝殻アイテムのタスク
 			emitShellShineParticles = function (task)
 				local taskPos = task:getPos()
@@ -630,6 +657,8 @@ local BlueArchiveCharacter = {
 					---@diagnostic disable-next-line: missing-parameter
 					ExSkillSpriteManager:spawn(models.models.ex_skill_1.ShellItemsArea, taskPos:copy():add(0, 0.25, 0), vectors.rotateAroundAxis(i * 45, 30, 0, 0, 0, 1, 0), 0, 2, nil, 40, true, 0.7)
 				end
+
+				sounds:playSound("minecraft:entity.experience_orb.pickup", anchorPos, 1, math.random() + 2)
 			end;
 
 			---テクスチャに塗り潰し円を描画する。
@@ -658,6 +687,10 @@ local BlueArchiveCharacter = {
 			---Exスキルアニメーション中にイブキが拾うアイテムのID
 			---@type Minecraft.itemID
 			shell1Item = "minecraft:nautilus_shell";
+
+			---Exスキル中に再生するキラキラサウンドの次の再生タイミング（ティック）
+			---@type integer
+			nextShineSound = 0;
 		};
 	};
 
