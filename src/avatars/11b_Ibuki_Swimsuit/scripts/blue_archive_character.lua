@@ -377,7 +377,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "SPECIAL";
 
-			models = {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, models.models.ex_skill_1.ShellItemsArea, models.models.ex_skill_1.ShineEffect};
+			models = {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, models.models.ex_skill_1.ShellItemsArea, models.models.ex_skill_1.ShineEffect, models.models.ex_skill_1.Gui};
 
 			animations = {"main", "ex_skill_1"};
 
@@ -405,7 +405,20 @@ local BlueArchiveCharacter = {
 							task:setScale(0.25, 0.25, 0.25)
 						end
 
+						if host:isHost() then
+							local windowSize = client:getScaledWindowSize()
+							models.models.ex_skill_1.Gui.Transition:setPos(windowSize.x / 2 * -1, windowSize.y / 2 * -1, 0)
+							models.models.ex_skill_1.Gui.Transition:setScale(vectors.vec2(1, 1):scale(math.max(windowSize.x, windowSize.y)):augmented(1))
+							models.models.ex_skill_1.Gui.Transition.Transition:setPrimaryTexture("CUSTOM", textures:newTexture("ex_skill_1_transition", 32, 32))
+						end
+
 						self.exSkill.primary.isInitialized = true;
+					end
+
+					if host:isHost() then
+						local dimensions = textures["ex_skill_1_transition"]:getDimensions()
+						textures["ex_skill_1_transition"]:fill(0, 0, dimensions.x, dimensions.y, 0, 0, 0, 0)
+						textures["ex_skill_1_transition"]:update()
 					end
 
 					ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:getTask("ex_skill_1_left_shell"):setItem("minecraft:nautilus_shell")
@@ -549,6 +562,19 @@ local BlueArchiveCharacter = {
 							particles:newParticle("minecraft:firework", anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, vectors.vec3(math.random() * 25 - 50, 0.5, math.random() * 75):scale(0.0625 * 0.9375), 0, 1, 0))):setScale(0.1):setGravity(0)
 						end
 					end
+
+					if host:isHost() then
+						if tick >= 148 and tick < 164 then
+							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():add(0.5, 0.5, 0):scale(32):floor()
+							local brushColor = vectors.vec3(0.993, 0.989, 0.671):add(vectors.vec3(0.007, 0.011, 0.329):scale(math.clamp((tick - 148) / 16, 0, 1)))
+							self.exSkill.primary.fillCircle(textures["ex_skill_1_transition"], brushPos.x, brushPos.y, 7, vectors.vec4(brushColor.x, brushColor.y, brushColor.z, 1))
+							textures["ex_skill_1_transition"]:update()
+						elseif tick >= 167 and tick < 183 then
+							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():add(0.5, 0.5, 0):scale(32):floor()
+							self.exSkill.primary.fillCircle(textures["ex_skill_1_transition"], brushPos.x, brushPos.y, 7, vectors.vec4(0, 0, 0, 0))
+							textures["ex_skill_1_transition"]:update()
+						end
+					end
 				end;
 
 				onPostAnimation = function ()
@@ -591,6 +617,25 @@ local BlueArchiveCharacter = {
 
 				for i = 0, 7 do
 					ExSkillSpriteManager:spawn(models.models.ex_skill_1.ShellItemsArea, taskPos:copy():add(0, 0.25, 0), vectors.rotateAroundAxis(i * 45, 30, 0, 0, 0, 1, 0), 0, 2, nil, 40, true, 0.7)
+				end
+			end;
+
+			---テクスチャに塗り潰し円を描画する。
+			---@param texture Texture 描画対象のテクスチャ
+			---@param centerX number 円の中心X座標
+			---@param centerY number 円の中心Y座標
+			---@param radius number 円の半径
+			---@param color Vector4 塗り潰す色（RGBA）
+			fillCircle = function (texture, centerX, centerY, radius, color)
+				local dimensions = texture:getDimensions()
+				for y = math.max(centerY - radius, 0), math.min(centerY + radius, dimensions.y - 1) do
+					for x = math.max(centerX - radius, 0), math.min(centerX + radius, dimensions.x - 1) do
+						local dx = x - centerX
+						local dy = y - centerY
+						if dx * dx + dy * dy <= radius * radius then
+							texture:setPixel(x, y, color.x, color.y, color.z, color.w)
+						end
+					end
 				end
 			end;
 
