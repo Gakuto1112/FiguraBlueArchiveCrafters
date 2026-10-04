@@ -522,10 +522,14 @@ local BlueArchiveCharacter = {
 					elseif tick == 62 then
 						sounds:playSound("minecraft:entity.player.levelup", player:getPos():copy():add(vectors.rotateAroundAxis(player:getBodyYaw() * -1, vectors.vec3(-50, 0, 0):scale(0.0625), 0, 1, 0)), 1, 3)
 					elseif tick == 76 then
+						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.head), 0.5, 2)
+
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 2, true)
 					elseif tick == 78 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "O", 4, true)
 					elseif tick == 82 then
+						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.head), 0.5, 2)
+
 						FaceParts:setEmotion("CLOSED", "CLOSED", "O", 2, true)
 					elseif tick == 84 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "O", 18, true)
