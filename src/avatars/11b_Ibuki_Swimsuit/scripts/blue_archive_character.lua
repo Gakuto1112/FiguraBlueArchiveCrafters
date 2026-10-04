@@ -377,7 +377,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "SPECIAL";
 
-			models = {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, models.models.ex_skill_1.ShellItemsArea, models.models.ex_skill_1.ShineEffect, models.models.ex_skill_1.Gui};
+			models = {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, models.models.ex_skill_1.ShellItemsArea, models.models.ex_skill_1.ShineEffect, ModelAlias.alias.avatar.head.ExSkill1ParticleAnchor1, models.models.ex_skill_1.Gui};
 
 			animations = {"main", "ex_skill_1"};
 
@@ -545,6 +545,17 @@ local BlueArchiveCharacter = {
 					elseif tick == 168 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "W", 11, true)
 					elseif tick == 179 then
+						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.head.ExSkill1ParticleAnchor1)
+						local bodyYaw = player:getBodyYaw()
+						for i = 0, 11 do
+							local dirVec = vectors.rotateAroundAxis(bodyYaw * -1 + 90, vectors.rotateAroundAxis(32.5, vectors.rotateAroundAxis(i * 30, 0, 0.15, 0, 0, 0, 1), 1, 0, 0), 0, 1, 0)
+							particles:newParticle("minecraft:end_rod", anchorPos):setVelocity(dirVec)
+						end
+						for i = 0, 5 do
+							---@diagnostic disable-next-line: missing-parameter
+							ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.ExSkill1ParticleAnchor1, vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(i * 60, 0, 50, 0, 0, 0, 1), math.random() * 60 + 60, 8, nil, 32, true, 0.85)
+						end
+
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 32, true)
 					end
 
@@ -616,6 +627,7 @@ local BlueArchiveCharacter = {
 				end
 
 				for i = 0, 7 do
+					---@diagnostic disable-next-line: missing-parameter
 					ExSkillSpriteManager:spawn(models.models.ex_skill_1.ShellItemsArea, taskPos:copy():add(0, 0.25, 0), vectors.rotateAroundAxis(i * 45, 30, 0, 0, 0, 1, 0), 0, 2, nil, 40, true, 0.7)
 				end
 			end;
