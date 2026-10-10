@@ -696,6 +696,40 @@ local BlueArchiveCharacter = {
 			---@type integer
 			nextShineSound = 0;
 		};
+
+		secondary = {
+			formationType = "SPECIAL";
+
+			models = {};
+
+			animations = {"main"};
+
+			camera = {
+				start = {
+					rot = vectors.vec3();
+					pos = vectors.vec3();
+				};
+
+				fin = {
+					rot = vectors.vec3();
+					pos = vectors.vec3();
+				};
+			};
+
+			callbacks = {
+				onPreAnimation = function ()
+					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLegBottom, ModelAlias.alias.avatar.leftLegBottom}) do
+						modelPart:setOffsetPivot(0, 0, -2)
+					end;
+				end;
+
+				onPostAnimation = function ()
+					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLegBottom, ModelAlias.alias.avatar.leftLegBottom}) do
+						modelPart:setOffsetPivot()
+					end;
+				end;
+			};
+		};
 	};
 
 	costume = {
