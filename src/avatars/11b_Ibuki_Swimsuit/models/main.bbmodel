@@ -3062,7 +3062,7 @@
 			"mirror_uv": false,
 			"autouv": 0,
 			"isOpen": true,
-			"primary_selected": false
+			"primary_selected": true
 		},
 		{
 			"name": "FaceParts",
@@ -3084,7 +3084,7 @@
 			"shade": true,
 			"mirror_uv": false,
 			"autouv": 0,
-			"isOpen": false,
+			"isOpen": true,
 			"primary_selected": false
 		},
 		{
@@ -4276,7 +4276,7 @@
 						"53ed322c-15a1-dfa0-7f4f-cc96bf1ac614",
 						{
 							"uuid": "db381b6c-e0d3-6ca8-6433-4371d36cc6c6",
-							"isOpen": false,
+							"isOpen": true,
 							"children": [
 								{
 									"uuid": "25d20f6a-b84c-5105-726d-79a4fc3a5a4d",
@@ -9090,7 +9090,7 @@
 								}
 							],
 							"uuid": "2018ed22-dc01-d9e2-5a64-b98abbcddfd3",
-							"time": 2.4,
+							"time": 2.1,
 							"color": -1,
 							"interpolation": "step"
 						},
@@ -9106,12 +9106,7 @@
 							"uuid": "655432ca-2448-9deb-caa3-dfd5f47b05f5",
 							"time": 2.75,
 							"color": -1,
-							"interpolation": "bezier",
-							"bezier_linked": true,
-							"bezier_left_time": [-0.1, -0.1, -0.1],
-							"bezier_left_value": [0, 0, 0],
-							"bezier_right_time": [0.1, 0.1, 0.1],
-							"bezier_right_value": [0, 0, 0]
+							"interpolation": "linear"
 						},
 						{
 							"channel": "rotation",
