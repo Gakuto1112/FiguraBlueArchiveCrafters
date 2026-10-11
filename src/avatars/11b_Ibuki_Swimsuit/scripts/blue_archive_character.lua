@@ -677,7 +677,7 @@ local BlueArchiveCharacter = {
 		secondary = {
 			formationType = "SPECIAL";
 
-			models = {ModelAlias.alias.avatar.body.HeldShells, models.models.ex_skill_2.ShellFlower};
+			models = {ModelAlias.alias.avatar.body.HeldShells, models.models.ex_skill_2.ShellFlower, models.models.ex_skill_2.WavePanel};
 
 			animations = {"main", "ex_skill_2"};
 
