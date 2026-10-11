@@ -677,7 +677,7 @@ local BlueArchiveCharacter = {
 		secondary = {
 			formationType = "SPECIAL";
 
-			models = {ModelAlias.alias.avatar.body.HeldShells, models.models.ex_skill_2.ShellFlower, models.models.ex_skill_2.WavePanel};
+			models = {ModelAlias.alias.avatar.body.HeldShells, models.models.ex_skill_2.ShellFlower, models.models.ex_skill_2.WavePanel, models.models.ex_skill_2.CarpetArea};
 
 			animations = {"main", "ex_skill_2"};
 
@@ -712,6 +712,12 @@ local BlueArchiveCharacter = {
 								elseif modelName:match("NautilusShell") ~= nil then
 									item:setPos(0, 8, 0)
 								end
+							end
+						end
+
+						for y = 0, 3 do
+							for x = 0, 2 do
+								models.models.ex_skill_2.CarpetArea:newBlock("ex_skill_2_carpet_" .. (y * 3 + x + 1)):setBlock("minecraft:white_carpet"):setPos(x * 16, 0, y * 16)
 							end
 						end
 

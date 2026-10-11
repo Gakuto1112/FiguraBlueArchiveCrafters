@@ -611,6 +611,29 @@
 			"shade": true,
 			"mirror_uv": false,
 			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
+		},
+		{
+			"name": "CarpetArea",
+			"uuid": "9ee7ce0b-3d9f-d0d1-e65e-3061ef94f6ea",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"visibility": true,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 0, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"autouv": 0,
 			"isOpen": true,
 			"primary_selected": true
 		}
@@ -736,8 +759,13 @@
 		},
 		{
 			"uuid": "cd2a81fa-f839-722d-4e3e-4167149f03d0",
-			"isOpen": true,
+			"isOpen": false,
 			"children": ["503e48b9-83ff-bd74-3505-34c6a2dd89eb"]
+		},
+		{
+			"uuid": "9ee7ce0b-3d9f-d0d1-e65e-3061ef94f6ea",
+			"isOpen": true,
+			"children": []
 		}
 	],
 	"textures": [
@@ -2977,6 +3005,58 @@
 							],
 							"uuid": "61fece6f-140e-d2fe-b91f-0879b65c23d0",
 							"time": 2.75,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "step"
+						}
+					]
+				},
+				"9ee7ce0b-3d9f-d0d1-e65e-3061ef94f6ea": {
+					"name": "CarpetArea",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-62",
+									"y": "0",
+									"z": "-41"
+								}
+							],
+							"uuid": "0fd98696-e676-dc8e-594f-4bef88c8c0d0",
+							"time": 5.45,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "5c15eb58-cb4e-e559-5f00-30110458313d",
+							"time": 0,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "step"
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "1",
+									"y": "1",
+									"z": "1"
+								}
+							],
+							"uuid": "57adb5f0-ddda-fab8-9659-f669fb70e281",
+							"time": 5.45,
 							"color": -1,
 							"uniform": true,
 							"interpolation": "step"
