@@ -427,7 +427,7 @@ local BlueArchiveCharacter = {
 					---@cast shellItems ItemTask[]
 					local isHost = host:isHost()
 					for i = 1, 13 do
-						local shellItem = self.exSkill.primary.getShellItem()
+						local shellItem = self.exSkill.getShellItem()
 
 						if i == 1 then
 							self.exSkill.primary.shell1Item = shellItem
@@ -550,7 +550,7 @@ local BlueArchiveCharacter = {
 					elseif tick == 167 then
 						ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:setVisible(true)
 						for _, shellItemData in ipairs({{ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor, "ex_skill_1_right_shell"}, {ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor, "ex_skill_1_left_shell"}}) do
-							shellItemData[1]:getTask(shellItemData[2]):setItem(self.exSkill.primary.getShellItem())
+							shellItemData[1]:getTask(shellItemData[2]):setItem(self.exSkill.getShellItem())
 						end
 
 						if host:isHost() then
@@ -624,29 +624,6 @@ local BlueArchiveCharacter = {
 				end;
 			};
 
-			---貝殻としてのアイテムのIDをランダムで返す。
-			---@return Minecraft.itemID 貝殻としてのアイテムのID
-			getShellItem = function ()
-				local itemTable = {"minecraft:tube_coral", "minecraft:brain_coral", "minecraft:bubble_coral", "minecraft:fire_coral", "minecraft:horn_coral", "minecraft:prismarine_shard", "minecraft:prismarine_crystals", "minecraft:heart_of_the_sea"}
-				local weightTable = {10, 10, 10, 10, 10, 5, 5, 1}
-
-				local totalWeight = 0
-				for _, weight in ipairs(weightTable) do
-					totalWeight = totalWeight + weight
-				end
-
-				local randomWeight = math.random() * totalWeight
-				local cumulativeWeight = 0
-				for i, weight in ipairs(weightTable) do
-					cumulativeWeight = cumulativeWeight + weight
-					if randomWeight <= cumulativeWeight then
-						return itemTable[i]
-					end
-				end
-
-				return itemTable[#itemTable]
-			end;
-
 			---貝殻のキラリパーティクルとサウンドを再生する。
 			---@param task ItemTask 貝殻アイテムのタスク
 			emitShellShineParticles = function (task)
@@ -700,9 +677,9 @@ local BlueArchiveCharacter = {
 		secondary = {
 			formationType = "SPECIAL";
 
-			models = {};
+			models = {ModelAlias.alias.avatar.body.HeldShells, models.models.ex_skill_2.ShellFlower};
 
-			animations = {"main"};
+			animations = {"main", "ex_skill_2"};
 
 			camera = {
 				start = {
@@ -717,19 +694,83 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
-				onPreAnimation = function ()
+				onPreAnimation = function (self)
+					if not self.isInitialized then
+						for _, modelPart in ipairs(ModelAlias.alias.avatar.body.HeldShells:getChildren()) do
+							modelPart:newItem(modelPart:getName() .. "_item")
+						end
+
+						for _, modelPart in ipairs(models.models.ex_skill_2.ShellFlower:getChildren()) do
+							local modelName = modelPart:getName()
+
+							if modelName == "HornCoral" then
+								modelPart.HornCoralInner:newItem("HornCoral_item"):setItem("minecraft:horn_coral")
+							else
+								local item = modelPart:newItem(modelName .. "_item"):setItem("minecraft:" .. modelName:match("[%u%l]+"):gsub("(%l)(%u)", "%1_%2"):lower())
+								if modelName:match("HornCoral%d") ~= nil then
+									item:setPos(0, 20, 0)
+								elseif modelName:match("NautilusShell") ~= nil then
+									item:setPos(0, 8, 0)
+								end
+							end
+						end
+
+						self.isInitialized = true
+					end;
+
 					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLegBottom, ModelAlias.alias.avatar.leftLegBottom}) do
 						modelPart:setOffsetPivot(0, 0, -2)
 					end;
+
+						for _, modelPart in ipairs(ModelAlias.alias.avatar.body.HeldShells:getChildren()) do
+							modelPart:getTask(modelPart:getName() .. "_item"):setItem(self.exSkill.getShellItem())
+						end
+				end;
+
+				onAnimationTick = function (_, tick)
+					if tick == 76 then
+						ModelAlias.alias.avatar.body.HeldShells:moveTo(models.models.main)
+					end
 				end;
 
 				onPostAnimation = function ()
 					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLegBottom, ModelAlias.alias.avatar.leftLegBottom}) do
 						modelPart:setOffsetPivot()
 					end;
+
+					if models.models.main.HeldShells ~= nil then
+						models.models.main.HeldShells:moveTo(ModelAlias.alias.avatar.body)
+					end
 				end;
 			};
+
+			---このExスキルの初期化処理が行われたかどうか。
+			---@type boolean
+			isInitialized = false;
 		};
+
+		---貝殻としてのアイテムのIDをランダムで返す。
+		---@return Minecraft.itemID 貝殻としてのアイテムのID
+		getShellItem = function ()
+			local itemTable = {"minecraft:tube_coral", "minecraft:brain_coral", "minecraft:bubble_coral", "minecraft:fire_coral", "minecraft:horn_coral", "minecraft:prismarine_shard", "minecraft:prismarine_crystals", "minecraft:heart_of_the_sea"}
+			local weightTable = {10, 10, 10, 10, 10, 5, 5, 1}
+
+			local totalWeight = 0
+			for _, weight in ipairs(weightTable) do
+				totalWeight = totalWeight + weight
+			end
+
+			local randomWeight = math.random() * totalWeight
+			local cumulativeWeight = 0
+			for i, weight in ipairs(weightTable) do
+				cumulativeWeight = cumulativeWeight + weight
+				if randomWeight <= cumulativeWeight then
+					return itemTable[i]
+				end
+			end
+
+			return itemTable[#itemTable]
+		end;
 	};
 
 	costume = {
