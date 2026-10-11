@@ -37,7 +37,7 @@
 ---口のテクスチャの列挙型
 ---@alias BlueArchiveCharacter.MouthTextures
 ---| "NORMAL" # 通常
----| "ANXIOUS" # 小さく空いている口
+---| "ANXIOUS" # への口
 ---| "OPENED" # 全力の開け口
 ---| "OPENED_SMALL" # 小さく開いている口
 ---| "YUMMY" # 舌をペロッとしている口
@@ -722,14 +722,38 @@ local BlueArchiveCharacter = {
 						modelPart:setOffsetPivot(0, 0, -2)
 					end;
 
-						for _, modelPart in ipairs(ModelAlias.alias.avatar.body.HeldShells:getChildren()) do
-							modelPart:getTask(modelPart:getName() .. "_item"):setItem(self.exSkill.getShellItem())
-						end
+					for _, modelPart in ipairs(ModelAlias.alias.avatar.body.HeldShells:getChildren()) do
+						modelPart:getTask(modelPart:getName() .. "_item"):setItem(self.exSkill.getShellItem())
+					end
+
+					FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED", 55, true)
 				end;
 
 				onAnimationTick = function (_, tick)
-					if tick == 76 then
+					if tick == 55 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "ANXIOUS", 12, true)
+					elseif tick == 67 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "ANXIOUS", 2, true)
+					elseif tick == 69 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "ANXIOUS", 2, true)
+					elseif tick == 71 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "ANXIOUS", 2, true)
+					elseif tick == 63 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "ANXIOUS", 12, true)
+					elseif tick == 75 then
+						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "SMILE", 4, true)
+					elseif tick == 76 then
 						ModelAlias.alias.avatar.body.HeldShells:moveTo(models.models.main)
+					elseif tick == 79 then
+						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "OPENED", 16, true)
+					elseif tick == 95 then
+						FaceParts:setEmotion("CLOSED", "CLOSED", "W", 4, true)
+					elseif tick == 99 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "W", 10, true)
+					elseif tick == 109 then
+						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED_SMALL", 110, true)
+					elseif tick == 219 then
+						FaceParts:setEmotion("CLOSED", "CLOSED", "W", 30, true)
 					end
 				end;
 
