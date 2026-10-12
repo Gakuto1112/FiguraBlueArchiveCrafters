@@ -705,7 +705,7 @@ local BlueArchiveCharacter = {
 
 							if modelName == "HornCoral" then
 								modelPart.HornCoralInner:newItem("HornCoral_item"):setItem("minecraft:horn_coral")
-							else
+							elseif modelName ~= "FlowerDrawing" then
 								local item = modelPart:newItem(modelName .. "_item"):setItem("minecraft:" .. modelName:match("[%u%l]+"):gsub("(%l)(%u)", "%1_%2"):lower())
 								if modelName:match("HornCoral%d") ~= nil then
 									item:setPos(0, 20, 0)
