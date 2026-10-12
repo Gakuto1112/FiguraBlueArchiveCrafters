@@ -710,6 +710,9 @@ local BlueArchiveCharacter = {
 						events.RENDER:register(function ()
 							models.models.ex_skill_2.Gui.Transition.TransitionBackground:setOpacity(models.models.ex_skill_2.Gui.Transition.TransitionOpacity:getAnimScale().x)
 						end, "ex_skill_2_render")
+
+						local windowSize = client:getScaledWindowSize()
+						models.models.ex_skill_2.Gui.SunshineBeams:setScale(math.max(windowSize.x, windowSize.y) * 1.33)
 					end
 
 					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLegBottom, ModelAlias.alias.avatar.leftLegBottom}) do
@@ -754,12 +757,12 @@ local BlueArchiveCharacter = {
 
 					if host:isHost() then
 						if tick >= 37 and tick < 51 then
-							local brushPos = models.models.ex_skill_2.Gui.Transition.TransitionBrush:getAnimPos():copy():scale(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
+							local brushPos = models.models.ex_skill_2.Gui.Transition.TransitionBrush:getAnimPos():copy():mul(-1, -1, 1):add(0.5, 0.5, 0):scale(32):floor()
 							local brushColor = vectors.vec3(0.75, 1, 1):add(vectors.vec3(0.25, 0, 0):scale(math.clamp((tick - 37) / 14, 0, 1)))
 							self.exSkill.fillCircle(textures["ex_skill_drawing_transition"], brushPos.x, brushPos.y, 9, vectors.vec4(brushColor.x, brushColor.y, brushColor.z, 1))
 							textures["ex_skill_drawing_transition"]:update()
 						elseif tick >= 54 and tick < 68 then
-							local brushPos = models.models.ex_skill_2.Gui.Transition.TransitionBrush:getAnimPos():copy():scale(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
+							local brushPos = models.models.ex_skill_2.Gui.Transition.TransitionBrush:getAnimPos():copy():mul(-1, -1, 1):add(0.5, 0.5, 0):scale(32):floor()
 							self.exSkill.fillCircle(textures["ex_skill_drawing_transition"], brushPos.x, brushPos.y, 9, vectors.vec4(0, 0, 0, 0))
 							textures["ex_skill_drawing_transition"]:update()
 						end
