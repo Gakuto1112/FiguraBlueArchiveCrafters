@@ -956,7 +956,20 @@ local BlueArchiveCharacter = {
 	};
 
 	deathAnimation = {
+		callbacks = {
+			onBeforeModelCopy = function ()
+				ModelAlias.alias.avatar.root:setVisible(true)
+				ModelAlias.alias.avatar.root:setPos()
+				for _, modelPart in ipairs({ModelAlias.alias.avatar.root, ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.rightArmBottom.RightSleeve, ModelAlias.alias.avatar.leftArmBottom.LeftSleeve}) do
+					modelPart:setRot()
+				end
+				ModelAlias.alias.avatar.lowerBody:setVisible(true)
+			end;
 
+			onPhase2 = function ()
+				ModelAlias.alias.dummy_avatar.rightLegBottom:setOffsetPivot(0, 0, -2)
+			end
+		};
 	};
 
 	actionWheelConfig = {
