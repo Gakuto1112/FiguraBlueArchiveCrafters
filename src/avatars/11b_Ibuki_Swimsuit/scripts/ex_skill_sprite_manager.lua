@@ -24,6 +24,7 @@ ExSkillSpriteManager = {
     ---@param speedFactor number 速度の変化係数
     ---@return ExSkillSprite instance 生成したインスタンス
     getObject = function (_, target, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
+        ---@diagnostic disable-next-line: missing-parameter
         return ExSkillSprite.new(target, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
     end;
 

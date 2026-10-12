@@ -327,7 +327,126 @@ local BlueArchiveCharacter = {
 	};
 
 	arms = {
+		callbacks = {
+			onArmStateChanged = function (self, right, left)
+				if self.costume.isRidingTank then
+					if self.costume.tankTick < 21 then
+						return {right = "DEFAULT", left = "DEFAULT"}
+					else
+						return {right = right == "GUN_MAIN_HAND" and "TANK_GUN_MAIN_HAND" or (right == "GUN_OFF_HAND" and "TANK_GUN_OFF_HAND" or (right == "DEFAULT" and "TANK" or right)), left = left == "GUN_MAIN_HAND" and "TANK_GUN_MAIN_HAND" or (left == "GUN_OFF_HAND" and "TANK_GUN_OFF_HAND" or (left == "DEFAULT" and "TANK" or left))}
+					end
+				end
+			end;
 
+			onAdditionalRightArmProcess = function (self, state)
+				if state == "TANK" then
+					--虎丸搭乗中
+					events.TICK:register(function ()
+						if self.costume.isRidingTank then
+							local isLeftHanded = player:isLeftHanded()
+							local activeHand = player:getActiveHand()
+							ModelAlias.alias.avatar.rightArm:setRot(player:getActiveItem().id ~= "minecraft:air" and ((activeHand == "MAIN_HAND" and not isLeftHanded) or (activeHand == "OFF_HAND" and isLeftHanded)) and 0 or 52.5, 0, 0)
+						end
+					end, "right_arm_tick")
+				elseif state == "TANK_GUN_MAIN_HAND" then
+					--虎丸搭乗中の武器の構え
+					events.TICK:remove("right_arm_tick")
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+						if player:isSwingingArm() and not player:isLeftHanded() and self.costume.shootTick == -1 then
+							ModelAlias.alias.avatar.rightArm:setParentType("RightArm")
+						else
+							ModelAlias.alias.avatar.rightArm:setParentType("Body")
+						end
+						if player:getActiveItem().id == "minecraft:crossbow" then
+							Arms:setArmState("CROSSBOW", "CROSSBOW")
+						end
+					end, "right_arm_tick")
+					events.RENDER:remove("right_arm_render")
+					events.RENDER:register(function (delta)
+						local lookDir = player:getLookDir()
+						local dir = ((math.deg(math.atan2(lookDir.z, lookDir.x)) - 90) % 360 - player:getBodyYaw() % 360) % 360
+						dir = dir > 180 and dir - 360 or dir
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						ModelAlias.alias.avatar.rightArm:setRot((player:isSwingingArm() and not player:isLeftHanded()) and vectors.vec3() or vectors.vec3(headRot.x + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 90 + (player:isCrouching() and 30 or 0), math.clamp(dir * -1 + 90, -70, 78), 0))
+					end, "right_arm_render")
+				elseif state == "TANK_GUN_OFF_HAND" then
+					--虎丸搭乗中の武器を持っていない手
+					events.TICK:remove("right_arm_tick")
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+						if player:isSwingingArm() and not player:isLeftHanded() and self.costume.shootTick == -1 then
+							ModelAlias.alias.avatar.rightArm:setParentType("RightArm")
+						else
+							ModelAlias.alias.avatar.rightArm:setParentType("Body")
+						end
+					end, "right_arm_tick")
+					events.RENDER:remove("right_arm_render")
+					events.RENDER:register(function (delta)
+						local lookDir = player:getLookDir()
+						local dir = ((math.deg(math.atan2(lookDir.z, lookDir.x)) - 120) % 360 - player:getBodyYaw() % 360) % 360
+						dir = dir > 180 and dir - 360 or dir
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						ModelAlias.alias.avatar.rightArm:setRot((player:isSwingingArm() and player:isLeftHanded()) and vectors.vec3() or vectors.vec3(headRot.x + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 90 + (player:isCrouching() and 30 or 0), math.clamp(dir * -1 + 90, -70, 78), 0))
+					end, "right_arm_render")
+				end
+			end;
+
+			onAdditionalLeftArmProcess = function (self, state)
+				if state == "TANK" then
+					--虎丸搭乗中
+					events.TICK:remove("left_arm_tick")
+					events.TICK:register(function ()
+						if self.costume.isRidingTank then
+							local isLeftHanded = player:isLeftHanded()
+							local activeHand = player:getActiveHand()
+							ModelAlias.alias.avatar.leftArm:setRot(player:getActiveItem().id ~= "minecraft:air" and ((activeHand == "MAIN_HAND" and isLeftHanded) or (activeHand == "OFF_HAND" and not isLeftHanded)) and 0 or 52.5, 0, 0)
+						end
+					end, "left_arm_tick")
+				elseif state == "TANK_GUN_MAIN_HAND" then
+					--虎丸搭乗中の武器の構え
+					events.TICK:remove("left_arm_tick")
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+						if player:isSwingingArm() and player:isLeftHanded() and self.costume.shootTick == -1 then
+							ModelAlias.alias.avatar.leftArm:setParentType("LeftArm")
+						else
+							ModelAlias.alias.avatar.leftArm:setParentType("Body")
+						end
+						if player:getActiveItem().id == "minecraft:crossbow" then
+							Arms:setArmState("CROSSBOW", "CROSSBOW")
+						end
+					end, "left_arm_tick")
+					events.RENDER:remove("left_arm_render")
+					events.RENDER:register(function (delta)
+						local lookDir = player:getLookDir()
+						local dir = ((math.deg(math.atan2(lookDir.z, lookDir.x)) - 90) % 360 - player:getBodyYaw() % 360) % 360
+						dir = dir > 180 and dir - 360 or dir
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						ModelAlias.alias.avatar.leftArm:setRot(((player:isSwingingArm() and player:isLeftHanded()) or self.costume.shootTick >= 0) and vectors.vec3() or vectors.vec3(headRot.x + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 90, math.clamp(dir * -1 + 90, -70, 90), 0))
+					end, "left_arm_render")
+				elseif state == "TANK_GUN_OFF_HAND" then
+					--虎丸搭乗中の武器を持っていない手
+					events.TICK:remove("left_arm_tick")
+					events.TICK:register(function ()
+						Arms:processArmSwingCount()
+						if player:isSwingingArm() and player:isLeftHanded() and self.costume.shootTick == -1 then
+							ModelAlias.alias.avatar.leftArm:setParentType("LeftArm")
+						else
+							ModelAlias.alias.avatar.leftArm:setParentType("Body")
+						end
+					end, "left_arm_tick")
+					events.RENDER:remove("left_arm_render")
+					events.RENDER:register(function (delta)
+						local lookDir = player:getLookDir()
+						local dir = ((math.deg(math.atan2(lookDir.z, lookDir.x)) - 60) % 360 - player:getBodyYaw() % 360) % 360
+						dir = dir > 180 and dir - 360 or dir
+						local headRot = vanilla_model.HEAD:getOriginRot()
+						ModelAlias.alias.avatar.leftArm:setRot((player:isSwingingArm() and player:isLeftHanded()) and vectors.vec3() or vectors.vec3(headRot.x + math.sin((Arms.swingCount + delta) / 100 * math.pi * 2) * 2.5 + 90 + (player:isCrouching() and 30 or 0), math.clamp(dir * -1 + 90, -70, 90), 0))
+					end, "left_arm_render")
+				end
+			end;
+		};
 	};
 
 	skirt = {
@@ -905,8 +1024,20 @@ local BlueArchiveCharacter = {
 		isAltCostumeEnabled = false;
 
 		callbacks = {
-			onArmorChange = function (_, parts, isVisible)
-				if parts == "CHEST_PLATE" then
+			onArmorChange = function (self, parts, isVisible)
+				if parts == "HELMET" then
+					if isVisible or not self.costume.isRidingTank then
+						ModelAlias.alias.avatar.head.StrawHat:setVisible(false)
+						for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Cowlick, ModelAlias.alias.avatar.head.Horns}) do
+							modelPart:setVisible(true)
+						end
+					else
+						ModelAlias.alias.avatar.head.StrawHat:setVisible(true)
+						for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Cowlick, ModelAlias.alias.avatar.head.Horns}) do
+							modelPart:setVisible(false)
+						end
+					end
+				elseif parts == "CHEST_PLATE" then
 					if isVisible then
 						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FrontHair, ModelAlias.alias.avatar.body.Pendant.PendantRotatable}) do
 							modelPart:setPos(0, 0, -1)
@@ -919,6 +1050,30 @@ local BlueArchiveCharacter = {
 				end
 			end;
 		};
+
+		---戦車に乗っているかどうか
+		---@type boolean
+		isRidingTank = false;
+
+		---前ティックに戦車に乗っていたかどうか
+		---@type boolean
+		isRidingTankPrev = false;
+
+		---前ティックに戦車のエンジンが起動していたかどうか
+		---@type boolean
+		isEngineActivePrev = false;
+
+		---戦車に乗っているときのティックカウンター
+		---@type integer
+		tankTick = 0;
+
+		---砲弾を撃つ際のティックカウンター
+		---@type integer
+		shootTick = -1;
+
+		---前ティックに虎丸が爆散したかどうか
+		---@type boolean
+		isTankDiedPrev = false;
 	};
 
 	bubble = {
@@ -1195,7 +1350,7 @@ local BlueArchiveCharacter = {
 
 	---初期化関数
 	---この関数は消しても構わない。
-	init = function ()
+	init = function (self)
 		---Exスキルで使用するスプライトオブジェクトのインスタンスクラス
 		---@type ExSkillSprite
 		ExSkillSprite = require("scripts.ex_skill_sprite")
@@ -1205,11 +1360,156 @@ local BlueArchiveCharacter = {
 		ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
 		ExSkillSpriteManager = ExSkillSpriteManager.new()
 
-        events.RENDER:register(function (_, context)
+        events.TICK:register(function ()
+            if not client:isPaused() then
+                local vehicle = player:getVehicle()
+                self.costume.isRidingTank = false
+                if vehicle ~= nil then
+                    local passengers = vehicle:getPassengers()
+                    local irohaUUID = passengers[1]:getUUID()
+                    local avatarVars = world.avatarVars()
+                    self.costume.isRidingTank = vehicle:getType() == "minecraft:camel" and passengers[1]:hasAvatar() and avatarVars[irohaUUID].FBAC_Iroha ~= nil and avatarVars[irohaUUID].shouldReplaceVehicleModels
+                end
+                if self.costume.isRidingTank ~= self.costume.isRidingTankPrev then
+                    if self.costume.isRidingTank then
+						if not Armor.isArmorVisible.helmet then
+							ModelAlias.alias.avatar.head.StrawHat:setVisible(true)
+							for _, modelPart in ipairs({ModelAlias.alias.avatar.head.Cowlick, ModelAlias.alias.avatar.head.Horns}) do
+								modelPart:setVisible(false)
+							end
+						end
+                        Arms:setArmState("DEFAULT", "DEFAULT")
+                        FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "OPENED", 21, true)
+                        animations["models.main"].tank_start:play()
+
+                        events.TICK:register(function ()
+                            if not client:isPaused() and self.costume.isRidingTank then
+                                if FaceParts.blinkCount == 0 and FaceParts.emotionCount == 0 and self.costume.shootTick == -1 and not self.costume.isTankDied then
+                                    FaceParts:setEmotion("CLOSED", "CLOSED", "W", 2, true)
+                                else
+                                    FaceParts:setEmotion("NORMAL", "INVERTED", "W", 1)
+                                end
+                                local irohaUUID = vehicle:getPassengers()[1]:getUUID()
+                                local avatarVars = world.avatarVars()
+                                local isEngineActive = avatarVars[irohaUUID].isEngineActive and self.costume.tankTick >= 1
+                                if isEngineActive ~= self.costume.isEngineActivePrev then
+                                    if isEngineActive then
+                                        animations["models.main"].tank_idle_powered:play()
+                                        animations["models.main"].tank_idle_powered:setTime(avatarVars[irohaUUID].engineAnimTime)
+                                    else
+                                        animations["models.main"].tank_idle_powered:stop()
+                                    end
+                                end
+                                if self.costume.tankTick == 1 then
+                                    for i = 0, 6 do
+										---@diagnostic disable-next-line: missing-parameter
+                                        ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.SpriteArea, vectors.vec3(), vectors.rotateAroundAxis(i * -30, -100, 0, 0, 0, 0, 1), 0, 6, nil, 14, false, 0.7)
+                                    end
+                                    sounds:playSound("minecraft:entity.player.levelup", player:getPos(), 0.5, 1.5)
+                                elseif self.costume.tankTick == 21 then
+                                    ModelAlias.alias.avatar.head:setRot(0, 65, 0)
+                                    if Gun.currentGunPosition == "RIGHT" then
+                                        Arms:setArmState("TANK_GUN_MAIN_HAND", "TANK_GUN_OFF_HAND")
+                                    elseif Gun.currentGunPosition == "LEFT" then
+                                        Arms:setArmState("TANK_GUN_OFF_HAND", "TANK_GUN_MAIN_HAND")
+                                    else
+                                        Arms:setArmState("TANK", "TANK")
+                                    end
+                                end
+                                if avatarVars[irohaUUID].shootingStart then
+                                    animations["models.main"].tank_shoot:play()
+                                    Arms:setArmState("DEFAULT", "DEFAULT")
+                                    FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "OPENED", 36, true)
+                                    self.costume.shootTick = 0
+                                elseif self.costume.shootTick == 36 then
+                                    if Gun.currentGunPosition == "RIGHT" then
+                                        Arms:setArmState("TANK_GUN_MAIN_HAND", "TANK_GUN_OFF_HAND")
+                                    elseif Gun.currentGunPosition == "LEFT" then
+                                        Arms:setArmState("TANK_GUN_OFF_HAND", "TANK_GUN_MAIN_HAND")
+                                    else
+                                        Arms:setArmState("TANK", "TANK")
+                                    end
+                                    self.costume.shootTick = -1
+                                end
+                                local isTankDied = avatarVars[irohaUUID].isTankDied
+                                if isTankDied and not self.costume.isTankDiedPrev then
+                                    Bubble:play("SWEAT", 40, false)
+                                end
+                                self.costume.tankTick = self.costume.tankTick + 1
+                                self.costume.isEngineActivePrev = isEngineActive
+                                self.costume.shootTick = self.costume.shootTick >= 0 and self.costume.shootTick + 1 or -1
+                                self.costume.isTankDiedPrev = isTankDied
+                            end
+                        end, "tank_tick")
+
+                        events.RENDER:register(function (delta, context)
+                            if not client:isPaused() and self.costume.isRidingTank then
+                                local bodyYaw = player:getBodyYaw(delta)
+                                local heightOffset = (player:getPos(delta):sub(vehicle:getPos(delta)):length() - 1.51017) * -1.35 - 0.1
+                                if context == "MINECRAFT_GUI" or context == "FIGURA_GUI" or context == "PAPERDOLL" or context == "FIRST_PERSON" then
+                                    ModelAlias.alias.avatar.root:setParentType("None")
+                                    ModelAlias.alias.avatar.root:setPos()
+                                    ModelAlias.alias.avatar.root:setRot()
+                                    ModelAlias.alias.avatar.lowerBody:setVisible(true)
+                                else
+                                    ModelAlias.alias.avatar.root:setParentType("WORLD")
+                                    ModelAlias.alias.avatar.root:setPos(vectors.rotateAroundAxis(bodyYaw * -1, -0.85, 0.7 + heightOffset, 1.1, 0, 1, 0):add(player:getPos(delta)):scale(16))
+                                    ModelAlias.alias.avatar.root:setRot(0, bodyYaw * -1 + 90, 0)
+                                    ModelAlias.alias.avatar.lowerBody:setVisible(false)
+                                end
+                                local animOffset = vectors.rotateAroundAxis(bodyYaw * -1, 0, models.models.main.TankIdleAnimAnchor:getAnimPos().y, models.models.main.TankShootAnimAnchor:getAnimPos().z * -1, 0, 1, 0):scale(0.0625)
+                                if renderer:isFirstPerson() then
+                                    CameraManager.setCameraPivot(vectors.rotateAroundAxis(bodyYaw * -1, -0.85, heightOffset + 0.8, 1.1, 0, 1, 0):add(animOffset))
+                                    renderer:setEyeOffset(vectors.rotateAroundAxis(bodyYaw * -1, -0.85, heightOffset + 0.8, 1.1, 0, 1, 0):add(animOffset))
+                                else
+                                    CameraManager.setCameraPivot(vectors.rotateAroundAxis(bodyYaw * -1, -0.85, heightOffset + 0.75, 1.1, 0, 1, 0):add(animOffset))
+                                    renderer:setEyeOffset(vectors.rotateAroundAxis(bodyYaw * -1, -0.85, 1, 1.1 + heightOffset, 0, 1, 0):add(animOffset))
+                                end
+                                if self.costume.shootTick >= 0 then
+                                    ModelAlias.alias.avatar.root:setPos(vectors.rotateAroundAxis(bodyYaw * -1 + 180, models.models.main.TankShootAnimAnchor:getAnimPos(), 0, 1, 0):add(ModelAlias.alias.avatar.root:getPos()))
+                                end
+                            end
+                        end, "tank_render")
+                    else
+                        events.TICK:remove("tank_tick")
+                        events.RENDER:remove("tank_render")
+						for _, modelPart in ipairs({ModelAlias.alias.avatar.root, ModelAlias.alias.avatar.lowerBody}) do
+							modelPart:setVisible(true)
+						end
+                        ModelAlias.alias.avatar.root:setParentType("None")
+                        ModelAlias.alias.avatar.root:setPos()
+                        for _, modelPart in ipairs({ModelAlias.alias.avatar.root, ModelAlias.alias.avatar.head}) do
+                            modelPart:setRot()
+                        end
+						ModelAlias.alias.avatar.head.Horns:setVisible(false)
+                        for _, animName in ipairs({"tank_start", "tank_idle_powered"}) do
+                            animations["models.main"][animName]:stop()
+                        end
+                        CameraManager.setCameraPivot()
+                        renderer:setEyeOffset()
+                        if Gun.currentGunPosition == "RIGHT" then
+                            Arms:setArmState("GUN_MAIN_HAND", "GUN_OFF_HAND")
+                        elseif Gun.currentGunPosition == "LEFT" then
+                            Arms:setArmState("GUN_OFF_HAND", "GUN_MAIN_HAND")
+                        else
+                            Arms:setArmState("DEFAULT", "DEFAULT")
+                        end
+                        self.costume.tankTick = 0
+                        self.costume.shootTick = -1
+                        self.costume.isTankDiedPrev = false
+                    end
+                end
+                self.costume.isRidingTankPrev = self.costume.isRidingTank
+            end
+        end)
+
+        events.RENDER:register(function ()
             local wingRotOffset = math.map(vanilla_model.RIGHT_LEG:getOriginRot().x, -90, 90, 20, 0)
             ModelAlias.alias.avatar.body.Wings.RightWing:setRot(0, -20 - wingRotOffset, 0)
             ModelAlias.alias.avatar.body.Wings.LeftWing:setRot(0, 20 + wingRotOffset, 0)
         end)
+
+        avatar:store("FBAC_Ibuki", true)
 	end;
 }
 

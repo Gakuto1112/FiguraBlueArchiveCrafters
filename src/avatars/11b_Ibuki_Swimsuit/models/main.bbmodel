@@ -3039,7 +3039,7 @@
 			"mirror_uv": false,
 			"autouv": 0,
 			"isOpen": true,
-			"primary_selected": true
+			"primary_selected": false
 		},
 		{
 			"name": "Head",
@@ -8481,7 +8481,7 @@
 			"override": true,
 			"length": 12.45,
 			"snapping": 20,
-			"selected": true,
+			"selected": false,
 			"group_name": "",
 			"scope": 0,
 			"anim_time_update": "",
@@ -12984,6 +12984,1903 @@
 							"interpolation": "linear"
 						}
 					]
+				},
+				"b5914bcd-ba00-8036-d5a9-79007d1a65c4": {
+					"name": "Backpack",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				}
+			}
+		},
+		{
+			"uuid": "aa859035-9145-45ea-62cb-d445fcfc3fb7",
+			"name": "tank_start",
+			"loop": "once",
+			"override": true,
+			"length": 1.05,
+			"snapping": 20,
+			"selected": true,
+			"group_name": "",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "",
+			"animators": {
+				"e98e96cf-993b-878e-02b8-777c368bb888": {
+					"name": "Avatar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "-21",
+									"z": "0"
+								}
+							],
+							"uuid": "c9b930fa-e03d-0fc8-cb11-c416062459e2",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "e4f3a6a2-a561-9d90-b044-be59c427fd8f",
+							"time": 0.2,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "cc5b5f92-43bc-dab5-938c-7d8e5a48a5e1",
+							"time": 0.35,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
+				},
+				"22d40862-bd19-a16d-9e33-79364e6656d8": {
+					"name": "Head",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "-30",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "728d1717-9379-aa4c-01e7-b1071f1f6d79",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "22.5",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "4a915792-5687-853e-0c4c-e7b4651c25ff",
+							"time": 0.2,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "7.5",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "4a33de4d-4be0-f89b-fad4-435b273b97aa",
+							"time": 0.35,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "7.5",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "4d5a035b-b32b-3240-69db-76aa8dfcdec0",
+							"time": 0.75,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "-5",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "edde461b-1ab7-3933-d016-2b860e6760aa",
+							"time": 1.05,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
+				},
+				"3c1cb66d-8a31-d31f-ec9f-65a33e313a53": {
+					"name": "RightArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "2c6e3208-ea6a-608f-e69d-7fbacccda6c5",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "180",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "fbd51bb8-99b4-3182-3c7a-419907e5cca3",
+							"time": 0.2,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "150",
+									"y": "0",
+									"z": "-15"
+								}
+							],
+							"uuid": "3dd504d5-7152-4ff8-c8e1-e52174a94079",
+							"time": 0.35,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "150",
+									"y": "0",
+									"z": "-15"
+								}
+							],
+							"uuid": "98505f87-2d60-a16d-9fcd-0771f5b7f7e1",
+							"time": 0.75,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "70",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "533d8c49-a65b-fdf5-d819-a6459770acb9",
+							"time": 1.05,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
+				},
+				"e7d3e5d8-00e4-587c-7bb6-6787db00054b": {
+					"name": "LeftArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "8d8f8e3c-b26c-1d5f-f3f5-ad78c24e1656",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "180",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "bc5c72f5-8780-ff29-a289-1cefa100a4aa",
+							"time": 0.2,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "150",
+									"y": "0",
+									"z": "15"
+								}
+							],
+							"uuid": "00ca3cf5-6291-2c70-2591-65e167e2f63a",
+							"time": 0.35,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "150",
+									"y": "0",
+									"z": "15"
+								}
+							],
+							"uuid": "77056094-36fb-d1a2-1dbd-b15e27592518",
+							"time": 0.75,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "75",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "38e9c7d0-e503-4688-3555-65ec01e6b416",
+							"time": 1.05,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
+				},
+				"db381b6c-e0d3-6ca8-6433-4371d36cc6c6": {
+					"name": "FaceParts",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"25d20f6a-b84c-5105-726d-79a4fc3a5a4d": {
+					"name": "Eyes",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d775a8e4-818b-b21e-93df-fdb4456fefc8": {
+					"name": "RightSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5e757c9d-cb7e-d074-a20f-d95f46e96872": {
+					"name": "LeftSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e8809cb5-a507-86d8-da91-c79b1d4d233e": {
+					"name": "Halo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"65c8070f-9686-408b-7e4a-ecfcac3ddc87": {
+					"name": "HaloCenter",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2e5fa661-d94d-df5c-d8ae-5d09fc8c8a72": {
+					"name": "Hat",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e936fa39-3087-d13a-64e2-72bcec31d305": {
+					"name": "HatLogo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5b83af9f-3153-b089-351f-0735e4ca5698": {
+					"name": "TiltedHatLogo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"703401ae-65bf-acba-600b-f790e48c8d21": {
+					"name": "HatRibbon",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"383745fe-7ad8-7cae-f08d-2c447ef2cd15": {
+					"name": "HatHeart",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6227d1a5-52d9-129a-62fb-90e1fae5680a": {
+					"name": "Horns",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0d936c33-5da8-c127-0322-0214f6f61625": {
+					"name": "HairTail",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe3b45-a6ad-8db5-9954-75f8e7f475c3": {
+					"name": "HelmetItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"16d22746-633e-382e-dd96-b35bde99daa5": {
+					"name": "UpperBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bf4dd57f-d0f7-1fe0-98e6-59e00f97f41b": {
+					"name": "Body",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8603e59f-b7b7-37d5-d2d2-52f69e25dad8": {
+					"name": "ChestplateBodyPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7b420b45-c7f1-9f36-5199-3e2aa2498809": {
+					"name": "BeltPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8d90ea13-fe3b-1e8f-2944-536d0e261858": {
+					"name": "BearPouch",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"37fc30d7-3007-dc36-28d9-da4a0a3295a9": {
+					"name": "BearPouchBelt",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e2ea0e1a-b72e-a75c-9085-be2727c75ce1": {
+					"name": "SecurityAlarm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ab26aefd-4e7d-5bc0-9fc6-9d61fdbc9d84": {
+					"name": "SecurityAlarmZPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4581223d-ea45-ab92-9ca2-5b4bbdc87a5a": {
+					"name": "Wings",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5636e016-fa6b-3f2f-1c84-8e6cf7293d67": {
+					"name": "RightWing",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bbd2bb12-0365-ed3d-8c32-96d82b27c9a3": {
+					"name": "RightWingBone1",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e44f16c5-4cbd-730d-c25f-8db81136249f": {
+					"name": "RightWingBone2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"971a0711-421b-c831-cc38-08ee9d145a58": {
+					"name": "LeftWing",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"321046c5-b335-9a85-ac6e-68df98727e02": {
+					"name": "LeftWingBone1",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"48eb53c4-9e5b-7882-6f1a-028ad202ee3c": {
+					"name": "LeftWingBone2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f9616891-3542-247e-d515-0b87cf52eb0e": {
+					"name": "TailXPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e9798e4b-6393-3709-e661-d81e9652e833": {
+					"name": "TailYPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5100eb4e-323b-7d24-c99c-2e350cd6af73": {
+					"name": "Tail",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8f713e4c-82c8-16ed-c9cf-1b8f46f8b17f": {
+					"name": "Tail2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee319f45-a632-339d-e560-065464ead90a": {
+					"name": "TailTip",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"21903d0a-2f01-252f-c262-27c6843499c3": {
+					"name": "BackRibbon",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e424aa30-f5a2-9aed-de3f-7e02e648e5f4": {
+					"name": "BackRibbonBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"acb39b32-4f49-0daf-175d-3144f5925740": {
+					"name": "BackRibbonBottomRight",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9975f011-e75e-8916-02d3-a8ffad7ca60e": {
+					"name": "BackRibbonBottomLeft",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c062b0e8-6983-de4d-12e9-7b5ad9e81528": {
+					"name": "Arms",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b924539e-1292-1a17-6240-a525ae346090": {
+					"name": "RightArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f77eb5a1-0c86-2ec0-fa55-565b454784db": {
+					"name": "RightItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"69859f49-0195-6fd8-a66e-309a6c3b8d1d": {
+					"name": "RightSleeve",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ad1c45ef-c0a8-6d31-d2dc-fbdc6ab7ddcc": {
+					"name": "LeftArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e675a351-7650-6398-e37a-d5c811542998": {
+					"name": "LeftSleeve",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4f31b2fe-139d-4fb3-f36f-3d5ed0997399": {
+					"name": "LeftItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"34f8f1e3-7498-d32a-cbaa-e08af5c6b7e9": {
+					"name": "LeftElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"884aa12d-4d86-c86f-f3ae-27294c5df1b1": {
+					"name": "RightElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29a158b7-4e78-b2e4-f4a6-a828afb1514f": {
+					"name": "LeftParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d993335-4efa-18af-e219-def6c191632a": {
+					"name": "RightParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2f61e368-1c06-648e-26d4-aee94647e4da": {
+					"name": "LowerBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29730186-2622-086d-ab67-4bb8e356bb6c": {
+					"name": "Legs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
+					"name": "RightLeg",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe0b3a-286b-e17f-288e-c39feaa2e5e6": {
+					"name": "RightLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
+					"name": "LeftLeg",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee9973d4-ff4e-c96b-64f6-d1f28afd69c6": {
+					"name": "LeftLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"71b16a49-1da9-df63-2f72-f5272bb4b134": {
+					"name": "NameplateAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4ad021e9-2857-4e55-337b-f61da0762800": {
+					"name": "CameraAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f4f28850-9313-607e-2825-49406a44621f": {
+					"name": "TankIdleAnimAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0e37d1a2-2aa5-e1c6-5048-c386c83dfb04": {
+					"name": "TankShootAnimAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b0c1fa8f-2594-39af-3b81-00634934e933": {
+					"name": "FrontHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d6128920-fae5-5cd3-61f4-217c88c06563": {
+					"name": "Cowlick",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2eee4103-8084-7c14-73fe-ecbfd568e8f6": {
+					"name": "Cowlick2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"fae9cbb6-3987-e20b-f479-5c00126fae5a": {
+					"name": "Cowlick3",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8c330632-c980-a7c5-c178-a5e7f7d04a8e": {
+					"name": "Pendant",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a9b806ab-614d-2997-0638-226dfd87ad83": {
+					"name": "PendantRotatable",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b5914bcd-ba00-8036-d5a9-79007d1a65c4": {
+					"name": "Backpack",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				}
+			}
+		},
+		{
+			"uuid": "3f369a71-6b61-4f37-c215-2f19ed244611",
+			"name": "tank_idle_powered",
+			"loop": "loop",
+			"override": false,
+			"length": 0.2,
+			"snapping": 20,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "",
+			"animators": {
+				"e98e96cf-993b-878e-02b8-777c368bb888": {
+					"name": "Avatar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0.25",
+									"z": "0"
+								}
+							],
+							"uuid": "a4bdd9b8-388c-0e2f-acd8-1f357d74fb67",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "d2f85ba2-8946-178f-85f9-a5d7dc5b6aa4",
+							"time": 0.1,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0.25",
+									"z": "0"
+								}
+							],
+							"uuid": "bda2beba-ca75-c168-551f-30dc87141106",
+							"time": 0.2,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
+				},
+				"f4f28850-9313-607e-2825-49406a44621f": {
+					"name": "TankIdleAnimAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0.25",
+									"z": "0"
+								}
+							],
+							"uuid": "4cbba027-23d4-cb8e-3eb4-dbe868d6f9ba",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "6c7c169d-ebe1-43fc-4d1f-cc5c01bdcb89",
+							"time": 0.1,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0.25",
+									"z": "0"
+								}
+							],
+							"uuid": "d7db23be-2b5b-70a0-e6ec-451a8b6f2f2d",
+							"time": 0.2,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
+				},
+				"22d40862-bd19-a16d-9e33-79364e6656d8": {
+					"name": "Head",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"db381b6c-e0d3-6ca8-6433-4371d36cc6c6": {
+					"name": "FaceParts",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"25d20f6a-b84c-5105-726d-79a4fc3a5a4d": {
+					"name": "Eyes",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d775a8e4-818b-b21e-93df-fdb4456fefc8": {
+					"name": "RightSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5e757c9d-cb7e-d074-a20f-d95f46e96872": {
+					"name": "LeftSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e8809cb5-a507-86d8-da91-c79b1d4d233e": {
+					"name": "Halo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"65c8070f-9686-408b-7e4a-ecfcac3ddc87": {
+					"name": "HaloCenter",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2e5fa661-d94d-df5c-d8ae-5d09fc8c8a72": {
+					"name": "Hat",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e936fa39-3087-d13a-64e2-72bcec31d305": {
+					"name": "HatLogo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5b83af9f-3153-b089-351f-0735e4ca5698": {
+					"name": "TiltedHatLogo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"703401ae-65bf-acba-600b-f790e48c8d21": {
+					"name": "HatRibbon",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"383745fe-7ad8-7cae-f08d-2c447ef2cd15": {
+					"name": "HatHeart",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6227d1a5-52d9-129a-62fb-90e1fae5680a": {
+					"name": "Horns",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0d936c33-5da8-c127-0322-0214f6f61625": {
+					"name": "HairTail",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe3b45-a6ad-8db5-9954-75f8e7f475c3": {
+					"name": "HelmetItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"16d22746-633e-382e-dd96-b35bde99daa5": {
+					"name": "UpperBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bf4dd57f-d0f7-1fe0-98e6-59e00f97f41b": {
+					"name": "Body",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8603e59f-b7b7-37d5-d2d2-52f69e25dad8": {
+					"name": "ChestplateBodyPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7b420b45-c7f1-9f36-5199-3e2aa2498809": {
+					"name": "BeltPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8d90ea13-fe3b-1e8f-2944-536d0e261858": {
+					"name": "BearPouch",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"37fc30d7-3007-dc36-28d9-da4a0a3295a9": {
+					"name": "BearPouchBelt",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e2ea0e1a-b72e-a75c-9085-be2727c75ce1": {
+					"name": "SecurityAlarm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ab26aefd-4e7d-5bc0-9fc6-9d61fdbc9d84": {
+					"name": "SecurityAlarmZPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4581223d-ea45-ab92-9ca2-5b4bbdc87a5a": {
+					"name": "Wings",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5636e016-fa6b-3f2f-1c84-8e6cf7293d67": {
+					"name": "RightWing",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bbd2bb12-0365-ed3d-8c32-96d82b27c9a3": {
+					"name": "RightWingBone1",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e44f16c5-4cbd-730d-c25f-8db81136249f": {
+					"name": "RightWingBone2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"971a0711-421b-c831-cc38-08ee9d145a58": {
+					"name": "LeftWing",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"321046c5-b335-9a85-ac6e-68df98727e02": {
+					"name": "LeftWingBone1",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"48eb53c4-9e5b-7882-6f1a-028ad202ee3c": {
+					"name": "LeftWingBone2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f9616891-3542-247e-d515-0b87cf52eb0e": {
+					"name": "TailXPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e9798e4b-6393-3709-e661-d81e9652e833": {
+					"name": "TailYPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5100eb4e-323b-7d24-c99c-2e350cd6af73": {
+					"name": "Tail",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8f713e4c-82c8-16ed-c9cf-1b8f46f8b17f": {
+					"name": "Tail2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee319f45-a632-339d-e560-065464ead90a": {
+					"name": "TailTip",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"21903d0a-2f01-252f-c262-27c6843499c3": {
+					"name": "BackRibbon",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e424aa30-f5a2-9aed-de3f-7e02e648e5f4": {
+					"name": "BackRibbonBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"acb39b32-4f49-0daf-175d-3144f5925740": {
+					"name": "BackRibbonBottomRight",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9975f011-e75e-8916-02d3-a8ffad7ca60e": {
+					"name": "BackRibbonBottomLeft",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c062b0e8-6983-de4d-12e9-7b5ad9e81528": {
+					"name": "Arms",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"3c1cb66d-8a31-d31f-ec9f-65a33e313a53": {
+					"name": "RightArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b924539e-1292-1a17-6240-a525ae346090": {
+					"name": "RightArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f77eb5a1-0c86-2ec0-fa55-565b454784db": {
+					"name": "RightItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"69859f49-0195-6fd8-a66e-309a6c3b8d1d": {
+					"name": "RightSleeve",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e7d3e5d8-00e4-587c-7bb6-6787db00054b": {
+					"name": "LeftArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ad1c45ef-c0a8-6d31-d2dc-fbdc6ab7ddcc": {
+					"name": "LeftArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e675a351-7650-6398-e37a-d5c811542998": {
+					"name": "LeftSleeve",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4f31b2fe-139d-4fb3-f36f-3d5ed0997399": {
+					"name": "LeftItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"34f8f1e3-7498-d32a-cbaa-e08af5c6b7e9": {
+					"name": "LeftElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"884aa12d-4d86-c86f-f3ae-27294c5df1b1": {
+					"name": "RightElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29a158b7-4e78-b2e4-f4a6-a828afb1514f": {
+					"name": "LeftParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d993335-4efa-18af-e219-def6c191632a": {
+					"name": "RightParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2f61e368-1c06-648e-26d4-aee94647e4da": {
+					"name": "LowerBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29730186-2622-086d-ab67-4bb8e356bb6c": {
+					"name": "Legs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
+					"name": "RightLeg",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe0b3a-286b-e17f-288e-c39feaa2e5e6": {
+					"name": "RightLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
+					"name": "LeftLeg",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee9973d4-ff4e-c96b-64f6-d1f28afd69c6": {
+					"name": "LeftLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"71b16a49-1da9-df63-2f72-f5272bb4b134": {
+					"name": "NameplateAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4ad021e9-2857-4e55-337b-f61da0762800": {
+					"name": "CameraAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0e37d1a2-2aa5-e1c6-5048-c386c83dfb04": {
+					"name": "TankShootAnimAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b0c1fa8f-2594-39af-3b81-00634934e933": {
+					"name": "FrontHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d6128920-fae5-5cd3-61f4-217c88c06563": {
+					"name": "Cowlick",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2eee4103-8084-7c14-73fe-ecbfd568e8f6": {
+					"name": "Cowlick2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"fae9cbb6-3987-e20b-f479-5c00126fae5a": {
+					"name": "Cowlick3",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8c330632-c980-a7c5-c178-a5e7f7d04a8e": {
+					"name": "Pendant",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a9b806ab-614d-2997-0638-226dfd87ad83": {
+					"name": "PendantRotatable",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b5914bcd-ba00-8036-d5a9-79007d1a65c4": {
+					"name": "Backpack",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				}
+			}
+		},
+		{
+			"uuid": "5ad415cf-5fe2-0feb-f4c0-7f3958f8423d",
+			"name": "tank_shoot",
+			"loop": "once",
+			"override": false,
+			"length": 1.8,
+			"snapping": 20,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "",
+			"animators": {
+				"22d40862-bd19-a16d-9e33-79364e6656d8": {
+					"name": "Head",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "0e971905-02b9-0da5-353c-e5a2b4e36c28",
+							"time": 0.65,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "-15",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "7c616442-4c5d-7cd2-dbc9-afedb8c29f03",
+							"time": 0.85,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "ca8e19ec-1c7f-3739-3e58-5601f3b17e93",
+							"time": 1.8,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
+				},
+				"3c1cb66d-8a31-d31f-ec9f-65a33e313a53": {
+					"name": "RightArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "4f989ab1-0e24-5a12-c7d5-be6a18920f4e",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "90",
+									"y": "0",
+									"z": "-15"
+								}
+							],
+							"uuid": "ee537a3a-ec4e-ecd4-8073-c946076ae0e8",
+							"time": 0.1,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "90",
+									"y": "0",
+									"z": "-15"
+								}
+							],
+							"uuid": "d1c1914c-6b00-675d-734a-3797547d775f",
+							"time": 1.45,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "bd677219-920e-1ac4-647b-cc35b1ff953c",
+							"time": 1.8,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
+				},
+				"e7d3e5d8-00e4-587c-7bb6-6787db00054b": {
+					"name": "LeftArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "7446b46f-779b-14b9-e3bb-a3b341ef27fe",
+							"time": 0,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "90",
+									"y": "0",
+									"z": "15"
+								}
+							],
+							"uuid": "22d0cc51-7d5c-d2e4-6513-5ec4bfb52c39",
+							"time": 0.1,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "90",
+									"y": "0",
+									"z": "15"
+								}
+							],
+							"uuid": "86da1292-a775-708c-e012-31398bb4939d",
+							"time": 1.45,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "c51aae63-539e-8a52-d2da-8577b529fdc2",
+							"time": 1.8,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
+				},
+				"0e37d1a2-2aa5-e1c6-5048-c386c83dfb04": {
+					"name": "TankShootAnimAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "1ac202d6-0915-ab26-7048-0473c7167e67",
+							"time": 0.6,
+							"color": -1,
+							"interpolation": "bezier",
+							"bezier_linked": true,
+							"bezier_left_time": [-0.1, -0.1, -0.03],
+							"bezier_left_value": [0, 0, 0],
+							"bezier_right_time": [0.1, 0.1, 0.03],
+							"bezier_right_value": [0, 0, 0]
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "-1",
+									"z": "10"
+								}
+							],
+							"uuid": "386740be-bc0c-c6ab-bb7e-80fe9b433d04",
+							"time": 0.8,
+							"color": -1,
+							"interpolation": "bezier",
+							"bezier_linked": true,
+							"bezier_left_time": [-0.1, -0.1, -0.39667],
+							"bezier_left_value": [0, 0, 0],
+							"bezier_right_time": [0.1, 0.1, 0.39667],
+							"bezier_right_value": [0, 0, 0]
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "d82e1737-383a-05e2-1193-9d7ff9594898",
+							"time": 1.75,
+							"color": -1,
+							"interpolation": "bezier",
+							"bezier_linked": true,
+							"bezier_left_time": [-0.1, -0.1, -0.4],
+							"bezier_left_value": [0, 0, 0],
+							"bezier_right_time": [0.1, 0.1, 0.4],
+							"bezier_right_value": [0, 0, 0]
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "9.04"
+								}
+							],
+							"uuid": "12eec51b-bf12-6a89-37a6-bae8dc6f4336",
+							"time": 1,
+							"color": -1,
+							"interpolation": "bezier",
+							"bezier_linked": true,
+							"bezier_left_time": [-0.1, -0.1, -0.1],
+							"bezier_left_value": [0, -0.14576, 1.06518],
+							"bezier_right_time": [0.1, 0.1, 0.1],
+							"bezier_right_value": [0, 0.14576, -1.06518]
+						}
+					]
+				},
+				"e98e96cf-993b-878e-02b8-777c368bb888": {
+					"name": "Avatar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"db381b6c-e0d3-6ca8-6433-4371d36cc6c6": {
+					"name": "FaceParts",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"25d20f6a-b84c-5105-726d-79a4fc3a5a4d": {
+					"name": "Eyes",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d775a8e4-818b-b21e-93df-fdb4456fefc8": {
+					"name": "RightSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5e757c9d-cb7e-d074-a20f-d95f46e96872": {
+					"name": "LeftSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e8809cb5-a507-86d8-da91-c79b1d4d233e": {
+					"name": "Halo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"65c8070f-9686-408b-7e4a-ecfcac3ddc87": {
+					"name": "HaloCenter",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2e5fa661-d94d-df5c-d8ae-5d09fc8c8a72": {
+					"name": "Hat",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e936fa39-3087-d13a-64e2-72bcec31d305": {
+					"name": "HatLogo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5b83af9f-3153-b089-351f-0735e4ca5698": {
+					"name": "TiltedHatLogo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"703401ae-65bf-acba-600b-f790e48c8d21": {
+					"name": "HatRibbon",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"383745fe-7ad8-7cae-f08d-2c447ef2cd15": {
+					"name": "HatHeart",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6227d1a5-52d9-129a-62fb-90e1fae5680a": {
+					"name": "Horns",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0d936c33-5da8-c127-0322-0214f6f61625": {
+					"name": "HairTail",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe3b45-a6ad-8db5-9954-75f8e7f475c3": {
+					"name": "HelmetItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"16d22746-633e-382e-dd96-b35bde99daa5": {
+					"name": "UpperBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bf4dd57f-d0f7-1fe0-98e6-59e00f97f41b": {
+					"name": "Body",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8603e59f-b7b7-37d5-d2d2-52f69e25dad8": {
+					"name": "ChestplateBodyPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7b420b45-c7f1-9f36-5199-3e2aa2498809": {
+					"name": "BeltPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8d90ea13-fe3b-1e8f-2944-536d0e261858": {
+					"name": "BearPouch",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"37fc30d7-3007-dc36-28d9-da4a0a3295a9": {
+					"name": "BearPouchBelt",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e2ea0e1a-b72e-a75c-9085-be2727c75ce1": {
+					"name": "SecurityAlarm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ab26aefd-4e7d-5bc0-9fc6-9d61fdbc9d84": {
+					"name": "SecurityAlarmZPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4581223d-ea45-ab92-9ca2-5b4bbdc87a5a": {
+					"name": "Wings",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5636e016-fa6b-3f2f-1c84-8e6cf7293d67": {
+					"name": "RightWing",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bbd2bb12-0365-ed3d-8c32-96d82b27c9a3": {
+					"name": "RightWingBone1",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e44f16c5-4cbd-730d-c25f-8db81136249f": {
+					"name": "RightWingBone2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"971a0711-421b-c831-cc38-08ee9d145a58": {
+					"name": "LeftWing",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"321046c5-b335-9a85-ac6e-68df98727e02": {
+					"name": "LeftWingBone1",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"48eb53c4-9e5b-7882-6f1a-028ad202ee3c": {
+					"name": "LeftWingBone2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f9616891-3542-247e-d515-0b87cf52eb0e": {
+					"name": "TailXPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e9798e4b-6393-3709-e661-d81e9652e833": {
+					"name": "TailYPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5100eb4e-323b-7d24-c99c-2e350cd6af73": {
+					"name": "Tail",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8f713e4c-82c8-16ed-c9cf-1b8f46f8b17f": {
+					"name": "Tail2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee319f45-a632-339d-e560-065464ead90a": {
+					"name": "TailTip",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"21903d0a-2f01-252f-c262-27c6843499c3": {
+					"name": "BackRibbon",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e424aa30-f5a2-9aed-de3f-7e02e648e5f4": {
+					"name": "BackRibbonBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"acb39b32-4f49-0daf-175d-3144f5925740": {
+					"name": "BackRibbonBottomRight",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9975f011-e75e-8916-02d3-a8ffad7ca60e": {
+					"name": "BackRibbonBottomLeft",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c062b0e8-6983-de4d-12e9-7b5ad9e81528": {
+					"name": "Arms",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b924539e-1292-1a17-6240-a525ae346090": {
+					"name": "RightArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f77eb5a1-0c86-2ec0-fa55-565b454784db": {
+					"name": "RightItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"69859f49-0195-6fd8-a66e-309a6c3b8d1d": {
+					"name": "RightSleeve",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ad1c45ef-c0a8-6d31-d2dc-fbdc6ab7ddcc": {
+					"name": "LeftArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e675a351-7650-6398-e37a-d5c811542998": {
+					"name": "LeftSleeve",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4f31b2fe-139d-4fb3-f36f-3d5ed0997399": {
+					"name": "LeftItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"34f8f1e3-7498-d32a-cbaa-e08af5c6b7e9": {
+					"name": "LeftElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"884aa12d-4d86-c86f-f3ae-27294c5df1b1": {
+					"name": "RightElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29a158b7-4e78-b2e4-f4a6-a828afb1514f": {
+					"name": "LeftParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d993335-4efa-18af-e219-def6c191632a": {
+					"name": "RightParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2f61e368-1c06-648e-26d4-aee94647e4da": {
+					"name": "LowerBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29730186-2622-086d-ab67-4bb8e356bb6c": {
+					"name": "Legs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
+					"name": "RightLeg",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe0b3a-286b-e17f-288e-c39feaa2e5e6": {
+					"name": "RightLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
+					"name": "LeftLeg",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee9973d4-ff4e-c96b-64f6-d1f28afd69c6": {
+					"name": "LeftLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"71b16a49-1da9-df63-2f72-f5272bb4b134": {
+					"name": "NameplateAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4ad021e9-2857-4e55-337b-f61da0762800": {
+					"name": "CameraAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f4f28850-9313-607e-2825-49406a44621f": {
+					"name": "TankIdleAnimAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b0c1fa8f-2594-39af-3b81-00634934e933": {
+					"name": "FrontHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d6128920-fae5-5cd3-61f4-217c88c06563": {
+					"name": "Cowlick",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"2eee4103-8084-7c14-73fe-ecbfd568e8f6": {
+					"name": "Cowlick2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"fae9cbb6-3987-e20b-f479-5c00126fae5a": {
+					"name": "Cowlick3",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"8c330632-c980-a7c5-c178-a5e7f7d04a8e": {
+					"name": "Pendant",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a9b806ab-614d-2997-0638-226dfd87ad83": {
+					"name": "PendantRotatable",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
 				},
 				"b5914bcd-ba00-8036-d5a9-79007d1a65c4": {
 					"name": "Backpack",
