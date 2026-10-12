@@ -903,6 +903,22 @@ local BlueArchiveCharacter = {
 
 	costume = {
 		isAltCostumeEnabled = false;
+
+		callbacks = {
+			onArmorChange = function (_, parts, isVisible)
+				if parts == "CHEST_PLATE" then
+					if isVisible then
+						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FrontHair, ModelAlias.alias.avatar.body.Pendant.PendantRotatable}) do
+							modelPart:setPos(0, 0, -1)
+						end
+					else
+						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.FrontHair, ModelAlias.alias.avatar.body.Pendant.PendantRotatable}) do
+							modelPart:setPos()
+						end
+					end
+				end
+			end;
+		};
 	};
 
 	bubble = {
