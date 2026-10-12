@@ -935,9 +935,12 @@ local BlueArchiveCharacter = {
 					end
 				end;
 
-				onPostAnimation = function ()
+				onPostAnimation = function (self, forcedStop)
 					if host:isHost() then
 						events.RENDER:remove("ex_skill_2_render")
+						if forcedStop then
+							self.exSkill.resetDrawingTransition()
+						end
 					end
 
 					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLegBottom, ModelAlias.alias.avatar.leftLegBottom}) do
