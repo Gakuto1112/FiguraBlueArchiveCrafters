@@ -706,6 +706,12 @@ local BlueArchiveCharacter = {
 						self.isInitialized = true
 					end;
 
+					if host:isHost() then
+						events.RENDER:register(function ()
+							models.models.ex_skill_2.Gui.Transition.TransitionBackground:setOpacity(models.models.ex_skill_2.Gui.Transition.TransitionOpacity:getAnimScale().x)
+						end, "ex_skill_2_render")
+					end
+
 					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLegBottom, ModelAlias.alias.avatar.leftLegBottom}) do
 						modelPart:setOffsetPivot(0, 0, -2)
 					end;
@@ -761,6 +767,10 @@ local BlueArchiveCharacter = {
 				end;
 
 				onPostAnimation = function ()
+					if host:isHost() then
+						events.RENDER:remove("ex_skill_2_render")
+					end
+
 					for _, modelPart in ipairs({ModelAlias.alias.avatar.rightLegBottom, ModelAlias.alias.avatar.leftLegBottom}) do
 						modelPart:setOffsetPivot()
 					end;
