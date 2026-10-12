@@ -605,7 +605,7 @@ local BlueArchiveCharacter = {
 						end
 					end
 
-					if tick >= 148 and tick < 164 and (tick - 148) % 2 == 0 then
+					if tick >= 148 and tick < 164 and (tick - 148) % 2 == 0 and host:isHost() then
 						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(models.models.main.CameraAnchor), 1, 0.0625 * tick - 8.25)
 					end
 				end;
@@ -743,17 +743,29 @@ local BlueArchiveCharacter = {
 					end
 
 					FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED", 55, true)
+
+					sounds:playSound("minecraft:entity.egg.throw", player:getPos(), 1, 2)
 				end;
 
 				onAnimationTick = function (self, tick)
-					if tick == 55 then
+					if tick == 1 or tick == 31 then
+						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_2.WavePanel)
+						sounds:playSound("minecraft:item.bucket.empty", anchorPos, 1, 0.25)
+						sounds:playSound("minecraft:item.bucket.empty", anchorPos, 1, 0.5)
+					elseif tick == 28 then
+						sounds:playSound("minecraft:entity.egg.throw", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 1, 2)
+					elseif tick == 55 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "ANXIOUS", 12, true)
 					elseif tick == 67 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "ANXIOUS", 2, true)
+
+						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 0.5, 2)
 					elseif tick == 69 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "ANXIOUS", 2, true)
 					elseif tick == 71 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "ANXIOUS", 2, true)
+
+						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 0.5, 2)
 					elseif tick == 63 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "ANXIOUS", 12, true)
 					elseif tick == 68 and host:isHost() then
@@ -762,16 +774,28 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "SMILE", 4, true)
 					elseif tick == 76 then
 						ModelAlias.alias.avatar.body.HeldShells:moveTo(models.models.main)
+
+						sounds:playSound("minecraft:entity.player.levelup", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 1, 1)
 					elseif tick == 79 then
 						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "OPENED", 16, true)
+					elseif tick == 93 then
+						sounds:playSound("minecraft:entity.player.splash.high_speed", ModelUtils.getModelWorldPos(models.models.ex_skill_2.ShellFlower.HornCoral), 0.5, 0.5)
 					elseif tick == 95 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "W", 4, true)
 					elseif tick == 99 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "W", 10, true)
 					elseif tick == 109 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED_SMALL", 110, true)
+					elseif tick == 178 then
+						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(models.models.ex_skill_2.ShellFlower.HornCoral), 0.5, 1.5)
+					elseif tick == 190 and host:isHost() then
+						sounds:playSound("minecraft:entity.player.levelup", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 1, 3)
 					elseif tick == 219 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "W", 30, true)
+					end
+
+					if tick >= 37 and tick < 51 and (tick - 37) % 2 == 0 and host:isHost() then
+						sounds:playSound("minecraft:entity.item.pickup", ModelUtils.getModelWorldPos(models.models.main.CameraAnchor), 1, 0.071 * tick - 1.6429)
 					end
 
 					if tick >= 111 and tick < 180 then
