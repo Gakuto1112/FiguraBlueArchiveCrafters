@@ -774,6 +774,10 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("CLOSED", "CLOSED", "W", 30, true)
 					end
 
+					if tick >= 111 and tick < 180 then
+						particles:newParticle("minecraft:end_rod", ModelUtils.getModelWorldPos(models.models.ex_skill_2.ShellFlower.HornCoral):add(math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125, math.random() * 0.25 - 0.125)):setScale(0.25):setColor(0.994, 0.967, 0.753):setGravity(0)
+					end
+
 					if host:isHost() then
 						if tick >= 37 and tick < 51 then
 							local brushPos = models.models.ex_skill_2.Gui.Transition.TransitionBrush:getAnimPos():copy():mul(-1, -1, 1):add(0.5, 0.5, 0):scale(32):floor()
