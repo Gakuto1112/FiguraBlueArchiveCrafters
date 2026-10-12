@@ -399,11 +399,31 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor:newItem("ex_skill_1_right_shell")
 						ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:newItem("ex_skill_1_left_shell")
 
+						local shellItems = {}
 						for i = 1, 13 do
 							local task = models.models.ex_skill_1.ShellItemsArea:newItem("ex_skill_1_shell_" .. i)
 							task:setPos(-8, 0, -8)
 							task:setScale(0.25, 0.25, 0.25)
+							shellItems[i] = task
 						end
+
+						shellItems[1]:setPos(52, 0, 16)
+						shellItems[1]:setRot(90, 90, 0)
+						shellItems[2]:setPos(40, 0, -8)
+						shellItems[3]:setPos(36, 0, -18)
+						shellItems[4]:setPos(40, 0, -32)
+						shellItems[4]:setScale(0.4, 0.4, 0.4)
+						shellItems[5]:setPos(32, 0, -50)
+						shellItems[5]:setScale(0.4, 0.4, 0.4)
+						shellItems[6]:setPos(38, 0, -58)
+						shellItems[6]:setScale(0.4, 0.4, 0.4)
+						shellItems[7]:setPos(32, 0, -38)
+						shellItems[8]:setPos(30, 0, -43)
+						shellItems[9]:setPos(34, 0, -45)
+						shellItems[10]:setPos(46, 0, -46)
+						shellItems[11]:setPos(44, 0, -54)
+						shellItems[12]:setPos(40, 0, -39)
+						shellItems[13]:setPos(40, 0, -48)
 
 						if host:isHost() then
 							self.exSkill.initializeDrawingTransition(self, models.models.ex_skill_1.Gui.Transition)
@@ -414,8 +434,6 @@ local BlueArchiveCharacter = {
 
 					ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:getTask("ex_skill_1_left_shell"):setItem("minecraft:nautilus_shell")
 
-					local shellItems = {}
-					---@cast shellItems ItemTask[]
 					local isHost = host:isHost()
 					for i = 1, 13 do
 						local shellItem = self.exSkill.getShellItem()
@@ -433,27 +451,7 @@ local BlueArchiveCharacter = {
 							task:setVisible(false)
 						end
 						task:setRot(90, math.random() * 360, 0)
-
-						shellItems[i] = task
 					end
-
-					shellItems[1]:setPos(52, 0, 16)
-					shellItems[1]:setRot(90, 90, 0)
-					shellItems[2]:setPos(40, 0, -8)
-					shellItems[3]:setPos(36, 0, -18)
-					shellItems[4]:setPos(40, 0, -32)
-					shellItems[4]:setScale(0.4, 0.4, 0.4)
-					shellItems[5]:setPos(32, 0, -50)
-					shellItems[5]:setScale(0.4, 0.4, 0.4)
-					shellItems[6]:setPos(38, 0, -58)
-					shellItems[6]:setScale(0.4, 0.4, 0.4)
-					shellItems[7]:setPos(32, 0, -38)
-					shellItems[8]:setPos(30, 0, -43)
-					shellItems[9]:setPos(34, 0, -45)
-					shellItems[10]:setPos(46, 0, -46)
-					shellItems[11]:setPos(44, 0, -54)
-					shellItems[12]:setPos(40, 0, -39)
-					shellItems[13]:setPos(40, 0, -48)
 
 					FaceParts:setEmotion("NORMAL", "CENTER", "YUMMY", 10, true)
 				end;
@@ -699,6 +697,20 @@ local BlueArchiveCharacter = {
 							end
 						end
 
+						local shellItems = {}
+						for i = 1, 5 do
+							local task = models.models.ex_skill_2.ShellFlower:newItem("ex_skill_2_shell_" .. i)
+							task:setPos(-8, 0, -8)
+							task:setScale(0.4, 0.4, 0.4)
+							shellItems[i] = task
+						end
+
+						shellItems[1]:setPos(-8, 1, 12)
+						shellItems[2]:setPos(-8, 1, -16)
+						shellItems[3]:setPos(4, 0, 16)
+						shellItems[4]:setPos(14, 0, 0)
+						shellItems[5]:setPos(13, 0, -6)
+
 						if host:isHost() then
 							self.exSkill.initializeDrawingTransition(self, models.models.ex_skill_2.Gui.Transition)
 						end
@@ -721,6 +733,13 @@ local BlueArchiveCharacter = {
 
 					for _, modelPart in ipairs(ModelAlias.alias.avatar.body.HeldShells:getChildren()) do
 						modelPart:getTask(modelPart:getName() .. "_item"):setItem(self.exSkill.getShellItem())
+					end
+
+					for i = 1, 5 do
+						local task = models.models.ex_skill_2.ShellFlower:getTask("ex_skill_2_shell_" .. i)
+						---@cast task ItemTask
+						task:setItem(self.exSkill.getShellItem())
+						task:setRot(90, math.random() * 360, 0)
 					end
 
 					FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED", 55, true)
