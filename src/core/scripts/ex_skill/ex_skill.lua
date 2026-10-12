@@ -257,6 +257,7 @@ local ExSkill = {
         self:transition("PRE", function ()
             Physics:disable()
             Arms:setHeldItemVisible(false)
+            renderer:setShadowRadius(0)
             for _, modelPart in ipairs(BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].models) do
                 modelPart:setVisible(true)
             end
@@ -324,6 +325,7 @@ local ExSkill = {
         end
         Physics:enable()
         renderer:setFOV()
+        renderer:setShadowRadius()
         self.animationCount = -1
         if BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks ~= nil and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation ~= nil then
             BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation(BlueArchiveCharacter, false)
@@ -376,6 +378,7 @@ local ExSkill = {
             events.TICK:remove(eventName)
         end
         Physics:enable()
+        renderer:setShadowRadius()
         if self.animationCount >= 0 and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks ~= nil and BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation ~= nil then
             BlueArchiveCharacter.exSkill[self.isSecondary and "secondary" or "primary"].callbacks.onPostAnimation(BlueArchiveCharacter, true)
         end

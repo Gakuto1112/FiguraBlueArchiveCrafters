@@ -1291,13 +1291,14 @@ local BlueArchiveCharacter = {
                     else
                         events.TICK:remove("tank_tick")
                         events.RENDER:remove("tank_render")
-                        ModelAlias.alias.avatar.root:setVisible(true)
+						for _, modelPart in ipairs({ModelAlias.alias.avatar.root, ModelAlias.alias.avatar.lowerBody}) do
+							modelPart:setVisible(true)
+						end
                         ModelAlias.alias.avatar.root:setParentType("None")
                         ModelAlias.alias.avatar.root:setPos()
                         for _, modelPart in ipairs({ModelAlias.alias.avatar.root, ModelAlias.alias.avatar.head}) do
                             modelPart:setRot()
                         end
-                        ModelAlias.alias.avatar.lowerBody:setVisible(true)
                         for _, animName in ipairs({"tank_start", "tank_idle_powered"}) do
                             animations["models.main"][animName]:stop()
                         end
