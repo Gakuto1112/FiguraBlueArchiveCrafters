@@ -406,19 +406,10 @@ local BlueArchiveCharacter = {
 						end
 
 						if host:isHost() then
-							local windowSize = client:getScaledWindowSize()
-							models.models.ex_skill_1.Gui.Transition:setPos(windowSize.x / 2 * -1, windowSize.y / 2 * -1, 0)
-							models.models.ex_skill_1.Gui.Transition:setScale(vectors.vec2(1, 1):scale(math.max(windowSize.x, windowSize.y)):augmented(1))
-							models.models.ex_skill_1.Gui.Transition.Transition:setPrimaryTexture("CUSTOM", textures:newTexture("ex_skill_1_transition", 32, 32))
+							self.exSkill.initializeDrawingTransition(self, models.models.ex_skill_1.Gui.Transition)
 						end
 
 						self.exSkill.primary.isInitialized = true;
-					end
-
-					if host:isHost() then
-						local dimensions = textures["ex_skill_1_transition"]:getDimensions()
-						textures["ex_skill_1_transition"]:fill(0, 0, dimensions.x, dimensions.y, 0, 0, 0, 0)
-						textures["ex_skill_1_transition"]:update()
 					end
 
 					ModelAlias.alias.avatar.leftArmBottom.LeftShellItemAnchor:getTask("ex_skill_1_left_shell"):setItem("minecraft:nautilus_shell")
@@ -575,6 +566,8 @@ local BlueArchiveCharacter = {
 						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 1)
 
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED", 32, true)
+					elseif tick == 183 and host:isHost() then
+						self.exSkill.resetDrawingTransition()
 					end
 
 					if tick >= 62 and tick < 92 then
@@ -603,14 +596,14 @@ local BlueArchiveCharacter = {
 
 					if host:isHost() then
 						if tick >= 148 and tick < 164 then
-							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():add(0.5, 0.5, 0):scale(32):floor()
+							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():scale(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
 							local brushColor = vectors.vec3(0.993, 0.989, 0.671):add(vectors.vec3(0.007, 0.011, 0.329):scale(math.clamp((tick - 148) / 16, 0, 1)))
-							self.exSkill.primary.fillCircle(textures["ex_skill_1_transition"], brushPos.x, brushPos.y, 7, vectors.vec4(brushColor.x, brushColor.y, brushColor.z, 1))
-							textures["ex_skill_1_transition"]:update()
+							self.exSkill.fillCircle(textures["ex_skill_drawing_transition"], brushPos.x, brushPos.y, 7, vectors.vec4(brushColor.x, brushColor.y, brushColor.z, 1))
+							textures["ex_skill_drawing_transition"]:update()
 						elseif tick >= 167 and tick < 183 then
-							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():add(0.5, 0.5, 0):scale(32):floor()
-							self.exSkill.primary.fillCircle(textures["ex_skill_1_transition"], brushPos.x, brushPos.y, 7, vectors.vec4(0, 0, 0, 0))
-							textures["ex_skill_1_transition"]:update()
+							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():scale(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
+							self.exSkill.fillCircle(textures["ex_skill_drawing_transition"], brushPos.x, brushPos.y, 7, vectors.vec4(0, 0, 0, 0))
+							textures["ex_skill_drawing_transition"]:update()
 						end
 					end
 
@@ -619,8 +612,12 @@ local BlueArchiveCharacter = {
 					end
 				end;
 
-				onPostAnimation = function ()
+				onPostAnimation = function (self, forcedStop)
 					ModelAlias.alias.avatar.rightArmBottom.RightShellItemAnchor:setVisible(false)
+
+					if forcedStop and host:isHost() then
+						self.exSkill.resetDrawingTransition()
+					end
 				end;
 			};
 
@@ -642,25 +639,6 @@ local BlueArchiveCharacter = {
 				sounds:playSound("minecraft:entity.experience_orb.pickup", anchorPos, 1, math.random() + 2)
 			end;
 
-			---テクスチャに塗り潰し円を描画する。
-			---@param texture Texture 描画対象のテクスチャ
-			---@param centerX number 円の中心X座標
-			---@param centerY number 円の中心Y座標
-			---@param radius number 円の半径
-			---@param color Vector4 塗り潰す色（RGBA）
-			fillCircle = function (texture, centerX, centerY, radius, color)
-				local dimensions = texture:getDimensions()
-				for y = math.max(centerY - radius, 0), math.min(centerY + radius, dimensions.y - 1) do
-					for x = math.max(centerX - radius, 0), math.min(centerX + radius, dimensions.x - 1) do
-						local dx = x - centerX
-						local dy = y - centerY
-						if dx * dx + dy * dy <= radius * radius then
-							texture:setPixel(x, y, color.x, color.y, color.z, color.w)
-						end
-					end
-				end
-			end;
-
 			---このExスキルの初期化処理が行われたかどうか。
 			---@type boolean
 			isInitialized = false;
@@ -677,7 +655,7 @@ local BlueArchiveCharacter = {
 		secondary = {
 			formationType = "SPECIAL";
 
-			models = {ModelAlias.alias.avatar.body.HeldShells, models.models.ex_skill_2.ShellFlower, models.models.ex_skill_2.WavePanel, models.models.ex_skill_2.CarpetArea};
+			models = {ModelAlias.alias.avatar.body.HeldShells, models.models.ex_skill_2.ShellFlower, models.models.ex_skill_2.WavePanel, models.models.ex_skill_2.CarpetArea, models.models.ex_skill_2.Gui};
 
 			animations = {"main", "ex_skill_2"};
 
@@ -721,6 +699,10 @@ local BlueArchiveCharacter = {
 							end
 						end
 
+						if host:isHost() then
+							self.exSkill.initializeDrawingTransition(self, models.models.ex_skill_2.Gui.Transition)
+						end
+
 						self.isInitialized = true
 					end;
 
@@ -735,7 +717,7 @@ local BlueArchiveCharacter = {
 					FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED", 55, true)
 				end;
 
-				onAnimationTick = function (_, tick)
+				onAnimationTick = function (self, tick)
 					if tick == 55 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "ANXIOUS", 12, true)
 					elseif tick == 67 then
@@ -746,6 +728,8 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "ANXIOUS", 2, true)
 					elseif tick == 63 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "ANXIOUS", 12, true)
+					elseif tick == 68 and host:isHost() then
+						self.exSkill.resetDrawingTransition()
 					elseif tick == 75 then
 						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "SMILE", 4, true)
 					elseif tick == 76 then
@@ -760,6 +744,19 @@ local BlueArchiveCharacter = {
 						FaceParts:setEmotion("CLOSED", "CLOSED", "OPENED_SMALL", 110, true)
 					elseif tick == 219 then
 						FaceParts:setEmotion("CLOSED", "CLOSED", "W", 30, true)
+					end
+
+					if host:isHost() then
+						if tick >= 37 and tick < 51 then
+							local brushPos = models.models.ex_skill_2.Gui.Transition.TransitionBrush:getAnimPos():copy():scale(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
+							local brushColor = vectors.vec3(0.75, 1, 1):add(vectors.vec3(0.25, 0, 0):scale(math.clamp((tick - 37) / 14, 0, 1)))
+							self.exSkill.fillCircle(textures["ex_skill_drawing_transition"], brushPos.x, brushPos.y, 9, vectors.vec4(brushColor.x, brushColor.y, brushColor.z, 1))
+							textures["ex_skill_drawing_transition"]:update()
+						elseif tick >= 54 and tick < 68 then
+							local brushPos = models.models.ex_skill_2.Gui.Transition.TransitionBrush:getAnimPos():copy():scale(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
+							self.exSkill.fillCircle(textures["ex_skill_drawing_transition"], brushPos.x, brushPos.y, 9, vectors.vec4(0, 0, 0, 0))
+							textures["ex_skill_drawing_transition"]:update()
+						end
 					end
 				end;
 
@@ -800,6 +797,47 @@ local BlueArchiveCharacter = {
 			end
 
 			return itemTable[#itemTable]
+		end;
+
+		---Exスキルの落書きトランジションを初期化する。
+		---@param self BlueArchiveCharacter
+		---@param target ModelPart 初期化対象の落書きトランジションのモデル
+		initializeDrawingTransition = function (self, target)
+			local windowSize = client:getScaledWindowSize()
+			target:setPos(windowSize.x / 2 * -1, windowSize.y / 2 * -1, 0)
+			target:setScale(vectors.vec2(1, 1):scale(math.max(windowSize.x, windowSize.y)):augmented(1))
+			local texture = textures["ex_skill_drawing_transition"]
+			if texture == nil then
+				texture = textures:newTexture("ex_skill_drawing_transition", 32, 32)
+				self.exSkill.resetDrawingTransition()
+			end
+			target.Transition:setPrimaryTexture("CUSTOM", texture)
+		end;
+
+		---Exスキルの落書きトランジションをリセットする。
+		resetDrawingTransition = function ()
+			local dimensions = textures["ex_skill_drawing_transition"]:getDimensions()
+			textures["ex_skill_drawing_transition"]:fill(0, 0, dimensions.x, dimensions.y, 0, 0, 0, 0)
+			textures["ex_skill_drawing_transition"]:update()
+		end;
+
+		---テクスチャに塗り潰し円を描画する。
+		---@param texture Texture 描画対象のテクスチャ
+		---@param centerX number 円の中心X座標
+		---@param centerY number 円の中心Y座標
+		---@param radius number 円の半径
+		---@param color Vector4 塗り潰す色（RGBA）
+		fillCircle = function (texture, centerX, centerY, radius, color)
+			local dimensions = texture:getDimensions()
+			for y = math.max(centerY - radius, 0), math.min(centerY + radius, dimensions.y - 1) do
+				for x = math.max(centerX - radius, 0), math.min(centerX + radius, dimensions.x - 1) do
+					local dx = x - centerX
+					local dy = y - centerY
+					if dx * dx + dy * dy <= radius * radius then
+						texture:setPixel(x, y, color.x, color.y, color.z, color.w)
+					end
+				end
+			end
 		end;
 	};
 
