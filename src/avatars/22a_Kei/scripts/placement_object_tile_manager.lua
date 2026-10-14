@@ -1,12 +1,12 @@
----@class (exact) PlacementObjectTileManager : SpawnObjectManager 設置物で使用するタイルのオブジェクトのマネージャークラス
----@field public objects PlacementObjectTile[] インスタンスで制御するオブジェクト
----@field public getObject fun(self: PlacementObjectTileManager, target: ModelPart, pos: Vector3, rot: Vector3, color: Vector3, lifetime: integer, shouldFadeOut: boolean, dummy: boolean): PlacementObjectTile 設置物タイルのインスタンスを生成して返す
----@field public spawn fun(self: PlacementObjectTileManager, target: ModelPart, pos: Vector3, rot: Vector3, color: Vector3, lifetime: integer, shouldFadeOut: boolean, dummy: boolean) 設置物タイルをスポーンさせる
+---@class (exact) Character22a.PlacementObjectTileManager : SpawnObjectManager 設置物で使用するタイルのオブジェクトのマネージャークラス
+---@field public objects Character22a.PlacementObjectTile[] インスタンスで制御するオブジェクト
+---@field public getObject fun(self: Character22a.PlacementObjectTileManager, target: ModelPart, pos: Vector3, rot: Vector3, color: Vector3, lifetime: integer, shouldFadeOut: boolean, dummy: boolean): Character22a.PlacementObjectTile 設置物タイルのインスタンスを生成して返す
+---@field public spawn fun(self: Character22a.PlacementObjectTileManager, target: ModelPart, pos: Vector3, rot: Vector3, color: Vector3, lifetime: integer, shouldFadeOut: boolean, dummy: boolean) 設置物タイルをスポーンさせる
 local PlacementObjectTileManager = {
     ---コンストラクタ
-    ---@return PlacementObjectTileManager
+    ---@return Character22a.PlacementObjectTileManager
     new = function ()
-        ---@type PlacementObjectTileManager
+        ---@type Character22a.PlacementObjectTileManager
         local instance = MiscUtils.instantiate(PlacementObjectTileManager, SpawnObjectManager)
 
         instance.managerName = "placement_object_tile"
@@ -28,7 +28,7 @@ local PlacementObjectTileManager = {
     end;
 
     ---設置物タイルをスポーンさせる。
-    ---@param self PlacementObjectTileManager
+    ---@param self Character22a.PlacementObjectTileManager
     ---@param target ModelPart インスタンスオブジェクトをアタッチする親モデル
     ---@param pos Vector3 オブジェクトをスポーンさせる位置
     ---@param rot Vector3 タイルをスポーンさせる向き

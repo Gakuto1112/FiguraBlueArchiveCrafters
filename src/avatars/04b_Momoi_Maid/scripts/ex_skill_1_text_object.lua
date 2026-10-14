@@ -1,13 +1,13 @@
----@class ExSkill1TextObject : SpawnObject Exスキル1で使用するテキストオブジェクト
+---@class Character04b.ExSkill1TextObject : SpawnObject Exスキル1で使用するテキストオブジェクト
 ---@field package object TextTask インスタンスで制御するテキストレンダータスク
 ---@field package subObject TextTask インスタンスで制御するサブテキストレンダータスク
 ---@field package animationCount integer アニメーションのカウンター
 local ExSkill1TextObject = {
     ---コンストラクター
     ---@param parentModel ModelPart このオブジェクトをアタッチする親パーツ
-    ---@return ExSkill1TextObject
+    ---@return Character04b.ExSkill1TextObject
     new = function (parentModel)
-        ---@type ExSkill1TextObject
+        ---@type Character04b.ExSkill1TextObject
         local instance = MiscUtils.instantiate(ExSkill1TextObject, SpawnObject)
 
         instance.object = parentModel:newText(instance.uuid)
@@ -15,7 +15,7 @@ local ExSkill1TextObject = {
         instance.animationCount = 0
 
         instance.callbacks = {
-            ---@param self ExSkill1TextObject
+            ---@param self Character04b.ExSkill1TextObject
             onInit = function (self)
                 self.object:setText("§0§lMISS")
                 self.object:setAlignment("CENTER")
@@ -23,14 +23,14 @@ local ExSkill1TextObject = {
                 self.subObject:setAlignment("CENTER")
             end;
 
-            ---@param self ExSkill1TextObject
+            ---@param self Character04b.ExSkill1TextObject
             onDeinit = function (self)
                 for _, id in ipairs({self.uuid, self.subObject:getName()}) do
                     parentModel:removeTask(id)
                 end
             end;
 
-            ---@param self ExSkill1TextObject
+            ---@param self Character04b.ExSkill1TextObject
             onTick = function (self)
                 self.object:setPos(0, self.animationCount * 0.5 + 3.5, 0)
                 self.animationCount = self.animationCount + 1
@@ -46,7 +46,7 @@ local ExSkill1TextObject = {
                 end
             end;
 
-            ---@param self ExSkill1TextObject
+            ---@param self Character04b.ExSkill1TextObject
             onRender = function (self, delta)
                 self.object:setPos(0, (self.animationCount + delta) * 0.5 + 3.5, 0)
                 if self.animationCount == 0 then

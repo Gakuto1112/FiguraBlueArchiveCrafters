@@ -1,4 +1,4 @@
----@class (exact) Allay お供のアレイを制御するクラス
+---@class (exact) Character12a.Allay お供のアレイを制御するクラス
 ---@field package isAllayEnabled boolean アレイ制御が有効かどうか
 ---@field package wasAllayEnabledPrev boolean 前ティックにアレイ制御が有効だったかどうか
 ---@field public perchCount integer アレイが頭に止まるまでのカウンター
@@ -16,7 +16,7 @@ local Allay = {
     nextRot = 0;
 
     ---初期化関数
-    ---@param self Allay
+    ---@param self Character12a.Allay
     init = function (self)
         events.TICK:register(function ()
             self.isAllayEnabled = ExSkill.animationCount == -1

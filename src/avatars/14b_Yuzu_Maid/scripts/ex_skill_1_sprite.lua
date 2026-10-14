@@ -1,19 +1,19 @@
----@class (exact) ExSkill1Sprite : SpawnObject Exスキル内で使用するスプライトのオブジェクトのクラス
+---@class (exact) Character14b.ExSkill1Sprite : SpawnObject Exスキル内で使用するスプライトのオブジェクトのクラス
 ---@field package object SpriteTask インスタンスで制御するオブジェクト
----@field package spriteType ExSkill1SpriteManager.SpriteType スプライトの種類
+---@field package spriteType Character14b.ExSkill1SpriteManager.SpriteType スプライトの種類
 ---@field package currentPos Vector2 オブジェクトの現在位置
 ---@field package nextPos Vector2 次ティックのオブジェクトの位置
 ---@field package velocity Vector2 オブジェクトの速度
 ---@field package lifetimeCount integer オブジェクトの残り時間を計るカウンター
----@field public new fun(type: ExSkill1SpriteManager.SpriteType, pos: Vector2, velocity: Vector2): ExSkill1Sprite コンストラクター
+---@field public new fun(type: Character14b.ExSkill1SpriteManager.SpriteType, pos: Vector2, velocity: Vector2): Character14b.ExSkill1Sprite コンストラクター
 local ExSkill1Sprite = {
     ---コンストラクタ
-    ---@param type ExSkill1SpriteManager.SpriteType スプライトの種類
+    ---@param type Character14b.ExSkill1SpriteManager.SpriteType スプライトの種類
     ---@param pos Vector2 オブジェクトの初期位置
     ---@param velocity Vector2 オブジェクトの移動速度
-    ---@return ExSkill1Sprite
+    ---@return Character14b.ExSkill1Sprite
     new = function (type, pos, velocity)
-        ---@type ExSkill1Sprite
+        ---@type Character14b.ExSkill1Sprite
         local instance = MiscUtils.instantiate(ExSkill1Sprite, SpawnObject)
 
         instance.object = models.script_ex_skill_1_sprite:newSprite(instance.uuid)
@@ -24,7 +24,7 @@ local ExSkill1Sprite = {
         instance.lifetimeCount = 28
 
         instance.callbacks = {
-            ---@param self ExSkill1Sprite
+            ---@param self Character14b.ExSkill1Sprite
             onInit = function (self)
                 self.object:setTexture(textures["textures.ex_skill_1"])
                 self.object:setDimensions(textures["textures.ex_skill_1"]:getDimensions())
@@ -47,12 +47,12 @@ local ExSkill1Sprite = {
                 self.object:setPos(self.currentPos:copy():augmented(self.spriteType == "STAR" and -3 or -2))
             end;
 
-            ---@param self ExSkill1Sprite
+            ---@param self Character14b.ExSkill1Sprite
             onDeinit = function (self)
                 models.script_ex_skill_1_sprite:removeTask(self.uuid)
             end;
 
-            ---@param self ExSkill1Sprite
+            ---@param self Character14b.ExSkill1Sprite
             onTick = function (self)
                 --パーティクル位置を強制更新
                 if self.velocity:length() > 0 then
@@ -77,7 +77,7 @@ local ExSkill1Sprite = {
                 self.lifetimeCount = self.lifetimeCount - 1
             end;
 
-            ---@param self ExSkill1Sprite
+            ---@param self Character14b.ExSkill1Sprite
             onRender = function (self, delta)
                 self.object:setPos(self.currentPos:copy():add(self.nextPos:copy():sub(self.currentPos):scale(delta)):add(25, 25):augmented(self.spriteType == "STAR" and -3 or -2))
             end;

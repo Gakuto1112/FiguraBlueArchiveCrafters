@@ -1,5 +1,5 @@
----@class (exact) TrainManager : SpawnObjectManager Exスキル1で使用する列車を管理するクラス
----@field public objects RailObject[] インスタンスで制御するオブジェクト
+---@class (exact) Character16a.TrainManager : SpawnObjectManager Exスキル1で使用する列車を管理するクラス
+---@field public objects Character16a.RailObject[] インスタンスで制御するオブジェクト
 ---@field package railForwardLength integer 列車の前方に設置するレールの長さ
 ---@field package railBackwardLength integer 列車の通過後に残しておくレールの長さ
 ---@field package maxRailPerTick number 1ティックに設置する最大のレールの数
@@ -12,12 +12,12 @@
 ---@field package trainVelocity number 列車の速度（列車アニメーション用）
 ---@field package trainSoundCounter integer 汽車のシュポシュポ音の回数をカウントする変数
 ---@field package whistleSound Sound|nil 汽笛の音のインスタンス
----@field public getObject fun(self: TrainManager, pos: Vector3, rot: number): RailObject 線路オブジェクトを生成して返す。
+---@field public getObject fun(self: Character16a.TrainManager, pos: Vector3, rot: number): Character16a.RailObject 線路オブジェクトを生成して返す。
 local TrainManager = {
     ---コンストラクタ
-    ---@return TrainManager
+    ---@return Character16a.TrainManager
     new = function ()
-        ---@type TrainManager
+        ---@type Character16a.TrainManager
         local instance = MiscUtils.instantiate(TrainManager, SpawnObjectManager)
 
         instance.railForwardLength = 32
@@ -47,13 +47,13 @@ local TrainManager = {
     ---線路オブジェクトを生成して返す。
     ---@param pos Vector3 線路オブジェクトを設置するワールド座標
     ---@param rot number 線路オブジェクトを設置するワールド方向
-    ---@return RailObject instance 生成したインスタンス
+    ---@return Character16a.RailObject instance 生成したインスタンス
     getObject = function (_, pos, rot)
         return RailObject.new(pos, rot)
     end;
 
     ---線路オブジェクトをスポーンさせる。
-    ---@param self TrainManager
+    ---@param self Character16a.TrainManager
     ---@param pos Vector3 線路オブジェクトを設置するワールド座標
     ---@param rot number 線路オブジェクトを設置するワールド方向
     spawnRail = function (self, pos, rot)
@@ -89,7 +89,7 @@ local TrainManager = {
     end;
 
     ---Exスキル用の線路をスポーンさせる。
-    ---@param self TrainManager
+    ---@param self Character16a.TrainManager
     spawnExSkillRail = function (self)
         self.railForwardLength = 32
         self.railBackwardLength = math.huge
@@ -109,14 +109,14 @@ local TrainManager = {
     end;
 
     ---Exスキル用の線路スポーン処理を停止させる。
-    ---@param self TrainManager
+    ---@param self Character16a.TrainManager
     stopExSkillRail = function (self)
         events.TICK:remove("train_manager_ex_skill_tick")
         self:removeAll()
     end;
 
     ---（Exスキル再生後の）列車アニメーションを再生する。
-    ---@param self TrainManager
+    ---@param self Character16a.TrainManager
     playTrainAnimation = function (self)
         self.railForwardLength = 8
         self.railBackwardLength = 8
@@ -191,7 +191,7 @@ local TrainManager = {
     end;
 
     ---列車を爆破する（列車アニメーション用）
-    ---@param self TrainManager
+    ---@param self Character16a.TrainManager
     explode = function (self)
         local pos = ModelAlias.alias.avatar.lowerBody.Train:getPos():scale(0.0625):add(vectors.rotateAroundAxis(self.rot, 0, 1, 0, 0, 1, 0))
         particles:newParticle("minecraft:explosion_emitter", pos)
@@ -204,7 +204,7 @@ local TrainManager = {
     end;
 
     ---（Exスキル再生後の）列車アニメーションを停止する。
-    ---@param self TrainManager
+    ---@param self Character16a.TrainManager
     stopTrainAnimation = function (self)
         events.TICK:remove("train_manager_train_tick")
         events.RENDER:remove("train_manager_train_render")

@@ -1,4 +1,4 @@
----@class (exact) Pie : SpawnObject 投げるパイオブジェクトのインスタンスクラス
+---@class (exact) Character24a.Pie : SpawnObject 投げるパイオブジェクトのインスタンスクラス
 ---@field package BULGE number パイオブジェクトが飛んでいく放物線の膨らみ具合
 ---@field package BOUNDING_LENGTH integer パイが跳ね飛ぶ時間の長さ（ティック）
 ---@field package MAX_PIE_DISTANCE number パイがターゲットとするプレイヤーの最大距離（ブロック）
@@ -18,7 +18,7 @@ local Pie = {
 	---コンストラクタ
 	---@param startPos Vector3 スポーンさせるパイの初期ワールド位置
 	new = function (startPos)
-		---@type Pie
+		---@type Character24a.Pie
 		local instance = MiscUtils.instantiate(Pie, SpawnObject)
 
 		instance.BULGE = 2
@@ -40,7 +40,7 @@ local Pie = {
 		instance.pieRemains = instance.PIE_BOUNCE_COUNT
 
 		instance.callbacks = {
-			---@param self Pie
+			---@param self Character24a.Pie
 			onInit = function (self)
 				models.script_pie:addChild(self.object)
 				self.object:setVisible(true)
@@ -48,13 +48,13 @@ local Pie = {
 				self.targetHistory[player:getName()] = true
 			end;
 
-			---@param self Pie
+			---@param self Character24a.Pie
 			onDeinit = function (self)
 				models.script_pie:removeChild(self.object)
 				self.object:remove()
 			end;
 
-			---@param self Pie
+			---@param self Character24a.Pie
 			onTick = function (self)
 				-- 跳ね飛ぶ時間の計算
 				if self.boundingTick == 0 then
@@ -149,7 +149,7 @@ local Pie = {
 				self.lifetime = self.lifetime - 1
 			end;
 
-			---@param self Pie
+			---@param self Character24a.Pie
 			onRender = function (self, delta)
 				self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos):scale(16))
 			end;
@@ -166,7 +166,7 @@ local Pie = {
 	end;
 
 	---地点Aから地点Bまでパイを投げ、放物線を描きながら飛んでいくときの、指定した進行度での速度を返す。
-	---@param self Pie
+	---@param self Character24a.Pie
 	---@param posA Vector3 地点Aのワールド位置
 	---@param posB Vector3 地点Bのワールド位置
 	---@param delta number 進行度（0.0～1.0）
@@ -183,7 +183,7 @@ local Pie = {
 	end;
 
 	---地点Aから地点Bまでを描く放物線上の点のうち、Y座標が最も大きくなる点のワールド座標を返す。
-	---@param self Pie
+	---@param self Character24a.Pie
 	---@param posA Vector3 地点Aのワールド位置
 	---@param posB Vector3 地点Bのワールド位置
 	---@return Vector3 pos 指定した地点Aと地点Bの放物線上で最もY座標が大きくなる点のワールド位置
@@ -197,7 +197,7 @@ local Pie = {
 
 	---パイ投げの軌道上に当たり判定のあるブロックが存在するか返す。
 	---当たり判定のチェックは、①地点Aからパイの軌道の最高点、②パイの軌道の最高点から地点Bまでの二分割にして行う。
-	---@param self Pie
+	---@param self Character24a.Pie
 	---@param posA Vector3 地点Aのワールド位置
 	---@param posB Vector3 地点Bのワールド位置
 	---@return boolean isBlocking パイ投げの軌道上に当たり判定のあるブロックが存在するかどうか。
@@ -217,7 +217,7 @@ local Pie = {
 	--- 2. パイの投擲ルートにブロックが存在しない。
 	--- 3. このパイが初めてターゲットにするプレイヤーである。
 	--- 4. 自分自身ではない。
-	---@param self Pie
+	---@param self Character24a.Pie
 	---@return Player|nil targetPlayer ターゲットとなるプレイヤーのインスタンス。条件に合うプレイヤーがいない場合はnilを返す。
 	getTargetPlayer = function (self)
 		local nearestPlayer = nil

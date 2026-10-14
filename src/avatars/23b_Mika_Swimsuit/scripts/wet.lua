@@ -1,4 +1,4 @@
----@class (exact) Wet 水濡れをシミュレートし、髪の水滴などを制御するクラス
+---@class (exact) Character23b.Wet 水濡れをシミュレートし、髪の水滴などを制御するクラス
 ---@field package MAX_WET_COUNT integer 濡れカウンターの最大値
 ---@field package waterDrops {model: ModelPart, sortValue: integer}[] 水滴のモデルパーツを格納するテーブル
 ---@field package wetCount integer 水濡れの時間を測るカウンター
@@ -15,7 +15,7 @@ local Wet = {
 	sequenceIndex = 0;
 
 	---水滴モデルを`waterDrops`テーブルに格納する。
-	---@param self Wet
+	---@param self Character23b.Wet
 	insertWaterDropModels = function (self)
 		for _, waterDropModelParent in ipairs({ModelAlias.alias.avatar.head.HWaterDrops, ModelAlias.alias.avatar.body.Hairs.FrontHair.FHWaterDrops, ModelAlias.alias.avatar.body.Hairs.BackHair.BHWaterDrops}) do
 			for _, waterDropModel in ipairs(waterDropModelParent:getChildren()) do
@@ -25,7 +25,7 @@ local Wet = {
 	end;
 
 	---`waterDrops`テーブルに格納された水滴モデルパーツを初期化する。
-	---@param self Wet
+	---@param self Character23b.Wet
 	initializeWaterDropModels = function (self)
 		for _, waterDrop in ipairs(self.waterDrops) do
 			waterDrop.model:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID")
@@ -35,7 +35,7 @@ local Wet = {
 	end;
 
 	---`waterDrops`テーブル内の全ての水滴モデルパーツの可視性を切り替える。
-	---@param self Wet
+	---@param self Character23b.Wet
 	---@param value boolean 水滴モデルを表示するかどうか。
 	setDropsVisibleAll = function (self, value)
 		for _, waterDrop in ipairs(self.waterDrops) do
@@ -45,7 +45,7 @@ local Wet = {
 	end;
 
 	---`waterDrops`テーブル内の要素をランダムに並び替える。
-	---@param self Wet
+	---@param self Character23b.Wet
 	sortDropsRandom = function (self)
 		for _, waterDrop in ipairs(self.waterDrops) do
 			waterDrop.sortValue = math.random(0, 10000)
@@ -56,7 +56,7 @@ local Wet = {
 	end;
 
 	---初期化関数
-	---@param self Wet
+	---@param self Character23b.Wet
 	init = function (self)
 		self:insertWaterDropModels()
 		self:initializeWaterDropModels()

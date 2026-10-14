@@ -1,4 +1,4 @@
----@class (exact) ExSkillSplashParticle : SpawnObject Exスキルのスプラッシュで使用するパーティクルの単一を管理するクラス
+---@class (exact) Character01b.ExSkillSplashParticle : SpawnObject Exスキルのスプラッシュで使用するパーティクルの単一を管理するクラス
 ---@field package object SpriteTask インスタンスで制御するオブジェクト
 ---@field package currentPos Vector2 パーティクルの現在位置
 ---@field package nextPos Vector2 次ティックのパーティクルの位置
@@ -7,9 +7,9 @@ local ExSkillSplashParticle = {
     ---コンストラクタ
     ---@param pos Vector2 パーティクルをスポーンさせるスクリーン上の座標。GUIスケールも考慮される。
     ---@param velocity Vector2 パーティクルの秒間移動距離（ピクセル）
-    ---@return ExSkillSplashParticle
+    ---@return Character01b.ExSkillSplashParticle
     new = function (pos, velocity)
-        ---@type ExSkillSplashParticle
+        ---@type Character01b.ExSkillSplashParticle
         local instance = MiscUtils.instantiate(ExSkillSplashParticle, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Gui.script_ex_skill_1_splash_particles:newSprite(instance.uuid)
@@ -18,7 +18,7 @@ local ExSkillSplashParticle = {
         instance.velocity = velocity
 
         instance.callbacks = {
-            ---@param self ExSkillSplashParticle
+            ---@param self Character01b.ExSkillSplashParticle
             onInit = function (self)
                 self.object:setTexture(textures["textures.ex_skill_1"])
                 self.object:setDimensions(textures["textures.ex_skill_1"]:getDimensions())
@@ -27,12 +27,12 @@ local ExSkillSplashParticle = {
                 self.object:setUVPixels(33, 15)
             end;
 
-            ---@param self ExSkillSplashParticle
+            ---@param self Character01b.ExSkillSplashParticle
             onDeinit = function (self)
                 models.models.ex_skill_1.Gui.script_ex_skill_1_splash_particles:removeTask(self.uuid)
             end;
 
-            ---@param self ExSkillSplashParticle
+            ---@param self Character01b.ExSkillSplashParticle
             onTick = function (self)
                 --パーティクル位置を強制更新
                 self.currentPos = self.nextPos:copy()
@@ -45,7 +45,7 @@ local ExSkillSplashParticle = {
                 end
             end;
 
-            ---@param self ExSkillSplashParticle
+            ---@param self Character01b.ExSkillSplashParticle
             onRender = function (self, delta)
                 self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos):augmented(0))
             end;

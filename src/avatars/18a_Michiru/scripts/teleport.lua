@@ -1,4 +1,4 @@
----@class Teleport 忍術ワープを表現するクラス
+---@class Character18a.Teleport 忍術ワープを表現するクラス
 ---@field package playerPosPrev Vector3 前ティックのプレイヤーの位置
 ---@field package isStandingPrev boolean 前ティックにプレイヤーが立っていたかどうか
 ---@field package healthPrev integer 前ティックのHP量
@@ -8,7 +8,7 @@ local Teleport = {
 	healthPrev = 20;
 
     ---初期化関数
-    ---@param self Teleport
+    ---@param self Character18a.Teleport
     init = function (self)
 		self.playerPosPrev = player:getPos()
 		self.isStandingPrev = player:getPose() == "STANDING" and player:getVehicle() == nil

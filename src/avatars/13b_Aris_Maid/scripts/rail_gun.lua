@@ -1,10 +1,10 @@
----@alias RailGun.ChargeState
+---@alias Character13b.RailGun.ChargeState
 ---| "NONE" # チャージなし
 ---| "WEAK" # 弱いチャージ（通常の射出時）
 ---| "STRONG" # 強いチャージ（Exスキル再生直後の射出時）
 
----@class (exact) RailGun アリスの武器を制御するクラス
----@field public chargeState RailGun.ChargeState 武器のチャージ状態
+---@class (exact) Character13b.RailGun アリスの武器を制御するクラス
+---@field public chargeState Character13b.RailGun.ChargeState 武器のチャージ状態
 ---@field public isSpecialCharge boolean オーバーチャージ状態かどうか
 ---@field public animationLength integer アニメーションの長さ
 ---@field public chargePercent number レールガンのチャージ割合（"WEAK"の場合は100%まで、"STRING"の場合は200%まで）
@@ -88,7 +88,7 @@ local RailGun = {
     end;
 
     ---レールガンのスクリプト機能を有効にする。
-    ---@param self RailGun
+    ---@param self Character13b.RailGun
     enable = function (self)
         if events.TICK:getRegisteredCount("rail_gun_tick") == 0 then
             events.TICK:register(function ()
@@ -296,7 +296,7 @@ local RailGun = {
     end;
 
     ---レールガンのスクリプト機能を無効にする。
-    ---@param self RailGun
+    ---@param self Character13b.RailGun
     disable = function (self)
         events.TICK:remove("rail_gun_tick")
         events.RENDER:remove("rail_gun_render")

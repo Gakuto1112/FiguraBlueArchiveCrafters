@@ -1,4 +1,4 @@
----@class (exact) ExSkillSprite : SpawnObject Exスキル内で使用するスプライトのオブジェクトのクラス
+---@class (exact) Character17a.ExSkillSprite : SpawnObject Exスキル内で使用するスプライトのオブジェクトのクラス
 ---@field package object ModelPart インスタンスで制御するオブジェクト
 ---@field package subObject ModelPart インスタンスで制御するサブオブジェクト
 ---@field package sprite SpriteTask インスタンスで制御するメインのスプライト
@@ -15,7 +15,7 @@
 ---@field package scaleTracker? ModelPart スプライトの大きさの参照元のモデルパーツ
 ---@field package speedFactor number 速度の変化係数
 ---@field package lifetimeCount integer オブジェクトの残り時間を計るカウンター
----@field public new fun(target: ModelPart, index: Vector2, color?: Vector3, pos: Vector3, velocity: Vector3, rotVelocity: Vector3, size: number, scaleTracker?: ModelPart, lifetime: integer, shouldSeeCamera: boolean, speedFactor: number): ExSkillSprite コンストラクター
+---@field public new fun(target: ModelPart, index: Vector2, color?: Vector3, pos: Vector3, velocity: Vector3, rotVelocity: Vector3, size: number, scaleTracker?: ModelPart, lifetime: integer, shouldSeeCamera: boolean, speedFactor: number): Character17a.ExSkillSprite コンストラクター
 local ExSkillSprite = {
     ---コンストラクタ
     ---@param target ModelPart インスタンスオブジェクトをアタッチする親モデル
@@ -29,9 +29,9 @@ local ExSkillSprite = {
     ---@param lifetime integer このインスタンスを破棄するまでの時間
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
     ---@param speedFactor number 速度の変化係数
-    ---@return ExSkillSprite
+    ---@return Character17a.ExSkillSprite
     new = function (target, index, color, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
-        ---@type ExSkillSprite
+        ---@type Character17a.ExSkillSprite
         local instance = MiscUtils.instantiate(ExSkillSprite, SpawnObject)
 
         instance.target = target
@@ -52,7 +52,7 @@ local ExSkillSprite = {
         instance.lifetimeCount = lifetime
 
         instance.callbacks = {
-            ---@param self ExSkillSprite
+            ---@param self Character17a.ExSkillSprite
             onInit = function (self)
                 self.sprite:setTexture(textures["textures.ex_skill_1"])
                 self.sprite:setDimensions(textures["textures.ex_skill_1"]:getDimensions())
@@ -65,7 +65,7 @@ local ExSkillSprite = {
                 self.sprite:setRenderType("CUTOUT_EMISSIVE_SOLID")
             end;
 
-            ---@param self ExSkillSprite
+            ---@param self Character17a.ExSkillSprite
             onDeinit = function (self)
                 self.subObject:removeTask(self.sprite:getName())
                 self.object:removeChild(self.subObject)
@@ -74,7 +74,7 @@ local ExSkillSprite = {
                 self.object:remove()
             end;
 
-            ---@param self ExSkillSprite
+            ---@param self Character17a.ExSkillSprite
             onTick = function (self)
                 --パーティクル位置を強制更新
                 if self.velocity:length() > 0 then
@@ -106,7 +106,7 @@ local ExSkillSprite = {
                 end
             end;
 
-            ---@param self ExSkillSprite
+            ---@param self Character17a.ExSkillSprite
             onRender = function (self, delta)
                 if self.velocity:length() > 0 then
                     self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos))

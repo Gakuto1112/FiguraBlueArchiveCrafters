@@ -1,13 +1,13 @@
----@class ExSkill1TransitionManager : SpawnObjectManager Exスキル1で使用するトランジション効果のマネージャークラス
----@field public getObject fun(self: ExSkill1TransitionManager, pos: Vector2): ExSkill1TextObject トランジションスプライトのインスタンスを生成して返す
----@field public spawn fun(self:  ExSkill1TransitionManager, pos: Vector2) トランジションスプライトを生成する
----@field public play fun(self: ExSkill1TransitionManager) トランジションを再生する
----@field public stop fun(self: ExSkill1TransitionManager) トランジションを停止する
+---@class Character05b.ExSkill1TransitionManager : SpawnObjectManager Exスキル1で使用するトランジション効果のマネージャークラス
+---@field public getObject fun(self: Character05b.ExSkill1TransitionManager, pos: Vector2): ExSkill1TextObject トランジションスプライトのインスタンスを生成して返す
+---@field public spawn fun(self:  Character05b.ExSkill1TransitionManager, pos: Vector2) トランジションスプライトを生成する
+---@field public play fun(self: Character05b.ExSkill1TransitionManager) トランジションを再生する
+---@field public stop fun(self: Character05b.ExSkill1TransitionManager) トランジションを停止する
 local ExSkill1TransitionManager = {
     ---コンストラクタ
-    ---@return ExSkill1TransitionManager
+    ---@return Character05b.ExSkill1TransitionManager
     new = function ()
-        ---@type ExSkill1TransitionManager
+        ---@type Character05b.ExSkill1TransitionManager
         ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkill1TransitionManager, SpawnObjectManager)
 
@@ -18,20 +18,20 @@ local ExSkill1TransitionManager = {
 
     ---トランジションスプライトのインスタンスを生成して返す。
     ---@param pos Vector2 スプライトの位置（左からx番目、上からy番目のスプライト）
-    ---@return ExSkill1TransitionSprite instance 生成したインスタンス
+    ---@return Character05b.ExSkill1TransitionSprite instance 生成したインスタンス
     getObject = function (_, pos)
         return ExSkill1TransitionSprite.new(pos)
     end;
 
     ---トランジションスプライトを生成する。
-    ---@param self ExSkill1TransitionManager
+    ---@param self Character05b.ExSkill1TransitionManager
     ---@param pos Vector2 スプライトの位置（左からx番目、上からy番目のスプライト）
     spawn = function (self, pos)
         SpawnObjectManager.spawn(self, pos)
     end;
 
     ---トランジションを再生する。
-    ---@param self ExSkill1TransitionManager
+    ---@param self Character05b.ExSkill1TransitionManager
     play = function (self)
         self:stop()
 
@@ -58,7 +58,7 @@ local ExSkill1TransitionManager = {
     end;
 
     ---トランジションを停止する。
-    ---@param self ExSkill1TransitionManager
+    ---@param self Character05b.ExSkill1TransitionManager
     stop = function (self)
         events.TICK:remove(self.managerName.."_play_tick")
         self:removeAll()

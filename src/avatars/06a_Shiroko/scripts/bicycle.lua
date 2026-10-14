@@ -1,4 +1,4 @@
----@class Bicycle 自転車を制御するクラス
+---@class Character06a.Bicycle 自転車を制御するクラス
 ---@field package bicycleEnabled boolean 自転車乗りが有効かどうか
 ---@field package bicycleEnabledPrev boolean 前ティックに自転車乗りが有効だったかどうか
 ---@field package bicycleOffsetPos number 自転車のオフセット位置
@@ -19,7 +19,7 @@ local Bicycle = {
     isDrinkItemHeldPrev = false;
 
     ---初期化関数
-    ---@param self Bicycle
+    ---@param self Character06a.Bicycle
     init = function (self)
         events.TICK:register(function ()
             local vehicle = player:getVehicle()

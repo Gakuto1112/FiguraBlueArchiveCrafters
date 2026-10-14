@@ -42,9 +42,9 @@ local FaceParts = {
 
 	---表情を設定する。
 	---@param self FaceParts
-	---@param rightEye BlueArchiveCharacter.RightEyeTextures 設定する右目の名前
-	---@param leftEye BlueArchiveCharacter.LeftEyeTextures 設定する左目の名前
-	---@param mouth BlueArchiveCharacter.MouthTextures 設定する口の名前
+	---@param rightEye BlueArchiveCharacter.RightEyeTextures|string 設定する右目の名前
+	---@param leftEye BlueArchiveCharacter.LeftEyeTextures|string 設定する左目の名前
+	---@param mouth BlueArchiveCharacter.MouthTextures|string 設定する口の名前
 	---@param duration integer この表情を有効にする時間
 	---@param forced? boolean trueにすると以前のエモーションが再生中でも強制的に現在のエモーションを適用させる。
 	setEmotion = function (self, rightEye, leftEye, mouth, duration, forced)

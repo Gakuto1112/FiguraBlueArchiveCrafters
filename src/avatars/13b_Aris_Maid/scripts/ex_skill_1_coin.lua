@@ -1,10 +1,10 @@
----@class (exact) ExSkill1Coin.CallbackSet スポーンオブジェクトのコールバック関数のセット
----@field public onInit? fun(self: ExSkill1Coin) オブジェクトの初期化直後に呼ばれる関数
----@field public onDeinit? fun(self: ExSkill1Coin) オブジェクトの破棄直前に呼ばれる関数
----@field public onTick? fun(self: ExSkill1Coin, animPos: Vector3) 各ティック毎に呼ばれる関数
----@field public onRender? fun(self: ExSkill1Coin, delta: number, context: Event.Render.context) 各レンダーティック毎に呼ばれる関数
+---@class (exact) Character13b.ExSkill1Coin.CallbackSet スポーンオブジェクトのコールバック関数のセット
+---@field public onInit? fun(self: Character13b.ExSkill1Coin) オブジェクトの初期化直後に呼ばれる関数
+---@field public onDeinit? fun(self: Character13b.ExSkill1Coin) オブジェクトの破棄直前に呼ばれる関数
+---@field public onTick? fun(self: Character13b.ExSkill1Coin, animPos: Vector3) 各ティック毎に呼ばれる関数
+---@field public onRender? fun(self: Character13b.ExSkill1Coin, delta: number, context: Event.Render.context) 各レンダーティック毎に呼ばれる関数
 
----@class (exact) ExSkill1Coin : SpawnObject Exスキル1で使用するコインオブジェクトの単一を管理するクラス
+---@class (exact) Character13b.ExSkill1Coin : SpawnObject Exスキル1で使用するコインオブジェクトの単一を管理するクラス
 ---@field package object ModelPart インスタンスで制御するオブジェクト
 ---@field package objectPos Vector3 コインオブジェクトの位置
 ---@field package animationCount integer コイン取得のアニメーションのタイミングを制御するカウンター
@@ -12,15 +12,15 @@
 ---@field package rotSpeed number コインの回転速度
 ---@field package shouldPlaySound boolean コイン取得アニメーションを再生すべきかどうか
 ---@field package animMultiplayer number コイン取得アニメーションで浮き上がるコインの高さの倍率
----@field public callbacks? ExSkill1Coin.CallbackSet スポーンオブジェクトのコールバック関数
----@field public new fun(pos: Vector3): ExSkill1Coin コンストラクタ
----@field public playGetAnimation fun(self: ExSkill1Coin, shouldRandomizeMultiplayer: boolean) コイン取得アニメーションを再生する
+---@field public callbacks? Character13b.ExSkill1Coin.CallbackSet スポーンオブジェクトのコールバック関数
+---@field public new fun(pos: Vector3): Character13b.ExSkill1Coin コンストラクタ
+---@field public playGetAnimation fun(self: Character13b.ExSkill1Coin, shouldRandomizeMultiplayer: boolean) コイン取得アニメーションを再生する
 local ExSkill1Coin = {
     ---コンストラクタ
     ---@param pos Vector3 コインをスポーンされるアバター座標
-    ---@return ExSkill1Coin
+    ---@return Character13b.ExSkill1Coin
     new = function (pos)
-        ---@type ExSkill1Coin
+        ---@type Character13b.ExSkill1Coin
         local instance = MiscUtils.instantiate(ExSkill1Coin, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Coin:copy(instance.uuid)
@@ -79,7 +79,7 @@ local ExSkill1Coin = {
     end;
 
     ---コイン取得アニメーションを再生する。
-    ---@param self ExSkill1Coin
+    ---@param self Character13b.ExSkill1Coin
     ---@param shouldRandomizeMultiplayer boolean コインが浮き上がるオフセット値にランダムな値を使用するかどうか
     playGetAnimation = function(self, shouldRandomizeMultiplayer)
         if shouldRandomizeMultiplayer then

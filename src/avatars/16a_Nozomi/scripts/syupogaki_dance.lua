@@ -1,10 +1,10 @@
----@alias SyupogakiDance.DanceState
+---@alias Character16a.SyupogakiDance.DanceState
 ---| "NOT_STANDBY" # 非スタンバイ状態
 ---| "STANDBY" # スタンバイ状態
 ---| "PLAYING" # ダンス再生中
 
----@class (exact) SyupogakiDance シュポガキダンスを制御するクラス
----@field public danceState SyupogakiDance.DanceState シュポガキダンスの状態
+---@class (exact) Character16a.SyupogakiDance シュポガキダンスを制御するクラス
+---@field public danceState Character16a.SyupogakiDance.DanceState シュポガキダンスの状態
 ---@field package isHost boolean このアバターが親かどうか
 ---@field package offsetPos Vector3 ダンスを行う位置のオフセット
 ---@field package rot number ダンスをする際のアバターの向き
@@ -27,7 +27,7 @@ local SyupogakiDance = {
     isTipShowed = false;
 
     ---初期化関数
-    ---@param self SyupogakiDance
+    ---@param self Character16a.SyupogakiDance
     init = function (self)
         KeyManager:register("syupogaki_dance", "Syupogaki Dance", "key.keyboard.v"):onPress(function ()
             if self:canPlayDance() and self.danceState == "NOT_STANDBY" then
@@ -48,7 +48,7 @@ local SyupogakiDance = {
     end;
 
     ---シュポガキダンスが再生可能か（スタンバイ可能か）を返す。
-    ---@param self SyupogakiDance
+    ---@param self Character16a.SyupogakiDance
     ---@return boolean canPlayDance シュポガキダンスが再生可能かどうか
     canPlayDance = function (self)
         local firstCheck = player:getPose() == "STANDING" and not player:isMoving() and player:isOnGround() and not player:isInWater() and not player:isInLava() and player:getFrozenTicks() == 0 and not renderer:isFirstPerson() and player:getSwingArm() == nil and player:getActiveItem().id == "minecraft:air" and ExSkill.transitionCount == 0
@@ -65,7 +65,7 @@ local SyupogakiDance = {
     end;
 
     ---シュポガキダンスをスタンバイ状態にする。
-    ---@param self SyupogakiDance
+    ---@param self Character16a.SyupogakiDance
     standby = function (self)
         animations["models.main"]["syupogaki_dance_standby"]:play()
         Physics:disable()
@@ -194,7 +194,7 @@ local SyupogakiDance = {
     end;
 
     ---シュポガキダンスを終了する（スタンバイ状態を含む）。
-    ---@param self SyupogakiDance
+    ---@param self Character16a.SyupogakiDance
     stop = function (self)
         events.TICK:remove("syupogaki_dance_tick")
         events.RENDER:remove("syupogaki_dance_render")

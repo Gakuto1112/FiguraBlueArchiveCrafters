@@ -1,4 +1,4 @@
----@class DroneMissile : SpawnObject 視覚的なミサイルオブジェクトのクラス
+---@class Character06c.DroneMissile : SpawnObject 視覚的なミサイルオブジェクトのクラス
 ---@field package object ModelPart インスタンスで制御するモデルパーツ
 ---@field package currentPos Vector3 現ティックでのオブジェクトの位置
 ---@field package nextPos Vector3 次ティックでのオブジェクトの位置
@@ -6,15 +6,15 @@
 ---@field package velocity Vector3 ミサイルが飛んでいく方向を示すベクトル
 ---@field package explosionCount integer ミサイルが爆発するまでのカウンタ
 ---@field package missileSound Sound ミサイルが飛んでいく方向を示すベクトル
----@field public new fun(startPos: Vector3, rot: Vector3): DroneMissile コンストラクタ
----@field package explode fun(self: DroneMissile) ミサイルを爆破させる
+---@field public new fun(startPos: Vector3, rot: Vector3): Character06c.DroneMissile コンストラクタ
+---@field package explode fun(self: Character06c.DroneMissile) ミサイルを爆破させる
 local DroneMissile = {
     ---コンストラクタ
     ---@param startPos Vector3 ミサイルの出現位置
     ---@param rot Vector3 ミサイルが飛んでいく方向
-    ---@return DroneMissile
+    ---@return Character06c.DroneMissile
     new = function (startPos, rot)
-        ---@type DroneMissile
+        ---@type Character06c.DroneMissile
         local instance = MiscUtils.instantiate(DroneMissile, SpawnObject)
 
         instance.object = models.models.drone.Missile:copy(instance.uuid)
@@ -26,7 +26,7 @@ local DroneMissile = {
         instance.missileSound = sounds:playSound("minecraft:entity.firework_rocket.launch", instance.currentPos, 1, 0.5)
 
         instance.callbacks = {
-            ---@param self DroneMissile
+            ---@param self Character06c.DroneMissile
             onInit = function (self)
                 models.script_drone_missile:addChild(self.object)
                 self.object:setPos(self.currentPos:copy():scale(16))
@@ -35,13 +35,13 @@ local DroneMissile = {
                 --self.object:setScale(10, 10, 10)
             end;
 
-            ---@param self DroneMissile
+            ---@param self Character06c.DroneMissile
             onDeinit = function (self)
                 models.script_drone_missile:removeChild(self.object)
                 self.object:remove()
             end;
 
-            ---@param self DroneMissile
+            ---@param self Character06c.DroneMissile
             onTick = function (self)
                 if self.explosionCount == 0 then
                     self:explode()
@@ -81,7 +81,7 @@ local DroneMissile = {
     end;
 
     ---ミサイルを爆破させる。
-    ---@param self DroneMissile
+    ---@param self Character06c.DroneMissile
     explode = function (self)
         particles:newParticle("minecraft:explosion_emitter", self.currentPos)
         for _ = 1, 20 do

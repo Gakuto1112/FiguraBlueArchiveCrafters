@@ -1,4 +1,4 @@
----@class (exact) WhaleFloat クジラフロートを制御するクラス
+---@class (exact) Character07b.WhaleFloat クジラフロートを制御するクラス
 ---@field public whaleFloatEnabled boolean クジラフローに乗っているか
 ---@field package whaleFloatEnabledPrev boolean 前ティックにクジラフロートに乗っていたかどうか
 ---@field package lookDirPrev Vector3 前ティックに見ていた方法
@@ -14,7 +14,7 @@ local WhaleFloat = {
     isAFK = false;
 
     ---AFKアニメーションを停止する。
-    ---@param self WhaleFloat
+    ---@param self Character07b.WhaleFloat
     stopAfk = function (self)
         self.isAFK = false
         self.whaleFloatAfkCount = 0
@@ -44,7 +44,7 @@ local WhaleFloat = {
     end;
 
     ---クジラフロートの表示を終了する（検出は停止しない）。
-    ---@param self WhaleFloat
+    ---@param self Character07b.WhaleFloat
     stop = function (self)
         for _, eventName in ipairs({"whale_float_tick_2", "whale_float_afk_end_tick"}) do
             events.TICK:remove(eventName)
@@ -78,7 +78,7 @@ local WhaleFloat = {
     end,
 
     ---クジラフローを有効にする。
-    ---@param self WhaleFloat
+    ---@param self Character07b.WhaleFloat
     enable = function (self)
         events.TICK:register(function ()
             local vehicle = player:getVehicle()
@@ -209,7 +209,7 @@ local WhaleFloat = {
     end;
 
     ---クジラフロートを無効にする。
-    ---@param self WhaleFloat
+    ---@param self Character07b.WhaleFloat
     disable = function (self)
         events.TICK:remove("whale_float_tick")
         self:stop()

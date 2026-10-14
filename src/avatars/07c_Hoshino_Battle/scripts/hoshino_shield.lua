@@ -1,10 +1,10 @@
----@class (exact) HoshinoShield 盾を制御するクラス
+---@class (exact) Character07c.HoshinoShield 盾を制御するクラス
 ---@field public hasShield boolean 盾を手に持っているかどうか
 local HoshinoShield = {
     hasShield = false;
 
     ---初期化関数
-    ---@param self HoshinoShield
+    ---@param self Character07c.HoshinoShield
     init = function (self)
         events.TICK:register(function ()
             self:setShield((player:getHeldItem().id == "minecraft:shield" or player:getHeldItem(true).id == "minecraft:shield") and ExSkill.animationCount == -1, true)

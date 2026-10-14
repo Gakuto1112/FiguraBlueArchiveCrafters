@@ -1,4 +1,4 @@
----@class ExSkillTextObject : SpawnObject Exスキルで使用するテキストオブジェクト
+---@class Character02a.ExSkillTextObject : SpawnObject Exスキルで使用するテキストオブジェクト
 ---@field public object TextTask インスタンスで制御するメインテキストレンダータスク
 ---@field package subObject TextTask インスタンスで制御するサブテキストレンダータスク
 ---@field package pos Vector2 テキストオブジェクトの位置
@@ -8,9 +8,9 @@ local ExSkillTextObject = {
     ---コンストラクタ
     ---@param textPos Vector2 テキストの初期位置
     ---@param text string 表示するテキスト
-    ---@return ExSkillTextObject
+    ---@return Character02a.ExSkillTextObject
     new = function (_, textPos, text)
-        ---@type ExSkillTextObject
+        ---@type Character02a.ExSkillTextObject
         local instance = MiscUtils.instantiate(ExSkillTextObject, SpawnObject)
 
         instance.object = models.models.main.CameraAnchor:newText(instance.uuid)
@@ -20,7 +20,7 @@ local ExSkillTextObject = {
         instance.animationCount = 0
 
         instance.callbacks = {
-            ---@param self ExSkillTextObject
+            ---@param self Character02a.ExSkillTextObject
             onInit = function (self)
                 self.object:setPos(textPos:copy():augmented(5))
                 self.object:setRot(0, 180, 0)
@@ -34,13 +34,13 @@ local ExSkillTextObject = {
                 self.subObject:setText("§d"..self.text)
             end;
 
-            ---@param self ExSkillTextObject
+            ---@param self Character02a.ExSkillTextObject
             onDeinit = function (self)
                 models.models.main.CameraAnchor:removeTask(self.object:getName())
                 models.models.main.CameraAnchor:removeTask(self.subObject:getName())
             end;
 
-            ---@param self ExSkillTextObject
+            ---@param self Character02a.ExSkillTextObject
             onTick = function (self)
                 self.animationCount = self.animationCount + 0.05
                 if self.animationCount == 0.1 then
@@ -48,7 +48,7 @@ local ExSkillTextObject = {
                 end
             end;
 
-            ---@param self ExSkillTextObject
+            ---@param self Character02a.ExSkillTextObject
             onRender = function (self, delta)
                 local count = self.animationCount + delta * 0.05
 
@@ -79,7 +79,7 @@ local ExSkillTextObject = {
     end;
 
     ---テキストタスクのスケールを設定する。
-    ---@param self ExSkillTextObject
+    ---@param self Character02a.ExSkillTextObject
     ---@param task TextTask スケールを設定するテキストタスク
     ---@param scale number 設定するスケール値
     setScale = function (self, task, scale)

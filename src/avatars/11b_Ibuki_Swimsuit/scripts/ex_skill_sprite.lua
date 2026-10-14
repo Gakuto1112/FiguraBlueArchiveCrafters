@@ -1,4 +1,4 @@
----@class (exact) ExSkillSprite : SpawnObject Exスキル内で使用するスプライトのオブジェクトのクラス
+---@class (exact) Character11b.ExSkillSprite : SpawnObject Exスキル内で使用するスプライトのオブジェクトのクラス
 ---@field package object ModelPart インスタンスで制御するオブジェクト
 ---@field package subObject ModelPart インスタンスで制御するサブオブジェクト
 ---@field package sprite SpriteTask インスタンスで制御するメインのスプライト
@@ -24,9 +24,9 @@ local ExSkillSprite = {
     ---@param lifetime integer このインスタンスを破棄するまでの時間
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
     ---@param speedFactor number 速度の変化係数
-    ---@return ExSkillSprite
+    ---@return Character11b.ExSkillSprite
     new = function (target, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
-        ---@type ExSkillSprite
+        ---@type Character11b.ExSkillSprite
         local instance = MiscUtils.instantiate(ExSkillSprite, SpawnObject)
 
         instance.target = target
@@ -45,7 +45,7 @@ local ExSkillSprite = {
         instance.lifetimeCount = lifetime
 
         instance.callbacks = {
-            ---@param self ExSkillSprite
+            ---@param self Character11b.ExSkillSprite
             onInit = function (self)
                 self.sprite:setTexture(textures["textures.ex_skill_1"])
                 self.sprite:setDimensions(textures["textures.ex_skill_1"]:getDimensions())
@@ -60,7 +60,7 @@ local ExSkillSprite = {
                 self.sprite:setRenderType("CUTOUT_EMISSIVE_SOLID")
             end;
 
-            ---@param self ExSkillSprite
+            ---@param self Character11b.ExSkillSprite
             onDeinit = function (self)
                 self.subObject:removeTask(self.sprite:getName())
                 self.object:removeChild(self.subObject)
@@ -69,7 +69,7 @@ local ExSkillSprite = {
                 self.object:remove()
             end;
 
-            ---@param self ExSkillSprite
+            ---@param self Character11b.ExSkillSprite
             onTick = function (self)
                 --パーティクル位置を強制更新
                 if self.velocity:length() > 0 then
@@ -101,7 +101,7 @@ local ExSkillSprite = {
                 end
             end;
 
-            ---@param self ExSkillSprite
+            ---@param self Character11b.ExSkillSprite
             onRender = function (self, delta)
                 if self.velocity:length() > 0 then
                     self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos))

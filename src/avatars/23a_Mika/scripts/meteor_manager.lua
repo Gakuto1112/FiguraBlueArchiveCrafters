@@ -1,12 +1,12 @@
----@class (exact) MeteorManager : SpawnObjectManager 隕石のマネージャークラス
----@field public objects Meteor[] インスタンスで制御するオブジェクト
----@field public getObject fun(self: Meteor, targetPos: Vector3): Meteor 隕石のインスタンスを生成して返す
----@field public spawn fun(self: Meteor, targetPos: Vector3) 隕石をスポーンさせる
+---@class (exact) Character23a.MeteorManager : SpawnObjectManager 隕石のマネージャークラス
+---@field public objects Character23a.Meteor[] インスタンスで制御するオブジェクト
+---@field public getObject fun(self: Character23a.Meteor, targetPos: Vector3): Character23a.Meteor 隕石のインスタンスを生成して返す
+---@field public spawn fun(self: Character23a.Meteor, targetPos: Vector3) 隕石をスポーンさせる
 local MeteorManager = {
 	---コンストラクタ
-	---@return MeteorManager
+	---@return Character23a.MeteorManager
 	new = function ()
-		---@type MeteorManager
+		---@type Character23a.MeteorManager
 		local instance = MiscUtils.instantiate(MeteorManager, SpawnObjectManager)
 
 		instance.managerName = "ex_skill_meteor"
@@ -22,13 +22,13 @@ local MeteorManager = {
 
 	---隕石のインスタンスを生成して返す。
 	---@param targetPos Vector3 隕石を落とす目標座標
-	---@return MeteorManager instance 生成したインスタンス
+	---@return Character23a.MeteorManager instance 生成したインスタンス
 	getObject = function (_, targetPos)
 		return Meteor.new(targetPos)
 	end;
 
     ---隕石をスポーンさせる。
-	---@param self MeteorManager
+	---@param self Character23a.MeteorManager
 	---@param targetPos Vector3 隕石を落とす目標座標
     spawn = function (self, targetPos)
         SpawnObjectManager.spawn(self, targetPos)

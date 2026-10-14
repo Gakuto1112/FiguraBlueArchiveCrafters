@@ -1,10 +1,10 @@
----@class (exact) ExSkillSplashParticleManager : SpawnObjectManager Exスキルでで使用するスプラッシュパーティクルを管理するクラス
----@field public objects ExSkillSplashParticle[] インスタンスで制御するオブジェクトのテーブル
+---@class (exact) Character01b.ExSkillSplashParticleManager : SpawnObjectManager Exスキルでで使用するスプラッシュパーティクルを管理するクラス
+---@field public objects Character01b.ExSkillSplashParticle[] インスタンスで制御するオブジェクトのテーブル
 local ExSkillSplashParticleManager = {
     ---コンストラクタ
-    ---@return ExSkillSplashParticleManager
+    ---@return Character01b.ExSkillSplashParticleManager
     new = function (parent)
-        ---@type ExSkillSplashParticleManager
+        ---@type Character01b.ExSkillSplashParticleManager
         local instance = MiscUtils.instantiate(ExSkillSplashParticleManager, SpawnObjectManager, parent)
 
         instance.managerName = "ex_skill_1_splash_particle"
@@ -21,13 +21,13 @@ local ExSkillSplashParticleManager = {
     ---Exスキルのスプラッシュパーティクルのインスタンスを生成して返す。
     ---@param pos Vector2 パーティクルをスポーンさせる画面上の座標
     ---@param velocity Vector2 パーティクルの速度
-    ---@return ExSkillSplashParticle instance 生成したインスタンス
+    ---@return Character01b.ExSkillSplashParticle instance 生成したインスタンス
     getObject = function (_, pos, velocity)
         return ExSkillSplashParticle.new(pos, velocity)
     end;
 
     ---Exスキルのスプラッシュパーティクルをスポーンさせる。
-    ---@param self ExSkillSplashParticleManager
+    ---@param self Character01b.ExSkillSplashParticleManager
     ---@param pos Vector2 パーティクルをスポーンさせる画面上の座標
     ---@param velocity Vector2 パーティクルの速度
     spawn = function (self, pos, velocity)

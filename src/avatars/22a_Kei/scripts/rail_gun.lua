@@ -1,4 +1,4 @@
----@class (exact) RailGun アリスの武器を制御するクラス
+---@class (exact) Character22a.RailGun アリスの武器を制御するクラス
 ---@field public isCharging boolean チャージ中かどうか
 ---@field public animationLength integer アニメーションの長さ
 ---@field public chargePercent number レールガンのチャージ割合
@@ -16,7 +16,7 @@ local RailGun = {
     gunPositionPrev = "NONE";
 
     ---レールガンのスクリプト機能を有効にする。
-    ---@param self RailGun
+    ---@param self Character22a.RailGun
     enable = function (self)
         if events.TICK:getRegisteredCount("rail_gun_tick") == 0 then
             events.TICK:register(function ()
@@ -127,7 +127,7 @@ local RailGun = {
     end;
 
     ---レールガンのスクリプト機能を無効にする。
-    ---@param self RailGun
+    ---@param self Character22a.RailGun
     disable = function (self)
         events.TICK:remove("rail_gun_tick")
         events.RENDER:remove("rail_gun_render")

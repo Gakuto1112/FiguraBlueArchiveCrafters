@@ -1,4 +1,4 @@
----@class TankShell : SpawnObject 視覚的な砲弾オブジェクトのクラス
+---@class Character19b.TankShell : SpawnObject 視覚的な砲弾オブジェクトのクラス
 ---@field package object ModelPart インスタンスで制御するモデルパーツ
 ---@field package currentPos Vector3 現ティックでのオブジェクトの位置
 ---@field package nextPos Vector3 次ティックでのオブジェクトの位置
@@ -6,15 +6,15 @@
 ---@field package velocity Vector3 ミサイルが飛んでいく方向を示すベクトル
 ---@field package explosionCount integer ミサイルが爆発するまでのカウンタ
 ---@field package missileSound Sound ミサイルが飛んでいく方向を示すベクトル
----@field public new fun(startPos: Vector3, rot: Vector3): TankShell コンストラクタ
----@field package explode fun(self: TankShell) 砲弾を爆破させる
+---@field public new fun(startPos: Vector3, rot: Vector3): Character19b.TankShell コンストラクタ
+---@field package explode fun(self: Character19b.TankShell) 砲弾を爆破させる
 local TankShell = {
     ---コンストラクタ
     ---@param startPos Vector3 砲弾の出現位置
     ---@param rot Vector3 砲弾が飛んでいく方向
-    ---@return TankShell
+    ---@return Character19b.TankShell
     new = function (startPos, rot)
-        ---@type TankShell
+        ---@type Character19b.TankShell
         local instance = MiscUtils.instantiate(TankShell, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Shell:copy(instance.uuid)
@@ -26,7 +26,7 @@ local TankShell = {
         instance.missileSound = sounds:playSound("minecraft:entity.firework_rocket.launch", instance.currentPos, 1, 2)
 
         instance.callbacks = {
-            ---@param self TankShell
+            ---@param self Character19b.TankShell
             onInit = function (self)
                 models.script_tank_shell:addChild(self.object)
                 self.object:setPos(self.currentPos:copy():scale(16))
@@ -34,13 +34,13 @@ local TankShell = {
                 self.object:setVisible(true)
             end;
 
-            ---@param self TankShell
+            ---@param self Character19b.TankShell
             onDeinit = function (self)
                 models.script_tank_shell:removeChild(self.object)
                 self.object:remove()
             end;
 
-            ---@param self TankShell
+            ---@param self Character19b.TankShell
             onTick = function (self)
                 if self.explosionCount == 0 then
                     self:explode()
@@ -77,7 +77,7 @@ local TankShell = {
     end;
 
     ---砲弾を爆破させる。
-    ---@param self TankShell
+    ---@param self Character19b.TankShell
     explode = function (self)
         particles:newParticle("minecraft:explosion_emitter", self.currentPos)
         for _ = 1, 50 do

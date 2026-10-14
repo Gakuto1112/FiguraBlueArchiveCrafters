@@ -1,4 +1,4 @@
----@class (exact) PlacementObjectCube : SpawnObject 設置物で使用するキューブオブジェクトのクラス
+---@class (exact) Character22a.PlacementObjectCube : SpawnObject 設置物で使用するキューブオブジェクトのクラス
 ---@field package object ModelPart インスタンスで制御するモデル
 ---@field package target ModelPart インスタンスオブジェクトをアタッチする親モデル
 ---@field package pos Vector3 キューブの出現位置
@@ -7,15 +7,15 @@
 ---@field package color Vector3 キューブの色
 ---@field package length integer アニメーションの長さ
 ---@field package lifetimeCount integer キューブの残り時間を計るカウンター
----@field public new fun(target: ModelPart, pos: Vector3, color: Vector3): PlacementObjectCube コンストラクター
+---@field public new fun(target: ModelPart, pos: Vector3, color: Vector3): Character22a.PlacementObjectCube コンストラクター
 local PlacementObjectCube = {
     ---コンストラクタ
     ---@param target ModelPart インスタンスオブジェクトをアタッチする親モデル
     ---@param pos Vector3 オブジェクトをスポーンさせる位置
     ---@param color Vector3 キューブの色
-    ---@return PlacementObjectCube
+    ---@return Character22a.PlacementObjectCube
     new = function (target, pos, color)
-        ---@type PlacementObjectCube
+        ---@type Character22a.PlacementObjectCube
         local instance = MiscUtils.instantiate(PlacementObjectCube, SpawnObject)
 
         instance.target = target
@@ -28,7 +28,7 @@ local PlacementObjectCube = {
         instance.lifetimeCount = instance.length
 
         instance.callbacks = {
-            ---@param self PlacementObjectCube
+            ---@param self Character22a.PlacementObjectCube
             onInit = function (self)
                 if not self.dummy then
                     self.target:addChild(self.object)
@@ -38,7 +38,7 @@ local PlacementObjectCube = {
                 self.object:setVisible(true)
             end;
 
-            ---@param self PlacementObjectCube
+            ---@param self Character22a.PlacementObjectCube
             onDeinit = function (self)
                 if not self.dummy then
                     self.target:removeChild(self.object)
@@ -46,7 +46,7 @@ local PlacementObjectCube = {
                 self.object:remove()
             end;
 
-            ---@param self PlacementObjectCube
+            ---@param self Character22a.PlacementObjectCube
             onTick = function (self)
                 --オブジェクトのスケールを強制更新
                 self.object:setScale(self.nextScale)
@@ -62,7 +62,7 @@ local PlacementObjectCube = {
                 self.lifetimeCount = self.lifetimeCount - 1
             end;
 
-            ---@param self PlacementObjectCube
+            ---@param self Character22a.PlacementObjectCube
             onRender = function (self, delta)
                 self.object:setScale(self.nextScale:copy():sub(self.currentScale):scale(delta):add(self.currentScale))
             end;

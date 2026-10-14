@@ -1,4 +1,4 @@
----@class (exact) ExSkillShootingStar : SpawnObject Exスキル内で使用する流れ星のオブジェクトクラス
+---@class (exact) Character23b.ExSkillShootingStar : SpawnObject Exスキル内で使用する流れ星のオブジェクトクラス
 ---@field package object Particle インスタンスで制御するメインのパーティクル
 ---@field package currentPos Vector3 流れ星の現在のティックの位置
 ---@field package nextPos Vector3 流れ星の次のティックの位置
@@ -10,7 +10,7 @@ local ExSkillShootingStar = {
 	---@param pos Vector3 流れ星をスポーンするワールド座標
 	---@param dir Vector3 流れ星を流す方向
 	new = function (pos, dir)
-		---@type ExSkillShootingStar
+		---@type Character23b.ExSkillShootingStar
 		local instance = MiscUtils.instantiate(ExSkillShootingStar, SpawnObject)
 
 		instance.object = nil
@@ -21,7 +21,7 @@ local ExSkillShootingStar = {
 		instance.lifetime = 50 + math.random() * 10
 
 		instance.callbacks = {
-			---@param self ExSkillShootingStar
+			---@param self Character23b.ExSkillShootingStar
 			onInit = function (self)
 				local color1 = vectors.vec3(1, 0.75, 1)
 				local color2 = vectors.vec3(0.75, 1, 1)
@@ -32,7 +32,7 @@ local ExSkillShootingStar = {
 					:setLifetime(self.lifetime)
 			end;
 
-			---@param self ExSkillShootingStar
+			---@param self Character23b.ExSkillShootingStar
 			onTick = function (self)
 				--オブジェクトの位置を強制更新
 				self.object:setPos(self.nextPos)
@@ -55,7 +55,7 @@ local ExSkillShootingStar = {
 				self.lifetime = self.lifetime - 1
 			end;
 
-			---@param self ExSkillShootingStar
+			---@param self Character23b.ExSkillShootingStar
 			onRender = function (self, delta)
 				self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos))
 			end;

@@ -1,10 +1,10 @@
----@class ExSkill1ParticleManager : SpawnObjectManager Exスキル1で使用する独自定義のパーティクルのマネージャークラス
----@field public getObject fun(self: ExSkill1ParticleManager, text: string): ExSkill1Particle 独自定義のパーティクルのインスタンスを生成して返す
+---@class Character05b.ExSkill1ParticleManager : SpawnObjectManager Exスキル1で使用する独自定義のパーティクルのマネージャークラス
+---@field public getObject fun(self: Character05b.ExSkill1ParticleManager, text: string): Character05b.ExSkill1Particle 独自定義のパーティクルのインスタンスを生成して返す
 local ExSkill1ParticleManager = {
     ---コンストラクタ
-    ---@return ExSkill1ParticleManager
+    ---@return Character05b.ExSkill1ParticleManager
     new = function ()
-        ---@type ExSkill1ParticleManager
+        ---@type Character05b.ExSkill1ParticleManager
         ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkill1ParticleManager, SpawnObjectManager)
 
@@ -14,7 +14,7 @@ local ExSkill1ParticleManager = {
     end;
 
     ---独自定義のパーティクルのインスタンスを生成して返す。
-    ---@return ExSkill1Particle instance 生成したインスタンス
+    ---@return Character05b.ExSkill1Particle instance 生成したインスタンス
     getObject = function ()
         return ExSkill1Particle.new()
     end;

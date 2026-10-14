@@ -1,4 +1,4 @@
----@class ExSkill1TextObject : SpawnObject Exスキル1で使用するテキストオブジェクト
+---@class Character05a.ExSkill1TextObject : SpawnObject Exスキル1で使用するテキストオブジェクト
 ---@field package object ModelPart インスタンスで制御するモデルパーツ
 ---@field package subObject ModelPart インスタンスで制御するサブモデルパーツ
 ---@field package textTask TextTask subObject内にアタッチするテキストレンダータスク
@@ -10,9 +10,9 @@
 local ExSkill1TextObject = {
     ---コンストラクタ
     ---@param text string 表示するテキスト
-    ---@return ExSkill1TextObject
+    ---@return Character05a.ExSkill1TextObject
     new = function (text)
-        ---@type ExSkill1TextObject
+        ---@type Character05a.ExSkill1TextObject
         ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkill1TextObject, SpawnObject)
 
@@ -26,7 +26,7 @@ local ExSkill1TextObject = {
         instance.animationCount = 0
 
         instance.callbacks = {
-            ---@param self ExSkill1TextObject
+            ---@param self Character05a.ExSkill1TextObject
             onInit = function (self)
                 self.textTask:setText("§6"..instance.text)
                 self.textTask:setAlignment("CENTER")
@@ -35,7 +35,7 @@ local ExSkill1TextObject = {
                 self.textTask:setSeeThrough(true)
             end;
 
-            ---@param self ExSkill1TextObject
+            ---@param self Character05a.ExSkill1TextObject
             onDeinit = function (self)
                 self.subObject:removeTask(self.textTask:getName())
                 self.object:removeChild(self.subObject)
@@ -44,7 +44,7 @@ local ExSkill1TextObject = {
                 self.object:remove()
             end;
 
-            ---@param self ExSkill1TextObject
+            ---@param self Character05a.ExSkill1TextObject
             onTick = function (self)
                 --オブジェクトの状態を強制更新
                 self.currentPos = self.nextPos
@@ -62,7 +62,7 @@ local ExSkill1TextObject = {
                 end
             end;
 
-            ---@param self ExSkill1TextObject
+            ---@param self Character05a.ExSkill1TextObject
             onRender = function (self, delta)
                 self.object:setPos(self.currentPos:copy():add(self.nextPos:copy():sub(self.currentPos):scale(delta)))
                 self.object:setScale(vectors.vec3(1, 1, 1):scale((self.animationCount + delta * 0.05) * -0.125 + 0.25))

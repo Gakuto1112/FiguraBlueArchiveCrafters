@@ -1,4 +1,4 @@
----@class Drone クリエイティブ飛行に表示するドローンを制御するクラス
+---@class Character06b.Drone クリエイティブ飛行に表示するドローンを制御するクラス
 ---@field public dronePosition Gun.GunPosition ドローンの位置
 ---@field package droneSound Sound|nil ドローンの飛行音
 ---@field package isMissileLaunchAllowed boolean ミサイル発射が許可されているかどうか
@@ -21,7 +21,7 @@ local Drone = {
     gunPositionPrev = "NONE";
 
     ---初期化関数
-    ---@param self Drone
+    ---@param self Character06b.Drone
     init = function (self)
         KeyManager:register("missile_launch", "Launch Missile", "key.keyboard.v"):setOnPress(function ()
             if self.isMissileLaunchAllowed then

@@ -1,21 +1,21 @@
----@class ExSkill1ItemObject : SpawnObject Exスキル1で使用するアイテムオブジェクト
+---@class Character14a.ExSkill1ItemObject : SpawnObject Exスキル1で使用するアイテムオブジェクト
 ---@field package object ModelPart インスタンスで制御するモデルパーツ
 ---@field package subObject ModelPart インスタンスで制御するサブモデルパーツ
 ---@field package spriteTask SpriteTask subObject内にアタッチするスプライトレンダータスク
----@field package spriteType ExSkill1ItemObjectManager.SpriteType このスプライトの種類
+---@field package spriteType Character14a.ExSkill1ItemObjectManager.SpriteType このスプライトの種類
 ---@field package spriteIndex integer このアイテムオブジェクトで表示するアイテムテクスチャのインデックス番号
 ---@field package currentPos Vector3 現ティックの位置
 ---@field package nextPos Vector3 次ティックの位置
 ---@field package velocity Vector3 このオブジェクトの移動速度
 ---@field package lifeTimeCount integer スプライトの残り時間
----@field public new fun(type: ExSkill1ItemObjectManager.SpriteType, launchRot?: number): ExSkill1ItemObject コンストラクター
+---@field public new fun(type: Character14a.ExSkill1ItemObjectManager.SpriteType, launchRot?: number): Character14a.ExSkill1ItemObject コンストラクター
 local ExSkill1ItemObject = {
     ---コンストラクタ
-    ---@param type ExSkill1ItemObjectManager.SpriteType 表示するスプライトの種類
+    ---@param type Character14a.ExSkill1ItemObjectManager.SpriteType 表示するスプライトの種類
     ---@param launchRot? number スプライトの射出角度。スプライトタイプが"ITEM"以外は無視される。
-    ---@return ExSkill1ItemObject
+    ---@return Character14a.ExSkill1ItemObject
     new = function (type, launchRot)
-        ---@type ExSkill1ItemObject
+        ---@type Character14a.ExSkill1ItemObject
         local instance = MiscUtils.instantiate(ExSkill1ItemObject, SpawnObject)
 
         instance.object = models.script_ex_skill_1_item_object:newPart(instance.uuid)
@@ -29,7 +29,7 @@ local ExSkill1ItemObject = {
         instance.lifeTimeCount = 25
 
         instance.callbacks = {
-            ---@param self ExSkill1ItemObject
+            ---@param self Character14a.ExSkill1ItemObject
             onInit = function (self)
                 self.spriteTask:setTexture(textures["textures.ex_skill_1"])
                 self.spriteTask:setDimensions(textures["textures.ex_skill_1"]:getDimensions())
@@ -67,7 +67,7 @@ local ExSkill1ItemObject = {
                 end
             end;
 
-            ---@param self ExSkill1ItemObject
+            ---@param self Character14a.ExSkill1ItemObject
             onDeinit = function (self)
                 self.subObject:removeTask(self.spriteTask:getName())
                 self.object:removeChild(self.subObject)
@@ -76,7 +76,7 @@ local ExSkill1ItemObject = {
                 self.object:remove()
             end;
 
-            ---@param self ExSkill1ItemObject
+            ---@param self Character14a.ExSkill1ItemObject
             onTick = function (self)
                 --オブジェクトの状態を強制更新
                 self.currentPos = self.nextPos
@@ -93,7 +93,7 @@ local ExSkill1ItemObject = {
                 self.lifeTimeCount = self.lifeTimeCount - 1
             end;
 
-            ---@param self ExSkill1ItemObject
+            ---@param self Character14a.ExSkill1ItemObject
             onRender = function (self, delta)
                 self.object:setPos(self.currentPos:copy():scale(16):add(self.nextPos:copy():sub(self.currentPos):scale(16 * delta)))
             end;

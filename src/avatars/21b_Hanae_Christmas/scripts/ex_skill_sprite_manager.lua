@@ -1,10 +1,10 @@
----@class (exact) ExSkillSpriteManager : SpawnObjectManager Exスキル内で使用するスプライトのオブジェクトのマネージャークラス
----@field public objects ExSkillSprite[] インスタンスで制御するオブジェクト
+---@class (exact) Character21b.ExSkillSpriteManager : SpawnObjectManager Exスキル内で使用するスプライトのオブジェクトのマネージャークラス
+---@field public objects Character21b.ExSkillSprite[] インスタンスで制御するオブジェクト
 local ExSkillSpriteManager = {
     ---コンストラクタ
-    ---@return ExSkillSpriteManager
+    ---@return Character21b.ExSkillSpriteManager
     new = function ()
-        ---@type ExSkillSpriteManager
+        ---@type Character21b.ExSkillSpriteManager
         local instance = MiscUtils.instantiate(ExSkillSpriteManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_sprite"
@@ -31,7 +31,7 @@ local ExSkillSpriteManager = {
     ---@param scaleTracker? ModelPart スプライトの大きさの参照元のモデルパーツ
     ---@param lifetime integer このインスタンスを破棄するまでの時間
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
-    ---@return ExSkillSprite
+    ---@return Character21b.ExSkillSprite
     ---@diagnostic disable-next-line: redundant-parameter
     getObject = function (_, objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
         ---@diagnostic disable-next-line: redundant-parameter
@@ -39,7 +39,7 @@ local ExSkillSpriteManager = {
     end;
 
     ---Exスキルフレームのパーティクルをスポーンさせる。
-    ---@param self ExSkillSpriteManager
+    ---@param self Character21b.ExSkillSpriteManager
     ---@param objectModel ModelPart スプライトとしてコピーする元のモデルパーツ
     ---@param targetParent ModelPart インスタンスオブジェクトをアタッチする親モデル
     ---@param size number スプライトの大きさ

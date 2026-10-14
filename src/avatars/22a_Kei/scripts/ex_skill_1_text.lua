@@ -1,4 +1,4 @@
----@class (exact) ExSkill1Text : SpawnObject Exスキル内で使用するテキストのオブジェクトのクラス
+---@class (exact) Character22a.ExSkill1Text : SpawnObject Exスキル内で使用するテキストのオブジェクトのクラス
 ---@field package object TextTask インスタンスで制御するテキストオブジェクト
 ---@field package face integer テキストの向きを決定する値（1: 下面, 2: 上面, 3: 左面, 4: 右面）
 ---@field package currentPos Vector3 オブジェクトの現在位置
@@ -20,9 +20,9 @@ local ExSkill1Text = {
 	---コンストラクタ
     ---@param pos Vector3 オブジェクトをスポーンさせる位置
 	---@param face integer テキストの向きを決定する値（1: 下面, 2: 上面, 3: 左面, 4: 右面）
-	---@return ExSkill1Text
+	---@return Character22a.ExSkill1Text
 	new = function (pos, face)
-		---@type ExSkill1Text
+		---@type Character22a.ExSkill1Text
 		local instance = MiscUtils.instantiate(ExSkill1Text, SpawnObject)
 
 		instance.object = models.models.ex_skill_1.CyberArea:newText(instance.uuid)
@@ -31,7 +31,7 @@ local ExSkill1Text = {
 		instance.nextPos = instance.currentPos:copy()
 
 		instance.callbacks = {
-			---@param self ExSkill1Text
+			---@param self Character22a.ExSkill1Text
 			onInit = function (self)
 				local text = ExSkill1Text.textList[math.random(#ExSkill1Text.textList)]
 				self.object:setText(text)
@@ -54,12 +54,12 @@ local ExSkill1Text = {
 				end
 			end;
 
-			---@param self ExSkill1Text
+			---@param self Character22a.ExSkill1Text
 			onDeinit = function (self)
 				models.models.ex_skill_1.CyberArea:removeTask(self.uuid)
 			end;
 
-			---@param self ExSkill1Text
+			---@param self Character22a.ExSkill1Text
 			onTick = function (self)
 				--オブジェクトの位置を強制更新
 				self.currentPos = self.nextPos:copy()
@@ -71,7 +71,7 @@ local ExSkill1Text = {
 				self.nextPos = self.currentPos:copy():add(0, 0, -2)
 			end;
 
-			---@param self ExSkill1Text
+			---@param self Character22a.ExSkill1Text
 			onRender = function (self, delta, context)
 				self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos))
 			end;

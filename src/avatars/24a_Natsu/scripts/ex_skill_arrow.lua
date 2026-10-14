@@ -1,4 +1,4 @@
----@class (exact) ExSkillArrow : SpawnObject Exスキルアニメーションで使用する矢のオブジェクトのインスタンスクラス
+---@class (exact) Character24a.ExSkillArrow : SpawnObject Exスキルアニメーションで使用する矢のオブジェクトのインスタンスクラス
 ---@field package object ModelPart インスタンスで制御するモデルパーツ
 ---@field package currentPos Vector3 矢のオブジェクトの現ティックのワールド位置
 ---@field package nextPos Vector3 矢のオブジェクトの次ティックのワールド位置
@@ -11,7 +11,7 @@ local ExSkillArrow = {
 	---@param pos Vector3 矢のオプジェクトをスポーンさせるワールド位置
 	---@param velocity Vector3 矢のオブジェクトの初速
 	new = function (pos, velocity)
-		---@type ExSkillArrow
+		---@type Character24a.ExSkillArrow
 		local instance = MiscUtils.instantiate(ExSkillArrow, SpawnObject)
 
 		instance.object = models.models.ex_skill_1.AnimationArrow:copy(instance.uuid)
@@ -23,7 +23,7 @@ local ExSkillArrow = {
 		instance.lifetime = 100
 
 		instance.callbacks = {
-			---@param self ExSkillArrow
+			---@param self Character24a.ExSkillArrow
 			onInit = function (self)
 				models.script_ex_skill_arrow:addChild(self.object)
 				self.currentRot = vectors.vec3(math.deg(math.atan2(self.velocity.y, math.sqrt(self.velocity.x ^ 2 + self.velocity.z ^ 2))), math.deg(math.atan2(self.velocity.x, self.velocity.z)) + 180, 0)
@@ -31,13 +31,13 @@ local ExSkillArrow = {
 				self.object:setVisible(true)
 			end;
 
-			---@param self ExSkillArrow
+			---@param self Character24a.ExSkillArrow
 			onDeinit = function (self)
 				models.script_ex_skill_arrow:removeChild(self.object)
 				self.object:remove()
 			end;
 
-			---@param self ExSkillArrow
+			---@param self Character24a.ExSkillArrow
 			onTick = function (self)
 				-- オブジェクトの位置を強制更新
 				self.object:setPos(self.nextPos:copy():scale(16))
@@ -64,7 +64,7 @@ local ExSkillArrow = {
 				self.lifetime = self.lifetime - 1
 			end;
 
-			---@param self ExSkillArrow
+			---@param self Character24a.ExSkillArrow
 			onRender = function (self, delta)
 				self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos):scale(16))
 				self.object:setRot(self.nextRot:copy():sub(self.currentRot):scale(delta):add(self.currentRot))

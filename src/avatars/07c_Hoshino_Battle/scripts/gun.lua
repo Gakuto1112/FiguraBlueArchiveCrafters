@@ -1,4 +1,4 @@
----@class (exact) Gun 生徒の銃を制御するクラス（ホシノ専用）
+---@class (exact) Character07c.Gun 生徒の銃を制御するクラス（ホシノ専用）
 local Gun = {
 	GUN_ITEMS = {"minecraft:bow", "minecraft:crossbow"};
 
@@ -11,7 +11,7 @@ local Gun = {
 	isGunTickProcessed = false;
 
     ---初期化関数
-    ---@param self Gun
+    ---@param self Character07c.Gun
     init = function (self)
         events.TICK:register(function ()
             self:processGunTick()
@@ -202,8 +202,8 @@ local Gun = {
     end;
 
     ---銃の位置を変更する。
-    ---@param self Gun
-    ---@param gunPosition Gun.GunPosition 変更先の構え位置
+    ---@param self Character07c.Gun
+    ---@param gunPosition Character07c.Gun.GunPosition 変更先の構え位置
     setGunPosition = function (self, gunPosition)
         if gunPosition == "NONE" then
             for _, tickName in ipairs({"right_gun_tick", "left_gun_tick"}) do
@@ -271,7 +271,7 @@ local Gun = {
     end;
 
     ---銃ティックを処理する。
-    ---@param self Gun
+    ---@param self Character07c.Gun
     processGunTick = function (self)
         if not self.isGunTickProcessed then
             local heldItems = {}

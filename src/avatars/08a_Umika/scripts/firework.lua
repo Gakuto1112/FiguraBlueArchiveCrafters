@@ -1,4 +1,4 @@
----@class (exact) Firework : SpawnObject 花火台から打たれる花火のクラス
+---@class (exact) Character08a.Firework : SpawnObject 花火台から打たれる花火のクラス
 ---@field package object ItemTask インスタンスで制御するオブジェクト
 ---@field package currentPos Vector3 ロケット花火の現在位置
 ---@field package nextPos Vector3 ロケット花火の次ティックの位置
@@ -6,15 +6,15 @@
 ---@field package rotVec Vector3 ロケット花火が飛んでいく方向を示すベクトル
 ---@field package blastCount integer ロケット花火が爆発するまでのカウンタ
 ---@field package launchSound Sound ロケット花火を飛ばす音のインスタンス
----@field public new fun(startPos: Vector3, rot: Vector3): Firework コンストラクタ
----@field public blast fun(self: Firework) 花火を爆発させる
+---@field public new fun(startPos: Vector3, rot: Vector3): Character08a.Firework コンストラクタ
+---@field public blast fun(self: Character08a.Firework) 花火を爆発させる
 local Firework = {
     ---コンストラクタ
     ---@param startPos Vector3 ロケット花火の出現位置
     ---@param rot Vector3 ロケット花火が飛んでいく方向
-    ---@return Firework
+    ---@return Character08a.Firework
     new = function (startPos, rot)
-        ---@type Firework
+        ---@type Character08a.Firework
         local instance = MiscUtils.instantiate(Firework, SpawnObject)
 
         instance.object = models.script_firework:newItem(instance.uuid):setItem("minecraft:firework_rocket"):setScale(0.5, 0.5, 0.5)
@@ -26,17 +26,17 @@ local Firework = {
         instance.launchSound = sounds:playSound("minecraft:entity.firework_rocket.launch", instance.currentPos, 1, 0.5)
 
         instance.callbacks = {
-            ---@param self Firework
+            ---@param self Character08a.Firework
             onInit = function (self)
                 self.object:setRot(rot:copy():add(90, 0, 0))
             end;
 
-            ---@param self Firework
+            ---@param self Character08a.Firework
             onDeinit = function (self)
                 models.script_firework:removeTask(self.uuid)
             end;
 
-            ---@param self Firework
+            ---@param self Character08a.Firework
             onTick = function (self)
                 if self.blastCount == 0 then
                     self:blast()
@@ -65,7 +65,7 @@ local Firework = {
                 self.blastCount = self.blastCount - 1
             end;
 
-            ---@param self Firework
+            ---@param self Character08a.Firework
             onRender = function (self, delta, context)
                 self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos):scale(16))
             end;
@@ -75,7 +75,7 @@ local Firework = {
     end;
 
     ---花火を爆発させる。
-    ---@param self Firework
+    ---@param self Character08a.Firework
     blast = function (self)
         local fireworkColor = vectors.hsvToRGB(math.random(), 0.8, 1)
         particles:newParticle("minecraft:flash{color:[" .. fireworkColor[1] .. ", " .. fireworkColor[2] .. ", " .. fireworkColor[3] .. ", 1]}", self.currentPos):setColor(fireworkColor)

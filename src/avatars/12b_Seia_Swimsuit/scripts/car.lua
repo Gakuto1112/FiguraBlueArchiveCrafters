@@ -1,4 +1,4 @@
----@class (exact) Car 車を制御するクラス
+---@class (exact) Character12b.Car 車を制御するクラス
 ---@field public isRidingCar boolean 車に乗っているかどうか
 ---@field package isRidingCarPrev boolean 前ティックで車に乗っていたかどうか
 ---@field package modelOffsetPosY number アバターモデル全体のY軸オフセット位置
@@ -14,7 +14,7 @@ local Car = {
 	engineSound = nil;
 
 	---初期化関数
-	---@param self Car
+	---@param self Character12b.Car
 	init = function (self)
 		events.TICK:register(function ()
 			if not client:isPaused() then

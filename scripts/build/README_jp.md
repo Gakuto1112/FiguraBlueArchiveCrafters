@@ -29,6 +29,17 @@ FBACのソースファイル（モデル・テクスチャ・スクリプト・�
 | COSTUME_NAME | キャラクターの衣装名 <br> 括弧（"()"）も含む。デフォルト衣装では空文字になる。 | `(Swimsuit)`, `(Tracksuit)`, ... | name, description |
 <!-- markdownlint-enable MD033 -->
 
+#### 型定義（`core/types`）
+
+[`/src/core/types`](../../src/core/types/)には Lua Language Server 用の型定義（`---@meta`）のみを置きます。
+`scripts`ディレクトリの外にあるため、ビルドされたアバターには含まれません。
+
+- `blue_archive_character.lua`には抽象クラス`BlueArchiveCharacter`と共通の構造体を定義します。キャラクター固有の列挙値は含みません。
+- 各キャラクターの`blue_archive_character.lua`では`---@class (exact) Character<ID> : BlueArchiveCharacter`（例: `Character23a`）を宣言し、`---@type Character<ID>`でキャラクターシートに付与します。
+- キャラクター固有の列挙値（目・口のテクスチャ、追加の腕の状態）は`Character<ID>.RightEyeTextures`などとして宣言し、派生した`Character<ID>.*Struct`クラスで適用します。これにより他のキャラクターの値が補完候補に混ざりません。
+- `/src/avatars`配下の`---@class`/`---@alias`は、補助スクリプトも含めすべて`Character<ID>`から始めます（例: `Character11a.ExSkillSprite`）。複数キャラクターに同名のスクリプトがあっても統合しません。`scripts/test/test_character_types.py`で検査されます。
+- `00a_Base`から新しいキャラクターを作る際は、`Character00a`をすべて新しい`Character<ID>`に置換してください。
+
 ### キャラクター固有部分
 
 キャラクター固有部分はコアをベースに、特定のキャラクター向けに具体的な実装がされたリソース群を指します。

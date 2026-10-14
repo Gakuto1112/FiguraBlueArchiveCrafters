@@ -1,4 +1,4 @@
----@class (exact) ItemLauncher.LaunchedItemObject 発射したアイテムの情報を格納するクラス
+---@class (exact) Character19b.ItemLauncher.LaunchedItemObject 発射したアイテムの情報を格納するクラス
 ---@field package item ItemTask 発射したアイテムのレンダータスク
 ---@field package currentPos Vector3 アイテムの現在のワールド位置
 ---@field package nextPos Vector3 アイテムの次ティックのワールド位置
@@ -6,8 +6,8 @@
 ---@field package velocity Vector3 アイテムの現在の速度
 ---@field package lifetime integer アイテムを消すまでの残り時間（ティック単位）
 
----@class (exact) ItemLauncher アイテムを発射する演出のクラス
----@field private itemObjects ItemLauncher.LaunchedItemObject[] 発射したアイテムの情報を格納するテーブル
+---@class (exact) Character19b.ItemLauncher アイテムを発射する演出のクラス
+---@field private itemObjects Character19b.ItemLauncher.LaunchedItemObject[] 発射したアイテムの情報を格納するテーブル
 local ItemLauncher = {
 	itemObjects = {};
 
@@ -66,7 +66,7 @@ local ItemLauncher = {
 	---@param velocity Vector3 発射の初速
 	---@param lifetime integer 発射したアイテムが存在する時間（ティック単位）
 	launch = function (self, item, pos, rot, scale, velocity, lifetime)
-		---@type ItemLauncher.LaunchedItemObject
+		---@type Character19b.ItemLauncher.LaunchedItemObject
 		local object = {
 			item = models.script_item_launcher:newItem(client.intUUIDToString(client.generateUUID())),
 			currentPos = pos:copy(),

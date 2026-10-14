@@ -1,10 +1,10 @@
----@alias SyupogakiDance.DanceState
+---@alias Character15a.SyupogakiDance.DanceState
 ---| "NOT_STANDBY" # 非スタンバイ状態
 ---| "STANDBY" # スタンバイ状態
 ---| "PLAYING" # ダンス再生中
 
----@class (exact) SyupogakiDance シュポガキダンスを制御するクラス
----@field public danceState SyupogakiDance.DanceState シュポガキダンスの状態
+---@class (exact) Character15a.SyupogakiDance シュポガキダンスを制御するクラス
+---@field public danceState Character15a.SyupogakiDance.DanceState シュポガキダンスの状態
 ---@field package isHost boolean このアバターが親かどうか
 ---@field package offsetPos Vector3 ダンスを行う位置のオフセット
 ---@field package rot number ダンスをする際のアバターの向き
@@ -14,9 +14,9 @@
 ---@field package isRotating boolean ダンスの回転パートかどうか
 ---@field package cameraAdjustCount integer カメラの補正トランジションのタイミングを測るティック変数
 ---@field package isTipShowed boolean ヒント表示をしたかどうか
----@field package canPlayDance fun(self: SyupogakiDance): boolean シュポガキダンスが再生可能か（スタンバイ可能か）を返す。
----@field public standby fun(self: SyupogakiDance) シュポガキダンスをスタンバイ状態にする。
----@field public stop fun(self: SyupogakiDance) シュポガキダンスを終了する（スタンバイ状態を含む）。
+---@field package canPlayDance fun(self: Character15a.SyupogakiDance): boolean シュポガキダンスが再生可能か（スタンバイ可能か）を返す。
+---@field public standby fun(self: Character15a.SyupogakiDance) シュポガキダンスをスタンバイ状態にする。
+---@field public stop fun(self: Character15a.SyupogakiDance) シュポガキダンスを終了する（スタンバイ状態を含む）。
 local SyupogakiDance = {
     danceState = "NOT_STANDBY";
     isHost = false;
@@ -30,7 +30,7 @@ local SyupogakiDance = {
     isTipShowed = false;
 
     ---初期化関数
-    ---@param self SyupogakiDance
+    ---@param self Character15a.SyupogakiDance
     init = function (self)
         if host:isHost() then
             KeyManager:register("syupogaki_dance", "Syupogaki Dance", "key.keyboard.v"):onPress(function ()
@@ -53,7 +53,7 @@ local SyupogakiDance = {
     end;
 
     ---シュポガキダンスが再生可能か（スタンバイ可能か）を返す。
-    ---@param self SyupogakiDance
+    ---@param self Character15a.SyupogakiDance
     ---@return boolean canPlayDance シュポガキダンスが再生可能かどうか
     canPlayDance = function (self)
         local firstCheck = player:getPose() == "STANDING" and not player:isMoving() and player:isOnGround() and not player:isInWater() and not player:isInLava() and player:getFrozenTicks() == 0 and not renderer:isFirstPerson() and player:getSwingArm() == nil and player:getActiveItem().id == "minecraft:air" and ExSkill.transitionCount == 0
@@ -70,7 +70,7 @@ local SyupogakiDance = {
     end;
 
     ---シュポガキダンスをスタンバイ状態にする。
-    ---@param self SyupogakiDance
+    ---@param self Character15a.SyupogakiDance
     standby = function (self)
         animations["models.main"]["syupogaki_dance_standby"]:play()
         Physics:disable()
@@ -206,7 +206,7 @@ local SyupogakiDance = {
     end;
 
     ---シュポガキダンスを終了する（スタンバイ状態を含む）。
-    ---@param self SyupogakiDance
+    ---@param self Character15a.SyupogakiDance
     stop = function (self)
         events.TICK:remove("syupogaki_dance_tick")
         events.RENDER:remove("syupogaki_dance_render")

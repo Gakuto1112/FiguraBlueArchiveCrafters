@@ -1,12 +1,12 @@
----@class TankShellManager : SpawnObjectManager 視覚的な砲弾オブジェクトを管理するクラス
----@field public new fun(): TankShellManager コンストラクタ
----@field public getObject fun(self: TankShellManager, startPos: Vector3, rot: Vector3): TankShell 砲弾のインスタンスを生成して返す
----@field public spawn fun(self: TankShellManager, startPos: Vector3, rot: Vector3) 砲弾をスポーンさせる
+---@class Character19b.TankShellManager : SpawnObjectManager 視覚的な砲弾オブジェクトを管理するクラス
+---@field public new fun(): Character19b.TankShellManager コンストラクタ
+---@field public getObject fun(self: Character19b.TankShellManager, startPos: Vector3, rot: Vector3): Character19b.TankShell 砲弾のインスタンスを生成して返す
+---@field public spawn fun(self: Character19b.TankShellManager, startPos: Vector3, rot: Vector3) 砲弾をスポーンさせる
 local TankShellManager = {
     ---コンストラクタ
-    ---@return TankShellManager
+    ---@return Character19b.TankShellManager
     new = function ()
-        ---@type TankShellManager
+        ---@type Character19b.TankShellManager
         local instance = MiscUtils.instantiate(TankShellManager, SpawnObjectManager)
 
         instance.managerName = "tank_shell"
@@ -23,13 +23,13 @@ local TankShellManager = {
     ---砲弾のインスタンスを生成して返す。
     ---@param startPos Vector3 砲弾の出現位置
     ---@param rot Vector3 砲弾が飛んでいく方向
-    ---@return  TankShell instance 生成したインスタンス
+    ---@return  Character19b.TankShell instance 生成したインスタンス
     getObject = function (_, startPos, rot)
         return TankShell.new(startPos, rot)
     end;
 
     ---砲弾をスポーンさせる。
-    ---@param self TankShellManager
+    ---@param self Character19b.TankShellManager
     ---@param startPos Vector3 砲弾の出現位置
     ---@param rot Vector3 砲弾が飛んでいく方向
     spawn = function (self, startPos, rot)

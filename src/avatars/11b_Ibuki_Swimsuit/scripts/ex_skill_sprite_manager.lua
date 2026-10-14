@@ -1,10 +1,10 @@
----@class (exact) ExSkillSpriteManager : SpawnObjectManager Exスキル内で使用するスプライトのオブジェクトのマネージャークラス
----@field public objects ExSkillSprite[] インスタンスで制御するオブジェクト
+---@class (exact) Character11b.ExSkillSpriteManager : SpawnObjectManager Exスキル内で使用するスプライトのオブジェクトのマネージャークラス
+---@field public objects Character11b.ExSkillSprite[] インスタンスで制御するオブジェクト
 ExSkillSpriteManager = {
     ---コンストラクタ
-    ---@return ExSkillSpriteManager
+    ---@return Character11b.ExSkillSpriteManager
     new = function ()
-        ---@type ExSkillSpriteManager
+        ---@type Character11b.ExSkillSpriteManager
         local instance = MiscUtils.instantiate(ExSkillSpriteManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_sprite"
@@ -22,14 +22,14 @@ ExSkillSpriteManager = {
     ---@param lifetime integer このインスタンスを破棄するまでの時間
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
     ---@param speedFactor number 速度の変化係数
-    ---@return ExSkillSprite instance 生成したインスタンス
+    ---@return Character11b.ExSkillSprite instance 生成したインスタンス
     getObject = function (_, target, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
         ---@diagnostic disable-next-line: missing-parameter
         return ExSkillSprite.new(target, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
     end;
 
     ---Exスキルフレームのパーティクルをスポーンさせる。
-    ---@param self ExSkillSpriteManager
+    ---@param self Character11b.ExSkillSpriteManager
     ---@param target ModelPart インスタンスオブジェクトをアタッチする親モデル
     ---@param pos Vector3 オブジェクトをスポーンさせる位置
     ---@param velocity Vector3 オブジェクトの移動速度

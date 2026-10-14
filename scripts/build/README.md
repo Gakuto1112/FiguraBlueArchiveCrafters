@@ -29,6 +29,17 @@ The structure of the template file is almost identical to that of `avatar.json`,
 | COSTUME_NAME | Character's costume name <br> Including parentheses ("()"). It will be an empty string for the default costume. | `(Swimsuit)`, `(Tracksuit)`, ... | name, description |
 <!-- markdownlint-enable MD033 -->
 
+#### Type Definitions (`core/types`)
+
+[`/src/core/types`](../../src/core/types/) holds Lua Language Server type definitions (`---@meta`) only.
+It is outside any `scripts` directory, so it is not copied into the built avatar.
+
+- `blue_archive_character.lua` defines the abstract `BlueArchiveCharacter` class and the common structures. It contains no character-specific enum values.
+- Each character's `blue_archive_character.lua` declares `---@class (exact) Character<ID> : BlueArchiveCharacter` (e.g. `Character23a`) and attaches it to the sheet with `---@type Character<ID>`.
+- Character-specific enum values (eye/mouth textures, additional arm states) are declared as `Character<ID>.RightEyeTextures` etc. and applied through the derived `Character<ID>.*Struct` classes, so completion in one character never offers another character's values.
+- Every `---@class` / `---@alias` under `/src/avatars` must start with `Character<ID>`, including helper scripts (e.g. `Character11a.ExSkillSprite`), even when the same helper exists in several characters. This is checked by `scripts/test/test_character_types.py`.
+- When creating a new character from `00a_Base`, rename every `Character00a` to the new `Character<ID>`.
+
 ### Character-Specific Part
 
 The character-specific part refers to the resources specifically implemented for a particular character based on the core.

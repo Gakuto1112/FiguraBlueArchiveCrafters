@@ -1,4 +1,4 @@
----@class (exact) FadingBlockManager : SpawnObjectManager Exスキル3で使用する消えるブロックを管理するクラス
+---@class (exact) Character20c.FadingBlockManager : SpawnObjectManager Exスキル3で使用する消えるブロックを管理するクラス
 local FadingBlockManager = {
 
 	---コンストラクタ

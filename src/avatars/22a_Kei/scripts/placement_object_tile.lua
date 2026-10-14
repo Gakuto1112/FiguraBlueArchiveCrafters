@@ -1,4 +1,4 @@
----@class (exact) PlacementObjectTile : SpawnObject 設置物で使用するタイルオブジェクトのクラス
+---@class (exact) Character22a.PlacementObjectTile : SpawnObject 設置物で使用するタイルオブジェクトのクラス
 ---@field package object ModelPart インスタンスで制御するモデル
 ---@field package target ModelPart インスタンスオブジェクトをアタッチする親モデル
 ---@field package currentPos Vector3 タイルの現在位置
@@ -9,7 +9,7 @@
 ---@field package shouldFadeOut boolean タイルが消える前にフェードアウトさせるかどうか
 ---@field package baseOpacity number タイルの基礎透明度
 ---@field package dummy boolean ダミーモード（透明度100でオブジェクト生成）
----@field public new fun(target: ModelPart, pos: Vector3, rot: Vector3, color: Vector3, lifetime: integer, shouldFadeOut: boolean, dummy: boolean): PlacementObjectTile コンストラクター
+---@field public new fun(target: ModelPart, pos: Vector3, rot: Vector3, color: Vector3, lifetime: integer, shouldFadeOut: boolean, dummy: boolean): Character22a.PlacementObjectTile コンストラクター
 local PlacementObjectTile = {
     ---コンストラクタ
     ---@param target ModelPart インスタンスオブジェクトをアタッチする親モデル
@@ -19,9 +19,9 @@ local PlacementObjectTile = {
     ---@param lifetime integer タイルの表示時間
     ---@param shouldFadeOut boolean タイルをフェードアウトさせるまでの時間。負の数で無効化。
     ---@param dummy boolean ダミーモード（透明度100でオブジェクト生成）
-    ---@return PlacementObjectTile
+    ---@return Character22a.PlacementObjectTile
     new = function (target, pos, rot, color, lifetime, shouldFadeOut, dummy)
-        ---@type PlacementObjectTile
+        ---@type Character22a.PlacementObjectTile
         local instance = MiscUtils.instantiate(PlacementObjectTile, SpawnObject)
 
         instance.target = target
@@ -36,7 +36,7 @@ local PlacementObjectTile = {
         instance.dummy = dummy
 
         instance.callbacks = {
-            ---@param self PlacementObjectTile
+            ---@param self Character22a.PlacementObjectTile
             onInit = function (self)
                 if not self.dummy then
                     self.target:addChild(self.object)
@@ -49,7 +49,7 @@ local PlacementObjectTile = {
                 self.object:setVisible(true)
             end;
 
-            ---@param self PlacementObjectTile
+            ---@param self Character22a.PlacementObjectTile
             onDeinit = function (self)
                 if not self.dummy then
                     self.target:removeChild(self.object)
@@ -57,7 +57,7 @@ local PlacementObjectTile = {
                 self.object:remove()
             end;
 
-            ---@param self PlacementObjectTile
+            ---@param self Character22a.PlacementObjectTile
             onTick = function (self)
                 --オブジェクトの位置を強制更新
                 self.object:setPos(self.nextPos)
@@ -77,7 +77,7 @@ local PlacementObjectTile = {
                 self.lifetimeCount = self.lifetimeCount - 1
             end;
 
-            ---@param self PlacementObjectTile
+            ---@param self Character22a.PlacementObjectTile
             onRender = function (self, delta)
                 self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos))
             end;

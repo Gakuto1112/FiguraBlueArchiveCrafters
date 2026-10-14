@@ -1,10 +1,10 @@
----@class (exact) SubGun 臨戦衣装の拳銃を制御するクラス
+---@class (exact) Character07c.SubGun 臨戦衣装の拳銃を制御するクラス
 ---@field public hasSubGun boolean サブハンドガンを持っているかどうか
 local SubGun = {
     hasSubGun = false;
 
     ---サブハンドガンを有効にする。
-    ---@param self SubGun
+    ---@param self Character07c.SubGun
     enable = function (self)
         events.TICK:register(function ()
             if Gun.currentGunPosition ~= "NONE" then
@@ -56,7 +56,7 @@ local SubGun = {
     end;
 
     ---サブハンドガンを無効にする。
-    ---@param self SubGun
+    ---@param self Character07c.SubGun
     disable = function (self)
         events.TICK:remove("sun_gun_tick")
         events.ITEM_RENDER:remove("sun_gun_item_render")

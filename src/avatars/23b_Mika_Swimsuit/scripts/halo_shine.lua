@@ -1,4 +1,4 @@
----@class (exact) HaloShine : SpawnObject ヘイローのキラキラエフェクトオブジェクトのクラス
+---@class (exact) Character23b.HaloShine : SpawnObject ヘイローのキラキラエフェクトオブジェクトのクラス
 ---@field package object ModelPart インスタンスで制御するモデル
 ---@field package posOffset Vector3 オブジェクトの基準位置からの位置オフセット値
 ---@field package uvOffset Vector2 白いパーティクルからの相対UVオフセット値
@@ -7,7 +7,7 @@
 ---@field package shineLength integer キラキラエフェクトを表示する時間
 ---@field package flickerCount integer キラキラエフェクトの揺らめきを示すカウンター
 ---@field package flickerLength integer キラキラエフェクトの揺らめきの長さ
----@field public new fun(target: ModelPart, uvOffset: Vector2): HaloShine コンストラクタ
+---@field public new fun(target: ModelPart, uvOffset: Vector2): Character23b.HaloShine コンストラクタ
 
 local HaloShine = {
 	---コンストラクタ
@@ -27,14 +27,14 @@ local HaloShine = {
 		instance.flickerLength = 0
 
 		instance.callbacks = {
-			---@param self HaloShine
+			---@param self Character23b.HaloShine
 			onInit = function (self)
 				self.object:setVisible(false)
 				self.object:setPos(self.posOffset:copy():scale(-1))
 				self.object:setUVPixels(self.uvOffset:copy():scale(-1))
 			end;
 
-			---@param self HaloShine
+			---@param self Character23b.HaloShine
 			onTick = function (self)
 				if self.shineCount == 0 then
 					if self.isShineVisible then
@@ -68,7 +68,7 @@ local HaloShine = {
 				end
 			end;
 
-			---@param self HaloShine
+			---@param self Character23b.HaloShine
 			onRender = function (self, delta)
 				if self.isShineVisible then
 					local trueTick = self.shineCount + delta

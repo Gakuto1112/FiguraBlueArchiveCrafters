@@ -1,4 +1,4 @@
----@class (exact) Meteor : SpawnObject 隕石のオブジェクトクラス
+---@class (exact) Character23a.Meteor : SpawnObject 隕石のオブジェクトクラス
 ---@field package object ModelPart インスタンスで制御するモデルパーツ
 ---@field package currentPos Vector3 隕石の現在のティックの位置
 ---@field package nextPos Vector3 隕石の次のティックの位置
@@ -12,7 +12,7 @@ local Meteor = {
 	---コンストラクタ
 	---@param targetPos Vector3 隕石を落とす目標座標
 	new = function (targetPos)
-		---@type Meteor
+		---@type Character23a.Meteor
 		local instance = MiscUtils.instantiate(Meteor, SpawnObject)
 
 		instance.object = ModelUtils:copyModel(models.models.meteor.Meteor, instance.uuid, true)
@@ -26,20 +26,20 @@ local Meteor = {
 		instance.strikeCount = -1
 
 		instance.callbacks = {
-			---@param self Meteor
+			---@param self Character23a.Meteor
 			onInit = function (self)
 				models.script_meteor:addChild(self.object)
 				self.object:setVisible(true)
 				self.object.ExplosionEffect:setScale(0, 0, 0)
 			end;
 
-			---@param self Meteor
+			---@param self Character23a.Meteor
 			onDeinit = function (self)
 				models.script_meteor:removeChild(self.object)
 				self.object:remove()
 			end;
 
-			---@param self Meteor
+			---@param self Character23a.Meteor
 			onTick = function (self)
 				if not self.isHit then
 					--オブジェクトの位置を強制更新
@@ -71,7 +71,7 @@ local Meteor = {
 
 			end;
 
-			---@param self Meteor
+			---@param self Character23a.Meteor
 			onRender = function (self, delta)
 				if not self.isHit then
 					self.object:setPos(self.nextPos:copy():sub(self.currentPos):scale(delta):add(self.currentPos):scale(16))
@@ -89,7 +89,7 @@ local Meteor = {
 	end;
 
 	---隕石を爆発させる。
-	---@param self Meteor
+	---@param self Character23a.Meteor
 	---@param hitPos Vector3 隕石が当たった座標
 	strike = function (self, hitPos)
 		self.object:setPos(hitPos:copy():scale(16))

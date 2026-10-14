@@ -1,4 +1,4 @@
----@class (exact) MachineGun ヒナのマシンガンを制御するクラス
+---@class (exact) Character20b.MachineGun ヒナのマシンガンを制御するクラス
 ---@field package isCharging boolean 弦引き中かどうか
 ---@field package animationLength integer アニメーションの長さ
 ---@field package chargePercent number マシンガンのチャージ割合
@@ -14,7 +14,7 @@ local MachineGun = {
     exSkillIsHolding = false;
 
     ---初期化関数
-    ---@param self MachineGun
+    ---@param self Character20b.MachineGun
     init = function (self)
         events.TICK:register(function ()
             if not client:isPaused() then

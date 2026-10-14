@@ -1,10 +1,10 @@
----@class (exact) PieThrowing パイ投げのアニメーションを制御するクラス
+---@class (exact) Character24a.PieThrowing パイ投げのアニメーションを制御するクラス
 ---@field package animationTick integer パイ投げのアニメーションのタイミングを測るカウンター。-1はアニメーションが停止していることを表す。
 local PieThrowing = {
 	animationTick = -1;
 
 	---パイ投げのアニメーションを再生する。
-	---@param self PieThrowing
+	---@param self Character24a.PieThrowing
 	play = function (self)
 		ModelAlias.alias.avatar.rightArmBottom.Pie:setVisible(true)
 		for _, modelName in ipairs({"models.main", "models.pie"}) do
@@ -49,7 +49,7 @@ local PieThrowing = {
 	end;
 
 	---パイ投げのアニメーションを停止する。
-	---@param self PieThrowing
+	---@param self Character24a.PieThrowing
 	stop = function (self)
 		events.TICK:remove("pie_throwing_tick")
 
@@ -69,7 +69,7 @@ local PieThrowing = {
 	end;
 
 	---パイ投げのアニメーションが再生中かどうかを返す。
-	---@param self PieThrowing
+	---@param self Character24a.PieThrowing
 	---@return boolean isPlaying パイ投げのアニメーションが再生中かどうか
 	getIsAnimationPlaying = function (self)
 		return self.animationTick ~= -1

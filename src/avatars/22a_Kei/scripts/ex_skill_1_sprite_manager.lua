@@ -1,12 +1,12 @@
----@class (exact) ExSkill1SpriteManager : SpawnObjectManager Exスキル内で使用するスプライトのオブジェクトのマネージャークラス
+---@class (exact) Character22a.ExSkill1SpriteManager : SpawnObjectManager Exスキル内で使用するスプライトのオブジェクトのマネージャークラス
 ---@field public objects ExSkillSprite[] インスタンスで制御するオブジェクト
----@field public getObject fun(self: ExSkill1SpriteManager, target: ModelPart, pos: Vector3): ExSkill1Sprite Exスキルフレームのパーティクルのインスタンスを生成して返す
----@field public spawn fun(self: ExSkill1SpriteManager, target: ModelPart, pos: Vector3) Exスキルフレームのパーティクルをスポーンさせる
+---@field public getObject fun(self: Character22a.ExSkill1SpriteManager, target: ModelPart, pos: Vector3): Character22a.ExSkill1Sprite Exスキルフレームのパーティクルのインスタンスを生成して返す
+---@field public spawn fun(self: Character22a.ExSkill1SpriteManager, target: ModelPart, pos: Vector3) Exスキルフレームのパーティクルをスポーンさせる
 local ExSkill1SpriteManager = {
     ---コンストラクタ
-    ---@return ExSkill1SpriteManager
+    ---@return Character22a.ExSkill1SpriteManager
     new = function ()
-        ---@type ExSkill1SpriteManager
+        ---@type Character22a.ExSkill1SpriteManager
         local instance = MiscUtils.instantiate(ExSkill1SpriteManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_sprite"
@@ -23,7 +23,7 @@ local ExSkill1SpriteManager = {
     end;
 
     ---Exスキルフレームのパーティクルをスポーンさせる。
-    ---@param self ExSkill1SpriteManager
+    ---@param self Character22a.ExSkill1SpriteManager
     ---@param target ModelPart インスタンスオブジェクトをアタッチする親モデル
     ---@param pos Vector3 オブジェクトをスポーンさせる位置
     spawn = function (self, target, pos)

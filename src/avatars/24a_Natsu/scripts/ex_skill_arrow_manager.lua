@@ -1,12 +1,12 @@
----@class (exact) ExSkillArrowManager : SpawnObjectManager Exスキルアニメーションで使用する矢のオブジェクトのマネージャークラス
----@field public objects ExSkillArrow[] インスタンスで制御するオブジェクト
----@field public getObject fun(self: ExSkillArrowManager, pos: Vector3, velocity: Vector3): ExSkillArrow Exスキルアニメーションで使用する矢のオブジェクトインスタンスを生成して返す
----@field public spawn fun(self: ExSkillArrowManager, pos: Vector3, velocity: Vector3) Exスキルアニメーションで使用する矢のオブジェクトをスポーンさせる
+---@class (exact) Character24a.ExSkillArrowManager : SpawnObjectManager Exスキルアニメーションで使用する矢のオブジェクトのマネージャークラス
+---@field public objects Character24a.ExSkillArrow[] インスタンスで制御するオブジェクト
+---@field public getObject fun(self: Character24a.ExSkillArrowManager, pos: Vector3, velocity: Vector3): Character24a.ExSkillArrow Exスキルアニメーションで使用する矢のオブジェクトインスタンスを生成して返す
+---@field public spawn fun(self: Character24a.ExSkillArrowManager, pos: Vector3, velocity: Vector3) Exスキルアニメーションで使用する矢のオブジェクトをスポーンさせる
 local ExSkillArrowManager = {
 	---コンストラクタ
-	---@return ExSkillArrowManager
+	---@return Character24a.ExSkillArrowManager
 	new = function ()
-		---@type ExSkillArrowManager
+		---@type Character24a.ExSkillArrowManager
 		local instance = MiscUtils.instantiate(ExSkillArrowManager, SpawnObjectManager)
 
 		instance.managerName = "ex_skill_arrow"
@@ -23,13 +23,13 @@ local ExSkillArrowManager = {
 	---Exスキルアニメーションで使用する矢のオブジェクトインスタンスを生成して返す
 	---@param pos Vector3 矢のオプジェクトをスポーンさせるワールド位置
 	---@param velocity Vector3 矢のオブジェクトの初速
-	---@return ExSkillArrow instance 生成したインスタンス
+	---@return Character24a.ExSkillArrow instance 生成したインスタンス
 	getObject = function (_, pos, velocity)
 		return ExSkillArrow.new(pos, velocity)
 	end;
 
     ---Exスキルアニメーションで使用する矢のオブジェクトをスポーンさせる
-	---@param self ExSkillArrowManager
+	---@param self Character24a.ExSkillArrowManager
 	---@param pos Vector3 矢のオブジェクトをスポーンさせるワールド位置
 	---@param velocity Vector3 矢のオブジェクトの初速
     spawn = function (self, pos, velocity)

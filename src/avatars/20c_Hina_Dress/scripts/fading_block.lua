@@ -1,4 +1,4 @@
----@class (exact) FadingBlock : SpawnObject Exスキル3で使用する消えるブロックのクラス
+---@class (exact) Character20c.FadingBlock : SpawnObject Exスキル3で使用する消えるブロックのクラス
 ---@field package object BlockTask インスタンスで制御するオブジェクト
 ---@field package shineBlockObject? ModelPart 輝くブロックのモデルパーツ
 ---@field package pos Vector3 このブロックの座標（親モデルパーツ基準）
@@ -24,14 +24,14 @@ local FadingBlock = {
 		instance.shineTime = shineTime and shineTime or 100
 
 		instance.callbacks = {
-			---@param self FadingBlock
+			---@param self Character20c.FadingBlock
 			onInit = function (self)
 				self.object:setBlock(block .. (blockProperty ~= nil and blockProperty or ""))
 				self.object:setPos(self.pos:copy():scale(16))
 				self.object:setLight(0, 7)
 			end;
 
-			---@param self FadingBlock
+			---@param self Character20c.FadingBlock
 			onDeinit = function (self)
 				self.object:remove()
 				if self.shineBlockObject ~= nil then
@@ -40,7 +40,7 @@ local FadingBlock = {
 				end
 			end;
 
-			---@param self FadingBlock
+			---@param self Character20c.FadingBlock
 			onTick = function (self)
 				if self.lifetime == 0 then
 					self.object:remove()
@@ -65,7 +65,7 @@ local FadingBlock = {
 				self.lifetime = self.lifetime - 1
 			end;
 
-			---@param self FadingBlock
+			---@param self Character20c.FadingBlock
 			---@param delta number
 			onRender = function (self, delta)
 				if self.shineBlockObject ~= nil then

@@ -1,12 +1,12 @@
----@class (exact) PieManager : SpawnObjectManager 投げるパイオブジェクトのマネージャークラス
----@field public objects Pie[] インスタンスで制御するオブジェクト
----@field public getObject fun(self: PieManager, startPos: Vector3): Pie 投げるパイオブジェクトインスタンスを生成して返す
----@field public spawn fun(self: PieManager, startPos: Vector3) 投げるパイオブジェクトをスポーンさせる
+---@class (exact) Character24a.PieManager : SpawnObjectManager 投げるパイオブジェクトのマネージャークラス
+---@field public objects Character24a.Pie[] インスタンスで制御するオブジェクト
+---@field public getObject fun(self: Character24a.PieManager, startPos: Vector3): Character24a.Pie 投げるパイオブジェクトインスタンスを生成して返す
+---@field public spawn fun(self: Character24a.PieManager, startPos: Vector3) 投げるパイオブジェクトをスポーンさせる
 local PieManager = {
 	---コンストラクタ
-	---@return PieManager
+	---@return Character24a.PieManager
 	new = function ()
-		---@type PieManager
+		---@type Character24a.PieManager
 		local instance = MiscUtils.instantiate(PieManager, SpawnObjectManager)
 
 		instance.managerName = "pie"
@@ -22,13 +22,13 @@ local PieManager = {
 
 	---パイオブジェクトインスタンスを生成して返す
 	---@param startPos Vector3 パイオブジェクトをスポーンさせるワールド位置
-	---@return Pie instance 生成したインスタンス
+	---@return Character24a.Pie instance 生成したインスタンス
 	getObject = function (_, startPos)
 		return Pie.new(startPos)
 	end;
 
     ---パイオブジェクトをスポーンさせる
-	---@param self PieManager
+	---@param self Character24a.PieManager
 	---@param startPos Vector3 パイオブジェクトをスポーンさせるワールド位置
     spawn = function (self, startPos)
         SpawnObjectManager.spawn(self, startPos)

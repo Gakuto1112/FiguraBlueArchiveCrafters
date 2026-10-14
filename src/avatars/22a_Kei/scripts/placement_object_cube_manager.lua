@@ -1,12 +1,12 @@
----@class (exact) PlacementObjectCubeManager : SpawnObjectManager 設置物で使用するキューブのオブジェクトのマネージャークラス
----@field public objects PlacementObjectCube[] インスタンスで制御するオブジェクト
----@field public getObject fun(self: PlacementObjectCubeManager, target: ModelPart, pos: Vector3, color: Vector3): PlacementObjectCube 設置物キューブのインスタンスを生成して返す
----@field public spawn fun(self: PlacementObjectCubeManager, target: ModelPart, pos: Vector3, color: Vector3) 設置物キューブをスポーンさせる
+---@class (exact) Character22a.PlacementObjectCubeManager : SpawnObjectManager 設置物で使用するキューブのオブジェクトのマネージャークラス
+---@field public objects Character22a.PlacementObjectCube[] インスタンスで制御するオブジェクト
+---@field public getObject fun(self: Character22a.PlacementObjectCubeManager, target: ModelPart, pos: Vector3, color: Vector3): Character22a.PlacementObjectCube 設置物キューブのインスタンスを生成して返す
+---@field public spawn fun(self: Character22a.PlacementObjectCubeManager, target: ModelPart, pos: Vector3, color: Vector3) 設置物キューブをスポーンさせる
 local PlacementObjectCubeManager = {
     ---コンストラクタ
-    ---@return PlacementObjectCubeManager
+    ---@return Character22a.PlacementObjectCubeManager
     new = function ()
-        ---@type PlacementObjectCubeManager
+        ---@type Character22a.PlacementObjectCubeManager
         local instance = MiscUtils.instantiate(PlacementObjectCubeManager, SpawnObjectManager)
 
         instance.managerName = "placement_object_cube"
@@ -24,7 +24,7 @@ local PlacementObjectCubeManager = {
     end;
 
     ---設置物キューブをスポーンさせる。
-    ---@param self PlacementObjectCubeManager
+    ---@param self Character22a.PlacementObjectCubeManager
     ---@param target ModelPart インスタンスオブジェクトをアタッチする親モデル
     ---@param pos Vector3 オブジェクトをスポーンさせる位置
     ---@param color Vector3 キューブの色

@@ -6,8 +6,8 @@
 ---| "CROSSBOW" # クロスボウ装填中
 
 ---@class (exact) Arms.ArmStateSet 腕の状態を示すセット
----@field public right Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState 右腕の状態
----@field public left Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState 左腕の状態
+---@field public right Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState|string 右腕の状態
+---@field public left Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState|string 左腕の状態
 
 ---@class (exact) Arms アバターの腕を制御するクラス
 ---@field public armState Arms.ArmStateSet 腕の状態：0. バニラ状態, 1. 銃を構えている際の、銃を構えている方の腕, 2. 銃を構えている際の、銃を構えていない方の腕, 3. クロスボウ装填中
@@ -48,8 +48,8 @@ local Arms = {
 
     ---腕の状態を設定する。
     ---@param self Arms
-    ---@param right? (Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState)? 右腕の状態
-    ---@param left? (Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState)? 左腕の状態
+    ---@param right? (Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState|string)? 右腕の状態
+    ---@param left? (Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState|string)? 左腕の状態
     setArmState = function (self, right, left)
         if right ~= nil then
             self.armState.right = right
@@ -128,7 +128,7 @@ local Arms = {
 
     ---右腕のティック処理を登録する。
     ---@param self Arms
-    ---@param state Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState 腕の状態
+    ---@param state Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState|string 腕の状態
     registerRightArmTickEvent = function (self, state)
         if state == "GUN_MAIN_HAND" then
             events.TICK:register(function ()
@@ -163,7 +163,7 @@ local Arms = {
 
     ---右腕のレンダー処理を登録する。
     ---@param self Arms
-    ---@param state Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState 腕の状態
+    ---@param state Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState|string 腕の状態
     registerRightArmRenderEvent = function (self, state)
         if state == "GUN_MAIN_HAND" then
             events.RENDER:register(function (delta)
@@ -182,7 +182,7 @@ local Arms = {
 
     ---左腕のティック処理を登録する。
     ---@param self Arms
-    ---@param state Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState 腕の状態
+    ---@param state Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState|string 腕の状態
     registerLeftArmTickEvent = function (self, state)
         if state == "GUN_MAIN_HAND" then
             events.TICK:register(function ()
@@ -217,7 +217,7 @@ local Arms = {
 
     ---左腕のレンダー処理を登録する。
     ---@param self Arms
-    ---@param state Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState 腕の状態
+    ---@param state Arms.BaseArmState|BlueArchiveCharacter.AdditionalArmState|string 腕の状態
     registerLeftArmRenderEvent = function (self, state)
         if state == "GUN_MAIN_HAND" then
             events.RENDER:register(function (delta)
