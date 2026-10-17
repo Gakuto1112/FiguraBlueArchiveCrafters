@@ -37,6 +37,14 @@ The test also fails in the following cases:
 - [`src/core/scripts/action_wheel/update_checker.lua`](../../src/core/scripts/action_wheel/update_checker.lua) does not exist.
 - The `UpdateChecker.AVATAR_VERSION` field is not defined.
 
+### BlueArchiveCharacter type annotation test
+
+Checks that the shared type definitions are in [`src/core/types/blue_archive_character.lua`](../../src/core/types/blue_archive_character.lua), outside the build scripts directory, and that the file starts with `---@meta`.
+
+It also checks that character-specific `---@class` and `---@alias` declarations use the `Character<ID>` namespace without redeclaring shared types, each `blue_archive_character.lua` declares exactly one `Character<ID> : BlueArchiveCharacter` class and applies it to the character sheet, and character-specific global variables start with `Character<ID>_`.
+
+The test fails if declarations are duplicated between characters or if any of these requirements are not met.
+
 ## Environment setup and execution
 
 The following steps show how to clone this repository and actually build an avatar.
@@ -75,6 +83,12 @@ The command examples in the steps are based on Mac/Linux.
 
      ```bash
      uv run python -m test.test_avatar_version ${release_tag_name}
+     ```
+
+   - For the character type test:
+
+     ```bash
+     uv run python -m test.test_character_types
      ```
 
 If you use [Visual Studio Code]((https://code.visualstudio.com)), you can also run tests from the Testing view on the left.\

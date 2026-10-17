@@ -39,6 +39,14 @@
 - [`src/core/scripts/action_wheel/update_checker.lua`](../../src/core/scripts/action_wheel/update_checker.lua)が存在しない。
 - `UpdateChecker.AVATAR_VERSION`フィールドが定義されていない。
 
+### BlueArchiveCharacter型アノテーションテスト
+
+共通型定義がビルド対象外の[`src/core/types/blue_archive_character.lua`](../../src/core/types/blue_archive_character.lua)にあり、ファイルが`---@meta`で始まるかテストします。
+
+また、キャラクター固有の`---@class`/`---@alias`が`Character<ID>`名前空間を使用し、共通型を再宣言していないこと、各`blue_archive_character.lua`が`Character<ID> : BlueArchiveCharacter`を1つだけ宣言してキャラクターシート本体に適用していること、キャラクター固有のグローバル変数が`Character<ID>_`で始まることをテストします。
+
+キャラクター間で宣言名が重複している場合や、これらの条件を満たさない場合はテスト失敗です。
+
 ## 環境構築及び実行手順
 
 本レポジトリをクローンし、実際にアバターをビルドするまでの手順を示します。
@@ -77,6 +85,12 @@
 
      ```bash
      uv run python -m test.test_avatar_version ${release_tag_name}
+     ```
+
+   - キャラクター型テストの場合
+
+     ```bash
+     uv run python -m test.test_character_types
      ```
 
 また、[Visual Studio Code](https://code.visualstudio.com)を使用する場合は、画面左のテストタブからテストを容易に実行できます。\
