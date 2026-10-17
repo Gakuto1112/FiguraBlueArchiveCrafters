@@ -7,7 +7,7 @@ local ExSkillShootingStarManager = {
 	---@return Character23b.ExSkillShootingStarManager
 	new = function ()
 		---@type Character23b.ExSkillShootingStarManager
-		local instance = MiscUtils.instantiate(ExSkillShootingStarManager, SpawnObjectManager)
+		local instance = MiscUtils.instantiate(Character23b_ExSkillShootingStarManager, SpawnObjectManager)
 
 		instance.managerName = "ex_skill_shooting_star"
 
@@ -19,7 +19,7 @@ local ExSkillShootingStarManager = {
 	---@param dir Vector3 流れ星を流す方向
 	---@return Character23b.ExSkillShootingStar instance 生成したインスタンス
 	getObject = function (_, pos, dir)
-		return ExSkillShootingStar.new(pos, dir)
+		return Character23b_ExSkillShootingStar.new(pos, dir)
 	end;
 
     ---流れ星パーティクルをスポーンさせる。

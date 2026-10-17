@@ -19,7 +19,7 @@ local Pie = {
 	---@param startPos Vector3 スポーンさせるパイの初期ワールド位置
 	new = function (startPos)
 		---@type Character24a.Pie
-		local instance = MiscUtils.instantiate(Pie, SpawnObject)
+		local instance = MiscUtils.instantiate(Character24a_Pie, SpawnObject)
 
 		instance.BULGE = 2
 		instance.BOUNDING_LENGTH = 10

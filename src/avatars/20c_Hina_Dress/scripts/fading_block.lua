@@ -14,7 +14,7 @@ local FadingBlock = {
 	---@param shouldShine boolean `lifetime`が0になったときに光って消えるかどうか
 	---@param shineTime? integer ブロックが輝く時間
 	new = function (pos, block, blockProperty, lifetime, shouldShine, shineTime)
-		local instance = MiscUtils.instantiate(FadingBlock, SpawnObject)
+		local instance = MiscUtils.instantiate(Character20c_FadingBlock, SpawnObject)
 
 		instance.object = models.script_fading_block_area:newBlock(instance.uuid)
 		instance.shineBlockObject = nil

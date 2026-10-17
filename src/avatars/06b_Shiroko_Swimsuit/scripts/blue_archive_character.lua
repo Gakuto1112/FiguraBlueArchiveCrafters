@@ -129,24 +129,24 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmStateChanged = function (_, right, left)
 				if left == "GUN_OFF_HAND" and right == "GUN_MAIN_HAND" then
-					if Drone.dronePosition ~= "NONE" then
+					if Character06b_Drone.dronePosition ~= "NONE" then
 						return {right = "GUN_MAIN_HAND", left = "DRONE_HOLD"}
-					elseif Bicycle.bicycleEnabled then
+					elseif Character06b_Bicycle.bicycleEnabled then
 						return {right = "BICYCLE_GUN", left = "BICYCLE"}
 					end
 				elseif left == "GUN_MAIN_HAND" and right == "GUN_OFF_HAND" then
-					if Drone.dronePosition ~= "NONE" then
+					if Character06b_Drone.dronePosition ~= "NONE" then
 						return {right = "DRONE_HOLD", left = "GUN_MAIN_HAND"}
-					elseif Bicycle.bicycleEnabled then
+					elseif Character06b_Bicycle.bicycleEnabled then
 						return {right = "BICYCLE", left = "BICYCLE_GUN"}
 					end
 				elseif left == "DEFAULT" and right == "DEFAULT" then
-					if Drone ~= nil and Bicycle ~= nil then
-						if Drone.dronePosition == "RIGHT" then
+					if Character06b_Drone ~= nil and Character06b_Bicycle ~= nil then
+						if Character06b_Drone.dronePosition == "RIGHT" then
 							return {right = "DRONE", left = "DRONE_HOLD"}
-						elseif Drone.dronePosition == "LEFT" then
+						elseif Character06b_Drone.dronePosition == "LEFT" then
 							return {right = "DRONE_HOLD", left = "DRONE"}
-						elseif Bicycle.bicycleEnabled then
+						elseif Character06b_Bicycle.bicycleEnabled then
 							return {right = "BICYCLE", left = "BICYCLE"}
 						end
 					end
@@ -157,7 +157,7 @@ local BlueArchiveCharacter = {
 				if state == "GUN_MAIN_HAND" then
 					events.RENDER:register(function (_, context)
 						local isLeftHanded = player:isLeftHanded()
-						if Drone.dronePosition == "RIGHT" and isLeftHanded then
+						if Character06b_Drone.dronePosition == "RIGHT" and isLeftHanded then
 							local isSwingingArm = player:isSwingingArm() and isLeftHanded
 							ModelAlias.alias.avatar.rightArm:setParentType(context == "FIRST_PERSON" and "RightArm" or (isSwingingArm and "LeftArm" or "Body"))
 							if isSwingingArm then
@@ -167,7 +167,7 @@ local BlueArchiveCharacter = {
 					end, "right_arm_render")
 				elseif state == "GUN_OFF_HAND" then
 					events.TICK:register(function ()
-						if Bicycle.bicycleEnabled and animations["models.main"]["bicycle_idle"]:getTime() * 4 > 0 then
+						if Character06b_Bicycle.bicycleEnabled and animations["models.main"]["bicycle_idle"]:getTime() * 4 > 0 then
 							Arms:setArmState("BICYCLE", nil)
 						end
 					end, "right_arm_tick")
@@ -209,7 +209,7 @@ local BlueArchiveCharacter = {
 						local isSwingingArm = (player:isSwingingArm() and not isLeftHanded) or isUsingSpyglass
 						ModelAlias.alias.avatar.rightArm:setParentType((context == "FIRST_PERSON" or isSwingingArm) and "RightArm" or "Body")
 						local bicycleIdleFactor = 1 - animations["models.main"]["bicycle_idle"]:getTime() * 4
-						local currentHandleRot = (Bicycle.handleRot - Bicycle.handleRotPrev) * delta + Bicycle.handleRot
+						local currentHandleRot = (Character06b_Bicycle.handleRot - Character06b_Bicycle.handleRotPrev) * delta + Character06b_Bicycle.handleRot
 						ModelAlias.alias.avatar.rightArm:setRot(isSwingingArm and vectors.vec3(isUsingSpyglass and 40 or 20, 0, 0) or vectors.vec3(50 * (1 - bicycleIdleFactor) + 20, 8 * (1 - bicycleIdleFactor) + 8 * (currentHandleRot / 15), 0))
 					end, "right_arm_render")
 				elseif state == "BICYCLE_GUN" then
@@ -244,7 +244,7 @@ local BlueArchiveCharacter = {
 				if state == "GUN_MAIN_HAND" then
 					events.RENDER:register(function (_, context)
 						local isLeftHanded = player:isLeftHanded()
-						if Drone.dronePosition == "LEFT" and not isLeftHanded then
+						if Character06b_Drone.dronePosition == "LEFT" and not isLeftHanded then
 							local isSwingingArm = player:isSwingingArm() and not isLeftHanded
 							ModelAlias.alias.avatar.leftArm:setParentType(context == "FIRST_PERSON" and "LeftArm" or (isSwingingArm and "RightArm" or "Body"))
 							if isSwingingArm then
@@ -254,7 +254,7 @@ local BlueArchiveCharacter = {
 					end, "left_arm_render")
 				elseif state == "GUN_OFF_HAND" then
 					events.TICK:register(function ()
-						if Bicycle.bicycleEnabled and animations["models.main"]["bicycle_idle"]:getTime() * 4 > 0 then
+						if Character06b_Bicycle.bicycleEnabled and animations["models.main"]["bicycle_idle"]:getTime() * 4 > 0 then
 							Arms:setArmState(nil, "BICYCLE")
 						end
 					end, "left_arm_tick")
@@ -295,7 +295,7 @@ local BlueArchiveCharacter = {
 						local isSwingingArm = (player:isSwingingArm() and isLeftHanded) or isUsingSpyglass
 						ModelAlias.alias.avatar.leftArm:setParentType((context == "FIRST_PERSON" or isSwingingArm) and "LeftArm" or "Body")
 						local bicycleIdleFactor = 1 - animations["models.main"]["bicycle_idle"]:getTime() * 4
-						local currentHandleRot = (Bicycle.handleRot - Bicycle.handleRotPrev) * delta + Bicycle.handleRot
+						local currentHandleRot = (Character06b_Bicycle.handleRot - Character06b_Bicycle.handleRotPrev) * delta + Character06b_Bicycle.handleRot
 						ModelAlias.alias.avatar.leftArm:setRot(isSwingingArm and vectors.vec3(isUsingSpyglass and 40 or 20, 0, 0) or vectors.vec3(50 * (1 - bicycleIdleFactor) + 20, -8 * (1 - bicycleIdleFactor) + 8 * (currentHandleRot / 15), 0))
 					end, "left_arm_render")
 				elseif state == "BICYCLE_GUN" then
@@ -567,7 +567,7 @@ local BlueArchiveCharacter = {
 					elseif type == "QUESTION" then
 						FaceParts:setEmotion("NORMAL","NORMAL", "ANGRY", duration, true)
 					elseif type == "SWEAT" then
-						if not Bicycle.isTyreBurst then
+						if not Character06b_Bicycle.isTyreBurst then
 							FaceParts:setEmotion("NARROW_ANGRY", "NARROW_ANGRY", "ANGRY", duration, true)
 						else
 							FaceParts:setEmotion("SURPRISED", "SURPRISED", "ANGRY", 60, true)
@@ -684,22 +684,22 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---視覚的なミサイルオブジェクトのインスタンスクラス
 		---@type Character06b.DroneMissile
-		DroneMissile = require("scripts.drone_missile")
+		Character06b_DroneMissile = require("scripts.drone_missile")
 
 		---視覚的なミサイルオブジェクトのマネージャークラス
 		---@type Character06b.DroneMissileManager
-		DroneMissileManager = require("scripts.drone_missile_manager")
-		DroneMissileManager = DroneMissileManager.new()
+		Character06b_DroneMissileManager = require("scripts.drone_missile_manager")
+		Character06b_DroneMissileManager = Character06b_DroneMissileManager.new()
 
 		---ドローンを制御するクラス
-		Drone = require("scripts.drone")
+		Character06b_Drone = require("scripts.drone")
 
 		---自転車を制御するクラス
-		Bicycle = require("scripts.bicycle")
+		Character06b_Bicycle = require("scripts.bicycle")
 
-		DroneMissileManager:init()
-		Drone:init()
-		Bicycle:init()
+		Character06b_DroneMissileManager:init()
+		Character06b_Drone:init()
+		Character06b_Bicycle:init()
 	end;
 }
 

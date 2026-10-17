@@ -30,7 +30,7 @@ local ExSkillSprite = {
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
     ---@return Character21b.ExSkillSprite
     new = function (objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
-        local instance = MiscUtils.instantiate(ExSkillSprite, SpawnObject)
+        local instance = MiscUtils.instantiate(Character21b_ExSkillSprite, SpawnObject)
 
         instance.target = targetParent
         instance.object = instance.target:newPart(instance.uuid, shouldSeeCamera and "Camera" or "None")

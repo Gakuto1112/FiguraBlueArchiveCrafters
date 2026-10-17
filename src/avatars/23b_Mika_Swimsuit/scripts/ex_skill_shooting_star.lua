@@ -11,7 +11,7 @@ local ExSkillShootingStar = {
 	---@param dir Vector3 流れ星を流す方向
 	new = function (pos, dir)
 		---@type Character23b.ExSkillShootingStar
-		local instance = MiscUtils.instantiate(ExSkillShootingStar, SpawnObject)
+		local instance = MiscUtils.instantiate(Character23b_ExSkillShootingStar, SpawnObject)
 
 		instance.object = nil
 		instance.currentPos = pos:copy()

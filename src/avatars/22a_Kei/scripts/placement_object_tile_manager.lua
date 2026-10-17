@@ -7,7 +7,7 @@ local PlacementObjectTileManager = {
     ---@return Character22a.PlacementObjectTileManager
     new = function ()
         ---@type Character22a.PlacementObjectTileManager
-        local instance = MiscUtils.instantiate(PlacementObjectTileManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character22a_PlacementObjectTileManager, SpawnObjectManager)
 
         instance.managerName = "placement_object_tile"
 
@@ -22,9 +22,9 @@ local PlacementObjectTileManager = {
     ---@param lifetime integer タイルの表示時間
     ---@param shouldFadeOut boolean タイルが消える前にフェードアウトさせるかどうか
     ---@param dummy boolean ダミーモード（透明度100でオブジェクト生成）
-    ---@return ExSkillSprite instance 生成したインスタンス
+    ---@return Character22a.PlacementObjectTile instance 生成したインスタンス
     getObject = function (_, target, pos, rot, color, lifetime, shouldFadeOut, dummy)
-        return PlacementObjectTile.new(target, pos, rot, color, lifetime, shouldFadeOut, dummy)
+        return Character22a_PlacementObjectTile.new(target, pos, rot, color, lifetime, shouldFadeOut, dummy)
     end;
 
     ---設置物タイルをスポーンさせる。

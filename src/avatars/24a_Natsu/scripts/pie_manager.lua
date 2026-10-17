@@ -7,7 +7,7 @@ local PieManager = {
 	---@return Character24a.PieManager
 	new = function ()
 		---@type Character24a.PieManager
-		local instance = MiscUtils.instantiate(PieManager, SpawnObjectManager)
+		local instance = MiscUtils.instantiate(Character24a_PieManager, SpawnObjectManager)
 
 		instance.managerName = "pie"
 
@@ -24,7 +24,7 @@ local PieManager = {
 	---@param startPos Vector3 パイオブジェクトをスポーンさせるワールド位置
 	---@return Character24a.Pie instance 生成したインスタンス
 	getObject = function (_, startPos)
-		return Pie.new(startPos)
+		return Character24a_Pie.new(startPos)
 	end;
 
     ---パイオブジェクトをスポーンさせる

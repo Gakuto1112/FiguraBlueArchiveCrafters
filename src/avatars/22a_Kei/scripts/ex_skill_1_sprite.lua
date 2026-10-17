@@ -11,7 +11,7 @@ local ExSkill1Sprite = {
     ---@return Character22a.ExSkill1Sprite
     new = function (target, pos)
         ---@type Character22a.ExSkill1Sprite
-        local instance = MiscUtils.instantiate(ExSkill1Sprite, SpawnObject)
+        local instance = MiscUtils.instantiate(Character22a_ExSkill1Sprite, SpawnObject)
 
         instance.target = target
         instance.object = instance.target:newSprite(instance.uuid)

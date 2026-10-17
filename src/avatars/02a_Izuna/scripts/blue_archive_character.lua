@@ -201,15 +201,15 @@ local BlueArchiveCharacter = {
 					elseif tick == 29 then
 						sounds:playSound("minecraft:entity.player.attack.weak", player:getPos(), 0.5, 1.5)
 					elseif tick == 31 then
-						ExSkillTextObjectManager:spawn(vectors.vec2(2, 5.5), "神")
+						Character02a_ExSkillTextObjectManager:spawn(vectors.vec2(2, 5.5), "神")
 					elseif tick == 34 then
-						ExSkillTextObjectManager:spawn(vectors.vec2(2, 0.5), "出")
+						Character02a_ExSkillTextObjectManager:spawn(vectors.vec2(2, 0.5), "出")
 					elseif tick == 35 or tick == 40 or tick == 43 or tick == 48 then
 						sounds:playSound("minecraft:entity.player.attack.weak", player:getPos(), 0.25, 1.5)
 					elseif tick == 38 then
-						ExSkillTextObjectManager:spawn(vectors.vec2(-5.5, 5.5), "鬼")
+						Character02a_ExSkillTextObjectManager:spawn(vectors.vec2(-5.5, 5.5), "鬼")
 					elseif tick == 41 then
-						ExSkillTextObjectManager:spawn(vectors.vec2(-5.5, 0.5), "没")
+						Character02a_ExSkillTextObjectManager:spawn(vectors.vec2(-5.5, 0.5), "没")
 					elseif tick == 49 then
 						sounds:playSound("minecraft:entity.player.attack.sweep", player:getPos(), 0.5, 1.5)
 					elseif tick == 50 and host:isHost() then
@@ -220,14 +220,14 @@ local BlueArchiveCharacter = {
 						local windowSize = client:getWindowSize()
 						models.models.ex_skill_1.CameraBackground.Background:setScale(vectors.vec3(windowSize.x / windowSize.y, 1, 1):scale(40))
 						ModelAlias.alias.avatar.root:setColor(0, 0, 0)
-						ExSkillTextObjectManager:setBlack(true)
+						Character02a_ExSkillTextObjectManager:setBlack(true)
 						renderer:setPostEffect("invert")
 					elseif tick == 51 then
 						FaceParts:setEmotion("ANGRY", "ANGRY", "CIRCLE", 10, true)
 					elseif tick == 53 and host:isHost() then
 						models.models.ex_skill_1.CameraBackground:setVisible(false)
 						ModelAlias.alias.avatar.root:setColor(1, 1, 1)
-						ExSkillTextObjectManager:setBlack(false)
+						Character02a_ExSkillTextObjectManager:setBlack(false)
 						renderer:setPostEffect()
 					elseif tick == 58 then
 						local playerPos = player:getPos()
@@ -235,7 +235,7 @@ local BlueArchiveCharacter = {
 							particles:newParticle("minecraft:poof", playerPos:copy():add(math.random() * 2 - 1, math.random() * 3 - 0.5, math.random() * 2 - 1))
 						end
 					elseif tick == 61 then
-						ExSkillTextObjectManager:removeAll()
+						Character02a_ExSkillTextObjectManager:removeAll()
 						FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED", 12, true)
 					elseif tick == 73 then
 						FaceParts:setEmotion("NORMAL", "CLOSED", "OPENED", 27, true)
@@ -264,7 +264,7 @@ local BlueArchiveCharacter = {
 
 				onPostAnimation = function (_, forcedStop)
 					if forcedStop then
-						ExSkillTextObjectManager:removeAll()
+						Character02a_ExSkillTextObjectManager:removeAll()
 						if host:isHost() then
 							models.models.ex_skill_1.CameraBackground:setVisible(false)
 							ModelAlias.alias.avatar.root:setColor(1, 1, 1)
@@ -675,18 +675,18 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type Character02a.ExSkillTextObject
-		ExSkillTextObject = require("scripts.ex_skill_1_text_object")
+		Character02a_ExSkillTextObject = require("scripts.ex_skill_1_text_object")
 
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type Character02a.ExSkillTextObjectManager
-		ExSkillTextObjectManager = require("scripts.ex_skill_1_text_object_manager")
-		ExSkillTextObjectManager = ExSkillTextObjectManager:new()
+		Character02a_ExSkillTextObjectManager = require("scripts.ex_skill_1_text_object_manager")
+		Character02a_ExSkillTextObjectManager = Character02a_ExSkillTextObjectManager:new()
 
 		---忍術ワープの表現
 		---@type Character02a.Teleport
-		Teleport = require("scripts.teleport")
+		Character02a_Teleport = require("scripts.teleport")
 
-		Teleport:init()
+		Character02a_Teleport:init()
 	end
 }
 

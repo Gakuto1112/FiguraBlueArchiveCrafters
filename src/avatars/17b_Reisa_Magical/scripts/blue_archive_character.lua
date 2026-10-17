@@ -307,7 +307,7 @@ local BlueArchiveCharacter = {
 						for i = 0, 5 do
 							local starType = math.random(5)
 							local rot = i * 60 + 10
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.CameraStarEffect, vectors.vec2(0, starType <= 3 and 0 or 1), starType >= 4 and vectors.vec3(0.42, 1, 1) or (starType >= 2 and vectors.vec3(1, 0.47, 1) or vectors.vec3(1, 1, 0.6)), vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(rot, 0, (math.random() * 60 + 40) * math.sqrt(math.pow(math.sin(math.rad(rot)) * (windowSize.x / windowSize.y), 2) + math.pow(math.cos(math.rad(rot)), 2)), -5, 0, 0, 1), math.random() * 50 + 10, math.random() * 20 + 10, nil, 53, false, 0.8)
+							Character17b_ExSkillSpriteManager:spawn(models.models.ex_skill_1.CameraStarEffect, vectors.vec2(0, starType <= 3 and 0 or 1), starType >= 4 and vectors.vec3(0.42, 1, 1) or (starType >= 2 and vectors.vec3(1, 0.47, 1) or vectors.vec3(1, 1, 0.6)), vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(rot, 0, (math.random() * 60 + 40) * math.sqrt(math.pow(math.sin(math.rad(rot)) * (windowSize.x / windowSize.y), 2) + math.pow(math.cos(math.rad(rot)), 2)), -5, 0, 0, 1), math.random() * 50 + 10, math.random() * 20 + 10, nil, 53, false, 0.8)
 						end
 					elseif tick == 160 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "OPENED", 52, true)
@@ -326,14 +326,14 @@ local BlueArchiveCharacter = {
 						local windowSize = client:getScaledWindowSize():augmented(0)
 						local starScale = math.max(windowSize.x, windowSize.y)
 						for _ = 1, 4 do
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.Gui.StarTransitions, vectors.vec2(0, 1), vectors.vec3(1, 0.88, 1), models.models.ex_skill_1.Gui.StarTransitions.Star1:getPos():copy():add(vectors.vec3(1, 1, 0):mul(math.random() * starScale - starScale / 2, math.random() * starScale - starScale / 2, 1)), windowSize:copy():normalize():scale(-1500), math.random() * 180 + 180, 20, nil, 8, false, 1)
+							Character17b_ExSkillSpriteManager:spawn(models.models.ex_skill_1.Gui.StarTransitions, vectors.vec2(0, 1), vectors.vec3(1, 0.88, 1), models.models.ex_skill_1.Gui.StarTransitions.Star1:getPos():copy():add(vectors.vec3(1, 1, 0):mul(math.random() * starScale - starScale / 2, math.random() * starScale - starScale / 2, 1)), windowSize:copy():normalize():scale(-1500), math.random() * 180 + 180, 20, nil, 8, false, 1)
 						end
 					end
 					if tick >= 45 and tick <= 47 and host:isHost() then
 						local windowSize = client:getScaledWindowSize():augmented(0)
 						local starScale = math.max(windowSize.x, windowSize.y) * 0.75
 						for _ = 1, 4 do
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.Gui.StarTransitions, vectors.vec2(0, 1), vectors.vec3(0.93, 0.9, 1), models.models.ex_skill_1.Gui.StarTransitions.Star2:getPos():copy():add(vectors.vec3(1, 1, 0):mul(math.random() * starScale - starScale / 2, math.random() * starScale - starScale / 2, 1)), windowSize:copy():normalize():scale(-1500), math.random() * 180 + 180, 20, nil, 8, false, 1)
+							Character17b_ExSkillSpriteManager:spawn(models.models.ex_skill_1.Gui.StarTransitions, vectors.vec2(0, 1), vectors.vec3(0.93, 0.9, 1), models.models.ex_skill_1.Gui.StarTransitions.Star2:getPos():copy():add(vectors.vec3(1, 1, 0):mul(math.random() * starScale - starScale / 2, math.random() * starScale - starScale / 2, 1)), windowSize:copy():normalize():scale(-1500), math.random() * 180 + 180, 20, nil, 8, false, 1)
 						end
 					end
 					if tick >= 72 and tick <= 108 then
@@ -356,7 +356,7 @@ local BlueArchiveCharacter = {
 						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.ChestRibbon.RibbonBadgeEmissive, ModelAlias.alias.avatar.head.HairPin.HairPinBase.HairPinBaseEmissive, ModelAlias.alias.avatar.rightArmBottom.RocketLauncher, models.models.main.Avatar}) do
 							modelPart:setPrimaryRenderType("CUTOUT")
 						end
-						ExSkillSpriteManager:removeAll()
+						Character17b_ExSkillSpriteManager:removeAll()
 						if host:isHost() then
 							for i = 1, 3 do
 								events.RENDER:remove("ex_skill_1_transition_" .. i)
@@ -1160,12 +1160,12 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用するスプライトオブジェクトのインスタンスクラス
 		---@type Character17b.ExSkillSprite
-		ExSkillSprite = require("scripts.ex_skill_sprite")
+		Character17b_ExSkillSprite = require("scripts.ex_skill_sprite")
 
 		---Exスキルで使用するスプライトオブジェクトのマネージャークラス
 		---@type Character17b.ExSkillSpriteManager
-		ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
-		ExSkillSpriteManager = ExSkillSpriteManager.new()
+		Character17b_ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
+		Character17b_ExSkillSpriteManager = Character17b_ExSkillSpriteManager.new()
 	end;
 }
 

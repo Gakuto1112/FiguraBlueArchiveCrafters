@@ -20,7 +20,7 @@ local ExSkill1MelodyParticle = {
     ---@return Character09b.ExSkill1MelodyParticle
     new = function (pos, rot, size, velocity, lifeTime, shouldSeeCamera)
         ---@type Character09b.ExSkill1MelodyParticle
-        local instance = MiscUtils.instantiate(ExSkill1MelodyParticle, SpawnObject)
+        local instance = MiscUtils.instantiate(Character09b_ExSkill1MelodyParticle, SpawnObject)
 
         instance.object = models.script_ex_skill_1_melody_particle:newPart(instance.uuid)
         instance.subObject = models.models.ex_skill_1.Notes["Note"..math.random(1, 3)]:copy(client.intUUIDToString(client.generateUUID()))

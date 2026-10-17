@@ -8,7 +8,7 @@ local ExSkill1TransitionManager = {
     ---@return Character05b.ExSkill1TransitionManager
     new = function ()
         ---@type Character05b.ExSkill1TransitionManager
-        local instance = MiscUtils.instantiate(ExSkill1TransitionManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character05b_ExSkill1TransitionManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_transition"
 
@@ -19,7 +19,7 @@ local ExSkill1TransitionManager = {
     ---@param pos Vector2 スプライトの位置（左からx番目、上からy番目のスプライト）
     ---@return Character05b.ExSkill1TransitionSprite instance 生成したインスタンス
     getObject = function (_, pos)
-        return ExSkill1TransitionSprite.new(pos)
+        return Character05b_ExSkill1TransitionSprite.new(pos)
     end;
 
     ---トランジションスプライトを生成する。

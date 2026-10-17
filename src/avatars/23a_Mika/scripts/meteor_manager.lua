@@ -7,7 +7,7 @@ local MeteorManager = {
 	---@return Character23a.MeteorManager
 	new = function ()
 		---@type Character23a.MeteorManager
-		local instance = MiscUtils.instantiate(MeteorManager, SpawnObjectManager)
+		local instance = MiscUtils.instantiate(Character23a_MeteorManager, SpawnObjectManager)
 
 		instance.managerName = "ex_skill_meteor"
 
@@ -24,7 +24,7 @@ local MeteorManager = {
 	---@param targetPos Vector3 隕石を落とす目標座標
 	---@return Character23a.MeteorManager instance 生成したインスタンス
 	getObject = function (_, targetPos)
-		return Meteor.new(targetPos)
+		return Character23a_Meteor.new(targetPos)
 	end;
 
     ---隕石をスポーンさせる。

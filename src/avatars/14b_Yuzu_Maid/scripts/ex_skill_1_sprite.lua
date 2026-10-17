@@ -14,7 +14,7 @@ local ExSkill1Sprite = {
     ---@return Character14b.ExSkill1Sprite
     new = function (type, pos, velocity)
         ---@type Character14b.ExSkill1Sprite
-        local instance = MiscUtils.instantiate(ExSkill1Sprite, SpawnObject)
+        local instance = MiscUtils.instantiate(Character14b_ExSkill1Sprite, SpawnObject)
 
         instance.object = models.script_ex_skill_1_sprite:newSprite(instance.uuid)
         instance.spriteType = type

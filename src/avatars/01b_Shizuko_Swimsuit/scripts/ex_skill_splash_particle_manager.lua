@@ -5,7 +5,7 @@ local ExSkillSplashParticleManager = {
     ---@return Character01b.ExSkillSplashParticleManager
     new = function (parent)
         ---@type Character01b.ExSkillSplashParticleManager
-        local instance = MiscUtils.instantiate(ExSkillSplashParticleManager, SpawnObjectManager, parent)
+        local instance = MiscUtils.instantiate(Character01b_ExSkillSplashParticleManager, SpawnObjectManager, parent)
 
         instance.managerName = "ex_skill_1_splash_particle"
 
@@ -23,7 +23,7 @@ local ExSkillSplashParticleManager = {
     ---@param velocity Vector2 パーティクルの速度
     ---@return Character01b.ExSkillSplashParticle instance 生成したインスタンス
     getObject = function (_, pos, velocity)
-        return ExSkillSplashParticle.new(pos, velocity)
+        return Character01b_ExSkillSplashParticle.new(pos, velocity)
     end;
 
     ---Exスキルのスプラッシュパーティクルをスポーンさせる。

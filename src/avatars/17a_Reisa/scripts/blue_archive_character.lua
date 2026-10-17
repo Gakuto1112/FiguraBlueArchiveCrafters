@@ -315,7 +315,7 @@ local BlueArchiveCharacter = {
 							particles:newParticle("minecraft:block minecraft:dark_oak_planks", anchorPos:copy():add(offset))
 						end
 						for _, pos in ipairs({vectors.vec3(-5, 3, 0), vectors.vec3(4, 0, 0), vectors.vec3(8, 8, 0)}) do
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.ExSkill1ParticleAnchor1, vectors.vec2(1, 1), vectors.vec3(0.294, 1, 1), pos, vectors.vec3(0, 0, 0), math.random() * -30 - 15, 3, models.models.ex_skill_1.StarScale, 33, true, 1)
+							Character17a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.ExSkill1ParticleAnchor1, vectors.vec2(1, 1), vectors.vec3(0.294, 1, 1), pos, vectors.vec3(0, 0, 0), math.random() * -30 - 15, 3, models.models.ex_skill_1.StarScale, 33, true, 1)
 						end
 						sounds:playSound("minecraft:entity.generic.explode", anchorPos, 0.5, 1)
 						for _, soundName in ipairs({"minecraft:entity.pillager.hurt", "minecraft:entity.vindicator.hurt"}) do
@@ -329,7 +329,7 @@ local BlueArchiveCharacter = {
 					elseif tick == 97 then
 						ModelAlias.alias.avatar.body.Gun.MuzzleEffect.MuzzleEffect1:setColor(1, 0.659, 0.698)
 						for _ = 1, 8 do
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.ExSkill1ParticleAnchor2, vectors.vec2(1, math.random(2, 5)), vectors.vec3(0.294, 1, 1), vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(math.random() * 360, 50, 0, 0, 0, 0, 1), 0, 2, nil, 8, true, 0.80)
+							Character17a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.ExSkill1ParticleAnchor2, vectors.vec2(1, math.random(2, 5)), vectors.vec3(0.294, 1, 1), vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(math.random() * 360, 50, 0, 0, 0, 0, 1), 0, 2, nil, 8, true, 0.80)
 						end
 						sounds:playSound("minecraft:entity.arrow.shoot", player:getPos(), 1, 2)
 					elseif tick == 105 then
@@ -364,7 +364,7 @@ local BlueArchiveCharacter = {
 							end
 						end
 						for _ = 1, 8 do
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.ExSkill1ParticleAnchor2, vectors.vec2(1, math.random(2, 5)), vectors.vec3(1, 1, 0.443), vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(math.random() * 360, 40, 0, 0, 0, 0, 1), 0, 2, nil, 33, true, 0.80)
+							Character17a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.ExSkill1ParticleAnchor2, vectors.vec2(1, math.random(2, 5)), vectors.vec3(1, 1, 0.443), vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(math.random() * 360, 40, 0, 0, 0, 0, 1), 0, 2, nil, 33, true, 0.80)
 						end
 					elseif tick == 106 then
 						ModelAlias.alias.avatar.body.Gun.MuzzleEffect.MuzzleEffect1:setColor(0.557, 0.655, 0.976)
@@ -405,7 +405,7 @@ local BlueArchiveCharacter = {
 						for _, modelPart in ipairs({ModelAlias.alias.avatar.head.EyeShines, models.models.ex_skill_1.script_walls_breakable}) do
 							modelPart:setVisible(false)
 						end
-						ExSkillSpriteManager:removeAll()
+						Character17a_ExSkillSpriteManager:removeAll()
 					else
 						local lookDir = player:getLookDir()
 						local lookYaw = math.deg(math.atan2(lookDir.z, lookDir.x))
@@ -944,12 +944,12 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用するスプライトオブジェクトのインスタンスクラス
 		---@type Character17a.ExSkillSprite
-		ExSkillSprite = require("scripts.ex_skill_sprite")
+		Character17a_ExSkillSprite = require("scripts.ex_skill_sprite")
 
 		---Exスキルで使用するスプライトオブジェクトのマネージャークラス
 		---@type Character17a.ExSkillSpriteManager
-		ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
-		ExSkillSpriteManager = ExSkillSpriteManager.new()
+		Character17a_ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
+		Character17a_ExSkillSpriteManager = Character17a_ExSkillSpriteManager.new()
 	end;
 }
 

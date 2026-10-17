@@ -543,14 +543,14 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---Exスキル1で使用するアイテムオブジェクトインスタンスのクラス
 		---@type Character14c.ExSkill1ItemObject
-		ExSkill1ItemObject = require("scripts.ex_skill_1_item_object")
+		Character14c_ExSkill1ItemObject = require("scripts.ex_skill_1_item_object")
 
 		---Exスキル1で使用するアイテムオブジェクトマネージャーのクラス
 		---@type Character14c.ExSkill1ItemObjectManager
-		ExSkill1ItemObjectManager = require("scripts.ex_skill_1_item_object_manager")
-		ExSkill1ItemObjectManager = ExSkill1ItemObjectManager.new()
+		Character14c_ExSkill1ItemObjectManager = require("scripts.ex_skill_1_item_object_manager")
+		Character14c_ExSkill1ItemObjectManager = Character14c_ExSkill1ItemObjectManager.new()
 
-		ExSkill1ItemObjectManager.init()
+		Character14c_ExSkill1ItemObjectManager.init()
 
         events.TICK:register(function ()
             if not client:isPaused() then

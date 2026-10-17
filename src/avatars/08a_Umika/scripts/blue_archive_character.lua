@@ -161,19 +161,19 @@ local BlueArchiveCharacter = {
 					if placementObject.animationCount == 0 then
 						local rot = placementObject.object:getRot().y
 						fireworkPos = placementObject.currentPos:copy():add(vectors.rotateAroundAxis(rot, 0.234375, 1.734375, -0.72, 0, 1, 0))
-						FireworkManager:spawn(fireworkPos, vectors.vec3(-17.5, rot + 177.5, 0))
+						Character08a_FireworkManager:spawn(fireworkPos, vectors.vec3(-17.5, rot + 177.5, 0))
 					elseif placementObject.animationCount == 10 then
 						local rot = placementObject.object:getRot().y
 						fireworkPos = placementObject.currentPos:copy():add(vectors.rotateAroundAxis(rot, -0.234375, 1.734375, -0.72, 0, 1, 0))
-						FireworkManager:spawn(fireworkPos, vectors.vec3(-17.5, rot + 182.5, 0))
+						Character08a_FireworkManager:spawn(fireworkPos, vectors.vec3(-17.5, rot + 182.5, 0))
 					elseif placementObject.animationCount == 20 then
 						local rot = placementObject.object:getRot().y
 						fireworkPos = placementObject.currentPos:copy():add(vectors.rotateAroundAxis(rot, 0.234375, 1.296875, -0.72, 0, 1, 0))
-						FireworkManager:spawn(fireworkPos, vectors.vec3(-17.5, rot + 177.5, 0))
+						Character08a_FireworkManager:spawn(fireworkPos, vectors.vec3(-17.5, rot + 177.5, 0))
 					elseif placementObject.animationCount == 30 then
 						local rot = placementObject.object:getRot().y
 						fireworkPos = placementObject.currentPos:copy():add(vectors.rotateAroundAxis(rot, -0.234375, 1.296875, -0.72, 0, 1, 0))
-						FireworkManager:spawn(fireworkPos, vectors.vec3(-17.5, rot + 182.5, 0))
+						Character08a_FireworkManager:spawn(fireworkPos, vectors.vec3(-17.5, rot + 182.5, 0))
 					elseif placementObject.animationCount == 35 then
 						placementObject.animationCount = -1
 					end
@@ -946,14 +946,14 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---視覚上のロケット花火オブジェクトのインスタンスクラス
 		---@type Character08a.Firework
-		Firework = require("scripts.firework")
+		Character08a_Firework = require("scripts.firework")
 
 		---視覚上のロケット花火オブジェクトのマネージャークラス
 		---@type Character08a.FireworkManager
-		FireworkManager = require("scripts.firework_manager")
-		FireworkManager = FireworkManager.new()
+		Character08a_FireworkManager = require("scripts.firework_manager")
+		Character08a_FireworkManager = Character08a_FireworkManager.new()
 
-		FireworkManager:init()
+		Character08a_FireworkManager:init()
 
         events.TICK:register(function ()
             local skirtVisible = ModelAlias.alias.avatar.body.Skirt:getVisible()

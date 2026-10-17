@@ -32,7 +32,7 @@ local ExSkillSprite = {
     ---@return Character17b.ExSkillSprite
     new = function (target, index, color, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
         ---@type Character17b.ExSkillSprite
-        local instance = MiscUtils.instantiate(ExSkillSprite, SpawnObject)
+        local instance = MiscUtils.instantiate(Character17b_ExSkillSprite, SpawnObject)
 
         instance.target = target
         instance.object = instance.target:newPart(instance.uuid)

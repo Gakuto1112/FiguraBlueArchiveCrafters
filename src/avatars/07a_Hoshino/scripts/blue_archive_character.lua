@@ -467,15 +467,15 @@ local BlueArchiveCharacter = {
 			end;
 
 			onBeforeModelCopy = function (self)
-				self.deathAnimation.hasShield = HoshinoShield.hasShield
+				self.deathAnimation.hasShield = Character07a_HoshinoShield.hasShield
 				if self.deathAnimation.hasShield then
-					HoshinoShield:setShield(false, false)
+					Character07a_HoshinoShield:setShield(false, false)
 				end
 			end;
 
 			onAfterModelCopy = function (self)
 				if self.deathAnimation.hasShield then
-					HoshinoShield:setShield(true, false)
+					Character07a_HoshinoShield:setShield(true, false)
 				end
 			end;
 		};
@@ -578,9 +578,9 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---盾を制御するクラス
 		---@type Character07a.HoshinoShield
-		HoshinoShield = require("scripts.hoshino_shield")
+		Character07a_HoshinoShield = require("scripts.hoshino_shield")
 
-		HoshinoShield:init()
+		Character07a_HoshinoShield:init()
 	end;
 }
 

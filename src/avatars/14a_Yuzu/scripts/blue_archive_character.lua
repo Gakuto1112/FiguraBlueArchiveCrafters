@@ -293,13 +293,13 @@ local BlueArchiveCharacter = {
 						end
 					elseif tick == 61 then
 						for i = 0, 5 do
-							ExSkill1ItemObjectManager:spawn("ITEM", i * 60 + math.random() * 60 - 30)
+							Character14a_ExSkill1ItemObjectManager:spawn("ITEM", i * 60 + math.random() * 60 - 30)
 						end
 						for _ = 1, 5 do
-							ExSkill1ItemObjectManager:spawn("CROSS")
+							Character14a_ExSkill1ItemObjectManager:spawn("CROSS")
 						end
 						for _ = 1, 10 do
-							ExSkill1ItemObjectManager:spawn("DOT")
+							Character14a_ExSkill1ItemObjectManager:spawn("DOT")
 						end
 					elseif tick == 70 then
 						sounds:playSound("minecraft:block.note_block.bit", player:getPos(), 1, 1.5)
@@ -326,7 +326,7 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.Background.Background2.Cancel.CancelBackground.CancelBackground:setVisible(true)
 					end
 					if forcedStop then
-						ExSkill1ItemObjectManager:removeAll()
+						Character14a_ExSkill1ItemObjectManager:removeAll()
 						if host:isHost() then
 							events.RENDER:remove("ex_skill_1_background_render")
 							models.models.ex_skill_1.Background:setVisible(false)
@@ -602,14 +602,14 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---Exスキル1で使用するアイテムオブジェクトインスタンスのクラス
 		---@type Character14a.ExSkill1ItemObject
-		ExSkill1ItemObject = require("scripts.ex_skill_1_item_object")
+		Character14a_ExSkill1ItemObject = require("scripts.ex_skill_1_item_object")
 
 		---Exスキル1で使用するアイテムオブジェクトマネージャーのクラス
 		---@type Character14a.ExSkill1ItemObjectManager
-		ExSkill1ItemObjectManager = require("scripts.ex_skill_1_item_object_manager")
-		ExSkill1ItemObjectManager = ExSkill1ItemObjectManager.new()
+		Character14a_ExSkill1ItemObjectManager = require("scripts.ex_skill_1_item_object_manager")
+		Character14a_ExSkill1ItemObjectManager = Character14a_ExSkill1ItemObjectManager.new()
 
-		ExSkill1ItemObjectManager.init()
+		Character14a_ExSkill1ItemObjectManager.init()
 
         events.TICK:register(function ()
             if not client:isPaused() then

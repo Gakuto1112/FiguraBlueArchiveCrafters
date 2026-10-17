@@ -3,7 +3,7 @@ local FadingBlockManager = {
 
 	---コンストラクタ
 	new = function ()
-		local instance = MiscUtils.instantiate(FadingBlockManager, SpawnObjectManager)
+		local instance = MiscUtils.instantiate(Character20c_FadingBlockManager, SpawnObjectManager)
 
 		instance.managerName = "fading_block"
 
@@ -24,7 +24,7 @@ local FadingBlockManager = {
 	---@param shouldShine boolean `lifetime`が0になったときに光って消えるかどうか
 	---@param shineTime? integer ブロックが輝く時間
 	getObject = function (_, pos, block, blockProperty, lifetime, shouldShine, shineTime)
-		return FadingBlock.new(pos, block, blockProperty, lifetime, shouldShine, shineTime)
+		return Character20c_FadingBlock.new(pos, block, blockProperty, lifetime, shouldShine, shineTime)
 	end;
 
 	---消えるブロックをスポーンさせる。

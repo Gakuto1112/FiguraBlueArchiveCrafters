@@ -98,7 +98,7 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmStateChanged = function (_, right, left)
 				local armState = {right = right, left = left}
-				if SyupogakiDance ~= nil and SyupogakiDance.danceState ~= "NOT_STANDBY" then
+				if Character16a_SyupogakiDance ~= nil and Character16a_SyupogakiDance.danceState ~= "NOT_STANDBY" then
 					armState.right = "DEFAULT"
 					armState.left = "DEFAULT"
 				else
@@ -194,8 +194,8 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.rightArmBottom.Key.KeyModel:setVisible(true)
 						ModelAlias.alias.avatar.rightArmBottom.Key:getTask("ex_skill_1_key_item"):setVisible(false)
 					end
-					TrainManager:stopTrainAnimation()
-					TrainManager:spawnExSkillRail()
+					Character16a_TrainManager:stopTrainAnimation()
+					Character16a_TrainManager:spawnExSkillRail()
 					ModelAlias.alias.avatar.lowerBody.Train:setVisible(true)
 					FaceParts:setEmotion("CLOSED", "CLOSED", "SMALL", 20, true)
 				end;
@@ -297,7 +297,7 @@ local BlueArchiveCharacter = {
 				end;
 
 				onPostAnimation = function (self, forcedStop)
-					TrainManager:stopExSkillRail()
+					Character16a_TrainManager:stopExSkillRail()
 					self.exSkill.primary.trainSoundCounter = 0
 					if forcedStop then
 						if host:isHost() then
@@ -305,9 +305,9 @@ local BlueArchiveCharacter = {
 							models.models.main.Avatar:setColor(1, 1, 1)
 							models.models.ex_skill_1.CameraBackground:setVisible(false)
 						end
-						TrainManager:removeAll()
+						Character16a_TrainManager:removeAll()
 					else
-						TrainManager:playTrainAnimation()
+						Character16a_TrainManager:playTrainAnimation()
 					end
 				end;
 			};
@@ -331,7 +331,7 @@ local BlueArchiveCharacter = {
 
 		callbacks = {
 			additionalCheckFunc = function (self)
-				return SyupogakiDance.danceState == "NOT_STANDBY"
+				return Character16a_SyupogakiDance.danceState == "NOT_STANDBY"
 			end;
 		};
 	};
@@ -354,7 +354,7 @@ local BlueArchiveCharacter = {
 	bubble = {
 		callbacks = {
 			additionalCheckFunc = function ()
-				return SyupogakiDance.danceState == "NOT_STANDBY"
+				return Character16a_SyupogakiDance.danceState == "NOT_STANDBY"
 			end;
 
 			onPlay = function (_, type, duration)
@@ -628,19 +628,19 @@ local BlueArchiveCharacter = {
 	---この関数は消しても構わない。
 	init = function ()
 		---ノゾミが乗る列車のレールオブジェクトのインスタンスクラス
-		RailObject = require("scripts.rail_object")
+		Character16a_RailObject = require("scripts.rail_object")
 
 		---ノゾミが乗る列車を制御するクラス
 		---@type Character16a.TrainManager
-		TrainManager = require("scripts.train_manager")
-		TrainManager = TrainManager.new()
+		Character16a_TrainManager = require("scripts.train_manager")
+		Character16a_TrainManager = Character16a_TrainManager.new()
 
 		---シュポガキダンスを制御するクラス
 		---@type Character16a.SyupogakiDance
-		SyupogakiDance = require("scripts.syupogaki_dance")
+		Character16a_SyupogakiDance = require("scripts.syupogaki_dance")
 
-		SyupogakiDance:init()
-		TrainManager.init()
+		Character16a_SyupogakiDance:init()
+		Character16a_TrainManager.init()
 	end;
 }
 

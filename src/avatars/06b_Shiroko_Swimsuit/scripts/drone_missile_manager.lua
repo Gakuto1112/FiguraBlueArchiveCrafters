@@ -8,7 +8,7 @@ local DroneMissileManager = {
     ---@return Character06b.DroneMissileManager
     new = function ()
         ---@type Character06b.DroneMissileManager
-        local instance = MiscUtils.instantiate(DroneMissileManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character06b_DroneMissileManager, SpawnObjectManager)
 
         instance.managerName = "drone_missile"
 
@@ -26,7 +26,7 @@ local DroneMissileManager = {
     ---@param rot Vector3 ミサイルが飛んでいく方向
     ---@return  Character06b.DroneMissile instance 生成したインスタンス
     getObject = function (_, startPos, rot)
-        return DroneMissile.new(startPos, rot)
+        return Character06b_DroneMissile.new(startPos, rot)
     end;
 
     ---ミサイルをスポーンさせる。

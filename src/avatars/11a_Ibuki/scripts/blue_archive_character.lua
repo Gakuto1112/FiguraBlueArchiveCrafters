@@ -313,7 +313,7 @@ local BlueArchiveCharacter = {
 					end
 					for i = 0, 5 do
 						local offsetPos = vectors.rotateAroundAxis(180 / 5 * i * -1, -4, 0, 0, 0, 0, 1)
-						ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.FlowerEffectArea1, 1, offsetPos, offsetPos, math.random() * 60 - 30, math.random() * 2 + 3, ModelAlias.alias.avatar.head.FlowerEffectArea1.FlowerEffectArea1Scale, 25, false, 1)
+						Character11a_ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.FlowerEffectArea1, 1, offsetPos, offsetPos, math.random() * 60 - 30, math.random() * 2 + 3, ModelAlias.alias.avatar.head.FlowerEffectArea1.FlowerEffectArea1Scale, 25, false, 1)
 					end
 					FaceParts:setEmotion("CENTER", "NORMAL", "ANXIOUS", 11, true)
 				end;
@@ -337,7 +337,7 @@ local BlueArchiveCharacter = {
 						sounds:playSound("minecraft:entity.player.attack.sweep", player:getPos(), 0.2, 0.85)
 					elseif tick == 39 then
 						for i = 0, 4 do
-							ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.rightArmBottom.SketchBook.SketchBookEffects, 4, vectors.rotateAroundAxis(i <= 2 and i * -25 - 10 or (i - 3) * -25 - 140, -4.5 + math.random() * -1.5, 0, -2, 0, 0, 1), vectors.vec3(), 0, math.random() * 1.5 + 0.5, ModelAlias.alias.avatar.rightArmBottom.SketchBook.SketchBookEffects.SketchBookEffects2, 20, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.rightArmBottom.SketchBook.SketchBookEffects, 4, vectors.rotateAroundAxis(i <= 2 and i * -25 - 10 or (i - 3) * -25 - 140, -4.5 + math.random() * -1.5, 0, -2, 0, 0, 1), vectors.vec3(), 0, math.random() * 1.5 + 0.5, ModelAlias.alias.avatar.rightArmBottom.SketchBook.SketchBookEffects.SketchBookEffects2, 20, false, 1)
 						end
 						sounds:playSound("minecraft:entity.player.levelup", player:getPos(), 1, 1.5)
 					elseif tick == 58 then
@@ -371,17 +371,17 @@ local BlueArchiveCharacter = {
 					elseif tick == 133 then
 						if host:isHost() then
 							local windowSize = client:getScaledWindowSize()
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(-40, -40, 1), vectors.vec3(), -30, 120, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(-80, -20, 1), vectors.vec3(), -30, 80, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(windowSize.x * - 1 + 40, -10, 1), vectors.vec3(), -30, 120, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(-50, windowSize.y * -1 + 20, 1), vectors.vec3(), -30, 120, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(windowSize.x * -1 + 30, windowSize.y * -1 + 30, 1), vectors.vec3(), -30, 100, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(windowSize.x * -1 + 90, windowSize.y * -1 + 10, 1), vectors.vec3(), -30, 60, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(-40, -40, 1), vectors.vec3(), -30, 120, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(-80, -20, 1), vectors.vec3(), -30, 80, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(windowSize.x * - 1 + 40, -10, 1), vectors.vec3(), -30, 120, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(-50, windowSize.y * -1 + 20, 1), vectors.vec3(), -30, 120, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(windowSize.x * -1 + 30, windowSize.y * -1 + 30, 1), vectors.vec3(), -30, 100, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 3), vectors.vec3(windowSize.x * -1 + 90, windowSize.y * -1 + 10, 1), vectors.vec3(), -30, 60, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, false, 1)
 						end
 						local anchorPos = player:getPos()
 						local bodyYaw = player:getBodyYaw()
 						for _ = 1, 8 do
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea2, math.random(1, 3), anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 2 - 1, math.random() * 0.25 + 0.675, math.random() * 1 - 0.5, 0, 1, 0)):scale(16), vectors.vec3(0, 10, 0), math.random() * 60 - 30, 3,models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, true, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea2, math.random(1, 3), anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 2 - 1, math.random() * 0.25 + 0.675, math.random() * 1 - 0.5, 0, 1, 0)):scale(16), vectors.vec3(0, 10, 0), math.random() * 60 - 30, 3,models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 17, true, 1)
 						end
 						FaceParts:setEmotion("CLOSED", "CLOSED", "YUMMY", 1, true)
 					elseif tick == 134 then
@@ -407,11 +407,11 @@ local BlueArchiveCharacter = {
 							local windowSize = client:getScaledWindowSize()
 							for i = 0, 7 do
 								local velocity = vectors.rotateAroundAxis(i <= 1 and (20 + i * 10) or (i <= 3 and (-35 + (i - 2) * -10) or (-210 + 20 * (i - 4))), -120 - math.random() * 30, 0, 0, 0, 0, 1)
-								ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 2), windowSize:copy():scale(-0.5):augmented(1):add(velocity), velocity, 30 * (math.random() >= 0.5 and 1 or -1), math.random() * 40 + 40, nil, 44, false, 0.85)
+								Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, math.random(1, 2), windowSize:copy():scale(-0.5):augmented(1):add(velocity), velocity, 30 * (math.random() >= 0.5 and 1 or -1), math.random() * 40 + 40, nil, 44, false, 0.85)
 							end
 							for i = 0, 5 do
 								local velocity = vectors.rotateAroundAxis(60 * i, -120 - math.random() * 30, 0, 0, 0, 0, 1):mul(1, windowSize.y / windowSize.x, 1)
-								ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 4, windowSize:copy():scale(-0.5):augmented(1):add(velocity), velocity, 10 * (math.random() >= 0.5 and 1 or -1), i == 0 and 20 or (math.random() * 40 + 40), nil, 44, false, 0.85)
+								Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 4, windowSize:copy():scale(-0.5):augmented(1):add(velocity), velocity, 10 * (math.random() >= 0.5 and 1 or -1), i == 0 and 20 or (math.random() * 40 + 40), nil, 44, false, 0.85)
 							end
 						end
 						FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED", 44, true)
@@ -424,7 +424,7 @@ local BlueArchiveCharacter = {
 					if tick >= 24 and tick < 39 then
 						for i = 1, 4 do
 							local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root.SpinEffects["SpinEffect"..i]["SpinEffect"..i.."_1"]["SpinEffect"..i.."Anchor1"])
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea2, 1, anchorPos:copy():scale(16), ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root.SpinEffects["SpinEffect"..i]["SpinEffect"..i.."_1"]["SpinEffect"..i.."Anchor2"]):sub(anchorPos):normalize():scale(30), 0, 2, nil, math.min(39 - tick, 8), true, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea2, 1, anchorPos:copy():scale(16), ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root.SpinEffects["SpinEffect"..i]["SpinEffect"..i.."_1"]["SpinEffect"..i.."Anchor2"]):sub(anchorPos):normalize():scale(30), 0, 2, nil, math.min(39 - tick, 8), true, 1)
 						end
 					end
 				end;
@@ -436,7 +436,7 @@ local BlueArchiveCharacter = {
 						ModelUtils.moveTo(ModelAlias.alias.avatar.leftArmBottom.SketchBook, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.leftArmBottom)
 					end
 					ModelAlias.alias.avatar.rightArmBottom.SketchBook.SketchBookCanvas:setUVPixels()
-					ExSkillSpriteManager:removeAll()
+					Character11a_ExSkillSpriteManager:removeAll()
 					if host:isHost() then
 						models.models.ex_skill_1.FlowerEffectArea3.ScreenFrame:setVisible(false)
 						if forcedStop then
@@ -537,12 +537,12 @@ local BlueArchiveCharacter = {
 					elseif tick == 103 then
 						if host:isHost() then
 							local windowSize = client:getScaledWindowSize()
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 1, vectors.vec3(-60, -40, 1), vectors.vec3(), -60, 60, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 1, vectors.vec3(-30, -90, 1), vectors.vec3(), -60, 30, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 1, vectors.vec3(-50, windowSize.y * -1 + 30, 1), vectors.vec3(), -60, 40, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 1, vectors.vec3(windowSize.x * -0.5, -30, 1), vectors.vec3(), -60, 30, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 3, vectors.vec3(windowSize.x * -1 + 70, -50, 1), vectors.vec3(), -60, 40, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 3, vectors.vec3(windowSize.x * -1 + 40, windowSize.y * -1 + 60, 1), vectors.vec3(), -60, 50, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 1, vectors.vec3(-60, -40, 1), vectors.vec3(), -60, 60, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 1, vectors.vec3(-30, -90, 1), vectors.vec3(), -60, 30, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 1, vectors.vec3(-50, windowSize.y * -1 + 30, 1), vectors.vec3(), -60, 40, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 1, vectors.vec3(windowSize.x * -0.5, -30, 1), vectors.vec3(), -60, 30, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 3, vectors.vec3(windowSize.x * -1 + 70, -50, 1), vectors.vec3(), -60, 40, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea3, 3, vectors.vec3(windowSize.x * -1 + 40, windowSize.y * -1 + 60, 1), vectors.vec3(), -60, 50, models.models.ex_skill_1.FlowerEffectArea3.FlowerEffectArea3Scale, 51, false, 1)
 							models.models.ex_skill_1.FlowerEffectArea3.ScreenFrame:setScale(client:getScaledWindowSize():augmented(0))
 							models.models.ex_skill_1.FlowerEffectArea3.ScreenFrame:setColor(1, 1, 0.7258)
 							models.models.ex_skill_1.FlowerEffectArea3.ScreenFrame:setVisible(true)
@@ -574,7 +574,7 @@ local BlueArchiveCharacter = {
 							particles:newParticle("minecraft:campfire_cosy_smoke", anchorPos:copy():add(offsetPos)):setScale(5):setVelocity(offsetPos:copy():scale(0.01):add(0, 0.025, 0))
 						end
 						if tick % 7 == 0 then
-							ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.FlowerEffectArea1, 4, vectors.rotateAroundAxis(math.random() * -210 + 15, -12, 0, 0, 0, 0, 1), vectors.vec3(), 0, 6, nil, 14, false, 1)
+							Character11a_ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.FlowerEffectArea1, 4, vectors.rotateAroundAxis(math.random() * -210 + 15, -12, 0, 0, 0, 0, 1), vectors.vec3(), 0, 6, nil, 14, false, 1)
 						end
 					elseif tick >= 154 then
 						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_2.Tank)
@@ -588,7 +588,7 @@ local BlueArchiveCharacter = {
 							local anchorPos2 = vectors.rotateAroundAxis(bodyYaw * -1, 0, 48, -20, 0, 1, 0):add(ModelUtils.getModelWorldPos(models.models.ex_skill_2.Tank):scale(16))
 							local xOffset = math.random() * 48 - 24
 							local offsetPos = vectors.rotateAroundAxis(bodyYaw * -1, xOffset, math.random() * 16, 0, 0, 1, 0)
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea2, math.random() >= 0.5 and 1 or 3, anchorPos2:copy():add(offsetPos), vectors.rotateAroundAxis(bodyYaw * -1, xOffset, 16 + math.random() * 16, 350, 0, 1, 0), math.random() >= 0.5 and 90 or -90, 8, nil, 200, true, 1)
+							Character11a_ExSkillSpriteManager:spawn(models.models.ex_skill_1.FlowerEffectArea2, math.random() >= 0.5 and 1 or 3, anchorPos2:copy():add(offsetPos), vectors.rotateAroundAxis(bodyYaw * -1, xOffset, 16 + math.random() * 16, 350, 0, 1, 0), math.random() >= 0.5 and 90 or -90, 8, nil, 200, true, 1)
 							local soundPos = ModelUtils.getModelWorldPos(models.models.ex_skill_2.Tank)
 							local pitch = 0.2 + (tick - 154) / 370
 							sounds:playSound("minecraft:block.piston.extend", soundPos, 0.5, pitch)
@@ -617,7 +617,7 @@ local BlueArchiveCharacter = {
 					events.RENDER:remove("ex_skill_2_render")
 					ModelAlias.alias.avatar.root:setPos()
 					models.models.ex_skill_2.Tank.TankBody.Turret.Iroha:setVisible(false)
-					ExSkillSpriteManager:removeAll()
+					Character11a_ExSkillSpriteManager:removeAll()
 					if host:isHost() then
 						models.models.ex_skill_1.FlowerEffectArea3.ScreenFrame:setColor()
 						if forcedStop then
@@ -976,12 +976,12 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---Exスキルで使用するスプライトオブジェクトのインスタンスクラス
 		---@type Character11a.ExSkillSprite
-		ExSkillSprite = require("scripts.ex_skill_sprite")
+		Character11a_ExSkillSprite = require("scripts.ex_skill_sprite")
 
 		---Exスキルで使用するスプライトオブジェクトのマネージャークラス
 		---@type Character11a.ExSkillSpriteManager
-		ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
-		ExSkillSpriteManager = ExSkillSpriteManager.new()
+		Character11a_ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
+		Character11a_ExSkillSpriteManager = Character11a_ExSkillSpriteManager.new()
 
 
         events.TICK:register(function ()
@@ -1020,7 +1020,7 @@ local BlueArchiveCharacter = {
                                 end
                                 if self.costume.tankTick == 1 then
                                     for i = 0, 6 do
-                                        ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.FlowerEffectArea1, 4, vectors.vec3(), vectors.rotateAroundAxis(i * -30, -100, 0, 0, 0, 0, 1), 0, 6, nil, 14, false, 0.7)
+                                        Character11a_ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.FlowerEffectArea1, 4, vectors.vec3(), vectors.rotateAroundAxis(i * -30, -100, 0, 0, 0, 0, 1), 0, 6, nil, 14, false, 0.7)
                                     end
                                     sounds:playSound("minecraft:entity.player.levelup", player:getPos(), 0.5, 1.5)
                                 elseif self.costume.tankTick == 21 then

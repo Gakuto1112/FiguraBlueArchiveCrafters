@@ -11,7 +11,7 @@ local ExSkill1ItemObjectManager = {
     ---@return Character14c.ExSkill1ItemObjectManager
     new = function ()
         ---@type Character14c.ExSkill1ItemObjectManager
-        local instance = MiscUtils.instantiate(ExSkill1ItemObjectManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character14c_ExSkill1ItemObjectManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_item_object"
 
@@ -29,7 +29,7 @@ local ExSkill1ItemObjectManager = {
     ---@param launchRot? number スプライトの射出角度。スプライトタイプが"ITEM"以外は無視される。
     ---@return Character14c.ExSkill1ItemObject instance 生成したインスタンス
     getObject = function (_, type, launchRot)
-        return ExSkill1ItemObject.new(type, launchRot)
+        return Character14c_ExSkill1ItemObject.new(type, launchRot)
     end;
 
     ---アイテムオブジェクトを生成する。

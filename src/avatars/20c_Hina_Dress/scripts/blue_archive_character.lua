@@ -255,7 +255,7 @@ local BlueArchiveCharacter = {
 								if (z == 3 and x >= 3 and x <= 4) or (z == 4 and x >= 2 and x <= 5) or (z == 5 and x >= 2 and x <= 5) or (z == 6 and x >= 3 and x <= 6) or (z == 7 and x >= 4 and x <= 8) or (z == 8 and x >= 4 and x <= 7) then
 									block = "minecraft:dirt"
 									if math.random() >= 0.9 then
-										FadingBlockManager:spawn(vectors.vec3(x, 1, z), "minecraft:short_grass", nil, 118, false, 0)
+										Character20c_FadingBlockManager:spawn(vectors.vec3(x, 1, z), "minecraft:short_grass", nil, 118, false, 0)
 									end
 								elseif x <= -9 or x >= 9 or z <= -9 or z >= 9 then
 									if math.random() >= 0.5 then
@@ -270,7 +270,7 @@ local BlueArchiveCharacter = {
 									end
 								end
 								local r = math.max(math.abs(x), math.abs(z))
-								FadingBlockManager:spawn(vectors.vec3(x, 0, z), block, blockProperty, 118, true, 2 * r + ((r >= 7 and math.random() >= 0.5) and 23 or 6))
+								Character20c_FadingBlockManager:spawn(vectors.vec3(x, 0, z), block, blockProperty, 118, true, 2 * r + ((r >= 7 and math.random() >= 0.5) and 23 or 6))
 							end
 						end
 						--壁
@@ -288,24 +288,24 @@ local BlueArchiveCharacter = {
 										else
 											block = "minecraft:air"
 										end
-										FadingBlockManager:spawn(vectors.vec3(x - 1, y, z), "minecraft:black_concrete", nil, 123 + (y - 1) * 2, false)
+										Character20c_FadingBlockManager:spawn(vectors.vec3(x - 1, y, z), "minecraft:black_concrete", nil, 123 + (y - 1) * 2, false)
 									elseif x == -10 and y >= 2 and y <= 4 and ((z >= -4 and z <= -3) or (z >= 3 and z <= 4)) then
 										--打ち付けた板
 										block = math.random() >= 0.5 and "minecraft:spruce_planks" or "minecraft:dark_oak_planks"
 									end
-									FadingBlockManager:spawn(vectors.vec3(x, y, z), block, blockProperty, 123 + (y - 1) * 2, true, 5)
+									Character20c_FadingBlockManager:spawn(vectors.vec3(x, y, z), block, blockProperty, 123 + (y - 1) * 2, true, 5)
 								end
 								--壁装飾
 								if (z >= -9 and z <= -8) or (z >= -5 and z <= 5) or (z >= 9 and z <= 10) or x == 10 then
 									local randValue = math.random()
 									if randValue >= 0.75 then
-										FadingBlockManager:spawn(vectors.vec3(x == -10 and -9 or 9, 6, z), "minecraft:cobweb", nil, 133, false, 0)
+										Character20c_FadingBlockManager:spawn(vectors.vec3(x == -10 and -9 or 9, 6, z), "minecraft:cobweb", nil, 133, false, 0)
 									elseif randValue >= 0.25 then
 										for y = 1, math.random(1, 5) do
 											if x == -10 then
-												FadingBlockManager:spawn(vectors.vec3(-9, y, z), "minecraft:vine", "[west=true]", 123 + (y - 1) * 2, false, 0)
+												Character20c_FadingBlockManager:spawn(vectors.vec3(-9, y, z), "minecraft:vine", "[west=true]", 123 + (y - 1) * 2, false, 0)
 											else
-												FadingBlockManager:spawn(vectors.vec3(9, y, z), "minecraft:vine", "[east=true]", 123 + (y - 1) * 2, false, 0)
+												Character20c_FadingBlockManager:spawn(vectors.vec3(9, y, z), "minecraft:vine", "[east=true]", 123 + (y - 1) * 2, false, 0)
 											end
 										end
 									end
@@ -326,7 +326,7 @@ local BlueArchiveCharacter = {
 										else
 											block = "minecraft:air"
 										end
-										FadingBlockManager:spawn(vectors.vec3(x, y, z - 1), "minecraft:black_concrete", nil, 123 + (y - 1) * 2, false, 0)
+										Character20c_FadingBlockManager:spawn(vectors.vec3(x, y, z - 1), "minecraft:black_concrete", nil, 123 + (y - 1) * 2, false, 0)
 									elseif (z == -10 and y >= 2 and y <= 4 and ((x >= -4 and x <= -3) or (x >= 3 and x <= 4))) or (z == 10 and y >= 2 and y <= 4 and((x >= -6 and x <= -5) or (x >= -2 and x <= -1) or(x >= 2 and x <= 3))) then
 										--打ち付けた板
 										block = math.random() >= 0.5 and "minecraft:spruce_planks" or "minecraft:dark_oak_planks"
@@ -347,19 +347,19 @@ local BlueArchiveCharacter = {
 										block = "minecraft:spruce_door"
 										blockProperty = "[half=upper,hinge=right,facing=north]"
 									end
-									FadingBlockManager:spawn(vectors.vec3(x, y, z), block, blockProperty, 123 + (y - 1) * 2, true, 5)
+									Character20c_FadingBlockManager:spawn(vectors.vec3(x, y, z), block, blockProperty, 123 + (y - 1) * 2, true, 5)
 								end
 								--壁装飾
 								if (x >= -9 and x <= -8) or (x >= -5 and x <= 5) or (x >= 9 and x <= 10) or z == 10 then
 									local randValue = math.random()
 									if randValue >= 0.75 then
-										FadingBlockManager:spawn(vectors.vec3(z == -10 and -9 or 9, 6, z), "minecraft:cobweb", nil, 133, false, 0)
+										Character20c_FadingBlockManager:spawn(vectors.vec3(z == -10 and -9 or 9, 6, z), "minecraft:cobweb", nil, 133, false, 0)
 									elseif randValue >= 0.25 then
 										for y = 1, math.random(1, 5) do
 											if z == -10 then
-												FadingBlockManager:spawn(vectors.vec3(x, y, -9), "minecraft:vine", "[north=true]", 123 + (y - 1) * 2, false, 0)
+												Character20c_FadingBlockManager:spawn(vectors.vec3(x, y, -9), "minecraft:vine", "[north=true]", 123 + (y - 1) * 2, false, 0)
 											else
-												FadingBlockManager:spawn(vectors.vec3(x, y, 9), "minecraft:vine", "[south=true]", 123 + (y - 1) * 2, false, 0)
+												Character20c_FadingBlockManager:spawn(vectors.vec3(x, y, 9), "minecraft:vine", "[south=true]", 123 + (y - 1) * 2, false, 0)
 											end
 										end
 									end
@@ -370,39 +370,39 @@ local BlueArchiveCharacter = {
 						for z = -9, 9 do
 							for x = -9, 9 do
 								local r = math.max(math.abs(x), math.abs(z))
-								FadingBlockManager:spawn(vectors.vec3(x, 7, z), "minecraft:cyan_terracotta", nil, 134 + (9 - r) * 2, true, 5)
+								Character20c_FadingBlockManager:spawn(vectors.vec3(x, 7, z), "minecraft:cyan_terracotta", nil, 134 + (9 - r) * 2, true, 5)
 							end
 						end
 						--柱
 						for i = -7, 7, 13 do
 							for z = i, i + 1 do
 								for y = 1, 6 do
-									FadingBlockManager:spawn(vectors.vec3(-9, y, z), "minecraft:cyan_terracotta", nil, 123 + (y - 1) * 2, false, 0)
+									Character20c_FadingBlockManager:spawn(vectors.vec3(-9, y, z), "minecraft:cyan_terracotta", nil, 123 + (y - 1) * 2, false, 0)
 								end
 							end
 							for x = i, i + 1 do
 								for y = 1, 6 do
-									FadingBlockManager:spawn(vectors.vec3(x, y, -9), "minecraft:cyan_terracotta", nil, 123 + (y - 1) * 2, false, 0)
+									Character20c_FadingBlockManager:spawn(vectors.vec3(x, y, -9), "minecraft:cyan_terracotta", nil, 123 + (y - 1) * 2, false, 0)
 								end
 							end
 						end
 						--黒板
 						for z = -4, 4 do
 							for y = 1, 3 do
-								FadingBlockManager:spawn(vectors.vec3(9, z <= -1 and (y + 1) or y, z), "minecraft:green_terracotta", nil, 123 + ((z <= -1 and (y + 1) or y) - 1) * 2, false, 0)
+								Character20c_FadingBlockManager:spawn(vectors.vec3(9, z <= -1 and (y + 1) or y, z), "minecraft:green_terracotta", nil, 123 + ((z <= -1 and (y + 1) or y) - 1) * 2, false, 0)
 							end
 							if z <= -1 then
-								FadingBlockManager:spawn(vectors.vec3(9, 1, z), "minecraft:spruce_slab", "[type=top]", 123, false, 0)
+								Character20c_FadingBlockManager:spawn(vectors.vec3(9, 1, z), "minecraft:spruce_slab", "[type=top]", 123, false, 0)
 							end
 						end
 						--枯れ木
 						for y = 1, 5 do
-							FadingBlockManager:spawn(vectors.vec3(4, y, 5), "minecraft:spruce_log", nil, 118, true, y * 10)
+							Character20c_FadingBlockManager:spawn(vectors.vec3(4, y, 5), "minecraft:spruce_log", nil, 118, true, y * 10)
 						end
-						FadingBlockManager:spawn(vectors.vec3(5, 2, 5), "minecraft:spruce_log", "[axis=x]", 118, true, 20)
-						FadingBlockManager:spawn(vectors.vec3(4, 3, 4), "minecraft:spruce_log", "[axis=z]", 118, true, 30)
-						FadingBlockManager:spawn(vectors.vec3(3, 3, 5), "minecraft:spruce_log", "[axis=x]", 118, true, 30)
-						FadingBlockManager:spawn(vectors.vec3(4, 4, 6), "minecraft:spruce_log", "[axis=z]", 118, true, 40)
+						Character20c_FadingBlockManager:spawn(vectors.vec3(5, 2, 5), "minecraft:spruce_log", "[axis=x]", 118, true, 20)
+						Character20c_FadingBlockManager:spawn(vectors.vec3(4, 3, 4), "minecraft:spruce_log", "[axis=z]", 118, true, 30)
+						Character20c_FadingBlockManager:spawn(vectors.vec3(3, 3, 5), "minecraft:spruce_log", "[axis=x]", 118, true, 30)
+						Character20c_FadingBlockManager:spawn(vectors.vec3(4, 4, 6), "minecraft:spruce_log", "[axis=z]", 118, true, 40)
 
 						--トランジション用のフィルター
 						models.models.ex_skill_1.Gui.GuiFilter:setScale(client:getScaledWindowSize():copy():augmented(1))
@@ -474,7 +474,7 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.Gui.GuiFilter:setUVPixels()
 						if forcedStop then
 							events.RENDER:remove("ex_skill_1_render")
-							FadingBlockManager:removeAll()
+							Character20c_FadingBlockManager:removeAll()
 						end
 					end
 				end;
@@ -1230,19 +1230,19 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---ヒナのマシンガンを制御するクラス
 		---@type Character20c.MachineGun
-		MachineGun = require("scripts.machine_gun")
+		Character20c_MachineGun = require("scripts.machine_gun")
 
 		---消えるブロックオブジェクトのインスタンスクラス
 		---@type Character20c.FadingBlock
-		FadingBlock = require("scripts.fading_block")
+		Character20c_FadingBlock = require("scripts.fading_block")
 
 		---消えるブロックオブジェクトのマネージャークラス
 		---@type Character20c.FadingBlockManager
-		FadingBlockManager = require("scripts.fading_block_manager")
-		FadingBlockManager = FadingBlockManager.new()
+		Character20c_FadingBlockManager = require("scripts.fading_block_manager")
+		Character20c_FadingBlockManager = Character20c_FadingBlockManager.new()
 
-		MachineGun:init()
-		FadingBlockManager.init()
+		Character20c_MachineGun:init()
+		Character20c_FadingBlockManager.init()
 
 		events.TICK:register(function ()
 			if not client:isPaused() then

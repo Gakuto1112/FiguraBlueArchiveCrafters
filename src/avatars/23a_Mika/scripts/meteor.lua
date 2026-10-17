@@ -13,7 +13,7 @@ local Meteor = {
 	---@param targetPos Vector3 隕石を落とす目標座標
 	new = function (targetPos)
 		---@type Character23a.Meteor
-		local instance = MiscUtils.instantiate(Meteor, SpawnObject)
+		local instance = MiscUtils.instantiate(Character23a_Meteor, SpawnObject)
 
 		instance.object = ModelUtils:copyModel(models.models.meteor.Meteor, instance.uuid, true)
 		instance.dir = vectors.rotateAroundAxis(math.random() * 360, 0, -1, 0.5, 0, 1, 0):normalize()

@@ -6,7 +6,7 @@ local ExSkill1TextManager = {
     ---@return Character22a.ExSkill1TextManager
     new = function ()
         ---@type Character22a.ExSkill1TextManager
-        local instance = MiscUtils.instantiate(ExSkill1TextManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character22a_ExSkill1TextManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_text"
 
@@ -18,7 +18,7 @@ local ExSkill1TextManager = {
 	---@param face integer テキストの向きを決定する値（1: 下面, 2: 上面, 3: 左面, 4: 右面）
     ---@return Character22a.ExSkill1Text
     getObject = function (_, pos, face)
-        return ExSkill1Text.new(pos, face)
+        return Character22a_ExSkill1Text.new(pos, face)
     end;
 
 	---Exスキルのテキストオブジェクトをスポーンさせる。

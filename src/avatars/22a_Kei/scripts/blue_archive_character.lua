@@ -295,7 +295,7 @@ local BlueArchiveCharacter = {
 							local radius = math.sqrt(9216 - math.pow(i, 2))
 							local offset = -6
 							while(radius - offset >= radius * -1) do
-								PlacementObjectTileManager:spawn(placementObject.object, vectors.vec3(i, 0.1, radius - offset), vectors.vec3(0, 0, 0), self.placementObjects[1].baseColor, (radius * 2 - offset) * 2, false, offset < 0)
+								Character22a_PlacementObjectTileManager:spawn(placementObject.object, vectors.vec3(i, 0.1, radius - offset), vectors.vec3(0, 0, 0), self.placementObjects[1].baseColor, (radius * 2 - offset) * 2, false, offset < 0)
 								offset = offset + 6
 							end
 						end
@@ -312,8 +312,8 @@ local BlueArchiveCharacter = {
 						placementObject.object.BeaconBeam:setVisible(false)
 						self.placementObjects[1].beaconSound:stop()
 						self.placementObjects[1].beaconSound = nil
-						PlacementObjectTileManager:removeAll()
-						PlacementObjectCubeManager:removeAll()
+						Character22a_PlacementObjectTileManager:removeAll()
+						Character22a_PlacementObjectCubeManager:removeAll()
 						self.placementObjects[1].tickCount = 0
 						self.placementObjects[1].onGroundFlag = false
 					end
@@ -333,13 +333,13 @@ local BlueArchiveCharacter = {
 							if self.placementObjects[1].tickCount % 12 == 0 then
 								for i = -96, 96, 6 do
 									local radius = math.sqrt(9216 - math.pow(i, 2))
-									PlacementObjectTileManager:spawn(placementObject.object, vectors.vec3(i, 0.1, radius), vectors.vec3(0, 0, 0), self.placementObjects[1].baseColor, radius * 4, false, false)
+									Character22a_PlacementObjectTileManager:spawn(placementObject.object, vectors.vec3(i, 0.1, radius), vectors.vec3(0, 0, 0), self.placementObjects[1].baseColor, radius * 4, false, false)
 								end
 								for i = 0, 71 do
-									PlacementObjectTileManager:spawn(placementObject.object, vectors.rotateAroundAxis(i * 5, 0, 0, 96, 0, 1, 0), vectors.vec3(90, i * 5, 0), self.placementObjects[1].baseColor, math.random(100, 150), true, false)
+									Character22a_PlacementObjectTileManager:spawn(placementObject.object, vectors.rotateAroundAxis(i * 5, 0, 0, 96, 0, 1, 0), vectors.vec3(90, i * 5, 0), self.placementObjects[1].baseColor, math.random(100, 150), true, false)
 								end
 							end
-							PlacementObjectCubeManager:spawn(placementObject.object, vectors.vec3(math.random() * 128 - 64, 0, math.random() * 128 - 64), self.placementObjects[1].baseColor)
+							Character22a_PlacementObjectCubeManager:spawn(placementObject.object, vectors.vec3(math.random() * 128 - 64, 0, math.random() * 128 - 64), self.placementObjects[1].baseColor)
 						end
 
 						self.placementObjects[1].beaconSound:setPos(placementObject.currentPos)
@@ -514,7 +514,7 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.CyberArea.CyberAreaBase:setColor(0.987, 0.731, 0.910)
 						models.models.ex_skill_1.CyberArea.CyberAreaEffect1:setColor(0.998, 0.959, 1)
 						models.models.ex_skill_1.CyberArea.CyberImages:setVisible(false)
-						ExSkill1SpriteManager:removeAll()
+						Character22a_ExSkill1SpriteManager:removeAll()
 					elseif tick == 188 then
 						FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 37, true)
 						ModelAlias.alias.avatar.head.EyeShines:setVisible(true)
@@ -540,16 +540,16 @@ local BlueArchiveCharacter = {
 								local face = math.random(1, 4)
 								if face == 1 then
 									--下面
-									ExSkill1SpriteManager:spawn(target, vectors.vec3(math.random() * 16 - 8, -4.5, 0))
+									Character22a_ExSkill1SpriteManager:spawn(target, vectors.vec3(math.random() * 16 - 8, -4.5, 0))
 								elseif face == 2 then
 									--上面
-									ExSkill1SpriteManager:spawn(target, vectors.vec3(math.random() * 16 - 8, 4.5, 0))
+									Character22a_ExSkill1SpriteManager:spawn(target, vectors.vec3(math.random() * 16 - 8, 4.5, 0))
 								elseif face == 3 then
 									--左面
-									ExSkill1SpriteManager:spawn(target, vectors.vec3(-8, math.random() * 9 - 4.5, 0))
+									Character22a_ExSkill1SpriteManager:spawn(target, vectors.vec3(-8, math.random() * 9 - 4.5, 0))
 								elseif face == 4 then
 									--左面
-									ExSkill1SpriteManager:spawn(target, vectors.vec3(8, math.random() * 9 - 4.5, 0))
+									Character22a_ExSkill1SpriteManager:spawn(target, vectors.vec3(8, math.random() * 9 - 4.5, 0))
 								end
 							end
 						end
@@ -558,16 +558,16 @@ local BlueArchiveCharacter = {
 						local face = math.random(1, 4)
 						if face == 1 then
 							--下面
-							ExSkill1TextManager:spawn(vectors.vec3(math.random() * 144 - 72, math.random() * 10, 72), face)
+							Character22a_ExSkill1TextManager:spawn(vectors.vec3(math.random() * 144 - 72, math.random() * 10, 72), face)
 						elseif face == 2 then
 							--上面
-							ExSkill1TextManager:spawn(vectors.vec3(math.random() * 144 - 72, 144 - math.random() * 10, 72), face)
+							Character22a_ExSkill1TextManager:spawn(vectors.vec3(math.random() * 144 - 72, 144 - math.random() * 10, 72), face)
 						elseif face == 3 then
 							--左面
-							ExSkill1TextManager:spawn(vectors.vec3(math.random() * 10 - 72, math.random() * 144, 72), face)
+							Character22a_ExSkill1TextManager:spawn(vectors.vec3(math.random() * 10 - 72, math.random() * 144, 72), face)
 						elseif face == 4 then
 							--右面
-							ExSkill1TextManager:spawn(vectors.vec3(math.random() * 10 + 62, math.random() * 144, 72), face)
+							Character22a_ExSkill1TextManager:spawn(vectors.vec3(math.random() * 10 + 62, math.random() * 144, 72), face)
 						end
 					end
 				end;
@@ -586,9 +586,9 @@ local BlueArchiveCharacter = {
 						events.RENDER:remove("ex_skill_1_render_host")
 						models.models.ex_skill_1.CyberArea:setVisible(false)
 						models.models.ex_skill_1.CyberArea.CyberImages:setVisible(true)
-						ExSkill1TextManager:removeAll()
+						Character22a_ExSkill1TextManager:removeAll()
 						if forcedStop then
-							ExSkill1SpriteManager:removeAll()
+							Character22a_ExSkill1SpriteManager:removeAll()
 						end
 					end
 					if not forcedStop then
@@ -623,7 +623,7 @@ local BlueArchiveCharacter = {
 								if animTick == 15 then
 									FaceParts:setEmotion("CENTER", "NORMAL", "SMILE", 14, true)
 									for i = 0, 5 do
-										PlacementObjectCubeManager:spawn(models.models.main, vectors.rotateAroundAxis(i * 60, 0, 0, math.random() * 16 + 16, 0, 1, 0), self.placementObjects[1].baseColor)
+										Character22a_PlacementObjectCubeManager:spawn(models.models.main, vectors.rotateAroundAxis(i * 60, 0, 0, math.random() * 16 + 16, 0, 1, 0), self.placementObjects[1].baseColor)
 									end
 									sounds:playSound("minecraft:entity.item.pickup", player:getPos(), 1, 0.5)
 								elseif animTick == 29 then
@@ -1149,45 +1149,45 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---レールガンを制御するクラス
 		---@type Character22a.RailGun
-		RailGun = require("scripts.rail_gun")
+		Character22a_RailGun = require("scripts.rail_gun")
 
 		---Exスキルで使用するテキストオブジェクトのインスタンスクラス
 		---@type Character22a.ExSkill1Text
-		ExSkill1Text = require("scripts.ex_skill_1_text")
+		Character22a_ExSkill1Text = require("scripts.ex_skill_1_text")
 
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type Character22a.ExSkill1TextManager
-		ExSkill1TextManager = require("scripts.ex_skill_1_text_manager")
-		ExSkill1TextManager = ExSkill1TextManager.new()
+		Character22a_ExSkill1TextManager = require("scripts.ex_skill_1_text_manager")
+		Character22a_ExSkill1TextManager = Character22a_ExSkill1TextManager.new()
 
 		--Exスキルで使用するスプライトオブジェクトのインスタンスクラス
 		---@type Character22a.ExSkill1Sprite
-		ExSkill1Sprite = require("scripts.ex_skill_1_sprite")
+		Character22a_ExSkill1Sprite = require("scripts.ex_skill_1_sprite")
 
 		--Exスキルで使用するスプライトオブジェクトのマネージャークラス
 		---@type Character22a.ExSkill1SpriteManager
-		ExSkill1SpriteManager = require("scripts.ex_skill_1_sprite_manager")
-		ExSkill1SpriteManager = ExSkill1SpriteManager.new()
+		Character22a_ExSkill1SpriteManager = require("scripts.ex_skill_1_sprite_manager")
+		Character22a_ExSkill1SpriteManager = Character22a_ExSkill1SpriteManager.new()
 
 		--設置物で使用するタイルオブジェクトのインスタンスクラス
 		---@type Character22a.PlacementObjectTile
-		PlacementObjectTile = require("scripts.placement_object_tile")
+		Character22a_PlacementObjectTile = require("scripts.placement_object_tile")
 
 		--設置物で使用するタイルオブジェクトのマネージャークラス
 		---@type Character22a.PlacementObjectTileManager
-		PlacementObjectTileManager = require("scripts.placement_object_tile_manager")
-		PlacementObjectTileManager = PlacementObjectTileManager.new()
+		Character22a_PlacementObjectTileManager = require("scripts.placement_object_tile_manager")
+		Character22a_PlacementObjectTileManager = Character22a_PlacementObjectTileManager.new()
 
 		--設置物で使用するキューブオブジェクトのインスタンスクラス
 		---@type Character22a.PlacementObjectCube
-		PlacementObjectCube = require("scripts.placement_object_cube")
+		Character22a_PlacementObjectCube = require("scripts.placement_object_cube")
 
 		--設置物で使用するキューブオブジェクトのマネージャークラス
 		---@type Character22a.PlacementObjectCubeManager
-		PlacementObjectCubeManager = require("scripts.placement_object_cube_manager")
-		PlacementObjectCubeManager = PlacementObjectCubeManager.new()
+		Character22a_PlacementObjectCubeManager = require("scripts.placement_object_cube_manager")
+		Character22a_PlacementObjectCubeManager = Character22a_PlacementObjectCubeManager.new()
 
-		RailGun:enable()
+		Character22a_RailGun:enable()
 	end;
 }
 

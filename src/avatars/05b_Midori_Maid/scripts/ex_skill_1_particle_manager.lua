@@ -5,7 +5,7 @@ local ExSkill1ParticleManager = {
     ---@return Character05b.ExSkill1ParticleManager
     new = function ()
         ---@type Character05b.ExSkill1ParticleManager
-        local instance = MiscUtils.instantiate(ExSkill1ParticleManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character05b_ExSkill1ParticleManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_particle"
 
@@ -15,7 +15,7 @@ local ExSkill1ParticleManager = {
     ---独自定義のパーティクルのインスタンスを生成して返す。
     ---@return Character05b.ExSkill1Particle instance 生成したインスタンス
     getObject = function ()
-        return ExSkill1Particle.new()
+        return Character05b_ExSkill1Particle.new()
     end;
 }
 

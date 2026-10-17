@@ -12,7 +12,7 @@ local ExSkillArrow = {
 	---@param velocity Vector3 矢のオブジェクトの初速
 	new = function (pos, velocity)
 		---@type Character24a.ExSkillArrow
-		local instance = MiscUtils.instantiate(ExSkillArrow, SpawnObject)
+		local instance = MiscUtils.instantiate(Character24a_ExSkillArrow, SpawnObject)
 
 		instance.object = models.models.ex_skill_1.AnimationArrow:copy(instance.uuid)
 		instance.currentPos = pos:copy()

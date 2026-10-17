@@ -386,7 +386,7 @@ local BlueArchiveCharacter = {
 						self.exSkill.primary.spawnBulletParticle(models.models.ex_skill_1.Covers.CoverBack4.ExSkillParticleAnchor3)
 						self.exSkill.primary.playShotSound()
 						self.exSkill.primary.playPotBreak(models.models.ex_skill_1.Covers.CoverBack4.DecoratedPod3)
-						ExSkill1TextObjectManager:spawn(models.models.ex_skill_1.Covers.CoverBack4.MissText)
+						Character04b_ExSkill1TextObjectManager:spawn(models.models.ex_skill_1.Covers.CoverBack4.MissText)
 						if host:isHost() then
 							models.models.ex_skill_1.Gui.UI.MomoiUI.LifeIcon1:setVisible(false)
 							models.models.ex_skill_1.Gui.UI.MomoiHeadUI:setColor(1, 0.75, 0.75)
@@ -425,7 +425,7 @@ local BlueArchiveCharacter = {
 						self.exSkill.primary.spawnBulletParticle(models.models.ex_skill_1.Covers.CoverBack1.ExSkillParticleAnchor8)
 						self.exSkill.primary.playShotSound()
 						self.exSkill.primary.playPotBreak(models.models.ex_skill_1.Covers.CoverBack1.DecoratedPod2)
-						ExSkill1TextObjectManager:spawn(models.models.ex_skill_1.Covers.CoverBack1.MissText)
+						Character04b_ExSkill1TextObjectManager:spawn(models.models.ex_skill_1.Covers.CoverBack1.MissText)
 						if host:isHost() then
 							models.models.ex_skill_1.Gui.UI.MomoiUI.LifeIcon2:setVisible(false)
 							models.models.ex_skill_1.Gui.UI.MomoiHeadUI:setColor(1, 0.75, 0.75)
@@ -1121,12 +1121,12 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type Character04b.ExSkill1TextObject
-		ExSkill1TextObject = require("scripts.ex_skill_1_text_object")
+		Character04b_ExSkill1TextObject = require("scripts.ex_skill_1_text_object")
 
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type Character04b.ExSkill1TextObjectManager
-		ExSkill1TextObjectManager = require("scripts.ex_skill_1_text_object_manager")
-		ExSkill1TextObjectManager = ExSkill1TextObjectManager.new()
+		Character04b_ExSkill1TextObjectManager = require("scripts.ex_skill_1_text_object_manager")
+		Character04b_ExSkill1TextObjectManager = Character04b_ExSkill1TextObjectManager.new()
 
 		---前ティックに脚とスカートの調整をしたかどうか
 		---@type boolean

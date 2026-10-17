@@ -86,7 +86,7 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmStateChanged = function (_, right, left)
 				local armState = {right = right, left = left}
-				if SyupogakiDance ~= nil and SyupogakiDance.danceState ~= "NOT_STANDBY" then
+				if Character15a_SyupogakiDance ~= nil and Character15a_SyupogakiDance.danceState ~= "NOT_STANDBY" then
 					armState.right = "DEFAULT"
 					armState.left = "DEFAULT"
 				else
@@ -368,7 +368,7 @@ local BlueArchiveCharacter = {
 
 		callbacks = {
 			additionalCheckFunc = function ()
-				return SyupogakiDance.danceState == "NOT_STANDBY"
+				return Character15a_SyupogakiDance.danceState == "NOT_STANDBY"
 			end;
 		};
 	};
@@ -419,7 +419,7 @@ local BlueArchiveCharacter = {
 	bubble = {
 		callbacks = {
 			additionalCheckFunc = function ()
-				return SyupogakiDance.danceState == "NOT_STANDBY"
+				return Character15a_SyupogakiDance.danceState == "NOT_STANDBY"
 			end;
 
 			onPlay = function (_, type, duration)
@@ -650,9 +650,9 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---シュポガキダンスを制御するクラス
 		---@type Character15a.SyupogakiDance
-		SyupogakiDance = require("scripts.syupogaki_dance")
+		Character15a_SyupogakiDance = require("scripts.syupogaki_dance")
 
-		SyupogakiDance:init()
+		Character15a_SyupogakiDance:init()
 	end;
 }
 

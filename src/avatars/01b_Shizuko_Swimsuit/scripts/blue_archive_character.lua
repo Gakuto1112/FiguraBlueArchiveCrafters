@@ -210,7 +210,7 @@ local BlueArchiveCharacter = {
 							for _ = 1, 100 do
 								local rot = 2 * math.pi * math.random()
 								local pos = vectors.vec2(math.cos(rot) * (windowSize.x / 2 * (math.random() * 0.5 + 0.5)) + center.x, math.sin(rot) * (windowSize.y / 2 * (math.random() * 0.5 + 0.5)) + center.y)
-								ExSkillSplashParticleManager:spawn(pos, pos:copy():sub(center):scale(0.1))
+								Character01b_ExSkillSplashParticleManager:spawn(pos, pos:copy():sub(center):scale(0.1))
 							end
 						end
 					end
@@ -250,7 +250,7 @@ local BlueArchiveCharacter = {
 					models.models.ex_skill_1.Plate.ShavedIceGroup.Wave.WaveScaler:setOffsetPivot()
 					if host:isHost() then
 						events.RENDER:remove("ex_skill_1_render")
-						ExSkillSplashParticleManager:removeAll()
+						Character01b_ExSkillSplashParticleManager:removeAll()
 					end
 				end;
 
@@ -535,14 +535,14 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルのスプラッシュで使用するパーティクルの単一を管理するクラス
 		---@see Character01b.ExSkillSplashParticle
-		ExSkillSplashParticle = require("scripts.ex_skill_splash_particle")
+		Character01b_ExSkillSplashParticle = require("scripts.ex_skill_splash_particle")
 
 		---Exスキルでで使用するスプラッシュパーティクルを管理するクラス
 		---@see Character01b.ExSkillSplashParticleManager
-		ExSkillSplashParticleManager = require("scripts.ex_skill_splash_particle_manager")
-		ExSkillSplashParticleManager = ExSkillSplashParticleManager:new()
+		Character01b_ExSkillSplashParticleManager = require("scripts.ex_skill_splash_particle_manager")
+		Character01b_ExSkillSplashParticleManager = Character01b_ExSkillSplashParticleManager:new()
 
-		ExSkillSplashParticleManager.init()
+		Character01b_ExSkillSplashParticleManager.init()
 	end;
 }
 

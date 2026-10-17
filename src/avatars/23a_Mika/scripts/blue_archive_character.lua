@@ -270,7 +270,7 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setVisible(false)
 					end
 					if not forcedStop then
-						MeteorManager:spawn(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 0, 10, 0, 1, 0):add(player:getPos()))
+						Character23a_MeteorManager:spawn(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 0, 10, 0, 1, 0):add(player:getPos()))
 					elseif host:isHost() and forcedStop then
 						events.RENDER:remove("ex_skill_1_render")
 						models.models.ex_skill_1.CameraBackground:setVisible(false)
@@ -358,15 +358,15 @@ local BlueArchiveCharacter = {
 			onAfterModelCopy = function (self)
 				if models.script_head_block and not self.headBlock.isHeadBlockInitialized then
 
-					HaloShine = require("scripts.halo_shine")
+					Character23a_HaloShine = require("scripts.halo_shine")
 
 					for i = 1, 4 do
 						models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable["HaloShine" .. i]["HaloShine" .. i .. "Inner"]:setParentType("Camera")
 					end
-					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
-					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
-					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
-					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, Character23a_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, Character23a_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, Character23a_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, Character23a_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
 
 					for _, shine in ipairs(self.headBlock.headBlockHaloShines) do
 						shine.callbacks.onInit(shine)
@@ -601,22 +601,22 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---ヘイローのキラキラエフェクトオブジェクトのクラス
 		---@type Character23a.HaloShine
-		HaloShine = require("scripts.halo_shine")
+		Character23a_HaloShine = require("scripts.halo_shine")
 
 		---隕石のインスタンスクラス
 		---@type Character23a.Meteor
-		Meteor = require("scripts.meteor")
+		Character23a_Meteor = require("scripts.meteor")
 
 		---隕石のマネージャークラス
 		---@type Character23a.MeteorManager
-		MeteorManager = require("scripts.meteor_manager")
-		MeteorManager = MeteorManager.new()
-		MeteorManager.init()
+		Character23a_MeteorManager = require("scripts.meteor_manager")
+		Character23a_MeteorManager = Character23a_MeteorManager.new()
+		Character23a_MeteorManager.init()
 
-		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
-		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
-		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
-		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
+		table.insert(self.costume.haloShines, Character23a_HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
+		table.insert(self.costume.haloShines, Character23a_HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
+		table.insert(self.costume.haloShines, Character23a_HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
+		table.insert(self.costume.haloShines, Character23a_HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
 
 		for _, shine in ipairs(self.costume.haloShines) do
 			shine.callbacks.onInit(shine)

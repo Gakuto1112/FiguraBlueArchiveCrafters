@@ -293,7 +293,7 @@ local BlueArchiveCharacter = {
 						end
 						if (tick - 26) % 3 == 0 then
 							---@diagnostic disable-next-line: invisible
-							ItemLauncher:launch(CompatibilityUtils.registries.item[math.random(#CompatibilityUtils.registries.item)], anchorPos, bodyYaw * -1, 0.25, vectors.rotateAroundAxis(bodyYaw * -1, (((tick - 26) % 6 == 0) and 1 or -1) * (math.random() + 2), 4, 0, 0, 1, 0), 30)
+							Character19a_ItemLauncher:launch(CompatibilityUtils.registries.item[math.random(#CompatibilityUtils.registries.item)], anchorPos, bodyYaw * -1, 0.25, vectors.rotateAroundAxis(bodyYaw * -1, (((tick - 26) % 6 == 0) and 1 or -1) * (math.random() + 2), 4, 0, 0, 1, 0), 30)
 							sounds:playSound("minecraft:entity.item.pickup", anchorPos, 0.75, math.random() * 0.4 + 0.8)
 						end
 					end
@@ -309,7 +309,7 @@ local BlueArchiveCharacter = {
 						local bodyYaw = player:getBodyYaw()
 						PlacementObjectManager:spawn(1, player:getPos():copy():add(vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 4.3594, 0, 1, 0)), bodyYaw * -1 + 180)
 					else
-						ItemLauncher:removeAll()
+						Character19a_ItemLauncher:removeAll()
 					end
 				end;
 			};
@@ -783,9 +783,9 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---アイテムを発射する演出のクラス
 		---@type Character19a.ItemLauncher
-		ItemLauncher = require("scripts.item_launcher")
+		Character19a_ItemLauncher = require("scripts.item_launcher")
 
-		ItemLauncher.init()
+		Character19a_ItemLauncher.init()
 	end;
 }
 

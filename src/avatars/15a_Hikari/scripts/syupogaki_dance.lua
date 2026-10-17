@@ -257,7 +257,7 @@ local SyupogakiDance = {
 
 ---シュポガキダンスをスタンバイ状態にする。
 function pings.standbyDance()
-    SyupogakiDance:standby()
+    Character15a_SyupogakiDance:standby()
 end
 
 return SyupogakiDance

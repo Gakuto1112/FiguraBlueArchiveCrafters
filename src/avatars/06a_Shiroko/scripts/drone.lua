@@ -211,7 +211,7 @@ local Drone = {
 ---クリエイティブ飛行フラグを設定する。
 ---@param isFlying boolean クリエイティブ飛行をしているかどうか
 function pings.setIsFlying(isFlying)
-    Drone.isFlying = isFlying
+    Character06a_Drone.isFlying = isFlying
 end
 
 ---ミサイルを発射する。
@@ -225,7 +225,7 @@ function pings.launchMissiles()
                     local missileNum = math.floor(launchCounter / 5) + 1
                     local missileModel = missileNum <= 4 and ModelAlias.alias.avatar.root.Drone.LauncherRight.MissilesRight["Missile"..missileNum] or ModelAlias.alias.avatar.root.Drone.LauncherLeft.MissilesLeft["Missile"..(missileNum - 4)]
                     local lookDir = player:getLookDir()
-                    DroneMissileManager:spawn(ModelUtils.getModelWorldPos(missileModel), vectors.vec3(math.deg(math.asin(lookDir.y)) * -1, math.deg(math.atan2(lookDir.z, lookDir.x)) * -1 + 90, 0))
+                    Character06a_DroneMissileManager:spawn(ModelUtils.getModelWorldPos(missileModel), vectors.vec3(math.deg(math.asin(lookDir.y)) * -1, math.deg(math.atan2(lookDir.z, lookDir.x)) * -1 + 90, 0))
                     missileModel:setVisible(false)
                     sounds:playSound("minecraft:entity.blaze.hurt", player:getPos(), 1, 1.5)
                 elseif launchCounter == 135 then

@@ -7,7 +7,7 @@ local ExSkill1TextObjectManager = {
     ---@return Character04b.ExSkill1TextObjectManager
     new = function ()
         ---@type Character04b.ExSkill1TextObjectManager
-        local instance = MiscUtils.instantiate(ExSkill1TextObjectManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character04b_ExSkill1TextObjectManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_text_object"
 
@@ -18,7 +18,7 @@ local ExSkill1TextObjectManager = {
     ---@param parentModel ModelPart このオブジェクトをアタッチする親パーツ
     ---@return Character04b.ExSkill1TextObject instance 生成したインスタンス
     getObject = function (_, parentModel)
-        return ExSkill1TextObject.new(parentModel)
+        return Character04b_ExSkill1TextObject.new(parentModel)
     end;
 
     ---テキストオブジェクトを生成する。

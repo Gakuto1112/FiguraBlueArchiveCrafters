@@ -7,7 +7,7 @@ local TankShellManager = {
     ---@return Character10b.TankShellManager
     new = function ()
         ---@type Character10b.TankShellManager
-        local instance = MiscUtils.instantiate(TankShellManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character10b_TankShellManager, SpawnObjectManager)
 
         instance.managerName = "tank_shell"
 
@@ -25,7 +25,7 @@ local TankShellManager = {
     ---@param rot Vector3 砲弾が飛んでいく方向
     ---@return  Character10b.TankShell instance 生成したインスタンス
     getObject = function (_, startPos, rot)
-        return TankShell.new(startPos, rot)
+        return Character10b_TankShell.new(startPos, rot)
     end;
 
     ---砲弾をスポーンさせる。

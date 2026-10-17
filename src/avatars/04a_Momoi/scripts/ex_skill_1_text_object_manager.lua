@@ -4,7 +4,7 @@ local ExSkill1TextObjectManager = {
     ---@return Character04a.ExSkill1TextObjectManager
     new = function ()
         ---@type Character04a.ExSkill1TextObjectManager
-        local instance = MiscUtils.instantiate(ExSkill1TextObjectManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character04a_ExSkill1TextObjectManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_text_object"
 
@@ -21,7 +21,7 @@ local ExSkill1TextObjectManager = {
     ---@param text string オブジェクトに設定するテキスト
     ---@return Character04a.ExSkill1TextObject instance 生成したインスタンス
     getObject = function (_, text)
-        return ExSkill1TextObject.new(text)
+        return Character04a_ExSkill1TextObject.new(text)
     end;
 
     ---テキストオブジェクトを生成する。

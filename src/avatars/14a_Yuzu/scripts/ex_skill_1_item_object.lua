@@ -16,7 +16,7 @@ local ExSkill1ItemObject = {
     ---@return Character14a.ExSkill1ItemObject
     new = function (type, launchRot)
         ---@type Character14a.ExSkill1ItemObject
-        local instance = MiscUtils.instantiate(ExSkill1ItemObject, SpawnObject)
+        local instance = MiscUtils.instantiate(Character14a_ExSkill1ItemObject, SpawnObject)
 
         instance.object = models.script_ex_skill_1_item_object:newPart(instance.uuid)
         instance.subObject = instance.object:newPart(client.intUUIDToString(client:generateUUID()), "Camera")

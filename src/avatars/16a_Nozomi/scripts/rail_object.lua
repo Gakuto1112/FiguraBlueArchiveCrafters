@@ -17,7 +17,7 @@ local RailObject = {
     ---@return Character16a.RailObject
     new = function (pos, rot)
         ---@type Character16a.RailObject
-        local instance = MiscUtils.instantiate(RailObject, SpawnObject)
+        local instance = MiscUtils.instantiate(Character16a_RailObject, SpawnObject)
 
         instance.object = models.script_ex_skill_1_rail:newPart(instance.uuid)
         instance.task = instance.object:newBlock(client.intUUIDToString(client.generateUUID()))

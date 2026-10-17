@@ -7,7 +7,7 @@ local ExSkill1CubeManager = {
     ---@return Character13b.ExSkill1CubeManager
     new = function ()
         ---@type Character13b.ExSkill1CubeManager
-        local instance = MiscUtils.instantiate(ExSkill1CubeManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character13b_ExSkill1CubeManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_cube"
 
@@ -24,7 +24,7 @@ local ExSkill1CubeManager = {
     ---キューブのインスタンスを生成して返す。
     ---@return Character13b.ExSkill1Cube instance 生成したインスタンス
     getObject = function (_)
-        return ExSkill1Cube.new()
+        return Character13b_ExSkill1Cube.new()
     end;
 
     ---キューブをスポーンさせる。

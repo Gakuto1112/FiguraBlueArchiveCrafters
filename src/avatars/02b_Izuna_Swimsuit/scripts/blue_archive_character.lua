@@ -673,10 +673,10 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---忍術ワープの表現
 		---@type Character02b.Teleport
-		Teleport = require("scripts.teleport")
+		Character02b_Teleport = require("scripts.teleport")
 
 		ModelAlias.alias.avatar.head.SunVisor.SunflowerAccessory.Sunflower:setPrimaryTexture("RESOURCE", "textures/block/sunflower_front.png")
-		Teleport:init()
+		Character02b_Teleport:init()
 
 		events.RENDER:register(function ()
 			if ModelAlias.alias.avatar.leftLeg.LegAccessory:getVisible() then

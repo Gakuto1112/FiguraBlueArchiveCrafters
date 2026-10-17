@@ -10,7 +10,7 @@ local ExSkillSplashParticle = {
     ---@return Character01b.ExSkillSplashParticle
     new = function (pos, velocity)
         ---@type Character01b.ExSkillSplashParticle
-        local instance = MiscUtils.instantiate(ExSkillSplashParticle, SpawnObject)
+        local instance = MiscUtils.instantiate(Character01b_ExSkillSplashParticle, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Gui.script_ex_skill_1_splash_particles:newSprite(instance.uuid)
         instance.currentPos = pos

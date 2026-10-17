@@ -32,7 +32,7 @@ local PieThrowing = {
 				elseif self.animationTick == 25 then
 					sounds:playSound("minecraft:entity.egg.throw", player:getPos(), 1, 1.5)
 				elseif self.animationTick == 27 then
-					PieManager:spawn(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 1.5, 0.5, 0, 1, 0):add(player:getPos()))
+					Character24a_PieManager:spawn(vectors.rotateAroundAxis(player:getBodyYaw() * -1, 0, 1.5, 0.5, 0, 1, 0):add(player:getPos()))
 				elseif self.animationTick == 42 then
 					self:stop()
 				end

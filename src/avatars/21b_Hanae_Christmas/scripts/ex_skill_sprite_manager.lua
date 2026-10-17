@@ -5,7 +5,7 @@ local ExSkillSpriteManager = {
     ---@return Character21b.ExSkillSpriteManager
     new = function ()
         ---@type Character21b.ExSkillSpriteManager
-        local instance = MiscUtils.instantiate(ExSkillSpriteManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character21b_ExSkillSpriteManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_sprite"
 
@@ -33,7 +33,7 @@ local ExSkillSpriteManager = {
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
     ---@return Character21b.ExSkillSprite
     getObject = function (_, objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
-        return ExSkillSprite.new(objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
+        return Character21b_ExSkillSprite.new(objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
     end;
 
     ---Exスキルフレームのパーティクルをスポーンさせる。

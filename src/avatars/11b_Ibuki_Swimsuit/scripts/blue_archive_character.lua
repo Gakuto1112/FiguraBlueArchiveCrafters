@@ -454,7 +454,7 @@ local BlueArchiveCharacter = {
 							particles:newParticle("minecraft:end_rod", anchorPos):setVelocity(dirVec)
 						end
 						for i = 0, 5 do
-							ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.ExSkill1ParticleAnchor1, vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(i * 60, 0, 50, 0, 0, 0, 1), math.random() * 60 + 60, 8, nil, 32, true, 0.85)
+							Character11b_ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.ExSkill1ParticleAnchor1, vectors.vec3(0, 0, 0), vectors.rotateAroundAxis(i * 60, 0, 50, 0, 0, 0, 1), math.random() * 60 + 60, 8, nil, 32, true, 0.85)
 						end
 
 						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 1)
@@ -526,7 +526,7 @@ local BlueArchiveCharacter = {
 				end
 
 				for i = 0, 7 do
-					ExSkillSpriteManager:spawn(models.models.ex_skill_1.ShellItemsArea, taskPos:copy():add(0, 0.25, 0), vectors.rotateAroundAxis(i * 45, 30, 0, 0, 0, 1, 0), 0, 2, nil, 40, true, 0.7)
+					Character11b_ExSkillSpriteManager:spawn(models.models.ex_skill_1.ShellItemsArea, taskPos:copy():add(0, 0.25, 0), vectors.rotateAroundAxis(i * 45, 30, 0, 0, 0, 1, 0), 0, 2, nil, 40, true, 0.7)
 				end
 
 				sounds:playSound("minecraft:entity.experience_orb.pickup", anchorPos, 1, math.random() + 2)
@@ -1132,12 +1132,12 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---Exスキルで使用するスプライトオブジェクトのインスタンスクラス
 		---@type Character11b.ExSkillSprite
-		ExSkillSprite = require("scripts.ex_skill_sprite")
+		Character11b_ExSkillSprite = require("scripts.ex_skill_sprite")
 
 		---Exスキルで使用するスプライトオブジェクトのマネージャークラス
 		---@type Character11b.ExSkillSpriteManager
-		ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
-		ExSkillSpriteManager = ExSkillSpriteManager.new()
+		Character11b_ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
+		Character11b_ExSkillSpriteManager = Character11b_ExSkillSpriteManager.new()
 
         events.TICK:register(function ()
             if not client:isPaused() then
@@ -1181,7 +1181,7 @@ local BlueArchiveCharacter = {
                                 end
                                 if self.costume.tankTick == 1 then
                                     for i = 0, 6 do
-                                        ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.SpriteArea, vectors.vec3(), vectors.rotateAroundAxis(i * -30, -100, 0, 0, 0, 0, 1), 0, 6, nil, 14, false, 0.7)
+                                        Character11b_ExSkillSpriteManager:spawn(ModelAlias.alias.avatar.head.SpriteArea, vectors.vec3(), vectors.rotateAroundAxis(i * -30, -100, 0, 0, 0, 0, 1), 0, 6, nil, 14, false, 0.7)
                                     end
                                     sounds:playSound("minecraft:entity.player.levelup", player:getPos(), 0.5, 1.5)
                                 elseif self.costume.tankTick == 21 then

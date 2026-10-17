@@ -250,9 +250,9 @@ local BlueArchiveCharacter = {
 					end
 					if self.exSkill.primary.noteParticleSpawnCount == 0 then
 						local offsetPos = math.random(0, 10) * 0.5
-						ExSkill1MelodyParticleManager:spawn(melodyParticlePos:copy():add(melodyParticleDir:copy():scale(offsetPos + (offsetPos >= 2.5 and 0 or 2))), models.models.ex_skill_1.ExSkill2ParticleAnchor1:getAnimRot():mul(-1, 1, -1), vectors.vec2(0.8, 0.8), vectors.vec3(), 60, false)
+						Character09b_ExSkill1MelodyParticleManager:spawn(melodyParticlePos:copy():add(melodyParticleDir:copy():scale(offsetPos + (offsetPos >= 2.5 and 0 or 2))), models.models.ex_skill_1.ExSkill2ParticleAnchor1:getAnimRot():mul(-1, 1, -1), vectors.vec2(0.8, 0.8), vectors.vec3(), 60, false)
 						if offsetPos >= 2.5 then
-							ExSkill1MelodyParticleManager.objects[#ExSkill1MelodyParticleManager.objects].subObject:setScale(1, -1, 1)
+							Character09b_ExSkill1MelodyParticleManager.objects[#Character09b_ExSkill1MelodyParticleManager.objects].subObject:setScale(1, -1, 1)
 						end
 						self.exSkill.primary.noteParticleSpawnCount = math.random(2, 3)
 					else
@@ -288,7 +288,7 @@ local BlueArchiveCharacter = {
 			spawnHandbellParticles = function ()
 				local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.leftArmBottom.Handbell.Camera.HandbellEffect1)
 				for _ = 1, 5 do
-					ExSkill1MelodyParticleManager:spawn(anchorPos, vectors.vec3(), vectors.vec2(0.25, 0.25), vectors.vec3(math.random() * 2 - 1, math.random() * 2 - 1, math.random() * 2 - 1):normalize():scale(0.02), 20, true)
+					Character09b_ExSkill1MelodyParticleManager:spawn(anchorPos, vectors.vec3(), vectors.vec2(0.25, 0.25), vectors.vec3(math.random() * 2 - 1, math.random() * 2 - 1, math.random() * 2 - 1):normalize():scale(0.02), 20, true)
 				end
 			end;
 		};
@@ -501,14 +501,14 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---Exスキル1で使用する音符パーティクルのインスタンスクラス
 		---@type Character09b.ExSkill1MelodyParticle
-		ExSkill1MelodyParticle = require("scripts.ex_skill_1_melody_particle")
+		Character09b_ExSkill1MelodyParticle = require("scripts.ex_skill_1_melody_particle")
 
 		---Exスキル1で使用する音符パーティクルのマネージャークラス
 		---@type Character09b.ExSkill1MelodyParticleManager
-		ExSkill1MelodyParticleManager = require("scripts.ex_skill_1_melody_particle_manager")
-		ExSkill1MelodyParticleManager = ExSkill1MelodyParticleManager.new()
+		Character09b_ExSkill1MelodyParticleManager = require("scripts.ex_skill_1_melody_particle_manager")
+		Character09b_ExSkill1MelodyParticleManager = Character09b_ExSkill1MelodyParticleManager.new()
 
-		ExSkill1MelodyParticleManager.init()
+		Character09b_ExSkill1MelodyParticleManager.init()
 
 		for _, modelPart in ipairs({ModelAlias.alias.avatar.leftArmBottom.Handbell.Handbell1_Top, ModelAlias.alias.avatar.leftArmBottom.Handbell.Handbell2_Top}) do
 			modelPart:setPrimaryTexture("RESOURCE", "minecraft:textures/block/bell_top.png")

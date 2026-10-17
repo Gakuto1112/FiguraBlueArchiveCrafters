@@ -10,7 +10,7 @@ local ExSkill1Particle = {
     ---@return Character05b.ExSkill1Particle
     new = function ()
         ---@type Character05b.ExSkill1Particle
-        local instance = MiscUtils.instantiate(ExSkill1Particle, SpawnObject)
+        local instance = MiscUtils.instantiate(Character05b_ExSkill1Particle, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Gui.UI.ClearEffect:newSprite(instance.uuid)
         instance.offsetPos = vectors.vec2(math.random() * 200 - 100, math.random() * 70 - 35)

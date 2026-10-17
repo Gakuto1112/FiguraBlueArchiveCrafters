@@ -12,7 +12,7 @@ local ExSkill1SpriteManager = {
     ---@return Character14b.ExSkill1SpriteManager
     new = function ()
         ---@type Character14b.ExSkill1SpriteManager
-        local instance = MiscUtils.instantiate(ExSkill1SpriteManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character14b_ExSkill1SpriteManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_sprite"
 
@@ -31,7 +31,7 @@ local ExSkill1SpriteManager = {
     ---@param velocity Vector2 スプライトの移動速度
     ---@return Character14b.ExSkill1Sprite instance 生成したインスタンス
     getObject = function (_, type, pos, velocity)
-        return ExSkill1Sprite.new(type, pos, velocity)
+        return Character14b_ExSkill1Sprite.new(type, pos, velocity)
     end;
 
     ---Exスキル2のスプライトのパーティクルをスポーンさせる。

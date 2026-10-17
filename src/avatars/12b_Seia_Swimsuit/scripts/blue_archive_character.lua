@@ -114,15 +114,15 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmStateChanged = function (_, right, left)
 				if left == "GUN_OFF_HAND" and right == "GUN_MAIN_HAND" then
-					if Car.isRidingCar then
+					if Character12b_Car.isRidingCar then
 						return {right = "CAR_GUN_MAIN_HAND", left = "CAR"}
 					end
 				elseif left == "GUN_MAIN_HAND" and right == "GUN_OFF_HAND" then
-					if Car.isRidingCar then
+					if Character12b_Car.isRidingCar then
 						return {right = "CAR", left = "CAR_GUN_MAIN_HAND"}
 					end
 				elseif left == "DEFAULT" and right == "DEFAULT" then
-					if Car ~= nil and Car.isRidingCar then
+					if Character12b_Car ~= nil and Character12b_Car.isRidingCar then
 						return {right = "CAR", left = "CAR"}
 					end
 				end
@@ -140,7 +140,7 @@ local BlueArchiveCharacter = {
 						local isUsingSpyglass = player:getActiveItem().id == "minecraft:spyglass" and ((activeHand == "MAIN_HAND" and not isLeftHanded) or (activeHand == "OFF_HAND" and isLeftHanded))
 						local isSwingingArm = (player:isSwingingArm() and not isLeftHanded) or isUsingSpyglass
 						ModelAlias.alias.avatar.rightArm:setParentType((context == "FIRST_PERSON" or isSwingingArm) and "RightArm" or "Body")
-						local handleRot = (Car.handleRot - Car.handleRotPrev) * delta + Car.handleRot
+						local handleRot = (Character12b_Car.handleRot - Character12b_Car.handleRotPrev) * delta + Character12b_Car.handleRot
 						ModelAlias.alias.avatar.rightArm:setRot(isSwingingArm and vectors.vec3(isUsingSpyglass and -10 or 0, 0, 0) or vectors.vec3(55 + handleRot * 0.25, 0, -15))
 					end, "right_arm_render")
 				elseif state == "CAR_GUN_MAIN_HAND" then
@@ -175,7 +175,7 @@ local BlueArchiveCharacter = {
 						local isUsingSpyglass = player:getActiveItem().id == "minecraft:spyglass" and ((activeHand == "MAIN_HAND" and isLeftHanded) or (activeHand == "OFF_HAND" and not isLeftHanded))
 						local isSwingingArm = (player:isSwingingArm() and isLeftHanded) or isUsingSpyglass
 						ModelAlias.alias.avatar.leftArm:setParentType((context == "FIRST_PERSON" or isSwingingArm) and "LeftArm" or "Body")
-						local handleRot = (Car.handleRot - Car.handleRotPrev) * delta + Car.handleRot
+						local handleRot = (Character12b_Car.handleRot - Character12b_Car.handleRotPrev) * delta + Character12b_Car.handleRot
 						ModelAlias.alias.avatar.leftArm:setRot(isSwingingArm and vectors.vec3(isUsingSpyglass and -10 or 0, 0, 0) or vectors.vec3(55 + handleRot * -0.25, 0, 15))
 					end, "left_arm_render")
 				elseif state == "CAR_GUN_MAIN_HAND" then
@@ -398,7 +398,7 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmorChange = function (_, parts, isVisible)
 				if parts == "HELMET" then
-					if Allay.perchCount <= 0 and ModelAlias.alias.avatar.head.Allay ~= nil then
+					if Character12b_Allay.perchCount <= 0 and ModelAlias.alias.avatar.head.Allay ~= nil then
 						ModelAlias.alias.avatar.head.Allay:setPos(0, isVisible and 33 or 32, 3)
 					end
 					ModelAlias.alias.avatar.head.SunVisor:setVisible(not isVisible)
@@ -687,13 +687,13 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---お供のアレイを制御するクラス
 		---@type Character12b.Allay
-		Allay = require("scripts.allay")
+		Character12b_Allay = require("scripts.allay")
 
 		---セイアのオープンカーを制御するクラス
-		Car = require("scripts.car")
+		Character12b_Car = require("scripts.car")
 
-		Allay:init()
-		Car:init()
+		Character12b_Allay:init()
+		Character12b_Car:init()
 
 		ModelAlias.alias.avatar.head.SunVisor.AllayPin:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/allay/allay.png")
 	end;

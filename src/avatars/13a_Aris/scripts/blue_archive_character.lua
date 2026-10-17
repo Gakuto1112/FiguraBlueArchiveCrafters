@@ -333,9 +333,9 @@ local BlueArchiveCharacter = {
 							models.script_ex_skill_1.exSkill1Outline:setRot(animRot)
 						end
 					end, "ex_skill_1_render")
-					RailGun.chargePercent = 0
-					RailGun.chargeState = "STRONG"
-					RailGun.animationLength = 35
+					Character13a_RailGun.chargePercent = 0
+					Character13a_RailGun.chargeState = "STRONG"
+					Character13a_RailGun.animationLength = 35
 					ModelAlias.alias.avatar.gun.DisplayContents:setVisible(true)
 					FaceParts:setEmotion("NARROW", "NARROW", "CLOSED", 65, true)
 				end;
@@ -419,7 +419,7 @@ local BlueArchiveCharacter = {
 					ModelAlias.alias.avatar.head.EyeHUDs.LeftEyeHUDs:setVisible(true)
 					ModelAlias.alias.avatar.gun.LightEffect:setOffsetPivot()
 					if not forcedStop then
-						RailGun.isSpecialCharge = true
+						Character13a_RailGun.isSpecialCharge = true
 					end
 				end;
 			};
@@ -658,10 +658,10 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---レールガンを制御するクラス
 		---@type Character13a.RailGun
-		RailGun = require("scripts.rail_gun")
+		Character13a_RailGun = require("scripts.rail_gun")
 
-		RailGun.init()
-		RailGun:enable()
+		Character13a_RailGun.init()
+		Character13a_RailGun:enable()
 	end;
 }
 

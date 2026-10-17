@@ -16,7 +16,7 @@ local PlacementObjectCube = {
     ---@return Character22a.PlacementObjectCube
     new = function (target, pos, color)
         ---@type Character22a.PlacementObjectCube
-        local instance = MiscUtils.instantiate(PlacementObjectCube, SpawnObject)
+        local instance = MiscUtils.instantiate(Character22a_PlacementObjectCube, SpawnObject)
 
         instance.target = target
         instance.object = models.models.placement_object.FieldCube:copy(instance.uuid)

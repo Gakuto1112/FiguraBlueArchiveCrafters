@@ -6,7 +6,7 @@ local FireworkManager = {
     ---@return Character08a.FireworkManager
     new = function ()
         ---@type Character08a.FireworkManager
-        local instance = MiscUtils.instantiate(FireworkManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character08a_FireworkManager, SpawnObjectManager)
 
         instance.managerName = "firework"
 
@@ -24,7 +24,7 @@ local FireworkManager = {
     ---@param rot Vector3 花火が飛んでいく方向
     ---@return Character08a.Firework instance 生成したインスタンス
     getObject = function (_, startPos, rot)
-        return Firework.new(startPos, rot)
+        return Character08a_Firework.new(startPos, rot)
     end;
 
     ---花火をスポーンさせる。

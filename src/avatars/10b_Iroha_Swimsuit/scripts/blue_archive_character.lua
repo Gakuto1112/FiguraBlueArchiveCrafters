@@ -878,14 +878,14 @@ local BlueArchiveCharacter = {
     init = function (self)
 		---戦車の砲弾オブジェクトのインスタンスクラス
 		---@type Character10b.TankShell
-		TankShell = require("scripts.tank_shell")
+		Character10b_TankShell = require("scripts.tank_shell")
 
 		---戦車の砲弾オブジェクトのマネージャークラス
 		---@type Character10b.TankShellManager
-		TankShellManager = require("scripts.tank_shell_manager")
-		TankShellManager = TankShellManager.new()
+		Character10b_TankShellManager = require("scripts.tank_shell_manager")
+		Character10b_TankShellManager = Character10b_TankShellManager.new()
 
-		TankShellManager.init()
+		Character10b_TankShellManager.init()
 
         models.models.tank.Tank:setColor(1, 1, 1)
         for _, modelPart in ipairs({models.models.tank.Tank.TankBody.PSLogo1, models.models.tank.Tank.TankBody.Turret.PSLogo2, models.models.tank.Tank.TankBody.Turret.PSLogo3}) do
@@ -1028,7 +1028,7 @@ local BlueArchiveCharacter = {
                                         avatar:store("shootingStart", false)
                                     elseif self.costume.shootTick == 13 then
                                         local anchorPos = ModelUtils.getModelWorldPos(models.models.tank.Tank.TankBody.Turret.Cannon.MuzzleAnchor1)
-                                        TankShellManager:spawn(anchorPos, vectors.vec3(models.models.tank.Tank.TankBody.Turret.Cannon:getRot().x * -1, player:getBodyYaw() * -1, 0))
+                                        Character10b_TankShellManager:spawn(anchorPos, vectors.vec3(models.models.tank.Tank.TankBody.Turret.Cannon:getRot().x * -1, player:getBodyYaw() * -1, 0))
                                         for _ = 1, 10 do
                                             particles:newParticle("minecraft:large_smoke", anchorPos:copy():add(math.random() - 0.5, math.random() - 0.5, math.random() - 0.5)):setScale(2)
                                         end

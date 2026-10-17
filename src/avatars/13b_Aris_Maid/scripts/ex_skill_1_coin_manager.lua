@@ -8,7 +8,7 @@ local ExSkill1CoinManager = {
     ---@return Character13b.ExSkill1CoinManager
     new = function ()
         ---@type Character13b.ExSkill1CoinManager
-        local instance = MiscUtils.instantiate(ExSkill1CoinManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character13b_ExSkill1CoinManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_coin"
 
@@ -25,7 +25,7 @@ local ExSkill1CoinManager = {
     ---@param pos Vector3 コインをスポーンさせるアバター座標
     ---@return Character13b.ExSkill1Coin instance 生成したインスタンス
     getObject = function (_, pos)
-        return ExSkill1Coin.new(pos)
+        return Character13b_ExSkill1Coin.new(pos)
     end;
 
     ---コインをスポーンさせる。

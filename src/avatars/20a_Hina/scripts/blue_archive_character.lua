@@ -767,9 +767,9 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---ヒナのマシンガンを制御するクラス
 		---@type Character20a.MachineGun
-		MachineGun = require("scripts.machine_gun")
+		Character20a_MachineGun = require("scripts.machine_gun")
 
-		MachineGun:init()
+		Character20a_MachineGun:init()
 
         ModelAlias.alias.avatar.body.Jacket.LeftJacketArm.LeftJacketArmZPivot.Armband:newText("costume_default_text_1"):setText("§l風紀"):setScale(0.18):setRot(0, 180, 0):setAlignment("CENTER")
 

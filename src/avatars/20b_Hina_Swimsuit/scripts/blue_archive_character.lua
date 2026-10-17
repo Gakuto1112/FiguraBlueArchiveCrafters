@@ -309,7 +309,7 @@ local BlueArchiveCharacter = {
 					elseif tick == 50 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "ANXIOUS", 3, true)
 					elseif tick == 52 then
-						MachineGun.exSkillIsHolding = true
+						Character20b_MachineGun.exSkillIsHolding = true
 						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.body)
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.rightArmBottom.Gun
 						ModelAlias.alias.avatar.gun:setPos()
@@ -373,7 +373,7 @@ local BlueArchiveCharacter = {
 							end
 						end
 					end
-					MachineGun.exSkillIsHolding = false
+					Character20b_MachineGun.exSkillIsHolding = false
 				end;
 			};
 		};
@@ -743,9 +743,9 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---ヒナのマシンガンを制御するクラス
 		---@type Character20b.MachineGun
-		MachineGun = require("scripts.machine_gun")
+		Character20b_MachineGun = require("scripts.machine_gun")
 
-		MachineGun:init()
+		Character20b_MachineGun:init()
 
 		ModelAlias.alias.avatar.body:newText("costume_swimsuit_text_1"):setText("§05-A"):setPos(0, -3, -2):setScale(0.05):setAlignment("CENTER")
 		ModelAlias.alias.avatar.body:newText("costume_swimsuit_text_2"):setText("§0ひな"):setPos(0, -3.35, -2):setScale(0.2):setAlignment("CENTER")

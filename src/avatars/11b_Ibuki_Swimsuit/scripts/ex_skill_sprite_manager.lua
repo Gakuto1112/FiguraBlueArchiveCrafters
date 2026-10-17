@@ -1,11 +1,11 @@
 ---@class (exact) Character11b.ExSkillSpriteManager : SpawnObjectManager Exスキル内で使用するスプライトのオブジェクトのマネージャークラス
 ---@field public objects Character11b.ExSkillSprite[] インスタンスで制御するオブジェクト
-ExSkillSpriteManager = {
+Character11b_ExSkillSpriteManager = {
     ---コンストラクタ
     ---@return Character11b.ExSkillSpriteManager
     new = function ()
         ---@type Character11b.ExSkillSpriteManager
-        local instance = MiscUtils.instantiate(ExSkillSpriteManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character11b_ExSkillSpriteManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_sprite"
 
@@ -24,7 +24,7 @@ ExSkillSpriteManager = {
     ---@param speedFactor number 速度の変化係数
     ---@return Character11b.ExSkillSprite instance 生成したインスタンス
     getObject = function (_, target, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
-        return ExSkillSprite.new(target, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
+        return Character11b_ExSkillSprite.new(target, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
     end;
 
     ---Exスキルフレームのパーティクルをスポーンさせる。
@@ -43,4 +43,4 @@ ExSkillSpriteManager = {
     end;
 }
 
-return ExSkillSpriteManager
+return Character11b_ExSkillSpriteManager

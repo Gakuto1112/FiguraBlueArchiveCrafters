@@ -5,6 +5,7 @@ from pathlib import Path
 from common_modules.base_path import base_path
 
 AVATARS_DIR = base_path.root / "src" / "avatars"
+GLOBAL_DECL = re.compile(r"^\s*(?!local\b)([A-Z]\w*)\s*=\s*require\(|^([A-Z]\w*)\s*=\s*\{")
 TYPES_FILE = base_path.root / "src" / "core" / "types" / "blue_archive_character.lua"
 DECL = re.compile(r"^\s*---@(class|alias)\s+(?:\(exact\)\s+)?([\w.]+)")
 
@@ -42,6 +43,16 @@ class TestCharacterTypes(unittest.TestCase):
             text = f.read_text(encoding="utf-8")
             self.assertEqual(len(re.findall(rf"^---@class (?:\(exact\) )?Character{cid} : BlueArchiveCharacter\b", text, re.M)), 1, str(f))
             self.assertEqual(len(re.findall(rf"^---@type Character{cid}$", text, re.M)), 1, str(f))
+
+    def test_global_variables_use_character_prefix(self) -> None:
+        """キャラクター固有のグローバル変数は`Character<ID>_`で始まる。"""
+        for cid, f in character_lua_files():
+            for line in f.read_text(encoding="utf-8").splitlines():
+                m = GLOBAL_DECL.match(line)
+                if m is None:
+                    continue
+                name = m.group(1) or m.group(2)
+                self.assertTrue(name.startswith(f"Character{cid}_"), f"{f}: {name}")
 
     def test_no_duplicate_declarations_across_characters(self) -> None:
         """同名の`---@class`/`---@alias`がキャラクター間で重複しない。"""

@@ -147,7 +147,7 @@ local BlueArchiveCharacter = {
 						local isLeftHanded = player:isLeftHanded()
 						if ((player:getHeldItem().id == "minecraft:shield" and not isLeftHanded) or (player:getHeldItem(true).id == "minecraft:shield" and isLeftHanded)) and Arms.armState.right == "GUN_OFF_HAND" then
 							Arms:setArmState("SHIELD_HAND", nil)
-						elseif SubGun.hasSubGun then
+						elseif Character07c_SubGun.hasSubGun then
 							Arms:setArmState("GUN_MAIN_HAND", "GUN_MAIN_HAND")
 						end
 					end, "right_arm_tick")
@@ -175,7 +175,7 @@ local BlueArchiveCharacter = {
 						local isLeftHanded = player:isLeftHanded()
 						if ((player:getHeldItem().id == "minecraft:shield" and isLeftHanded) or (player:getHeldItem(true).id == "minecraft:shield" and not isLeftHanded)) and Arms.armState.left == "GUN_OFF_HAND" then
 							Arms:setArmState(nil, "SHIELD_HAND")
-						elseif SubGun.hasSubGun then
+						elseif Character07c_SubGun.hasSubGun then
 							Arms:setArmState("GUN_MAIN_HAND", "GUN_MAIN_HAND")
 						end
 					end, "left_arm_tick")
@@ -680,15 +680,15 @@ local BlueArchiveCharacter = {
 			end;
 
 			onBeforeModelCopy = function (self)
-				self.deathAnimation.hasShield = HoshinoShield.hasShield
+				self.deathAnimation.hasShield = Character07c_HoshinoShield.hasShield
 				if self.deathAnimation.hasShield then
-					HoshinoShield:setShield(false, false)
+					Character07c_HoshinoShield:setShield(false, false)
 				end
 			end;
 
 			onAfterModelCopy = function (self)
 				if self.deathAnimation.hasShield then
-					HoshinoShield:setShield(true, false)
+					Character07c_HoshinoShield:setShield(true, false)
 				end
 			end;
 		};
@@ -831,14 +831,14 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---盾を制御するクラス
 		---@type Character07c.HoshinoShield
-		HoshinoShield = require("scripts.hoshino_shield")
+		Character07c_HoshinoShield = require("scripts.hoshino_shield")
 
 		---サブ拳銃を制御するクラス
 		---@type Character07c.SubGun
-		SubGun = require("scripts.sub_gun")
+		Character07c_SubGun = require("scripts.sub_gun")
 
-		HoshinoShield:init()
-		SubGun:enable()
+		Character07c_HoshinoShield:init()
+		Character07c_SubGun:enable()
 	end;
 }
 

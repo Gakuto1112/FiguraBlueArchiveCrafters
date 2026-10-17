@@ -11,7 +11,7 @@ local ExSkillTextObject = {
     ---@return Character02a.ExSkillTextObject
     new = function (_, textPos, text)
         ---@type Character02a.ExSkillTextObject
-        local instance = MiscUtils.instantiate(ExSkillTextObject, SpawnObject)
+        local instance = MiscUtils.instantiate(Character02a_ExSkillTextObject, SpawnObject)
 
         instance.object = models.models.main.CameraAnchor:newText(instance.uuid)
         instance.subObject = models.models.main.CameraAnchor:newText(client.intUUIDToString(client:generateUUID()))

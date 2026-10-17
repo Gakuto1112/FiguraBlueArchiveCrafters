@@ -7,7 +7,7 @@ local PlacementObjectCubeManager = {
     ---@return Character22a.PlacementObjectCubeManager
     new = function ()
         ---@type Character22a.PlacementObjectCubeManager
-        local instance = MiscUtils.instantiate(PlacementObjectCubeManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character22a_PlacementObjectCubeManager, SpawnObjectManager)
 
         instance.managerName = "placement_object_cube"
 
@@ -18,9 +18,9 @@ local PlacementObjectCubeManager = {
     ---@param target ModelPart インスタンスオブジェクトをアタッチする親モデル
     ---@param pos Vector3 オブジェクトをスポーンさせる位置
     ---@param color Vector3 キューブの色
-    ---@return ExSkillSprite instance 生成したインスタンス
+    ---@return Character22a.PlacementObjectCube  instance 生成したインスタンス
     getObject = function (_, target, pos, color)
-        return PlacementObjectCube.new(target, pos, color)
+        return Character22a_PlacementObjectCube.new(target, pos, color)
     end;
 
     ---設置物キューブをスポーンさせる。

@@ -6,7 +6,7 @@ local ExSkill1MelodyParticleManager = {
     ---@return Character09b.ExSkill1MelodyParticleManager
     new = function ()
         ---@type Character09b.ExSkill1MelodyParticleManager
-        local instance = MiscUtils.instantiate(ExSkill1MelodyParticleManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character09b_ExSkill1MelodyParticleManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_melody_particle"
 
@@ -28,7 +28,7 @@ local ExSkill1MelodyParticleManager = {
     ---@param shouldSeeCamera boolean パーティクルがカメラワークの方向を見るべきかどうか
     ---@return Character09b.ExSkill1MelodyParticle instance 生成したインスタンス
     getObject = function (_, pos, rot, size, velocity, lifeTime, shouldSeeCamera)
-        return ExSkill1MelodyParticle.new(pos, rot, size, velocity, lifeTime, shouldSeeCamera)
+        return Character09b_ExSkill1MelodyParticle.new(pos, rot, size, velocity, lifeTime, shouldSeeCamera)
     end;
 
     ---音符パーティクルをスポーンさせる。

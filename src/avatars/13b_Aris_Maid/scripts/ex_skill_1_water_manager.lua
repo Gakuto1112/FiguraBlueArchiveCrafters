@@ -7,7 +7,7 @@ local ExSkill1WaterManager = {
     ---@return Character13b.ExSkill1WaterManager
     new = function ()
         ---@type Character13b.ExSkill1WaterManager
-        local instance = MiscUtils.instantiate(ExSkill1WaterManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character13b_ExSkill1WaterManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_water"
 
@@ -26,7 +26,7 @@ local ExSkill1WaterManager = {
     ---@param velocity Vector3 水スプライトを移動させる速度
     ---@return Character13b.ExSkill1Water instance 生成したインスタンス
     getObject = function (_, pos, velocity)
-        return ExSkill1Water.new(pos, velocity)
+        return Character13b_ExSkill1Water.new(pos, velocity)
     end;
 
     ---水スプライトをスポーンさせる。

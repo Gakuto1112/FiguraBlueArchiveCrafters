@@ -543,13 +543,13 @@ local BlueArchiveCharacter = {
 						end
 					elseif tick == 131 and host:isHost() then
 						for _ = 1, 16 do
-							ExSkill1ParticleManager:spawn()
+							Character05b_ExSkill1ParticleManager:spawn()
 						end
 					elseif tick == 132 and host:isHost() then
 						models.models.ex_skill_1.Gui.UI.ClearEffect.Background:setVisible(true)
 						models.models.ex_skill_1.Gui.UI.ClearEffect:getTask("ex_skill_1_clear_effect_text_1"):setVisible(true)
 					elseif tick == 148 and host:isHost() then
-						ExSkill1TransitionManager:play()
+						Character05b_ExSkill1TransitionManager:play()
 					elseif tick == 154 then
 						ModelUtils.moveTo(models.models.main.Avatar.UpperBody.Arms.RightArm.RightArmBottom.Gun, models.models.main.Avatar.UpperBody.Arms.LeftArm.LeftArmBottom, models.models.main.Avatar.UpperBody.Arms.RightArm.RightArmBottom)
 					elseif tick == 155 then
@@ -682,7 +682,7 @@ local BlueArchiveCharacter = {
 							for _, eventName in ipairs({"ex_skill_1_reticule_render", "ex_skill_1_damage_effect_render", "ex_skill_1_clear_effect_render"}) do
 								events.RENDER:remove(eventName)
 							end
-							ExSkill1TransitionManager:stop()
+							Character05b_ExSkill1TransitionManager:stop()
 						end
 					end
 				end;
@@ -1176,21 +1176,21 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用するパーティクルインスタンスのクラス
 		---@type Character05b.ExSkill1Particle
-		ExSkill1Particle = require("scripts.ex_skill_1_particle")
+		Character05b_ExSkill1Particle = require("scripts.ex_skill_1_particle")
 
 		---Exスキルで使用するパーティクルマネージャーのクラス
 		---@type Character05b.ExSkill1ParticleManager
-		ExSkill1ParticleManager = require("scripts.ex_skill_1_particle_manager")
-		ExSkill1ParticleManager = ExSkill1ParticleManager.new()
+		Character05b_ExSkill1ParticleManager = require("scripts.ex_skill_1_particle_manager")
+		Character05b_ExSkill1ParticleManager = Character05b_ExSkill1ParticleManager.new()
 
 		---Exスキルで使用するトランジションインスタンスのクラス
 		---@type Character05b.ExSkill1TransitionSprite
-		ExSkill1TransitionSprite = require("scripts.ex_skill_1_transition")
+		Character05b_ExSkill1TransitionSprite = require("scripts.ex_skill_1_transition")
 
 		---Exスキルで使用するトランジションマネージャーのクラス
 		---@type Character05b.ExSkill1TransitionManager
-		ExSkill1TransitionManager = require("scripts.ex_skill_1_transition_manager")
-		ExSkill1TransitionManager = ExSkill1TransitionManager.new()
+		Character05b_ExSkill1TransitionManager = require("scripts.ex_skill_1_transition_manager")
+		Character05b_ExSkill1TransitionManager = Character05b_ExSkill1TransitionManager.new()
 
 		---前ティックに脚とスカートの調整をしたかどうか
 		---@type boolean

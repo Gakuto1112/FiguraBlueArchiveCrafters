@@ -234,7 +234,7 @@ local BlueArchiveCharacter = {
 
 					if tick % 4 == 0 then
 						local bodyYaw = player:getBodyYaw()
-						ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(bodyYaw * -1 - 90, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(bodyYaw * -1 - 90, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+						Character23b_ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(bodyYaw * -1 - 90, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(bodyYaw * -1 - 90, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
 					end
 				end;
 
@@ -314,7 +314,7 @@ local BlueArchiveCharacter = {
 
 					if tick % 4 == 0 then
 						local bodyYaw = player:getBodyYaw()
-						ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+						Character23b_ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
 					end
 				end;
 
@@ -370,7 +370,7 @@ local BlueArchiveCharacter = {
 			events.TICK:register(function ()
 				if not client:isPaused() then
 					if self.costume.shootingStarLifetimeCount % 4 == 0 then
-						ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
+						Character23b_ExSkillShootingStarManager:spawn(vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, math.random() * 1024 - 512, 256, 256, 1, 0, 0), 0, 1, 0):add(player:getPos()), vectors.rotateAroundAxis(self.costume.shootingStarBaseDir * -1 + yaw, vectors.rotateAroundAxis(-45, -0.5, -1, 0, 1, 0, 0), 0, 1, 0))
 					end
 
 					if self.costume.shootingStarLifetimeCount == 0 then
@@ -415,15 +415,15 @@ local BlueArchiveCharacter = {
 			onAfterModelCopy = function (self)
 				if models.script_head_block and not self.headBlock.isHeadBlockInitialized then
 
-					HaloShine = require("scripts.halo_shine")
+					Character23b_HaloShine = require("scripts.halo_shine")
 
 					for i = 1, 4 do
 						models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable["HaloShine" .. i]["HaloShine" .. i .. "Inner"]:setParentType("Camera")
 					end
-					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
-					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
-					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
-					table.insert(self.headBlock.headBlockHaloShines, HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, Character23b_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, Character23b_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, Character23b_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
+					table.insert(self.headBlock.headBlockHaloShines, Character23b_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
 
 					for _, shine in ipairs(self.headBlock.headBlockHaloShines) do
 						shine.callbacks.onInit(shine)
@@ -632,26 +632,26 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---ヘイローのキラキラエフェクトオブジェクトのクラス
 		---@type Character23b.HaloShine
-		HaloShine = require("scripts.halo_shine")
+		Character23b_HaloShine = require("scripts.halo_shine")
 
 		---水濡れを制御するクラス
 		---@type Character23b.Wet
-		Wet = require("scripts.wet")
-		Wet:init()
+		Character23b_Wet = require("scripts.wet")
+		Character23b_Wet:init()
 
 		---Exスキルで使用する流れ星パーティクルのインスタンスクラス
 		---@type Character23b.ExSkillShootingStar
-		ExSkillShootingStar = require("scripts.ex_skill_shooting_star")
+		Character23b_ExSkillShootingStar = require("scripts.ex_skill_shooting_star")
 
 		---Exスキルで使用する流れ星パーティクルのマネージャークラス
 		---@type Character23b.ExSkillShootingStarManager
-		ExSkillShootingStarManager = require("scripts.ex_skill_shooting_star_manager")
-		ExSkillShootingStarManager = ExSkillShootingStarManager.new()
+		Character23b_ExSkillShootingStarManager = require("scripts.ex_skill_shooting_star_manager")
+		Character23b_ExSkillShootingStarManager = Character23b_ExSkillShootingStarManager.new()
 
-		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
-		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
-		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
-		table.insert(self.costume.haloShines, HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
+		table.insert(self.costume.haloShines, Character23b_HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
+		table.insert(self.costume.haloShines, Character23b_HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
+		table.insert(self.costume.haloShines, Character23b_HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
+		table.insert(self.costume.haloShines, Character23b_HaloShine.new(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
 
 		for _, shine in ipairs(self.costume.haloShines) do
 			shine.callbacks.onInit(shine)

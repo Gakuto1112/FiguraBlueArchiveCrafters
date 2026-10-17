@@ -7,7 +7,7 @@ local ExSkillArrowManager = {
 	---@return Character24a.ExSkillArrowManager
 	new = function ()
 		---@type Character24a.ExSkillArrowManager
-		local instance = MiscUtils.instantiate(ExSkillArrowManager, SpawnObjectManager)
+		local instance = MiscUtils.instantiate(Character24a_ExSkillArrowManager, SpawnObjectManager)
 
 		instance.managerName = "ex_skill_arrow"
 
@@ -25,7 +25,7 @@ local ExSkillArrowManager = {
 	---@param velocity Vector3 矢のオブジェクトの初速
 	---@return Character24a.ExSkillArrow instance 生成したインスタンス
 	getObject = function (_, pos, velocity)
-		return ExSkillArrow.new(pos, velocity)
+		return Character24a_ExSkillArrow.new(pos, velocity)
 	end;
 
     ---Exスキルアニメーションで使用する矢のオブジェクトをスポーンさせる

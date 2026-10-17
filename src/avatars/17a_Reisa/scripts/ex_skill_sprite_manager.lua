@@ -7,7 +7,7 @@ local ExSkillSpriteManager = {
     ---@return Character17a.ExSkillSpriteManager
     new = function ()
         ---@type Character17a.ExSkillSpriteManager
-        local instance = MiscUtils.instantiate(ExSkillSpriteManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character17a_ExSkillSpriteManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_sprite"
 
@@ -28,7 +28,7 @@ local ExSkillSpriteManager = {
     ---@param speedFactor number 速度の変化係数
     ---@return Character17a.ExSkillSprite instance 生成したインスタンス
     getObject = function (_, target, index, color, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
-        return ExSkillSprite.new(target, index, color, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
+        return Character17a_ExSkillSprite.new(target, index, color, pos, velocity, rotVelocity, size, scaleTracker, lifetime, shouldSeeCamera, speedFactor)
     end;
 
     ---Exスキルフレームのパーティクルをスポーンさせる。

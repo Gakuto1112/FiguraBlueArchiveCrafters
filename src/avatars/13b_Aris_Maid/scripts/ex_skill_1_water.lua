@@ -12,7 +12,7 @@ local ExSkill1Water = {
     ---@return Character13b.ExSkill1Water
     new = function (pos, velocity)
         ---@type Character13b.ExSkill1Water
-        local instance = MiscUtils.instantiate(ExSkill1Water, SpawnObject)
+        local instance = MiscUtils.instantiate(Character13b_ExSkill1Water, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Water:copy(instance.uuid)
         instance.rot = math.random() * 360

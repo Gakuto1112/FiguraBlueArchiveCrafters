@@ -176,7 +176,7 @@ local BlueArchiveCharacter = {
 						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.rightItemPivot)
 						local bodyYaw = player:getBodyYaw()
 						for _ = 1, 6 do
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1["Gift" .. math.random(1, 5)], models.script_ex_skill_sprites, 1, nil, anchorPos, vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 10 - 5, 3, 0, 0, 1, 0), vectors.vec3(math.random() * 360, math.random() * 360, math.random() * 360), vectors.vec3(math.random() * 360 - 180, math.random() * 360 - 180, math.random() * 360 - 180), 1, nil, 24, false)
+							Character21b_ExSkillSpriteManager:spawn(models.models.ex_skill_1["Gift" .. math.random(1, 5)], models.script_ex_skill_sprites, 1, nil, anchorPos, vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 10 - 5, 3, 0, 0, 1, 0), vectors.vec3(math.random() * 360, math.random() * 360, math.random() * 360), vectors.vec3(math.random() * 360 - 180, math.random() * 360 - 180, math.random() * 360 - 180), 1, nil, 24, false)
 						end
 						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 3)
 					elseif tick == 44 then
@@ -205,7 +205,7 @@ local BlueArchiveCharacter = {
 						local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.body.ChristmasBag)
 						local bodyYaw = player:getBodyYaw()
 						for _ = 1, 8 do
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1["Gift" .. math.random(1, 5)], models.script_ex_skill_sprites, 1, nil, anchorPos, vectors.rotateAroundAxis(bodyYaw * -1 - 30, math.random() * 10 - 5, math.random() * 2 + 5, 0, 0, 1, 0), vectors.vec3(math.random() * 360, math.random() * 360, math.random() * 360), vectors.vec3(math.random() * 360 - 180, math.random() * 360 - 180, math.random() * 360 - 180), 1, nil, 33, false)
+							Character21b_ExSkillSpriteManager:spawn(models.models.ex_skill_1["Gift" .. math.random(1, 5)], models.script_ex_skill_sprites, 1, nil, anchorPos, vectors.rotateAroundAxis(bodyYaw * -1 - 30, math.random() * 10 - 5, math.random() * 2 + 5, 0, 0, 1, 0), vectors.vec3(math.random() * 360, math.random() * 360, math.random() * 360), vectors.vec3(math.random() * 360 - 180, math.random() * 360 - 180, math.random() * 360 - 180), 1, nil, 33, false)
 						end
 						sounds:playSound("minecraft:entity.player.levelup", anchorPos, 1, 1.5)
 					elseif tick == 76 and host:isHost() then
@@ -229,7 +229,7 @@ local BlueArchiveCharacter = {
 					end
 					if forcedStop then
 						ModelAlias.alias.avatar.root:setPrimaryRenderType("CUTOUT")
-						ExSkillSpriteManager:removeAll()
+						Character21b_ExSkillSpriteManager:removeAll()
 					end
 				end;
 			};
@@ -487,14 +487,14 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用するスプライトオブジェクトのインスタンスクラス
 		---@type Character21b.ExSkillSprite
-		ExSkillSprite = require("scripts.ex_skill_sprite")
+		Character21b_ExSkillSprite = require("scripts.ex_skill_sprite")
 
 		---Exスキルで使用するスプライトオブジェクトのマネージャークラス
 		---@type Character21b.ExSkillSpriteManager
-		ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
-		ExSkillSpriteManager = ExSkillSpriteManager.new()
+		Character21b_ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
+		Character21b_ExSkillSpriteManager = Character21b_ExSkillSpriteManager.new()
 
-		ExSkillSpriteManager.init()
+		Character21b_ExSkillSpriteManager.init()
 	end;
 }
 

@@ -131,20 +131,20 @@ local BlueArchiveCharacter = {
 			onArmStateChanged = function (_, right, left)
 				if events.TICK:getRegisteredCount("ex_skill_1_waving_tick") > 0 then
 					return {right = "DEFAULT", left = "DEFAULT"}
-				elseif WhaleFloat ~= nil and right == "DEFAULT" and left == "DEFAULT" then
+				elseif Character07b_WhaleFloat ~= nil and right == "DEFAULT" and left == "DEFAULT" then
 					return {right = "WHALE_FLOAT", left = "WHALE_FLOAT"}
 				elseif right == "GUN_MAIN_HAND" and left == "GUN_OFF_HAND" then
 					local isLeftHanded = player:isLeftHanded()
 					if (player:getHeldItem(true).id == "minecraft:shield" and not isLeftHanded) or (player:getHeldItem().id == "minecraft:shield" and isLeftHanded) then
 						return {right = "GUN_MAIN_HAND", left = "SHIELD_HAND"}
-					elseif WhaleFloat.isAFK then
+					elseif Character07b_WhaleFloat.isAFK then
 						return {right = "DEFAULT", left = "DEFAULT"}
 					end
 				elseif right == "GUN_OFF_HAND" and left == "GUN_MAIN_HAND" then
 					local isLeftHanded = player:isLeftHanded()
 					if (player:getHeldItem().id == "minecraft:shield" and not isLeftHanded) or (player:getHeldItem(true).id == "minecraft:shield" and isLeftHanded) then
 						return {right = "SHIELD_HAND", left = "GUN_MAIN_HAND"}
-					elseif WhaleFloat.isAFK then
+					elseif Character07b_WhaleFloat.isAFK then
 						return {right = "DEFAULT", left = "DEFAULT"}
 					end
 				end
@@ -155,7 +155,7 @@ local BlueArchiveCharacter = {
 					Arms:registerRightArmTickEvent("GUN_MAIN_HAND")
 					Arms:registerRightArmRenderEvent("GUN_MAIN_HAND")
 					events.RENDER:register(function ()
-						if WhaleFloat.whaleFloatEnabled then
+						if Character07b_WhaleFloat.whaleFloatEnabled then
 							ModelAlias.alias.avatar.rightArm:setRot(ModelAlias.alias.avatar.rightArm:getRot():add(10, 0, 0))
 						end
 					end, "right_arm_render")
@@ -169,7 +169,7 @@ local BlueArchiveCharacter = {
 					end, "right_arm_tick")
 					Arms:registerRightArmRenderEvent("GUN_OFF_HAND")
 					events.RENDER:register(function ()
-						if WhaleFloat.whaleFloatEnabled then
+						if Character07b_WhaleFloat.whaleFloatEnabled then
 							ModelAlias.alias.avatar.rightArm:setRot(ModelAlias.alias.avatar.rightArm:getRot():add(10, 0, 0))
 						end
 					end, "right_arm_render")
@@ -195,7 +195,7 @@ local BlueArchiveCharacter = {
 					Arms:registerLeftArmTickEvent("GUN_MAIN_HAND")
 					Arms:registerLeftArmRenderEvent("GUN_MAIN_HAND")
 					events.RENDER:register(function ()
-						if WhaleFloat.whaleFloatEnabled then
+						if Character07b_WhaleFloat.whaleFloatEnabled then
 							ModelAlias.alias.avatar.leftArm:setRot(ModelAlias.alias.avatar.leftArm:getRot():add(10, 0, 0))
 						end
 					end, "left_arm_render")
@@ -209,7 +209,7 @@ local BlueArchiveCharacter = {
 					end, "left_arm_tick")
 					Arms:registerLeftArmRenderEvent("GUN_OFF_HAND")
 					events.RENDER:register(function ()
-						if WhaleFloat.whaleFloatEnabled then
+						if Character07b_WhaleFloat.whaleFloatEnabled then
 							ModelAlias.alias.avatar.leftArm:setRot(ModelAlias.alias.avatar.leftArm:getRot():add(10, 0, 0))
 						end
 					end, "left_arm_render")
@@ -431,7 +431,7 @@ local BlueArchiveCharacter = {
 							end
 						end, "ex_skill_1_waving_tick")
 
-						ExSkill1WaveParticleManager:play()
+						Character07b_ExSkill1WaveParticleManager:play()
 						sounds:playSound("minecraft:item.bucket.empty", playerPos, 1, 0.5)
 						for _, modelPart in ipairs({ModelAlias.alias.avatar.body.RashGuardB, ModelAlias.alias.avatar.rightArm.RashGuardRA, ModelAlias.alias.avatar.rightArmBottom.RashGuardRAB, ModelAlias.alias.avatar.leftArm.RashGuardLA, ModelAlias.alias.avatar.leftArmBottom.RashGuardLAB, ModelAlias.alias.avatar.rightLeg.RashGuardRL, ModelAlias.alias.avatar.leftLeg.RashGuardLL}) do
 							modelPart:setVisible(false)
@@ -546,15 +546,15 @@ local BlueArchiveCharacter = {
 
 			onBeforeModelCopy = function (self)
 				ModelAlias.alias.avatar.lowerBody.WhaleFloat:setVisible(false)
-				self.deathAnimation.hasShield = HoshinoShield.hasShield
+				self.deathAnimation.hasShield = Character07b_HoshinoShield.hasShield
 				if self.deathAnimation.hasShield then
-					HoshinoShield:setShield(false, false)
+					Character07b_HoshinoShield:setShield(false, false)
 				end
 			end;
 
 			onAfterModelCopy = function (self)
 				if self.deathAnimation.hasShield then
-					HoshinoShield:setShield(true, false)
+					Character07b_HoshinoShield:setShield(true, false)
 				end
 			end;
 		};
@@ -745,20 +745,20 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---盾を制御するクラス
 		---@type Character07b.HoshinoShield
-		HoshinoShield = require("scripts.hoshino_shield")
+		Character07b_HoshinoShield = require("scripts.hoshino_shield")
 
 		---クジラフロートを制御するクラス
 		---@type Character07b.WhaleFloat
-		WhaleFloat = require("scripts.whale_float")
+		Character07b_WhaleFloat = require("scripts.whale_float")
 
 		---Exスキル1のパーティクルインスタンスのクラス
 		---@type ExSkill1Particle
-		ExSkill1WaveParticle = require("scripts.ex_skill_1_wave_particle")
+		Character07b_ExSkill1WaveParticle = require("scripts.ex_skill_1_wave_particle")
 
 		---Exスキル1のパーティクルマネージャーのクラス
 		---@type ExSkill1ParticleManager
-		ExSkill1WaveParticleManager = require("scripts.ex_skill_1_wave_particle_manager")
-		ExSkill1WaveParticleManager = ExSkill1WaveParticleManager.new()
+		Character07b_ExSkill1WaveParticleManager = require("scripts.ex_skill_1_wave_particle_manager")
+		Character07b_ExSkill1WaveParticleManager = Character07b_ExSkill1WaveParticleManager.new()
 
 		---頭パーツに親の回転パーツを追加
 		---@diagnostic disable-next-line: discard-returns
@@ -767,8 +767,8 @@ local BlueArchiveCharacter = {
 		ModelUtils.moveTo(ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.root.HeadPivot, ModelAlias.alias.avatar.root)
 		ModelAlias:modifyAvatarAlias("head", ModelAlias.alias.avatar.root.HeadPivot.Head)
 
-		HoshinoShield:init()
-		WhaleFloat:enable()
+		Character07b_HoshinoShield:init()
+		Character07b_WhaleFloat:enable()
 	end;
 }
 

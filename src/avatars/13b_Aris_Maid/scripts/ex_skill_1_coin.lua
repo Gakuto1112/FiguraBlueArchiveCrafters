@@ -21,7 +21,7 @@ local ExSkill1Coin = {
     ---@return Character13b.ExSkill1Coin
     new = function (pos)
         ---@type Character13b.ExSkill1Coin
-        local instance = MiscUtils.instantiate(ExSkill1Coin, SpawnObject)
+        local instance = MiscUtils.instantiate(Character13b_ExSkill1Coin, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Coin:copy(instance.uuid)
         instance.objectPos = pos:copy()

@@ -38,6 +38,7 @@ It is outside any `scripts` directory, so it is not copied into the built avatar
 - Each character's `blue_archive_character.lua` declares `---@class (exact) Character<ID> : BlueArchiveCharacter` (e.g. `Character23a`) and attaches it to the sheet with `---@type Character<ID>`.
 - Character-specific enum values (eye/mouth textures, additional arm states) are declared as `Character<ID>.RightEyeTextures` etc. and applied through the derived `Character<ID>.*Struct` classes, so completion in one character never offers another character's values.
 - Every `---@class` / `---@alias` under `/src/avatars` must start with `Character<ID>`, including helper scripts (e.g. `Character11a.ExSkillSprite`), even when the same helper exists in several characters. This is checked by `scripts/test/test_character_types.py`.
+- Global variables under `/src/avatars` (except `BlueArchiveCharacter`) are named `Character<ID>_<Name>` (e.g. `Character04a_ExSkill1TextObject`).
 - When creating a new character from `00a_Base`, rename every `Character00a` to the new `Character<ID>`.
 
 ### Character-Specific Part

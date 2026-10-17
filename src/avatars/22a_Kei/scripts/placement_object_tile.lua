@@ -22,7 +22,7 @@ local PlacementObjectTile = {
     ---@return Character22a.PlacementObjectTile
     new = function (target, pos, rot, color, lifetime, shouldFadeOut, dummy)
         ---@type Character22a.PlacementObjectTile
-        local instance = MiscUtils.instantiate(PlacementObjectTile, SpawnObject)
+        local instance = MiscUtils.instantiate(Character22a_PlacementObjectTile, SpawnObject)
 
         instance.target = target
         instance.object = models.models.placement_object.FieldTile:copy(instance.uuid)

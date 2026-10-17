@@ -15,7 +15,7 @@ local TankShell = {
     ---@return Character19b.TankShell
     new = function (startPos, rot)
         ---@type Character19b.TankShell
-        local instance = MiscUtils.instantiate(TankShell, SpawnObject)
+        local instance = MiscUtils.instantiate(Character19b_TankShell, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Shell:copy(instance.uuid)
         instance.currentPos = startPos:copy()

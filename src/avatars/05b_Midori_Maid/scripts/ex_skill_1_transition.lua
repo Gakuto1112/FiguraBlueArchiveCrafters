@@ -8,7 +8,7 @@ local ExSkill1TransitionSprite = {
     ---@return Character05b.ExSkill1TransitionSprite
     new = function (pos)
         ---@type Character05b.ExSkill1TransitionSprite
-        local instance = MiscUtils.instantiate(ExSkill1TransitionSprite, SpawnObject)
+        local instance = MiscUtils.instantiate(Character05b_ExSkill1TransitionSprite, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Gui.TransitionAnchor:newSprite(instance.uuid)
         instance.pos = pos

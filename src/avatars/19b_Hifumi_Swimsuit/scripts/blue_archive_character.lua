@@ -216,7 +216,7 @@ local BlueArchiveCharacter = {
 						---@type Minecraft.itemID
 						local itemTable = {"melon", "potion", "melon_slice", "apple", "milk_bucket", "tube_coral_block", "brain_coral_block", "bubble_coral_block", "fire_coral_block", "horn_coral_block", "tube_coral", "brain_coral", "fire_coral", "horn_coral", "bubble_coral", "tube_coral_fan", "brain_coral_fan", "bubble_coral_fan", "fire_coral_fan", "horn_coral_fan", "cod", "cod_bucket", "salmon", "salmon_bucket", "tropical_fish", "tropical_fish_bucket", "seagrass", "sea_pickle", "kelp", "ink_sac", "turtle_scute", "sand", "heart_of_the_sea"}
 						local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Tank.TankBody.CoolerBox.ExSkill2LauncherAnchor)
-						ItemLauncher:launch(CompatibilityUtils:checkItem("minecraft:" .. itemTable[math.random(#itemTable)]), anchorPos, math.random() * 360, 0.75, vectors.rotateAroundAxis(player:getBodyYaw() * -1, math.random() * 4 - 2, math.random() * 2 + 1, math.random() * 10 + 5, 0, 1, 0), 30)
+						Character19b_ItemLauncher:launch(CompatibilityUtils:checkItem("minecraft:" .. itemTable[math.random(#itemTable)]), anchorPos, math.random() * 360, 0.75, vectors.rotateAroundAxis(player:getBodyYaw() * -1, math.random() * 4 - 2, math.random() * 2 + 1, math.random() * 10 + 5, 0, 1, 0), 30)
 						sounds:playSound("minecraft:entity.item.pickup", anchorPos, 1, math.random() * 0.4 + 0.8)
 					end
 
@@ -519,19 +519,19 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---アイテムを発射する演出のクラス
 		---@type Character19b.ItemLauncher
-		ItemLauncher = require("scripts.item_launcher")
+		Character19b_ItemLauncher = require("scripts.item_launcher")
 
 		---戦車の砲弾オブジェクトのインスタンスクラス
 		---@type Character19b.TankShell
-		TankShell = require("scripts.tank_shell")
+		Character19b_TankShell = require("scripts.tank_shell")
 
 		---戦車の砲弾オブジェクトのマネージャークラス
 		---@type Character19b.TankShellManager
-		TankShellManager = require("scripts.tank_shell_manager")
-		TankShellManager = TankShellManager.new()
+		Character19b_TankShellManager = require("scripts.tank_shell_manager")
+		Character19b_TankShellManager = Character19b_TankShellManager.new()
 
-		ItemLauncher.init()
-		TankShellManager.init()
+		Character19b_ItemLauncher.init()
+		Character19b_TankShellManager.init()
 
 		models.models.ex_skill_1.Tank.TankBody.BaseLeftSide4:newText("ex_skill_1_tank_text_1"):setText("§02年3組 備品"):setPos(0, 7, 14):setRot(0, 90, 0):setScale(0.55):setAlignment("CENTER")
 		models.models.ex_skill_1.Tank.TankBody.BaseLeftSide4:newText("ex_skill_1_tank_text_2"):setText("§0使用後、元の位置に！"):setPos(0, 2.25, 20):setRot(0, 90, 0):setScale(0.15):setAlignment("CENTER")
@@ -649,7 +649,7 @@ local BlueArchiveCharacter = {
 								self.costume.shootTick = self.costume.shootTick + 1
 								if self.costume.shootTick == 19 then
 									local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Tank.TankBody.Turret.CannonBase.Cannon.MuzzleAnchor)
-									TankShellManager:spawn(anchorPos, vectors.vec3(models.models.ex_skill_1.Tank.TankBody.Turret.CannonBase:getRot().x * -1, player:getBodyYaw() * -1, 0))
+									Character19b_TankShellManager:spawn(anchorPos, vectors.vec3(models.models.ex_skill_1.Tank.TankBody.Turret.CannonBase:getRot().x * -1, player:getBodyYaw() * -1, 0))
 									for _ = 1, 10 do
 										particles:newParticle("minecraft:large_smoke", anchorPos:copy():add(math.random() - 0.5, math.random() - 0.5, math.random() - 0.5)):setScale(2)
 									end

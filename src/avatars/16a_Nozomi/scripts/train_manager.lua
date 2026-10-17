@@ -18,7 +18,7 @@ local TrainManager = {
     ---@return Character16a.TrainManager
     new = function ()
         ---@type Character16a.TrainManager
-        local instance = MiscUtils.instantiate(TrainManager, SpawnObjectManager)
+        local instance = MiscUtils.instantiate(Character16a_TrainManager, SpawnObjectManager)
 
         instance.railForwardLength = 32
         instance.railBackwardLength = math.huge
@@ -49,7 +49,7 @@ local TrainManager = {
     ---@param rot number 線路オブジェクトを設置するワールド方向
     ---@return Character16a.RailObject instance 生成したインスタンス
     getObject = function (_, pos, rot)
-        return RailObject.new(pos, rot)
+        return Character16a_RailObject.new(pos, rot)
     end;
 
     ---線路オブジェクトをスポーンさせる。

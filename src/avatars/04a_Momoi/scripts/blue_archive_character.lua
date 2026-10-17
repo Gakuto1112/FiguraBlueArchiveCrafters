@@ -238,7 +238,7 @@ local BlueArchiveCharacter = {
 					elseif tick == 16 then
 						FaceParts:setEmotion("ANXIOUS", "ANXIOUS", "ANXIOUS", 24, true)
 					elseif tick == 24 then
-						ExSkill1TextObjectManager:spawn("4")
+						Character04a_ExSkill1TextObjectManager:spawn("4")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
 						if host:isHost() then
 							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll:setColor(1, 0.75, 0.75)
@@ -253,7 +253,7 @@ local BlueArchiveCharacter = {
 						end
 						models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(144, 0)
 					elseif tick == 31 then
-						ExSkill1TextObjectManager:spawn("3")
+						Character04a_ExSkill1TextObjectManager:spawn("3")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
 						if host:isHost() then
 							models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll:setColor(1, 0.75, 0.75)
@@ -268,7 +268,7 @@ local BlueArchiveCharacter = {
 						end
 						models.models.ex_skill_1.Gui.UI.MomoiUI.PaperDoll.MomoiPaperDollHead.FaceParts.Mouth:setUVPixels(144, 0)
 					elseif tick == 36 then
-						ExSkill1TextObjectManager:spawn("5")
+						Character04a_ExSkill1TextObjectManager:spawn("5")
 						local playerPos = player:getPos()
 						sounds:playSound("minecraft:entity.generic.hurt", playerPos, 0.25, 1)
 						sounds:playSound("minecraft:entity.player.levelup", playerPos, 1, 1.5)
@@ -489,14 +489,14 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type Character04a.ExSkill1TextObject
-		ExSkill1TextObject = require("scripts.ex_skill_1_text_object")
+		Character04a_ExSkill1TextObject = require("scripts.ex_skill_1_text_object")
 
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type Character04a.ExSkill1TextObjectManager
-		ExSkill1TextObjectManager = require("scripts.ex_skill_1_text_object_manager")
-		ExSkill1TextObjectManager = ExSkill1TextObjectManager.new()
+		Character04a_ExSkill1TextObjectManager = require("scripts.ex_skill_1_text_object_manager")
+		Character04a_ExSkill1TextObjectManager = Character04a_ExSkill1TextObjectManager.new()
 
-		ExSkill1TextObjectManager.init()
+		Character04a_ExSkill1TextObjectManager.init()
 	end;
 }
 

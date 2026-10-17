@@ -292,7 +292,7 @@ local BlueArchiveCharacter = {
 						local windowSize = client:getScaledWindowSize()
 						for _ = 1, 5 do
 							local offset = math.random() * 2 - 1
-							ExSkillSpriteManager:spawn(models.models.ex_skill_1.Gui, vectors.vec3(0.804, 0.684, 0.997):add(vectors.vec3(0.196, 0.316, 0.003):scale(math.random())), anchorPos:copy():add(offset * windowSize.x * math.cos(math.rad(30)), offset * windowSize.y / math.cos(math.rad(30))), vectors.rotateAroundAxis(30, 0, 1500 * (tick < 45 and 1 or -1), 0, 0, 0, 1), math.random() * 720 - 360, 30, nil, 20, false, 1)
+							Character18b_ExSkillSpriteManager:spawn(models.models.ex_skill_1.Gui, vectors.vec3(0.804, 0.684, 0.997):add(vectors.vec3(0.196, 0.316, 0.003):scale(math.random())), anchorPos:copy():add(offset * windowSize.x * math.cos(math.rad(30)), offset * windowSize.y / math.cos(math.rad(30))), vectors.rotateAroundAxis(30, 0, 1500 * (tick < 45 and 1 or -1), 0, 0, 0, 1), math.random() * 720 - 360, 30, nil, 20, false, 1)
 						end
 					end
 					if tick >= 156 and (tick - 156) % 2 == 0 then
@@ -781,18 +781,18 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---忍術ワープの表現
 		---@type Character18b.Teleport
-		Teleport = require("scripts.teleport")
+		Character18b_Teleport = require("scripts.teleport")
 
 		---Exスキルで使用するスプライトオブジェクトのインスタンスクラス
 		---@type Character18b.ExSkillSprite
-		ExSkillSprite = require("scripts.ex_skill_sprite")
+		Character18b_ExSkillSprite = require("scripts.ex_skill_sprite")
 
 		---Exスキルで使用するスプライトオブジェクトのマネージャークラス
 		---@type Character18b.ExSkillSpriteManager
-		ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
-		ExSkillSpriteManager = ExSkillSpriteManager.new()
+		Character18b_ExSkillSpriteManager = require("scripts.ex_skill_sprite_manager")
+		Character18b_ExSkillSpriteManager = Character18b_ExSkillSpriteManager.new()
 
-		Teleport:init()
+		Character18b_Teleport:init()
 
         events.TICK:register(function ()
 			ModelAlias.alias.avatar.body.Dress:setRot(player:isCrouching() and 17.5 or 0, 0, 0)

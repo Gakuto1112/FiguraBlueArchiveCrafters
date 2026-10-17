@@ -238,7 +238,7 @@ local BlueArchiveCharacter = {
 					elseif tick == 15 then
 						FaceParts:setEmotion("ANXIOUS", "ANXIOUS", "CLOSED", 22, true)
 					elseif tick == 22 then
-						ExSkill1TextObjectManager:spawn("2")
+						Character05a_ExSkill1TextObjectManager:spawn("2")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
 						if host:isHost() then
 							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll:setColor(1, 0.75, 0.75)
@@ -247,22 +247,22 @@ local BlueArchiveCharacter = {
 							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll.MidoriPaperDollHead.FaceParts.Mouth:setUVPixels(80, 0)
 						end
 					elseif tick == 24 then
-						ExSkill1TextObjectManager:spawn("1")
+						Character05a_ExSkill1TextObjectManager:spawn("1")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
 					elseif tick == 26 then
-						ExSkill1TextObjectManager:spawn("2")
+						Character05a_ExSkill1TextObjectManager:spawn("2")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
 					elseif tick == 28 then
-						ExSkill1TextObjectManager:spawn("1")
+						Character05a_ExSkill1TextObjectManager:spawn("1")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
 					elseif tick == 30 then
-						ExSkill1TextObjectManager:spawn("2")
+						Character05a_ExSkill1TextObjectManager:spawn("2")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
 					elseif tick == 32 then
-						ExSkill1TextObjectManager:spawn("1")
+						Character05a_ExSkill1TextObjectManager:spawn("1")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
 					elseif tick == 34 then
-						ExSkill1TextObjectManager:spawn("2")
+						Character05a_ExSkill1TextObjectManager:spawn("2")
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
 					elseif tick == 36 then
 						for _, modelPart in ipairs({models.models.ex_skill_1.Momoi.MomoiHead.MomoiFaceParts.Eyes.RightEye, models.models.ex_skill_1.Momoi.MomoiHead.MomoiFaceParts.Eyes.LeftEye}) do
@@ -270,7 +270,7 @@ local BlueArchiveCharacter = {
 						end
 						models.models.ex_skill_1.Momoi.MomoiHead.MomoiFaceParts.Mouth:setUVPixels(32, 0)
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "CLOSED", 11, true)
-						ExSkill1TextObjectManager:spawn("1")
+						Character05a_ExSkill1TextObjectManager:spawn("1")
 						local playerPos = player:getPos()
 						sounds:playSound("minecraft:entity.player.levelup", playerPos, 1, 1.5)
 						sounds:playSound("minecraft:entity.generic.hurt", player:getPos(), 0.25, 1)
@@ -498,14 +498,14 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type Character05a.ExSkill1TextObject
-		ExSkill1TextObject = require("scripts.ex_skill_1_text_object")
+		Character05a_ExSkill1TextObject = require("scripts.ex_skill_1_text_object")
 
 		---Exスキルで使用するテキストオブジェクトのマネージャークラス
 		---@type Character05a.ExSkill1TextObjectManager
-		ExSkill1TextObjectManager = require("scripts.ex_skill_1_text_object_manager")
-		ExSkill1TextObjectManager = ExSkill1TextObjectManager.new()
+		Character05a_ExSkill1TextObjectManager = require("scripts.ex_skill_1_text_object_manager")
+		Character05a_ExSkill1TextObjectManager = Character05a_ExSkill1TextObjectManager.new()
 
-		ExSkill1TextObjectManager.init()
+		Character05a_ExSkill1TextObjectManager.init()
 	end;
 }
 

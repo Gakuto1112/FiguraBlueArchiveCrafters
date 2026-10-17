@@ -422,12 +422,12 @@ local BlueArchiveCharacter = {
 						local windowSize = client:getScaledWindowSize()
 						for i = 0, 5 do
 							local offset = vectors.vec2(math.cos(math.rad(i * 60)), math.sin(math.rad(i * 60))):mul(windowSize.x / windowSize.y, 1)
-							ExSkill1SpriteManager:spawn("STAR", offset:copy():scale(50), offset:copy():scale(math.random() * 5 + 10))
+							Character14b_ExSkill1SpriteManager:spawn("STAR", offset:copy():scale(50), offset:copy():scale(math.random() * 5 + 10))
 						end
 						for _ = 1, 5 do
 							local rot = math.random() * 360
 							local offset = vectors.vec2(math.cos(math.rad(rot)), math.sin(math.rad(rot))):mul(windowSize.x / windowSize.y, 1)
-							ExSkill1SpriteManager:spawn(math.random() < 0.5 and "MINISTAR" or "MINISTAR2", offset:copy():scale(50), offset:copy():scale(math.random() * 5 + 10))
+							Character14b_ExSkill1SpriteManager:spawn(math.random() < 0.5 and "MINISTAR" or "MINISTAR2", offset:copy():scale(50), offset:copy():scale(math.random() * 5 + 10))
 						end
 					elseif tick == 110 and host:isHost() then
 						events.RENDER:remove("ex_skill_1_yuzu_chest")
@@ -465,7 +465,7 @@ local BlueArchiveCharacter = {
 							modelPart:setVisible(false)
 						end
 						if host:isHost() then
-							ExSkill1SpriteManager:removeAll()
+							Character14b_ExSkill1SpriteManager:removeAll()
 						end
 					end
 				end;
@@ -1181,14 +1181,14 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---Exスキル1で使用するスプライトインスタンスのクラス
 		---@type Character14b.ExSkill1Sprite
-		ExSkill1Sprite = require("scripts.ex_skill_1_sprite")
+		Character14b_ExSkill1Sprite = require("scripts.ex_skill_1_sprite")
 
 		---Exスキル1で使用するスプライトマネージャーのクラス
 		---@type Character14b.ExSkill1SpriteManager
-		ExSkill1SpriteManager = require("scripts.ex_skill_1_sprite_manager")
-		ExSkill1SpriteManager = ExSkill1SpriteManager.new()
+		Character14b_ExSkill1SpriteManager = require("scripts.ex_skill_1_sprite_manager")
+		Character14b_ExSkill1SpriteManager = Character14b_ExSkill1SpriteManager.new()
 
-		ExSkill1SpriteManager.init()
+		Character14b_ExSkill1SpriteManager.init()
 
 		for _, modelPart in ipairs({models.models.ex_skill_1.YuzuChest.YuzuChestBottom, models.models.ex_skill_1.YuzuChest.YuzuChestTop}) do
 			modelPart:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/chest/normal.png")

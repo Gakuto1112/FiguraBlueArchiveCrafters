@@ -8,7 +8,7 @@ local ExSkill1WaveParticleManager = {
     ---@return Character07b.ExSkill1WaveParticleManager
     new = function (parent)
         ---@type Character07b.ExSkill1WaveParticleManager
-        local instance = MiscUtils.instantiate(ExSkill1WaveParticleManager, SpawnObjectManager, parent)
+        local instance = MiscUtils.instantiate(Character07b_ExSkill1WaveParticleManager, SpawnObjectManager, parent)
 
         instance.managerName = "ex_skill_1_particles"
         instance.animationCount = 0
@@ -21,7 +21,7 @@ local ExSkill1WaveParticleManager = {
     ---@param rot number パーティクルの向き（度数法）
     ---@return Character07b.ExSkill1WaveParticle instance 生成したインスタンス
     getObject = function (_,  pos, rot)
-        return ExSkill1WaveParticle.new(pos, rot)
+        return Character07b_ExSkill1WaveParticle.new(pos, rot)
     end;
 
     ---パーティクルを生成する。

@@ -305,7 +305,7 @@ local BlueArchiveCharacter = {
 								if shotChances[i] then
 									local anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Pillagers["Pillager"..i]["Pillager"..i.."RightArm"]["Pillager"..i.."ArrowAnchor"])
 									local offsetRot = math.random() * 360
-									ExSkillArrowManager:spawn(anchorPos, playerAnchorPos:copy():sub(anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(offsetRot, 0, 1, 0, 0, 0, 1), 0, 1, 0))):normalize())
+									Character24a_ExSkillArrowManager:spawn(anchorPos, playerAnchorPos:copy():sub(anchorPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, vectors.rotateAroundAxis(offsetRot, 0, 1, 0, 0, 0, 1), 0, 1, 0))):normalize())
 
 									sounds:playSound("minecraft:item.crossbow.shoot", anchorPos, 0.5, 1)
 								end
@@ -328,7 +328,7 @@ local BlueArchiveCharacter = {
 					ModelAlias.alias.avatar.faceParts.Eyes.EyeShines.LeftEyeShine:setPos()
 
 					if forcedStop then
-						ExSkillArrowManager:removeAll()
+						Character24a_ExSkillArrowManager:removeAll()
 					end
 				end;
 			};
@@ -564,34 +564,34 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---Exスキルで使用する矢のインスタンスクラス
 		---@type Character24a.ExSkillArrow
-		ExSkillArrow = require("scripts.ex_skill_arrow")
+		Character24a_ExSkillArrow = require("scripts.ex_skill_arrow")
 
 		---Exスキルで使用する矢のマネージャークラス
 		---@type Character24a.ExSkillArrowManager
-		ExSkillArrowManager = require("scripts.ex_skill_arrow_manager")
-		ExSkillArrowManager = ExSkillArrowManager.new()
-		ExSkillArrowManager.init()
+		Character24a_ExSkillArrowManager = require("scripts.ex_skill_arrow_manager")
+		Character24a_ExSkillArrowManager = Character24a_ExSkillArrowManager.new()
+		Character24a_ExSkillArrowManager.init()
 
 		---パイ投げのアニメーションを制御するクラス
 		---@type Character24a.PieThrowing
-		PieThrowing = require("scripts.pie_throwing")
+		Character24a_PieThrowing = require("scripts.pie_throwing")
 
 		---投げるパイオブジェクトのインスタンスクラス
 		---@type Character24a.Pie
-		Pie = require("scripts.pie")
+		Character24a_Pie = require("scripts.pie")
 
 		---投げるパイオブジェクトのマネージャークラス
 		---@type Character24a.PieManager
-		PieManager = require("scripts.pie_manager")
-		PieManager = PieManager.new()
-		PieManager.init()
+		Character24a_PieManager = require("scripts.pie_manager")
+		Character24a_PieManager = Character24a_PieManager.new()
+		Character24a_PieManager.init()
 
 		ModelAlias.alias.avatar.gun.Cake:newItem("gun_cake_strap")
 			:setItem("minecraft:cake")
 			:setScale(0.19)
 
 		KeyManager:register("pie_throwing", "Eat this and cheer up", "key.keyboard.v"):onPress(function ()
-			if ExSkill:getCanPlayAnimation() and not PieThrowing:getIsAnimationPlaying() then
+			if ExSkill:getCanPlayAnimation() and not Character24a_PieThrowing:getIsAnimationPlaying() then
 				pings.throwPie()
 			end
 		end)
@@ -664,7 +664,7 @@ local BlueArchiveCharacter = {
 
 ---パイ投げのpingメソッド
 function pings.throwPie()
-	PieThrowing:play()
+	Character24a_PieThrowing:play()
 end
 
 return BlueArchiveCharacter

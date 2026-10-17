@@ -23,7 +23,7 @@ local ExSkill1Text = {
 	---@return Character22a.ExSkill1Text
 	new = function (pos, face)
 		---@type Character22a.ExSkill1Text
-		local instance = MiscUtils.instantiate(ExSkill1Text, SpawnObject)
+		local instance = MiscUtils.instantiate(Character22a_ExSkill1Text, SpawnObject)
 
 		instance.object = models.models.ex_skill_1.CyberArea:newText(instance.uuid)
 		instance.face = face
@@ -33,7 +33,7 @@ local ExSkill1Text = {
 		instance.callbacks = {
 			---@param self Character22a.ExSkill1Text
 			onInit = function (self)
-				local text = ExSkill1Text.textList[math.random(#ExSkill1Text.textList)]
+				local text = Character22a_ExSkill1Text.textList[math.random(#Character22a_ExSkill1Text.textList)]
 				self.object:setText(text)
 				self.currentPos.z = self.currentPos.z + client.getTextWidth(text) / 4
 				self.nextPos = self.currentPos:copy()

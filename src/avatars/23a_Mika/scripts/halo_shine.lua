@@ -14,8 +14,8 @@ local HaloShine = {
 	---@param target ModelPart 制御対象のモデルパーツ
 	---@param uvOffset Vector2 白いパーティクルからの相対UVオフセット値
 	new = function (target, uvOffset)
-        ---@type PlacementObjectCube
-        local instance = MiscUtils.instantiate(HaloShine, SpawnObject)
+        ---@type Character23a.HaloShine
+        local instance = MiscUtils.instantiate(Character23a_HaloShine, SpawnObject)
 
 		instance.object = target
 		instance.posOffset = instance.object:getPivot():copy():sub(ModelAlias.alias.avatar.halo.HaloCenter.HaloRotatable:getPivot())

@@ -1086,9 +1086,9 @@ local BlueArchiveCharacter = {
 	init = function (self)
 		---忍術ワープの表現
 		---@type Character18a.Teleport
-		Teleport = require("scripts.teleport")
+		Character18a_Teleport = require("scripts.teleport")
 
-		Teleport:init()
+		Character18a_Teleport:init()
 
         ModelAlias.alias.avatar.leftArmBottom.Firework:setPrimaryTexture("RESOURCE", "minecraft:textures/item/firework_rocket.png")
 

@@ -358,7 +358,7 @@ local BlueArchiveCharacter = {
 					self.exSkill.primary.coinCount = 215
 					for i = -1, 4 do
 						for j = 0, 18 do
-							ExSkill1CoinManager:spawn(vectors.vec3(j * 32 - 96, 0, i * 32))
+							Character13b_ExSkill1CoinManager:spawn(vectors.vec3(j * 32 - 96, 0, i * 32))
 						end
 					end
 					FaceParts:setEmotion("NORMAL", "NORMAL", "SMILE", 66, true)
@@ -398,17 +398,17 @@ local BlueArchiveCharacter = {
 							models.ex_skill_1_gui:setVisible(false)
 						end
 						ModelAlias.alias.avatar.rightArmBottom.Broom:moveTo(ModelAlias.alias.avatar.body)
-						RailGun.chargePercent = 0
-						RailGun.chargeState = "STRONG"
-						RailGun.animationLength = 20
+						Character13b_RailGun.chargePercent = 0
+						Character13b_RailGun.chargeState = "STRONG"
+						Character13b_RailGun.animationLength = 20
 						ModelAlias.alias.avatar.gun.DisplayContents:setVisible(true)
 					elseif tick == 106 then
 						FaceParts:setEmotion("NORMAL", "CENTER", "OPENED", 41, true)
 					elseif tick == 109 then
-						ExSkill1CoinManager:getAll()
+						Character13b_ExSkill1CoinManager:getAll()
 					elseif tick == 111 then
 						for _ = 1, 50 do
-							ExSkill1CubeManager:spawn()
+							Character13b_ExSkill1CubeManager:spawn()
 						end
 					elseif tick == 118 then
 						sounds:playSound("minecraft:block.note_block.bit", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 1, 1.5)
@@ -420,7 +420,7 @@ local BlueArchiveCharacter = {
 
 					if tick < 61 then
 						if (tick - 1) % 2 == 0 then
-							ExSkill1WaterManager:spawn(ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.rightArmBottom.Broom), vectors.rotateAroundAxis(player:getBodyYaw() * -1, -0.1, 0, 0, 0, 1, 0))
+							Character13b_ExSkill1WaterManager:spawn(ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.rightArmBottom.Broom), vectors.rotateAroundAxis(player:getBodyYaw() * -1, -0.1, 0, 0, 0, 1, 0))
 						end
 						if tick % 8 == 0 then
 							sounds:playSound("minecraft:entity.cod.flop", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 0.25, 0.75)
@@ -444,15 +444,15 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setRot(self.gun.gunPosition.put.rot[isLeftHanded and "left" or "right"])
 						ModelAlias.alias.avatar.gun.DisplayContents:setVisible(false)
 					end
-					ExSkill1CubeManager:removeAll()
+					Character13b_ExSkill1CubeManager:removeAll()
 					if forcedStop then
-						ExSkill1CoinManager:removeAll()
-						ExSkill1WaterManager:removeAll()
+						Character13b_ExSkill1CoinManager:removeAll()
+						Character13b_ExSkill1WaterManager:removeAll()
 						if host:isHost() then
 							models.ex_skill_1_gui:setVisible(false)
 						end
 					else
-						RailGun.isSpecialCharge = true
+						Character13b_RailGun.isSpecialCharge = true
 					end
 				end;
 			};
@@ -913,40 +913,40 @@ local BlueArchiveCharacter = {
 	init = function ()
 		---レールガンを制御するクラス
 		---@type Character13b.RailGun
-		RailGun = require("scripts.rail_gun")
+		Character13b_RailGun = require("scripts.rail_gun")
 
 		---Exスキルで使用するコインインスタンスのクラス
 		---@type Character13b.ExSkill1Coin
-		ExSkill1Coin = require("scripts.ex_skill_1_coin")
+		Character13b_ExSkill1Coin = require("scripts.ex_skill_1_coin")
 
 		---Exスキルで使用するコインマネージャーのクラス
 		---@type Character13b.ExSkill1CoinManager
-		ExSkill1CoinManager = require("scripts.ex_skill_1_coin_manager")
-		ExSkill1CoinManager = ExSkill1CoinManager.new()
+		Character13b_ExSkill1CoinManager = require("scripts.ex_skill_1_coin_manager")
+		Character13b_ExSkill1CoinManager = Character13b_ExSkill1CoinManager.new()
 
 		---Exスキルで使用する水のエフェクトのクラス
 		---@type Character13b.ExSkill1Water
-		ExSkill1Water = require("scripts.ex_skill_1_water")
+		Character13b_ExSkill1Water = require("scripts.ex_skill_1_water")
 
 		---Exスキルで使用する水のエフェクトマネージャーのクラス
 		---@type Character13b.ExSkill1WaterManager
-		ExSkill1WaterManager = require("scripts.ex_skill_1_water_manager")
-		ExSkill1WaterManager = ExSkill1WaterManager.new()
+		Character13b_ExSkill1WaterManager = require("scripts.ex_skill_1_water_manager")
+		Character13b_ExSkill1WaterManager = Character13b_ExSkill1WaterManager.new()
 
 		---Exスキルで使用するキューブ状オブジェクトインスタンスのクラス
 		---@type Character13b.ExSkill1Cube
-		ExSkill1Cube = require("scripts.ex_skill_1_cube")
+		Character13b_ExSkill1Cube = require("scripts.ex_skill_1_cube")
 
 		---Exスキルで使用するキューブ状オブジェクトマネージャーのクラス
 		---@type Character13b.ExSkill1CubeManager
-		ExSkill1CubeManager = require("scripts.ex_skill_1_cube_manager")
-		ExSkill1CubeManager = ExSkill1CubeManager.new()
+		Character13b_ExSkill1CubeManager = require("scripts.ex_skill_1_cube_manager")
+		Character13b_ExSkill1CubeManager = Character13b_ExSkill1CubeManager.new()
 
-		RailGun.init()
-		RailGun:enable()
-		ExSkill1CoinManager.init()
-		ExSkill1WaterManager.init()
-		ExSkill1CubeManager.init()
+		Character13b_RailGun.init()
+		Character13b_RailGun:enable()
+		Character13b_ExSkill1CoinManager.init()
+		Character13b_ExSkill1WaterManager.init()
+		Character13b_ExSkill1CubeManager.init()
 	end;
 }
 

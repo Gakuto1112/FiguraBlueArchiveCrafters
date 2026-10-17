@@ -13,7 +13,7 @@ local ExSkill1TextObject = {
     ---@return Character05a.ExSkill1TextObject
     new = function (text)
         ---@type Character05a.ExSkill1TextObject
-        local instance = MiscUtils.instantiate(ExSkill1TextObject, SpawnObject)
+        local instance = MiscUtils.instantiate(Character05a_ExSkill1TextObject, SpawnObject)
 
         instance.object = models.script_ex_skill_1_text_object:newPart(instance.uuid)
         instance.subObject = instance.object:newPart(client.intUUIDToString(client:generateUUID()), "Camera")

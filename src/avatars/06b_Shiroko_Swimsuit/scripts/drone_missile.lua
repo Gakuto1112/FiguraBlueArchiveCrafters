@@ -15,7 +15,7 @@ local DroneMissile = {
     ---@return Character06b.DroneMissile
     new = function (startPos, rot)
         ---@type Character06b.DroneMissile
-        local instance = MiscUtils.instantiate(DroneMissile, SpawnObject)
+        local instance = MiscUtils.instantiate(Character06b_DroneMissile, SpawnObject)
 
         instance.object = models.models.drone.Missile:copy(instance.uuid)
         instance.currentPos = startPos:copy()

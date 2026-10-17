@@ -9,7 +9,7 @@ local ExSkill1Cube = {
     ---@return Character13b.ExSkill1Cube
     new = function ()
         ---@type Character13b.ExSkill1Cube
-        local instance = MiscUtils.instantiate(ExSkill1Cube, SpawnObject)
+        local instance = MiscUtils.instantiate(Character13b_ExSkill1Cube, SpawnObject)
 
         instance.object = models.models.ex_skill_1.Cube:copy(instance.uuid)
         instance.objectPos = vectors.vec3(math.random() * 400 + 150, 0, math.random() * 100 + 10)

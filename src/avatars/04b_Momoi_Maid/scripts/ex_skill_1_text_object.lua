@@ -8,7 +8,7 @@ local ExSkill1TextObject = {
     ---@return Character04b.ExSkill1TextObject
     new = function (parentModel)
         ---@type Character04b.ExSkill1TextObject
-        local instance = MiscUtils.instantiate(ExSkill1TextObject, SpawnObject)
+        local instance = MiscUtils.instantiate(Character04b_ExSkill1TextObject, SpawnObject)
 
         instance.object = parentModel:newText(instance.uuid)
         instance.subObject = parentModel:newText(client.intUUIDToString(client:generateUUID()))

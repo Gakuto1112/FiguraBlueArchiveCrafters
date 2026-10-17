@@ -15,7 +15,7 @@ local Firework = {
     ---@return Character08a.Firework
     new = function (startPos, rot)
         ---@type Character08a.Firework
-        local instance = MiscUtils.instantiate(Firework, SpawnObject)
+        local instance = MiscUtils.instantiate(Character08a_Firework, SpawnObject)
 
         instance.object = models.script_firework:newItem(instance.uuid):setItem("minecraft:firework_rocket"):setScale(0.5, 0.5, 0.5)
         instance.currentPos = startPos:copy()

@@ -11,7 +11,7 @@ local ExSkill1WaveParticle = {
     ---@return Character07b.ExSkill1WaveParticle
     new = function (pos, rot)
         ---@type Character07b.ExSkill1WaveParticle
-        local instance = MiscUtils.instantiate(ExSkill1WaveParticle, SpawnObject)
+        local instance = MiscUtils.instantiate(Character07b_ExSkill1WaveParticle, SpawnObject)
 
         instance.object = {}
         instance.pos = pos:copy()
