@@ -21,7 +21,6 @@ local ExSkill1WaveParticleManager = {
     ---@param rot number パーティクルの向き（度数法）
     ---@return Character07b.ExSkill1WaveParticle instance 生成したインスタンス
     getObject = function (_,  pos, rot)
-        ---@diagnostic disable-next-line: return-type-mismatch, redundant-parameter
         return ExSkill1WaveParticle.new(pos, rot)
     end;
 

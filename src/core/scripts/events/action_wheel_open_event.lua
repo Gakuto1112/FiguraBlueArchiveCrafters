@@ -4,7 +4,6 @@ local ActionWheelOpenEvent = {
 	---@return ActionWheelOpenEvent instance
 	new = function ()
 		---@type ActionWheelOpenEvent
-		---@diagnostic disable-next-line: undefined-global
 		local instance = MiscUtils.instantiate(ActionWheelOpenEvent, AbstractEvent)
 
 		return instance

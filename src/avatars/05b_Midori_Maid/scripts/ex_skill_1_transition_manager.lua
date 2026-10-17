@@ -8,7 +8,6 @@ local ExSkill1TransitionManager = {
     ---@return Character05b.ExSkill1TransitionManager
     new = function ()
         ---@type Character05b.ExSkill1TransitionManager
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkill1TransitionManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_transition"

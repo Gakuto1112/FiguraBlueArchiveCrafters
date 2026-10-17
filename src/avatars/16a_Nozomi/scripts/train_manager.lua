@@ -57,7 +57,6 @@ local TrainManager = {
     ---@param pos Vector3 線路オブジェクトを設置するワールド座標
     ---@param rot number 線路オブジェクトを設置するワールド方向
     spawnRail = function (self, pos, rot)
-        ---@diagnostic disable-next-line: redundant-parameter
         local instance = self:getObject(pos, rot)
         table.insert(self.objects, instance)
         if instance.callbacks ~= nil and instance.callbacks.onInit ~= nil then

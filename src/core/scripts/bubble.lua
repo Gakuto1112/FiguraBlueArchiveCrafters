@@ -98,7 +98,6 @@ local Bubble = {
 
 		EventManager.events["ON_CONFIG_SYNC"]:register(function (configData)
 			if configData["isChatOpened"] then
-				---@diagnostic disable-next-line: undefined-global
 				Bubble.isChatOpened = true
 			end
 		end)

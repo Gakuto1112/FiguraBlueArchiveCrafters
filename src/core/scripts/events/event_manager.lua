@@ -7,7 +7,6 @@
 ---@class (exact) EventManager アバター独自定義のイベントを管理するクラス
 ---@field public events EventManager.EventTable イベントインスタンスを格納するテーブル
 local EventManager = {
-	---@diagnostic disable-next-line: missing-fields
 	events = {};
 }
 

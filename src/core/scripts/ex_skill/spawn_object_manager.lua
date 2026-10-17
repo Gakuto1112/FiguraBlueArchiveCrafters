@@ -6,7 +6,6 @@ local SpawnObjectManager = {
     ---@return SpawnObjectManager
     new = function ()
         ---@type SpawnObjectManager
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(SpawnObjectManager)
 
         instance.managerName = "spawn_object"
@@ -18,7 +17,6 @@ local SpawnObjectManager = {
     ---スポーンオブジェクトのインスタンスを生成して返す。
     ---@return SpawnObject instance 生成したスポーンオブジェクト
     getObject = function ()
-        ---@diagnostic disable-next-line: undefined-global
         return SpawnObject.new()
     end;
 

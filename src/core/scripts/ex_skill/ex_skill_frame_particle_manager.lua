@@ -11,7 +11,6 @@ local ExSkillFrameParticleManager = {
     ---@return ExSkillFrameParticleManager
     new = function ()
         ---@type ExSkillFrameParticleManager
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkillFrameParticleManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_frame_particle"
@@ -31,7 +30,6 @@ local ExSkillFrameParticleManager = {
     ---@param velocity Vector2 パーティクルの速度
     ---@return ExSkillFrameParticle instance 生成したインスタンス
     getObject = function (self, pos, velocity)
-        ---@diagnostic disable-next-line: undefined-global
         return ExSkillFrameParticle.new(self, pos, velocity, math.random() > 0.9999 and "FIGURA" or "NORMAL")
     end;
 

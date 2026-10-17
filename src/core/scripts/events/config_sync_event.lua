@@ -6,7 +6,6 @@ local ConfigSyncEvent = {
 	---@return ConfigSyncEvent instance
 	new = function ()
 		---@type ConfigSyncEvent
-		---@diagnostic disable-next-line: undefined-global
 		local instance = MiscUtils.instantiate(ConfigSyncEvent, AbstractEvent)
 
 		return instance

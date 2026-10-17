@@ -18,7 +18,6 @@ local PlacementObject = {
     ---@return PlacementObject
     new = function (index, pos, rot)
         ---@type PlacementObject
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(PlacementObject, SpawnObject)
 
         instance.index = index

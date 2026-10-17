@@ -469,7 +469,6 @@ local BlueArchiveCharacter = {
 								modelPart:setColor(0.25, 0.25, 0.25)
 							end
 							local task = models.models.ex_skill_1.Gui.UI.MomoiHeadUI:getTask("ex_skill_1_gameover_text")
-							---@diagnostic disable-next-line: undefined-field
 							task:setText("§c§lGAME\nOVER")
 							task:setVisible(true)
 					elseif tick == 82 then
@@ -480,18 +479,14 @@ local BlueArchiveCharacter = {
 							particles:newParticle("minecraft:campfire_cosy_smoke", anchorPos:copy():add(xOffset, 0, zOffset)):setScale(5):setVelocity(xOffset * 0.03, 0.025, zOffset * 0.03)
 						end
 					elseif tick == 83 and host:isHost() then
-						---@diagnostic disable-next-line: undefined-field
 						models.models.ex_skill_1.Gui.UI.MomoiHeadUI:getTask("ex_skill_1_gameover_text"):setText("§4§lGAME\nOVER")
 					elseif tick == 85 and host:isHost() then
-						---@diagnostic disable-next-line: undefined-field
 						models.models.ex_skill_1.Gui.UI.MomoiHeadUI:getTask("ex_skill_1_gameover_text"):setText("§c§lGAME\nOVER")
 					elseif tick == 87 and host:isHost() then
-						---@diagnostic disable-next-line: undefined-field
 						models.models.ex_skill_1.Gui.UI.MomoiHeadUI:getTask("ex_skill_1_gameover_text"):setText("§4§lGAME\nOVER")
 					elseif tick == 89 then
 						models.models.ex_skill_1.Momoi:setColor()
 						if host:isHost() then
-							---@diagnostic disable-next-line: undefined-field
 							models.models.ex_skill_1.Gui.UI.MomoiHeadUI:getTask("ex_skill_1_gameover_text"):setText("§c§lGAME\nOVER")
 						end
 					elseif tick == 92 then
@@ -536,7 +531,6 @@ local BlueArchiveCharacter = {
 								local scale = count <= 2 and (count * -7.5 + 20) or (count <= 4 and (count * 7.5 - 10) or 20)
 								task:setPos(0, scale * 3.5, 0)
 								task:setScale(vectors.vec3(1, 1, 1):scale(scale))
-								---@diagnostic disable-next-line: undefined-field
 								task:setOpacity((15 - (scale - 5)) / 15)
 								if count >= 1 then
 									local windowSize = client:getScaledWindowSize()

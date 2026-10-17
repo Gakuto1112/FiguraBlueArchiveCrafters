@@ -4,7 +4,6 @@ local ActionWheelCloseEvent = {
 	---@return ActionWheelCloseEvent instance
 	new = function ()
 		---@type ActionWheelCloseEvent
-		---@diagnostic disable-next-line: undefined-global
 		local instance = MiscUtils.instantiate(ActionWheelCloseEvent, AbstractEvent)
 
 		return instance

@@ -14,7 +14,6 @@ local SpawnObject = {
     ---@return SpawnObject
     new = function ()
         ---@type SpawnObject
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(SpawnObject)
 
         instance.uuid = client.intUUIDToString(client.generateUUID())

@@ -12,7 +12,6 @@ local ExSkillFrameParticle = {
     ---@return ExSkillFrameParticle
     new = function (_, pos, velocity, type)
         ---@type ExSkillFrameParticle
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkillFrameParticle, SpawnObject)
 
         instance.object = models.models.ex_skill_frame.Particles["Particle"..(type == "NORMAL" and 1 or 2)]:copy(instance.uuid)

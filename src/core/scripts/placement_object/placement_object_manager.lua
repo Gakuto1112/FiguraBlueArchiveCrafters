@@ -21,7 +21,6 @@ local PlacementObjectManager = {
     ---@return PlacementObjectManager
     new = function ()
         ---@type PlacementObjectManager
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(PlacementObjectManager, SpawnObjectManager)
 
         instance.managerName = "placement_object"
@@ -57,7 +56,6 @@ local PlacementObjectManager = {
                 end
             end
         end
-        ---@diagnostic disable-next-line: undefined-global
         return PlacementObject.new(index, pos, rot)
     end;
 
@@ -67,7 +65,6 @@ local PlacementObjectManager = {
     ---@param pos Vector3 設置物を設置するワールド座標
     ---@param rot number 設置物を設置するワールド方向（Y軸のみ）
     spawn = function (self, index, pos, rot)
-        ---@diagnostic disable-next-line: undefined-global
         SpawnObjectManager.spawn(self, index, pos, rot)
     end;
 

@@ -333,7 +333,6 @@ local BlueArchiveCharacter = {
 					models.models.ex_skill_1.Wall.Paintings.MainPainting.Painting_Front:setPrimaryTexture("RESOURCE", paintingResources[math.ceil(math.random() * #paintingResources)])
 					--[[
 						local paintingVariants = {"minecraft:pointer", "minecraft:pigscene", "minecraft:burning_skull"}
-						---@diagnostic disable-next-line: undefined-field
 						models.models.ex_skill_1.Wall.Paintings.MainPainting:getTask("ex_skill_1_entity_1"):setNbt("minecraft:painting", toJson({variant = paintingVariants[math.ceil(math.random() * #paintingVariants)]}))
 					]]
 					---@diagnostic disable-next-line: discard-returns

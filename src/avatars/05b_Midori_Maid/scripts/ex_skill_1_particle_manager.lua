@@ -5,7 +5,6 @@ local ExSkill1ParticleManager = {
     ---@return Character05b.ExSkill1ParticleManager
     new = function ()
         ---@type Character05b.ExSkill1ParticleManager
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkill1ParticleManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_particle"

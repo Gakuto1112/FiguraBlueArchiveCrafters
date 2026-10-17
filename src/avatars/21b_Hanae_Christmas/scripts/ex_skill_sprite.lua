@@ -29,7 +29,6 @@ local ExSkillSprite = {
     ---@param lifetime integer このインスタンスを破棄するまでの時間
     ---@param shouldSeeCamera boolean カメラを見続けるべきかどうか
     ---@return Character21b.ExSkillSprite
-    ---@diagnostic disable-next-line: redundant-parameter
     new = function (objectModel, targetParent, size, color, pos, velocity, rot, rotVelocity, gravity, scaleTracker, lifetime, shouldSeeCamera)
         local instance = MiscUtils.instantiate(ExSkillSprite, SpawnObject)
 

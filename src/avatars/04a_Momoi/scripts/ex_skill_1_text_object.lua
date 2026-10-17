@@ -13,7 +13,6 @@ local ExSkill1TextObject = {
     ---@return Character04a.ExSkill1TextObject
     new = function (text)
         ---@type Character04a.ExSkill1TextObject
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkill1TextObject, SpawnObject)
 
         instance.object = models.script_ex_skill_1_text_object:newPart(instance.uuid)

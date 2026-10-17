@@ -4,7 +4,6 @@ local LocaleReadyEvent = {
 	---@return LocaleReadyEvent instance
 	new = function ()
 		---@type LocaleReadyEvent
-		---@diagnostic disable-next-line: undefined-global
 		local instance = MiscUtils.instantiate(LocaleReadyEvent, AbstractEvent)
 
 		return instance

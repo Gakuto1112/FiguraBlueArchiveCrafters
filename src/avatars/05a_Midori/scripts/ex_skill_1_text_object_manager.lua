@@ -4,7 +4,6 @@ local ExSkill1TextObjectManager = {
     ---@return Character05a.ExSkill1TextObjectManager
     new = function ()
         ---@type Character05a.ExSkill1TextObjectManager
-        ---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkill1TextObjectManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_text_object"
@@ -22,7 +21,6 @@ local ExSkill1TextObjectManager = {
     ---@param text string オブジェクトに設定するテキスト
     ---@return Character05a.ExSkill1TextObject instance 生成したインスタンス
     getObject = function (_, text)
-        ---@diagnostic disable-next-line: undefined-global
         return ExSkill1TextObject.new(text)
     end;
 

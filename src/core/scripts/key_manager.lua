@@ -34,7 +34,6 @@ local KeyManager = {
     ---@return Keybind assignedKey キーマネージャーによって登録がされたキーバインド
     register = function (self, id, displayName, keyName)
         if self.keyMappings[id] == nil then
-            ---@diagnostic disable-next-line: missing-fields
             self.keyMappings[id] = {}
         end
         self.keyMappings[id].keybind = keybinds:newKeybind(displayName, keyName)

@@ -5,7 +5,6 @@ local ExSkillTextObjectManager = {
     ---@return Character02a.ExSkillTextObjectManager
     new = function ()
         ---@type Character02a.ExSkillTextObjectManager
-		---@diagnostic disable-next-line: undefined-global
         local instance = MiscUtils.instantiate(ExSkillTextObjectManager, SpawnObjectManager)
 
         instance.managerName = "ex_skill_1_text_object"
