@@ -490,12 +490,12 @@ local BlueArchiveCharacter = {
 
 					if host:isHost() then
 						if tick >= 148 and tick < 164 then
-							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():scale(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
+							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():mul(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
 							local brushColor = vectors.vec3(0.993, 0.989, 0.671):add(vectors.vec3(0.007, 0.011, 0.329):scale(math.clamp((tick - 148) / 16, 0, 1)))
 							self.exSkill.fillCircle(textures["ex_skill_drawing_transition"], brushPos.x, brushPos.y, 7, vectors.vec4(brushColor.x, brushColor.y, brushColor.z, 1))
 							textures["ex_skill_drawing_transition"]:update()
 						elseif tick >= 167 and tick < 183 then
-							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():scale(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
+							local brushPos = models.models.ex_skill_1.Gui.Transition.TransitionBrush:getAnimPos():copy():mul(-1, -1, 0):add(0.5, 0.5, 0):scale(32):floor()
 							self.exSkill.fillCircle(textures["ex_skill_drawing_transition"], brushPos.x, brushPos.y, 7, vectors.vec4(0, 0, 0, 0))
 							textures["ex_skill_drawing_transition"]:update()
 						end
