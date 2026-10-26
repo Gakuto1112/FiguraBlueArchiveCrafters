@@ -10,6 +10,8 @@ jobs:
   pack_figura_avatar:
     name: Pack avatar
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       matrix:
         include:
