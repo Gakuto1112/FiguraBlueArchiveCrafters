@@ -5,6 +5,9 @@ on:
     types:
       - submitted
 
+permissions:
+  contents: read
+
 jobs:
   call_workflow:
     name: Call workflow
