@@ -23,6 +23,7 @@ fi
 clean_command="uv run --project $(shell_quote "$script_directory") python $(shell_quote "$normalizer_path")"
 
 git -C "$repository_root" config --local "filter.$filter_name.clean" "$clean_command"
+git -C "$repository_root" config --local "filter.$filter_name.smudge" cat
 git -C "$repository_root" config --local "filter.$filter_name.required" true
 
 printf '%s\n' "Configured the BBModel clean filter."
