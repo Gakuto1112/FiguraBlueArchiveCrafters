@@ -25,11 +25,12 @@ local HeadBlock = {
 
 	---頭ブロックのモデルを作成する。
 	---@param self HeadBlock
-	generateHeadBlockModel = function (self)
+	---@param isAlt boolean バリエーションコスチュームを設定中かどうか
+	generateHeadBlockModel = function (self, isAlt)
 		self.deleteHeadBlockModel()
 
 		if BlueArchiveCharacter.headBlock.callbacks ~= nil and BlueArchiveCharacter.headBlock.callbacks.onBeforeModelCopy ~= nil then
-			BlueArchiveCharacter.headBlock.callbacks.onBeforeModelCopy(BlueArchiveCharacter, Costume.isAltCostume)
+			BlueArchiveCharacter.headBlock.callbacks.onBeforeModelCopy(BlueArchiveCharacter, isAlt)
 		end
 
 		ModelAlias.alias.avatar.mouth:setVisible(true)
@@ -56,7 +57,7 @@ local HeadBlock = {
 		ModelAlias.alias.head_block_avatar.mouth:setUVPixels(BlueArchiveCharacter.faceParts.mouth[BlueArchiveCharacter.headBlock.emotion.mouth]:copy():mul(16, 8))
 
 		if BlueArchiveCharacter.headBlock.callbacks ~= nil and BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy ~= nil then
-			BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy(BlueArchiveCharacter, Costume.isAltCostume)
+			BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy(BlueArchiveCharacter, isAlt)
 		end
 
 		if events.SKULL_RENDER:getRegisteredCount("skull_render") == 0 then
