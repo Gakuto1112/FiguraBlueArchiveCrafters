@@ -180,7 +180,7 @@ local DeathAnimation = {
                         sounds:playSound("minecraft:entity.player.attack.sweep", ModelUtils.getModelWorldPos(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14), 0.25, -0.056 * (self.animationCount - 57) + 2)
                     elseif self.animationCount == 120 then
 						ModelAlias.alias.dummy_avatar.root:moveTo(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14)
-						ModelAlias.alias.dummy_avatar.root = models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar
+						ModelAlias.alias.dummy_avatar.root = models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.DummyAvatar
                         self.setPhase2Pose()
                         if BlueArchiveCharacter.deathAnimation.callbacks ~= nil and BlueArchiveCharacter.deathAnimation.callbacks.onPhase2 ~= nil then
                             BlueArchiveCharacter.deathAnimation.callbacks.onPhase2(BlueArchiveCharacter, self.isDummyAvatarAltCostume)
