@@ -42,10 +42,12 @@ class TestBBModelFilter(unittest.TestCase):
     def test_setup_registers_required_local_filter_command(self) -> None:
         required = self._run_git("config", "--local", "--get", "filter.bbmodel-normalize.required")
         clean_command = self._run_git("config", "--local", "--get", "filter.bbmodel-normalize.clean")
+        smudge_command = self._run_git("config", "--local", "--get", "filter.bbmodel-normalize.smudge")
 
         self.assertEqual(required.stdout.decode().strip(), "true")
         self.assertIn(b"uv", clean_command.stdout)
         self.assertIn(str(REPOSITORY_ROOT / "scripts" / "bbmodel_normalizer.py").encode(), clean_command.stdout)
+        self.assertEqual(smudge_command.stdout.decode().strip(), "cat")
         self.assertEqual(self.configure_output, "Configured the BBModel clean filter.\n")
 
     def test_git_add_normalizes_index_without_changing_worktree(self) -> None:
@@ -82,6 +84,10 @@ class TestBBModelFilter(unittest.TestCase):
         self.assertEqual(staged["elements"][0], {"selected": True, "isOpen": True})
         self.assertEqual(staged["other"], {"selected": True, "isOpen": True})
         self.assertEqual(model_path.read_bytes(), source)
+
+        model_path.unlink()
+        self._run_git("checkout", "--", "fixture.bbmodel")
+        self.assertEqual(model_path.read_bytes(), self._run_git("show", ":fixture.bbmodel").stdout)
 
     def test_required_filter_rejects_malformed_json(self) -> None:
         malformed_path = self.repository / "malformed.bbmodel"
