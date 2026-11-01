@@ -43,14 +43,11 @@ local HeadBlock = {
 		ModelAlias.alias.head_block_avatar.root:setParentType("Skull")
 
 		ModelAlias.alias.head_block_avatar.root:setScale(0.5, 0.5, 0.5)
-		ModelAlias.alias.head_block_avatar.root:setPos(0, -3.5, 0)
 		ModelAlias.alias.head_block_avatar.head:setPos(0, -8, 0)
 		ModelAlias.alias.head_block_avatar.halo:setPos()
 		ModelAlias.alias.head_block_avatar.halo:setLight()
 		ModelAlias.alias.head_block_avatar.upperBody:setScale(0.67, 0.67, 0.67)
 		ModelAlias.alias.head_block_avatar.lowerBody:setScale(0.67, 0.67, 0.67)
-		ModelAlias.alias.head_block_avatar.rightArm:setRot(0, 0, 30)
-		ModelAlias.alias.head_block_avatar.leftArm:setRot(0, 0, -30)
 		ModelAlias.alias.head_block_avatar.rightLeg:setRot(90, -10, 0)
 		ModelAlias.alias.head_block_avatar.leftLeg:setRot(90, 10, 0)
 
@@ -60,6 +57,27 @@ local HeadBlock = {
 
 		if BlueArchiveCharacter.headBlock.callbacks ~= nil and BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy ~= nil then
 			BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy(BlueArchiveCharacter)
+		end
+
+		if events.SKULL_RENDER:getRegisteredCount("skull_render") == 0 then
+			events.SKULL_RENDER:register(function (delta, block, item, entity, context)
+				if context == "FIRST_PERSON_RIGHT_HAND" then
+					ModelAlias.alias.head_block_avatar.root:setPos(0, 2, 0)
+					ModelAlias.alias.head_block_avatar.root:setRot(0, -40, 0)
+				elseif context == "FIRST_PERSON_LEFT_HAND" then
+					ModelAlias.alias.head_block_avatar.root:setPos(0, 2, 0)
+					ModelAlias.alias.head_block_avatar.root:setRot(0, 40, 0)
+				elseif context == "HEAD" then
+					ModelAlias.alias.head_block_avatar.root:setPos(0, 0, 4)
+					ModelAlias.alias.head_block_avatar.rightArm:setRot(90, -10, 0)
+					ModelAlias.alias.head_block_avatar.leftArm:setRot(90, 10, 0)
+				else
+					ModelAlias.alias.head_block_avatar.root:setPos(0, -3.5, 0)
+					ModelAlias.alias.head_block_avatar.root:setRot()
+					ModelAlias.alias.head_block_avatar.rightArm:setRot(0, 0, 30)
+					ModelAlias.alias.head_block_avatar.leftArm:setRot(0, 0, -30)
+				end
+			end, "skull_render")
 		end
 	end;
 
