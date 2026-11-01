@@ -693,10 +693,22 @@ local BlueArchiveCharacter = {
 		};
 
 		callbacks = {
-			onAfterModelCopy = function ()
-				ModelAlias.alias.head_block_avatar.head.HairTails:setPos(0, -2, 0)
-				ModelAlias.alias.head_block_avatar.head.HairTails:setScale(1, 0.67, 1)
-				ModelAlias.alias.head_block_avatar.body.Skirt:setRot(60, 0, 0)
+			onAfterModelCopy = function (_, isAlt)
+				if isAlt then
+					ModelAlias.alias.head_block_avatar.head.TraineeHairTail:setScale(1, 0.67, 1)
+					if ModelAlias.alias.head_block_avatar.head.Hat ~= nil then
+						ModelAlias.alias.head_block_avatar.head.Hat:remove()
+					end
+				else
+					ModelAlias.alias.head_block_avatar.head.HairTails:setPos(0, -2, 0)
+					ModelAlias.alias.head_block_avatar.head.HairTails:setScale(1, 0.67, 1)
+					ModelAlias.alias.head_block_avatar.body.Skirt:setRot(60, 0, 0)
+					if ModelAlias.alias.head_block_avatar.head.Hat == nil then
+						local modelPart = ModelUtils:copyModel(ModelAlias.alias.avatar.head.Hat, nil, true)
+						modelPart:setVisible(true)
+						ModelAlias.alias.head_block_avatar.head:addChild(modelPart)
+					end
+				end
 			end;
 		};
 	};
