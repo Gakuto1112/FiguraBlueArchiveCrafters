@@ -41,6 +41,7 @@
 ---| "UNCOMFORT2" # への口
 ---| "SMILE" # にっこり口
 ---| "TEAR" # 涙ぐんでいる目
+---| "W" # W字口
 
 ---@class (exact) Character18b.EmotionSet : BlueArchiveCharacter.EmotionSet 表情のデータセット
 ---@field public rightEye Character18b.RightEyeTextures 右目の表情名
@@ -116,6 +117,7 @@ local BlueArchiveCharacter = {
 			OPENED2 = vectors.vec2(7, 0);
 			UNCOMFORT2 = vectors.vec2(8, 0);
 			SMILE = vectors.vec2(9, 0);
+			W = vectors.vec2(10, 0);
 		};
 	};
 
@@ -402,7 +404,18 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {ModelAlias.alias.avatar.body.Hairs};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "W";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.body.Dress:setRot(30, 0, 0)
+				ModelAlias.alias.head_block_avatar.body.Tail:setRot(25, 0, 0)
+			end;
+		};
 	};
 
 	portrait = {
