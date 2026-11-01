@@ -5845,37 +5845,7 @@
 					"name": "LowerBody",
 					"type": "bone",
 					"rotation_global": false,
-					"quaternion_interpolation": false,
-					"keyframes": [
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "0",
-									"y": "0",
-									"z": "0"
-								}
-							],
-							"uuid": "da40a303-d7fa-2900-a664-e68a68a4394a",
-							"time": 1.65,
-							"color": -1,
-							"interpolation": "catmullrom"
-						},
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "15",
-									"y": "0",
-									"z": "0"
-								}
-							],
-							"uuid": "6890d52e-1841-f6f0-a920-9cad01b0d11f",
-							"time": 2,
-							"color": -1,
-							"interpolation": "catmullrom"
-						}
-					]
+					"quaternion_interpolation": false
 				},
 				"73b3d6bc-af0b-a066-5d73-f3938109e11f": {
 					"name": "LeftLeg",
@@ -6549,7 +6519,37 @@
 					"name": "Legs",
 					"type": "bone",
 					"rotation_global": false,
-					"quaternion_interpolation": false
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "daa28e2c-e4a9-b9db-b13b-9e24c099b545",
+							"time": 1.65,
+							"color": -1,
+							"interpolation": "catmullrom"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "15",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "a7f628fc-2f05-a790-4f7c-94cc0872c432",
+							"time": 2,
+							"color": -1,
+							"interpolation": "catmullrom"
+						}
+					]
 				},
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
@@ -6756,23 +6756,7 @@
 					"name": "LowerBody",
 					"type": "bone",
 					"rotation_global": false,
-					"quaternion_interpolation": false,
-					"keyframes": [
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "0",
-									"y": "0",
-									"z": "5"
-								}
-							],
-							"uuid": "84c2cb6b-4fbe-08c4-9861-6c3277f25987",
-							"time": 0,
-							"color": -1,
-							"interpolation": "linear"
-						}
-					]
+					"quaternion_interpolation": false
 				},
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
@@ -6947,6 +6931,262 @@
 							"interpolation": "linear"
 						}
 					]
+				},
+				"22d40862-bd19-a16d-9e33-79364e6656d8": {
+					"name": "Head",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"db381b6c-e0d3-6ca8-6433-4371d36cc6c6": {
+					"name": "FaceParts",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"25d20f6a-b84c-5105-726d-79a4fc3a5a4d": {
+					"name": "Eyes",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d775a8e4-818b-b21e-93df-fdb4456fefc8": {
+					"name": "RightSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5e757c9d-cb7e-d074-a20f-d95f46e96872": {
+					"name": "LeftSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e8809cb5-a507-86d8-da91-c79b1d4d233e": {
+					"name": "Halo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9242d5ee-aee7-9c98-a984-fff92aa89673": {
+					"name": "HaloCenter",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"62a150d5-23c3-7461-a5be-45357c1dca73": {
+					"name": "Ears",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d9d3d58a-ac0b-fce1-f92f-b3f9f8f19f62": {
+					"name": "RightEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f1f911df-3ba5-99ee-5f7c-bd108a06220b": {
+					"name": "RightEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0ca24c5b-efac-bdc2-1434-151c85925fb3": {
+					"name": "LeftEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"85b8d6c9-8cad-e43e-686c-50297df29e24": {
+					"name": "LeftEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"47722ffb-d55b-1243-7191-cf3c96915c5a": {
+					"name": "HairPin",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9d4aae57-b308-efa6-94cd-bac8cee0b7fd": {
+					"name": "HairEnds",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"242f9daa-9b60-b2ca-03fa-af6d04dbc249": {
+					"name": "RightHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a0d92aa7-169d-aad9-7a9a-74147728af4b": {
+					"name": "LeftHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe3b45-a6ad-8db5-9954-75f8e7f475c3": {
+					"name": "HelmetItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"16d22746-633e-382e-dd96-b35bde99daa5": {
+					"name": "UpperBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bf4dd57f-d0f7-1fe0-98e6-59e00f97f41b": {
+					"name": "Body",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6cdd8370-52fb-2478-f57b-dd38c658394b": {
+					"name": "Scarf",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"842788de-67f8-925c-549a-09ae3d91d3f6": {
+					"name": "Skirt",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5d60866b-872f-1dd7-6c66-c449d8004c7e": {
+					"name": "Hairs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d75fb32-75be-dc29-9085-7821897ce3ce": {
+					"name": "FrontHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"982f9d44-5c5e-570d-2128-90f9f75297f4": {
+					"name": "BackHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"99573bc9-e04b-87c2-a66a-1488788ec2c0": {
+					"name": "IDCard",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c062b0e8-6983-de4d-12e9-7b5ad9e81528": {
+					"name": "Arms",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"3c1cb66d-8a31-d31f-ec9f-65a33e313a53": {
+					"name": "RightArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b924539e-1292-1a17-6240-a525ae346090": {
+					"name": "RightArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f77eb5a1-0c86-2ec0-fa55-565b454784db": {
+					"name": "RightItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ad1c45ef-c0a8-6d31-d2dc-fbdc6ab7ddcc": {
+					"name": "LeftArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4f31b2fe-139d-4fb3-f36f-3d5ed0997399": {
+					"name": "LeftItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"34f8f1e3-7498-d32a-cbaa-e08af5c6b7e9": {
+					"name": "LeftElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"884aa12d-4d86-c86f-f3ae-27294c5df1b1": {
+					"name": "RightElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29a158b7-4e78-b2e4-f4a6-a828afb1514f": {
+					"name": "LeftParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d993335-4efa-18af-e219-def6c191632a": {
+					"name": "RightParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29730186-2622-086d-ab67-4bb8e356bb6c": {
+					"name": "Legs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "5"
+								}
+							],
+							"uuid": "deff2a1d-41c9-8271-adfc-f17c0f6e2a12",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear"
+						}
+					]
+				},
+				"84fe0b3a-286b-e17f-288e-c39feaa2e5e6": {
+					"name": "RightLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee9973d4-ff4e-c96b-64f6-d1f28afd69c6": {
+					"name": "LeftLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"71b16a49-1da9-df63-2f72-f5272bb4b134": {
+					"name": "NameplateAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4ad021e9-2857-4e55-337b-f61da0762800": {
+					"name": "CameraAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
 				}
 			}
 		},
@@ -7099,23 +7339,7 @@
 					"name": "LowerBody",
 					"type": "bone",
 					"rotation_global": false,
-					"quaternion_interpolation": false,
-					"keyframes": [
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "0",
-									"y": "0",
-									"z": "-5"
-								}
-							],
-							"uuid": "84c2cb6b-4fbe-08c4-9861-6c3277f25987",
-							"time": 0,
-							"color": -1,
-							"interpolation": "linear"
-						}
-					]
+					"quaternion_interpolation": false
 				},
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
@@ -7326,6 +7550,262 @@
 							"interpolation": "linear"
 						}
 					]
+				},
+				"22d40862-bd19-a16d-9e33-79364e6656d8": {
+					"name": "Head",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"db381b6c-e0d3-6ca8-6433-4371d36cc6c6": {
+					"name": "FaceParts",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"25d20f6a-b84c-5105-726d-79a4fc3a5a4d": {
+					"name": "Eyes",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d775a8e4-818b-b21e-93df-fdb4456fefc8": {
+					"name": "RightSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5e757c9d-cb7e-d074-a20f-d95f46e96872": {
+					"name": "LeftSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e8809cb5-a507-86d8-da91-c79b1d4d233e": {
+					"name": "Halo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9242d5ee-aee7-9c98-a984-fff92aa89673": {
+					"name": "HaloCenter",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"62a150d5-23c3-7461-a5be-45357c1dca73": {
+					"name": "Ears",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d9d3d58a-ac0b-fce1-f92f-b3f9f8f19f62": {
+					"name": "RightEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f1f911df-3ba5-99ee-5f7c-bd108a06220b": {
+					"name": "RightEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0ca24c5b-efac-bdc2-1434-151c85925fb3": {
+					"name": "LeftEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"85b8d6c9-8cad-e43e-686c-50297df29e24": {
+					"name": "LeftEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"47722ffb-d55b-1243-7191-cf3c96915c5a": {
+					"name": "HairPin",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9d4aae57-b308-efa6-94cd-bac8cee0b7fd": {
+					"name": "HairEnds",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"242f9daa-9b60-b2ca-03fa-af6d04dbc249": {
+					"name": "RightHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a0d92aa7-169d-aad9-7a9a-74147728af4b": {
+					"name": "LeftHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe3b45-a6ad-8db5-9954-75f8e7f475c3": {
+					"name": "HelmetItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"16d22746-633e-382e-dd96-b35bde99daa5": {
+					"name": "UpperBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bf4dd57f-d0f7-1fe0-98e6-59e00f97f41b": {
+					"name": "Body",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6cdd8370-52fb-2478-f57b-dd38c658394b": {
+					"name": "Scarf",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"842788de-67f8-925c-549a-09ae3d91d3f6": {
+					"name": "Skirt",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5d60866b-872f-1dd7-6c66-c449d8004c7e": {
+					"name": "Hairs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d75fb32-75be-dc29-9085-7821897ce3ce": {
+					"name": "FrontHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"982f9d44-5c5e-570d-2128-90f9f75297f4": {
+					"name": "BackHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"99573bc9-e04b-87c2-a66a-1488788ec2c0": {
+					"name": "IDCard",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c062b0e8-6983-de4d-12e9-7b5ad9e81528": {
+					"name": "Arms",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b924539e-1292-1a17-6240-a525ae346090": {
+					"name": "RightArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f77eb5a1-0c86-2ec0-fa55-565b454784db": {
+					"name": "RightItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e7d3e5d8-00e4-587c-7bb6-6787db00054b": {
+					"name": "LeftArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ad1c45ef-c0a8-6d31-d2dc-fbdc6ab7ddcc": {
+					"name": "LeftArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4f31b2fe-139d-4fb3-f36f-3d5ed0997399": {
+					"name": "LeftItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"34f8f1e3-7498-d32a-cbaa-e08af5c6b7e9": {
+					"name": "LeftElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"884aa12d-4d86-c86f-f3ae-27294c5df1b1": {
+					"name": "RightElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29a158b7-4e78-b2e4-f4a6-a828afb1514f": {
+					"name": "LeftParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d993335-4efa-18af-e219-def6c191632a": {
+					"name": "RightParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29730186-2622-086d-ab67-4bb8e356bb6c": {
+					"name": "Legs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "-5"
+								}
+							],
+							"uuid": "3b1e87a3-b1f8-63d4-9cca-4fa97bb51f8b",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear"
+						}
+					]
+				},
+				"84fe0b3a-286b-e17f-288e-c39feaa2e5e6": {
+					"name": "RightLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee9973d4-ff4e-c96b-64f6-d1f28afd69c6": {
+					"name": "LeftLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"71b16a49-1da9-df63-2f72-f5272bb4b134": {
+					"name": "NameplateAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4ad021e9-2857-4e55-337b-f61da0762800": {
+					"name": "CameraAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
 				}
 			}
 		},
@@ -7584,37 +8064,7 @@
 					"name": "LowerBody",
 					"type": "bone",
 					"rotation_global": false,
-					"quaternion_interpolation": false,
-					"keyframes": [
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "0",
-									"y": "0",
-									"z": "5"
-								}
-							],
-							"uuid": "84c2cb6b-4fbe-08c4-9861-6c3277f25987",
-							"time": 0.25,
-							"color": -1,
-							"interpolation": "linear"
-						},
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "0",
-									"y": "0",
-									"z": "0"
-								}
-							],
-							"uuid": "e2cf6cce-cd46-0488-d456-13a7fd0cbf44",
-							"time": 0,
-							"color": -1,
-							"interpolation": "linear"
-						}
-					]
+					"quaternion_interpolation": false
 				},
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
@@ -7892,6 +8342,276 @@
 							"interpolation": "linear"
 						}
 					]
+				},
+				"22d40862-bd19-a16d-9e33-79364e6656d8": {
+					"name": "Head",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"db381b6c-e0d3-6ca8-6433-4371d36cc6c6": {
+					"name": "FaceParts",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"25d20f6a-b84c-5105-726d-79a4fc3a5a4d": {
+					"name": "Eyes",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d775a8e4-818b-b21e-93df-fdb4456fefc8": {
+					"name": "RightSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5e757c9d-cb7e-d074-a20f-d95f46e96872": {
+					"name": "LeftSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e8809cb5-a507-86d8-da91-c79b1d4d233e": {
+					"name": "Halo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9242d5ee-aee7-9c98-a984-fff92aa89673": {
+					"name": "HaloCenter",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"62a150d5-23c3-7461-a5be-45357c1dca73": {
+					"name": "Ears",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d9d3d58a-ac0b-fce1-f92f-b3f9f8f19f62": {
+					"name": "RightEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f1f911df-3ba5-99ee-5f7c-bd108a06220b": {
+					"name": "RightEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0ca24c5b-efac-bdc2-1434-151c85925fb3": {
+					"name": "LeftEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"85b8d6c9-8cad-e43e-686c-50297df29e24": {
+					"name": "LeftEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"47722ffb-d55b-1243-7191-cf3c96915c5a": {
+					"name": "HairPin",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9d4aae57-b308-efa6-94cd-bac8cee0b7fd": {
+					"name": "HairEnds",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"242f9daa-9b60-b2ca-03fa-af6d04dbc249": {
+					"name": "RightHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a0d92aa7-169d-aad9-7a9a-74147728af4b": {
+					"name": "LeftHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe3b45-a6ad-8db5-9954-75f8e7f475c3": {
+					"name": "HelmetItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"16d22746-633e-382e-dd96-b35bde99daa5": {
+					"name": "UpperBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bf4dd57f-d0f7-1fe0-98e6-59e00f97f41b": {
+					"name": "Body",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6cdd8370-52fb-2478-f57b-dd38c658394b": {
+					"name": "Scarf",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"842788de-67f8-925c-549a-09ae3d91d3f6": {
+					"name": "Skirt",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5d60866b-872f-1dd7-6c66-c449d8004c7e": {
+					"name": "Hairs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d75fb32-75be-dc29-9085-7821897ce3ce": {
+					"name": "FrontHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"982f9d44-5c5e-570d-2128-90f9f75297f4": {
+					"name": "BackHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"99573bc9-e04b-87c2-a66a-1488788ec2c0": {
+					"name": "IDCard",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c062b0e8-6983-de4d-12e9-7b5ad9e81528": {
+					"name": "Arms",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"3c1cb66d-8a31-d31f-ec9f-65a33e313a53": {
+					"name": "RightArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b924539e-1292-1a17-6240-a525ae346090": {
+					"name": "RightArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f77eb5a1-0c86-2ec0-fa55-565b454784db": {
+					"name": "RightItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ad1c45ef-c0a8-6d31-d2dc-fbdc6ab7ddcc": {
+					"name": "LeftArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4f31b2fe-139d-4fb3-f36f-3d5ed0997399": {
+					"name": "LeftItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"34f8f1e3-7498-d32a-cbaa-e08af5c6b7e9": {
+					"name": "LeftElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"884aa12d-4d86-c86f-f3ae-27294c5df1b1": {
+					"name": "RightElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29a158b7-4e78-b2e4-f4a6-a828afb1514f": {
+					"name": "LeftParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d993335-4efa-18af-e219-def6c191632a": {
+					"name": "RightParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29730186-2622-086d-ab67-4bb8e356bb6c": {
+					"name": "Legs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "5"
+								}
+							],
+							"uuid": "2b640325-86c7-ed77-f073-9f3e7512ba63",
+							"time": 0.25,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "d68ed485-ae8b-5e42-f12b-d0eb05801b27",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear"
+						}
+					]
+				},
+				"84fe0b3a-286b-e17f-288e-c39feaa2e5e6": {
+					"name": "RightLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee9973d4-ff4e-c96b-64f6-d1f28afd69c6": {
+					"name": "LeftLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"71b16a49-1da9-df63-2f72-f5272bb4b134": {
+					"name": "NameplateAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4ad021e9-2857-4e55-337b-f61da0762800": {
+					"name": "CameraAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
 				}
 			}
 		},
@@ -8086,37 +8806,7 @@
 					"name": "LowerBody",
 					"type": "bone",
 					"rotation_global": false,
-					"quaternion_interpolation": false,
-					"keyframes": [
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "0",
-									"y": "0",
-									"z": "-5"
-								}
-							],
-							"uuid": "84c2cb6b-4fbe-08c4-9861-6c3277f25987",
-							"time": 0.25,
-							"color": -1,
-							"interpolation": "linear"
-						},
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "0",
-									"y": "0",
-									"z": "0"
-								}
-							],
-							"uuid": "833316ee-dc58-dcac-13e3-1e0a1d7d7bc1",
-							"time": 0,
-							"color": -1,
-							"interpolation": "linear"
-						}
-					]
+					"quaternion_interpolation": false
 				},
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
@@ -8458,6 +9148,276 @@
 							"interpolation": "linear"
 						}
 					]
+				},
+				"22d40862-bd19-a16d-9e33-79364e6656d8": {
+					"name": "Head",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"db381b6c-e0d3-6ca8-6433-4371d36cc6c6": {
+					"name": "FaceParts",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"25d20f6a-b84c-5105-726d-79a4fc3a5a4d": {
+					"name": "Eyes",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d775a8e4-818b-b21e-93df-fdb4456fefc8": {
+					"name": "RightSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5e757c9d-cb7e-d074-a20f-d95f46e96872": {
+					"name": "LeftSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e8809cb5-a507-86d8-da91-c79b1d4d233e": {
+					"name": "Halo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9242d5ee-aee7-9c98-a984-fff92aa89673": {
+					"name": "HaloCenter",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"62a150d5-23c3-7461-a5be-45357c1dca73": {
+					"name": "Ears",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d9d3d58a-ac0b-fce1-f92f-b3f9f8f19f62": {
+					"name": "RightEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f1f911df-3ba5-99ee-5f7c-bd108a06220b": {
+					"name": "RightEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0ca24c5b-efac-bdc2-1434-151c85925fb3": {
+					"name": "LeftEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"85b8d6c9-8cad-e43e-686c-50297df29e24": {
+					"name": "LeftEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"47722ffb-d55b-1243-7191-cf3c96915c5a": {
+					"name": "HairPin",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9d4aae57-b308-efa6-94cd-bac8cee0b7fd": {
+					"name": "HairEnds",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"242f9daa-9b60-b2ca-03fa-af6d04dbc249": {
+					"name": "RightHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a0d92aa7-169d-aad9-7a9a-74147728af4b": {
+					"name": "LeftHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe3b45-a6ad-8db5-9954-75f8e7f475c3": {
+					"name": "HelmetItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"16d22746-633e-382e-dd96-b35bde99daa5": {
+					"name": "UpperBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bf4dd57f-d0f7-1fe0-98e6-59e00f97f41b": {
+					"name": "Body",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6cdd8370-52fb-2478-f57b-dd38c658394b": {
+					"name": "Scarf",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"842788de-67f8-925c-549a-09ae3d91d3f6": {
+					"name": "Skirt",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5d60866b-872f-1dd7-6c66-c449d8004c7e": {
+					"name": "Hairs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d75fb32-75be-dc29-9085-7821897ce3ce": {
+					"name": "FrontHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"982f9d44-5c5e-570d-2128-90f9f75297f4": {
+					"name": "BackHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"99573bc9-e04b-87c2-a66a-1488788ec2c0": {
+					"name": "IDCard",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c062b0e8-6983-de4d-12e9-7b5ad9e81528": {
+					"name": "Arms",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b924539e-1292-1a17-6240-a525ae346090": {
+					"name": "RightArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f77eb5a1-0c86-2ec0-fa55-565b454784db": {
+					"name": "RightItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e7d3e5d8-00e4-587c-7bb6-6787db00054b": {
+					"name": "LeftArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ad1c45ef-c0a8-6d31-d2dc-fbdc6ab7ddcc": {
+					"name": "LeftArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4f31b2fe-139d-4fb3-f36f-3d5ed0997399": {
+					"name": "LeftItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"34f8f1e3-7498-d32a-cbaa-e08af5c6b7e9": {
+					"name": "LeftElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"884aa12d-4d86-c86f-f3ae-27294c5df1b1": {
+					"name": "RightElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29a158b7-4e78-b2e4-f4a6-a828afb1514f": {
+					"name": "LeftParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d993335-4efa-18af-e219-def6c191632a": {
+					"name": "RightParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29730186-2622-086d-ab67-4bb8e356bb6c": {
+					"name": "Legs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "-5"
+								}
+							],
+							"uuid": "8ed9a3b4-6a6e-a065-2770-f732558a021b",
+							"time": 0.25,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "8f427be4-d8c9-4d41-0dc5-cfe3015f968f",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear"
+						}
+					]
+				},
+				"84fe0b3a-286b-e17f-288e-c39feaa2e5e6": {
+					"name": "RightLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ee9973d4-ff4e-c96b-64f6-d1f28afd69c6": {
+					"name": "LeftLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"71b16a49-1da9-df63-2f72-f5272bb4b134": {
+					"name": "NameplateAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4ad021e9-2857-4e55-337b-f61da0762800": {
+					"name": "CameraAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
 				}
 			}
 		},
@@ -8544,37 +9504,7 @@
 					"name": "LowerBody",
 					"type": "bone",
 					"rotation_global": false,
-					"quaternion_interpolation": false,
-					"keyframes": [
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "15",
-									"y": "0",
-									"z": "10"
-								}
-							],
-							"uuid": "38d73248-7125-77f5-65f4-d2587ce9611b",
-							"time": 0,
-							"color": -1,
-							"interpolation": "linear"
-						},
-						{
-							"channel": "rotation",
-							"data_points": [
-								{
-									"x": "45",
-									"y": "0",
-									"z": "0"
-								}
-							],
-							"uuid": "4ef3f7c5-18c4-a051-e4b2-2b0ccea835e4",
-							"time": 0.25,
-							"color": -1,
-							"interpolation": "linear"
-						}
-					]
+					"quaternion_interpolation": false
 				},
 				"4e80b5b4-7c04-8374-f8a7-526b3d36d050": {
 					"name": "RightLeg",
@@ -8677,6 +9607,294 @@
 							"interpolation": "linear"
 						}
 					]
+				},
+				"22d40862-bd19-a16d-9e33-79364e6656d8": {
+					"name": "Head",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"db381b6c-e0d3-6ca8-6433-4371d36cc6c6": {
+					"name": "FaceParts",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"25d20f6a-b84c-5105-726d-79a4fc3a5a4d": {
+					"name": "Eyes",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d775a8e4-818b-b21e-93df-fdb4456fefc8": {
+					"name": "RightSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5e757c9d-cb7e-d074-a20f-d95f46e96872": {
+					"name": "LeftSpyglassPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e8809cb5-a507-86d8-da91-c79b1d4d233e": {
+					"name": "Halo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9242d5ee-aee7-9c98-a984-fff92aa89673": {
+					"name": "HaloCenter",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"62a150d5-23c3-7461-a5be-45357c1dca73": {
+					"name": "Ears",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"d9d3d58a-ac0b-fce1-f92f-b3f9f8f19f62": {
+					"name": "RightEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f1f911df-3ba5-99ee-5f7c-bd108a06220b": {
+					"name": "RightEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"0ca24c5b-efac-bdc2-1434-151c85925fb3": {
+					"name": "LeftEarPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"85b8d6c9-8cad-e43e-686c-50297df29e24": {
+					"name": "LeftEar",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"47722ffb-d55b-1243-7191-cf3c96915c5a": {
+					"name": "HairPin",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"9d4aae57-b308-efa6-94cd-bac8cee0b7fd": {
+					"name": "HairEnds",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"242f9daa-9b60-b2ca-03fa-af6d04dbc249": {
+					"name": "RightHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"a0d92aa7-169d-aad9-7a9a-74147728af4b": {
+					"name": "LeftHairEnd",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"84fe3b45-a6ad-8db5-9954-75f8e7f475c3": {
+					"name": "HelmetItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"16d22746-633e-382e-dd96-b35bde99daa5": {
+					"name": "UpperBody",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"bf4dd57f-d0f7-1fe0-98e6-59e00f97f41b": {
+					"name": "Body",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6cdd8370-52fb-2478-f57b-dd38c658394b": {
+					"name": "Scarf",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"6101f8d5-b970-b28b-9e12-ecd9dcd9a6a9": {
+					"name": "Scarf2",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e36cdff1-4949-f823-2012-f9a108379e69": {
+					"name": "Scarf3",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ab590f32-a10c-babe-2b11-8934e7c058bd": {
+					"name": "Scarf4",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"842788de-67f8-925c-549a-09ae3d91d3f6": {
+					"name": "Skirt",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5d60866b-872f-1dd7-6c66-c449d8004c7e": {
+					"name": "Hairs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d75fb32-75be-dc29-9085-7821897ce3ce": {
+					"name": "FrontHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"982f9d44-5c5e-570d-2128-90f9f75297f4": {
+					"name": "BackHair",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"99573bc9-e04b-87c2-a66a-1488788ec2c0": {
+					"name": "IDCard",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"c062b0e8-6983-de4d-12e9-7b5ad9e81528": {
+					"name": "Arms",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"3c1cb66d-8a31-d31f-ec9f-65a33e313a53": {
+					"name": "RightArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"b924539e-1292-1a17-6240-a525ae346090": {
+					"name": "RightArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"f77eb5a1-0c86-2ec0-fa55-565b454784db": {
+					"name": "RightItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"e7d3e5d8-00e4-587c-7bb6-6787db00054b": {
+					"name": "LeftArm",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"ad1c45ef-c0a8-6d31-d2dc-fbdc6ab7ddcc": {
+					"name": "LeftArmBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4f31b2fe-139d-4fb3-f36f-3d5ed0997399": {
+					"name": "LeftItemPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"34f8f1e3-7498-d32a-cbaa-e08af5c6b7e9": {
+					"name": "LeftElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"884aa12d-4d86-c86f-f3ae-27294c5df1b1": {
+					"name": "RightElytraPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29a158b7-4e78-b2e4-f4a6-a828afb1514f": {
+					"name": "LeftParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"7d993335-4efa-18af-e219-def6c191632a": {
+					"name": "RightParrotPivot",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"29730186-2622-086d-ab67-4bb8e356bb6c": {
+					"name": "Legs",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "15",
+									"y": "0",
+									"z": "10"
+								}
+							],
+							"uuid": "d7965c1a-e8a3-228a-c3a7-31c17b2603c8",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "45",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "8ec1bce0-a0a6-dc57-803b-022191d95c8a",
+							"time": 0.25,
+							"color": -1,
+							"interpolation": "linear"
+						}
+					]
+				},
+				"ee9973d4-ff4e-c96b-64f6-d1f28afd69c6": {
+					"name": "LeftLegBottom",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"71b16a49-1da9-df63-2f72-f5272bb4b134": {
+					"name": "NameplateAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"4ad021e9-2857-4e55-337b-f61da0762800": {
+					"name": "CameraAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
 				}
 			}
 		},
