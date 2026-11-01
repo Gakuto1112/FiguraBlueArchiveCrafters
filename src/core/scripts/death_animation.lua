@@ -70,35 +70,12 @@ local DeathAnimation = {
 			ModelAlias.alias.dummy_avatar = nil
 		end
 
-        for _, modelPart in ipairs({ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.halo}) do
-            modelPart:setVisible(true)
-        end
-        ModelAlias.alias.avatar.head:setPrimaryRenderType()
-        ModelAlias.alias.avatar.head:setOpacity(1)
-        local isArmorVisible = {
-            helmet = Armor.isArmorVisible.helmet;
-            chestplate = Armor.isArmorVisible.chestplate;
-            leggings = Armor.isArmorVisible.leggings;
-            boots = Armor.isArmorVisible.boots;
-        }
-        if isArmorVisible.helmet then
-            Armor:setHelmet(world.newItem("minecraft:air"))
-        end
-        if isArmorVisible.chestplate then
-            Armor:setChestplate(world.newItem("minecraft:air"))
-        end
-        if isArmorVisible.leggings then
-            Armor:setLeggings(world.newItem("minecraft:air"))
-        end
-        if isArmorVisible.boots then
-            Armor:setBoots(world.newItem("minecraft:air"))
-        end
-        Physics:disable()
         if BlueArchiveCharacter.deathAnimation.callbacks ~= nil and BlueArchiveCharacter.deathAnimation.callbacks.onBeforeModelCopy ~= nil then
             BlueArchiveCharacter.deathAnimation.callbacks.onBeforeModelCopy(BlueArchiveCharacter)
         end
 
-        parent:addChild(ModelUtils:copyModel(ModelAlias.alias.avatar.root))
+        ModelUtils:copyAvatarModel(parent)
+
 		ModelAlias.alias.dummy_avatar = ModelAlias:getAliasTable(parent.Avatar)
         ModelAlias.alias.dummy_avatar.rightEye:setUVPixels(BlueArchiveCharacter.faceParts.rightEye.TIRED:copy():scale(6))
         ModelAlias.alias.dummy_avatar.leftEye:setUVPixels(BlueArchiveCharacter.faceParts.leftEye.TIRED:copy():scale(6))
@@ -120,19 +97,6 @@ local DeathAnimation = {
             end
         end
 
-        if isArmorVisible.helmet then
-            Armor:setHelmet(Armor.armorSlotItems[1])
-        end
-        if isArmorVisible.chestplate then
-            Armor:setChestplate(Armor.armorSlotItems[2])
-        end
-        if isArmorVisible.leggings then
-            Armor:setLeggings(Armor.armorSlotItems[3])
-        end
-        if isArmorVisible.boots then
-            Armor:setBoots(Armor.armorSlotItems[4])
-        end
-        Physics:enable()
         if BlueArchiveCharacter.deathAnimation.callbacks ~= nil and BlueArchiveCharacter.deathAnimation.callbacks.onAfterModelCopy ~= nil then
             BlueArchiveCharacter.deathAnimation.callbacks.onAfterModelCopy(BlueArchiveCharacter)
         end
