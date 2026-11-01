@@ -3,7 +3,6 @@ set -eu
 
 filter_name="bbmodel-normalize"
 script_directory=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
-normalizer_path="$script_directory/bbmodel_normalizer.py"
 
 shell_quote() {
 	printf "'%s'" "$(printf '%s' "$1" | sed "s/'/'\\\\''/g")"
@@ -20,7 +19,7 @@ else
 	repository_root=$(git -C "$script_directory" rev-parse --show-toplevel)
 fi
 
-clean_command="uv run --project $(shell_quote "$script_directory") python $(shell_quote "$normalizer_path")"
+clean_command="uv run --project $(shell_quote "$script_directory") --directory $(shell_quote "$script_directory") python -m bbmodel_normalizer.bbmodel_normalizer"
 
 git -C "$repository_root" config --local "filter.$filter_name.clean" "$clean_command"
 git -C "$repository_root" config --local "filter.$filter_name.smudge" cat

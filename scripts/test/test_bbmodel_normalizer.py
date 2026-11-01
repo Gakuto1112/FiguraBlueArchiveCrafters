@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from bbmodel_normalizer import normalize_bbmodel_json
+from bbmodel_normalizer.bbmodel_normalizer import normalize_bbmodel_json
 
 
 class TestBBModelNormalizer(unittest.TestCase):

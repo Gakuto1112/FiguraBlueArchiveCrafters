@@ -46,7 +46,7 @@ class TestBBModelFilter(unittest.TestCase):
 
         self.assertEqual(required.stdout.decode().strip(), "true")
         self.assertIn(b"uv", clean_command.stdout)
-        self.assertIn(str(REPOSITORY_ROOT / "scripts" / "bbmodel_normalizer.py").encode(), clean_command.stdout)
+        self.assertIn(b"bbmodel_normalizer.bbmodel_normalizer", clean_command.stdout)
         self.assertEqual(smudge_command.stdout.decode().strip(), "cat")
         self.assertEqual(self.configure_output, "Configured the BBModel clean filter.\n")
 
