@@ -131,10 +131,8 @@ local ModelUtils = {
         if isArmorVisible.boots then
             Armor:setBoots(Armor.armorSlotItems[4])
         end
+
         Physics:enable()
-        if BlueArchiveCharacter.deathAnimation.callbacks ~= nil and BlueArchiveCharacter.deathAnimation.callbacks.onAfterModelCopy ~= nil then
-            BlueArchiveCharacter.deathAnimation.callbacks.onAfterModelCopy(BlueArchiveCharacter)
-        end
     end;
 
     ---指定したエリアがブロックの当たり判定と重なっているかどうかを取得する。

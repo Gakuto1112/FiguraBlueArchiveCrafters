@@ -54,7 +54,10 @@ local Costume = {
 		end
 
 		if not isAltCostumeProcessed then
-			HeadBlock:generateHeadBlockModel()
+			events.TICK:register(function ()
+				HeadBlock:generateHeadBlockModel()
+				events.TICK:remove("head_block_generate_delay")
+			end, "head_block_generate_delay")
 			Portrait:generatePortraitModel()
 		end
 
@@ -81,7 +84,14 @@ local Costume = {
 	setAltCostume = function (self, isAlt)
 		if BlueArchiveCharacter.costume.isAltCostumeEnabled and BlueArchiveCharacter.costume.callbacks ~= nil and BlueArchiveCharacter.costume.callbacks.onAltChange ~= nil then
 			BlueArchiveCharacter.costume.callbacks.onAltChange(BlueArchiveCharacter, isAlt)
-			HeadBlock:generateHeadBlockModel()
+			if #models.script_head_block:getChildren() >= 1 then
+				HeadBlock:generateHeadBlockModel()
+			else
+				events.TICK:register(function ()
+					HeadBlock:generateHeadBlockModel()
+					events.TICK:remove("head_block_generate_delay")
+				end, "head_block_generate_delay")
+			end
 			Portrait:generatePortraitModel()
 		end
 		self.isAltCostume = isAlt
