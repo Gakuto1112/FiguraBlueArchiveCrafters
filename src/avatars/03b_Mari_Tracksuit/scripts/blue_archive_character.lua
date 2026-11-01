@@ -379,7 +379,17 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {models.models.main.Avatar.UpperBody.Body.FrontHair};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "SMILE";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.head.HairTail:setScale(0.67, 0.67, 0.67)
+			end;
+		};
 	};
 
 	portrait = {
