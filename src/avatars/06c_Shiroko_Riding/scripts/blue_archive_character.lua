@@ -377,7 +377,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {ModelAlias.alias.avatar.lowerBody.Bicycle};
+			models = {ModelAlias.alias.avatar.legs.Bicycle};
 
 			animations = {"main", "bicycle"};
 
@@ -412,7 +412,7 @@ local BlueArchiveCharacter = {
 							self.exSkill.primary.windSound = nil
 						end
 						local bicycleYaw = ModelAlias.alias.avatar.root:getAnimRot().y + player:getBodyYaw() * -1
-						local bicyclePos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.lowerBody.Bicycle)
+						local bicyclePos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.legs.Bicycle)
 						local frontWheelPos = vectors.rotateAroundAxis(bicycleYaw, 0, 0, 0.5625, 0, 1, 0):add(bicyclePos)
 						local backWheelPos = vectors.rotateAroundAxis(bicycleYaw, 0, 0, -0.5625, 0, 1, 0):add(bicyclePos)
 						for _ = 1, 5 do
@@ -432,7 +432,7 @@ local BlueArchiveCharacter = {
 						sounds:playSound("minecraft:block.grindstone.use", bicyclePos, 0.1, 3)
 					elseif tick == 82 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "TRIANGLE", 15, true)
-						ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:moveTo(ModelAlias.alias.avatar.rightArmBottom)
+						ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:moveTo(ModelAlias.alias.avatar.rightArmBottom)
 					elseif tick == 97 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "TRIANGLE", 4, true)
 					elseif tick == 101 then
@@ -452,7 +452,7 @@ local BlueArchiveCharacter = {
 						end
 					end
 					if tick < 58 then
-						ModelAlias.alias.avatar.lowerBody.Bicycle.Wheels.Chain:setUVPixels(tick % 2, 0)
+						ModelAlias.alias.avatar.legs.Bicycle.Wheels.Chain:setUVPixels(tick % 2, 0)
 						self.exSkill.primary.windSound:setVolume(math.clamp(16 - client:getCameraPos():sub(ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root)):length(), 0, 8) / 160)
 					end
 					if tick < 69 then
@@ -464,7 +464,7 @@ local BlueArchiveCharacter = {
 
 				onPostAnimation = function ()
 					if ModelAlias.alias.avatar.rightArmBottom.WaterBottle ~= nil then
-						ModelAlias.alias.avatar.rightArmBottom.WaterBottle:moveTo(ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8)
+						ModelAlias.alias.avatar.rightArmBottom.WaterBottle:moveTo(ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8)
 					end
 					if host:isHost() then
 						models.models.ex_skill_1.CameraBackground:setVisible(false)
@@ -521,7 +521,17 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "CLOSED";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.gun:remove()
+			end;
+		};
 	};
 
 	portrait = {
