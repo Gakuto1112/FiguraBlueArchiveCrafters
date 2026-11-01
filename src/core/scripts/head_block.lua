@@ -28,7 +28,15 @@ local HeadBlock = {
 	generateHeadBlockModel = function (self)
 		self.deleteHeadBlockModel()
 
+		if BlueArchiveCharacter.headBlock.callbacks ~= nil and BlueArchiveCharacter.headBlock.callbacks.onBeforeModelCopy ~= nil then
+			BlueArchiveCharacter.headBlock.callbacks.onBeforeModelCopy(BlueArchiveCharacter)
+		end
+
+		ModelAlias.alias.avatar.mouth:setVisible(true)
+
 		ModelUtils:copyAvatarModel(models.script_head_block, "Skull")
+
+		ModelAlias.alias.avatar.mouth:setVisible(false)
 
 		ModelAlias.alias.head_block_avatar = ModelAlias:getAliasTable(models.script_head_block.Skull)
 
@@ -43,6 +51,14 @@ local HeadBlock = {
 		ModelAlias.alias.head_block_avatar.leftArm:setRot(0, 0, -30)
 		ModelAlias.alias.head_block_avatar.rightLeg:setRot(90, -10, 0)
 		ModelAlias.alias.head_block_avatar.leftLeg:setRot(90, 10, 0)
+
+		ModelAlias.alias.head_block_avatar.rightEye:setUVPixels(BlueArchiveCharacter.faceParts.rightEye[BlueArchiveCharacter.headBlock.emotion.rightEye]:copy():scale(6))
+		ModelAlias.alias.head_block_avatar.leftEye:setUVPixels(BlueArchiveCharacter.faceParts.leftEye[BlueArchiveCharacter.headBlock.emotion.leftEye]:copy():scale(6))
+		ModelAlias.alias.head_block_avatar.mouth:setUVPixels(BlueArchiveCharacter.faceParts.mouth[BlueArchiveCharacter.headBlock.emotion.mouth]:copy():mul(16, 8))
+
+		if BlueArchiveCharacter.headBlock.callbacks ~= nil and BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy ~= nil then
+			BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy(BlueArchiveCharacter)
+		end
 	end;
 
 	---頭ブロックを削除する。
