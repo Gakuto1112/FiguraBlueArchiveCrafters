@@ -695,7 +695,7 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onAfterModelCopy = function ()
 				ModelAlias.alias.head_block_avatar.head.HairTails:setPos(0, -2, 0)
-				ModelAlias.alias.head_block_avatar.head.HairTails:setScale(0.67, 0.67, 0.67)
+				ModelAlias.alias.head_block_avatar.head.HairTails:setScale(1, 0.67, 1)
 				ModelAlias.alias.head_block_avatar.body.Skirt:setRot(60, 0, 0)
 			end;
 		};
