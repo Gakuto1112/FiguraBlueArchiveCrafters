@@ -60,7 +60,7 @@ local HeadBlock = {
 		end
 
 		if events.SKULL_RENDER:getRegisteredCount("skull_render") == 0 then
-			events.SKULL_RENDER:register(function (delta, block, item, entity, context)
+			events.SKULL_RENDER:register(function (_, _, _, _, context)
 				if context == "FIRST_PERSON_RIGHT_HAND" then
 					ModelAlias.alias.head_block_avatar.root:setPos(0, 2, 0)
 					ModelAlias.alias.head_block_avatar.root:setRot(0, -40, 0)
