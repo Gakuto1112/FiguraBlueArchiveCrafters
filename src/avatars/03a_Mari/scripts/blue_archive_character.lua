@@ -267,7 +267,20 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {models.models.main.Avatar.UpperBody.Body.FrontHair, models.models.main.Avatar.UpperBody.Body.VeilBody};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "SMILE";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.body.Robe:setPos(0, 1, 0)
+				ModelAlias.alias.head_block_avatar.body.Robe:setScale(1.85, 0.45, 2)
+				ModelAlias.alias.head_block_avatar.body.BackRibbon:setPos(0, 1, 0)
+				ModelAlias.alias.head_block_avatar.body.BackRibbon.BackRibbonBottom:setRot(-57.5, 0, 0)
+			end;
+		};
 	};
 
 	portrait = {
