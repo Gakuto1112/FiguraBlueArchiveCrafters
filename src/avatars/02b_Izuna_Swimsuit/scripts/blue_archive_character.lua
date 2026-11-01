@@ -52,8 +52,8 @@ local BlueArchiveCharacter = {
 		avatarName = "02b_Izuna_Swimsuit";
 
 		birth = {
-			month = 7;
-			day = 7;
+			month = 12;
+			day = 16;
 		};
 	};
 
