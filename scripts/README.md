@@ -7,6 +7,24 @@ Language: 　**English**　|　[日本語](./README_jp.md)
 This directory contains external scripts that are not directly related to the use of FBAC avatars.
 The available scripts are as follows.
 
+## BBModel Editor-State Normalization When Staging
+
+When staged, `.bbmodel` files have the following BlockBench editor state normalized to `false`:
+
+- `groups[].isOpen`, `groups[].selected`, and `groups[].primary_selected`
+- `animations[].selected`
+- `isOpen` on every tree node under `outliner`
+
+Other fields are left unchanged. Normalization applies to the content added to the Git index; it does not modify the working-tree file.
+
+Git filter configuration is local to each clone. After installing `uv`, run the following command from the repository root. This setup is required once per clone.
+
+```sh
+sh scripts/setup_bbmodel_filter.sh
+```
+
+Before setup, Git does not run the filter and stages the content unchanged.
+
 ## Build Script
 
 This command-line script converts (builds) source files for FBAC avatars into data that can be used in the game.
