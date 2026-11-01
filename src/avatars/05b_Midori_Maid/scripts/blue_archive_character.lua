@@ -38,6 +38,7 @@
 ---| "TRIANGLE" # 三角口
 ---| "SMILE_SMALL" # 小さくニッコリ
 ---| "OPENED_SMALL" # 小さく開いた口
+---| "CLOSED3" # 閉じた口3
 
 ---@class (exact) Character05b.EmotionSet : BlueArchiveCharacter.EmotionSet 表情のデータセット
 ---@field public rightEye Character05b.RightEyeTextures 右目の表情名
@@ -107,6 +108,7 @@ local BlueArchiveCharacter = {
 			TRIANGLE = vectors.vec2(7, 0);
 			SMILE_SMALL = vectors.vec2(8, 0);
 			OPENED_SMALL = vectors.vec2(9, 0);
+			CLOSED3 = vectors.vec2(10, 0);
 		};
 
 		emotionSet = {
@@ -279,7 +281,7 @@ local BlueArchiveCharacter = {
 							models.models.ex_skill_1.Gui.UI.MidoriHeadUI.MidoriPaperDoll:setOffsetPivot(33.25, 12.5, 16)
 							models.models.ex_skill_1.Gui.UI.MidoriHeadUI.MidoriPaperDoll:setRot(0, -15, 0)
 							models.models.ex_skill_1.Gui.UI.MidoriHeadUI.MidoriPaperDoll:setPrimaryRenderType("CUTOUT")
-							models.models.ex_skill_1.Gui.UI.MidoriHeadUI.MidoriPaperDoll:addChild(ModelUtils:copyModel(models.script_head_block.Skull, "MidoriPaperDollHead"))
+							ModelUtils:copyHeadModel(models.models.ex_skill_1.Gui.UI.MidoriHeadUI.MidoriPaperDoll, "MidoriPaperDollHead")
 							models.models.ex_skill_1.Gui.UI.MidoriHeadUI.MidoriPaperDoll.MidoriPaperDollHead.FaceParts:addChild(ModelAlias.alias.avatar.mouth:copy("Mouth"))
 							models.models.ex_skill_1.Gui.UI.MidoriHeadUI.MidoriPaperDoll.MidoriPaperDollHead.FaceParts.Mouth:setUVPixels(0, 0)
 							models.models.ex_skill_1.Gui.UI.MidoriHeadUI.MidoriPaperDoll.MidoriPaperDollHead.FaceParts.Mouth:setVisible(true)
@@ -776,7 +778,21 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "CLOSED3";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.body.Skirt1:setPos(0, 1, 0)
+				ModelAlias.alias.head_block_avatar.body.Skirt1:setScale(1.5, 0.45, 1.5)
+				ModelAlias.alias.head_block_avatar.body.BackRibbon:setPos(0, 1, 0)
+				ModelAlias.alias.head_block_avatar.body.BackRibbon.RibbonBottomRight:setRot(-37.5, 0, 0)
+				ModelAlias.alias.head_block_avatar.body.BackRibbon.RibbonBottomLeft:setRot(-37.5, 0, 0)
+			end;
+		};
 	};
 
 	portrait = {
