@@ -45,6 +45,8 @@ local HeadBlock = {
 		ModelAlias.alias.head_block_avatar.root:setScale(0.5, 0.5, 0.5)
 		ModelAlias.alias.head_block_avatar.root:setPos(0, -3.5, 0)
 		ModelAlias.alias.head_block_avatar.head:setPos(0, -8, 0)
+		ModelAlias.alias.head_block_avatar.halo:setPos()
+		ModelAlias.alias.head_block_avatar.halo:setLight()
 		ModelAlias.alias.head_block_avatar.upperBody:setScale(0.67, 0.67, 0.67)
 		ModelAlias.alias.head_block_avatar.lowerBody:setScale(0.67, 0.67, 0.67)
 		ModelAlias.alias.head_block_avatar.rightArm:setRot(0, 0, 30)
