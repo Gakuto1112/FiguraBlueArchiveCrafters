@@ -29,7 +29,7 @@ local HeadBlock = {
 		self.deleteHeadBlockModel()
 
 		if BlueArchiveCharacter.headBlock.callbacks ~= nil and BlueArchiveCharacter.headBlock.callbacks.onBeforeModelCopy ~= nil then
-			BlueArchiveCharacter.headBlock.callbacks.onBeforeModelCopy(BlueArchiveCharacter)
+			BlueArchiveCharacter.headBlock.callbacks.onBeforeModelCopy(BlueArchiveCharacter, Costume.isAltCostume)
 		end
 
 		ModelAlias.alias.avatar.mouth:setVisible(true)
@@ -56,7 +56,7 @@ local HeadBlock = {
 		ModelAlias.alias.head_block_avatar.mouth:setUVPixels(BlueArchiveCharacter.faceParts.mouth[BlueArchiveCharacter.headBlock.emotion.mouth]:copy():mul(16, 8))
 
 		if BlueArchiveCharacter.headBlock.callbacks ~= nil and BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy ~= nil then
-			BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy(BlueArchiveCharacter)
+			BlueArchiveCharacter.headBlock.callbacks.onAfterModelCopy(BlueArchiveCharacter, Costume.isAltCostume)
 		end
 
 		if events.SKULL_RENDER:getRegisteredCount("skull_render") == 0 then

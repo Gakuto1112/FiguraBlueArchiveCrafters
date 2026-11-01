@@ -186,8 +186,8 @@
 ---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直後に実行される関数
 
 ---@class (exact) BlueArchiveCharacter.HeadBlockCallbacks 頭ブロックのコールバック関数のセット
----@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter) 頭ブロックのモデルコピー直前に実行される関数
----@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) 頭ブロックのモデルコピー直後に実行される関数
+---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter, isAlt: boolean) 頭ブロックのモデルコピー直前に実行される関数
+---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter, isAlt: boolean) 頭ブロックのモデルコピー直後に実行される関数
 
 ---@class (exact) BlueArchiveCharacter.DeathAnimationCallbacks 死亡アニメーションのコールバック関数のセット
 ---@field public onPhase1? fun(self: BlueArchiveCharacter, isAltCostume: boolean) 死亡アニメーションが再生された直後に実行される関数
