@@ -403,7 +403,9 @@ local BlueArchiveCharacter = {
 				end
 				ModelAlias.alias.head_block_avatar.body.Skirt:setRot(50, 0, 0)
 				ModelAlias.alias.head_block_avatar.body.Tail:setRot(25, 0, 0)
-				ModelAlias.alias.head_block_avatar.gun:remove()
+				if ModelAlias.alias.head_block_avatar.gun ~= nil then
+					ModelAlias.alias.head_block_avatar.gun:remove()
+				end
 				ModelAlias.alias.head_block_avatar.leftArmBottom.Firework:setVisible(false)
 			end;
 		};

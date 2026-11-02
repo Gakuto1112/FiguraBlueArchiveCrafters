@@ -385,7 +385,9 @@ local BlueArchiveCharacter = {
 			onAfterModelCopy = function ()
 				ModelAlias.alias.head_block_avatar.body.Tail:setRot(20, 0, 0)
 				ModelAlias.alias.head_block_avatar.body.Tail:setScale(0.67, 0.67, 0.67)
-				ModelAlias.alias.head_block_avatar.gun:remove()
+				if ModelAlias.alias.head_block_avatar.gun ~= nil then
+					ModelAlias.alias.head_block_avatar.gun:remove()
+				end
 			end;
 		};
 	};

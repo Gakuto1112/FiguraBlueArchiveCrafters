@@ -484,7 +484,9 @@ local BlueArchiveCharacter = {
 				ModelAlias.alias.head_block_avatar.body.Hairs.BackHair:setRot(-5, 0, 0)
 				ModelAlias.alias.head_block_avatar.body.Hairs.BackHair.BackHairTop:remove()
 				ModelAlias.alias.head_block_avatar.body.Hairs.BackHair.BackHairBottom:setPos(0, 12, 0)
-				ModelAlias.alias.head_block_avatar.gun:remove()
+				if ModelAlias.alias.head_block_avatar.gun ~= nil then
+					ModelAlias.alias.head_block_avatar.gun:remove()
+				end
 			end;
 		};
 	};

@@ -395,7 +395,9 @@ local BlueArchiveCharacter = {
 				for _, modelPart in ipairs({ModelAlias.alias.head_block_avatar.head.HairTails.RightHairTail, ModelAlias.alias.head_block_avatar.head.HairTails.LeftHairTail}) do
 					modelPart:setScale(1, 0.5, 1)
 				end
-				ModelAlias.alias.head_block_avatar.gun:remove()
+				if ModelAlias.alias.head_block_avatar.gun ~= nil then
+					ModelAlias.alias.head_block_avatar.gun:remove()
+				end
 			end;
 		};
 	};

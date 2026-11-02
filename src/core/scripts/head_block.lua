@@ -17,7 +17,7 @@ local HeadBlock = {
         events.WORLD_TICK:register(function ()
             self.forceGenerateCount = self.forceGenerateCount - 1
             if self.forceGenerateCount == 0 then
-                self:generateHeadModel()
+                self:generateHeadBlockModel(false)
                 events.WORLD_TICK:remove("head_block_world_tick")
             end
         end, "head_block_world_tick")

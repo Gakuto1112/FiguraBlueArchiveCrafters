@@ -489,7 +489,9 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onAfterModelCopy = function ()
 				ModelAlias.alias.head_block_avatar.body.Skirt:setRot(40, 0, 0)
-				ModelAlias.alias.head_block_avatar.gun:remove()
+				if ModelAlias.alias.head_block_avatar.gun ~= nil then
+					ModelAlias.alias.head_block_avatar.gun:remove()
+				end
 			end;
 		};
 	};
