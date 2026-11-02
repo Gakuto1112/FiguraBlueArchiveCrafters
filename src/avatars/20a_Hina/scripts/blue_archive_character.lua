@@ -357,10 +357,10 @@ local BlueArchiveCharacter = {
 				end
 				ModelAlias.alias.head_block_avatar.head.BackHairs.TopBackHair:setScale(0.67, 0.67, 0.67)
 				ModelAlias.alias.head_block_avatar.body.Wings:setPos(0, 4, 0)
-				ModelAlias.alias.head_block_avatar.gun:remove()
 				for _, modelPart in ipairs({ModelAlias.alias.head_block_avatar.body.Wings.RightWing.RightWingZPivot.RightWingBone1.RightWingBone2.RightWingFinger1.RightWingTip1, ModelAlias.alias.head_block_avatar.body.Wings.RightWing.RightWingZPivot.RightWingBone1.RightWingBone2.RightWingBone3.RightWingFinger2.RightWingTip2, ModelAlias.alias.head_block_avatar.body.Wings.RightWing.RightWingZPivot.RightWingBone1.RightWingBone2.RightWingBone3.RightWingBone4.RightWingFinger3.RightWingTip3, ModelAlias.alias.head_block_avatar.body.Wings.RightWing.RightWingZPivot.RightWingBone1.RightWingBone2.RightWingBone3.RightWingBone4.RightWingBone5.RightWingBone6.RightWingBone7.RightWingBone8.RightWingFinger4.RightWingFinger4_2.RightWingFinger4_3.RightWingTip4, ModelAlias.alias.head_block_avatar.body.Wings.LeftWing.LeftWingZPivot.LeftWingBone1.LeftWingBone2.LeftWingFinger1.LeftWingTip1, ModelAlias.alias.head_block_avatar.body.Wings.LeftWing.LeftWingZPivot.LeftWingBone1.LeftWingBone2.LeftWingBone3.LeftWingFinger2.LeftWingTip2, ModelAlias.alias.head_block_avatar.body.Wings.LeftWing.LeftWingZPivot.LeftWingBone1.LeftWingBone2.LeftWingBone3.LeftWingBone4.LeftWingFinger3.LeftWingTip3, ModelAlias.alias.head_block_avatar.body.Wings.LeftWing.LeftWingZPivot.LeftWingBone1.LeftWingBone2.LeftWingBone3.LeftWingBone4.LeftWingBone5.LeftWingBone6.LeftWingBone7.LeftWingBone8.LeftWingFinger4.LeftWingFinger4_2.LeftWingFinger4_3.LeftWingTip4}) do
 					modelPart:setPrimaryRenderType("CUTOUT")
 				end
+				ModelAlias.alias.head_block_avatar.gun:remove()
 			end;
 		};
 	};
