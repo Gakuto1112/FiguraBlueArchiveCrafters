@@ -42,6 +42,9 @@ local HeadBlock = {
 		ModelAlias.alias.head_block_avatar = ModelAlias:getAliasTable(models.script_head_block.Skull)
 
 		ModelAlias.alias.head_block_avatar.root:setParentType("Skull")
+		if ModelAlias.alias.head_block_avatar.body.Bubble ~= nil then
+			ModelAlias.alias.head_block_avatar.body.Bubble:remove()
+		end
 
 		ModelAlias.alias.head_block_avatar.root:setScale(0.5, 0.5, 0.5)
 		ModelAlias.alias.head_block_avatar.head:setPos(0, -8, 0)
