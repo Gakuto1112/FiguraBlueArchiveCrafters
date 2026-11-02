@@ -411,64 +411,24 @@ local BlueArchiveCharacter = {
 			onBeforeModelCopy = function ()
 				ModelAlias.alias.avatar.body.Hairs.BackHair:setRot()
 			end;
-
-			onAfterModelCopy = function (self)
-				if models.script_head_block and not self.headBlock.isHeadBlockInitialized then
-
-					Character23b_HaloShine = require("scripts.halo_shine")
-
-					for i = 1, 4 do
-						models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable["HaloShine" .. i]["HaloShine" .. i .. "Inner"]:setParentType("Camera")
-					end
-					table.insert(self.headBlock.headBlockHaloShines, Character23b_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine1, vectors.vec2(2, 0)))
-					table.insert(self.headBlock.headBlockHaloShines, Character23b_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine2, vectors.vec2(1, 0)))
-					table.insert(self.headBlock.headBlockHaloShines, Character23b_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine3, vectors.vec2(2, 0)))
-					table.insert(self.headBlock.headBlockHaloShines, Character23b_HaloShine.new(models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable.HaloShine4, vectors.vec2(3, 0)))
-
-					for _, shine in ipairs(self.headBlock.headBlockHaloShines) do
-						shine.callbacks.onInit(shine)
-					end
-
-					events.WORLD_TICK:register(function ()
-						if not client:isPaused() then
-							self.headBlock.headBlockHaloRot = self.headBlock.headBlockHaloRot + 0.15
-
-							for _, shine in ipairs(self.headBlock.headBlockHaloShines) do
-								shine.callbacks.onTick(shine)
-							end
-						end
-					end)
-
-					events.WORLD_RENDER:register(function (delta)
-						if not client:isPaused() then
-							models.script_head_block.Skull.Halo.HaloCenter.HaloRotatable:setRot(0, self.headBlock.headBlockHaloRot + 0.15 * delta, 0)
-
-							for _, shine in ipairs(self.headBlock.headBlockHaloShines) do
-								shine.callbacks.onRender(shine, delta)
-							end
-						end
-					end)
-
-					self.headBlock.isHeadBlockInitialized = true
-				end
-			end;
 		};
 	};
 
 	headBlock = {
-		includeModels = {ModelAlias.alias.avatar.body.Hairs};
+		emotion = {
+			rightEye = "NARROW";
+			leftEye = "NARROW";
+			mouth = "SMILE";
+		};
 
-		---頭ブロックが初期化されたかどうか
-		---@type boolean
-		isHeadBlockInitialized = false;
-
-		---頭ブロックのヘイローのキラキラエフェクトのクラスを格納する配列
-		---@type Character23b.HaloShine[]
-		headBlockHaloShines = {};
-
-		---頭ブロックのヘイローの回転角度
-		---@type number
-		headBlockHaloRot = 0;
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.halo.HaloCenter.HaloRotatable.HaloEmissive:setPrimaryRenderType("CUTOUT")
+				ModelAlias.alias.head_block_avatar.body.Hairs.FrontHair:setRot(10, 0, 0)
+				ModelAlias.alias.head_block_avatar.body.Hairs.BackHair:setRot()
+				ModelAlias.alias.head_block_avatar.body.Hairs.BackHair:setScale(1, 0.75, 1)
+			end;
+		};
 	};
 
 	portrait = {
