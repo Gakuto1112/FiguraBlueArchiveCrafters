@@ -344,7 +344,7 @@ local BlueArchiveCharacter = {
 		callbacks = {
 			onArmorChange = function (self, parts, isVisible)
 				if parts == "HELMET" then
-					if Character12a_Allay.perchCount <= 0 and Character12a_Allay ~= nil then
+					if Character12a_Allay.perchCount <= 0 and Character12a_Allay ~= nil and ModelAlias.alias.avatar.head.Allay ~= nil then
 						ModelAlias.alias.avatar.head.Allay:setPos(0, isVisible and 33 or 32, 3)
 					end
 				elseif parts == "CHEST_PLATE" then
