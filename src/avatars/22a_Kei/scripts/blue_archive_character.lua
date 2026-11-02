@@ -632,7 +632,7 @@ local BlueArchiveCharacter = {
 									FaceParts:setEmotion("CENTER", "NORMAL", "ANGRY2", 23, true)
 									sounds:playSound("minecraft:entity.player.attack.sweep", player:getPos(), 1, 0.75)
 								elseif animTick == 51 then
-									ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:moveTo(models.models.main)
+									ModelUtils.moveTo(ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor, models.models.main, ModelAlias.alias.avatar.rightArmBottom)
 								elseif animTick == 64 then
 									local bodyYaw = player:getBodyYaw()
 									PlacementObjectManager:spawn(1, vectors.rotateAroundAxis(bodyYaw * -1, 0, 1, 7.2, 0, 1, 0):add(player:getPos()), bodyYaw * -1)
@@ -686,7 +686,7 @@ local BlueArchiveCharacter = {
 				events.TICK:remove("ex_skill_1_after_animation_tick")
 				animations["models.main"]["generator_throwing"]:stop()
 				if models.models.main.GeneratorAnchor ~= nil then
-					models.models.main.GeneratorAnchor:moveTo(ModelAlias.alias.avatar.rightArmBottom)
+					ModelUtils.moveTo(models.models.main.GeneratorAnchor, ModelAlias.alias.avatar.rightArmBottom, models.models.main)
 				end
 				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor.FieldGenerator2:setVisible(false)
 				ModelAlias.alias.avatar.rightArmBottom.GeneratorAnchor:getTask("placement_object_beacon"):setVisible(false)
@@ -767,7 +767,33 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {ModelAlias.alias.avatar.body.Hairs, ModelAlias.alias.avatar.body.HairsAlt};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "CLOSED";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function (_, isAlt)
+				if ModelAlias.alias.head_block_avatar.head.FaceLayer ~= nil then
+					ModelAlias.alias.head_block_avatar.head.FaceLayer:remove()
+				end
+				ModelAlias.alias.head_block_avatar.gun:remove()
+				if isAlt then
+					ModelAlias.alias.head_block_avatar.head.SideTailAlt:setScale(1, 0.65, 1)
+					if ModelAlias.alias.head_block_avatar.head.Ribbon ~= nil then
+						ModelAlias.alias.head_block_avatar.head.Ribbon:remove()
+					end
+					ModelAlias.alias.head_block_avatar.body.HairsAlt.BackHairAlt:setRot(-5, 0, 0)
+					ModelAlias.alias.head_block_avatar.body.HairsAlt.BackHairAlt.BackHairTopAlt:remove()
+					ModelAlias.alias.head_block_avatar.body.HairsAlt.BackHairAlt.BackHairBottomAlt:setPos(0, 12, 0)
+				else
+					ModelAlias.alias.head_block_avatar.body.Hairs.BackHair:setRot(-5, 0, 0)
+					ModelAlias.alias.head_block_avatar.body.Hairs.BackHair.BackHairTop:remove()
+					ModelAlias.alias.head_block_avatar.body.Hairs.BackHair.BackHairBottom:setPos(0, 12, 0)
+				end
+			end;
+		};
 	};
 
 	portrait = {
