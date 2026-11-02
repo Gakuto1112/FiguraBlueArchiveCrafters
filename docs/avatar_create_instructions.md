@@ -111,3 +111,30 @@
    - 吹き出しエモート再生時の表情の設定
 
 新規衣装の作成時は、フェーズ2がスキップできる場合があります。
+
+### アバター作成詳細
+
+アバターの作成を行う手順は次のとおりです。
+
+1. アバター作成状況([`creation_status.json`](scripts/readme_generate/creation_status.json))内の対象キャラクターのエントリーを`planned`/`requested`から`in_progress`に移動する。
+   - 変更は`main`にプッシュする。
+2. 作業用のブランチを`main`から作成する。
+3. アバターの雛形をコピーする。
+   - コピー元 ... `src/avatars/00a_Base`
+     - 新規衣装の場合は同じキャラクターの別衣装からのコピーも可
+   - コピー先 ... `src/avatars/${FBAC_ID}_${キャラクター名}` もしくは `src/avatars/${FBAC_ID}_${キャラクター名}_${衣装名}`
+     - キャラクター名と衣装名は頭文字を大文字にして、英語で記述する。
+4. アバターのメタ情報を設定する。
+   - アバター名 ... `avatar_json_config.json`内の`placeholders`内に英語で設定する。
+     頭文字は大文字にする。
+     - `first_name` ... 生徒の名前
+     - `last_name` ... 生徒の名字
+     -　`costume_name` ... 衣装の名前
+   - 誕生日 ... `blue_archive_character.lua`内の`BlueArchiveCharacter.basic.birth`に生徒の誕生日を設定する。
+   - キャラクター名・所属部活名・（Exスキルの名前） ... [FBAC_Localesリポジトリ](https://github.com/Gakuto1112/FBAC_Locales)内に`src/avatars/${FBAC_ID}_${キャラクター名}` もしくは `src/avatars/${FBAC_ID}_${キャラクター名}_${衣装名}`のディレクトリを作成し、その中に翻訳キー用のjsonファイルを作成する。
+     - `en_us.json` ... 英語（US）、`ja_jp.json` ... 日本語
+       - `character.first_name` ... 生徒の名前
+       - `character.last_name` ... 生徒の名字
+       - `character.club_name` ... 所属する部活名
+       - `ex_skill.primary_name` ... Exスキルの名前
+       - `ex_skill.secondary_name` ... サブExスキルの名前（存在する場合）
