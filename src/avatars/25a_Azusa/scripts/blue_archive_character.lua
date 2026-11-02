@@ -1,3 +1,8 @@
+---口のテクスチャの列挙型
+---@alias Character25a.MouthTextures
+---| "NORMAL" # 通常
+---| "CLOSED" # 閉じた口
+
 ---@class (exact) Character25a : BlueArchiveCharacter キャラクターシート
 ---@type Character25a
 local BlueArchiveCharacter = {
@@ -26,7 +31,7 @@ local BlueArchiveCharacter = {
 		};
 
 		mouth = {
-
+			CLOSED = vectors.vec2(0, 0)
 		};
 	};
 
@@ -112,7 +117,18 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "CLOSED";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.body.Hairs.BackHair:setRot(-10, 0, 0)
+				ModelAlias.alias.head_block_avatar.body.Skirt:setRot(40, 0, 0)
+			end;
+		};
 	};
 
 	portrait = {
