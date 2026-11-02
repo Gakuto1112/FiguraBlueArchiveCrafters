@@ -68,9 +68,13 @@ local HeadBlock = {
 				if context == "FIRST_PERSON_RIGHT_HAND" then
 					ModelAlias.alias.head_block_avatar.root:setPos(0, 2, 0)
 					ModelAlias.alias.head_block_avatar.root:setRot(0, -40, 0)
+					ModelAlias.alias.head_block_avatar.rightArm:setRot(0, 0, 30)
+					ModelAlias.alias.head_block_avatar.leftArm:setRot(0, 0, -30)
 				elseif context == "FIRST_PERSON_LEFT_HAND" then
 					ModelAlias.alias.head_block_avatar.root:setPos(0, 2, 0)
 					ModelAlias.alias.head_block_avatar.root:setRot(0, 40, 0)
+					ModelAlias.alias.head_block_avatar.rightArm:setRot(0, 0, 30)
+					ModelAlias.alias.head_block_avatar.leftArm:setRot(0, 0, -30)
 				elseif context == "HEAD" then
 					ModelAlias.alias.head_block_avatar.root:setPos(0, 0, 4)
 					ModelAlias.alias.head_block_avatar.rightArm:setRot(90, -10, 0)
