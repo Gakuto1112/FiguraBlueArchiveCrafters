@@ -45,13 +45,6 @@ local Halo = {
             end
         end)
 
-        events.WORLD_TICK:register(function ()
-            if not client:isPaused() then
-                self.floatCount = self.floatCount + 1
-                self.floatCount = self.floatCount == 80 and 0 or self.floatCount
-            end
-        end)
-
         events.RENDER:register(function (delta, context)
             if not client:isPaused() then
                 if context ~= "MINECRAFT_GUI" then
@@ -82,12 +75,6 @@ local Halo = {
                 if ModelAlias.alias.dummy_avatar ~= nil then
                     ModelAlias.alias.dummy_avatar.halo:setVisible(true)
                 end
-            end
-        end)
-
-        events.WORLD_RENDER:register(function (delta)
-            if not client:isPaused() and models.script_head_block.Skull ~= nil and models.script_head_block.Skull.Halo ~= nil then
-                models.script_head_block.Skull.Halo:setPos(0, math.sin((self.floatCount + delta) / 80 * 2 * math.pi) * 0.25, 0)
             end
         end)
 
