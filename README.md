@@ -143,6 +143,11 @@ Please understand this.
 
   ![Display name](./docs/images/readme/display_name.jpg)
 
+- The player's head is replaced with a chibi character model.
+  Wearing it on your head lets you carry the character on your back.
+
+  ![Chibi character](./docs/images/readme/head_block_chibi_character.jpg)
+
 - On each student's birthday, a small cake mark is added to the name.
   - It is not shown when the displayed name is the player name.
 
