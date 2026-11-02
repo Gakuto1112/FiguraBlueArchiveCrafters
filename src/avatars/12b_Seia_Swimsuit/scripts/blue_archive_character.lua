@@ -462,7 +462,21 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NARROW";
+			leftEye = "NARROW";
+			mouth = "SMALL";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.head.HairTail:setScale(1, 0.65, 1)
+				ModelAlias.alias.head_block_avatar.head.Glasses:setPos(0, 2.5, 0)
+				ModelAlias.alias.head_block_avatar.head.Glasses:setPrimaryRenderType("CUTOUT")
+				ModelAlias.alias.head_block_avatar.body.Tail:setScale(1, 1, 0.65)
+				ModelAlias.alias.head_block_avatar.body.Tail:setRot(27.5, 0, 0)
+			end;
+		};
 	};
 
 	portrait = {
