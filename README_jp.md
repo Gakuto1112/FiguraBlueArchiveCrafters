@@ -75,6 +75,7 @@
 上から順に作成予定です。
 これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
+- 阿慈谷 ヒフミ（レーシング）（[#208](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/208)）
 - 早瀬 ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102)）
 - 黒見 セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37)）
 

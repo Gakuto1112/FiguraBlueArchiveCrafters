@@ -75,6 +75,7 @@ Although the avatars for these characters are not created, there are plans to cr
 They will be created in order from top to bottom.
 This is just a plan and the order may change or creation may be discontinued.
 
+- Hifumi Ajitani (Racing) ([#208](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/208))
 - Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102))
 - Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37))
 
