@@ -81,7 +81,8 @@
 ---@field public callbacks? BlueArchiveCharacter.HeadModelCallbacks 頭モデルのコピー処理のコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.HeadBlockStruct 頭ブロックのデータ構造体
----@field public includeModels ModelPart[] 頭ブロックに追加でアタッチするモデル
+---@field public emotion BlueArchiveCharacter.EmotionSet 頭ブロックに設定する表情
+---@field public callbacks? BlueArchiveCharacter.HeadBlockCallbacks 頭ブロックのコールバック関数
 
 ---@class (exact) BlueArchiveCharacter.portraitStruct ポートレートのデータ構造体
 ---@field public includeModels ModelPart[] ポートレートに追加でアタッチするモデル
@@ -100,9 +101,9 @@
 ---@field public onSleep? BlueArchiveCharacter.EmotionSet ベッドで寝ているとき
 
 ---@class (exact) BlueArchiveCharacter.EmotionSet 表情のデータセット
----@field public rightEye BlueArchiveCharacter.RightEyeTextures 右目の表情名
----@field public leftEye BlueArchiveCharacter.LeftEyeTextures 左目の表情名
----@field public mouth BlueArchiveCharacter.MouthTextures 口の表情名
+---@field public rightEye BlueArchiveCharacter.RightEyeTextures|string 右目の表情名
+---@field public leftEye BlueArchiveCharacter.LeftEyeTextures|string 左目の表情名
+---@field public mouth BlueArchiveCharacter.MouthTextures|string 口の表情名
 
 ---@class (exact) BlueArchiveCharacter.FacePartsCallbacksSet 表情のコールバック関数のセット
 ---@field public onPlay? fun(self: BlueArchiveCharacter, right: BlueArchiveCharacter.RightEyeTextures, left: BlueArchiveCharacter.LeftEyeTextures, mouth: BlueArchiveCharacter.MouthTextures) 表情が変化したときのコールバック関数
@@ -183,6 +184,10 @@
 ---@class (exact) BlueArchiveCharacter.HeadModelCallbacks 頭モデルのコピー処理のコールバック関数のセット
 ---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直前に実行される関数
 ---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter) モデルのコピー直後に実行される関数
+
+---@class (exact) BlueArchiveCharacter.HeadBlockCallbacks 頭ブロックのコールバック関数のセット
+---@field public onBeforeModelCopy? fun(self: BlueArchiveCharacter, isAlt: boolean) 頭ブロックのモデルコピー直前に実行される関数
+---@field public onAfterModelCopy? fun(self: BlueArchiveCharacter, isAlt: boolean) 頭ブロックのモデルコピー直後に実行される関数
 
 ---@class (exact) BlueArchiveCharacter.DeathAnimationCallbacks 死亡アニメーションのコールバック関数のセット
 ---@field public onPhase1? fun(self: BlueArchiveCharacter, isAltCostume: boolean) 死亡アニメーションが再生された直後に実行される関数

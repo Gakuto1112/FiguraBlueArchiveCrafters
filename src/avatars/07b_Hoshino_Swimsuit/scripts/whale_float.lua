@@ -50,7 +50,7 @@ local WhaleFloat = {
             events.TICK:remove(eventName)
         end
         events.RENDER:remove("whale_float_render")
-        ModelAlias.alias.avatar.lowerBody.WhaleFloat:setVisible(false)
+        ModelAlias.alias.avatar.legs.WhaleFloat:setVisible(false)
         renderer:setRenderVehicle(true)
         ModelAlias.alias.avatar.root.HeadPivot:setRot()
         if Gun.currentGunPosition == "RIGHT" then
@@ -87,7 +87,7 @@ local WhaleFloat = {
                 self.whaleFloatEnabled = ActionWheelConfig.shouldReplaceVehicleModel and (entityId:match("^minecraft:[%l_]*boat$") or entityId:match("^minecraft:bamboo_[%l_]*raft$")) and #vehicle:getPassengers() == 1
                 if self.whaleFloatEnabled then
                     if not self.whaleFloatEnabledPrev then
-                        ModelAlias.alias.avatar.lowerBody.WhaleFloat:setVisible(true)
+                        ModelAlias.alias.avatar.legs.WhaleFloat:setVisible(true)
                         renderer:setRenderVehicle(false)
                         ModelAlias.alias.avatar.root.HeadPivot:setRot(10, 0, 0)
                         if Gun.currentGunPosition == "RIGHT" then
@@ -112,7 +112,7 @@ local WhaleFloat = {
                                     end
                                     if Physics.velocityAverage[5][2] >= 0.1 then
                                         local bodyYaw = player:getBodyYaw()
-                                        local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.lowerBody.WhaleFloat.WhaleParticleAnchor1):add(vectors.rotateAroundAxis(bodyYaw * -1, 0.1875, 0, 0, 0, 1, 0))
+                                        local anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.legs.WhaleFloat.WhaleParticleAnchor1):add(vectors.rotateAroundAxis(bodyYaw * -1, 0.1875, 0, 0, 0, 1, 0))
                                         for _ = 1, 5 do
                                             local particleDirection = math.random() * 60 - 30
                                             particleDirection = particleDirection > 0 and particleDirection + 30 or particleDirection - 30

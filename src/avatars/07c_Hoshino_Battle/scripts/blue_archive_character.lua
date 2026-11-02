@@ -653,7 +653,20 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {ModelAlias.alias.avatar.body.Hairs};
+		emotion = {
+			rightEye = "ANGRY";
+			leftEye = "ANGRY";
+			mouth = "CLOSED";
+		};
+
+		callbacks = {
+
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.head.HairTail:setScale(0.67, 0.67, 0.67)
+				ModelAlias.alias.head_block_avatar.body.SubGun:setPos(-1, 17.5, -1.9)
+				ModelAlias.alias.head_block_avatar.body.SubGun:setRot(-30, 90, 0)
+			end;
+		};
 	};
 
 	portrait = {

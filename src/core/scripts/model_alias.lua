@@ -31,7 +31,7 @@
 ---| "nameplate" # ネームプレートのアンカー
 
 ---@class (exact) ModelAlias モデルパーツのエイリアスを管理するクラス
----@field alias { avatar: table<ModelAlias.AliasType, ModelPart>, dummy_avatar: table<ModelAlias.AliasType, ModelPart> } モデルのエイリアスを格納するテーブル
+---@field alias { avatar: table<ModelAlias.AliasType, ModelPart>, dummy_avatar: table<ModelAlias.AliasType, ModelPart>, head_block_avatar: table<ModelAlias.AliasType> } モデルのエイリアスを格納するテーブル
 ---@field package defaultAvatarAlias table<ModelAlias.AliasType, ModelPart> アバターのデフォルトのエイリアスを格納するテーブル
 ---@field package aliasPath table<ModelAlias.AliasType, string[]> 変更されたエイリアスのパスを格納するテーブル
 local ModelAlias = {

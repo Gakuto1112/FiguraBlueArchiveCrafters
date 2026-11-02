@@ -564,7 +564,11 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {ModelAlias.alias.avatar.body.FrontHair};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "TRIANGLE";
+		};
 	};
 
 	portrait = {

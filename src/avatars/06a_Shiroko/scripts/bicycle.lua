@@ -44,7 +44,7 @@ local Bicycle = {
             end
             if self.bicycleEnabled ~= self.bicycleEnabledPrev then
                 if self.bicycleEnabled then
-                    ModelAlias.alias.avatar.lowerBody.Bicycle:setVisible(true)
+                    ModelAlias.alias.avatar.legs.Bicycle:setVisible(true)
                     renderer:setRenderVehicle(false)
                     for _, animationModel in ipairs({"models.main", "models.bicycle"}) do
                         animations[animationModel]["bicycle_idle"]:play()
@@ -81,7 +81,7 @@ local Bicycle = {
                         for _, animationModel in ipairs({"models.main", "models.bicycle"}) do
                             animations[animationModel]["bicycle_run"]:setSpeed(2 * (Physics.velocityAverage[1][2] + math.abs(Physics.velocityAverage[3][2])))
                         end
-                        ModelAlias.alias.avatar.lowerBody.Bicycle.Wheels.Chain:setUVPixels(math.ceil(animations["models.main"]["bicycle_run"]:getTime() * 20) % 2, 0)
+                        ModelAlias.alias.avatar.legs.Bicycle.Wheels.Chain:setUVPixels(math.ceil(animations["models.main"]["bicycle_run"]:getTime() * 20) % 2, 0)
                         self.handleRotPrev = self.handleRot
                         self.handleRot = isBicycleRiding and math.clamp(Physics.velocityAverage[3][2] + Physics.velocityAverage[4][2] / 1500, -0.2, 0.2) * -75 or 0
                         if isBicycleRiding and horizontalSpeed >= 0.3 then
@@ -106,30 +106,30 @@ local Bicycle = {
                         end
                         if self.isDrinkItemHeld ~= self.isDrinkItemHeldPrev then
                             if self.isDrinkItemHeld then
-                                ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setParentType("Item")
+                                ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setParentType("Item")
                                 events.ITEM_RENDER:register(function (item, mode)
                                     if (item.id == "minecraft:potion" or item.id == "minecraft:milk_bucket") and self.isDrinkItemHeld and mode ~= "HEAD" and ExSkill.animationCount == -1 then
                                         if mode == "FIRST_PERSON_LEFT_HAND" then
-                                            ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setPos(-2, -6, 5.5)
-                                            ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setRot(90, -60, 0)
+                                            ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setPos(-2, -6, 5.5)
+                                            ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setRot(90, -60, 0)
                                         elseif mode == "FIRST_PERSON_RIGHT_HAND" then
-                                            ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setPos(2, -6, 5.5)
-                                            ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setRot(90, -120, 0)
+                                            ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setPos(2, -6, 5.5)
+                                            ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setRot(90, -120, 0)
                                         elseif mode == "THIRD_PERSON_LEFT_HAND" then
-                                            ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setPos(0, -7.5, 5.5)
-                                            ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setRot(90, 90, 0)
+                                            ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setPos(0, -7.5, 5.5)
+                                            ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setRot(90, 90, 0)
                                         elseif mode == "THIRD_PERSON_RIGHT_HAND" then
-                                            ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setPos(0, -7.5, 5.5)
-                                            ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setRot(90, 90, 0)
+                                            ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setPos(0, -7.5, 5.5)
+                                            ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setRot(90, 90, 0)
                                         end
-                                        return ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle
+                                        return ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle
                                     end
                                 end, "drink_bottle_item_render")
                             else
                                 events.ITEM_RENDER:remove("drink_bottle_item_render")
-                                ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setParentType("None")
-                                ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setPos()
-                                ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setRot()
+                                ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setParentType("None")
+                                ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setPos()
+                                ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setRot()
                             end
                             self.isDrinkItemHeldPrev = self.isDrinkItemHeld
                         end
@@ -138,7 +138,7 @@ local Bicycle = {
                         local bicycleIdleFactor = 1 - animations["models.main"]["bicycle_idle"]:getTime() * 4
                         ModelAlias.alias.avatar.head:setRot(45 - 30 * bicycleIdleFactor, 0, 0)
                         local currentHandleRot = (self.handleRot - self.handleRotPrev) * delta + self.handleRot
-                        ModelAlias.alias.avatar.lowerBody.Bicycle.Handle:setRot(0, currentHandleRot, 0)
+                        ModelAlias.alias.avatar.legs.Bicycle.Handle:setRot(0, currentHandleRot, 0)
                         if host:isHost() and self.bicycleEnabled then
                             local pos = vectors.rotateAroundAxis(player:getBodyYaw(delta) * -1, 0, 0.15 * bicycleIdleFactor - 0.75 + self.bicycleOffsetPos, (1 - bicycleIdleFactor) * 0.3, 0, 1, 0)
                             CameraManager.setCameraPivot(pos)
@@ -180,7 +180,7 @@ local Bicycle = {
                     events.ITEM_RENDER:remove("drink_bottle_item_render")
                     events.ON_PLAY_SOUND:remove("bicycle_ride_sound")
                     ModelAlias.alias.avatar.root:setPos()
-                    ModelAlias.alias.avatar.lowerBody.Bicycle:setVisible(false)
+                    ModelAlias.alias.avatar.legs.Bicycle:setVisible(false)
                     renderer:setRenderVehicle(true)
                     for _, animationModel in ipairs({"models.main", "models.bicycle"}) do
                         animations[animationModel]["bicycle_run"]:stop()
@@ -192,9 +192,9 @@ local Bicycle = {
                         renderer:setEyeOffset()
                     end
                     events.ITEM_RENDER:remove("drink_bottle_item_render")
-                    ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setParentType("None")
-                    ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setPos()
-                    ModelAlias.alias.avatar.lowerBody.Bicycle.Shaft.Shaft8.WaterBottle:setRot()
+                    ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setParentType("None")
+                    ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setPos()
+                    ModelAlias.alias.avatar.legs.Bicycle.Shaft.Shaft8.WaterBottle:setRot()
                     if self.windSound ~= nil then
                         self.windSound:stop()
                         self.windSound = nil

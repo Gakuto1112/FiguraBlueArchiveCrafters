@@ -948,7 +948,22 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {ModelAlias.alias.avatar.body.Hairs};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "SMILE";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				for _, modelPart in ipairs({ModelAlias.alias.head_block_avatar.head.HairTails.RightHairTail, ModelAlias.alias.head_block_avatar.head.HairTails.LeftHairTail}) do
+					modelPart:setScale(1, 0.5, 1)
+				end
+				for _, modelPart in ipairs({ModelAlias.alias.head_block_avatar.head.HSet.HSetBaseEmissives, ModelAlias.alias.head_block_avatar.head.HSet.HSetRightEar.HSetRightEarTip.RightEarTipEmissive, ModelAlias.alias.head_block_avatar.head.HSet.HSetLeftEar.HSetLeftEarTip.LeftEarTipEmissive, ModelAlias.alias.head_block_avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2R1Emissive, ModelAlias.alias.head_block_avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Right1.UpperFlyingArmor2Right2.RightBooster.RightBoosterExhaust, ModelAlias.alias.head_block_avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2L1Emissive, ModelAlias.alias.head_block_avatar.body.FlyingArmor.UpperFlyingArmor.UpperFlyingArmor2Left1.UpperFlyingArmor2Left2.LeftBooster.LeftBoosterExhaust, ModelAlias.alias.head_block_avatar.rightArmBottom.RABArmorEmissive, ModelAlias.alias.head_block_avatar.leftArmBottom.LABArmorEmissive, ModelAlias.alias.head_block_avatar.rightLeg.RLArmor.RLArmorEmissive, ModelAlias.alias.head_block_avatar.lowerBody.Legs.RightLeg.RLArmor.RLArmorBooster.RLArmorBoosterExhaust, ModelAlias.alias.head_block_avatar.lowerBody.Legs.RightLeg.RightLegBottom.RLBArmor.RLBArmorEmissive, ModelAlias.alias.head_block_avatar.lowerBody.Legs.LeftLeg.LLArmor.LLArmorEmissive, ModelAlias.alias.head_block_avatar.lowerBody.Legs.LeftLeg.LLArmor.LLArmorBooster.LLArmorBoosterExhaust, ModelAlias.alias.head_block_avatar.lowerBody.Legs.LeftLeg.LeftLegBottom.LLBArmor.LLBArmorEmissive}) do
+					modelPart:setPrimaryRenderType("CUTOUT")
+				end
+			end;
+		};
 	};
 
 	portrait = {

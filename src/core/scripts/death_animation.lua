@@ -70,36 +70,13 @@ local DeathAnimation = {
 			ModelAlias.alias.dummy_avatar = nil
 		end
 
-        for _, modelPart in ipairs({ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.halo}) do
-            modelPart:setVisible(true)
-        end
-        ModelAlias.alias.avatar.head:setPrimaryRenderType()
-        ModelAlias.alias.avatar.head:setOpacity(1)
-        local isArmorVisible = {
-            helmet = Armor.isArmorVisible.helmet;
-            chestplate = Armor.isArmorVisible.chestplate;
-            leggings = Armor.isArmorVisible.leggings;
-            boots = Armor.isArmorVisible.boots;
-        }
-        if isArmorVisible.helmet then
-            Armor:setHelmet(world.newItem("minecraft:air"))
-        end
-        if isArmorVisible.chestplate then
-            Armor:setChestplate(world.newItem("minecraft:air"))
-        end
-        if isArmorVisible.leggings then
-            Armor:setLeggings(world.newItem("minecraft:air"))
-        end
-        if isArmorVisible.boots then
-            Armor:setBoots(world.newItem("minecraft:air"))
-        end
-        Physics:disable()
         if BlueArchiveCharacter.deathAnimation.callbacks ~= nil and BlueArchiveCharacter.deathAnimation.callbacks.onBeforeModelCopy ~= nil then
             BlueArchiveCharacter.deathAnimation.callbacks.onBeforeModelCopy(BlueArchiveCharacter)
         end
 
-        parent:addChild(ModelUtils:copyModel(ModelAlias.alias.avatar.root))
-		ModelAlias.alias.dummy_avatar = ModelAlias:getAliasTable(parent.Avatar)
+        ModelUtils:copyAvatarModel(parent, "DummyAvatar")
+
+		ModelAlias.alias.dummy_avatar = ModelAlias:getAliasTable(parent.DummyAvatar)
         ModelAlias.alias.dummy_avatar.rightEye:setUVPixels(BlueArchiveCharacter.faceParts.rightEye.TIRED:copy():scale(6))
         ModelAlias.alias.dummy_avatar.leftEye:setUVPixels(BlueArchiveCharacter.faceParts.leftEye.TIRED:copy():scale(6))
         ModelAlias.alias.dummy_avatar.halo:setRot(Halo.initialHaloRot, 0, 0)
@@ -120,19 +97,6 @@ local DeathAnimation = {
             end
         end
 
-        if isArmorVisible.helmet then
-            Armor:setHelmet(Armor.armorSlotItems[1])
-        end
-        if isArmorVisible.chestplate then
-            Armor:setChestplate(Armor.armorSlotItems[2])
-        end
-        if isArmorVisible.leggings then
-            Armor:setLeggings(Armor.armorSlotItems[3])
-        end
-        if isArmorVisible.boots then
-            Armor:setBoots(Armor.armorSlotItems[4])
-        end
-        Physics:enable()
         if BlueArchiveCharacter.deathAnimation.callbacks ~= nil and BlueArchiveCharacter.deathAnimation.callbacks.onAfterModelCopy ~= nil then
             BlueArchiveCharacter.deathAnimation.callbacks.onAfterModelCopy(BlueArchiveCharacter)
         end
@@ -216,7 +180,7 @@ local DeathAnimation = {
                         sounds:playSound("minecraft:entity.player.attack.sweep", ModelUtils.getModelWorldPos(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14), 0.25, -0.056 * (self.animationCount - 57) + 2)
                     elseif self.animationCount == 120 then
 						ModelAlias.alias.dummy_avatar.root:moveTo(models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14)
-						ModelAlias.alias.dummy_avatar.root = models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.Avatar
+						ModelAlias.alias.dummy_avatar.root = models.models.death_animation.Helicopter.RopeLadder.RopeLadder2.RopeLadder3.RopeLadder4.RopeLadder5.RopeLadder6.RopeLadder7.RopeLadder8.RopeLadder9.RopeLadder10.RopeLadder11.RopeLadder12.RopeLadder13.RopeLadder14.DummyAvatar
                         self.setPhase2Pose()
                         if BlueArchiveCharacter.deathAnimation.callbacks ~= nil and BlueArchiveCharacter.deathAnimation.callbacks.onPhase2 ~= nil then
                             BlueArchiveCharacter.deathAnimation.callbacks.onPhase2(BlueArchiveCharacter, self.isDummyAvatarAltCostume)

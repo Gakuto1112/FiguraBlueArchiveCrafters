@@ -544,14 +544,6 @@ local BlueArchiveCharacter = {
 
 	costume = {
 		isAltCostumeEnabled = false;
-
-		callbacks = {
-			onArmorChange = function (_, parts, isVisible)
-				if parts == "HELMET" then
-					ModelAlias.alias.avatar.head.HairTail:setVisible(not isVisible)
-				end
-			end
-		};
 	};
 
 	bubble = {
@@ -593,7 +585,19 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "CLOSED";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				if ModelAlias.alias.head_block_avatar.gun ~= nil then
+					ModelAlias.alias.head_block_avatar.gun:remove()
+				end
+			end;
+		};
 	};
 
 	portrait = {

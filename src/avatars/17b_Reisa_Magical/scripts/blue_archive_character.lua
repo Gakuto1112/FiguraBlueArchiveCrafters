@@ -433,7 +433,29 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "NARROW";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				for _, modelPart in ipairs({ModelAlias.alias.head_block_avatar.head.HairTails.RightHairTail, ModelAlias.alias.head_block_avatar.head.HairTails.LeftHairTail}) do
+					modelPart:setScale(1, 0.75, 1)
+				end
+				ModelAlias.alias.head_block_avatar.body.Skirt:setRot(60, 0, 0)
+				ModelAlias.alias.head_block_avatar.body.Skirt.BackRibbon:setPos(0, 2, 0)
+				ModelAlias.alias.head_block_avatar.body.Skirt.BackRibbon:setRot(-60, 0, 0)
+				for _, modelPart in ipairs({ModelAlias.alias.head_block_avatar.body.Skirt.BackRibbon.RibbonBottomRight, ModelAlias.alias.head_block_avatar.body.Skirt.BackRibbon.RibbonBottomLeft}) do
+					modelPart:setScale(1, 0.67, 1)
+					modelPart:setRot(-72.5, 0, 0)
+				end
+				if ModelAlias.alias.head_block_avatar.gun ~= nil then
+					ModelAlias.alias.head_block_avatar.gun:remove()
+				end
+			end;
+		};
 	};
 
 	portrait = {

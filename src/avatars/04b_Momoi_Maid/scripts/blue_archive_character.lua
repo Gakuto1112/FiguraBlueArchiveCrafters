@@ -280,7 +280,7 @@ local BlueArchiveCharacter = {
 							models.models.ex_skill_1.Gui.UI.MomoiHeadUI.FrameShadow:setPos(-1, -1, 1)
 							models.models.ex_skill_1.Gui.UI.MomoiHeadUI.FrameShadow:setColor(0, 0, 0)
 							models.models.ex_skill_1.Gui.UI.MomoiHeadUI.Background:setColor(1, 0.643, 0.71)
-							models.models.ex_skill_1.Gui.UI.MomoiHeadUI.MomoiPaperDoll:addChild(ModelUtils:copyModel(models.script_head_block.Skull, "MomoiPaperDollHead"))
+							ModelUtils:copyHeadModel(models.models.ex_skill_1.Gui.UI.MomoiHeadUI.MomoiPaperDoll, "MomoiPaperDollHead")
 							models.models.ex_skill_1.Gui.UI.MomoiHeadUI.MomoiPaperDoll.MomoiPaperDollHead:setPos(models.models.ex_skill_1.Gui.UI.MomoiHeadUI.MomoiPaperDoll:getTruePivot():add(0, -24, 0))
 							models.models.ex_skill_1.Gui.UI.MomoiHeadUI.MomoiPaperDoll.MomoiPaperDollHead.Halo:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID")
 							models.models.ex_skill_1.Gui.UI.MomoiHeadUI.MomoiPaperDoll:setScale(4.1, 4.1, 4.1)
@@ -713,7 +713,21 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "ANGRY";
+			leftEye = "ANGRY";
+			mouth = "TRIANGLE";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.body.Skirt1:setPos(0, 1, 0)
+				ModelAlias.alias.head_block_avatar.body.Skirt1:setScale(1.5, 0.45, 1.5)
+				ModelAlias.alias.head_block_avatar.body.BackRibbon:setPos(0, 1, 0)
+				ModelAlias.alias.head_block_avatar.body.BackRibbon.RibbonBottomRight:setRot(-37.5, 0, 0)
+				ModelAlias.alias.head_block_avatar.body.BackRibbon.RibbonBottomLeft:setRot(-37.5, 0, 0)
+			end;
+		};
 	};
 
 	portrait = {

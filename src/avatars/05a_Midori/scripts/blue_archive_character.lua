@@ -34,6 +34,7 @@
 ---| "TRIANGLE" # 三角口
 ---| "SMILE_SMALL" # 小さくニッコリ
 ---| "OPENED_SMALL" # 小さく開いた口
+---| "CLOSED3" # 閉じた口3
 
 ---@class (exact) Character05a.EmotionSet : BlueArchiveCharacter.EmotionSet 表情のデータセット
 ---@field public rightEye Character05a.RightEyeTextures 右目の表情名
@@ -103,6 +104,7 @@ local BlueArchiveCharacter = {
 			TRIANGLE = vectors.vec2(7, 0);
 			SMILE_SMALL = vectors.vec2(8, 0);
 			OPENED_SMALL = vectors.vec2(9, 0);
+			CLOSED3 = vectors.vec2(10, 0);
 		};
 
 		emotionSet = {
@@ -185,12 +187,13 @@ local BlueArchiveCharacter = {
 							end
 							models.models.ex_skill_1.Gui.UI.MidoriUI:newText("ex_skill_1_midori_name"):setText("§a§lMIDORI"):setPos(48, 13, 0):setScale(1.5, 1.5, 1.5):setOutline(true):setOutlineColor(1, 1, 1):setAlignment("RIGHT")
 							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll:setScale(2.3, 2.3, 2.3)
-							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll:addChild(ModelUtils:copyModel(models.script_head_block.Skull, "MidoriPaperDollHead"))
+							ModelUtils:copyHeadModel(models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll, "MidoriPaperDollHead")
 							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll.MidoriPaperDollHead:setPos(models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll:getTruePivot():add(0, -24, 0))
 							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll.MidoriPaperDollHead.Halo:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID")
 							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll.MidoriPaperDollHead.FaceParts:addChild(ModelAlias.alias.avatar.mouth:copy("Mouth"))
 							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll.MidoriPaperDollHead.FaceParts.Mouth:setUVPixels(64, 0)
 							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll.MidoriPaperDollHead.FaceParts.Mouth:setVisible(true)
+							models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll.MidoriPaperDollHead.Sweat:remove()
 							models.models.ex_skill_1.Gui.UI.DeadEye:moveTo(models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll.MidoriPaperDollHead.FaceParts)
 							for _, modelPart in ipairs(models.models.ex_skill_1.Gui.UI.MidoriUI.PaperDoll:getChildren()) do
 								modelPart:setVisible(false)
@@ -417,7 +420,17 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "CLOSED3";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				ModelAlias.alias.head_block_avatar.body.Skirt:setRot(70, 0, 0)
+			end;
+		};
 	};
 
 	portrait = {

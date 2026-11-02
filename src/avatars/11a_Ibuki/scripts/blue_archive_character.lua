@@ -343,7 +343,7 @@ local BlueArchiveCharacter = {
 					elseif tick == 58 then
 						ModelAlias.alias.avatar.rightArmBottom.SketchBook.SketchBookCanvas:setUVPixels(0, 24)
 					elseif tick == 63 then
-						ModelAlias.alias.avatar.rightArmBottom.SketchBook:moveTo(models.models.ex_skill_1.Table)
+						ModelUtils.moveTo(ModelAlias.alias.avatar.rightArmBottom.SketchBook, models.models.ex_skill_1.Table, ModelAlias.alias.avatar.rightArmBottom)
 						FaceParts:setEmotion("NORMAL", "NORMAL", "OPENED_SMALL", 10, true)
 						sounds:playSound("minecraft:block.chiseled_bookshelf.insert", player:getPos(), 1, 1)
 					elseif tick == 73 then
@@ -366,7 +366,7 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_1.Table.SketchBook.SketchBookCanvas:setUVPixels(0, 120)
 						sounds:playSound("minecraft:entity.item.pickup", player:getPos(), 0.5, 1.5)
 					elseif tick == 129 then
-						models.models.ex_skill_1.Table.SketchBook:moveTo(ModelAlias.alias.avatar.leftArmBottom)
+						ModelUtils.moveTo(models.models.ex_skill_1.Table.SketchBook, ModelAlias.alias.avatar.leftArmBottom, models.models.ex_skill_1.Table)
 						sounds:playSound("minecraft:block.chiseled_bookshelf.insert", player:getPos(), 1, 1)
 					elseif tick == 133 then
 						if host:isHost() then
@@ -699,7 +699,11 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "W";
+		};
 	};
 
 	portrait = {

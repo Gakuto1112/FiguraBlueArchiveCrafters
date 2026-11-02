@@ -1,3 +1,7 @@
+---口のテクスチャの列挙型
+---@alias Character00a.MouthTextures
+---| "PLUSHIE" # 頭ブロックモデル用の口(他の口に置換可)
+
 ---@class (exact) Character00a : BlueArchiveCharacter キャラクターシート
 
 ---@type Character00a
@@ -27,7 +31,7 @@ local BlueArchiveCharacter = {
 		};
 
 		mouth = {
-
+			PLUSHIE = vectors.vec2(0, 0);
 		};
 	};
 
@@ -115,7 +119,11 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "PLUSHIE";
+		};
 	};
 
 	portrait = {

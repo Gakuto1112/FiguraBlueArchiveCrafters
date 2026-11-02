@@ -361,7 +361,22 @@ local BlueArchiveCharacter = {
 	};
 
 	headBlock = {
-		includeModels = {};
+		emotion = {
+			rightEye = "NORMAL";
+			leftEye = "NORMAL";
+			mouth = "OPENED";
+		};
+
+		callbacks = {
+			onAfterModelCopy = function ()
+				for _, modelPart in ipairs({ModelAlias.alias.head_block_avatar.head.HairTails.RightHairTail, ModelAlias.alias.head_block_avatar.head.HairTails.LeftHairTail}) do
+					modelPart:setScale(1, 0.67, 1)
+				end
+				ModelAlias.alias.head_block_avatar.head.HairTails.RightHairTail.RightHairTailZPivot:setRot(0, 0, 5)
+				ModelAlias.alias.head_block_avatar.head.HairTails.LeftHairTail.LeftHairTailZPivot:setRot(0, 0, -5)
+				ModelAlias.alias.head_block_avatar.body.Skirt:setRot(55, 0, 0)
+			end;
+		};
 	};
 
 	portrait = {

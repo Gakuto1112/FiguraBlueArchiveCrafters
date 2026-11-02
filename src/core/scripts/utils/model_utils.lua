@@ -85,6 +85,56 @@ local ModelUtils = {
         Physics:enable()
     end;
 
+    ---アバターモデルをディープコピーし、ターゲットの子要素として挿入する。
+    ---@param self ModelUtils
+    ---@param target ModelPart コピーしたアバターモデルの挿入先
+    ---@param name? string コピーしたアバターモデルの名前。省略した際はコピー元と同じ名前になる。
+    copyAvatarModel = function(self, target, name)
+        for _, modelPart in ipairs({ModelAlias.alias.avatar.head, ModelAlias.alias.avatar.halo}) do
+            modelPart:setVisible(true)
+        end
+        ModelAlias.alias.avatar.head:setPrimaryRenderType()
+        ModelAlias.alias.avatar.head:setOpacity(1)
+
+        local isArmorVisible = {
+            helmet = Armor.isArmorVisible.helmet;
+            chestplate = Armor.isArmorVisible.chestplate;
+            leggings = Armor.isArmorVisible.leggings;
+            boots = Armor.isArmorVisible.boots;
+        }
+        if isArmorVisible.helmet then
+            Armor:setHelmet(world.newItem("minecraft:air"))
+        end
+        if isArmorVisible.chestplate then
+            Armor:setChestplate(world.newItem("minecraft:air"))
+        end
+        if isArmorVisible.leggings then
+            Armor:setLeggings(world.newItem("minecraft:air"))
+        end
+        if isArmorVisible.boots then
+            Armor:setBoots(world.newItem("minecraft:air"))
+        end
+
+        Physics:disable()
+
+        target:addChild(self:copyModel(ModelAlias.alias.avatar.root, name))
+
+        if isArmorVisible.helmet then
+            Armor:setHelmet(Armor.armorSlotItems[1])
+        end
+        if isArmorVisible.chestplate then
+            Armor:setChestplate(Armor.armorSlotItems[2])
+        end
+        if isArmorVisible.leggings then
+            Armor:setLeggings(Armor.armorSlotItems[3])
+        end
+        if isArmorVisible.boots then
+            Armor:setBoots(Armor.armorSlotItems[4])
+        end
+
+        Physics:enable()
+    end;
+
     ---指定したエリアがブロックの当たり判定と重なっているかどうかを取得する。
     ---@param areaStart Vector3 エリアの開始ワールド座標
     ---@param areaEnd Vector3 エリアの終了ワールド座標
