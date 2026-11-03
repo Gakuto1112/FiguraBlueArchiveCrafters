@@ -86,9 +86,9 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {};
+			models = {models.models.ex_skill_1.Bullet};
 
-			animations = {"main"};
+			animations = {"main", "gun", "ex_skill_1"};
 
 			camera = {
 				start = {
@@ -100,6 +100,23 @@ local BlueArchiveCharacter = {
 					rot = vectors.vec3(0, 180, 0);
 					pos = vectors.vec3(0, 28, -64);
 				};
+			};
+
+			callbacks = {
+				onAnimationTick =function (_, tick)
+					if tick == 0 then
+						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.body)
+						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.rightArmBottom.Gun
+						ModelAlias.alias.avatar.gun:setPos()
+						ModelAlias.alias.avatar.gun:setRot()
+						ModelAlias.alias.avatar.gun:setVisible(true)
+					end
+				end;
+
+				onPostAnimation = function ()
+					ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
+					ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
+				end
 			};
 		};
 	};
