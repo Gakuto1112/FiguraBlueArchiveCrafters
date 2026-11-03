@@ -202,6 +202,127 @@
 			"source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAAiklEQVR4AUyLPQrCQBBGJ3MQD2AhinbailYW8SiibbANeAHvoIWdtiZlIOQG6dIG8kOqhLewMAtvvxnmfbpeHkZL+buOluofuV0vp7vYF94KsQx9J21Ti253L0H2UHrHC8Ix28cyD5+B0kb2IKXJWUjYrI6uoPzIHqTHJxISsvwb4CgtCxIHEphhAgAA//8vX0cfAAAABklEQVQDAEzAU+25Ior5AAAAAElFTkSuQmCC"
 		}
 	],
+	"animations": [
+		{
+			"uuid": "f259b29e-6275-40a2-3919-027e880d9912",
+			"name": "ex_skill_1",
+			"loop": "hold",
+			"override": true,
+			"length": 1.65,
+			"snapping": 20,
+			"selected": false,
+			"group_name": "",
+			"scope": 0,
+			"anim_time_update": "",
+			"blend_weight": "",
+			"start_delay": "",
+			"loop_delay": "",
+			"animators": {
+				"73a04964-a31d-db55-baa0-3f02ce26aa66": {
+					"name": "Bullet",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-1.5",
+									"y": "21.25",
+									"z": "-10"
+								}
+							],
+							"uuid": "322a5e76-fe15-b0fd-4890-185beef550a7",
+							"time": 1.6,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "-1.5",
+									"y": "57.25",
+									"z": "-10"
+								}
+							],
+							"uuid": "0ee6f809-e794-0f0a-b46b-adc1be63437c",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "1",
+									"y": "1",
+									"z": "1"
+								}
+							],
+							"uuid": "f89235ca-fc88-7205-3f9a-64a47f9a4534",
+							"time": 0,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "step"
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "a847313e-df6c-59d4-d7dc-c7b26a0db624",
+							"time": 1.6,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "step"
+						}
+					]
+				},
+				"f764b37a-3d8f-1c41-c7f9-e286830e2530": {
+					"name": "BulletInner",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "90",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "3e82ca32-b66e-5f6e-2229-aa6fa300f663",
+							"time": 0,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "-90",
+									"y": "-720",
+									"z": "0"
+								}
+							],
+							"uuid": "7c4fec81-0e3e-863d-52dc-2695ac778726",
+							"time": 1.6,
+							"color": -1,
+							"interpolation": "linear"
+						}
+					]
+				}
+			}
+		}
+	],
 	"reference_images": [
 		{
 			"name": "Pasted",
