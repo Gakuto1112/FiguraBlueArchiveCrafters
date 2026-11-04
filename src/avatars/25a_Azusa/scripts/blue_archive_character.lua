@@ -1,7 +1,27 @@
+---右目のテクスチャの列挙型
+---@alias Character25a.RightEyeTextures
+---| "NORMAL" # 通常
+---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
+---| "TIRED" # 疲れた目（死亡アニメーションなど）
+---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "NARROW" # 細目
+---| "CLOSED2" # 閉じた目2
+
+---左目のテクスチャの列挙型
+---@alias Character25a.LeftEyeTextures
+---| "NORMAL" # 通常
+---| "SURPRISED" # 驚いた目（ダメージを受けたときなど）
+---| "TIRED" # 疲れた目（死亡アニメーションなど）
+---| "CLOSED" # 閉じた目（瞬き、睡眠中など）
+---| "CENTER" # 少し反対側を見る目
+---| "NARROW" # 細目
+---| "CLOSED2" # 閉じた目2
+
 ---口のテクスチャの列挙型
 ---@alias Character25a.MouthTextures
 ---| "NORMAL" # 通常
 ---| "CLOSED" # 閉じた口
+---| "CLOSED2" # 閉じた口2
 
 ---@class (exact) Character25a : BlueArchiveCharacter キャラクターシート
 ---@type Character25a
@@ -21,17 +41,23 @@ local BlueArchiveCharacter = {
 			SURPRISED = vectors.vec2(2, 0); --必須
 			TIRED = vectors.vec2(3, 0); --必須
 			CLOSED = vectors.vec2(4, 0); --必須
+			NARROW = vectors.vec2(6, 0);
+			CLOSED2 = vectors.vec2(8, 0);
 		};
 
 		leftEye = {
 			NORMAL = vectors.vec2(0, 0); --必須
 			SURPRISED = vectors.vec2(1, 0); --必須
 			TIRED = vectors.vec2(2, 0); --必須
-			CLOSED = vectors.vec2(3, 0); --必須
+			CLOSED = vectors.vec2(3, 0); --必須*
+			CENTER = vectors.vec2(4, 0);
+			NARROW = vectors.vec2(6, 0);
+			CLOSED2 = vectors.vec2(7, 0);
 		};
 
 		mouth = {
-			CLOSED = vectors.vec2(0, 0)
+			CLOSED = vectors.vec2(0, 0);
+			CLOSED2 = vectors.vec2(1, 0);
 		};
 	};
 
@@ -103,6 +129,10 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
+				onPreAnimation = function ()
+					FaceParts:setEmotion("NORMAL", "CENTER", "CLOSED2", 31, true)
+				end;
+
 				onAnimationTick =function (_, tick)
 					if tick == 0 then
 						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.body)
@@ -110,12 +140,21 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setPos()
 						ModelAlias.alias.avatar.gun:setRot()
 						ModelAlias.alias.avatar.gun:setVisible(true)
+					elseif tick == 31 then
+						FaceParts:setEmotion("NARROW", "NARROW", "CLOSED2", 23, true)
+					elseif tick == 54 then
+						FaceParts:setEmotion("CLOSED2", "CLOSED2", "CLOSED2", 2, true)
+					elseif tick == 56 then
+						FaceParts:setEmotion("NORMAL", "NORMAL", "CLOSED2", 37, true)
 					end
 				end;
 
 				onPostAnimation = function ()
 					ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
 					ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
+					if Gun.currentGunPosition == "NONE" then
+						ModelAlias.alias.avatar.gun:setVisible(false)
+					end
 				end
 			};
 		};
