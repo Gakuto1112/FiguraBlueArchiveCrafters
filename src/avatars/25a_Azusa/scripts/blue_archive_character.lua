@@ -147,6 +147,16 @@ local BlueArchiveCharacter = {
 					elseif tick == 56 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "CLOSED2", 37, true)
 					end
+
+					if tick <= 35 then
+						local anchorPos = vectors.vec3()
+						if tick < 32 then
+							anchorPos = ModelUtils.getModelWorldPos(models.models.ex_skill_1.Bullet.BulletInner.BulletParticleAnchor)
+						else
+							anchorPos = ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.leftItemPivot)
+						end
+						particles:newParticle("minecraft:end_rod", anchorPos:copy():add(math.random() * 0.05 - 0.025, math.random() * 0.05 - 0.025 - 0.1, math.random() * 0.05 - 0.025)):setScale(0.1):setGravity(0):setColor(0.939, 0.819, 0.973):setLifetime(16)
+					end
 				end;
 
 				onPostAnimation = function ()
