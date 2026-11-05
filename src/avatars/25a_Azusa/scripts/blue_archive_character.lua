@@ -220,7 +220,10 @@ local BlueArchiveCharacter = {
 					if Gun.currentGunPosition == "NONE" then
 						ModelAlias.alias.avatar.gun:setVisible(false)
 					end
-					self.exSkill.primary.smokeParticles = {}
+					while #self.exSkill.primary.smokeParticles > 0 do
+						self.exSkill.primary.smokeParticles[1]:remove()
+						table.remove(self.exSkill.primary.smokeParticles, 1)
+					end
 				end;
 			};
 
