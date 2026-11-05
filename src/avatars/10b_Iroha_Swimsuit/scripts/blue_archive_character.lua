@@ -905,10 +905,8 @@ local BlueArchiveCharacter = {
         models.models.tank.Tank.TankBody.Turret.Cannon.HangingSign:newText("toramaru_sign_text_1"):setText("§0§l巡回中"):setPos(-1, -9, 0.5):setRot(0, 90, 0):setScale(0.5):setAlignment("CENTER")
         models.models.tank.Tank.TankBody.Turret.Cannon.HangingSign:newText("toramaru_sign_text_2"):setText("§0§l巡回中"):setPos(1, -9, -0.5):setRot(0, -90, 0):setScale(0.5):setAlignment("CENTER")
 
-		for i = 0, 1 do
-			for j = 0, 9 do
-				models.models.tank.Tank.TankBody.BaseBase1:newBlock("toramaru_log_"..(i * 10 + j)):setBlock("minecraft:oak_log[axis=z]"):setPos(36 + i * -80, -2, j * 8 - 41):setScale(0.5)
-			end
+		for i = 0, 9 do
+			models.models.tank.Tank.TankBody.BaseBase1:newBlock("toramaru_log_"..i):setBlock("minecraft:oak_log[axis=z]"):setPos(36, -2, i * 8 - 41):setScale(0.5)
 		end
 		avatar:store("shouldReplaceVehicleModels", ActionWheelConfig.shouldReplaceVehicleModel)
 
@@ -1107,11 +1105,9 @@ local BlueArchiveCharacter = {
                                         for _, modelPart in ipairs({models.models.tank.Tank.TankBody.PSLogo1, models.models.tank.Tank.TankBody.Turret.PSLogo2, models.models.tank.Tank.TankBody.Turret.PSLogo3}) do
                                             modelPart:getTask("toramaru_logo_text"):setText("§0万魔殿"):setOutlineColor(0, 0, 0)
                                         end
-                                        for i = 0, 1 do
-                                            for j = 0, 9 do
-                                                models.models.tank.Tank.TankBody.BaseBase1:getTask("toramaru_log_"..(i * 10 + j)):setLight(0)
-                                            end
-                                        end
+										for i = 0, 9 do
+											models.models.tank.Tank.TankBody.BaseBase1:getTask("toramaru_log_"..i):setLight(0)
+										end
                                         local playerPos = player:getPos()
                                         local bodyYaw = player:getBodyYaw()
                                         particles:newParticle("minecraft:explosion_emitter", playerPos)
@@ -1144,11 +1140,9 @@ local BlueArchiveCharacter = {
                         for _, modelPart in ipairs({models.models.tank.Tank.TankBody.PSLogo1, models.models.tank.Tank.TankBody.Turret.PSLogo2, models.models.tank.Tank.TankBody.Turret.PSLogo3}) do
                             modelPart:getTask("toramaru_logo_text"):setText("§e万魔殿"):setOutlineColor(0.404, 0.306, 0.051)
                         end
-                        for i = 0, 1 do
-                            for j = 0, 9 do
-                                models.models.tank.Tank.TankBody.BaseBase1:getTask("toramaru_log_"..(i * 10 + j)):setLight()
-                            end
-                        end
+						for i = 0, 9 do
+							models.models.tank.Tank.TankBody.BaseBase1:getTask("toramaru_log_"..i):setLight()
+						end
                         ModelAlias.alias.avatar.root:setPos()
                         CameraManager:setThirdPersonCameraDistance(4)
                         CameraManager.setCameraPivot()

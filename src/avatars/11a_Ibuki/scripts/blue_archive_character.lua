@@ -480,10 +480,8 @@ local BlueArchiveCharacter = {
 						models.models.ex_skill_2.Tank.TankBody.Turret.Cannon.HangingSign:setPrimaryTexture("RESOURCE", "minecraft:textures/entity/signs/hanging/oak.png")
 						models.models.ex_skill_2.Tank.TankBody.Turret.Cannon.HangingSign:newText("toramaru_sign_text_1"):setText("§0§l巡回中"):setPos(-1, -9, 0.5):setRot(0, 90, 0):setScale(0.5):setAlignment("CENTER")
 						models.models.ex_skill_2.Tank.TankBody.Turret.Cannon.HangingSign:newText("toramaru_sign_text_2"):setText("§0§l巡回中"):setPos(1, -9, -0.5):setRot(0, -90, 0):setScale(0.5):setAlignment("CENTER")
-						for i = 0, 1 do
-							for j = 0, 9 do
-								models.models.ex_skill_2.Tank.TankBody.BaseBase1:newBlock("toramaru_log_"..(i * 10 + j)):setBlock("minecraft:oak_log[axis=z]"):setPos(36 + i * -80, -2, j * 8 - 41):setScale(0.5)
-							end
+						for i = 0, 9 do
+							models.models.ex_skill_2.Tank.TankBody.BaseBase1:newBlock("toramaru_log_"..i):setBlock("minecraft:oak_log[axis=z]"):setPos(36, -2, i * 8 - 41):setScale(0.5)
 						end
 						ModelAlias.alias.avatar.rightArmBottom.SpyGlassAnchor:newItem("ex_skill_2_spyglass"):setItem("minecraft:spyglass")
 						self.exSkill.secondary.isInitialized = true
