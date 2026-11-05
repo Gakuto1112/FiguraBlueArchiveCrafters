@@ -156,6 +156,10 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setPos()
 						ModelAlias.alias.avatar.gun:setRot()
 						ModelAlias.alias.avatar.gun:setVisible(true)
+					elseif tick == 29 then
+						local playerPos = player:getPos()
+						sounds:playSound("minecraft:entity.player.attack.nodamage", playerPos, 1, 2)
+						sounds:playSound("minecraft:entity.lightning_bolt.thunder", playerPos, 0.25, 2)
 					elseif tick == 31 then
 						FaceParts:setEmotion("NARROW", "NARROW", "CLOSED2", 23, true)
 					elseif tick == 33 then
@@ -193,6 +197,10 @@ local BlueArchiveCharacter = {
 						for _ = 1, 30 do
 							particles:newParticle("minecraft:end_rod", playerPos):setScale(1):setVelocity(math.random() * 0.4 - 0.2, math.random() * 0.5, math.random() * 0.4 - 0.2):setColor(0.999, 0.996, 0.877):setLifetime(50 + math.random() * 20)
 						end
+
+						sounds:playSound("minecraft:entity.wind_charge.wind_burst", playerPos, 0.75, 0.5)
+						sounds:playSound("minecraft:entity.player.levelup", playerPos, 1, 1.5)
+						sounds:playSound("minecraft:block.beacon.ambient", playerPos, 0.25, 2)
 					end
 
 					if tick <= 35 then
