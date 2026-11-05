@@ -273,14 +273,9 @@ local BlueArchiveCharacter = {
 		};
 
 		callbacks = {
-			onMainHandChange = function (_, direction)
+			onMainHandChange = function (self, direction)
 				if direction == "RIGHT" then
-					ModelAlias.alias.avatar.body.GunBag:setPos()
-					ModelAlias.alias.avatar.body.GunBag:setRot(0, 0, 45)
-					ModelAlias.alias.avatar.body.GunBag.ShoulderRope:setRot(0, 0, -2.5)
-					ModelAlias.alias.avatar.body.GunBag.ShoulderRope.ShoulderRopeKnob:setRot()
-					ModelAlias.alias.avatar.body.GunBag.BagTop.WhaleStrap:setPos()
-					ModelAlias.alias.avatar.body.GunBag.BagTop.WhaleStrap:setRot(0, 0, -45)
+					self.gun.resetGunBagPosRot(ModelAlias.alias.avatar.body.GunBag)
 				else
 					ModelAlias.alias.avatar.body.GunBag:setPos(6, 0, 0)
 					ModelAlias.alias.avatar.body.GunBag:setRot(0, 180, -45)
@@ -291,6 +286,17 @@ local BlueArchiveCharacter = {
 				end
 			end;
 		};
+
+		---銃バッグの位置と向きをリセットする。
+		---@param target ModelPart リセット対象のモデルパーツ（GunBag）
+		resetGunBagPosRot = function (target)
+			target:setPos()
+			target:setRot(0, 0, 45)
+			target.ShoulderRope:setRot(0, 0, -2.5)
+			target.ShoulderRope.ShoulderRopeKnob:setRot()
+			target.BagTop.WhaleStrap:setPos()
+			target.BagTop.WhaleStrap:setRot(0, 0, -45)
+		end;
 	};
 
 	placementObjects = {
@@ -531,9 +537,16 @@ local BlueArchiveCharacter = {
 		};
 
 		callbacks = {
-			onAfterModelCopy = function ()
+			onAfterModelCopy = function (self)
 				ModelAlias.alias.head_block_avatar.head.HairTails:setPos(0, -2, 0)
 				ModelAlias.alias.head_block_avatar.head.HairTails:setScale(1, 0.5, 1)
+				self.gun.resetGunBagPosRot(ModelAlias.alias.head_block_avatar.body.GunBag)
+				local gunModel = ModelUtils:copyModel(ModelAlias.alias.avatar.gun, nil, true)
+				ModelAlias.alias.head_block_avatar.body:addChild(gunModel)
+				ModelAlias.alias.head_block_avatar.gun = gunModel
+				ModelAlias.alias.head_block_avatar.gun:setVisible(true)
+				ModelAlias.alias.head_block_avatar.gun:setPos(vectors.vec3(0, 12, 0):add(self.gun.gunPosition.put.pos.right))
+				ModelAlias.alias.head_block_avatar.gun:setRot(self.gun.gunPosition.put.rot.right)
 				ModelAlias.alias.head_block_avatar.body.Shield:remove()
 			end;
 		};

@@ -457,9 +457,6 @@ local BlueArchiveCharacter = {
 				for _, modelPart in ipairs({ModelAlias.alias.head_block_avatar.head.BackHairs.BottomBackHair.RightBottomBackHair, ModelAlias.alias.head_block_avatar.head.BackHairs.BottomBackHair.LeftBottomBackHair, ModelAlias.alias.head_block_avatar.head.SideHairTail.SideHairTailZPivot}) do
 					modelPart:setScale(1, 0.5, 1)
 				end
-				if ModelAlias.alias.head_block_avatar.gun ~= nil then
-					ModelAlias.alias.head_block_avatar.gun:remove()
-				end
 				ModelAlias.alias.head_block_avatar.body:newText("plushie_text_1"):setText("§05-A"):setPos(0, -3, -2):setScale(0.05):setAlignment("CENTER")
 				ModelAlias.alias.head_block_avatar.body:newText("plushie_text_2"):setText("§0ひな"):setPos(0, -3.35, -2):setScale(0.2):setAlignment("CENTER")
 			end;

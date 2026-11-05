@@ -660,9 +660,14 @@ local BlueArchiveCharacter = {
 		};
 
 		callbacks = {
-
-			onAfterModelCopy = function ()
+			onAfterModelCopy = function (self)
 				ModelAlias.alias.head_block_avatar.head.HairTail:setScale(0.67, 0.67, 0.67)
+				local gunModel = ModelUtils:copyModel(ModelAlias.alias.avatar.gun, nil, true)
+				ModelAlias.alias.head_block_avatar.body:addChild(gunModel)
+				ModelAlias.alias.head_block_avatar.gun = gunModel
+				ModelAlias.alias.head_block_avatar.gun:setVisible(true)
+				ModelAlias.alias.head_block_avatar.gun:setPos(vectors.vec3(0, 12, 0):add(self.gun.gunPosition.put.pos.right))
+				ModelAlias.alias.head_block_avatar.gun:setRot(self.gun.gunPosition.put.rot.right)
 				ModelAlias.alias.head_block_avatar.body.SubGun:setPos(-1, 17.5, -1.9)
 				ModelAlias.alias.head_block_avatar.body.SubGun:setRot(-30, 90, 0)
 			end;

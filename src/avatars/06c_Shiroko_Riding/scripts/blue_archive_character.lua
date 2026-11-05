@@ -526,14 +526,6 @@ local BlueArchiveCharacter = {
 			leftEye = "NORMAL";
 			mouth = "CLOSED";
 		};
-
-		callbacks = {
-			onAfterModelCopy = function ()
-				if ModelAlias.alias.head_block_avatar.gun ~= nil then
-					ModelAlias.alias.head_block_avatar.gun:remove()
-				end
-			end;
-		};
 	};
 
 	portrait = {

@@ -481,9 +481,6 @@ local BlueArchiveCharacter = {
 					modelPart:setScale(1, 0.67, 1)
 				end
 				ModelAlias.alias.head_block_avatar.body.Skirt:setRot(50, 0, 0)
-				if ModelAlias.alias.head_block_avatar.gun ~= nil then
-					ModelAlias.alias.head_block_avatar.gun:remove()
-				end
 			end;
 		};
 	};

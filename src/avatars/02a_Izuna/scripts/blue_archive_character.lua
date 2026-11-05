@@ -338,9 +338,6 @@ local BlueArchiveCharacter = {
 				for i = 1, 2 do
 					ModelAlias.alias.head_block_avatar.body.Scarfs["Scarf" .. i]:setScale(0.67, 0.67, 0.67)
 				end
-				if ModelAlias.alias.head_block_avatar.gun ~= nil then
-					ModelAlias.alias.head_block_avatar.gun:remove()
-				end
 			end;
 		};
 	};

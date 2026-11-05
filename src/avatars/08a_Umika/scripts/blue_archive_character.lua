@@ -522,9 +522,6 @@ local BlueArchiveCharacter = {
 		callbacks = {
 
 			onAfterModelCopy = function ()
-				if ModelAlias.alias.head_block_avatar.gun ~= nil then
-					ModelAlias.alias.head_block_avatar.gun:remove()
-				end
 				ModelAlias.alias.head_block_avatar.body.Skirt:setPos(0, 1, 0)
 				ModelAlias.alias.head_block_avatar.body.Skirt:setScale(1.75, 0.35, 1.75)
 			end;

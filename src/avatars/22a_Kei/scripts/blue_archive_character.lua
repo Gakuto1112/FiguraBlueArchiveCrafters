@@ -778,9 +778,6 @@ local BlueArchiveCharacter = {
 				if ModelAlias.alias.head_block_avatar.head.FaceLayer ~= nil then
 					ModelAlias.alias.head_block_avatar.head.FaceLayer:remove()
 				end
-				if ModelAlias.alias.head_block_avatar.gun ~= nil then
-					ModelAlias.alias.head_block_avatar.gun:remove()
-				end
 				if isAlt then
 					ModelAlias.alias.head_block_avatar.head.SideTailAlt:setScale(1, 0.65, 1)
 					if ModelAlias.alias.head_block_avatar.head.Ribbon ~= nil then
