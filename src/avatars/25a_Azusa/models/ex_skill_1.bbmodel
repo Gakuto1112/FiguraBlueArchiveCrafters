@@ -175,6 +175,29 @@
 			"autouv": 0,
 			"isOpen": false,
 			"primary_selected": false
+		},
+		{
+			"name": "Halo",
+			"uuid": "5b081d10-a806-2efb-890e-2272dd51bdc0",
+			"export": true,
+			"locked": false,
+			"scope": 0,
+			"selected": false,
+			"visibility": true,
+			"_static": {
+				"properties": {},
+				"temp_data": {}
+			},
+			"origin": [0, 35, 0],
+			"rotation": [0, 0, 0],
+			"color": 0,
+			"children": [],
+			"reset": false,
+			"shade": true,
+			"mirror_uv": false,
+			"autouv": 0,
+			"isOpen": false,
+			"primary_selected": false
 		}
 	],
 	"outliner": [
@@ -196,6 +219,11 @@
 					]
 				}
 			]
+		},
+		{
+			"uuid": "5b081d10-a806-2efb-890e-2272dd51bdc0",
+			"isOpen": false,
+			"children": []
 		}
 	],
 	"textures": [
@@ -239,7 +267,7 @@
 			"name": "ex_skill_1",
 			"loop": "hold",
 			"override": true,
-			"length": 1.65,
+			"length": 2.6,
 			"snapping": 20,
 			"selected": false,
 			"group_name": "",
@@ -348,6 +376,78 @@
 							"time": 1.6,
 							"color": -1,
 							"interpolation": "linear"
+						}
+					]
+				},
+				"cb4f0119-c42b-9cbf-e4ed-f374dd5314b3": {
+					"name": "BulletParticleAnchor",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false
+				},
+				"5b081d10-a806-2efb-890e-2272dd51bdc0": {
+					"name": "Halo",
+					"type": "bone",
+					"rotation_global": false,
+					"quaternion_interpolation": false,
+					"keyframes": [
+						{
+							"channel": "rotation",
+							"data_points": [
+								{
+									"x": "25",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "20371f9d-37d2-2298-7bea-048779b7a48a",
+							"time": 2.55,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "position",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "34",
+									"z": "28"
+								}
+							],
+							"uuid": "0ab29c71-14f8-c710-b0bb-e1c7a36f0215",
+							"time": 2.55,
+							"color": -1,
+							"interpolation": "linear"
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "0",
+									"y": "0",
+									"z": "0"
+								}
+							],
+							"uuid": "406715d6-8edc-5c59-836a-f5f8f6a33681",
+							"time": 0,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "step"
+						},
+						{
+							"channel": "scale",
+							"data_points": [
+								{
+									"x": "5",
+									"y": "5",
+									"z": "5"
+								}
+							],
+							"uuid": "3643cb14-fbcb-17d7-c857-d188df552354",
+							"time": 2.55,
+							"color": -1,
+							"uniform": true,
+							"interpolation": "step"
 						}
 					]
 				}
