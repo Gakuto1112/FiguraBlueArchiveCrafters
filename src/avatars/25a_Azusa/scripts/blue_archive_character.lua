@@ -283,7 +283,21 @@ local BlueArchiveCharacter = {
 	};
 
 	deathAnimation = {
+		callbacks = {
+			onPhase1 = function ()
+				ModelAlias.alias.dummy_avatar.body.Hairs.BackHair:setRot(-10, 0, 0)
+				ModelAlias.alias.dummy_avatar.body.Wings.RightWing:setRot(0, 0, -20)
+				ModelAlias.alias.dummy_avatar.body.Wings.LeftWing:setRot(0, 0, 20)
+				ModelAlias.alias.dummy_avatar.body.Skirt:setRot(40, 0, 0)
+			end;
 
+			onPhase2 = function ()
+				ModelAlias.alias.dummy_avatar.body.Hairs.BackHair:setRot(-10, 0, -15)
+				ModelAlias.alias.dummy_avatar.body.Wings.RightWing:setRot(0, -90, 0)
+				ModelAlias.alias.dummy_avatar.body.Wings.LeftWing:setRot(0, 50, 0)
+				ModelAlias.alias.dummy_avatar.body.Skirt:setRot(10, 0, 0)
+			end;
+		};
 	};
 
 	actionWheelConfig = {
