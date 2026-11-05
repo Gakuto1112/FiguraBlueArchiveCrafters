@@ -32,6 +32,10 @@ local Halo = {
                 table.insert(self.headRotAverage, headRotAverage)
                 table.remove(self.headRotAverage, 1)
 
+                --ヘイローの上下アニメーション
+                self.floatCount = self.floatCount + 1
+                self.floatCount = self.floatCount == 80 and 0 or self.floatCount
+
                 --寝る時の処理
                 local isSleeping = player:getPose() == "SLEEPING"
                 if isSleeping and not self.didSleepPrev then
