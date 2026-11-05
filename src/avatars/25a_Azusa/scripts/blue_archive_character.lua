@@ -236,6 +236,23 @@ local BlueArchiveCharacter = {
 
 	costume = {
 		isAltCostumeEnabled = false;
+
+		callbacks = {
+			onArmorChange = function (self, parts, isVisible)
+				if parts == "CHEST_PLATE" then
+					ModelAlias.alias.avatar.body.Skirt:setVisible(not isVisible)
+					ModelAlias.alias.avatar.body.Hairs.FrontHair:setPos(0, 0, isVisible and -1 or 0)
+					ModelAlias.alias.avatar.body.Hairs.BackHair:setPos(0, 0, isVisible and 1 or 0)
+					self.physics.physicData[3].x.vertical.neutral = isVisible and 0 or -15
+					self.physics.physicData[3].x.vertical.max = isVisible and 0 or -15
+					self.physics.physicData[3].x.vertical.bodyX.max = isVisible and 0 or -15
+					self.physics.physicData[3].x.vertical.bodyY.max = isVisible and 0 or -15
+					self.physics.physicData[3].x.vertical.bodyRot.max = isVisible and 0 or -15
+					self.physics.physicData[3].x.horizontal.neutral = isVisible and 0 or -15
+					self.physics.physicData[3].x.horizontal.max = isVisible and 0 or -15
+				end
+			end;
+		};
 	};
 
 	bubble = {
