@@ -27,7 +27,7 @@
 ---@type Character25a
 local BlueArchiveCharacter = {
 	basic = {
-		avatarName = "00a_Base";
+		avatarName = "25a_Azusa";
 
 		birth = {
 			month = 12;
