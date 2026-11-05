@@ -112,7 +112,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {models.models.ex_skill_1.Bullet};
+			models = {models.models.ex_skill_1.Bullet, models.models.ex_skill_1.Halo};
 
 			animations = {"main", "gun", "ex_skill_1"};
 
@@ -129,11 +129,27 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
-				onPreAnimation = function ()
+				onPreAnimation = function (self)
+					if not self.exSkill.primary.isInitialized then
+						local haloModel = ModelAlias.alias.avatar.halo:copy("Halo")
+						haloModel:setPos()
+						haloModel:setRot()
+						haloModel:setPrimaryRenderType("CUTOUT_EMISSIVE_SOLID")
+						models.models.ex_skill_1.Halo:addChild(haloModel)
+
+						self.exSkill.primary.isInitialized = true
+					end
+
+					local playerPos = player:getPos()
+					local bodyYaw = player:getBodyYaw()
+					for _ = 1, 100 do
+						table.insert(self.exSkill.primary.smokeParticles, particles:newParticle("minecraft:campfire_cosy_smoke", playerPos:copy():add(vectors.rotateAroundAxis(bodyYaw * -1, math.random() * 8 - 4, math.random() * 5, math.random() * -2.5 - 0.5, 0, 1, 0))):setScale(10):setColor(0.3, 0.3, 0.3):setGravity(0):setLifetime(200))
+					end
+
 					FaceParts:setEmotion("NORMAL", "CENTER", "CLOSED2", 31, true)
 				end;
 
-				onAnimationTick =function (_, tick)
+				onAnimationTick =function (self, tick)
 					if tick == 0 then
 						ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.rightArmBottom, ModelAlias.alias.avatar.body)
 						ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.rightArmBottom.Gun
@@ -142,10 +158,41 @@ local BlueArchiveCharacter = {
 						ModelAlias.alias.avatar.gun:setVisible(true)
 					elseif tick == 31 then
 						FaceParts:setEmotion("NARROW", "NARROW", "CLOSED2", 23, true)
+					elseif tick == 33 then
+						for _, particle in ipairs(self.exSkill.primary.smokeParticles) do
+							---@cast particle Particle
+							particle:setColor(vectors.vec3(1, 1, 1))
+						end
+					elseif tick == 35 or tick == 39 then
+						for _, particle in ipairs(self.exSkill.primary.smokeParticles) do
+							---@cast particle Particle
+							particle:setColor(vectors.vec3(0.3, 0.3, 0.3))
+						end
+					elseif tick == 37 then
+						local playerPos = player:getPos()
+						for _, particle in ipairs(self.exSkill.primary.smokeParticles) do
+							---@cast particle Particle
+							if particle:getPos():copy():sub(playerPos):mul(1, 0, 1):length() >= 1.5 then
+								particle:setColor(vectors.vec3(1, 1, 1))
+							end
+						end
 					elseif tick == 54 then
 						FaceParts:setEmotion("CLOSED2", "CLOSED2", "CLOSED2", 2, true)
 					elseif tick == 56 then
 						FaceParts:setEmotion("NORMAL", "NORMAL", "CLOSED2", 37, true)
+					elseif tick == 57 then
+						local playerPos = player:getPos()
+						for _, particle in ipairs(self.exSkill.primary.smokeParticles) do
+							---@cast particle Particle
+							particle:setLifetime(93)
+							particle:setVelocity(particle:getPos():copy():sub(playerPos):mul(1, 0, 1):scale(0.2))
+						end
+						for i = 0, 59 do
+							particles:newParticle("minecraft:snowflake", playerPos):setScale(2):setVelocity(vectors.rotateAroundAxis(i * 6, 0, 0.1 + math.random() * 0.2, 0.3, 0, 1, 0)):setGravity(0):setLifetime(50 + math.random() * 20)
+						end
+						for _ = 1, 30 do
+							particles:newParticle("minecraft:end_rod", playerPos):setScale(1):setVelocity(math.random() * 0.4 - 0.2, math.random() * 0.5, math.random() * 0.4 - 0.2):setColor(0.999, 0.996, 0.877):setLifetime(50 + math.random() * 20)
+						end
 					end
 
 					if tick <= 35 then
@@ -159,14 +206,23 @@ local BlueArchiveCharacter = {
 					end
 				end;
 
-				onPostAnimation = function ()
+				onPostAnimation = function (self)
 					ModelUtils.moveTo(ModelAlias.alias.avatar.gun, ModelAlias.alias.avatar.body, ModelAlias.alias.avatar.rightArmBottom)
 					ModelAlias.alias.avatar.gun = ModelAlias.alias.avatar.body.Gun
 					if Gun.currentGunPosition == "NONE" then
 						ModelAlias.alias.avatar.gun:setVisible(false)
 					end
-				end
+					self.exSkill.primary.smokeParticles = {}
+				end;
 			};
+
+			---このExスキルが初期化されたかどうか。
+			---@type boolean
+			isInitialized = false;
+
+			---煙パーティクルのインスタンス格納配列
+			---@type Particle[]
+			smokeParticles = {};
 		};
 	};
 
