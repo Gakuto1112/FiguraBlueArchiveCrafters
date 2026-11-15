@@ -31,15 +31,15 @@ local Gun = {
                     elseif player:isUnderwater() then
                         sounds:playSound("minecraft:entity.generic.extinguish_fire", pos, 0.5, 1.5)
                     else
-                        local gunPosition = Character07c_Gun.currentGunPosition
+                        local gunPosition = Gun.currentGunPosition
                         if Character07c_SubGun.hasSubGun and math.random() >= 0.5 then
                             gunPosition = gunPosition == "RIGHT" and "LEFT" or "RIGHT"
                         end
-                        local particleAnchor = ModelUtils.getModelWorldPos(renderer:isFirstPerson() and (gunPosition == "RIGHT" and ModelAlias.alias.avatar.rightItemPivot or ModelAlias.alias.avatar.leftItemPivot) or (Character07c_Gun.currentGunPosition == gunPosition and ModelAlias.alias.avatar.gun.MuzzleAnchor or ModelAlias.alias.avatar.body.SubGun.MuzzleAnchor2))
+                        local particleAnchor = ModelUtils.getModelWorldPos(renderer:isFirstPerson() and (gunPosition == "RIGHT" and ModelAlias.alias.avatar.rightItemPivot or ModelAlias.alias.avatar.leftItemPivot) or (Gun.currentGunPosition == gunPosition and ModelAlias.alias.avatar.gun.MuzzleAnchor or ModelAlias.alias.avatar.body.SubGun.MuzzleAnchor2))
                         for _ = 1, 5 do
                             particles:newParticle("minecraft:smoke", particleAnchor)
                         end
-                        if Character07c_Gun.currentGunPosition == gunPosition then
+                        if Gun.currentGunPosition == gunPosition then
                             sounds:playSound(BlueArchiveCharacter.gun.sound.name, pos, 1, BlueArchiveCharacter.gun.sound.pitch)
                         else
                             sounds:playSound("minecraft:entity.iron_golem.hurt", pos, 1, 2)
@@ -203,7 +203,7 @@ local Gun = {
 
     ---銃の位置を変更する。
     ---@param self Character07c.Gun
-    ---@param gunPosition Character07c.Gun.GunPosition 変更先の構え位置
+    ---@param gunPosition Gun.GunPosition 変更先の構え位置
     setGunPosition = function (self, gunPosition)
         if gunPosition == "NONE" then
             for _, tickName in ipairs({"right_gun_tick", "left_gun_tick"}) do
