@@ -140,7 +140,513 @@ local BlueArchiveCharacter = {
 
 	physics = {
 		physicData = {
+			{
+				models = {ModelAlias.alias.avatar.head.HairTails.LeftBackHairTail, ModelAlias.alias.avatar.head.HairTails.RightBackHairTail};
 
+				x = {
+					vertical = {
+						min = -180;
+						neutral = 0;
+						max = 90;
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -80;
+							min = -90;
+							max = 90;
+						};
+
+						headRot = {
+							multiplayer = 0.05;
+							min = -90;
+							max = 90;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -180;
+							max = 0;
+						};
+					};
+
+					horizontal = {
+						min = -180;
+						neutral = -45;
+						max = 95;
+
+						headX = {
+							multiplayer = -80;
+							min = -45;
+							max = 45;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -45;
+							max = 45;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairTails.LeftBackHairTail.LeftBackHairTailZPivot};
+
+				z = {
+					vertical = {
+						min = -70;
+						neutral = 0;
+						max = 90;
+
+						headZ = {
+							multiplayer = -80;
+							min = -70;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = -70;
+						neutral = 0;
+						max = 90;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairTails.RightBackHairTail.RightBackHairTailZPivot};
+
+				z = {
+					vertical = {
+						min = -90;
+						neutral = 0;
+						max = 70;
+
+						headZ = {
+							multiplayer = -80;
+							min = -90;
+							max = 70;
+						};
+					};
+
+					horizontal = {
+						min = -90;
+						neutral = 0;
+						max = 70;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairTails.RightFrontHairTail, ModelAlias.alias.avatar.head.HairTails.LeftFrontHairTail};
+
+				x = {
+					vertical = {
+						min = -180;
+						neutral = 0;
+						max = 90;
+						headRotMultiplayer = -1;
+
+						headX = {
+							multiplayer = -120;
+							min = -90;
+							max = 90;
+						};
+
+						headRot = {
+							multiplayer = 0.075;
+							min = -90;
+							max = 90;
+						};
+
+						bodyY = {
+							multiplayer = 120;
+							min = -180;
+							max = 0;
+						};
+					};
+
+
+					horizontal = {
+						min = -180;
+						neutral = -45;
+						max = 95;
+
+						headX = {
+							multiplayer = -120;
+							min = -45;
+							max = 45;
+						};
+
+						bodyY = {
+							multiplayer = 120;
+							min = -45;
+							max = 45;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairTails.LeftFrontHairTail.LeftFrontHairTailZPivot};
+
+				z = {
+					vertical = {
+						min = -90;
+						neutral = 0;
+						max = 7.5;
+
+						headZ = {
+							multiplayer = -120;
+							min = -90;
+							max = 7.5;
+						};
+					};
+
+					horizontal = {
+						min = -90;
+						neutral = 0;
+						max = 7.5;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairTails.RightFrontHairTail.RightFrontHairTailZPivot};
+
+				z = {
+					vertical = {
+						min = -7.5;
+						neutral = 0;
+						max = 90;
+
+						headZ = {
+							multiplayer = -120;
+							min = -7.5;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = -7.5;
+						neutral = 0;
+						max = 90;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.Cowlick};
+
+				x = {
+					vertical = {
+						min = -20;
+						neutral = -10;
+						max = 0;
+
+						bodyY = {
+							multiplayer = -40;
+							min = -20;
+							max = 0;
+						};
+					};
+
+					horizontal = {
+						min = -20;
+						neutral = -10;
+						max = 0;
+
+						bodyX = {
+							multiplayer = -80;
+							min = -10;
+							max = 0;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairAccessories.HairRibbon.HairRibbonBottomRight};
+
+				x = {
+					vertical = {
+						min = -17.5;
+						neutral = 0;
+						max = 30;
+
+						headX = {
+							multiplayer = -160;
+							min = -17.5;
+							max = 30;
+						};
+					};
+
+					horizontal = {
+						min = -17.5;
+						neutral = 0;
+						max = 30;
+
+						headX = {
+							multiplayer = -80;
+							min = -17.5;
+							max = 30;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -17.5;
+							max = 30;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairAccessories.HairRibbon.HairRibbonBottomLeft};
+
+				x = {
+					vertical = {
+						min = -30;
+						neutral = 0;
+						max = 17.5;
+
+						headX = {
+							multiplayer = -160;
+							min = -30;
+							max = 17.5;
+						};
+					};
+
+					horizontal = {
+						min = -30;
+						neutral = 0;
+						max = 17.5;
+
+						headX = {
+							multiplayer = -80;
+							min = -30;
+							max = 17.5;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -30;
+							max = 17.5;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairAccessories.HairRibbon.HairRibbonBottomRight.HairRibbonBottomRightZPivot, ModelAlias.alias.avatar.head.HairAccessories.HairRibbon.HairRibbonBottomLeft.HairRibbonBottomLeftZPivot};
+
+				z = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 150;
+
+						headZ = {
+							multiplayer = -80;
+							min = 0;
+							max = 150;
+						};
+
+						headRot = {
+							multiplayer = 0.1;
+							min = 0;
+							max = 150;
+						};
+
+						bodyY = {
+							multiplayer = -80;
+							min = 0;
+							max = 150;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairAccessories.Flower.FlowerRibbon3};
+
+				x = {
+					vertical = {
+						min = -45;
+						neutral = 0;
+						max = 100;
+
+						headX = {
+							multiplayer = -160;
+							min = -45;
+							max = 100;
+						};
+					};
+
+					horizontal = {
+						min = -45;
+						neutral = 0;
+						max = 100;
+
+						headX = {
+							multiplayer = -80;
+							min = -45;
+							max = 100;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -65;
+							max = 55;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairAccessories.Flower.FlowerRibbon4};
+
+				x = {
+					vertical = {
+						min = -22.5;
+						neutral = 0;
+						max = 100;
+
+						headX = {
+							multiplayer = -160;
+							min = -22.5;
+							max = 100;
+						};
+					};
+
+					horizontal = {
+						min = -22.5;
+						neutral = 0;
+						max = 100;
+
+						headX = {
+							multiplayer = -80;
+							min = -22.5;
+							max = 100;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -45;
+							max = 100;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.head.HairAccessories.Flower.FlowerRibbon3.FlowerRibbon3ZPivot, ModelAlias.alias.avatar.head.HairAccessories.Flower.FlowerRibbon4.FlowerRibbon4ZPivot};
+
+				z = {
+					vertical = {
+						min = -167.5;
+						neutral = 0;
+						max = 0;
+
+						headZ = {
+							multiplayer = -80;
+							min = -167.5;
+							max = 0;
+						};
+
+						headRot = {
+							multiplayer = 0.1;
+							min = -167.5;
+							max = 0;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -17.5;
+							max = 120;
+						};
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.Hairs.BackHair},
+
+				x = {
+					vertical = {
+						min = -150;
+						neutral = -15;
+						max = -15;
+
+						bodyX = {
+							multiplayer = -80;
+							min = -90;
+							max = -15;
+						};
+
+						bodyY = {
+							multiplayer = 80;
+							min = -150;
+							max = -15;
+						};
+
+						bodyRot = {
+							multiplayer = 0.05;
+							min = -90;
+							max = -15;
+						};
+					};
+
+					horizontal = {
+						min = -90;
+						neutral = -15;
+						max = -15;
+					};
+				};
+			};
+
+			{
+				models = {ModelAlias.alias.avatar.body.Hairs.FrontHair};
+
+				x = {
+					vertical = {
+						min = 0;
+						neutral = 0;
+						max = 150;
+						sneakOffset = 30;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 0;
+							max = 90;
+						};
+
+						bodyY = {
+							multiplayer = -80;
+							min = 0;
+							max = 150;
+						};
+
+						bodyRot = {
+							multiplayer = -0.05;
+							min = 0;
+							max = 90;
+						};
+					};
+
+					horizontal = {
+						min = 0;
+						neutral = 90;
+						max = 150;
+
+						bodyX = {
+							multiplayer = -80;
+							min = 0;
+							max = 150;
+						};
+					};
+				};
+			};
 		};
 	};
 
