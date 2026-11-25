@@ -668,7 +668,7 @@ local BlueArchiveCharacter = {
 					elseif tick == 75 then
 						FaceParts:setEmotion("UNEQUAL", "UNEQUAL", "SMILE", 4, true)
 					elseif tick == 76 then
-						ModelAlias.alias.avatar.body.HeldShells:moveTo(models.models.main)
+						ModelUtils.moveTo(ModelAlias.alias.avatar.body.HeldShells, models.models.main, ModelAlias.alias.avatar.body)
 
 						sounds:playSound("minecraft:entity.player.levelup", ModelUtils.getModelWorldPos(ModelAlias.alias.avatar.root), 1, 1)
 					elseif tick == 79 then
@@ -724,7 +724,7 @@ local BlueArchiveCharacter = {
 					end;
 
 					if models.models.main.HeldShells ~= nil then
-						models.models.main.HeldShells:moveTo(ModelAlias.alias.avatar.body)
+						ModelUtils.moveTo(models.models.main.HeldShells, ModelAlias.alias.avatar.body, models.models.main)
 					end
 				end;
 			};
