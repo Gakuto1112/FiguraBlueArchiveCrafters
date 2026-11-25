@@ -76,6 +76,9 @@ They will be created in order from top to bottom.
 This is just a plan and the order may change or creation may be discontinued.
 
 - Hifumi Ajitani (Racing) ([#208](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/208))
+- Airi Kurimura ([#214](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/214))
+- Yoshimi Iharagi ([#215](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/215))
+- Kazusa Kyoyama ([#114](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/114))
 - Yuka Hayase ([#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102))
 - Serika Kuromi ([#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37))
 
@@ -88,7 +91,6 @@ Please understand this.
 - Haruka Igusa ([#98](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/98))
 - Toki Asuma ([#104](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/104))
 - Aru Rikuhachima ([#103](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/103))
-- Kazusa Kyoyama ([#114](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/114))
 - Rio TsukaTsuki ([#116](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/116))
 - Hasumi Hanekawa ([#128](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/128))
 - Mutsuki Asagi ([#129](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/129))

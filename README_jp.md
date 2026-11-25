@@ -76,6 +76,9 @@
 これはあくまでも予定であり、順番が変更されたり作成を中止したりする可能性があります。
 
 - 阿慈谷 ヒフミ（レーシング）（[#208](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/208)）
+- 栗村 アイリ（[#214](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/214)）
+- 伊原木 ヨシミ（[#215](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/215)）
+- 杏山 カズサ（[#114](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/114)）
 - 早瀬 ユウカ（[#102](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/102)）
 - 黒見 セリカ（[#37](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/37)）
 
@@ -88,7 +91,6 @@
 - 伊草 ハルカ（[#98](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/98)）
 - 飛鳥馬 トキ（[#104](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/104)）
 - 陸八魔 アル（[#103](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/103)）
-- 杏山 カズサ（[#114](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/114)）
 - 調月 リオ（[#116](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/116)）
 - 羽川 ハスミ（[#128](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/128)）
 - 浅黄 ムツキ（[#129](https://github.com/Gakuto1112/FiguraBlueArchiveCrafters/issues/129)）
