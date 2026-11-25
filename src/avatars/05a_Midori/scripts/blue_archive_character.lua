@@ -177,6 +177,7 @@ local BlueArchiveCharacter = {
 			callbacks = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
+						models.models.ex_skill_1.Momoi.MomoiHead.MomoiHeadRing:setLight(15, 15)
 						models.models.ex_skill_1.Momoi.MomoiUpperBody.MomoiArms.MomoiLeftArm.MomoiLeftArmBottom.GameConsole2:addChild(ModelAlias.alias.avatar.leftArmBottom.GameConsole1:copy("GameConsole2"))
 						if host:isHost() then
 							models.models.ex_skill_1.Gui.UI:newText("ex_skill_1_ko"):setText("§cK.O."):setScale(vectors.vec3(1, 1, 1):scale(1.5)):setAlignment("CENTER"):setOutline(true):setVisible(false)

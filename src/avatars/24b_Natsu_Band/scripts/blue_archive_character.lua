@@ -223,6 +223,9 @@ local BlueArchiveCharacter = {
 			callbacks = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
+						for _, character in ipairs({"Airi", "Yoshimi", "Kazusa"}) do
+							models.models.ex_skill_1[character][character.."Head"][character.."Halo"]:setLight(15, 15)
+						end
 						models.models.ex_skill_1.Drum.DrumChair.ChairTop:setPrimaryTexture("RESOURCE", "textures/block/black_wool.png")
 						for _, modelPart in ipairs({models.models.ex_skill_1.Stage.StageTop, models.models.ex_skill_1.Stage.StageBottom}) do
 							modelPart:setPrimaryTexture("RESOURCE", "textures/block/gray_concrete.png")

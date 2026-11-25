@@ -174,6 +174,7 @@ local BlueArchiveCharacter = {
 			callbacks = {
 				onPreAnimation = function (self)
 					if not self.exSkill.primary.isInitialized then
+						models.models.ex_skill_1.Midori.MidoriHead.MidoriHeadRing:setLight(15, 15)
 						models.models.ex_skill_1.Midori.MidoriUpperBody.MidoriArms.MidoriLeftArm.MidoriLeftArmBottom.GameConsole2:addChild(ModelAlias.alias.avatar.leftArmBottom.GameConsole1:copy("GameConsole2"))
 						if host:isHost() then
 							models.models.ex_skill_1.Gui.UI:newText("ex_skill_1_ko"):setText("§cK.O."):setScale(1.5, 1.5, 1.5):setAlignment("CENTER"):setOutline(true):setOutlineColor(0.33, 0, 0):setVisible(false)

@@ -474,6 +474,7 @@ local BlueArchiveCharacter = {
 			callbacks = {
 				onPreAnimation = function (self)
 					if not self.exSkill.secondary.isInitialized then
+						models.models.ex_skill_2.Tank.TankBody.Turret.Iroha.IrohaHead.IrohaHeadRing:setLight(15, 15)
 						for _, modelPart in ipairs({models.models.ex_skill_2.Tank.TankBody.PSLogo1, models.models.ex_skill_2.Tank.TankBody.Turret.PSLogo2, models.models.ex_skill_2.Tank.TankBody.Turret.PSLogo3}) do
 							modelPart:newText("toramaru_logo_text"):setText("§e万魔殿"):setPos(0, 2.25, 0):setScale(0.2):setAlignment("CENTER"):setOutline(true):setOutlineColor(0.404, 0.306, 0.051)
 						end
