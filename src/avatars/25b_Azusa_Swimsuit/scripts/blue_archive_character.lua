@@ -92,14 +92,24 @@ local BlueArchiveCharacter = {
 
 			camera = {
 				start = {
-					rot = vectors.vec3(0, 180, 0);
-					pos = vectors.vec3(0, 28, -64);
+					rot = vectors.vec3(-10, -170, 0);
+					pos = vectors.vec3(-1, 28, -16);
 				};
 
 				fin = {
-					rot = vectors.vec3(0, 180, 0);
-					pos = vectors.vec3(0, 28, -64);
+					rot = vectors.vec3(-10, -160, 0);
+					pos = vectors.vec3(-8.25, 12.5, -26);
 				};
+			};
+
+			callbacks = {
+				onAnimationTick = function (self, tick)
+					if tick == 730 then
+						for _, modelName in ipairs(self.exSkill.primary.animations) do
+							animations["models."..modelName]["ex_skill_1"]:pause()
+						end
+					end
+				end;
 			};
 		};
 	};
