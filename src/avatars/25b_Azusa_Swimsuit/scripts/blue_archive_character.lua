@@ -86,7 +86,7 @@ local BlueArchiveCharacter = {
 		primary = {
 			formationType = "STRIKER";
 
-			models = {};
+			models = {models.models.ex_skill_1.Suitcases};
 
 			animations = {"main"};
 
@@ -103,6 +103,21 @@ local BlueArchiveCharacter = {
 			};
 
 			callbacks = {
+				onPreAnimation = function (self)
+					if not self.exSkill.primary.isInitialized then
+						for i = 1, 4 do
+							local task = models.models.ex_skill_1.Suitcases["ShulkerBox"..i]:newBlock("ex_skill_1_shulker_box_"..i)
+							task:setPos(-8, 0, -8)
+						end
+						models.models.ex_skill_1.Suitcases.ShulkerBox1:getTask("ex_skill_1_shulker_box_1"):setBlock("minecraft:light_gray_shulker_box")
+						models.models.ex_skill_1.Suitcases.ShulkerBox2:getTask("ex_skill_1_shulker_box_2"):setBlock("minecraft:cyan_shulker_box")
+						models.models.ex_skill_1.Suitcases.ShulkerBox3:getTask("ex_skill_1_shulker_box_3"):setBlock("minecraft:yellow_shulker_box")
+						models.models.ex_skill_1.Suitcases.ShulkerBox4:getTask("ex_skill_1_shulker_box_4"):setBlock("minecraft:gray_shulker_box")
+
+						self.exSkill.primary.isInitialized = true
+					end
+				end;
+
 				onAnimationTick = function (self, tick)
 					if tick == 730 then
 						for _, modelName in ipairs(self.exSkill.primary.animations) do
@@ -111,6 +126,10 @@ local BlueArchiveCharacter = {
 					end
 				end;
 			};
+
+			---このExスキルが初期化されたかどうか
+			---@type boolean
+			isInitialized = false;
 		};
 	};
 
